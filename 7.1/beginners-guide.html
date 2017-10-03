@@ -624,7 +624,7 @@ table.CodeRay td.code>pre{padding:0}
       </div>
      </div>
      <div class="paragraph">
-      <p>Scout supports a modularization of applications into layers and slices. This helps to define a clean architecture for large applications. The layering is driven by the fact the Scout applications have a rending part, a frontend part and a backend part. The modularization into slices is controlled by different business needs such as front office, back office, reporting or the administraion of application users, roles and permissions.</p>
+      <p>Scout supports a modularization of applications into layers and slices. This helps to define a clean architecture for large applications. The layering is driven by the fact the Scout applications have a rendering part, a frontend part and a backend part. The modularization into slices is controlled by different business needs such as front office, back office, reporting or the administraion of application users, roles and permissions.</p>
      </div>
      <div class="paragraph">
       <p>The goals of the Scout framework can be summarized as follows.</p>
@@ -2252,12 +2252,20 @@ table.CodeRay td.code>pre{padding:0}
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredIconId() {
       <span class="keyword">return</span> AbstractIcons.Gear;
     }
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="predefined-type">Class</span>&lt;OptionsForm&gt; getConfiguredForm() {
+      <span class="keyword">return</span> OptionsForm.class;
+    }
   }
   <span class="annotation">@Order</span>(<span class="integer">30</span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">UserMenu</span> <span class="directive">extends</span> AbstractFormMenu&lt;UserForm&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredIconId() {
       <span class="keyword">return</span> AbstractIcons.Person;
+    }
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="predefined-type">Class</span>&lt;UserForm&gt; getConfiguredForm() {
+      <span class="keyword">return</span> UserForm.class;
     }
   }
 }</code></pre>
