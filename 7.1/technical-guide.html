@@ -558,7 +558,11 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#text-properties-files">4.1. Text properties files</a></li>
        <li><a href="#text-provider-service">4.2. Text Provider Service</a></li>
       </ul> </li>
-     <li><a href="#icons">5. Icons</a></li>
+     <li><a href="#icons">5. Icons</a>
+      <ul class="sectlevel2">
+       <li><a href="#using-a-custom-icon-font">5.1. Using a custom icon font</a></li>
+       <li><a href="#how-to-create-a-custom-icon-font">5.2. How to create a custom icon font</a></li>
+      </ul> </li>
      <li><a href="#lookup-call">6. Lookup Call</a>
       <ul class="sectlevel2">
        <li><a href="#description">6.1. Description</a></li>
@@ -1647,25 +1651,125 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
     <h2 id="icons"><a class="anchor" href="#icons"></a>5. Icons</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Class that contains as static members the icons that are available.</p>
+      <p>A lot of Scout widgts support icons. For instance a menu item can show an icon next to the menu text. Icons in Scout can be either a bitmap image (GIF, PNG, JPEG, etc.) or a character from an icon-font. An example for an icon-font is the <em>scoutIcons.ttf</em> which comes shipped with Scout.</p>
      </div>
      <div class="paragraph">
-      <p>Everywhere icons are needed, a String <code>IconId</code> is requested. (for example property <em>IconId</em> of a Code).</p>
+      <p>It&#x2019;s a good practice to define the available icons in your application in a class that defines each icon as a constant. Create a class <code>Icons</code> in the shared module of your project. These constants should be references, when you set the <em>IconId</em> property in your code.</p>
      </div>
      <div class="paragraph">
-      <p>Static members mapping from the requested IconId String values to the name of the icon image files.</p>
+      <p>For bitmap images you simply specify the filename of the image file <em>without</em> the file extension. Place all your icon files in the resource folder of your <em>client</em> module. Assuming your project name is "org.scout.hello", the correct location to store icon files would be:</p>
      </div>
-     <div class="listingblock">
+     <div class="literalblock">
       <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> UserHome =<span class="string"><span class="delimiter">"</span><span class="content">home_red</span><span class="delimiter">"</span></span>;</code></pre>
+       <pre>org.scout.hello.client/              # Client project directory
+  src/main/resources/                # Resources directory
+    org/scout/hello/client/icons/    # Path to icons
+      application_logo_large.png
+      person.png
+      ...</pre>
       </div>
      </div>
      <div class="listingblock">
+      <div class="title">
+       Listing 17. Icons.java
+      </div>
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Bitmap image (references icons/application_logo_large.png)</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ApplicationLogo = <span class="string"><span class="delimiter">"</span><span class="content">application_logo_large</span><span class="delimiter">"</span></span>;
+<span class="comment">// Character from icon-font scoutIcons.woff (default)</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> <span class="predefined-type">Calendar</span> =<span class="string"><span class="delimiter">"</span><span class="content">font:</span><span class="char">\uE003</span><span class="delimiter">"</span></span>;
+<span class="comment">// Character from a custom icon-font</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> Phone =<span class="string"><span class="delimiter">"</span><span class="content">font:awesomeIcons </span><span class="char">\uF095</span><span class="delimiter">"</span></span>;</code></pre>
+      </div>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 18. Usage of iconId in a Scout widget
+      </div>
       <div class="content">
        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
 <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredIconId(){
-  <span class="keyword">return</span> Icons.UserHome;
- }</code></pre>
+  <span class="keyword">return</span> Icons.Calendar;
+}</code></pre>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="using-a-custom-icon-font"><a class="anchor" href="#using-a-custom-icon-font"></a>5.1. Using a custom icon font</h3>
+      <div class="paragraph">
+       <p>You can use your own icon font. The required file format for an icon font is <em>.woff</em>. For the following examples we assume the name of your font file is <em>awesomeIcons.woff</em>. The following steps are required:</p>
+      </div>
+      <div class="paragraph">
+       <p>Place the font file in the WebContent/res directory of your <em>html.ui</em> module. This makes it available for http requests on the URL <code>http://[base]/res/awesomeIcons.woff</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Create a CSS/LESS definition, to reference the icon font in stylesheets. Make sure the definition is added to the LESS module of your project.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 19. The CSS/LESS font definition should look like this:
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="less">@font-face {
+  font-family: awesomeIcons;
+  font-weight: normal;
+  src: url('awesomeIcons.woff') format('woff');
+}
+/* Overrides definitions in fonts.css &gt; .font-icon
+* Use iconId 'font:awesomeIcons [character]' in Scout model.
+* See icons.js and usage of this class to see how iconId is used.
+*/
+.font-awesomeIcons {
+  font-family: awesomeIcons, @defaultFont;
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>To check if your CSS definition is correct, you should download the CSS file directly via URL and check if the CSS file contains the required font definition. Assuming your LESS macro is named <em>hello-scout-macro.less</em> the URL is: <code>http://[base]/res/hello-scout.css</code></p>
+      </div>
+      <div class="admonitionblock note">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+          <td class="content"> When you request resources from the <em>/res</em> folder via http, Scout will find resources from parent modules too. Thus the <em>scoutIcons.woff</em> is always available in a Scout project. However, you must avoid naming conflicts, since at runtime all files exist on the same classpath. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="how-to-create-a-custom-icon-font"><a class="anchor" href="#how-to-create-a-custom-icon-font"></a>5.2. How to create a custom icon font</h3>
+      <div class="paragraph">
+       <p>Here&#x2019;s what we do to create and maintain our own icon font <em>scoutIcons.woff</em>. There may be other methods to achieve the same.</p>
+      </div>
+      <div class="paragraph">
+       <p>To create and modify our icon font we use the online application <a href="https://icomoon.io/app/">IcoMoon</a>. IcoMoon allows you to assemble a set of icons from various sources (e.g. FontAwesome or custom SVG graphics) and create a font file from that set.</p>
+      </div>
+      <div class="paragraph">
+       <p>You can export/import your icon set from and to IcoMoon, and you should store the files exported from IcoMoon in a SCM system like GIT. IcoMoon stores all important data in the file <em>selection.json</em>. Make sure you also store the raw SVG graphics you&#x2019;ve uploaded to IcoMoon in your SCM, in case you have to change a single icon later.</p>
+      </div>
+      <div class="paragraph">
+       <p>To edit the icon font in IcoMoon follow these steps:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Import <em>selection.json</em> in IcoMoon, click on the "Import Icons" button.</p> </li>
+        <li> <p>With the <em>Select</em> tool (arrow) you select the icons you want to add to your set. You can also add one or more characters from other icon fonts like FontAwesome by choosing <em>Add Icons From Library&#x2026;&#x200b;</em></p> </li>
+        <li> <p>Your can import your custom SVG graphics with <em>Import to Set</em>, which you find in the hamburger menu on the icon set. The SVG graphic should have the same size as the other icons in the set and must use only a single color, black. The background must be transparent. Hint: the filename of the SVG graphic should contain the unicode of the character in the font in order to simplify maintencance. Only use unicodes from the <em>Private Use Area</em> from U+E000 to U+F8FF.</p> </li>
+        <li> <p>When you&#x2019;re happy with your icon set, you hit the <em>Generate Font</em> button in the footer in IcoMoon. On the following page you can set the unicode of each icon/character. Click on the prefences button (cog icon), to set the name of your icon font (e.g. scoutIcons). Finally click on <em>Download</em> and you receive a ZIP file which contains the new <em>selection.json</em>, and font files like .ttf and .woff.</p> </li>
+        <li> <p>When you&#x2019;ve added new unicodes to the icon font, you should also update <em>Icons.java</em> and add constants for the new characters. When you&#x2019;re using <em>Scout JS</em> you should also update <em>icons.js</em> and <em>icons.less</em>.</p> </li>
+        <li> <p><strong>Important!</strong> don&#x2019;t forget to check in the new <em>selection.js</em> to your SCM.</p> </li>
+       </ul>
+      </div>
+      <div class="sect3">
+       <h4 id="tools"><a class="anchor" href="#tools"></a>5.2.1. Tools</h4>
+       <div class="ulist">
+        <ul>
+         <li> <p>Windows tool <em>Character Map</em>: first you must install your custom TrueType Font .ttf in Windows. Simply double-click on the .ttf file and choose <em>Install</em>. After that you can start <em>Character Map</em> and browse through the font.</p> </li>
+         <li> <p>The ZIP archive from IcoMoon contains a file <em>demo.html</em>. This file shows a preview of your icon font. Works in Chrome, but we had trouble viewing the font with Firefox.</p> </li>
+         <li> <p>This tool from Wikipedia also creates a preview for an icon font: <a href="https://de.wikipedia.org/wiki/Vorlage:Private-Use-Area-Test">Vorlage:Private-Use-Area-Test</a>. Icon font must be installed first.</p> </li>
+        </ul>
+       </div>
       </div>
      </div>
     </div>
@@ -2043,7 +2147,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 17. PlatformException examples
+          Listing 20. PlatformException examples
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="java"><span class="exception">Exception</span> cause = <span class="keyword">new</span> <span class="exception">Exception</span>();
@@ -2166,7 +2270,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 18. PlatformException examples
+         Listing 21. PlatformException examples
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">try</span> {
@@ -2204,7 +2308,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 19. Logging examples
+        Listing 22. Logging examples
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="exception">Exception</span> e = <span class="keyword">new</span> <span class="exception">Exception</span>();
@@ -2252,7 +2356,7 @@ logger.error(<span class="string"><span class="delimiter">"</span><span class="c
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 20. Work that does not return a result
+        Listing 23. Work that does not return a result
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Work</span> <span class="directive">implements</span> IRunnable {
@@ -2265,7 +2369,7 @@ logger.error(<span class="string"><span class="delimiter">"</span><span class="c
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 21. Work that returns a computation result
+        Listing 24. Work that returns a computation result
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">WorkWithResult</span> <span class="directive">implements</span> <span class="predefined-type">Callable</span>&lt;<span class="predefined-type">String</span>&gt; {
@@ -2282,7 +2386,7 @@ logger.error(<span class="string"><span class="delimiter">"</span><span class="c
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 22. Accessing the Future from within the job
+        Listing 25. Accessing the Future from within the job
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Job</span> <span class="directive">implements</span> IRunnable {
@@ -2327,7 +2431,7 @@ logger.error(<span class="string"><span class="delimiter">"</span><span class="c
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 23. Schedule a job
+        Listing 26. Schedule a job
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">IJobManager jobManager = BEANS.get(IJobManager.class); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -2360,7 +2464,7 @@ jobManager.schedule(() -&gt; {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 24. Schedule a job via Jobs helper class
+        Listing 27. Schedule a job via Jobs helper class
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -2376,7 +2480,7 @@ jobManager.schedule(() -&gt; {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 25. Schedule a job and control execution via JobInput
+        Listing 28. Schedule a job and control execution via JobInput
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -2643,7 +2747,7 @@ Jobs.newInput()
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 26. Example of a future filter
+        Listing 29. Example of a future filter
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FutureFilter</span> <span class="directive">implements</span> IFilter&lt;IFuture&lt;?&gt;&gt; {
@@ -2660,7 +2764,7 @@ Jobs.newInput()
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 27. Usage of FutureFilterBuilder
+        Listing 30. Usage of FutureFilterBuilder
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">IFilter&lt;IFuture&lt;?&gt;&gt; filter = Jobs.newFutureFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
@@ -2722,7 +2826,7 @@ Jobs.newInput()
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 28. Example of an event filter
+        Listing 31. Example of an event filter
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">EventFilter</span> <span class="directive">implements</span> IFilter&lt;JobEvent&gt; {
@@ -2739,7 +2843,7 @@ Jobs.newInput()
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 29. Usage of JobEventFilterBuilder
+        Listing 32. Usage of JobEventFilterBuilder
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">IFilter&lt;JobEvent&gt; filter = Jobs.newEventFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
@@ -2797,7 +2901,7 @@ Jobs.newInput()
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 30. Cancel a job via its future
+        Listing 33. Cancel a job via its future
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Schedule a job</span>
@@ -2808,7 +2912,7 @@ future.cancel(<span class="predefined-constant">false</span>);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 31. Cancel multiple jobs via job manager
+        Listing 34. Cancel multiple jobs via job manager
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.getJobManager().cancel(Jobs.newFutureFilterBuilder()
@@ -2818,7 +2922,7 @@ future.cancel(<span class="predefined-constant">false</span>);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 32. Cancel multiple jobs which match a specific execution hint and the current session
+        Listing 35. Cancel multiple jobs which match a specific execution hint and the current session
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.getJobManager().cancel(Jobs.newFutureFilterBuilder()
@@ -2881,7 +2985,7 @@ future.cancel(<span class="predefined-constant">false</span>);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 33. Subscribe for global job events
+        Listing 36. Subscribe for global job events
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.getJobManager().addListener(Jobs.newEventFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
@@ -2913,7 +3017,7 @@ future.cancel(<span class="predefined-constant">false</span>);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 34. Subscribe for local job events
+        Listing 37. Subscribe for local job events
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">future.addListener(Jobs.newEventFilterBuilder()
@@ -2944,7 +3048,7 @@ future.cancel(<span class="predefined-constant">false</span>);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 35. Examples of how to await done state on a future
+         Listing 38. Examples of how to await done state on a future
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">IFuture&lt;<span class="predefined-type">String</span>&gt; future = Jobs.schedule(() -&gt; {
@@ -2997,7 +3101,7 @@ result = future.awaitDoneAndGet(<span class="integer">10</span>, <span class="pr
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 36. Example of when-done callback
+         Listing 39. Example of when-done callback
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">future.whenDone(event -&gt; {
@@ -3016,7 +3120,7 @@ result = future.awaitDoneAndGet(<span class="integer">10</span>, <span class="pr
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 37. Examples of how to await finished state on a future
+         Listing 40. Examples of how to await finished state on a future
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">IFuture&lt;<span class="predefined-type">String</span>&gt; future = Jobs.schedule(() -&gt; {
@@ -3038,7 +3142,7 @@ future.awaitFinished(<span class="integer">10</span>, <span class="predefined-ty
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 38. Examples of how to await done state of multiple futures
+         Listing 41. Examples of how to await done state of multiple futures
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Wait for some futures</span>
@@ -3074,7 +3178,7 @@ Jobs.getJobManager().awaitDone(Jobs.newFutureFilterBuilder() <i class="conum" da
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 39. Examples of how to await finish state of multiple futures
+         Listing 42. Examples of how to await finish state of multiple futures
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Wait for some futures</span>
@@ -3212,7 +3316,7 @@ operationCompleted.waitForUninterruptibly();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 40. Running work in model thread
+        Listing 43. Running work in model thread
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><i class="conum" data-value="1"></i><b>(1)</b>
@@ -3323,7 +3427,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 41. Schedule a one-shot job
+        Listing 44. Schedule a one-shot job
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3335,7 +3439,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 42. Schedule a job with a delay
+        Listing 45. Schedule a job with a delay
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3349,7 +3453,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 43. Schedule a repetitive job at a fixed rate
+        Listing 46. Schedule a repetitive job at a fixed rate
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3388,7 +3492,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 44. Schedule a repetitive job which runs 60 times at every minute
+        Listing 47. Schedule a repetitive job which runs 60 times at every minute
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3427,7 +3531,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 45. Schedule a repetitive job at a fixed delay
+        Listing 48. Schedule a repetitive job at a fixed delay
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3456,7 +3560,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 46. Schedule a repetitive job which runs 60 times, but waits 1 minute between the termination of the previous and the commencement of the next execution
+        Listing 49. Schedule a repetitive job which runs 60 times, but waits 1 minute between the termination of the previous and the commencement of the next execution
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3485,7 +3589,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 47. Running at 10:15am every Monday, Tuesday, Wednesday, Thursday and Friday
+        Listing 50. Running at 10:15am every Monday, Tuesday, Wednesday, Thursday and Friday
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3509,7 +3613,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 48. Running every minute starting at 14:00 and ending at 14:05, every day
+        Listing 51. Running every minute starting at 14:00 and ending at 14:05, every day
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; {
@@ -3533,7 +3637,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 49. Limit the maximal concurrency level among jobs
+        Listing 52. Limit the maximal concurrency level among jobs
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">IExecutionSemaphore semaphore = Jobs.newExecutionSemaphore(<span class="integer">5</span>); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -3562,7 +3666,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 50. Cancel all jobs of the current session
+        Listing 53. Cancel all jobs of the current session
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">Jobs.getJobManager().cancel(Jobs.newFutureFilterBuilder()
@@ -3572,7 +3676,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 51. Query for cancellation
+        Listing 54. Query for cancellation
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CancellableWork</span> <span class="directive">implements</span> IRunnable {
@@ -3593,7 +3697,7 @@ ModelJobs.yield();</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 52. Release current semaphore permit while executing
+        Listing 55. Release current semaphore permit while executing
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Create a blocking condition.</span>
@@ -3630,11 +3734,11 @@ operationCompleted.waitForUninterruptibly();</code></pre>
        <p>Typically, a <code>RunContext</code> is created from a respective factory like <code>RunContexts</code> to create a <code>RunContext</code>, or <code>ServerRunContexts</code> to create a <code>ServerRunContext</code>, or <code>ClientRunContexts</code> to create a <code>ClientRunContext</code>. Internally, the <code>BeanManager</code> is asked to provide a new instance of the <code>RunContext</code>, which allows you to replace the default implementation of a <code>RunContext</code> in an easy way. The factories declare two factory methods: <code>empty()</code> and <code>copyCurrent()</code>. Whereas <code>empty()</code> provides you an empty <code>RunContext</code>, <code>copyCurrent()</code> takes a snapshot of the current calling context and initializes the <code>RunContext</code> accordingly. That is useful if only some few values are to be changed, or, if using <code>ServerRunContext</code>, to run the code on behalf of a new transaction.</p>
       </div>
       <div class="paragraph">
-       <p>The following <a href="#lst-RunContexts.copyCurrent">Listing 54</a> illustrates the creation of an empty <code>RunContext</code> initialized with a particular <code>Subject</code> and <code>Locale</code>.</p>
+       <p>The following <a href="#lst-RunContexts.copyCurrent">Listing 57</a> illustrates the creation of an empty <code>RunContext</code> initialized with a particular <code>Subject</code> and <code>Locale</code>.</p>
       </div>
       <div id="lst-RunContexts.empty" class="listingblock">
        <div class="title">
-        Listing 53. Creation of an empty
+        Listing 56. Creation of an empty
         <code>RunContext</code>
        </div>
        <div class="content">
@@ -3671,11 +3775,11 @@ RunContexts.empty()
        </table>
       </div>
       <div class="paragraph">
-       <p>The following <a href="#lst-RunContexts.copyCurrent">Listing 54</a> illustrates the creation of a 'snapshot' of the current calling <code>RunContext</code> with another <code>Locale</code> set.</p>
+       <p>The following <a href="#lst-RunContexts.copyCurrent">Listing 57</a> illustrates the creation of a 'snapshot' of the current calling <code>RunContext</code> with another <code>Locale</code> set.</p>
       </div>
       <div id="lst-RunContexts.copyCurrent" class="listingblock">
        <div class="title">
-        Listing 54. Create a copy of the current calling
+        Listing 57. Create a copy of the current calling
         <code>RunContext</code>
        </div>
        <div class="content">
@@ -3957,7 +4061,7 @@ RunContexts.empty()
       <h3 id="publishing"><a class="anchor" href="#publishing"></a>12.5. Publishing</h3>
       <div class="listingblock">
        <div class="title">
-        Listing 55. Publishing Client Notifications
+        Listing 58. Publishing Client Notifications
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">BEANS.get(ClientNotificationRegistry.class).putForUser(<span class="string"><span class="delimiter">"</span><span class="content">admin</span><span class="delimiter">"</span></span>, <span class="keyword">new</span> PersonTableChangedNotification());</code></pre>
@@ -4005,7 +4109,7 @@ RunContexts.empty()
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 56. Client Notification Coalescer
+         Listing 59. Client Notification Coalescer
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">BookmarkNotificationCoalescer</span> <span class="directive">implements</span> ICoalescer&lt;BookmarkChangedClientNotification&gt; {
@@ -4034,7 +4138,7 @@ RunContexts.empty()
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 57. Notification Handler for
+         Listing 60. Notification Handler for
          <code>MessageNotifications</code>
         </div>
         <div class="content">
@@ -4060,7 +4164,7 @@ RunContexts.empty()
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 58. Blocking until notification handling completed
+         Listing 61. Blocking until notification handling completed
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">CodeService cs = BEANS.get(CodeService.class);
@@ -4080,7 +4184,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 59. Notification Handler Creating Model Job
+         Listing 62. Notification Handler Creating Model Job
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
@@ -4200,7 +4304,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 60. Extension for NameField
+         Listing 63. Extension for NameField
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">NameFieldExtension</span> <span class="directive">extends</span> AbstractStringFieldExtension&lt;NameField&gt; {
@@ -4223,7 +4327,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 61. Register extension for NameField
+         Listing 64. Register extension for NameField
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">Jobs.schedule(() -&gt; BEANS.get(IExtensionRegistry.class).register(NameFieldExtension.class), Jobs.newInput()
@@ -4249,7 +4353,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 62. Extension for PersonForm
+        Listing 65. Extension for PersonForm
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * Extension for the MainBox of the PersonForm */</span>
@@ -4272,7 +4376,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 63. Register extension for PersonForm
+        Listing 66. Register extension for PersonForm
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">BEANS.get(IExtensionRegistry.class).register(PersonFormMainBoxExtension.class);</code></pre>
@@ -4283,7 +4387,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 64. Extension Data for PersonForm
+        Listing 67. Extension Data for PersonForm
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/** * &lt;b&gt;NOTE:&lt;/b&gt;&lt;br&gt; * This class is auto generated by the Scout SDK. No manual modifications recommended. */</span>
@@ -4311,7 +4415,7 @@ cs.reloadCodeType(UiThemeCodeType.class);
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 65. Access extended fields
+        Listing 68. Access extended fields
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// create a normal FormData</span>
@@ -4329,7 +4433,7 @@ c.getSalary().setValue(<span class="keyword">new</span> <span class="predefined-
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 66. Extension for PersonForm
+         Listing 69. Extension for PersonForm
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PersonFormExtension</span> <span class="directive">extends</span> AbstractFormExtension&lt;PersonForm&gt; {
@@ -4382,7 +4486,7 @@ c.getSalary().setValue(<span class="keyword">new</span> <span class="predefined-
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 67. Move NameField to LastBox
+        Listing 70. Move NameField to LastBox
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">BEANS.get(IExtensionRegistry.class).registerMove(NameField.class, <span class="float">20d</span>, LastBox.class);</code></pre>
@@ -4941,11 +5045,11 @@ protected void execInitField() {
          <p>If running in an EE application server, refer to the containers documentation for more information.</p>
         </div>
         <div class="paragraph">
-         <p><a href="#lst-maven.dep.metro">Listing 68</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 69</a> does the same for <em>Apache CXF</em></p>
+         <p><a href="#lst-maven.dep.metro">Listing 71</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 72</a> does the same for <em>Apache CXF</em></p>
         </div>
         <div id="lst-maven.dep.metro" class="listingblock">
          <div class="title">
-          Listing 68. Maven dependency for
+          Listing 71. Maven dependency for
           <em>JAX-WS METRO</em>
          </div>
          <div class="content">
@@ -4959,7 +5063,7 @@ protected void execInitField() {
         </div>
         <div id="lst-maven.dep.cxf" class="listingblock">
          <div class="title">
-          Listing 69. Maven dependency for
+          Listing 72. Maven dependency for
           <em>Apache CXF</em>
          </div>
          <div class="content">
@@ -4988,11 +5092,11 @@ protected void execInitField() {
          <p>This section describes the configuration of the entry point Servlet to publish webservices. If working with webservice consumers only, no configuration is required.</p>
         </div>
         <div class="paragraph">
-         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 16.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 70</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 71</a> for <em>Apache CXF</em>.</p>
+         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 16.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 73</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 74</a> for <em>Apache CXF</em>.</p>
         </div>
         <div id="lst-jaxws.webxml.metro" class="listingblock">
          <div class="title">
-          Listing 70. web.xml for
+          Listing 73. web.xml for
           <em>JAX-WS METRO</em> Servlet
          </div>
          <div class="content">
@@ -5030,7 +5134,7 @@ protected void execInitField() {
         </div>
         <div id="lst-jaxws.webxml.cxf" class="listingblock">
          <div class="title">
-          Listing 71. web.xml for
+          Listing 74. web.xml for
           <em>Apache CXF</em> Servlet
          </div>
          <div class="content">
@@ -5139,7 +5243,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.pom.scoutversion" class="listingblock">
         <div class="title">
-         Listing 72. Scout version defined as Maven property
+         Listing 75. Scout version defined as Maven property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -5148,11 +5252,11 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 73</a>).</p>
+        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 76</a>).</p>
        </div>
        <div id="lst-jaxws.pom.single-wsdl-file" class="listingblock">
         <div class="title">
-         Listing 73. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
+         Listing 76. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -5171,21 +5275,21 @@ protected void execInitField() {
         </table>
        </div>
        <div class="paragraph">
-        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 73</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 74</a>.</p>
+        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 76</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 77</a>.</p>
        </div>
        <div class="admonitionblock warning">
         <table>
          <tbody>
           <tr>
            <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 74</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 73</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
+           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 77</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 76</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
           </tr>
          </tbody>
         </table>
        </div>
        <div id="lst-jaxws.pom.multiple-wsdl" class="listingblock">
         <div class="title">
-         Listing 74. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
+         Listing 77. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
@@ -5268,11 +5372,11 @@ protected void execInitField() {
       <div class="sect3">
        <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>16.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
        <div class="paragraph">
-        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 75</a>.</p>
+        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 78</a>.</p>
        </div>
        <div id="lst-jaxws.pom.multiple-binding" class="listingblock">
         <div class="title">
-         Listing 75. explicit configuration of binding files
+         Listing 78. explicit configuration of binding files
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- YourFirstWebService.wsdl --&gt;</span>
@@ -5306,15 +5410,15 @@ protected void execInitField() {
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 76</a> for an example.</td>
+           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 79</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 77</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 80</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 78</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 81</a> for an example.</td>
           </tr>
          </tbody>
         </table>
@@ -5327,7 +5431,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.example.globalbindingfile" class="listingblock">
         <div class="title">
-         Listing 76. example of global binding file in the namespace
+         Listing 79. example of global binding file in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -5360,7 +5464,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.ws" class="listingblock">
         <div class="title">
-         Listing 77. example of jaxws component customization in the namespace
+         Listing 80. example of jaxws component customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a>
         </div>
         <div class="content">
@@ -5386,7 +5490,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.xs" class="listingblock">
         <div class="title">
-         Listing 78. example of xsd schema element customization in the namespace
+         Listing 81. example of xsd schema element customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -5757,7 +5861,7 @@ protected void execInitField() {
        <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>16.5.4. Example of an Entry Point definition</h4>
        <div id="jaxws.listing.porttypedefinition" class="listingblock">
         <div class="title">
-         Listing 79. Example configuration for an entry point definition
+         Listing 82. Example configuration for an entry point definition
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -5845,7 +5949,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 80. PingWebServiceEntryPoint_handler-chain.xml
+         Listing 83. PingWebServiceEntryPoint_handler-chain.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">&lt;handler-chains xmlns=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/javaee</span><span class="delimiter">"</span></span>&gt;
@@ -5881,7 +5985,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 81. PingWebServiceEntryPoint.java
+         Listing 84. PingWebServiceEntryPoint.java
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebService</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PingWebServicePortType</span><span class="delimiter">"</span></span>,
@@ -5914,7 +6018,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 82. Example of a JAX-WS Handler
+         Listing 85. Example of a JAX-WS Handler
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span> <i class="conum" data-value="1"></i><b>(1)</b>
@@ -5976,7 +6080,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 83. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
+         Listing 86. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -6017,7 +6121,7 @@ protected void execInitField() {
        </div>
        <div id="jaxws.handler.statepropagation.readcid" class="listingblock">
         <div class="title">
-         Listing 84. This handler accesses the 'correlation ID' as set by the previous handler.
+         Listing 87. This handler accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -6054,7 +6158,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 85. This port type accesses the 'correlation ID' as set by the previous handler.
+         Listing 88. This port type accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -6111,7 +6215,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 86. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
+         Listing 89. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -6158,7 +6262,7 @@ protected void execInitField() {
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 87. WEB-INF/sun-jaxws.xml
+          Listing 90. WEB-INF/sun-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jws:endpoints</span> <span class="attribute-name">xmlns:jws</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/jax-ws/ri/runtime</span><span class="delimiter">"</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">"</span><span class="content">2.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
@@ -6176,11 +6280,11 @@ protected void execInitField() {
        <div class="sect4">
         <h5 id="jaxws.registration.endpoints.cxf"><a class="anchor" href="#jaxws.registration.endpoints.cxf"></a>Apache CXF</h5>
         <div class="paragraph">
-         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 71</a> for more information.</p>
+         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 74</a> for more information.</p>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 88. WEB-INF/cxf-jaxws.xml
+          Listing 91. WEB-INF/cxf-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;beans</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.springframework.org/schema/beans</span><span class="delimiter">"</span></span>
@@ -6228,7 +6332,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 89. Example of a WS-Client
+        Listing 92. Example of a WS-Client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
@@ -6253,7 +6357,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 90. Example of a WS-Client configuration
+        Listing 93. Example of a WS-Client configuration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient1</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
@@ -6305,7 +6409,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 91. Example of a webservice call
+         Listing 94. Example of a webservice call
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">PingWebServicePortType port = BEANS.get(PingWebServiceClient.class).newInvocationContext().getPort(); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -6334,7 +6438,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 92. Configure invocation context with data to be included in the web request
+         Listing 95. Configure invocation context with data to be included in the web request
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> InvocationContext&lt;PingWebServicePortType&gt; context = BEANS.get(PingWebServiceClient.class).newInvocationContext();
@@ -6437,7 +6541,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
         </table>
        </div>
        <div class="paragraph">
-        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 84</a>.</p>
+        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 87</a>.</p>
        </div>
       </div>
       <div class="sect3">
@@ -6555,7 +6659,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
      <div class="sect2">
       <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>16.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
       <div class="paragraph">
-       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 76</a> for an example.</p>
+       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 79</a> for an example.</p>
       </div>
       <div class="paragraph">
        <p>See the adapter&#x2019;s JavaDoc for more detailed information.</p>
@@ -7011,7 +7115,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 93. Creating a string field
+         Listing 96. Creating a string field
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>, {
@@ -7026,7 +7130,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 94. Creating a field considering the name space
+         Listing 97. Creating a field considering the name space
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">scout.create(<span class="string"><span class="delimiter">'</span><span class="content">mynamespace.StringField</span><span class="delimiter">'</span></span>, {})</code></pre>
@@ -7049,7 +7153,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 95. A form model defined using JSON
+         Listing 98. A form model defined using JSON
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="json">{
@@ -7099,7 +7203,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 96. Accessing and modifying a property
+         Listing 99. Accessing and modifying a property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.StringField</span><span class="delimiter">'</span></span>, {
@@ -7135,7 +7239,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 97. Creating the string field automatically using a widget property
+         Listing 100. Creating the string field automatically using a widget property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> groupBox = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>, {
@@ -7195,7 +7299,7 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 98. Handling an event
+         Listing 101. Handling an event
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
@@ -7214,7 +7318,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 99. Stop listening for an event
+         Listing 102. Stop listening for an event
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
@@ -7246,7 +7350,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 100. Triggering an event with custom event data
+         Listing 103. Triggering an event with custom event data
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">trigger(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, {
@@ -7280,7 +7384,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 101. Example of a property change event
+          Listing 104. Example of a property change event
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
@@ -7300,6 +7404,9 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
       </div>
       <div class="sect3">
        <h4 id="icons-2"><a class="anchor" href="#icons-2"></a>18.1.7. Icons</h4>
+       <div class="paragraph">
+        <p>See chapter <a href="#icons">Chapter 5</a> for a general introduction to icons in Scout.</p>
+       </div>
        <div class="paragraph">
         <p>Widgets that have a property <code>iconId</code> (for instance <code>Menu</code>) can display an icon. This iconId references an icon which can be either a bitmap image (GIF, PNG, JPEG, etc.) or a character from an icon-font. An example for an icon-font is the <em>scoutIcons.ttf</em> which comes shipped with Scout.</p>
        </div>
@@ -7343,7 +7450,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 102. Creating an object without the ObjectFactory
+        Listing 105. Creating an object without the ObjectFactory
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> table = <span class="keyword">new</span> scout.Table();
@@ -7358,7 +7465,7 @@ table.init(model);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 103. Adding a new object factory registration
+        Listing 106. Adding a new object factory registration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript">scout.objectFactories = <span class="predefined">$</span>.extend(scout.objectFactories, {
@@ -7476,7 +7583,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 104. Example of a formatter
+          Listing 107. Example of a formatter
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">formatter</span>(value, defaultFormatter) {
@@ -7496,7 +7603,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 105. Setting the formatter
+          Listing 108. Setting the formatter
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript">field.setFormatter(formatter);</code></pre>
@@ -7507,7 +7614,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 106. Example of a parser
+          Listing 109. Example of a parser
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">parser</span>(displayText, defaultParser) {
@@ -7523,7 +7630,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 107. Setting the parser
+          Listing 110. Setting the parser
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript">field.setParser(parser);</code></pre>
@@ -7540,7 +7647,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 108. Example of a validator
+          Listing 111. Example of a validator
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span>(value) {
@@ -7570,7 +7677,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 109. Adding a validator
+          Listing 112. Adding a validator
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript">field.addValidator(validator);</code></pre>
