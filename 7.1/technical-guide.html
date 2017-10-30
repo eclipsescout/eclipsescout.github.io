@@ -2750,9 +2750,9 @@ Jobs.newInput()
         Listing 29. Example of a future filter
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FutureFilter</span> <span class="directive">implements</span> IFilter&lt;IFuture&lt;?&gt;&gt; {
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FutureFilter</span> <span class="directive">implements</span> <span class="predefined-type">Predicate</span>&lt;IFuture&lt;?&gt;&gt; {
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">boolean</span> accept(IFuture&lt;?&gt; future) {
+  <span class="directive">public</span> <span class="type">boolean</span> test(IFuture&lt;?&gt; future) {
     <span class="comment">// Accept or reject the future</span>
     <span class="keyword">return</span> <span class="predefined-constant">false</span>;
   }
@@ -2767,7 +2767,7 @@ Jobs.newInput()
         Listing 30. Usage of FutureFilterBuilder
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="java">IFilter&lt;IFuture&lt;?&gt;&gt; filter = Jobs.newFutureFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Predicate</span>&lt;IFuture&lt;?&gt;&gt; filter = Jobs.newFutureFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
     .andMatchExecutionHint(<span class="string"><span class="delimiter">"</span><span class="content">computation</span><span class="delimiter">"</span></span>) <i class="conum" data-value="2"></i><b>(2)</b>
     .andMatchNotState(<span class="predefined-type">JobState</span>.PENDING) <i class="conum" data-value="3"></i><b>(3)</b>
     .andAreSingleExecuting() <i class="conum" data-value="4"></i><b>(4)</b>
@@ -2829,9 +2829,9 @@ Jobs.newInput()
         Listing 31. Example of an event filter
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">EventFilter</span> <span class="directive">implements</span> IFilter&lt;JobEvent&gt; {
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">EventFilter</span> <span class="directive">implements</span> <span class="predefined-type">Predicate</span>&lt;JobEvent&gt; {
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">boolean</span> accept(JobEvent event) {
+  <span class="directive">public</span> <span class="type">boolean</span> test(JobEvent event) {
     <span class="comment">// Accept or reject the event</span>
     <span class="keyword">return</span> <span class="predefined-constant">false</span>;
   }
@@ -2846,7 +2846,7 @@ Jobs.newInput()
         Listing 32. Usage of JobEventFilterBuilder
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="java">IFilter&lt;JobEvent&gt; filter = Jobs.newEventFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Predicate</span>&lt;JobEvent&gt; filter = Jobs.newEventFilterBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
     .andMatchEventType(JobEventType.JOB_STATE_CHANGED) <i class="conum" data-value="2"></i><b>(2)</b>
     .andMatchState(<span class="predefined-type">JobState</span>.RUNNING) <i class="conum" data-value="3"></i><b>(3)</b>
     .andMatch(<span class="keyword">new</span> SessionJobEventFilter(ISession.CURRENT.get())) <i class="conum" data-value="4"></i><b>(4)</b>
