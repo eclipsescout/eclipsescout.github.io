@@ -861,8 +861,8 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p>In file <code>config.properties</code> (in folder <code>src/main/resources</code>):</p>
           <div class="ulist">
            <ul>
-            <li> <p>Add the property <code>scout.auth.cookie.session.validate.secure=false</code> to disable the check for an encrypted channel (HTTPS).</p> </li>
-            <li> <p>Change the <code>scout.server.url</code> property to use the HTTP port of your Tomcat, typically 8080.</p> </li>
+            <li> <p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p> </li>
+            <li> <p>Change the <code>scout.backendUrl</code> property to use the HTTP port of your Tomcat, typically 8080.</p> </li>
            </ul>
           </div> </li>
          <li> <p>In file <code>web.xml</code> (in folder <code>src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
@@ -3046,7 +3046,7 @@ scout.application.version=1.0.0-SNAPSHOT
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code>### Database
-contacts.database.jdbc.mapping.name=jdbc:derby:memory:contacts-database
+contacts.database.jdbc.mappingName=jdbc:derby:memory:contacts-database
 contacts.database.autocreate=true
 contacts.database.autopopulate=true
 ### Application specific
@@ -3065,12 +3065,16 @@ contacts.superuser=system</code></pre>
   <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">DatabaseAutoCreateProperty</span> <span class="directive">extends</span> AbstractBooleanConfigProperty {
     <span class="comment">// defines default value and key</span>
     <span class="annotation">@Override</span>
-    <span class="directive">protected</span> <span class="predefined-type">Boolean</span> getDefaultValue() {
+    <span class="directive">public</span> <span class="predefined-type">Boolean</span> getDefaultValue() {
       <span class="keyword">return</span> <span class="predefined-type">Boolean</span>.TRUE; <i class="conum" data-value="1"></i><b>(1)</b>
     }
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">String</span> getKey() {
       <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">contacts.database.autocreate</span><span class="delimiter">"</span></span>; <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> description() {
+      <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">Specifies if the contacts database should automatically be created if it does not exist yet. The default value is true.</span><span class="delimiter">"</span></span>;
     }
   }
   <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">DatabaseAutoPopulateProperty</span> <span class="directive">extends</span> AbstractBooleanConfigProperty {
@@ -3146,7 +3150,7 @@ contacts.superuser=system</code></pre>
         <p>This listing also demonstrates how to use the config properties in the code. With the property values defined in the previous section the "Contacts" application is working with an in-memory database.</p>
        </div>
        <div class="paragraph">
-        <p>To change the setup to a disk based version, we would have to change the value for the property <code>contacts.database.jdbc.mapping.name</code> from <code>jdbc:derby:memory:contacts-database</code> to <code>jdbc:derby:&lt;path-to-dir&gt;</code>. For a Windows box a concrete example could look like this: <code>jdbc:derby:c:\\derby\\contacts-database</code>.</p>
+        <p>To change the setup to a disk based version, we would have to change the value for the property <code>contacts.database.jdbc.mappingName</code> from <code>jdbc:derby:memory:contacts-database</code> to <code>jdbc:derby:&lt;path-to-dir&gt;</code>. For a Windows box a concrete example could look like this: <code>jdbc:derby:c:\\derby\\contacts-database</code>.</p>
        </div>
        <div class="paragraph">
         <p>Now we look at how the actual SQL statements of the "Contacts" application work. For our application all statements are collected into a single class. While there are many more options how to organize SQL and Java code this setup has its own advantages.</p>

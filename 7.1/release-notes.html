@@ -540,6 +540,12 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#java-8-required">Java 8 required</a></li>
      <li><a href="#new-sdk-feature-in-eclipse-search-for-missing-nls-keys">New SDK Feature in Eclipse: Search for missing NLS keys</a></li>
+     <li><a href="#config-properties">Config Properties</a>
+      <ul class="sectlevel2">
+       <li><a href="#descriptions">Descriptions</a></li>
+       <li><a href="#default-value">Default value</a></li>
+       <li><a href="#validation">Validation</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -683,15 +689,47 @@ table.CodeRay td.code>pre{padding:0}
      <div class="paragraph">
       <p>Reported false positives can be suppressed using the following comment at the end of the corresponding line: <code>NO-NLS-CHECK</code>. Matches on that line are then not reported in future searches anymore.</p>
      </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/7.1.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="config-properties"><a class="anchor" href="#config-properties"></a>Config Properties</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="descriptions"><a class="anchor" href="#descriptions"></a>Descriptions</h3>
+      <div class="paragraph">
+       <p>Config properties based on <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> include a description text. This description is stored in the new <code>description()</code> method.</p>
+      </div>
+      <div class="paragraph">
+       <p>The class <code>org.eclipse.scout.rt.platform.config.ConfigDescriptionExporter</code> can be used to export these descriptions. By default an AsciiDoctor exporter is included.</p>
+      </div>
+      <div class="paragraph">
+       <p>All Scout properties have been extended with descriptions. The same text is also part of the technical documentation.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="default-value"><a class="anchor" href="#default-value"></a>Default value</h3>
+      <div class="paragraph">
+       <p>Config properties based on <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> include a default value. The default value is stored in the <code>getDefaultValue()</code> method.</p>
+      </div>
+      <div class="paragraph">
+       <p>The method was moved from <code>org.eclipse.scout.rt.platform.config.AbstractConfigProperty&lt;DATA_TYPE, RAW_TYPE&gt;</code> to the interface. Therefore the visibility has changed from protected to public.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="validation"><a class="anchor" href="#validation"></a>Validation</h3>
+      <div class="paragraph">
+       <p>The concreate implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> which validates the configuration of <code>config.properties</code> files will also check if a configured value matches the default value. In case it does a info message (warn in development mode) will be logged but platform will still start. To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/7.1.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
      </div>
     </div>
    </div>
