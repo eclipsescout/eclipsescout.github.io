@@ -1338,12 +1338,15 @@ myproject.applicationName=My Project Application</code></pre>
         <p>During the Platform startup all classes implementing the interface <code>org.eclipse.scout.rt.platform.config.IConfigurationValidator</code> are asked to validate configuration provided in the <code>config.properties</code> files. If there is at least one <code>IConfigurationValidator</code> that accepts a given key-value-pair the configuration is considered to be valid. Otherwise the platform will not start.</p>
        </div>
        <div class="paragraph">
-        <p>The concreate implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> will also check if a configured value matches the default value. In case it does a info message (warn in development mode) will be logged but the platform will still start. To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
+        <p>The concrete implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> will also check if a configured value matches the default value. In case it does an info message (warn in development mode) will be logged but the platform will still start. To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
        </div>
       </div>
      </div>
      <div class="sect2">
       <h3 id="sec-app.configProperties"><a class="anchor" href="#sec-app.configProperties"></a>2.5. Scout Config Properties</h3>
+      <div class="paragraph">
+       <p>To harmonize config property keys every scout property should begin with the prefix <code>scout.</code>.</p>
+      </div>
       <table class="tableblock frame-all grid-all spread">
        <caption class="title">
         Table 1. Config Properties
