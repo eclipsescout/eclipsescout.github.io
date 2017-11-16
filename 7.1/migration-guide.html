@@ -541,6 +541,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#removed-property-code-focusable-code-from-iformfield-abstractformfield">Removed property <code>focusable</code> from IFormField, AbstractFormField</a></li>
      <li><a href="#ismartfield2-replaced-old-ismartfield">ISmartField2 replaced old ISmartField</a></li>
      <li><a href="#icontentassistfield-classes-and-interfaces-removed">IContentAssistField classes and interfaces removed</a></li>
+     <li><a href="#groupbox-moved-minwidthinpixel">GroupBox: moved minWidthInPixel</a></li>
      <li><a href="#config-properties">Config Properties</a>
       <ul class="sectlevel2">
        <li><a href="#descriptions">Descriptions</a></li>
@@ -650,6 +651,23 @@ table.CodeRay td.code>pre{padding:0}
        <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.TableProposalChooser</p> </li>
        <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.TreeProposalChooser</p> </li>
       </ul>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="groupbox-moved-minwidthinpixel"><a class="anchor" href="#groupbox-moved-minwidthinpixel"></a>GroupBox: moved minWidthInPixel</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The property <code>minWidthInPixel</code> has been moved to the object <code>LogicalGridLayoutConfig</code>. Instead of using <code>getConfiguredMinWidthInPixel</code> you should now set the property as follows:</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">protected</span> LogicalGridLayoutConfig getConfiguredBodyLayoutConfig() {
+  <span class="keyword">return</span> <span class="local-variable">super</span>.getConfiguredBodyLayoutConfig()
+      .withMinWidth(<span class="integer">400</span>);
+}</code></pre>
+      </div>
      </div>
     </div>
    </div>
