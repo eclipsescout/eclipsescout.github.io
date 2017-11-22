@@ -550,7 +550,10 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#renamed-config-property-keys">Renamed Config Property Keys</a></li>
      <li><a href="#default-values-validation">Default Values Validation</a></li>
-     <li><a href="#api-changes-javascript">API Changes (JavaScript)</a></li>
+     <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
+      <ul class="sectlevel2">
+       <li><a href="#rename-of-less-variables">Rename of Less Variables</a></li>
+      </ul> </li>
      <li><a href="#other-changes">Other Changes</a></li>
     </ul>
    </div>
@@ -1108,8 +1111,19 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="api-changes-javascript"><a class="anchor" href="#api-changes-javascript"></a>API Changes (JavaScript)</h2>
     <div class="sectionbody">
-     <div class="paragraph">
-      <p>N/A</p>
+     <div class="sect2">
+      <h3 id="rename-of-less-variables"><a class="anchor" href="#rename-of-less-variables"></a>Rename of Less Variables</h3>
+      <div class="paragraph">
+       <p>If you created a custom theme, you might have to adjust some less variables.</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Splitted @group-title-padding-y into @group-title-padding-top and @group-title-padding-bottom</p> </li>
+        <li> <p>Renamed @tabbox-padding-x to @tab-item-padding-x</p> </li>
+        <li> <p>Renamed @tabbox-focus-arrow-width to @tab-item-focus-arrow-width</p> </li>
+        <li> <p>Renamed @tabbox-border-width to @tab-area-border-width</p> </li>
+       </ul>
+      </div>
      </div>
     </div>
    </div>

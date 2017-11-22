@@ -550,6 +550,9 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#layout-configuration">Layout Configuration</a></li>
       </ul> </li>
+     <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
+     <li><a href="#new-widget-tiles">New Widget 'Tiles'</a></li>
+     <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
     </ul>
    </div>
   </div>
@@ -722,7 +725,7 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="validation"><a class="anchor" href="#validation"></a>Validation</h3>
       <div class="paragraph">
-       <p>The concreate implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> which validates the configuration of <code>config.properties</code> files will also check if a configured value matches the default value. In case it does a info message (warn in development mode) will be logged but platform will still start. To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
+       <p>The concrete implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> which validates the configuration of <code>config.properties</code> files will also check if a configured value matches the default value. In case it does a info message (warn in development mode) will be logged but platform will still start. To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
       </div>
      </div>
     </div>
@@ -747,16 +750,77 @@ table.CodeRay td.code>pre{padding:0}
       <div class="paragraph">
        <p>These values may be set using <code>getConfiguredBodyLayoutConfig</code>.</p>
       </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/7.1.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="introducing-widget-java"><a class="anchor" href="#introducing-widget-java"></a>Introducing Widget.java</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>On JavaScript side, there has been a class <code>Widget.js</code> for a long time now. With this release the counterpart <code>Widget.java</code> has been added. This gives all existing widgets like <code>FormField</code>, <code>Form</code>, <code>MessageBox</code>, <code>Menu</code> etc. a new common base class. It also helps creating widgets which aren&#x2019;t necessarily form fields.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-widget-tiles"><a class="anchor" href="#new-widget-tiles"></a>New Widget 'Tiles'</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The new <code>Tiles</code> widget arranges <code>Tile</code> s in a grid by using the <code>LogicalGridLayout</code>. This is the same layout as used for a <code>GroupBox</code>, so the same <code>GridData</code> object may be used to configure how the individual tiles should be arranged.</p>
+     </div>
+     <div class="paragraph">
+      <p>A <code>Tile</code> directly extends <code>Widget</code> and is not much more than a <code>&lt;div&gt;</code> with the CSS class <code>tile</code>. In order to customize your tile you have to create a custom widget, which is easier than it sounds. Just create a JS class lets say <code>CustomTile.js</code> which extends from <code>Tile.js</code>, create a Java class <code>CustomTile.java</code> which extends from <code>AbstractTile.java</code> and add some glue code to link them together. See the code of the demo widgets on <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/releases/7.1.x/code/widgets/org.eclipse.scout.widgets.client/src/main/java/org/eclipse/scout/widgets/client/ui/tiles">GitHub</a> for details. You could also use existing widgets as tiles. In that case instead of extending <code>AbstractTile</code> you would extend <code>AbstractWidgetTile</code> or <code>AbstractFormFieldTile</code> and set the property <code>tileWidget</code> accordingly.</p>
+     </div>
+     <div class="paragraph">
+      <p>In order to add the <code>Tiles</code> to a form, you can use the class <code>TilesField</code> which is basically a simple <code>FormField</code> wrapping the <code>Tiles</code>. You cannot use the <code>Tiles</code> directly because a <code>GroupBox</code> only accepts <code>FormField</code> s.</p>
+     </div>
+     <div class="paragraph">
+      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tilesfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tilesfield</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tiles" class="bare">https://scout.bsi-software.com/jswidgets/#tiles</a>.</p>
+     </div>
+     <div id="img-tiles" class="imageblock">
+      <div class="content">
+       <img src="images/tiles.png" alt="tiles">
       </div>
+      <div class="title">
+       Figure 1. Tiles
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-widget-accordion"><a class="anchor" href="#new-widget-accordion"></a>New Widget 'Accordion'</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <code>Accordion</code> displays several collapsible <code>Group</code> s. The default behavior is to collapse every other group if one group is expanded. Because that is not in any case desired, the behavior may be disabled by setting the property <code>exclusiveExpand</code> to false.</p>
+     </div>
+     <div class="paragraph">
+      <p>The <code>Group</code> is a simple widget containing of a header and a body. The body may be any other widget like the new <code>Tiles</code>. Because having tiles in an accordion is a typical use case, there is a widget called <code>TilesAccordion</code> which helps creating the groups and provides some delegate methods to easily access the tiles of every group.</p>
+     </div>
+     <div class="paragraph">
+      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-accordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-accordionfield</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#accordion" class="bare">https://scout.bsi-software.com/jswidgets/#accordion</a>.</p>
+     </div>
+     <div id="img-accordion" class="imageblock">
+      <div class="content">
+       <img src="images/accordion.png" alt="accordion">
+      </div>
+      <div class="title">
+       Figure 2. Accordion
+      </div>
+     </div>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/7.1.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
     </div>
    </div>
