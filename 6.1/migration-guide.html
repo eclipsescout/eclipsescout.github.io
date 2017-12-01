@@ -541,6 +541,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#getfocusowner">getFocusOwner</a></li> 
        <li><a href="#finalvalue">FinalValue</a></li> 
        <li><a href="#postconstruct">@PostConstruct</a></li> 
+       <li><a href="#desktop">Desktop</a></li> 
        <li><a href="#tree">Tree</a></li> 
        <li><a href="#table">Table</a></li> 
        <li><a href="#cookieutility">CookieUtility</a></li> 
@@ -551,14 +552,12 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#virtual-tree-node">Virtual Tree Node</a></li> 
        <li><a href="#enabled-property-of-form-fields">Enabled Property of Form Fields</a></li> 
        <li><a href="#icons-in-tree">Icons in Tree</a></li> 
-       <li><a href="#itableholder">ITableHolder</a></li> 
        <li><a href="#numberutility-nvl-dateutility-nvl-stringutility-nvl">NumberUtility.nvl(), DateUtility.nvl(), StringUtility.nvl()</a></li> 
        <li><a href="#stringutility-substitutewhenempty">StringUtility.substituteWhenEmpty()</a></li> 
        <li><a href="#compareutility">CompareUtility</a></li> 
        <li><a href="#threadinterrupted-timedout-and-futurecancelledexceptions-extends-java-lang-runtimeexception-are-now-platformerrors-extends-java-lang-error">ThreadInterrupted-, TimedOut- and FutureCancelledExceptions (&quot;extends java.lang.RuntimeException&quot;) are now PlatformErrors (&quot;extends java.lang.Error&quot;)</a></li> 
        <li><a href="#type-of-labelposition-property-changed-to-byte-iformfield">Type of &quot;labelPosition&quot; property changed to &quot;byte&quot; (IFormField)</a></li> 
        <li><a href="#idevicetransformer">IDeviceTransformer</a></li> 
-       <li><a href="#abstracttree-getconfiguredmultiselect-deprecated">AbstractTree.getConfiguredMultiSelect() deprecated</a></li> 
       </ul> </li> 
      <li><a href="#api-changes-js">API Changes (JS)</a> 
       <ul class="sectlevel2"> 
@@ -662,15 +661,52 @@ table.CodeRay td.code>pre{padding:0}
       </div> 
      </div> 
      <div class="sect2"> 
-      <h3 id="tree"><a class="anchor" href="#tree"></a>Tree</h3> 
+      <h3 id="desktop"><a class="anchor" href="#desktop"></a>Desktop</h3> 
       <div class="paragraph"> 
-       <p>The method <code>AbstractTree#execAutoCheckChildNodes</code> got two new parameters and the default implementation now considers <code>enabledNodesOnly</code> and does not always ignore disabled nodes.</p> 
+       <p>Removed <code>setOutline(IOutline outline)</code>, use <code>activateOutline(IOutline outline)</code> instead.</p> 
+      </div> 
+     </div> 
+     <div class="sect2"> 
+      <h3 id="tree"><a class="anchor" href="#tree"></a>Tree</h3> 
+      <div class="sect3"> 
+       <h4 id="adjusted-execautocheckchildnodes"><a class="anchor" href="#adjusted-execautocheckchildnodes"></a>Adjusted execAutoCheckChildNodes</h4> 
+       <div class="paragraph"> 
+        <p>The method <code>AbstractTree#execAutoCheckChildNodes</code> got two new parameters and the default implementation now considers <code>enabledNodesOnly</code> and does not always ignore disabled nodes.</p> 
+       </div> 
+      </div> 
+      <div class="sect3"> 
+       <h4 id="deprecated-getconfiguredmultiselect"><a class="anchor" href="#deprecated-getconfiguredmultiselect"></a>Deprecated getConfiguredMultiSelect()</h4> 
+       <div class="paragraph"> 
+        <p>The method <code>AbstractTree.getConfiguredMultiSelect()</code> was marked as deprecated. Multiselection on trees was never supported by the UI even though the model suggested so. The method will be declared final in the next Scout release, with its default implementation returning false, in case multiselection support is added in a future release.</p> 
+       </div> 
       </div> 
      </div> 
      <div class="sect2"> 
       <h3 id="table"><a class="anchor" href="#table"></a>Table</h3> 
-      <div class="paragraph"> 
-       <p><code>Cell.setText(null)</code> has no effect anymore. The JavaScript table has been improved so that every column is now able to compute the text based on the value of a cell. This does only happen if no explicit text is provided which means <code>cell.setText(null)</code> would trigger that behavior. If you really want to set a value but no text, you can use <code>cell.textText(&quot;&quot;)</code> instead.</p> 
+      <div class="sect3"> 
+       <h4 id="adjusted-behavior-of-cell-settext"><a class="anchor" href="#adjusted-behavior-of-cell-settext"></a>Adjusted behavior of Cell.setText()</h4> 
+       <div class="paragraph"> 
+        <p><code>Cell.setText(null)</code> has no effect anymore. The JavaScript table has been improved so that every column is now able to compute the text based on the value of a cell. This does only happen if no explicit text is provided which means <code>cell.setText(null)</code> would trigger that behavior. If you really want to set a value but no text, you can use <code>cell.textText(&quot;&quot;)</code> instead.</p> 
+       </div> 
+      </div> 
+      <div class="sect3"> 
+       <h4 id="removed-abstracttablefielddata"><a class="anchor" href="#removed-abstracttablefielddata"></a>Removed AbstractTableFieldData</h4> 
+       <div class="ulist"> 
+        <ul> 
+         <li> <p>With Scout 3.10.0 &quot;Bean based TableData&quot; had been introduced.</p> </li> 
+         <li> <p>With Scout 4.3.0 (Mars-M5) &quot;Bean based TableData&quot; became default.</p> </li> 
+         <li> <p>With Scout 6.0 (Neon), the SDK did not generate the FormData for &quot;Array based TableData&quot; anymore.</p> </li> 
+        </ul> 
+       </div> 
+       <div class="paragraph"> 
+        <p>Now it is time to remove the support for the &quot;Array based TableData&quot; completeley, see also <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=496292" class="bare">https://bugs.eclipse.org/bugs/show_bug.cgi?id=496292</a>. A description of the differences between these two approaches can be found here: <a href="https://wiki.eclipse.org/Scout/Concepts/TableData" class="bare">https://wiki.eclipse.org/Scout/Concepts/TableData</a></p> 
+       </div> 
+      </div> 
+      <div class="sect3"> 
+       <h4 id="itableholder"><a class="anchor" href="#itableholder"></a>ITableHolder</h4> 
+       <div class="paragraph"> 
+        <p>The class <code>ITableHolder</code> was part of the old array based table loaders which has been replaced with a bean based approach in the last release. Therefore the class <code>ITableHolder</code> has been removed. The constants that were present on that interface can be accessed using the interface <code>org.eclipse.scout.rt.client.ui.basic.table.ITableRow</code> from the client or <code>org.eclipse.scout.rt.platform.holders.ITableBeanRowHolder</code> from outside the client.</p> 
+       </div> 
       </div> 
      </div> 
      <div class="sect2"> 
@@ -777,12 +813,6 @@ table.CodeRay td.code>pre{padding:0}
       </div> 
      </div> 
      <div class="sect2"> 
-      <h3 id="itableholder"><a class="anchor" href="#itableholder"></a>ITableHolder</h3> 
-      <div class="paragraph"> 
-       <p>The class <code>ITableHolder</code> was part of the old array based table loaders which has been replaced with a bean based approach in the last release. Therefore the class <code>ITableHolder</code> has been removed. The constants that were present on that interface can be accessed using the interface <code>org.eclipse.scout.rt.client.ui.basic.table.ITableRow</code> from the client or <code>org.eclipse.scout.rt.platform.holders.ITableBeanRowHolder</code> from outside the client.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
       <h3 id="numberutility-nvl-dateutility-nvl-stringutility-nvl"><a class="anchor" href="#numberutility-nvl-dateutility-nvl-stringutility-nvl"></a>NumberUtility.nvl(), DateUtility.nvl(), StringUtility.nvl()</h3> 
       <div class="paragraph"> 
        <p>The <code>nvl()</code> methods on NumberUtility, DateUtility and StringUtiltiy were moved to a generic <code>ObjectUtility.nvl()</code>. The existing methods were deprecated and will be removed with next Scout release. Additionally the existing methods were restricted to use Number respectively Date only.</p> 
@@ -854,12 +884,6 @@ table.CodeRay td.code>pre{padding:0}
         </tr> 
        </tbody> 
       </table> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="abstracttree-getconfiguredmultiselect-deprecated"><a class="anchor" href="#abstracttree-getconfiguredmultiselect-deprecated"></a>AbstractTree.getConfiguredMultiSelect() deprecated</h3> 
-      <div class="paragraph"> 
-       <p>The method <code>AbstractTree.getConfiguredMultiSelect()</code> was marked as deprecated. Multiselection on trees was never supported by the UI even though the model suggested so. The method will be declared final in the next Scout release, with its default implementation returning false, in case multiselection support is added in a future release.</p> 
-      </div> 
      </div> 
     </div> 
    </div> 
