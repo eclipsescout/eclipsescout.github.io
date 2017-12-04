@@ -542,6 +542,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#ismartfield2-replaced-old-ismartfield">ISmartField2 replaced old ISmartField</a></li>
      <li><a href="#icontentassistfield-classes-and-interfaces-removed">IContentAssistField classes and interfaces removed</a></li>
      <li><a href="#groupbox-moved-minwidthinpixel">GroupBox: moved minWidthInPixel</a></li>
+     <li><a href="#adjusted-behavior-of-widget-initialization">Adjusted Behavior of Widget Initialization</a></li>
      <li><a href="#config-properties">Config Properties</a>
       <ul class="sectlevel2">
        <li><a href="#descriptions">Descriptions</a></li>
@@ -671,6 +672,26 @@ table.CodeRay td.code>pre{padding:0}
       .withMinWidth(<span class="integer">400</span>);
 }</code></pre>
       </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="adjusted-behavior-of-widget-initialization"><a class="anchor" href="#adjusted-behavior-of-widget-initialization"></a>Adjusted Behavior of Widget Initialization</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The goal was to harmonize all the init methods (<code>initField</code>, <code>initTile</code>, <code>initForm</code> etc.) and to make sure, <code>init()</code> is only executed once. This is important for dynamic widgets like accordion or tiles. These widgets initialize the newly added children by themselves so that the caller does not need to take care of it. For these cases it is important that <code>init()</code> is not called multiple times.</p>
+     </div>
+     <div class="paragraph">
+      <p>But: there may be cases which require <code>init()</code> to be called multiple times, like reseting a search form. For such cases, <code>reinit()</code> has to be used from now on. So remember: <code>execInit</code> may be called more than once in some circumstances. This is existing behavior!</p>
+     </div>
+     <div class="paragraph">
+      <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>postInitConfig</code>, <code>init</code> and <code>dispose</code>.</p>
+     </div>
+     <div class="paragraph">
+      <div class="title">
+       This means the following for your code:
+      </div>
+      <p>If you used one of the deprecated methods (<code>initField</code>, <code>initAction</code> etc.), replace them with one of the following methods: <code>init</code>, <code>reinit</code> or <code>initInternal</code>. Use <code>init</code> if you created a field and need to initialize it. Use <code>reinit</code> if you explicitly want to reinitialize an already initialized field. Use <code>initInternal</code> if your custom widget overrides <code>initField</code>.</p>
      </div>
     </div>
    </div>
