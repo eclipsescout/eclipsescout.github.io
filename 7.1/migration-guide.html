@@ -538,6 +538,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#service-release-migration">Service Release Migration</a></li>
       </ul> </li>
      <li><a href="#api-changes-java">API Changes (Java)</a></li>
+     <li><a href="#removed-constants-methods-from-code-clientuipreferences-code">Removed constants/methods from <code>ClientUIPreferences</code></a></li>
      <li><a href="#removed-property-code-focusable-code-from-iformfield-abstractformfield">Removed property <code>focusable</code> from IFormField, AbstractFormField</a></li>
      <li><a href="#ismartfield2-replaced-old-ismartfield">ISmartField2 replaced old ISmartField</a></li>
      <li><a href="#icontentassistfield-classes-and-interfaces-removed">IContentAssistField classes and interfaces removed</a></li>
@@ -599,6 +600,25 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="api-changes-java"><a class="anchor" href="#api-changes-java"></a>API Changes (Java)</h2>
     <div class="sectionbody">
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="removed-constants-methods-from-code-clientuipreferences-code"><a class="anchor" href="#removed-constants-methods-from-code-clientuipreferences-code"></a>Removed constants/methods from <code>ClientUIPreferences</code></h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Since the new Html UI was introduced with Scout 5.2 these constants and methods had no effect on the UI anymore. Since Scout is now a browser application we don&#x2019;t have any control over the application window anymore. The form-bounds are stored in the local browser storage thus they&#x2019;re not required in the Java model anymore. Removed constants/methods:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p>APPLICATION_WINDOW_MAXIMIZED</p> </li>
+       <li> <p>APPLICATION_WINDOW_BOUNDS</p> </li>
+       <li> <p>FORM_BOUNDS</p> </li>
+       <li> <p>getFormBounds()</p> </li>
+       <li> <p>setFormBounds(IForm form, Rectangle bounds)</p> </li>
+       <li> <p>getApplicationWindowMaximized()</p> </li>
+       <li> <p>setApplicationWindowPreferences(BoundsSpec r, boolean maximized)</p> </li>
+      </ul>
+     </div>
     </div>
    </div>
    <div class="sect1">
