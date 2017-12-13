@@ -703,7 +703,7 @@ table.CodeRay td.code>pre{padding:0}
       <p>The goal was to harmonize all the init methods (<code>initField</code>, <code>initTile</code>, <code>initForm</code> etc.) and to make sure, <code>init()</code> is only executed once. This is important for dynamic widgets like accordion or tiles. These widgets initialize the newly added children by themselves so that the caller does not need to take care of it. For these cases it is important that <code>init()</code> is not called multiple times.</p>
      </div>
      <div class="paragraph">
-      <p>But: there may be cases which require <code>init()</code> to be called multiple times, like reseting a search form. For such cases, <code>reinit()</code> has to be used from now on. So remember: <code>execInit</code> may be called more than once in some circumstances. This is existing behavior!</p>
+      <p>But: there may be cases which require <code>init()</code> to be called multiple times, like reseting a search form. For such cases, <code>reinit()</code> has to be used from now on. Also, after the widget is disposed, <code>init()</code> may be called again. So remember: <code>execInit</code> may be called more than once in some circumstances. This is existing behavior!</p>
      </div>
      <div class="paragraph">
       <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>postInitConfig</code>, <code>init</code> and <code>dispose</code>.</p>
