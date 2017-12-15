@@ -558,6 +558,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#improved-touch-popups-since-7-0-100">Improved Touch Popups (since 7.0.100)</a></li>
      <li><a href="#sorting-of-filter-table-since-7-0-100">Sorting of Filter Table (since 7.0.100)</a></li>
      <li><a href="#auto-optimize-column-width-since-7-0-100">Auto Optimize Column Width (since 7.0.100)</a></li>
+     <li><a href="#new-property-auto-optimize-column-max-width-since-7-0-300">New Property Auto Optimize Column Max Width (since 7.0.300)</a></li>
      <li><a href="#new-property-for-request-timeout-since-7-0-100">New Property for Request Timeout (since 7.0.100)</a></li>
      <li><a href="#minor-changes-for-http-abstraction-properties-since-7-0-100">Minor Changes for HTTP Abstraction Properties (since 7.0.100)</a></li>
     </ul>
@@ -591,7 +592,7 @@ table.CodeRay td.code>pre{padding:0}
       <div class="sect3">
        <h4 id="oxygen-3-7-0-300-release-expected-on-march-21-2018"><a class="anchor" href="#oxygen-3-7-0-300-release-expected-on-march-21-2018"></a>Oxygen.3 (7.0.300) Release expected on March 21, 2018</h4>
        <div class="paragraph">
-        <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
+        <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release. * <a href="#new-property-auto-optimize-column-max-width-since-7-0-300"><em>New Property Auto Optimize Column Max Width (since 7.0.300)</em></a></p>
        </div>
       </div>
       <div class="sect3">
@@ -959,6 +960,14 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>The column has a property called <code>autoOptimizeWidth</code>. This property has been there for a while but has not been interpreted yet. With 7.0.100 the support for this property has been implemented. If you set it to true on a specific column, the column will always be as width as its content. If not set, the user can still optimize the width manually by double clicking the separator between two columns.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-property-auto-optimize-column-max-width-since-7-0-300"><a class="anchor" href="#new-property-auto-optimize-column-max-width-since-7-0-300"></a>New Property Auto Optimize Column Max Width (since 7.0.300)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The new property <code>autoOptimizeMaxWidth</code> determines the maximum width columns will not grow to when they are auto optimized when <code>autoOptimizeWidth</code> is set to true. The user may still manually make columns wider by dragging or double-clicking the column separators.</p>
      </div>
     </div>
    </div>
