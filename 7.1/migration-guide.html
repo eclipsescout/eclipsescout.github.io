@@ -545,6 +545,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#groupbox-moved-minwidthinpixel">GroupBox: moved minWidthInPixel</a></li>
      <li><a href="#adjusted-behavior-of-widget-initialization">Adjusted Behavior of Widget Initialization</a></li>
      <li><a href="#gzipservletfilter">GzipServletFilter</a></li>
+     <li><a href="#httpcachecontrol">HttpCacheControl</a></li>
      <li><a href="#config-properties">Config Properties</a>
       <ul class="sectlevel2">
        <li><a href="#descriptions">Descriptions</a></li>
@@ -721,6 +722,14 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>Replaced <code>get_pattern</code> and <code>post_pattern</code> with <code>content_types</code>. If you set these init parameters in your web.xml, replace or remove them accordingly.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="httpcachecontrol"><a class="anchor" href="#httpcachecontrol"></a>HttpCacheControl</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The parameter <code>pathInfo</code> has been removed from the method <code>HttpCacheControl.checkAndSetCacheHeaders</code> since it has no effect anymore.</p>
      </div>
     </div>
    </div>
