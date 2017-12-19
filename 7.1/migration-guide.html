@@ -537,7 +537,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#service-release-migration">Service Release Migration</a></li>
       </ul> </li>
-     <li><a href="#api-changes-java">API Changes (Java)</a></li>
+     <li><a href="#java-8-required">Java 8 required</a></li>
      <li><a href="#removed-constants-methods-from-code-clientuipreferences-code">Removed constants/methods from <code>ClientUIPreferences</code></a></li>
      <li><a href="#removed-property-code-focusable-code-from-iformfield-abstractformfield">Removed property <code>focusable</code> from IFormField, AbstractFormField</a></li>
      <li><a href="#ismartfield2-replaced-old-ismartfield">ISmartField2 replaced old ISmartField</a></li>
@@ -599,8 +599,41 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="api-changes-java"><a class="anchor" href="#api-changes-java"></a>API Changes (Java)</h2>
+    <h2 id="java-8-required"><a class="anchor" href="#java-8-required"></a>Java 8 required</h2>
     <div class="sectionbody">
+     <div class="paragraph">
+      <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout 7.1, a Java 8 runtime is required.</p>
+     </div>
+     <div class="paragraph">
+      <p>Please note that the Scout 7.1 Runtime does not support Java 9 yet. The Java 9 support is planned for Eclipse <em>Photon</em> release (Scout 8.0) in summer 2018.</p>
+     </div>
+     <div class="paragraph">
+      <p>To reflect this change some existing Scout classes have been migrated to the newly available Java 8 classes:</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.filter.IFilter</code> replaced with <code>java.util.function.Predicate</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.filter.AlwaysFilter</code> replaced with <code>java.util.function.Predicate</code> e.g. <code>a &#x2192; true</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.filter.NotFilter</code> replaced with <code>java.util.function.Predicate#negate</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.filter.OrFilter</code> replaced with <code>java.util.function.Predicate#or</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IConsumer</code> replaced with <code>java.util.function.Consumer</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IFunction</code> replaced with <code>java.util.function.Function</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IBiConsumer</code> replaced with <code>java.util.function.BiConsumer</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IBiFunction</code> replaced with <code>java.util.function.BiFunction</code>.</p>
+     </div>
     </div>
    </div>
    <div class="sect1">

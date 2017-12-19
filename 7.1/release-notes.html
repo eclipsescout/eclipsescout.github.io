@@ -653,34 +653,17 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="java-8-required"><a class="anchor" href="#java-8-required"></a>Java 8 required</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout <em>Photon</em> (Scout 7.1 and newer), a Java 8 (or newer) runtime is required.</p>
+      <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout 7.1, a Java 8 runtime is required.</p>
      </div>
-     <div class="paragraph">
-      <p>To reflect this change some existing Scout classes have been migrated to the newly available Java 8 classes:</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.IFilter</code> replaced with <code>java.util.function.Predicate</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.AlwaysFilter</code> replaced with <code>java.util.function.Predicate</code> e.g. <code>a &#x2192; true</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.NotFilter</code> replaced with <code>java.util.function.Predicate#negate</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.OrFilter</code> replaced with <code>java.util.function.Predicate#or</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IConsumer</code> replaced with <code>java.util.function.Consumer</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IFunction</code> replaced with <code>java.util.function.Function</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IBiConsumer</code> replaced with <code>java.util.function.BiConsumer</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IBiFunction</code> replaced with <code>java.util.function.BiFunction</code>.</p>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> The Scout 7.1 Runtime does not support Java 9 yet. The Java 9 support is planned for Eclipse <em>Photon</em> release (Scout 8.0) in summer 2018. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
     </div>
    </div>
