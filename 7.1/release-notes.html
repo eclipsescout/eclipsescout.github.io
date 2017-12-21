@@ -553,6 +553,10 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
      <li><a href="#new-widget-tiles">New Widget 'Tiles'</a></li>
      <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
+     <li><a href="#menu-menubar-enhancements">Menu, Menubar enhancements</a></li>
+     <li><a href="#tabbox-enhancements">Tabbox enhancements</a></li>
+     <li><a href="#groupbox-enhancements-2">GroupBox enhancements</a></li>
+     <li><a href="#js-widget-clone">JS Widget clone</a></li>
     </ul>
    </div>
   </div>
@@ -794,6 +798,54 @@ table.CodeRay td.code>pre{padding:0}
       <div class="title">
        Figure 2. Accordion
       </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="menu-menubar-enhancements"><a class="anchor" href="#menu-menubar-enhancements"></a>Menu, Menubar enhancements</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The menubar supports form field menu items (<code>FormFieldMenu</code>). On the model side extend <code>AbstractFormFieldMenu</code> with a form field as an inner class to use a form field menu in any menu supporting environment.</p>
+     </div>
+     <div id="img-accordion" class="imageblock">
+      <div class="content">
+       <img src="images/FormFieldMenu.png" alt="FormFieldMenu">
+      </div>
+      <div class="title">
+       Figure 3. Menubar with form fields
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>The menu property <code>stackable</code> defines if a menu is stackable or not. A stackable menu will be moved to the ellipsis dropdown menu when there is not enough space in the menubar. The ellipsis menu is placed after the last stackabel menu in the menubar. Right and left aligned menus will be moved to a single ellipsis menu per menubar. The horizontal alignment of the ellipsis menu is the same as the last stackabel menu in the menubar.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="tabbox-enhancements"><a class="anchor" href="#tabbox-enhancements"></a>Tabbox enhancements</h2>
+    <div class="sectionbody">
+     <div class="ulist">
+      <ul>
+       <li> <p>The menubar of a tabbox considers the menu alignemnts left or right. Menus in the menubar will be moved to an ellisis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is first all menus before the tabs will be collapsed from right to left.</p> </li>
+       <li> <p>TabItems got a sublabel with is displayed in a very small font below the title.</p> </li>
+       <li> <p>The marker of the selected tab is now animated and follows the user or model selection.</p> </li>
+       <li> <p>Several bugfixes of pixel issues due to zoom levels.</p> </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="groupbox-enhancements-2"><a class="anchor" href="#groupbox-enhancements-2"></a>GroupBox enhancements</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>GroupBoxes got a new property called sublabel. The sublabel is displayed below the title in a very small font.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="js-widget-clone"><a class="anchor" href="#js-widget-clone"></a>JS Widget clone</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The clone function of any widget got a options parameter. The options define what properties and events are synchonized between the widget and its clone.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
