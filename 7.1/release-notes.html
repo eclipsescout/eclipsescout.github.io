@@ -555,8 +555,9 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
      <li><a href="#menu-menubar-enhancements">Menu, Menubar enhancements</a></li>
      <li><a href="#tabbox-enhancements">Tabbox enhancements</a></li>
-     <li><a href="#groupbox-enhancements-2">GroupBox enhancements</a></li>
+     <li><a href="#sec-gb-enhancements">GroupBox enhancements</a></li>
      <li><a href="#js-widget-clone">JS Widget clone</a></li>
+     <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop splitter position remembered across sessions</a></li>
     </ul>
    </div>
   </div>
@@ -825,8 +826,8 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="ulist">
       <ul>
-       <li> <p>The menubar of a tabbox considers the menu alignemnts left or right. Menus in the menubar will be moved to an ellisis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is first all menus before the tabs will be collapsed from right to left.</p> </li>
-       <li> <p>TabItems got a sublabel with is displayed in a very small font below the title.</p> </li>
+       <li> <p>The menubar of a tabbox considers the menu alignemnts <em>left</em> or <em>right</em>. Menus in the menubar will be moved to an ellisis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is first all menus before the tabs will be collapsed from right to left.</p> </li>
+       <li> <p>TabItems got a <code>sublabel</code> property with is displayed in a very small font below the title (see also <a href="#sec-gb-enhancements"><em>GroupBox enhancements</em></a>).</p> </li>
        <li> <p>The marker of the selected tab is now animated and follows the user or model selection.</p> </li>
        <li> <p>Several bugfixes of pixel issues due to zoom levels.</p> </li>
       </ul>
@@ -834,10 +835,10 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="groupbox-enhancements-2"><a class="anchor" href="#groupbox-enhancements-2"></a>GroupBox enhancements</h2>
+    <h2 id="sec-gb-enhancements"><a class="anchor" href="#sec-gb-enhancements"></a>GroupBox enhancements</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>GroupBoxes got a new property called sublabel. The sublabel is displayed below the title in a very small font.</p>
+      <p>GroupBoxes got a new property called <code>sublabel</code>. The sublabel is displayed below the title in a very small font.</p>
      </div>
     </div>
    </div>
@@ -845,7 +846,18 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="js-widget-clone"><a class="anchor" href="#js-widget-clone"></a>JS Widget clone</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The clone function of any widget got a options parameter. The options define what properties and events are synchonized between the widget and its clone.</p>
+      <p>The clone function of any widget got an <code>options</code> parameter. The options define what properties and events are synchonized between the widget and its clone.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="desktop-splitter-position-remembered-across-sessions"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions"></a>Desktop splitter position remembered across sessions</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The position of the desktop splitter position (between the navigation and the bench) is now persisted across sessions, i.e. the previous setting will be restored even after you closed your browser. The position is stored in the HTML 5 <em>local storage</em> provided by the local browser. It is therefore a device-specific setting, which is especially useful when accessing the same application through screens with different resolutions.</p>
+     </div>
+     <div class="paragraph">
+      <p>In case the splitter position should never be remembered, the feature can be disabled globally by setting the property <code>cacheSplitterPosition</code> on the desktop to <em>false</em>.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
