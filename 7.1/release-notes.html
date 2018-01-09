@@ -558,6 +558,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#sec-gb-enhancements">GroupBox enhancements</a></li>
      <li><a href="#js-widget-clone">JS Widget clone</a></li>
      <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop splitter position remembered across sessions</a></li>
+     <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: support for SVG images and image URLs</a></li>
     </ul>
    </div>
   </div>
@@ -858,6 +859,32 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="paragraph">
       <p>In case the splitter position should never be remembered, the feature can be disabled globally by setting the property <code>cacheSplitterPosition</code> on the desktop to <em>false</em>.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="imagefield-support-for-svg-images-and-image-urls"><a class="anchor" href="#imagefield-support-for-svg-images-and-image-urls"></a>ImageField: support for SVG images and image URLs</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>It&#x2019;s now possible to use SVG images in the same way as bitmap images. Simply put the .svg file in the <code>/icons</code> folder of the client module and reference the SVG image in any widget that supports the <code>iconId</code> property. Example:</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredIconId() {
+  <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">person.svg</span><span class="delimiter">"</span></span>;
+}</code></pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Additionally you can now reference an image by URL, for instance an image hosted on an external server. Use the property &acute;imageUrl` of the AbstractImageField to reference the image. Note: the AbstractImageField defines a priority for which one of the three image properties is used to render the image in the browser:</p>
+     </div>
+     <div class="olist arabic">
+      <ol class="arabic">
+       <li> <p>image (Binary resource)</p> </li>
+       <li> <p>imageUrl</p> </li>
+       <li> <p>imageId</p> </li>
+      </ol>
      </div>
      <div class="admonitionblock tip">
       <table>

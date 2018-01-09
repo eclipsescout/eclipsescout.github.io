@@ -554,6 +554,7 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#renamed-config-property-keys">Renamed Config Property Keys</a></li>
      <li><a href="#default-values-validation">Default Values Validation</a></li>
+     <li><a href="#new-config-property-scout-cspdirective">New Config Property scout.cspDirective</a></li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
        <li><a href="#rename-of-less-variables">Rename of Less Variables</a></li>
@@ -1198,6 +1199,36 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="default-values-validation"><a class="anchor" href="#default-values-validation"></a>Default Values Validation</h2>
     <div class="sectionbody">
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-config-property-scout-cspdirective"><a class="anchor" href="#new-config-property-scout-cspdirective"></a>New Config Property scout.cspDirective</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The new property <code>scout.cspDirective</code> makes subclassing and replacing the <code>ContentSecurityPolicy</code> class obsolete as you can configure all CSP settings with this property now. An example from the Scout Widgets application:</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Replace</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">WidgetsContentSecurityPolicy</span> <span class="directive">extends</span> ContentSecurityPolicy {
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="type">void</span> initDirectives() {
+    <span class="local-variable">super</span>.initDirectives();
+    <span class="comment">// Demo app uses external images in html field and custom widgets -&gt; allow it</span>
+    withImgSrc(<span class="string"><span class="delimiter">"</span><span class="content">*</span><span class="delimiter">"</span></span>);
+  }
+}</code></pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>This class was deleted and replaced by a config property in config.properties:</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="text"># CSP - Demo app uses external images in html field and custom widgets -&gt; allow it
+scout.cspDirective[img-src]=*</code></pre>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
