@@ -537,6 +537,10 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#service-release-migration">Service Release Migration</a></li>
       </ul> </li>
+     <li><a href="#api-changes-java">API Changes (Java)</a>
+      <ul class="sectlevel2">
+       <li><a href="#calendarcomponent">CalendarComponent</a></li>
+      </ul> </li>
      <li><a href="#java-8-required">Java 8 required</a></li>
      <li><a href="#removed-constants-methods-from-code-clientuipreferences-code">Removed constants/methods from <code>ClientUIPreferences</code></a></li>
      <li><a href="#removed-property-code-focusable-code-from-iformfield-abstractformfield">Removed property <code>focusable</code> from IFormField, AbstractFormField</a></li>
@@ -595,6 +599,17 @@ table.CodeRay td.code>pre{padding:0}
        <div class="paragraph">
         <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
        </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="api-changes-java"><a class="anchor" href="#api-changes-java"></a>API Changes (Java)</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="calendarcomponent"><a class="anchor" href="#calendarcomponent"></a>CalendarComponent</h3>
+      <div class="paragraph">
+       <p>Removed deprecated method <code>Date[] getCoveredDays()</code> on <code>org.eclipse.scout.rt.client.ui.basic.calendar.CalendarComponent</code>. Migration: Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
       </div>
      </div>
     </div>
