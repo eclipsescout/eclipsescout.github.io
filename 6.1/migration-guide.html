@@ -576,6 +576,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#renamed-css-files-to-less">Renamed *.css files to *.less</a></li> 
        <li><a href="#uihttpsessionlistener-replaced-by-httpsessionmutex">UiHttpSessionListener replaced by HttpSessionMutex</a></li> 
        <li><a href="#version-check-on-startup">Version check on startup</a></li> 
+       <li><a href="#run-contexts-httpservicetunnel">Run Contexts &amp; HttpServiceTunnel</a></li> 
       </ul> </li> 
     </ul> 
    </div> 
@@ -1258,6 +1259,28 @@ table.CodeRay td.code>pre{padding:0}
          </tr> 
         </tbody>
        </table> 
+      </div> 
+     </div> 
+     <div class="sect2"> 
+      <h3 id="run-contexts-httpservicetunnel"><a class="anchor" href="#run-contexts-httpservicetunnel"></a>Run Contexts &amp; HttpServiceTunnel</h3> 
+      <div class="paragraph"> 
+       <p>A service tunnel request from UI server to the backend server is always performed within a copy of the current <code>RunContext</code>. Until Scout 6.0 if a service tunnel request was performed without a current RunContext available, an empty RunContext was created. This caused problems on the backend, since an empty RunContext does not provide any user information e.g. used for access control or permission checks.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>With Scout 6.1 the HttpServiceTunnel implementation was changed, in fact that copying the current context requires to run in an existing RunContext. If not given and copying the current context, this might be a programming error and should be revisited. Therefore the HttpServiceTunnel request fails without a current RunContext available.</p> 
+      </div> 
+      <div class="admonitionblock important"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td class="icon"> <i class="fa icon-important" title="Important"></i> </td> 
+          <td class="content"> Migration note: Check service tunnel requests to backend, specially in servlets/filters handling access control and add a run context, if they perform any backend requests using the service tunnel. </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
+      <div class="paragraph"> 
+       <p>See also <a href="https://www.eclipse.org/forums/index.php?t=msg&amp;th=1085119" class="bare">https://www.eclipse.org/forums/index.php?t=msg&amp;th=1085119</a></p> 
       </div> 
       <div class="admonitionblock tip"> 
        <table> 
