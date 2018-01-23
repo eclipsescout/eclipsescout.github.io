@@ -882,7 +882,7 @@ table.CodeRay td.code>pre{padding:0}
        </div>
        <div id="lst-NormalBeanClass" class="listingblock">
         <div class="title">
-         Listing 4. An normal bean
+         Listing 4. A normal bean
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Bean</span>
@@ -2568,7 +2568,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
      <div class="sect2">
       <h3 id="description"><a class="anchor" href="#description"></a>6.1. Description</h3>
       <div class="paragraph">
-       <p>The Lookup call mechanism is used to lookup up a set of key-text pairs. Whereas the key can be of any Java type the text must be of the type String. Each entry in this set is called LookupRow. In addition to the key and the text a LookupRow can also define and icon, font, colors and a tooltiptext.</p>
+       <p>The Lookup call mechanism is used to lookup up a set of key-text pairs. Whereas the key can be of any Java type the text must be of the type String. Each entry in this set is called LookupRow. In addition to the key and the text a LookupRow can also define and icon, font, colors and a tooltipText.</p>
       </div>
       <div class="paragraph">
        <p>This schema explains the role of a LookupCall in a SmartField:</p>
@@ -2637,7 +2637,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="paragraph">
-       <p>In this case, you might want to set your properties bevor the lookupcall query is sent. This can be done with the PrepareLookup event of the SmartField or the ListBox:</p>
+       <p>In this case, you might want to set your properties before the lookup call query is sent. This can be done with the PrepareLookup event of the SmartField or the ListBox:</p>
       </div>
       <div class="listingblock">
        <div class="content">
@@ -2650,7 +2650,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="paragraph">
-       <p>If you follow this pattern, you will consume the values in the server, by casting the call:</p>
+       <p>If you follow this pattern, you will consume the values on the server by casting the call:</p>
       </div>
       <div class="listingblock">
        <div class="content">
@@ -2678,12 +2678,12 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="directy"><a class="anchor" href="#directy"></a>6.4.2. Directy</h4>
+       <h4 id="local-lookup-call"><a class="anchor" href="#local-lookup-call"></a>6.4.2. Local Lookup Call</h4>
        <div class="paragraph">
-        <p>Principe of the Local Lookup Calls</p>
+        <p>Such a LookupCall is used if the data can be provided directly without the need to make a backend call.</p>
        </div>
        <div class="paragraph">
-        <p>An example of this approach is when a SmartField or a SmartColumn is configured to be use with a CodeType. A <code>CodeLookupCall</code> is instantiated for the CodeType. It creates the LookupRows corresponding to the codes in the CodeType.</p>
+        <p>An example of this approach is when a SmartField or a SmartColumn is configured to be used with a CodeType. The code types are cached so it is not necessary to fetch them using a lookup service. Instead a LocalLookupCall, in that case the <code>CodeLookupCall</code>, may be used to load the data. It creates the LookupRows corresponding to the codes in the CodeType.</p>
        </div>
       </div>
       <div class="sect3">
@@ -2723,7 +2723,7 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
         <p><strong>Accessing a LookupRow directly:</strong></p>
        </div>
        <div class="paragraph">
-        <p>It is possible to access a LookupRow direclty. In this example the input is a key (thisKey) and the method getDataByKey() is used. Before accessing the text, we ensure that a LookupRow has been retrived.</p>
+        <p>It is possible to access a LookupRow directly. In this example the input is a key (thisKey) and the method getDataByKey() is used. Before accessing the text, we ensure that a LookupRow has been retrieved.</p>
        </div>
        <div class="listingblock">
         <div class="content">
@@ -7904,7 +7904,6 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
   <span class="key"><span class="delimiter">"</span><span class="content">rootGroupBox</span><span class="delimiter">"</span></span>: {
     <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MainBox</span><span class="delimiter">"</span></span>,
     <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">GroupBox</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">borderDecoration</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">empty</span><span class="delimiter">"</span></span>,
     <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
       {
         <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MyStringField</span><span class="delimiter">"</span></span>,
@@ -7922,7 +7921,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="javascript">scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>, scout.models.getModel(<span class="string"><span class="delimiter">'</span><span class="content">example.MyForm</span><span class="delimiter">'</span></span>, parent));</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> form = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>, scout.models.getModel(<span class="string"><span class="delimiter">'</span><span class="content">example.MyForm</span><span class="delimiter">'</span></span>, parent));</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -7938,7 +7937,46 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="properties-2"><a class="anchor" href="#properties-2"></a>18.1.4. Properties</h4>
+       <h4 id="finding-a-widget"><a class="anchor" href="#finding-a-widget"></a>18.1.4. Finding a Widget</h4>
+       <div class="paragraph">
+        <p>In the example above we have seen how to create a widget, in that specific case we created a form. Typically it is not sufficient to just create a form, you most likely want to interact with the fields, like reading the values the user entered. In order to do that you need access to the fields. The easiest way is to use the IDs specified in the JSON.</p>
+       </div>
+       <div class="paragraph">
+        <p>Let&#x2019;s have a look at our example form again:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">example.MyForm</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">type</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">model</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">title</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">My first form!</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">rootGroupBox</span><span class="delimiter">"</span></span>: {
+    <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MainBox</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">GroupBox</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
+      {
+        <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MyStringField</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">StringField</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">label</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>,
+        <span class="key"><span class="delimiter">"</span><span class="content">value</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">world</span><span class="delimiter">"</span></span>
+      }
+    ]
+  }
+}</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>In this example we have 3 widgets: the form, the root group box and a string field. These widgets are linked to each other which enables us to find the string field starting from the form. This can be done by using the following command:</p>
+       </div>
+       <div class="paragraph">
+        <p><code>var stringField = form.widget('MyStringField');</code></p>
+       </div>
+       <div class="paragraph">
+        <p>Now you can read its value, change properties, add event handlers and so on.</p>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="properties-2"><a class="anchor" href="#properties-2"></a>18.1.5. Properties</h4>
        <div class="paragraph">
         <p>As seen before, every widget has a model representing its state. This model is written onto the widget at the time it is being instantiated. The properties of that model are now available as properties of the widget. So in order to access such a property, just call <code>widget.yourProperty</code>. If you want to modify the property, just call <code>widget.setYourProperty(value)</code>.</p>
        </div>
@@ -7971,7 +8009,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
        </div>
       </div>
       <div class="sect3">
-       <h4 id="widget-properties"><a class="anchor" href="#widget-properties"></a>18.1.5. Widget Properties</h4>
+       <h4 id="widget-properties"><a class="anchor" href="#widget-properties"></a>18.1.6. Widget Properties</h4>
        <div class="paragraph">
         <p>A widget property is a special kind of a property which references another widget.</p>
        </div>
@@ -8018,7 +8056,7 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
        </div>
       </div>
       <div class="sect3">
-       <h4 id="events"><a class="anchor" href="#events"></a>18.1.6. Events</h4>
+       <h4 id="events"><a class="anchor" href="#events"></a>18.1.7. Events</h4>
        <div class="paragraph">
         <p>Every widget supports event handling by using the class <code>scout.EventSupport</code>. This allows the widgets to attach listeners to other widgets and getting informed when an event happens.</p>
        </div>
@@ -8144,7 +8182,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="icons-2"><a class="anchor" href="#icons-2"></a>18.1.7. Icons</h4>
+       <h4 id="icons-2"><a class="anchor" href="#icons-2"></a>18.1.8. Icons</h4>
        <div class="paragraph">
         <p>See chapter <a href="#icons">Chapter 5</a> for a general introduction to icons in Scout.</p>
        </div>
@@ -8175,6 +8213,26 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
            <p>Example: <code>${iconId:foo.BAR}</code> uses <code>foo.icons.BAR</code>, use this for custom icon constant objects</p>
           </div> </li>
         </ul>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="parent-and-owner"><a class="anchor" href="#parent-and-owner"></a>18.1.9. Parent and Owner</h4>
+       <div class="paragraph">
+        <p>As seen in the previous chapters, the creation of a widget requires a parent. This establishes a link between the child and the parent widget which is necessary for several actions.</p>
+       </div>
+       <div class="olist arabic">
+        <ol class="arabic">
+         <li> <p>Rendering a widget into the container of the parent<br> If you call <code>widget.render()</code> you don&#x2019;t have to specify the HTML container to which the widget should be appended. It takes the container of the parent widget by default which is <code>parent.$container</code>. You can still pass a custom <code>$parent</code> if you like.</p> </li>
+         <li> <p>Removing a widget and its children<br> If <code>widget.remove()</code> is called, the widget will be removed from the DOM. Even though removing the parent HTML node would be sufficient in order to make the children disappear from the screen, every child widget will be removed as well. This gives the child widgets the possibility to clean up their rendering state and detach listeners. This is necessary because the widgets still exist after removal and their data can still be updated. Such cleanup actions are typically done by overriding <code>widget._remove()</code>. Remember to call the <code>_remove</code> of the super class as well.</p> </li>
+         <li> <p>Finding child widgets<br> This is something you will have to do very often if you specified your widgets in a JSON file. If you want to access these widgets from JavaScript you need to get them first. This is easy due to the linkage of the widgets. You can just use the function <code>widget(id)</code>. See also chapter <a href="#finding-a-widget">Section 18.1.4</a> for more details.</p> </li>
+         <li> <p>Establishing a link independent of the DOM structure<br> Normally a child widget contains HTML elements which are children of the parent&#x2019;s HTML elements. Even though this is the regular case it is not a must. Amongst others the following widgets have HTML elements appended to the HTML element of the desktop rather than their actual parents: dialogs, popups, tooltips. The main reason is because these widgets lay on top of every other widget. In order to not get into the z-index hell it is a lot easier to put these widgets on the top level of the DOM structure. But since the HTML elements are now separated, the only link is the parent/child hierarchy.<br> Imagine you have a string field which displays a tooltip. The parent of the tooltip is the string field but the HTML element is appended to the HTML element of the desktop. Removing the string field will now remove the tooltip as well even though their HTML elements are not linked.<br> Or think about the following case: there is a popup open which contains a smart field. The smart field shows a popup by itself displaying the proposals. The HTML elements of the main popup and the smart field popup are siblings meaning they are on the same level in the DOM. Normally a popup gets closed when an element not belonging to the popup is clicked. But why is the main popup not closed if the user clicks into the smart field popup even though their HTML elements are not linked? Exactly, because the smart field popup is a child of the smart field and therefore a child of the main popup.</p> </li>
+        </ol>
+       </div>
+       <div class="paragraph">
+        <p>So far we have learned what the parent is. But what is the owner? The owner is the only one which is allowed to destroy its children. Normally, the parent and the owner are the same, that is why you don&#x2019;t have to specify the owner explicitly when creating a widget. The owner will be different if you specify it explicitly or if you use <code>setParent()</code> to temporarily change the parent of a widget. In that case the owner points to the old parent. This means if the new parent were destroyed, the newly linked child would not be destroyed, only removed from the DOM.</p>
+       </div>
+       <div class="paragraph">
+        <p>This comes in handy if you want to temporarily give the control over rendering/removal to another widget (like a popup) but don&#x2019;t let the other widget destroy your widget (e.g. when the popup is closed) because you want to use your widget again (e.g. display it on another popup).</p>
        </div>
       </div>
      </div>
