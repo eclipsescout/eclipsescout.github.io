@@ -562,6 +562,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-property-for-request-timeout-since-7-0-100">New Property for Request Timeout (since 7.0.100)</a></li>
      <li><a href="#minor-changes-for-http-abstraction-properties-since-7-0-100">Minor Changes for HTTP Abstraction Properties (since 7.0.100)</a></li>
      <li><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300">Desktop splitter position remembered across sessions (since 7.0.300)</a></li>
+     <li><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300">No value in JS for string fields with masked input (since 7.0.300)</a></li>
     </ul>
    </div>
   </div>
@@ -598,6 +599,7 @@ table.CodeRay td.code>pre{padding:0}
        <div class="ulist">
         <ul>
          <li> <p><a href="#new-property-auto-optimize-column-max-width-since-7-0-300"><em>New Property Auto Optimize Column Max Width (since 7.0.300)</em></a></p> </li>
+         <li> <p><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><em>No value in JS for string fields with masked input (since 7.0.300)</em></a></p> </li>
         </ul>
        </div>
       </div>
@@ -1015,6 +1017,21 @@ table.CodeRay td.code>pre{padding:0}
      <div class="paragraph">
       <p>In case the splitter position should never be remembered, the feature can be disabled globally by setting the property <code>cacheSplitterPosition</code> on the desktop to <em>false</em>.</p>
      </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><a class="anchor" href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"></a>No value in JS for string fields with masked input (since 7.0.300)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>A string field with masked input did send the value from the model to the UI layer allowing to read possibly sensitive data via JS. The value is not sent to the UI layer anymore resulting in a slightly different behavior. From the model perspective nothing changed.</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p>A <code>value</code> property change in the model will send an obfuscated display text instead of the real display text to prevent data leakage.</p> </li>
+       <li> <p>On focus of the input field, the obfuscated text is removed, showing an empty input field. On blur, if nothing was typed, the obfuscated text is restored (model value is unchanged).</p> </li>
+       <li> <p>When text is typed into the input field, the display text represents the real display text (but is still masked).</p> </li>
+      </ul>
+     </div>
      <div class="admonitionblock tip">
       <table>
        <tbody>
@@ -1031,7 +1048,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer">
    <div id="footer-text">
      Version 7.0
-    <br> Last updated 2018-01-15 19:25:43 CET
+    <br> Last updated 2018-02-01 13:00:29 CET
    </div>
   </div>
  </body>
