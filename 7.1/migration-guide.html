@@ -550,6 +550,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#adjusted-behavior-of-widget-initialization">Adjusted Behavior of Widget Initialization</a></li>
      <li><a href="#gzipservletfilter">GzipServletFilter</a></li>
      <li><a href="#httpcachecontrol">HttpCacheControl</a></li>
+     <li><a href="#httpproxy">HttpProxy</a></li>
      <li><a href="#config-properties">Config Properties</a>
       <ul class="sectlevel2">
        <li><a href="#descriptions">Descriptions</a></li>
@@ -559,6 +560,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#renamed-config-property-keys">Renamed Config Property Keys</a></li>
      <li><a href="#default-values-validation">Default Values Validation</a></li>
      <li><a href="#new-config-property-scout-cspdirective">New Config Property scout.cspDirective</a></li>
+     <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
        <li><a href="#rename-of-less-variables">Rename of Less Variables</a></li>
@@ -779,6 +781,14 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>The parameter <code>pathInfo</code> has been removed from the method <code>HttpCacheControl.checkAndSetCacheHeaders</code> since it has no effect anymore.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="httpproxy"><a class="anchor" href="#httpproxy"></a>HttpProxy</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>HTTP Proxy doesn&#x2019;t set cache control <code>no-chache</code> header anymore.</p>
      </div>
     </div>
    </div>
@@ -1243,6 +1253,17 @@ table.CodeRay td.code>pre{padding:0}
        <pre class="CodeRay highlight"><code data-lang="text"># CSP - Demo app uses external images in html field and custom widgets -&gt; allow it
 scout.cspDirective[img-src]=*</code></pre>
       </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="iuiservletrequesthandler"><a class="anchor" href="#iuiservletrequesthandler"></a>IUiServletRequestHandler</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The methods <code>handleGet</code> and <code>handlePost</code> on <code>IUiServletRequestHandler</code> were replaced by the single method <code>handle</code>. This new method is called for all HTTP methods. To retrieve the HTTP method, call <code>getMethod</code> on <code>HttpServletRequest</code>. When using <code>AbstractUiServletRequestHandler</code> no migration should be required because <code>AbstractUiServletRequestHandler</code> delegates to the Java methods for the common HTTP methods <code>handleGet</code>, <code>handlePost</code>, <code>handlePut</code> and <code>handleDelete</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p>Methods <code>proxyGet</code> and <code>proxyPost</code> on <code>HttpProxy</code> are replaced by the common method <code>proxy</code>.</p>
      </div>
     </div>
    </div>
