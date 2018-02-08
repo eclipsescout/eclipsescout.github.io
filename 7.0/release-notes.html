@@ -561,8 +561,9 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-property-auto-optimize-column-max-width-since-7-0-300">New Property Auto Optimize Column Max Width (since 7.0.300)</a></li>
      <li><a href="#new-property-for-request-timeout-since-7-0-100">New Property for Request Timeout (since 7.0.100)</a></li>
      <li><a href="#minor-changes-for-http-abstraction-properties-since-7-0-100">Minor Changes for HTTP Abstraction Properties (since 7.0.100)</a></li>
-     <li><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300">Desktop splitter position remembered across sessions (since 7.0.300)</a></li>
-     <li><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300">No value in JS for string fields with masked input (since 7.0.300)</a></li>
+     <li><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300">Desktop Splitter Position Remembered Across Sessions (since 7.0.300)</a></li>
+     <li><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300">No Value in JS for String Fields with Masked Input (since 7.0.300)</a></li>
+     <li><a href="#menus-in-the-status-tooltip-of-a-form-field-since-7-0-300">Menus in the Status Tooltip of a Form Field (since 7.0.300)</a></li>
     </ul>
    </div>
   </div>
@@ -599,7 +600,9 @@ table.CodeRay td.code>pre{padding:0}
        <div class="ulist">
         <ul>
          <li> <p><a href="#new-property-auto-optimize-column-max-width-since-7-0-300"><em>New Property Auto Optimize Column Max Width (since 7.0.300)</em></a></p> </li>
-         <li> <p><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><em>No value in JS for string fields with masked input (since 7.0.300)</em></a></p> </li>
+         <li> <p><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300"><em>Desktop Splitter Position Remembered Across Sessions (since 7.0.300)</em></a></p> </li>
+         <li> <p><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><em>No Value in JS for String Fields with Masked Input (since 7.0.300)</em></a></p> </li>
+         <li> <p><a href="#menus-in-the-status-tooltip-of-a-form-field-since-7-0-300"><em>Menus in the Status Tooltip of a Form Field (since 7.0.300)</em></a></p> </li>
         </ul>
        </div>
       </div>
@@ -1006,11 +1009,8 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="desktop-splitter-position-remembered-across-sessions-since-7-0-300"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300"></a>Desktop splitter position remembered across sessions (since 7.0.300)</h2>
+    <h2 id="desktop-splitter-position-remembered-across-sessions-since-7-0-300"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300"></a>Desktop Splitter Position Remembered Across Sessions (since 7.0.300)</h2>
     <div class="sectionbody">
-     <div class="paragraph">
-      <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
-     </div>
      <div class="paragraph">
       <p>The position of the desktop splitter position (between the navigation and the bench) is now persisted across sessions, i.e. the previous setting will be restored even after you closed your browser. The position is stored in the HTML 5 <em>local storage</em> provided by the local browser. It is therefore a device-specific setting, which is especially useful when accessing the same application through screens with different resolutions.</p>
      </div>
@@ -1020,7 +1020,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><a class="anchor" href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"></a>No value in JS for string fields with masked input (since 7.0.300)</h2>
+    <h2 id="no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><a class="anchor" href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"></a>No Value in JS for String Fields with Masked Input (since 7.0.300)</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>A string field with masked input did send the value from the model to the UI layer allowing to read possibly sensitive data via JS. The value is not sent to the UI layer anymore resulting in a slightly different behavior. From the model perspective nothing changed.</p>
@@ -1031,6 +1031,28 @@ table.CodeRay td.code>pre{padding:0}
        <li> <p>On focus of the input field, the obfuscated text is removed, showing an empty input field. On blur, if nothing was typed, the obfuscated text is restored (model value is unchanged).</p> </li>
        <li> <p>When text is typed into the input field, the display text represents the real display text (but is still masked).</p> </li>
       </ul>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="menus-in-the-status-tooltip-of-a-form-field-since-7-0-300"><a class="anchor" href="#menus-in-the-status-tooltip-of-a-form-field-since-7-0-300"></a>Menus in the Status Tooltip of a Form Field (since 7.0.300)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>A form field can have menus which can be displayed by clicking the ellipsis icon on the right side of the field. A form field can also have a tooltip which can be displayed by clicking the info icon on the right side of the field. In fact, the ellipsis icon and the status icon are at the same position and called status icon. It is called like this because it even has a third purpose: to display the error status. Because this icon has multiple purposes it has to be defined what happens when the icon is clicked. Until now, if an error status was shown, the menus were not available.</p>
+     </div>
+     <div class="paragraph">
+      <p>Until Scout 6.1. the problem was the same for tooltips. One had to decide which was more important: tooltip or menus. With Scout 6.1 a combination has been introduced: the tooltip now also shows the menus. But the problem still existed for error status. The reason is: not every menu makes sense when displayed along with the error status message. But there are menus which make sense and should be displayed. And this case is now supported.</p>
+     </div>
+     <div class="paragraph">
+      <p>It is now possible to define which menus should be displayed in an error status. It is also possible to bind the menu to certain status codes or severities. Let&#x2019;s say you want to display the menu if a smart field does not find any results, then you can bind the menu to the <code>ISmartField.NO_RESULTS_ERROR_CODE</code>. Or you can bind it to custom error codes for your custom status messages. See the Java Doc of <code>IStatusMenuMapping</code> for details.</p>
+     </div>
+     <div id="img-menu-in-status" class="imageblock">
+      <div class="content">
+       <img src="images/menu_in_status.png" alt="menu in status">
+      </div>
+      <div class="title">
+       Figure 5. Menu in Field Status
+      </div>
      </div>
      <div class="admonitionblock tip">
       <table>
