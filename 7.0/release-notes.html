@@ -562,7 +562,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-property-for-request-timeout-since-7-0-100">New Property for Request Timeout (since 7.0.100)</a></li>
      <li><a href="#minor-changes-for-http-abstraction-properties-since-7-0-100">Minor Changes for HTTP Abstraction Properties (since 7.0.100)</a></li>
      <li><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300">Desktop Splitter Position Remembered Across Sessions (since 7.0.300)</a></li>
-     <li><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300">No Value in JS for String Fields with Masked Input (since 7.0.300)</a></li>
+     <li><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300">No Value in JS for String Fields With Masked Input (since 7.0.300)</a></li>
      <li><a href="#menus-in-the-status-tooltip-of-a-form-field-since-7-0-300">Menus in the Status Tooltip of a Form Field (since 7.0.300)</a></li>
     </ul>
    </div>
@@ -593,7 +593,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>The following changes were made after the initial 7.0 release (Eclipse Oxygen release). The following notes relate to a <em>service release</em>.</p>
       </div>
       <div class="sect3">
-       <h4 id="oxygen-3-7-0-300-release-expected-on-march-21-2018"><a class="anchor" href="#oxygen-3-7-0-300-release-expected-on-march-21-2018"></a>Oxygen.3 (7.0.300) Release expected on March 21, 2018</h4>
+       <h4 id="oxygen-3-7-0-300-release-expected-on-march-21-2018"><a class="anchor" href="#oxygen-3-7-0-300-release-expected-on-march-21-2018"></a>Oxygen.3 (7.0.300) Release Expected on March 21, 2018</h4>
        <div class="paragraph">
         <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
        </div>
@@ -601,7 +601,7 @@ table.CodeRay td.code>pre{padding:0}
         <ul>
          <li> <p><a href="#new-property-auto-optimize-column-max-width-since-7-0-300"><em>New Property Auto Optimize Column Max Width (since 7.0.300)</em></a></p> </li>
          <li> <p><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300"><em>Desktop Splitter Position Remembered Across Sessions (since 7.0.300)</em></a></p> </li>
-         <li> <p><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><em>No Value in JS for String Fields with Masked Input (since 7.0.300)</em></a></p> </li>
+         <li> <p><a href="#No Value in JS for String Fields with Masked Input (since 7.0.300)">[No Value in JS for String Fields with Masked Input (since 7.0.300)]</a></p> </li>
          <li> <p><a href="#menus-in-the-status-tooltip-of-a-form-field-since-7-0-300"><em>Menus in the Status Tooltip of a Form Field (since 7.0.300)</em></a></p> </li>
         </ul>
        </div>
@@ -986,7 +986,7 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="new-property-for-request-timeout-since-7-0-100"><a class="anchor" href="#new-property-for-request-timeout-since-7-0-100"></a>New Property for Request Timeout (since 7.0.100)</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Every ui request schedules a model job to process the user interaction and waits for this job and other scheduled model jobs to complete. During that time the ui is blocked but the user may abort the processing manually by clicking cancel. If the user does not cancel it and it takes too long to complete the model jobs are now aborted automatically to free resources. The default is set to 1 hour but you may configure it by using the new property <code>scout.ui.model.jobs.await.timeout</code> (the unit is seconds). After the abortion a message box is displayed to the user saying the request timed out.</p>
+      <p>Every UI request schedules a model job to process the user interaction and waits for this job and other scheduled model jobs to complete. During that time the ui is blocked but the user may abort the processing manually by clicking cancel. If the user does not cancel it and it takes too long to complete the model jobs are now aborted automatically to free resources. The default is set to 1 hour but you may configure it by using the new property <code>scout.ui.model.jobs.await.timeout</code> (the unit is seconds). After the abortion a message box is displayed to the user saying the request timed out.</p>
      </div>
     </div>
    </div>
@@ -1020,7 +1020,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><a class="anchor" href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"></a>No Value in JS for String Fields with Masked Input (since 7.0.300)</h2>
+    <h2 id="no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><a class="anchor" href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"></a>No Value in JS for String Fields With Masked Input (since 7.0.300)</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>A string field with masked input did send the value from the model to the UI layer allowing to read possibly sensitive data via JS. The value is not sent to the UI layer anymore resulting in a slightly different behavior. From the model perspective nothing changed.</p>
