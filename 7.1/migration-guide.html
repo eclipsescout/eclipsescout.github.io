@@ -540,30 +540,24 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#api-changes-java">API Changes (Java)</a>
       <ul class="sectlevel2">
        <li><a href="#calendarcomponent">CalendarComponent</a></li>
+       <li><a href="#java-8-required">Java 8 Required</a></li>
+       <li><a href="#removed-constants-methods-from-clientuipreferences">Removed Constants/Methods From ClientUIPreferences</a></li>
+       <li><a href="#removed-property-focusable-from-iformfield-abstractformfield">Removed Property "focusable" From IFormField, AbstractFormField</a></li>
+       <li><a href="#removal-of-old-smartfield-renaming-of-smartfield2-back-to-smartfield">Removal of Old "SmartField", Renaming of "SmartField2" Back to "SmartField"</a></li>
+       <li><a href="#icontentassistfield-classes-and-interfaces-removed">IContentAssistField Classes and Interfaces Removed</a></li>
+       <li><a href="#groupbox-moved-minwidthinpixel">GroupBox: Moved "minWidthInPixel"</a></li>
+       <li><a href="#adjusted-behavior-of-widget-initialization">Adjusted Behavior of Widget Initialization</a></li>
+       <li><a href="#gzipservletfilter">GzipServletFilter</a></li>
+       <li><a href="#httpcachecontrol">HttpCacheControl</a></li>
+       <li><a href="#httpproxy">HttpProxy</a></li>
+       <li><a href="#config-properties">Config Properties</a></li>
       </ul> </li>
-     <li><a href="#java-8-required">Java 8 required</a></li>
-     <li><a href="#removed-constants-methods-from-code-clientuipreferences-code">Removed constants/methods from <code>ClientUIPreferences</code></a></li>
-     <li><a href="#removed-property-code-focusable-code-from-iformfield-abstractformfield">Removed property <code>focusable</code> from IFormField, AbstractFormField</a></li>
-     <li><a href="#ismartfield2-replaced-old-ismartfield">ISmartField2 replaced old ISmartField</a></li>
-     <li><a href="#icontentassistfield-classes-and-interfaces-removed">IContentAssistField classes and interfaces removed</a></li>
-     <li><a href="#groupbox-moved-minwidthinpixel">GroupBox: moved minWidthInPixel</a></li>
-     <li><a href="#adjusted-behavior-of-widget-initialization">Adjusted Behavior of Widget Initialization</a></li>
-     <li><a href="#gzipservletfilter">GzipServletFilter</a></li>
-     <li><a href="#httpcachecontrol">HttpCacheControl</a></li>
-     <li><a href="#httpproxy">HttpProxy</a></li>
-     <li><a href="#config-properties">Config Properties</a>
-      <ul class="sectlevel2">
-       <li><a href="#descriptions">Descriptions</a></li>
-       <li><a href="#default-value">Default value</a></li>
-       <li><a href="#validation">Validation</a></li>
-      </ul> </li>
-     <li><a href="#renamed-config-property-keys">Renamed Config Property Keys</a></li>
-     <li><a href="#default-values-validation">Default Values Validation</a></li>
-     <li><a href="#new-config-property-scout-cspdirective">New Config Property scout.cspDirective</a></li>
+     <li><a href="#customizing-csp-rules-via-config-property">Customizing CSP Rules Via Config Property</a></li>
      <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
-       <li><a href="#rename-of-less-variables">Rename of Less Variables</a></li>
+       <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
+       <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a></li>
     </ul>
@@ -597,7 +591,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>The following changes were made after the initial 7.1 release (Eclipse Photon release). Additionally follow these instructions when updating to a <em>service release</em>.</p>
       </div>
       <div class="sect3">
-       <h4 id="photon-1-7-1-100-release-expected-on-september-2018"><a class="anchor" href="#photon-1-7-1-100-release-expected-on-september-2018"></a>Photon.1 (7.1.100) Release expected on September, 2018</h4>
+       <h4 id="photon-1-7-1-100-release-expected-on-september-2018"><a class="anchor" href="#photon-1-7-1-100-release-expected-on-september-2018"></a>Photon.1 (7.1.100) Release Expected on September, 2018</h4>
        <div class="paragraph">
         <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
        </div>
@@ -611,626 +605,680 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="calendarcomponent"><a class="anchor" href="#calendarcomponent"></a>CalendarComponent</h3>
       <div class="paragraph">
-       <p>Removed deprecated method <code>Date[] getCoveredDays()</code> on <code>org.eclipse.scout.rt.client.ui.basic.calendar.CalendarComponent</code>. Migration: Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
+       <p>Removed deprecated method <code>Date[] getCoveredDays()</code> on <code>org.eclipse.scout.rt.client.ui.basic.calendar.CalendarComponent</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
       </div>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="java-8-required"><a class="anchor" href="#java-8-required"></a>Java 8 required</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout 7.1, a Java 8 runtime is required.</p>
+     <div class="sect2">
+      <h3 id="java-8-required"><a class="anchor" href="#java-8-required"></a>Java 8 Required</h3>
+      <div class="paragraph">
+       <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout 7.1, a <strong>Java 8 runtime is required</strong>.</p>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> The Scout 7.1 Runtime does not support Java 9 yet. The Java 9 support is planned for Eclipse <em>Photon</em> release (Scout 8.0) in summer 2018. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="paragraph">
+       <p>To reflect this change, some existing Scout classes have been migrated to the newly available Java 8 classes:</p>
+      </div>
+      <table class="tableblock frame-all grid-all spread">
+       <colgroup>
+        <col style="width: 50%;">
+        <col style="width: 50%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">Old Scout class:</th>
+         <th class="tableblock halign-left valign-top">Replaced with Java 8 equivalent:</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.filter.IFilter</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Predicate</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.filter.AlwaysFilter</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Predicate</code> e.g. <code>a &#x2192; true</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.filter.NotFilter</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Predicate#negate</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.filter.OrFilter</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Predicate#or</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.util.concurrent.IConsumer</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Consumer</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.util.concurrent.IFunction</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Function</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.util.concurrent.IBiConsumer</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.BiConsumer</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.util.concurrent.IBiFunction</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.BiFunction</code></p></td>
+        </tr>
+       </tbody>
+      </table>
      </div>
-     <div class="paragraph">
-      <p>Please note that the Scout 7.1 Runtime does not support Java 9 yet. The Java 9 support is planned for Eclipse <em>Photon</em> release (Scout 8.0) in summer 2018.</p>
+     <div class="sect2">
+      <h3 id="removed-constants-methods-from-clientuipreferences"><a class="anchor" href="#removed-constants-methods-from-clientuipreferences"></a>Removed Constants/Methods From ClientUIPreferences</h3>
+      <div class="paragraph">
+       <p>Since the new Html UI was introduced with Scout 5.2 some constants and methods in <code>ClientUIPreferences</code> had no effect on the UI anymore. Since Scout is now a browser application we don&#x2019;t have any control over the application window anymore. The form bounds are stored in the local browser storage thus they&#x2019;re not required in the Java model anymore.</p>
+      </div>
+      <div class="paragraph">
+       <p>The following constants/methods were dropped:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><span class="line-through"><code>APPLICATION_WINDOW_MAXIMIZED</code></span></p> </li>
+        <li> <p><span class="line-through"><code>APPLICATION_WINDOW_BOUNDS</code></span></p> </li>
+        <li> <p><span class="line-through"><code>FORM_BOUNDS</code></span></p> </li>
+        <li> <p><span class="line-through"><code>getFormBounds()</code></span></p> </li>
+        <li> <p><span class="line-through"><code>setFormBounds(IForm form, Rectangle bounds)</code></span></p> </li>
+        <li> <p><span class="line-through"><code>getApplicationWindowMaximized()</code></span></p> </li>
+        <li> <p><span class="line-through"><code>setApplicationWindowPreferences(BoundsSpec r, boolean maximized)</code></span></p> </li>
+       </ul>
+      </div>
      </div>
-     <div class="paragraph">
-      <p>To reflect this change some existing Scout classes have been migrated to the newly available Java 8 classes:</p>
+     <div class="sect2">
+      <h3 id="removed-property-focusable-from-iformfield-abstractformfield"><a class="anchor" href="#removed-property-focusable-from-iformfield-abstractformfield"></a>Removed Property "focusable" From IFormField, AbstractFormField</h3>
+      <div class="paragraph">
+       <p>Since the new Html UI was introduced with Scout 5.2 the property <code>focusable</code> had no effect on the UI anymore. Instead the UI uses sensible defaults for each field type. For instance: a <em>LabelField</em> is never focusable, a normal <em>StringField</em> is always focusable, as long as it is enabled. Since the property was rarely used, we removed the related code:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Method <span class="line-through"><code>boolean IFormField#isFocusable()</code></span></p> </li>
+        <li> <p>Method <span class="line-through"><code>void IFormField#setFocusable(boolean f)</code></span></p> </li>
+        <li> <p>Field <span class="line-through"><code>boolean IFormField#PROP_FOCUSABLE</code></span></p> </li>
+        <li> <p>Method <span class="line-through"><code>boolean AbstractFormField#getConfiguredFocusable()</code></span></p> </li>
+        <li> <p>Class <span class="line-through"><code>AbstractNonFocusableButton</code></span></p> </li>
+        <li> <p>Class <span class="line-through"><code>AbstractNonFocusableRadioButton</code></span></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> Since there is no replacement for the <code>focusable</code> property, remove all code that uses one of the methods/properties listed above.</p>
+      </div>
      </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.IFilter</code> replaced with <code>java.util.function.Predicate</code>.</p>
+     <div class="sect2">
+      <h3 id="removal-of-old-smartfield-renaming-of-smartfield2-back-to-smartfield"><a class="anchor" href="#removal-of-old-smartfield-renaming-of-smartfield2-back-to-smartfield"></a>Removal of Old "SmartField", Renaming of "SmartField2" Back to "SmartField"</h3>
+      <div class="paragraph">
+       <p>In Scout 7.0 a new smart field implementation named <em>SmartField2</em> was created. The old implementation was still available, but its use was discouraged. With Scout 7.1 the old <em>SmartField</em> implementation was finally dropped. The new implementation <em>SmartField2</em> was renamed back to <em>SmartField</em>.</p>
+      </div>
+      <div class="paragraph">
+       <p>The following table lists the different names used in the past Scout releases. (The naming applies to all associated files, such as interfaces, abstract field classes, Java packages and JavaScript and LESS files.)</p>
+      </div>
+      <table class="tableblock frame-all grid-all spread">
+       <colgroup>
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3334%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">Scout &lt;= 6.1</th>
+         <th class="tableblock halign-left valign-top">Scout 7.0</th>
+         <th class="tableblock halign-left valign-top">Scout &gt;= 7.1</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField <em>(old implementation)</em></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField <em>(old implementation)</em></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">&#x2014;</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">&#x2014;</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField2 <em>(new implementation)</em></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField <em>(new implementation)</em></p></td>
+        </tr>
+       </tbody>
+      </table>
+      <div class="paragraph">
+       <p><em>Migration:</em></p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>If you have already used the new <em>SmartField2</em> in Scout 7.0 you must move / rename all references back to the (new) <em>SmartField</em>.</p> </li>
+        <li> <p>If you are migrating from an older Scout version (&lt;= 6.1), you <em>might</em> have to adjust your code to the new implementation. See the corresponding 7.0 migration guide.</p> </li>
+       </ul>
+      </div>
      </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.AlwaysFilter</code> replaced with <code>java.util.function.Predicate</code> e.g. <code>a &#x2192; true</code>.</p>
+     <div class="sect2">
+      <h3 id="icontentassistfield-classes-and-interfaces-removed"><a class="anchor" href="#icontentassistfield-classes-and-interfaces-removed"></a>IContentAssistField Classes and Interfaces Removed</h3>
+      <div class="paragraph">
+       <p>The base class and interfaces of the old SmartField implementation was IContentAssistField. With the new SmartField implementation this interfaces and all classes containing the word "ContentAssist" in their name, have been either removed or renamed to "SmartField". If your code references one of these classes you should simply try to rename all references. Since the API of the new SmartField is almost the same as the old, this should work and should cause no or few changes in your code. The following classes have been removed without replacement:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractMixedSmartField</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldEvent</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldListener</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldTable</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.IMixedSmartField</code></span></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>Since the new SmartField implementation does not have a proposal chooser model anymore these classes have also been removed. If you must have a special implementation of a proposal chooser, you must implement a proposal chooser in JavaScript (see: <em>ProposalChooser.js</em>), which renders the data and lookup rows it receives from the server-side SmartField. The following classes have been removed without replacement:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractProposalChooser</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.IProposalChooser</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.IProposalChooserProvider</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.TableProposalChooser</code></span></p> </li>
+        <li> <p><span class="line-through"><code>org.eclipse.scout.rt.client.ui.form.fields.smartfield.TreeProposalChooser</code></span></p> </li>
+       </ul>
+      </div>
      </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.NotFilter</code> replaced with <code>java.util.function.Predicate#negate</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.filter.OrFilter</code> replaced with <code>java.util.function.Predicate#or</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IConsumer</code> replaced with <code>java.util.function.Consumer</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IFunction</code> replaced with <code>java.util.function.Function</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IBiConsumer</code> replaced with <code>java.util.function.BiConsumer</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p><code>org.eclipse.scout.rt.platform.util.concurrent.IBiFunction</code> replaced with <code>java.util.function.BiFunction</code>.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="removed-constants-methods-from-code-clientuipreferences-code"><a class="anchor" href="#removed-constants-methods-from-code-clientuipreferences-code"></a>Removed constants/methods from <code>ClientUIPreferences</code></h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Since the new Html UI was introduced with Scout 5.2 these constants and methods had no effect on the UI anymore. Since Scout is now a browser application we don&#x2019;t have any control over the application window anymore. The form-bounds are stored in the local browser storage thus they&#x2019;re not required in the Java model anymore. Removed constants/methods:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>APPLICATION_WINDOW_MAXIMIZED</p> </li>
-       <li> <p>APPLICATION_WINDOW_BOUNDS</p> </li>
-       <li> <p>FORM_BOUNDS</p> </li>
-       <li> <p>getFormBounds()</p> </li>
-       <li> <p>setFormBounds(IForm form, Rectangle bounds)</p> </li>
-       <li> <p>getApplicationWindowMaximized()</p> </li>
-       <li> <p>setApplicationWindowPreferences(BoundsSpec r, boolean maximized)</p> </li>
-      </ul>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="removed-property-code-focusable-code-from-iformfield-abstractformfield"><a class="anchor" href="#removed-property-code-focusable-code-from-iformfield-abstractformfield"></a>Removed property <code>focusable</code> from IFormField, AbstractFormField</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Since the new Html UI was introduced with Scout 5.2 this property had no effect on the UI anymore. Instead the UI uses sensible defaults for each field type. For instance: a LabelField is never focusable, a normal StringField is always focusable, as long as it is enabled. Since the property was rarely used, we removed all methods from the interface/class FormField. Removed methods/properties:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>boolean IFormField#isFocusable()</p> </li>
-       <li> <p>void IFormField#setFocusable(boolean f)</p> </li>
-       <li> <p>boolean IFormField#PROP_FOCUSABLE</p> </li>
-       <li> <p>boolean AbstractFormField#getConfiguredFocusable()</p> </li>
-       <li> <p>class AbstractNonFocusableButton</p> </li>
-       <li> <p>class AbstractNonFocusableRadioButton</p> </li>
-      </ul>
-     </div>
-     <div class="paragraph">
-      <p>Since there is no replacement for the focusable property, remove all code that uses one of the methods/properties listed above.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="ismartfield2-replaced-old-ismartfield"><a class="anchor" href="#ismartfield2-replaced-old-ismartfield"></a>ISmartField2 replaced old ISmartField</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>In Scout 7.0 the new SmartField implementation used the package and name <code>smartfield2.SmartField2</code>. With Scout 7.1 the new SmartField replaced the old SmartField completely, and thus was moved to and renamed to <code>smartfield.SmartField</code>. If you have already used the new SmartField in Scout 7.0 you must move / rename all references to these classes.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="icontentassistfield-classes-and-interfaces-removed"><a class="anchor" href="#icontentassistfield-classes-and-interfaces-removed"></a>IContentAssistField classes and interfaces removed</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The base class and interfaces of the old SmartField implementation was IContentAssistField. With the new SmartField implementation this interfaces and all classes containing the word "ContentAssist" in their name, have been either removed or renamed to "SmartField". If your code references one of these classes you should simply try to rename all references. Since the API of the new SmartField is almost the same as the old, this should work and should cause no or few changes in your code. The following classes have been removed without replacement:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractMixedSmartField</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldEvent</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldListener</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldTable</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.IMixedSmartField</p> </li>
-      </ul>
-     </div>
-     <div class="paragraph">
-      <p>Since the new SmartImplementation does not have a proposal chooser model anymore these classes have also been removed. If you must have a special implementation of a proposal chooser, you must implement a proposal chooser in JavaScript (see: ProposalChooser.js), which renders the data / lookup-rows it receives from the server-side SmartField:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractProposalChooser</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.IProposalChooser</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.IProposalChooserProvider</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.TableProposalChooser</p> </li>
-       <li> <p>org.eclipse.scout.rt.client.ui.form.fields.smartfield.TreeProposalChooser</p> </li>
-      </ul>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="groupbox-moved-minwidthinpixel"><a class="anchor" href="#groupbox-moved-minwidthinpixel"></a>GroupBox: moved minWidthInPixel</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The property <code>minWidthInPixel</code> has been moved to the object <code>LogicalGridLayoutConfig</code>. Instead of using <code>getConfiguredMinWidthInPixel</code> you should now set the property as follows:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+     <div class="sect2">
+      <h3 id="groupbox-moved-minwidthinpixel"><a class="anchor" href="#groupbox-moved-minwidthinpixel"></a>GroupBox: Moved "minWidthInPixel"</h3>
+      <div class="paragraph">
+       <p>The property <code>minWidthInPixel</code> has been moved to <em>LogicalGridLayoutConfig</em>.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> Instead of using <code>getConfiguredMinWidthInPixel</code> you should now set the property as follows:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
 <span class="directive">protected</span> LogicalGridLayoutConfig getConfiguredBodyLayoutConfig() {
   <span class="keyword">return</span> <span class="local-variable">super</span>.getConfiguredBodyLayoutConfig()
       .withMinWidth(<span class="integer">400</span>);
 }</code></pre>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="adjusted-behavior-of-widget-initialization"><a class="anchor" href="#adjusted-behavior-of-widget-initialization"></a>Adjusted Behavior of Widget Initialization</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The goal was to harmonize all the init methods (<code>initField</code>, <code>initTile</code>, <code>initForm</code> etc.) and to make sure, <code>init()</code> is only executed once. This is important for dynamic widgets like accordion or tiles. These widgets initialize the newly added children by themselves so that the caller does not need to take care of it. For these cases it is important that <code>init()</code> is not called multiple times.</p>
-     </div>
-     <div class="paragraph">
-      <p>But: there may be cases which require <code>init()</code> to be called multiple times, like reseting a search form. For such cases, <code>reinit()</code> has to be used from now on. Also, after the widget is disposed, <code>init()</code> may be called again. So remember: <code>execInit</code> may be called more than once in some circumstances. This is existing behavior!</p>
-     </div>
-     <div class="paragraph">
-      <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>postInitConfig</code>, <code>init</code> and <code>dispose</code>.</p>
-     </div>
-     <div class="paragraph">
-      <div class="title">
-       This means the following for your code:
-      </div>
-      <p>If you used one of the deprecated methods (<code>initField</code>, <code>initAction</code> etc.), replace them with one of the following methods: <code>init</code>, <code>reinit</code> or <code>initInternal</code>. Use <code>init</code> if you created a field and need to initialize it. Use <code>reinit</code> if you explicitly want to reinitialize an already initialized field. Use <code>initInternal</code> if your custom widget overrides <code>initField</code>.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="gzipservletfilter"><a class="anchor" href="#gzipservletfilter"></a>GzipServletFilter</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Replaced <code>get_pattern</code> and <code>post_pattern</code> with <code>content_types</code>. If you set these init parameters in your web.xml, replace or remove them accordingly.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="httpcachecontrol"><a class="anchor" href="#httpcachecontrol"></a>HttpCacheControl</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The parameter <code>pathInfo</code> has been removed from the method <code>HttpCacheControl.checkAndSetCacheHeaders</code> since it has no effect anymore.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="httpproxy"><a class="anchor" href="#httpproxy"></a>HttpProxy</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>HTTP Proxy doesn&#x2019;t set cache control <code>no-chache</code> header anymore.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="config-properties"><a class="anchor" href="#config-properties"></a>Config Properties</h2>
-    <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="descriptions"><a class="anchor" href="#descriptions"></a>Descriptions</h3>
-      <div class="paragraph">
-       <p>Config properties based on <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> include a description text. This description is stored in the new <code>description()</code> method.</p>
-      </div>
-      <div class="paragraph">
-       <p>All properties must now implement this new method and return a description text of that property. The class <code>org.eclipse.scout.rt.platform.config.ConfigDescriptionExporter</code> can be used to export these descriptions. By default an AsciiDoctor exporter is included.</p>
+       </div>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="default-value"><a class="anchor" href="#default-value"></a>Default value</h3>
+      <h3 id="adjusted-behavior-of-widget-initialization"><a class="anchor" href="#adjusted-behavior-of-widget-initialization"></a>Adjusted Behavior of Widget Initialization</h3>
       <div class="paragraph">
-       <p>Config properties based on <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> include a default value. The default value is stored in the <code>getDefaultValue()</code> method.</p>
+       <p>The goal was to harmonize all the init methods (<code>initField</code>, <code>initTile</code>, <code>initForm</code> etc.) and to make sure, <code>init()</code> is only executed once. This is important for dynamic widgets like accordion or tiles. These widgets initialize the newly added children by themselves so that the caller does not need to take care of it. For these cases it is important that <code>init()</code> is not called multiple times.</p>
       </div>
       <div class="paragraph">
-       <p>The method was moved from <code>org.eclipse.scout.rt.platform.config.AbstractConfigProperty&lt;DATA_TYPE, RAW_TYPE&gt;</code> to the interface. Therefore the visibility has changed from protected to public.</p>
+       <p>But: there may be cases which require <code>init()</code> to be called multiple times, like reseting a search form. For such cases, <code>reinit()</code> has to be used from now on. Also, after the widget is disposed, <code>init()</code> may be called again. So remember: <code>execInit</code> may be called more than once in some circumstances. This is existing behavior!</p>
+      </div>
+      <div class="paragraph">
+       <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>postInitConfig</code>, <code>init</code> and <code>dispose</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em></p>
+      </div>
+      <div class="paragraph">
+       <p>If you used one of the deprecated methods (<code>initField</code>, <code>initAction</code> etc.), replace them with one of the following methods: <code>init</code>, <code>reinit</code> or <code>initInternal</code>.</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Use <code>init</code> if you created a field and need to initialize it.</p> </li>
+        <li> <p>Use <code>reinit</code> if you explicitly want to reinitialize an already initialized field.</p> </li>
+        <li> <p>Use <code>initInternal</code> if your custom widget overrides <code>initField</code>.</p> </li>
+       </ul>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="validation"><a class="anchor" href="#validation"></a>Validation</h3>
+      <h3 id="gzipservletfilter"><a class="anchor" href="#gzipservletfilter"></a>GzipServletFilter</h3>
       <div class="paragraph">
-       <p>The concreate implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> which validates the configuration of <code>config.properties</code> files will also check if a configured value matches the default value. In case it does a info message (warn in development mode) will be logged but the platform will still start.</p>
+       <p>Replaced init parameters <code>get_pattern</code> and <code>post_pattern</code> with <code>content_types</code>. If you set these init parameters in your web.xml, replace or remove them accordingly.</p>
       </div>
+     </div>
+     <div class="sect2">
+      <h3 id="httpcachecontrol"><a class="anchor" href="#httpcachecontrol"></a>HttpCacheControl</h3>
       <div class="paragraph">
-       <p>To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
+       <p>The argument <code>pathInfo</code> has been removed from the method <code>HttpCacheControl.checkAndSetCacheHeaders</code> since it has no effect anymore.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="httpproxy"><a class="anchor" href="#httpproxy"></a>HttpProxy</h3>
+      <div class="paragraph">
+       <p>HTTP Proxy doesn&#x2019;t set cache control <code>no-chache</code> header anymore.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="config-properties"><a class="anchor" href="#config-properties"></a>Config Properties</h3>
+      <div class="sect3">
+       <h4 id="descriptions"><a class="anchor" href="#descriptions"></a>Descriptions</h4>
+       <div class="paragraph">
+        <p>Config properties based on <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> include a description text. This description is stored in the new <code>description()</code> method.</p>
+       </div>
+       <div class="paragraph">
+        <p>All properties must now implement this new method and return a description text of that property. The class <code>org.eclipse.scout.rt.platform.config.ConfigDescriptionExporter</code> can be used to export these descriptions. By default an AsciiDoctor exporter is included.</p>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="default-value"><a class="anchor" href="#default-value"></a>Default value</h4>
+       <div class="paragraph">
+        <p>Config properties based on <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> include a default value. The default value is stored in the <code>getDefaultValue()</code> method.</p>
+       </div>
+       <div class="paragraph">
+        <p>The method was moved from <code>org.eclipse.scout.rt.platform.config.AbstractConfigProperty&lt;DATA_TYPE, RAW_TYPE&gt;</code> to the interface. Therefore the visibility has changed from protected to public.</p>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="validation"><a class="anchor" href="#validation"></a>Validation</h4>
+       <div class="paragraph">
+        <p>The concreate implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> which validates the configuration of <code>config.properties</code> files will also check if a configured value matches the default value. In case it does a info message (warn in development mode) will be logged but the platform will still start.</p>
+       </div>
+       <div class="paragraph">
+        <p>To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="renamed-config-property-keys"><a class="anchor" href="#renamed-config-property-keys"></a>Renamed Config Property Keys</h4>
+       <div class="paragraph">
+        <p>The following config property keys have been renamed (the old keys are no longer valid and must be renamed accordingly):</p>
+       </div>
+       <table class="tableblock frame-all grid-all spread">
+        <caption class="title">
+         Table 1. Config Property Renames
+        </caption>
+        <colgroup>
+         <col style="width: 50%;">
+         <col style="width: 50%;">
+        </colgroup>
+        <thead>
+         <tr>
+          <th class="tableblock halign-left valign-top">Old Key</th>
+          <th class="tableblock halign-left valign-top">New Key</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.anonymous.enabled</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.anonymousEnabled</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.enabled</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieEnabled</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.maxAge</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieMaxAge</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.name</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieName</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.session.validate.secure</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieSessionValidateSecure</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.credentials.plaintext</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.credentialsPlaintext</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.token.ttl</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.tokenTtl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.server.url</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.backendUrl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>session.jobCompletionDelayOnSessionShutdown</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.jobCompletionDelayOnSessionShutdown</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.memory</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.memoryPolicy</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>notification.user.authenticator</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.notificationSubject</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.testing.client.ClientSessionProviderWithCache#expiration</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.testingSessionTtl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>user.area</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.userArea</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationService#maxMessages</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.chunkSize</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationService#blockingTimeout</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.maxNotificationBlockingTimeOut</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationNodeQueue#capacity</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.nodeQueueCapacity</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationRegistry#m_queueExpireTime</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.notificationQueueExpireTime</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.clustersync.ClusterSynchronizationService#user</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clustersync.user</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.beans.createTunnelToServerBeans</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.createTunnelToServerBeans</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.csp.enabled</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.cspEnabled</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.csp.directive</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.cspDirective</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.dev.mode</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.devMode</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.external.base.url</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.externalBaseUrl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.healthcheck.remoteUrls</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.healthCheckRemoteUrls</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_connection_time_to_live</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.connectionTtl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.ignore_proxy</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.ignoreProxyPatterns</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_keep_alive</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.keepAlive</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_max_connections_per_route</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.maxConnectionsPerRoute</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_max_connections_total</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.maxConnectionsTotal</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.proxy</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.proxyPatterns</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_retry_post</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.retryPost</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.transport_factory</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.transportFactory</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#host</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.host</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#mailbox</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.mailbox</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#password</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.password</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#port</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.port</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#sslProtocols</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.sslProtocols</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#userName</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.username</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jandex.rebuild</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jandex.rebuild</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.connectTimeout</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.connectTimeout</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portCache.corePoolSize</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portCache.corePoolSize</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portCache.enabled</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portCache.enabled</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portCache.ttl</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portCache.ttl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portPool.enabled</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portPoolEnabled</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.readTimeout</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.readTimeout</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.implementor</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.implementor</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.loghandler.debug</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.loghandlerDebug</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.provider.authentication.basic.realm</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.authentication.basicRealm</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.provider.user.authenticator</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.user.authenticator</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.provider.user.handler</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.user.handler</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.requestreply.cancellation.topic</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.requestreply.cancellationTopic</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.node.id</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.nodeId</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.permission.level.check.cache.ttl</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.permissionLevelCacheTtl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.file.RemoteFileService#rootPath</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.remotefileRootPath</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.session.ServerSessionProviderWithCache#expiration</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.serverSessionTtl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.serviceTunnel.compress</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.compress</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.servicetunnel.apache_max_connections_per_route</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.maxConnectionsPerRoute</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.servicetunnel.apache_max_connections_total</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.maxConnectionsTotal</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.servicetunnel.targetUrl</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.targetUrl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#debugReceiverEmail</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.debugReceiverEmail</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#defaultFromEmail</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.defaultFromEmail</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#host</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.host</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#password</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.password</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#port</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.port</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#sslProtocols</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.sslProtocols</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#subjectPrefix</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.subjectPrefix</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#useAuthentication</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.useAuth</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#username</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.username</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#useSmtps</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.useSsl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#directJdbcConnection</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.directJdbcConnection</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcDriverName</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverName</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcDriverUnload</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverUnload</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcMappingName</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.mappingName</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcPoolConnectionBusyTimeout</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionBusyTimeout</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcPoolConnectionLifetime</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionIdleTimeout</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcPoolSize</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.size</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcProperties</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.properties</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcStatementCacheSize</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.statementCacheSize</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiInitialContextFactory</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.initialContextFactory</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiName</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.name</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiProviderUrl</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.providerUrl</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiUrlPkgPrefixes</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.urlPkgPrefixes</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#password</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.password</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#transactionMemberId</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.transactionMemberId</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#username</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.username</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.text.providers.show.keys</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.texts.showKeys</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.background.polling.interval</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.backgroundPollingMaxWaitTime</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.max.user.idle.time</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.maxUserIdleTime</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.model.jobs.await.timeout</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.modelJobTimeout</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionstore.housekeepingDelay</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingDelay</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionStore.maxWaitForAllShutdown</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.maxWaitForAllShutdown</code></p></td>
+         </tr>
+         <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
+         </tr>
+        </tbody>
+       </table>
       </div>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="renamed-config-property-keys"><a class="anchor" href="#renamed-config-property-keys"></a>Renamed Config Property Keys</h2>
+    <h2 id="customizing-csp-rules-via-config-property"><a class="anchor" href="#customizing-csp-rules-via-config-property"></a>Customizing CSP Rules Via Config Property</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The following config property keys have been renamed (the old keys are no longer valid and must be renamed accordingly):</p>
-     </div>
-     <table class="tableblock frame-all grid-all spread">
-      <caption class="title">
-       Table 1. Config Property Renames
-      </caption>
-      <colgroup>
-       <col style="width: 50%;">
-       <col style="width: 50%;">
-      </colgroup>
-      <thead>
-       <tr>
-        <th class="tableblock halign-left valign-top">Old Key</th>
-        <th class="tableblock halign-left valign-top">New Key</th>
-       </tr>
-      </thead>
-      <tbody>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.anonymous.enabled</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.anonymousEnabled</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.enabled</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieEnabled</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.maxAge</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieMaxAge</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.name</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieName</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookie.session.validate.secure</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.cookieSessionValidateSecure</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.credentials.plaintext</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.credentialsPlaintext</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.token.ttl</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.tokenTtl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.server.url</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.backendUrl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>session.jobCompletionDelayOnSessionShutdown</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.jobCompletionDelayOnSessionShutdown</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.memory</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.memoryPolicy</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>notification.user.authenticator</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.notificationSubject</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.testing.client.ClientSessionProviderWithCache#expiration</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.testingSessionTtl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>user.area</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.userArea</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationService#maxMessages</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.chunkSize</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationService#blockingTimeout</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.maxNotificationBlockingTimeOut</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationNodeQueue#capacity</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.nodeQueueCapacity</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationRegistry#m_queueExpireTime</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clientnotification.notificationQueueExpireTime</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.clustersync.ClusterSynchronizationService#user</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.clustersync.user</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.beans.createTunnelToServerBeans</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.createTunnelToServerBeans</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.csp.enabled</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.cspEnabled</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.csp.directive</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.cspDirective</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.dev.mode</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.devMode</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.external.base.url</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.externalBaseUrl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.healthcheck.remoteUrls</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.healthCheckRemoteUrls</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_connection_time_to_live</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.connectionTtl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.ignore_proxy</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.ignoreProxyPatterns</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_keep_alive</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.keepAlive</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_max_connections_per_route</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.maxConnectionsPerRoute</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_max_connections_total</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.maxConnectionsTotal</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.proxy</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.proxyPatterns</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.apache_retry_post</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.retryPost</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.transport_factory</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.transportFactory</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#host</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.host</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#mailbox</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.mailbox</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#password</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.password</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#port</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.port</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#sslProtocols</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.sslProtocols</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService#userName</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.imap.username</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jandex.rebuild</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jandex.rebuild</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.connectTimeout</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.connectTimeout</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portCache.corePoolSize</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portCache.corePoolSize</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portCache.enabled</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portCache.enabled</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portCache.ttl</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portCache.ttl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.portPool.enabled</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.portPoolEnabled</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.consumer.readTimeout</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.consumer.readTimeout</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.implementor</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.implementor</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.loghandler.debug</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.loghandlerDebug</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.provider.authentication.basic.realm</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.authentication.basicRealm</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.provider.user.authenticator</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.user.authenticator</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>jaxws.provider.user.handler</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.user.handler</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.requestreply.cancellation.topic</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.requestreply.cancellationTopic</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.node.id</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.nodeId</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.permission.level.check.cache.ttl</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.permissionLevelCacheTtl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.file.RemoteFileService#rootPath</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.remotefileRootPath</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.session.ServerSessionProviderWithCache#expiration</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.serverSessionTtl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.serviceTunnel.compress</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.compress</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.servicetunnel.apache_max_connections_per_route</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.maxConnectionsPerRoute</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.servicetunnel.apache_max_connections_total</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.maxConnectionsTotal</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.servicetunnel.targetUrl</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.servicetunnel.targetUrl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#debugReceiverEmail</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.debugReceiverEmail</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#defaultFromEmail</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.defaultFromEmail</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#host</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.host</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#password</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.password</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#port</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.port</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#sslProtocols</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.sslProtocols</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#subjectPrefix</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.subjectPrefix</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#useAuthentication</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.useAuth</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#username</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.username</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService#useSmtps</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.useSsl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#directJdbcConnection</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.directJdbcConnection</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcDriverName</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverName</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcDriverUnload</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverUnload</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcMappingName</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.mappingName</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcPoolConnectionBusyTimeout</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionBusyTimeout</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcPoolConnectionLifetime</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionIdleTimeout</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcPoolSize</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.size</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcProperties</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.properties</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jdbcStatementCacheSize</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.statementCacheSize</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiInitialContextFactory</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.initialContextFactory</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiName</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.name</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiProviderUrl</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.providerUrl</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#jndiUrlPkgPrefixes</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.urlPkgPrefixes</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#password</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.password</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#transactionMemberId</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.transactionMemberId</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.server.services.common.jdbc.AbstractSqlService#username</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.username</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.text.providers.show.keys</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.texts.showKeys</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.background.polling.interval</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.backgroundPollingMaxWaitTime</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.max.user.idle.time</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.maxUserIdleTime</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.model.jobs.await.timeout</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.modelJobTimeout</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionstore.housekeepingDelay</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingDelay</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionStore.maxWaitForAllShutdown</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.maxWaitForAllShutdown</code></p></td>
-       </tr>
-       <tr>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
-        <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
-       </tr>
-      </tbody>
-     </table>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="default-values-validation"><a class="anchor" href="#default-values-validation"></a>Default Values Validation</h2>
-    <div class="sectionbody">
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-config-property-scout-cspdirective"><a class="anchor" href="#new-config-property-scout-cspdirective"></a>New Config Property scout.cspDirective</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The new property <code>scout.cspDirective</code> makes subclassing and replacing the <code>ContentSecurityPolicy</code> class obsolete as you can configure all CSP settings with this property now. An example from the Scout Widgets application:</p>
+      <p>The new config property <code>scout.cspDirective</code> makes subclassing and replacing the <code>ContentSecurityPolicy</code> class obsolete as you can configure all CSP settings with this property now. An example from the Scout Widgets application:</p>
      </div>
      <div class="listingblock">
       <div class="content">
@@ -1246,7 +1294,7 @@ table.CodeRay td.code>pre{padding:0}
       </div>
      </div>
      <div class="paragraph">
-      <p>This class was deleted and replaced by a config property in config.properties:</p>
+      <p>This class was deleted and replaced by a config property in <em>config.properties</em>:</p>
      </div>
      <div class="listingblock">
       <div class="content">
@@ -1260,7 +1308,10 @@ scout.cspDirective[img-src]=*</code></pre>
     <h2 id="iuiservletrequesthandler"><a class="anchor" href="#iuiservletrequesthandler"></a>IUiServletRequestHandler</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The methods <code>handleGet</code> and <code>handlePost</code> on <code>IUiServletRequestHandler</code> were replaced by the single method <code>handle</code>. This new method is called for all HTTP methods. To retrieve the HTTP method, call <code>getMethod</code> on <code>HttpServletRequest</code>. When using <code>AbstractUiServletRequestHandler</code> no migration should be required because <code>AbstractUiServletRequestHandler</code> delegates to the Java methods for the common HTTP methods <code>handleGet</code>, <code>handlePost</code>, <code>handlePut</code> and <code>handleDelete</code>.</p>
+      <p>The methods <code>handleGet</code> and <code>handlePost</code> on <code>IUiServletRequestHandler</code> were replaced by the single method <code>handle</code>. This new method is called for all HTTP methods.</p>
+     </div>
+     <div class="paragraph">
+      <p>To retrieve the HTTP method, call <code>getMethod</code> on <code>HttpServletRequest</code>. When using <code>AbstractUiServletRequestHandler</code> no migration should be required because <code>AbstractUiServletRequestHandler</code> delegates to the Java methods for the common HTTP methods <code>handleGet</code>, <code>handlePost</code>, <code>handlePut</code> and <code>handleDelete</code>.</p>
      </div>
      <div class="paragraph">
       <p>Methods <code>proxyGet</code> and <code>proxyPost</code> on <code>HttpProxy</code> are replaced by the common method <code>proxy</code>.</p>
@@ -1271,9 +1322,9 @@ scout.cspDirective[img-src]=*</code></pre>
     <h2 id="api-changes-javascript"><a class="anchor" href="#api-changes-javascript"></a>API Changes (JavaScript)</h2>
     <div class="sectionbody">
      <div class="sect2">
-      <h3 id="rename-of-less-variables"><a class="anchor" href="#rename-of-less-variables"></a>Rename of Less Variables</h3>
+      <h3 id="rename-of-less-variables"><a class="anchor" href="#rename-of-less-variables"></a>Rename of LESS Variables</h3>
       <div class="paragraph">
-       <p>If you created a custom theme, you might have to adjust some less variables.</p>
+       <p>If you created a custom theme, you might have to adjust some LESS variables.</p>
       </div>
       <div class="ulist">
        <ul>
@@ -1298,13 +1349,64 @@ scout.cspDirective[img-src]=*</code></pre>
        </ul>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="automatic-preloading-of-web-fonts"><a class="anchor" href="#automatic-preloading-of-web-fonts"></a>Automatic Preloading of Web Fonts</h3>
+      <div class="paragraph">
+       <p>Scout can now detect the Web Fonts (*.woff files) to preload automatically. It&#x2019;s therefore no longer necessary to list the font names manually in the boostrap argument of <code>scout.App</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em></p>
+      </div>
+      <div class="paragraph">
+       <p>Remove the <code>fonts</code> property from the bootstrap parameter object passed to the <em>init()</em> function of your Scout app.</p>
+      </div>
+      <div class="paragraph">
+       <p>For example, the default <em>index.js</em> file generated by the Scout "helloworld" archetype looks like this:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span>(document).ready(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> app = <span class="keyword">new</span> scout.RemoteApp();
+  app.init({
+    <span class="key">bootstrap</span>: {
+      <span class="key">fonts</span>: [<span class="string"><span class="delimiter">'</span><span class="content">scoutIcons</span><span class="delimiter">'</span></span>] <span class="comment">// &lt;-- this property is no longer required</span>
+    }
+  });
+});</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>If no other init options remain, the file can be simplified to:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span>(document).ready(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> app = <span class="keyword">new</span> scout.RemoteApp();
+  app.init();
+});</code></pre>
+       </div>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> To find all files that need migration, search for the text <code>bootstrap: {</code> in all <em>*.js</em> files in your workspace. The files are called <em>index.js</em> by default and are usually located at <em>your.project.ui.html/src/main/resources/WebContent/res</em>. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="paragraph">
+       <p>This migration is recommended but optional. Listing all fonts to preload manually still works. To disable font preloading entirely, set the <em>fonts</em> bootstrap property to an empty array <code>[]</code>.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
     <h2 id="other-changes"><a class="anchor" href="#other-changes"></a>Other Changes</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>N/A</p>
+      <p>&#x2014;</p>
      </div>
      <div class="admonitionblock tip">
       <table>

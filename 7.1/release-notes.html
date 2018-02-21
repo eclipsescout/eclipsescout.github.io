@@ -546,21 +546,22 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#default-value">Default value</a></li>
        <li><a href="#validation">Validation</a></li>
       </ul> </li>
-     <li><a href="#groupbox-enhancements">GroupBox enhancements</a>
+     <li><a href="#groupbox-enhancements">GroupBox Enhancements</a>
       <ul class="sectlevel2">
        <li><a href="#layout-configuration">Layout Configuration</a></li>
+       <li><a href="#sec-gb-sublabel">Sublabel</a></li>
       </ul> </li>
      <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
+     <li><a href="#widget-js-new-argument-for-clone">Widget.js: New Argument for clone()</a></li>
      <li><a href="#new-widget-tiles">New Widget 'Tiles'</a></li>
      <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
-     <li><a href="#menu-menubar-enhancements">Menu, Menubar enhancements</a></li>
-     <li><a href="#tabbox-enhancements">Tabbox enhancements</a></li>
-     <li><a href="#sec-gb-enhancements">GroupBox enhancements</a></li>
-     <li><a href="#js-widget-clone">JS Widget clone</a></li>
-     <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop splitter position remembered across sessions</a></li>
-     <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: support for SVG images and image URLs</a></li>
-     <li><a href="#dynamic-fields">Dynamic fields</a></li>
+     <li><a href="#menu-menubar-enhancements">Menu, Menubar Enhancements</a></li>
+     <li><a href="#tabbox-enhancements">Tabbox Enhancements</a></li>
+     <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop Splitter Position Remembered Across sessions</a></li>
+     <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: Support for SVG Images and Image URLs</a></li>
+     <li><a href="#dynamic-fields">Dynamic Fields</a></li>
      <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
+     <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
     </ul>
    </div>
   </div>
@@ -595,7 +596,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>The following changes were made after the initial 7.1 release (Eclipse Photon release). The following notes relate to a <em>service release</em>.</p>
       </div>
       <div class="sect3">
-       <h4 id="photon-1-7-1-100-release-expected-on-september-2018"><a class="anchor" href="#photon-1-7-1-100-release-expected-on-september-2018"></a>Photon.1 (7.1.100) Release expected on September, 2018</h4>
+       <h4 id="photon-1-7-1-100-release-expected-on-september-2018"><a class="anchor" href="#photon-1-7-1-100-release-expected-on-september-2018"></a>Photon.1 (7.1.100) Release Expected on September, 2018</h4>
        <div class="paragraph">
         <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
        </div>
@@ -661,7 +662,7 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="java-8-required"><a class="anchor" href="#java-8-required"></a>Java 8 required</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout 7.1, a Java 8 runtime is required.</p>
+      <p>The required Java Runtime Environment (JRE) to run an Eclipse Scout application has changed: Starting with Eclipse Scout 7.1, a <strong>Java 8 runtime is required</strong>.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
@@ -722,24 +723,55 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="groupbox-enhancements"><a class="anchor" href="#groupbox-enhancements"></a>GroupBox enhancements</h2>
+    <h2 id="groupbox-enhancements"><a class="anchor" href="#groupbox-enhancements"></a>GroupBox Enhancements</h2>
     <div class="sectionbody">
      <div class="sect2">
       <h3 id="layout-configuration"><a class="anchor" href="#layout-configuration"></a>Layout Configuration</h3>
       <div class="paragraph">
        <p>It is now possible to adjust the parameters of how the group box will be layouted. The following parameters may be set:</p>
       </div>
-      <div class="ulist">
-       <ul>
-        <li> <p>hgap: the horizontal gap in pixels to use between two logical grid columns</p> </li>
-        <li> <p>vgap: the vertical gap in pixels to use between two logical grid rows</p> </li>
-        <li> <p>columnWidth: the width in pixels to use for a grid column</p> </li>
-        <li> <p>rowHeight: the height in pixels to use for a grid row</p> </li>
-        <li> <p>minWidth: the minimum width of the group box. If this width is &gt; 0 a horizontal scrollbar is shown when the group box gets smaller than this value.</p> </li>
-       </ul>
+      <div class="dlist">
+       <dl>
+        <dt class="hdlist1">
+         hgap
+        </dt>
+        <dd>
+         <p>the horizontal gap in pixels to use between two logical grid columns</p>
+        </dd>
+        <dt class="hdlist1">
+         vgap
+        </dt>
+        <dd>
+         <p>the vertical gap in pixels to use between two logical grid rows</p>
+        </dd>
+        <dt class="hdlist1">
+         columnWidth
+        </dt>
+        <dd>
+         <p>the width in pixels to use for a grid column</p>
+        </dd>
+        <dt class="hdlist1">
+         rowHeight
+        </dt>
+        <dd>
+         <p>the height in pixels to use for a grid row</p>
+        </dd>
+        <dt class="hdlist1">
+         minWidth
+        </dt>
+        <dd>
+         <p>the minimum width of the group box. If this width is &gt; 0 a horizontal scrollbar is shown when the group box gets smaller than this value.</p>
+        </dd>
+       </dl>
       </div>
       <div class="paragraph">
-       <p>These values may be set using <code>getConfiguredBodyLayoutConfig</code>.</p>
+       <p>These values may be set using <code>getConfiguredBodyLayoutConfig()</code>.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="sec-gb-sublabel"><a class="anchor" href="#sec-gb-sublabel"></a>Sublabel</h3>
+      <div class="paragraph">
+       <p>GroupBoxes got a new property called <code>sublabel</code>. The sublabel is displayed below the title in a very small font.</p>
       </div>
      </div>
     </div>
@@ -749,6 +781,14 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>On JavaScript side, there has been a class <code>Widget.js</code> for a long time now. With this release the counterpart <code>Widget.java</code> has been added. This gives all existing widgets like <code>FormField</code>, <code>Form</code>, <code>MessageBox</code>, <code>Menu</code> etc. a new common base class. It also helps creating widgets which aren&#x2019;t necessarily form fields.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="widget-js-new-argument-for-clone"><a class="anchor" href="#widget-js-new-argument-for-clone"></a>Widget.js: New Argument for clone()</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <em>clone()</em> function of any widget got an <code>options</code> parameter. The options define what properties and events are synchonized between the widget and its clone.</p>
      </div>
     </div>
    </div>
@@ -806,7 +846,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="menu-menubar-enhancements"><a class="anchor" href="#menu-menubar-enhancements"></a>Menu, Menubar enhancements</h2>
+    <h2 id="menu-menubar-enhancements"><a class="anchor" href="#menu-menubar-enhancements"></a>Menu, Menubar Enhancements</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The menubar supports form field menu items (<code>FormFieldMenu</code>). On the model side extend <code>AbstractFormFieldMenu</code> with a form field as an inner class to use a form field menu in any menu supporting environment.</p>
@@ -825,12 +865,12 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="tabbox-enhancements"><a class="anchor" href="#tabbox-enhancements"></a>Tabbox enhancements</h2>
+    <h2 id="tabbox-enhancements"><a class="anchor" href="#tabbox-enhancements"></a>Tabbox Enhancements</h2>
     <div class="sectionbody">
      <div class="ulist">
       <ul>
        <li> <p>The menubar of a tabbox considers the menu alignments <em>left</em> or <em>right</em>. Menus in the menubar will be moved to an ellisis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is first all menus before the tabs will be collapsed from right to left.</p> </li>
-       <li> <p>TabItems got a <code>sublabel</code> property with is displayed in a very small font below the title (see also <a href="#sec-gb-enhancements"><em>GroupBox enhancements</em></a>).</p> </li>
+       <li> <p>TabItems got a <code>sublabel</code> property with is displayed in a very small font below the title (see also <a href="#sec-gb-sublabel">Sublabel</a>).</p> </li>
        <li> <p>The marker of the selected tab is now animated and follows the user or model selection.</p> </li>
        <li> <p>Several bugfixes of pixel issues due to zoom levels.</p> </li>
       </ul>
@@ -838,23 +878,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="sec-gb-enhancements"><a class="anchor" href="#sec-gb-enhancements"></a>GroupBox enhancements</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>GroupBoxes got a new property called <code>sublabel</code>. The sublabel is displayed below the title in a very small font.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="js-widget-clone"><a class="anchor" href="#js-widget-clone"></a>JS Widget clone</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The clone function of any widget got an <code>options</code> parameter. The options define what properties and events are synchonized between the widget and its clone.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="desktop-splitter-position-remembered-across-sessions"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions"></a>Desktop splitter position remembered across sessions</h2>
+    <h2 id="desktop-splitter-position-remembered-across-sessions"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions"></a>Desktop Splitter Position Remembered Across sessions</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The position of the desktop splitter position (between the navigation and the bench) is now persisted across sessions, i.e. the previous setting will be restored even after you closed your browser. The position is stored in the HTML 5 <em>local storage</em> provided by the local browser. It is therefore a device-specific setting, which is especially useful when accessing the same application through screens with different resolutions.</p>
@@ -865,7 +889,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="imagefield-support-for-svg-images-and-image-urls"><a class="anchor" href="#imagefield-support-for-svg-images-and-image-urls"></a>ImageField: support for SVG images and image URLs</h2>
+    <h2 id="imagefield-support-for-svg-images-and-image-urls"><a class="anchor" href="#imagefield-support-for-svg-images-and-image-urls"></a>ImageField: Support for SVG Images and Image URLs</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>It&#x2019;s now possible to use SVG images in the same way as bitmap images. Simply put the .svg file in the <code>/icons</code> folder of the client module and reference the SVG image in any widget that supports the <code>iconId</code> property. Example:</p>
@@ -883,15 +907,15 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="olist arabic">
       <ol class="arabic">
-       <li> <p>image (Binary resource)</p> </li>
-       <li> <p>imageUrl</p> </li>
-       <li> <p>imageId</p> </li>
+       <li> <p><em>image</em> (Binary resource)</p> </li>
+       <li> <p><em>imageUrl</em></p> </li>
+       <li> <p><em>imageId</em></p> </li>
       </ol>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="dynamic-fields"><a class="anchor" href="#dynamic-fields"></a>Dynamic fields</h2>
+    <h2 id="dynamic-fields"><a class="anchor" href="#dynamic-fields"></a>Dynamic Fields</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>It is now possible to add and remove fields dynamically also when a form is already started. This feature is supported for <code>GroupBoxes</code> and <code>TabBoxes</code>.</p>
@@ -932,6 +956,14 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>UI Servlet request handler now supports all HTTP methods and not only GET and POST. When using <code>AbstractUiServletRequestHandler</code> no migration should be required, see migration guide for further information.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="automatic-preloading-of-web-fonts"><a class="anchor" href="#automatic-preloading-of-web-fonts"></a>Automatic Preloading of Web Fonts</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>To prevent incorrect measurements or the so-called "FOUT effect" (Flash Of Unstyled Text), Scout tries to preload all necessary web font files (*.woff) before rendering the application. To make it easier for projects to add theme-dependent fonts, the font preloader has been improved. The list of fonts to preload is now detected automatically by inspecting the document&#x2019;s style sheet (<em>@font-face</em> rules). It&#x2019;s no longer necessary to manually list all fonts in the bootstrap argument of <code>scout.App</code> (see migration guide).</p>
      </div>
      <div class="admonitionblock tip">
       <table>
