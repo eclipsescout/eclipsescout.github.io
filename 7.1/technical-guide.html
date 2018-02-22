@@ -1287,7 +1287,7 @@ BeanClass beanOrNull = BEANS.opt(BeanClass.class);</code></pre>
         <p>Because the property classes are managed by the bean manager, you can use all the mechanisms to change the behavior (<code>@Replace</code> in particular).</p>
        </div>
        <div class="paragraph">
-        <p><a href="#lst-PropertyConstant">Listing 10</a> demonstrates how you can use the replace annotation to change the existing <code>ApplicationNameProperty</code> class. The value is no longer fetched via the config mechanism, because the <code>getValue(String)</code> method is overriden. In this case a fixed value is returned.</p>
+        <p><a href="#lst-PropertyConstant">Listing 10</a> demonstrates how you can use the replace annotation to change the existing <code>ApplicationNameProperty</code> class. The value is no longer fetched via the config mechanism, because the <code>getValue(String)</code> method is overridden. In this case a fixed value is returned.</p>
        </div>
        <div id="lst-PropertyConstant" class="listingblock">
         <div class="title">
@@ -1307,7 +1307,7 @@ BeanClass beanOrNull = BEANS.opt(BeanClass.class);</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>The next example presented in <a href="#lst-PropertyRedirection">Listing 11</a> uses the same idea. In this case, the <code>getKey()</code> method is overriden to read the value from an other key as demonstrated is the <a href="#lst-PropertyRedirectionConfig">Listing 12</a>.</p>
+        <p>The next example presented in <a href="#lst-PropertyRedirection">Listing 11</a> uses the same idea. In this case, the <code>getKey()</code> method is overridden to read the value from an other key as demonstrated is the <a href="#lst-PropertyRedirectionConfig">Listing 12</a>.</p>
        </div>
        <div id="lst-PropertyRedirection" class="listingblock">
         <div class="title">

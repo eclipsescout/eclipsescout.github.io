@@ -550,6 +550,10 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#gzipservletfilter">GzipServletFilter</a></li>
        <li><a href="#httpcachecontrol">HttpCacheControl</a></li>
        <li><a href="#httpproxy">HttpProxy</a></li>
+      </ul> </li>
+     <li><a href="#replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor">Replacement for IActionVisitor, ITreeVisitor, IFormFieldVisitor</a></li>
+     <li><a href="#new-convenience-methods-for-setmandatory-setstatusvisible-setfieldstyle-setdisabledstyle-on-iformfield">New convenience methods for setMandatory, setStatusVisible, setFieldStyle, setDisabledStyle on IFormField</a>
+      <ul class="sectlevel2">
        <li><a href="#config-properties">Config Properties</a></li>
       </ul> </li>
      <li><a href="#customizing-csp-rules-via-config-property">Customizing CSP Rules Via Config Property</a></li>
@@ -672,6 +676,10 @@ table.CodeRay td.code>pre{padding:0}
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.platform.util.concurrent.IBiFunction</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.BiFunction</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.client.ui.action.IActionFilter</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Predicate&lt;IAction&gt;</code></p></td>
         </tr>
        </tbody>
       </table>
@@ -813,7 +821,16 @@ table.CodeRay td.code>pre{padding:0}
        <p>But: there may be cases which require <code>init()</code> to be called multiple times, like reseting a search form. For such cases, <code>reinit()</code> has to be used from now on. Also, after the widget is disposed, <code>init()</code> may be called again. So remember: <code>execInit</code> may be called more than once in some circumstances. This is existing behavior!</p>
       </div>
       <div class="paragraph">
-       <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>postInitConfig</code>, <code>init</code> and <code>dispose</code>.</p>
+       <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>init</code> and <code>dispose</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>These new methods (<code>init()</code>, <code>dispose()</code> and <code>reinit()</code>) handle the whole widget tree including all child widgets recursively. Child items that need initialization and are NO widgets must be initialized explicitly as it is already now. All children that are widgets must NOT be initialized because this is done automatically by the AbstractWidget implementation. To modify that behavior use the methods <code>initChildren()</code> or <code>disposeChildren()</code> (e.g. if you want to exclude a child widget from automatically getting initialized). This also means that the methods <code>ActionUtility.initActions()</code>, <code>ActionUtility.disposeActions()</code>, <code>FormUtility.postInitConfig()</code>, <code>FormUtility.initFormFields()</code> and <code>FormUtility.disposeFormFields()</code> have been removed because the corresponding method can be called directly on the instance instead. Use <code>widget.init()</code> or <code>widget.dispose()</code> instead of these utility functions.</p>
+      </div>
+      <div class="paragraph">
+       <p>Please note that the phase <code>postInit</code> has been removed for the items that supported it. The corresponding code can be moved to the end of the <code>initConfigInternal()</code> method instead.</p>
+      </div>
+      <div class="paragraph">
+       <p>We also renamed the initConfig guard of <code>IFormField</code> from <code>isInitialized</code> to <code>isInitDone</code> to make clear what initialization has been done. It has furthermore been moved to <code>AbstractWidget</code> so that individual widgets don&#x2019;t have to care about it and to use the same pattern as for <code>init</code> and <code>dispose</code>.</p>
       </div>
       <div class="paragraph">
        <p><em>Migration:</em></p>
@@ -846,6 +863,38 @@ table.CodeRay td.code>pre{padding:0}
       <div class="paragraph">
        <p>HTTP Proxy doesn&#x2019;t set cache control <code>no-chache</code> header anymore.</p>
       </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor"><a class="anchor" href="#replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor"></a>Replacement for IActionVisitor, ITreeVisitor, IFormFieldVisitor</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>A new tree visitor engine has been added to the <code>org.eclipse.scout.rt.platform.util.visitor</code> package. It contains classes to depth-first or breadth-first traverse any tree data structures. Use the class <code>org.eclipse.scout.rt.platform.util.visitor.TreeTraversals</code> as entry point.</p>
+     </div>
+     <div class="paragraph">
+      <p>This new visitors can be used on any widget and tree node. It replaces the former IActionVisitor, ITreeVisitor and IFormFieldVisitor. The <code>org.eclipse.scout.rt.client.ui.IWidget</code> interface also declares various overloads accepting <code>java.util.function.Consumer</code>, <code>java.util.function.Function</code> and the new <code>org.eclipse.scout.rt.platform.util.visitor.IDepthFirstTreeVisitor</code> and <code>org.eclipse.scout.rt.platform.util.visitor.IBreadthFirstTreeVisitor</code>. Depending on how much control and data you need for your visitor the matching type can be used.</p>
+     </div>
+     <div class="paragraph">
+      <p>Until now only pre-order visitors have been available on these items. Therefore the migration to the new visitor takes the following steps:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><code>visitFields</code> or <code>acceptVisitor</code> method on IFormField or <code>IAction</code> have been replaced with the <code>visit</code> method on IWidget.</p> </li>
+       <li> <p>The new visitor allows to control how visiting should be continued in a more detailed level. Instead returning <code>true</code> or <code>false</code> to indicate if visiting should continue all options as defined in <code>org.eclipse.scout.rt.platform.util.visitor.TreeVisitResult</code> are available. A return value of <code>TreeVisitResult.CONTINUE</code> corresponds to <code>true</code> and a return value of <code>false</code> can be migrated to <code>TreeVisitResult.TERMINATE</code>.</p> </li>
+       <li> <p>If using the <code>IDepthFirstTreeVisitor</code> the method <code>preVisit</code> must be overridden to have the same functionality as before. Consider also using the <code>DepthFirstTreeVisitorAdapter</code> instead of directly using the interface.</p> </li>
+       <li> <p>If the visitor should only be called for a certain type of input element and just continue visiting for all others the overloads defining a type filter can be used for widgets. Using this instanceof checks and type casts are often not necessary anymore.</p> </li>
+       <li> <p>There is a <code>org.eclipse.scout.rt.platform.util.visitor.CollectingVisitor</code> class to convert the items of a tree to a list.</p> </li>
+       <li> <p>IFormField.visitParents takes a <code>java.util.function.Predicate&lt;IFormField&gt;</code> instead of an IFormFieldVisitor.</p> </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-convenience-methods-for-setmandatory-setstatusvisible-setfieldstyle-setdisabledstyle-on-iformfield"><a class="anchor" href="#new-convenience-methods-for-setmandatory-setstatusvisible-setfieldstyle-setdisabledstyle-on-iformfield"></a>New convenience methods for setMandatory, setStatusVisible, setFieldStyle, setDisabledStyle on IFormField</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>There are new methods for setting mandatory-state, status-visibility, field-style and disabled-style that allow to specify if child form fields should be changed as well. So if you have overridden one of these methods in your code, please override the new one instead. The method now takes an additional boolean flag to indicate if children should be processed as well.</p>
      </div>
      <div class="sect2">
       <h3 id="config-properties"><a class="anchor" href="#config-properties"></a>Config Properties</h3>
