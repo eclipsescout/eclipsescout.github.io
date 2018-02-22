@@ -821,10 +821,10 @@ table.CodeRay td.code>pre{padding:0}
       <p>In order to add the <code>TileGrid</code> to a form, you can use the class <code>TileField</code> which is basically a simple <code>FormField</code> wrapping the <code>TileGrid</code>. You cannot use the <code>TileGrid</code> directly because a <code>GroupBox</code> only accepts <code>FormField</code> s.</p>
      </div>
      <div class="paragraph">
-      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tilesfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tilesfield</a>.</p>
+      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tilefield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tilefield</a>.</p>
      </div>
      <div class="paragraph">
-      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tiles" class="bare">https://scout.bsi-software.com/jswidgets/#tiles</a>.</p>
+      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tilefield" class="bare">https://scout.bsi-software.com/jswidgets/#tilefield</a>.</p>
      </div>
      <div id="img-tiles" class="imageblock">
       <div class="content">
@@ -846,10 +846,10 @@ table.CodeRay td.code>pre{padding:0}
       <p>The <code>Group</code> is a simple widget containing of a header and a body. The body may be any other widget like the new <code>TileGrid</code>. Because having tiles in an accordion is a typical use case, there is a widget called <code>TileAccordion</code> which helps creating the groups and provides some delegate methods to easily access the tiles of every group. It also takes care that selecting multiple tiles across the individual groups works as there were only one single <code>TileGrid</code>.</p>
      </div>
      <div class="paragraph">
-      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-accordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-accordionfield</a>.</p>
+      <p>A demo of the accordion may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-accordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-accordionfield</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#accordion" class="bare">https://scout.bsi-software.com/jswidgets/#accordion</a>.</p>
      </div>
      <div class="paragraph">
-      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#accordion" class="bare">https://scout.bsi-software.com/jswidgets/#accordion</a>.</p>
+      <p>A demo of the tile accordion may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tileaccordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tileaccordionfield</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tileaccordion" class="bare">https://scout.bsi-software.com/jswidgets/#tileaccordion</a>.</p>
      </div>
      <div id="img-accordion" class="imageblock">
       <div class="content">
@@ -1017,14 +1017,17 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="new-field-style"><a class="anchor" href="#new-field-style"></a>New Field Style</h3>
       <div class="paragraph">
-       <p>This release introduces a new field style called <code>alternative</code>. This is the new default style for every form field. The <code>classic</code> style is still available because it may be preferable in some circumstances, e.g. when used in a cell editor or on a form with background color like the search form. For these two cases the style is set to <code>classic</code> automatically but you can do it for your custom cases as well by setting the new property <code>FieldStyle</code>. If you want to revert your whole application to the classic style you can create an extension to <code>AbstractFormField</code> and change the default of the <code>FieldStyle</code> property.</p>
+       <p>This release introduces a new field style called <code>alternative</code>. This is the new default style for every form field. The <code>classic</code> style is still available because it may be preferable in some circumstances, e.g. when used in a cell editor or on a form with background color like the search form. For these two cases the style is set to <code>classic</code> automatically but you can do it for your custom cases as well by setting the new property <code>FieldStyle</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you want to revert your whole application to the classic style you can create an extension to <code>AbstractFormField</code> and change the default of the <code>FieldStyle</code> property. For Scout JS applications you can set the variable <code>scout.FormField.DEFAULT_FIELD_STYLE</code> to <code>scout.FormField.FieldStyle.CLASSIC</code>;</p>
       </div>
       <div id="img-form-field-alternative-style" class="imageblock">
        <div class="content">
         <img src="images/formfield_alternative.png" alt="formfield alternative">
        </div>
        <div class="title">
-        Figure 6. New alternative Field Style
+        Figure 6. New alternative field style
        </div>
       </div>
      </div>
