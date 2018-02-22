@@ -553,14 +553,30 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
      <li><a href="#widget-js-new-argument-for-clone">Widget.js: New Argument for clone()</a></li>
-     <li><a href="#new-widget-tiles">New Widget 'Tiles'</a></li>
+     <li><a href="#new-widget-tilegrid">New Widget 'TileGrid'</a></li>
      <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
-     <li><a href="#menu-menubar-enhancements">Menu, Menubar Enhancements</a></li>
-     <li><a href="#tabbox-enhancements">Tabbox Enhancements</a></li>
+     <li><a href="#menu-menubar-enhancements">Menu, Menubar Enhancements</a>
+      <ul class="sectlevel2">
+       <li><a href="#form-field-in-menu">Form Field in Menu</a></li>
+       <li><a href="#new-property-stackable">New Property 'stackable'</a></li>
+      </ul> </li>
+     <li><a href="#tabbox-enhancements">Tabbox Enhancements</a>
+      <ul class="sectlevel2">
+       <li><a href="#left-aligned-menu-items">Left Aligned Menu Items</a></li>
+       <li><a href="#collapsible-menu-items">Collapsible Menu Items</a></li>
+       <li><a href="#sublabel">Sublabel</a></li>
+       <li><a href="#animated-selection-marker">Animated Selection Marker</a></li>
+       <li><a href="#optimized-zoom-behavior">Optimized Zoom Behavior</a></li>
+      </ul> </li>
      <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop Splitter Position Remembered Across sessions</a></li>
      <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: Support for SVG Images and Image URLs</a></li>
      <li><a href="#dynamic-fields">Dynamic Fields</a></li>
-     <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
+     <li><a href="#form-fields">Form Fields</a>
+      <ul class="sectlevel2">
+       <li><a href="#new-field-style">New Field Style</a></li>
+       <li><a href="#improved-accessibility">Improved Accessibility</a></li>
+      </ul> </li>
+     <li><a href="#enhanced-iuiservletrequesthandler">Enhanced IUiServletRequestHandler</a></li>
      <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
     </ul>
    </div>
@@ -793,16 +809,16 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-widget-tiles"><a class="anchor" href="#new-widget-tiles"></a>New Widget 'Tiles'</h2>
+    <h2 id="new-widget-tilegrid"><a class="anchor" href="#new-widget-tilegrid"></a>New Widget 'TileGrid'</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The new <code>Tiles</code> widget arranges <code>Tile</code> s in a grid by using the <code>LogicalGridLayout</code>. This is the same layout as used for a <code>GroupBox</code>, so the same <code>GridData</code> object may be used to configure how the individual tiles should be arranged.</p>
+      <p>The new <code>TileGrid</code> widget arranges <code>Tile</code> s in a grid by using the <code>LogicalGridLayout</code>. This is the same layout as used for a <code>GroupBox</code>, so the same <code>GridData</code> object may be used to configure how the individual tiles should be arranged.</p>
      </div>
      <div class="paragraph">
       <p>A <code>Tile</code> directly extends <code>Widget</code> and is not much more than a <code>&lt;div&gt;</code> with the CSS class <code>tile</code>. In order to customize your tile you have to create a custom widget, which is easier than it sounds. Just create a JS class lets say <code>CustomTile.js</code> which extends from <code>Tile.js</code>, create a Java class <code>CustomTile.java</code> which extends from <code>AbstractTile.java</code> and add some glue code to link them together. See the code of the demo widgets on <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/releases/7.1.x/code/widgets/org.eclipse.scout.widgets.client/src/main/java/org/eclipse/scout/widgets/client/ui/tiles">GitHub</a> for details. You could also use existing widgets as tiles. In that case instead of extending <code>AbstractTile</code> you would extend <code>AbstractWidgetTile</code> or <code>AbstractFormFieldTile</code> and set the property <code>tileWidget</code> accordingly.</p>
      </div>
      <div class="paragraph">
-      <p>In order to add the <code>Tiles</code> to a form, you can use the class <code>TilesField</code> which is basically a simple <code>FormField</code> wrapping the <code>Tiles</code>. You cannot use the <code>Tiles</code> directly because a <code>GroupBox</code> only accepts <code>FormField</code> s.</p>
+      <p>In order to add the <code>TileGrid</code> to a form, you can use the class <code>TileField</code> which is basically a simple <code>FormField</code> wrapping the <code>TileGrid</code>. You cannot use the <code>TileGrid</code> directly because a <code>GroupBox</code> only accepts <code>FormField</code> s.</p>
      </div>
      <div class="paragraph">
       <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tilesfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tilesfield</a>.</p>
@@ -815,7 +831,7 @@ table.CodeRay td.code>pre{padding:0}
        <img src="images/tiles.png" alt="tiles">
       </div>
       <div class="title">
-       Figure 1. Tiles
+       Figure 1. TileGrid
       </div>
      </div>
     </div>
@@ -827,7 +843,7 @@ table.CodeRay td.code>pre{padding:0}
       <p>The <code>Accordion</code> displays several collapsible <code>Group</code> s. The default behavior is to collapse every other group if one group is expanded. Because that is not in any case desired, the behavior may be disabled by setting the property <code>exclusiveExpand</code> to false.</p>
      </div>
      <div class="paragraph">
-      <p>The <code>Group</code> is a simple widget containing of a header and a body. The body may be any other widget like the new <code>Tiles</code>. Because having tiles in an accordion is a typical use case, there is a widget called <code>TilesAccordion</code> which helps creating the groups and provides some delegate methods to easily access the tiles of every group.</p>
+      <p>The <code>Group</code> is a simple widget containing of a header and a body. The body may be any other widget like the new <code>TileGrid</code>. Because having tiles in an accordion is a typical use case, there is a widget called <code>TileAccordion</code> which helps creating the groups and provides some delegate methods to easily access the tiles of every group. It also takes care that selecting multiple tiles across the individual groups works as there were only one single <code>TileGrid</code>.</p>
      </div>
      <div class="paragraph">
       <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-accordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-accordionfield</a>.</p>
@@ -848,32 +864,76 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="menu-menubar-enhancements"><a class="anchor" href="#menu-menubar-enhancements"></a>Menu, Menubar Enhancements</h2>
     <div class="sectionbody">
-     <div class="paragraph">
-      <p>The menubar supports form field menu items (<code>FormFieldMenu</code>). On the model side extend <code>AbstractFormFieldMenu</code> with a form field as an inner class to use a form field menu in any menu supporting environment.</p>
-     </div>
-     <div id="img-accordion" class="imageblock">
-      <div class="content">
-       <img src="images/FormFieldMenu.png" alt="FormFieldMenu">
+     <div class="sect2">
+      <h3 id="form-field-in-menu"><a class="anchor" href="#form-field-in-menu"></a>Form Field in Menu</h3>
+      <div class="paragraph">
+       <p>The menubar now supports form field menu items (<code>FormFieldMenu</code>). On the model side extend <code>AbstractFormFieldMenu</code> with a form field as an inner class to use a form field menu in any menu supporting environment.</p>
       </div>
-      <div class="title">
-       Figure 3. Menubar with form fields
+      <div id="img-form-field-menu" class="imageblock">
+       <div class="content">
+        <img src="images/FormFieldMenu.png" alt="FormFieldMenu">
+       </div>
+       <div class="title">
+        Figure 3. Menubar with form fields
+       </div>
       </div>
      </div>
-     <div class="paragraph">
-      <p>The menu property <code>stackable</code> defines if a menu is stackable or not. A stackable menu will be moved to the ellipsis dropdown menu when there is not enough space in the menubar. The ellipsis menu is placed after the last stackabel menu in the menubar. Right and left aligned menus will be moved to a single ellipsis menu per menubar. The horizontal alignment of the ellipsis menu is the same as the last stackabel menu in the menubar.</p>
+     <div class="sect2">
+      <h3 id="new-property-stackable"><a class="anchor" href="#new-property-stackable"></a>New Property 'stackable'</h3>
+      <div class="paragraph">
+       <p>The menu property <code>stackable</code> defines if a menu is stackable or not. A stackable menu will be moved to the ellipsis dropdown menu when there is not enough space in the menubar. The ellipsis menu is placed after the last stackable menu in the menubar. Right and left aligned menus will be moved to a single ellipsis menu per menubar. The horizontal alignment of the ellipsis menu is the same as the last stackable menu in the menubar.</p>
+      </div>
      </div>
     </div>
    </div>
    <div class="sect1">
     <h2 id="tabbox-enhancements"><a class="anchor" href="#tabbox-enhancements"></a>Tabbox Enhancements</h2>
     <div class="sectionbody">
-     <div class="ulist">
-      <ul>
-       <li> <p>The menubar of a tabbox considers the menu alignments <em>left</em> or <em>right</em>. Menus in the menubar will be moved to an ellisis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is first all menus before the tabs will be collapsed from right to left.</p> </li>
-       <li> <p>TabItems got a <code>sublabel</code> property with is displayed in a very small font below the title (see also <a href="#sec-gb-sublabel">Sublabel</a>).</p> </li>
-       <li> <p>The marker of the selected tab is now animated and follows the user or model selection.</p> </li>
-       <li> <p>Several bugfixes of pixel issues due to zoom levels.</p> </li>
-      </ul>
+     <div class="sect2">
+      <h3 id="left-aligned-menu-items"><a class="anchor" href="#left-aligned-menu-items"></a>Left Aligned Menu Items</h3>
+      <div class="paragraph">
+       <p>The menubar of a tabbox now considers the menu alignments <em>left</em> and <em>right</em>. That means you can add menus directly on the right side of the last tab item (left aligned) or at the right side of the tab box header (right aligned).</p>
+      </div>
+      <div id="img-tab-box-menus" class="imageblock">
+       <div class="content">
+        <img src="images/tabbox_menu_alignment.png" alt="tabbox menu alignment">
+       </div>
+       <div class="title">
+        Figure 4. Menus in a tab box header
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="collapsible-menu-items"><a class="anchor" href="#collapsible-menu-items"></a>Collapsible Menu Items</h3>
+      <div class="paragraph">
+       <p>Menus in the menubar will be moved to an ellipsis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is as following: all menus are collapsed first before the tabs will be collapsed from right to left.</p>
+      </div>
+      <div id="img-tab-box-ellipsis" class="imageblock">
+       <div class="content">
+        <img src="images/tabbox_ellipsis.png" alt="tabbox ellipsis">
+       </div>
+       <div class="title">
+        Figure 5. Ellipsis menu for the tabs of a tab box
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="sublabel"><a class="anchor" href="#sublabel"></a>Sublabel</h3>
+      <div class="paragraph">
+       <p>TabItems got a <code>sublabel</code> property which is displayed in a very small font below the title (see also <a href="#sec-gb-sublabel">Sublabel</a>).</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="animated-selection-marker"><a class="anchor" href="#animated-selection-marker"></a>Animated Selection Marker</h3>
+      <div class="paragraph">
+       <p>The marker of the selected tab is now animated and follows the user or model selection.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="optimized-zoom-behavior"><a class="anchor" href="#optimized-zoom-behavior"></a>Optimized Zoom Behavior</h3>
+      <div class="paragraph">
+       <p>Several bugfixes of pixel issues due to zoom levels.</p>
+      </div>
      </div>
     </div>
    </div>
@@ -930,7 +990,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul>
        <li> <p>TabBox.js <code>insertTabItem</code>, <code>deleteTabItem</code>, <code>setTabItems</code></p> </li>
        <li> <p>GroupBox.js <code>setFields</code>, <code>insertField</code>, <code>insertFieldBefore</code>, <code>deleteField</code></p> </li>
-       <li> <p>ICompositeField.java <code>setFields</code> and the already existing <code>addField</code>, <code>removeField</code> methods which does not throw anymore an exception when a form is already initialized.</p> </li>
+       <li> <p>ICompositeField.java <code>setFields</code> and the already existing <code>addField</code>, <code>removeField</code> methods which don&#x2019;t throw an exception anymore when a form is already initialized.</p> </li>
       </ul>
      </div>
      <div class="admonitionblock note">
@@ -952,7 +1012,35 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="iuiservletrequesthandler"><a class="anchor" href="#iuiservletrequesthandler"></a>IUiServletRequestHandler</h2>
+    <h2 id="form-fields"><a class="anchor" href="#form-fields"></a>Form Fields</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="new-field-style"><a class="anchor" href="#new-field-style"></a>New Field Style</h3>
+      <div class="paragraph">
+       <p>This release introduces a new field style called <code>alternative</code>. This is the new default style for every form field. The <code>classic</code> style is still available because it may be preferable in some circumstances, e.g. when used in a cell editor or on a form with background color like the search form. For these two cases the style is set to <code>classic</code> automatically but you can do it for your custom cases as well by setting the new property <code>FieldStyle</code>. If you want to revert your whole application to the classic style you can create an extension to <code>AbstractFormField</code> and change the default of the <code>FieldStyle</code> property.</p>
+      </div>
+      <div id="img-form-field-alternative-style" class="imageblock">
+       <div class="content">
+        <img src="images/formfield_alternative.png" alt="formfield alternative">
+       </div>
+       <div class="title">
+        Figure 6. New alternative Field Style
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="improved-accessibility"><a class="anchor" href="#improved-accessibility"></a>Improved Accessibility</h3>
+      <div class="paragraph">
+       <p>The label and the input are now linked by using <code>aria-labelledby</code>. This allows screen readers to read the label if an input is focused.</p>
+      </div>
+      <div class="paragraph">
+       <p>Furthermore, clicking the label will now activate the field. This is especially helpful on mobile devices when the new alternative style is active, because the field boundaries are not obvious anymore.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="enhanced-iuiservletrequesthandler"><a class="anchor" href="#enhanced-iuiservletrequesthandler"></a>Enhanced IUiServletRequestHandler</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>UI Servlet request handler now supports all HTTP methods and not only GET and POST. When using <code>AbstractUiServletRequestHandler</code> no migration should be required, see migration guide for further information.</p>
