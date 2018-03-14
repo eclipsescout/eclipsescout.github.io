@@ -562,6 +562,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
        <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
+       <li><a href="#radio-button-group">Radio Button Group</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a></li>
     </ul>
@@ -1447,6 +1448,15 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
       <div class="paragraph">
        <p>This migration is recommended but optional. Listing all fonts to preload manually still works. To disable font preloading entirely, set the <em>fonts</em> bootstrap property to an empty array <code>[]</code>.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="radio-button-group"><a class="anchor" href="#radio-button-group"></a>Radio Button Group</h3>
+      <div class="ulist">
+       <ul>
+        <li> <p>The property <code>formFields</code> has been renamed to <code>fields</code> to be consistent with the Java implementation and with other composites like <code>GroupBox</code>.</p> </li>
+        <li> <p>The function <code>selectButton</code> now selects the button even if it is disabled. Only the user must not select disabled buttons but the developer should still be able to do it. If you use this function, you may have to insert a check for the enabled state.</p> </li>
+       </ul>
       </div>
      </div>
     </div>
