@@ -539,8 +539,8 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#api-changes-java">API Changes (Java)</a>
       <ul class="sectlevel2">
-       <li><a href="#calendarcomponent">CalendarComponent</a></li>
        <li><a href="#java-8-required">Java 8 Required</a></li>
+       <li><a href="#calendarcomponent">CalendarComponent</a></li>
        <li><a href="#removed-constants-methods-from-clientuipreferences">Removed Constants/Methods From ClientUIPreferences</a></li>
        <li><a href="#removed-property-focusable-from-iformfield-abstractformfield">Removed Property "focusable" From IFormField, AbstractFormField</a></li>
        <li><a href="#removal-of-old-smartfield-renaming-of-smartfield2-back-to-smartfield">Removal of Old "SmartField", Renaming of "SmartField2" Back to "SmartField"</a></li>
@@ -550,14 +550,14 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#gzipservletfilter">GzipServletFilter</a></li>
        <li><a href="#httpcachecontrol">HttpCacheControl</a></li>
        <li><a href="#httpproxy">HttpProxy</a></li>
-      </ul> </li>
-     <li><a href="#replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor">Replacement for IActionVisitor, ITreeVisitor, IFormFieldVisitor</a></li>
-     <li><a href="#new-convenience-methods-for-setmandatory-setstatusvisible-setfieldstyle-setdisabledstyle-on-iformfield">New convenience methods for setMandatory, setStatusVisible, setFieldStyle, setDisabledStyle on IFormField</a>
-      <ul class="sectlevel2">
+       <li><a href="#replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor">Replacement for IActionVisitor, ITreeVisitor, IFormFieldVisitor</a></li>
+       <li><a href="#new-convenience-methods-on-iformfield">New Convenience Methods on IFormField</a></li>
        <li><a href="#config-properties">Config Properties</a></li>
+       <li><a href="#customizing-csp-rules-via-config-property">Customizing CSP Rules Via Config Property</a></li>
+       <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
+       <li><a href="#table-remove-obsolete-populated-event-and-methods">Table: Remove Obsolete "POPULATED" Event and Methods</a></li>
+       <li><a href="#pagefield-status-of-page-table-visible-by-default">PageField: Status of Page Table Visible By Default</a></li>
       </ul> </li>
-     <li><a href="#customizing-csp-rules-via-config-property">Customizing CSP Rules Via Config Property</a></li>
-     <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
        <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
@@ -587,11 +587,6 @@ table.CodeRay td.code>pre{padding:0}
        </tbody>
       </table>
      </div>
-     <div class="ulist">
-      <ul>
-       <li> <p><a href="#Removed property <code>focusable</code> from IFormField">AbstractFormField</a></p> </li>
-      </ul>
-     </div>
      <div class="sect2">
       <h3 id="service-release-migration"><a class="anchor" href="#service-release-migration"></a>Service Release Migration</h3>
       <div class="paragraph">
@@ -609,15 +604,6 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="api-changes-java"><a class="anchor" href="#api-changes-java"></a>API Changes (Java)</h2>
     <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="calendarcomponent"><a class="anchor" href="#calendarcomponent"></a>CalendarComponent</h3>
-      <div class="paragraph">
-       <p>Removed deprecated method <code>Date[] getCoveredDays()</code> on <code>org.eclipse.scout.rt.client.ui.basic.calendar.CalendarComponent</code>.</p>
-      </div>
-      <div class="paragraph">
-       <p><em>Migration:</em> Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
-      </div>
-     </div>
      <div class="sect2">
       <h3 id="java-8-required"><a class="anchor" href="#java-8-required"></a>Java 8 Required</h3>
       <div class="paragraph">
@@ -686,6 +672,15 @@ table.CodeRay td.code>pre{padding:0}
         </tr>
        </tbody>
       </table>
+     </div>
+     <div class="sect2">
+      <h3 id="calendarcomponent"><a class="anchor" href="#calendarcomponent"></a>CalendarComponent</h3>
+      <div class="paragraph">
+       <p>Removed deprecated method <code>Date[] getCoveredDays()</code> on <code>org.eclipse.scout.rt.client.ui.basic.calendar.CalendarComponent</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
+      </div>
      </div>
      <div class="sect2">
       <h3 id="removed-constants-methods-from-clientuipreferences"><a class="anchor" href="#removed-constants-methods-from-clientuipreferences"></a>Removed Constants/Methods From ClientUIPreferences</h3>
@@ -867,37 +862,36 @@ table.CodeRay td.code>pre{padding:0}
        <p>HTTP Proxy doesn&#x2019;t set cache control <code>no-chache</code> header anymore.</p>
       </div>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor"><a class="anchor" href="#replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor"></a>Replacement for IActionVisitor, ITreeVisitor, IFormFieldVisitor</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>A new tree visitor engine has been added to the <code>org.eclipse.scout.rt.platform.util.visitor</code> package. It contains classes to depth-first or breadth-first traverse any tree data structures. Use the class <code>org.eclipse.scout.rt.platform.util.visitor.TreeTraversals</code> as entry point.</p>
+     <div class="sect2">
+      <h3 id="replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor"><a class="anchor" href="#replacement-for-iactionvisitor-itreevisitor-iformfieldvisitor"></a>Replacement for IActionVisitor, ITreeVisitor, IFormFieldVisitor</h3>
+      <div class="paragraph">
+       <p>A new tree visitor engine has been added to the <code>org.eclipse.scout.rt.platform.util.visitor</code> package. It contains classes to depth-first or breadth-first traverse any tree data structures. Use the class <code>org.eclipse.scout.rt.platform.util.visitor.TreeTraversals</code> as entry point.</p>
+      </div>
+      <div class="paragraph">
+       <p>This new visitors can be used on any widget and tree node. It replaces the former IActionVisitor, ITreeVisitor and IFormFieldVisitor. The <code>org.eclipse.scout.rt.client.ui.IWidget</code> interface also declares various overloads accepting <code>java.util.function.Consumer</code>, <code>java.util.function.Function</code> and the new <code>org.eclipse.scout.rt.platform.util.visitor.IDepthFirstTreeVisitor</code> and <code>org.eclipse.scout.rt.platform.util.visitor.IBreadthFirstTreeVisitor</code>. Depending on how much control and data you need for your visitor the matching type can be used.</p>
+      </div>
+      <div class="paragraph">
+       <p>Until now only pre-order visitors have been available on these items. Therefore the migration to the new visitor takes the following steps:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>visitFields</code> or <code>acceptVisitor</code> method on IFormField or <code>IAction</code> have been replaced with the <code>visit</code> method on IWidget.</p> </li>
+        <li> <p>The new visitor allows to control how visiting should be continued in a more detailed level. Instead returning <code>true</code> or <code>false</code> to indicate if visiting should continue all options as defined in <code>org.eclipse.scout.rt.platform.util.visitor.TreeVisitResult</code> are available. A return value of <code>TreeVisitResult.CONTINUE</code> corresponds to <code>true</code> and a return value of <code>false</code> can be migrated to <code>TreeVisitResult.TERMINATE</code>.</p> </li>
+        <li> <p>If using the <code>IDepthFirstTreeVisitor</code> the method <code>preVisit</code> must be overridden to have the same functionality as before. Consider also using the <code>DepthFirstTreeVisitorAdapter</code> instead of directly using the interface.</p> </li>
+        <li> <p>If the visitor should only be called for a certain type of input element and just continue visiting for all others the overloads defining a type filter can be used for widgets. Using this instanceof checks and type casts are often not necessary anymore.</p> </li>
+        <li> <p>There is a <code>org.eclipse.scout.rt.platform.util.visitor.CollectingVisitor</code> class to convert the items of a tree to a list.</p> </li>
+        <li> <p>IFormField.visitParents takes a <code>java.util.function.Predicate&lt;IFormField&gt;</code> instead of an IFormFieldVisitor.</p> </li>
+       </ul>
+      </div>
      </div>
-     <div class="paragraph">
-      <p>This new visitors can be used on any widget and tree node. It replaces the former IActionVisitor, ITreeVisitor and IFormFieldVisitor. The <code>org.eclipse.scout.rt.client.ui.IWidget</code> interface also declares various overloads accepting <code>java.util.function.Consumer</code>, <code>java.util.function.Function</code> and the new <code>org.eclipse.scout.rt.platform.util.visitor.IDepthFirstTreeVisitor</code> and <code>org.eclipse.scout.rt.platform.util.visitor.IBreadthFirstTreeVisitor</code>. Depending on how much control and data you need for your visitor the matching type can be used.</p>
-     </div>
-     <div class="paragraph">
-      <p>Until now only pre-order visitors have been available on these items. Therefore the migration to the new visitor takes the following steps:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p><code>visitFields</code> or <code>acceptVisitor</code> method on IFormField or <code>IAction</code> have been replaced with the <code>visit</code> method on IWidget.</p> </li>
-       <li> <p>The new visitor allows to control how visiting should be continued in a more detailed level. Instead returning <code>true</code> or <code>false</code> to indicate if visiting should continue all options as defined in <code>org.eclipse.scout.rt.platform.util.visitor.TreeVisitResult</code> are available. A return value of <code>TreeVisitResult.CONTINUE</code> corresponds to <code>true</code> and a return value of <code>false</code> can be migrated to <code>TreeVisitResult.TERMINATE</code>.</p> </li>
-       <li> <p>If using the <code>IDepthFirstTreeVisitor</code> the method <code>preVisit</code> must be overridden to have the same functionality as before. Consider also using the <code>DepthFirstTreeVisitorAdapter</code> instead of directly using the interface.</p> </li>
-       <li> <p>If the visitor should only be called for a certain type of input element and just continue visiting for all others the overloads defining a type filter can be used for widgets. Using this instanceof checks and type casts are often not necessary anymore.</p> </li>
-       <li> <p>There is a <code>org.eclipse.scout.rt.platform.util.visitor.CollectingVisitor</code> class to convert the items of a tree to a list.</p> </li>
-       <li> <p>IFormField.visitParents takes a <code>java.util.function.Predicate&lt;IFormField&gt;</code> instead of an IFormFieldVisitor.</p> </li>
-      </ul>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-convenience-methods-for-setmandatory-setstatusvisible-setfieldstyle-setdisabledstyle-on-iformfield"><a class="anchor" href="#new-convenience-methods-for-setmandatory-setstatusvisible-setfieldstyle-setdisabledstyle-on-iformfield"></a>New convenience methods for setMandatory, setStatusVisible, setFieldStyle, setDisabledStyle on IFormField</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>There are new methods for setting mandatory-state, status-visibility, field-style and disabled-style that allow to specify if child form fields should be changed as well. So if you have overridden one of these methods in your code, please override the new one instead. The method now takes an additional boolean flag to indicate if children should be processed as well.</p>
+     <div class="sect2">
+      <h3 id="new-convenience-methods-on-iformfield"><a class="anchor" href="#new-convenience-methods-on-iformfield"></a>New Convenience Methods on IFormField</h3>
+      <div class="paragraph">
+       <p>There are new methods for setting mandatory state (<code>setMandatory</code>), status visibility (<code>setStatusVisible</code>), field style (<code>setFieldStyle</code>) and disabled style (<code>setDisabledStyle</code>) that allow to specify if child form fields should be changed as well.</p>
+      </div>
+      <div class="paragraph">
+       <p>So if you have overridden one of these methods in your code, please override the new one instead. The method now takes an additional boolean flag to indicate if children should be processed as well.</p>
+      </div>
      </div>
      <div class="sect2">
       <h3 id="config-properties"><a class="anchor" href="#config-properties"></a>Config Properties</h3>
@@ -1324,17 +1318,14 @@ table.CodeRay td.code>pre{padding:0}
        </table>
       </div>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="customizing-csp-rules-via-config-property"><a class="anchor" href="#customizing-csp-rules-via-config-property"></a>Customizing CSP Rules Via Config Property</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The new config property <code>scout.cspDirective</code> makes subclassing and replacing the <code>ContentSecurityPolicy</code> class obsolete as you can configure all CSP settings with this property now. An example from the Scout Widgets application:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Replace</span>
+     <div class="sect2">
+      <h3 id="customizing-csp-rules-via-config-property"><a class="anchor" href="#customizing-csp-rules-via-config-property"></a>Customizing CSP Rules Via Config Property</h3>
+      <div class="paragraph">
+       <p>The new config property <code>scout.cspDirective</code> makes subclassing and replacing the <code>ContentSecurityPolicy</code> class obsolete as you can configure all CSP settings with this property now. An example from the Scout Widgets application:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Replace</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">WidgetsContentSecurityPolicy</span> <span class="directive">extends</span> ContentSecurityPolicy {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="type">void</span> initDirectives() {
@@ -1343,30 +1334,63 @@ table.CodeRay td.code>pre{padding:0}
     withImgSrc(<span class="string"><span class="delimiter">"</span><span class="content">*</span><span class="delimiter">"</span></span>);
   }
 }</code></pre>
+       </div>
       </div>
-     </div>
-     <div class="paragraph">
-      <p>This class was deleted and replaced by a config property in <em>config.properties</em>:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="text"># CSP - Demo app uses external images in html field and custom widgets -&gt; allow it
+      <div class="paragraph">
+       <p>This class was deleted and replaced by a config property in <em>config.properties</em>:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="text"># CSP - Demo app uses external images in html field and custom widgets -&gt; allow it
 scout.cspDirective[img-src]=*</code></pre>
+       </div>
       </div>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="iuiservletrequesthandler"><a class="anchor" href="#iuiservletrequesthandler"></a>IUiServletRequestHandler</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The methods <code>handleGet</code> and <code>handlePost</code> on <code>IUiServletRequestHandler</code> were replaced by the single method <code>handle</code>. This new method is called for all HTTP methods.</p>
+     <div class="sect2">
+      <h3 id="iuiservletrequesthandler"><a class="anchor" href="#iuiservletrequesthandler"></a>IUiServletRequestHandler</h3>
+      <div class="paragraph">
+       <p>The methods <code>handleGet</code> and <code>handlePost</code> on <code>IUiServletRequestHandler</code> were replaced by the single method <code>handle</code>. This new method is called for all HTTP methods.</p>
+      </div>
+      <div class="paragraph">
+       <p>To retrieve the HTTP method, call <code>getMethod</code> on <code>HttpServletRequest</code>. When using <code>AbstractUiServletRequestHandler</code> no migration should be required because <code>AbstractUiServletRequestHandler</code> delegates to the Java methods for the common HTTP methods <code>handleGet</code>, <code>handlePost</code>, <code>handlePut</code> and <code>handleDelete</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Methods <code>proxyGet</code> and <code>proxyPost</code> on <code>HttpProxy</code> are replaced by the common method <code>proxy</code>.</p>
+      </div>
      </div>
-     <div class="paragraph">
-      <p>To retrieve the HTTP method, call <code>getMethod</code> on <code>HttpServletRequest</code>. When using <code>AbstractUiServletRequestHandler</code> no migration should be required because <code>AbstractUiServletRequestHandler</code> delegates to the Java methods for the common HTTP methods <code>handleGet</code>, <code>handlePost</code>, <code>handlePut</code> and <code>handleDelete</code>.</p>
+     <div class="sect2">
+      <h3 id="table-remove-obsolete-populated-event-and-methods"><a class="anchor" href="#table-remove-obsolete-populated-event-and-methods"></a>Table: Remove Obsolete "POPULATED" Event and Methods</h3>
+      <div class="paragraph">
+       <p>We removed remnants of the long-obsolete "population" event in tables:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><span class="line-through"><code>ITable.tablePopulated()</code></span></p> </li>
+        <li> <p><span class="line-through"><code>TableEvent.TYPE_TABLE_POPULATED</code></span></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> Remove any references to the removed method or event from your code. (This should not cause any change in behavior, as the event was not fired by Scout anyways.)</p>
+      </div>
      </div>
-     <div class="paragraph">
-      <p>Methods <code>proxyGet</code> and <code>proxyPost</code> on <code>HttpProxy</code> are replaced by the common method <code>proxy</code>.</p>
+     <div class="sect2">
+      <h3 id="pagefield-status-of-page-table-visible-by-default"><a class="anchor" href="#pagefield-status-of-page-table-visible-by-default"></a>PageField: Status of Page Table Visible By Default</h3>
+      <div class="paragraph">
+       <p>The table field contained in a <em>PageField</em> used to have <code>statusVisible</code> set to <em>false</em>. This default was changed back to <em>true</em> to make it consistent with all other fields. Whether the status should be invisible can only be determined correctly by the programmer, because the PageField can not know about the status visibility in the inner forms (search form and search form).</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> To hide the status of a specific <em>PageField</em>'s table field, override <code>execInitField()</code> and set the desired status visibility:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyPageField</span> <span class="directive">extends</span> AbstractPageField&lt;MyTablePage&gt; {
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="type">void</span> execInitField() {
+    getTableField().setStatusVisible(<span class="predefined-constant">false</span>); <span class="comment">// &lt;--</span>
+  }
+}</code></pre>
+       </div>
+      </div>
      </div>
     </div>
    </div>
