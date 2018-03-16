@@ -563,6 +563,8 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
        <li><a href="#widget-js-new-argument-for-clone">Widget.js: New Argument for clone()</a></li>
        <li><a href="#widget-js-addchild-removechild-changed-to-private">Widget.js: addChild &amp; removeChild changed to private</a></li>
+       <li><a href="#formfield-visit-renamed-to-formfield-visitfields">FormField.visit renamed to FormField.visitFields</a></li>
+       <li><a href="#tree-_visitnodes-tree-visitnodes">Tree._visitNodes &amp; Tree.visitNodes</a></li>
        <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
        <li><a href="#radio-button-group">Radio Button Group</a></li>
       </ul> </li>
@@ -1435,6 +1437,21 @@ scout.cspDirective[img-src]=*</code></pre>
       <h3 id="widget-js-addchild-removechild-changed-to-private"><a class="anchor" href="#widget-js-addchild-removechild-changed-to-private"></a>Widget.js: addChild &amp; removeChild changed to private</h3>
       <div class="paragraph">
        <p>The methods <code>addChild()</code> and <code>removeChild()</code> have been renamed to <code>_addChild()</code> and <code>_removeChild()</code>. This means the methods are considered to have <code>private</code> visibility now. Use the methods <code>setParent()</code>, <code>setOwner()</code> and <code>destroy()</code> to connect or disconnect widgets. These methods will add or remove the child widget automatically.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="formfield-visit-renamed-to-formfield-visitfields"><a class="anchor" href="#formfield-visit-renamed-to-formfield-visitfields"></a>FormField.visit renamed to FormField.visitFields</h3>
+      <div class="paragraph">
+       <p>The <code>visit()</code> method on all FormFields has been renamed to <code>visitFields()</code>. This change is necessary to clarify what is visited and to distinguish between the visit methods available on widget level (e.g. <code>visitChildren()</code>).</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="tree-_visitnodes-tree-visitnodes"><a class="anchor" href="#tree-_visitnodes-tree-visitnodes"></a>Tree._visitNodes &amp; Tree.visitNodes</h3>
+      <div class="paragraph">
+       <p>The argument order of the method <code>scout.Tree.visitNodes</code> have changed from (nodes, func, parentNode) to (func, nodes, parentNode). So the func (the visitor) and the nodes to visit have changed positions.</p>
+      </div>
+      <div class="paragraph">
+       <p>The arguments of <code>scout.Tree.prototype._visitNodes</code> have changed from (nodes, func, parentNode) to (func, parentNode). So the nodes to visit must no longer be specified. Instead always the root nodes of the tree are used. Furthermore the method is public now and has therefore be renamed to <code>visitNodes()</code>.</p>
       </div>
      </div>
      <div class="sect2">
