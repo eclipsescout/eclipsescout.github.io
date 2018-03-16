@@ -561,6 +561,8 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
        <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
+       <li><a href="#widget-js-new-argument-for-clone">Widget.js: New Argument for clone()</a></li>
+       <li><a href="#widget-js-addchild-removechild-changed-to-private">Widget.js: addChild &amp; removeChild changed to private</a></li>
        <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
        <li><a href="#radio-button-group">Radio Button Group</a></li>
       </ul> </li>
@@ -753,8 +755,8 @@ table.CodeRay td.code>pre{padding:0}
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock">&#x2014;</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField2 <em>(new implementation)</em></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField <em>(new implementation)</em></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField2 (new implementation)</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">SmartField (new implementation)</p></td>
         </tr>
        </tbody>
       </table>
@@ -1400,9 +1402,21 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
      </div>
      <div class="sect2">
+      <h3 id="widget-js-new-argument-for-clone"><a class="anchor" href="#widget-js-new-argument-for-clone"></a>Widget.js: New Argument for clone()</h3>
+      <div class="paragraph">
+       <p>The <em>clone()</em> function of any widget got an <code>options</code> parameter. The options define what properties and events are synchronized between the widget and its clone.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="widget-js-addchild-removechild-changed-to-private"><a class="anchor" href="#widget-js-addchild-removechild-changed-to-private"></a>Widget.js: addChild &amp; removeChild changed to private</h3>
+      <div class="paragraph">
+       <p>The methods <code>addChild()</code> and <code>removeChild()</code> have been renamed to <code>_addChild()</code> and <code>_removeChild()</code>. This means the methods are considered to have <code>private</code> visibility now. Use the methods <code>setParent()</code>, <code>setOwner()</code> and <code>destroy()</code> to connect or disconnect widgets. These methods will add or remove the child widget automatically.</p>
+      </div>
+     </div>
+     <div class="sect2">
       <h3 id="automatic-preloading-of-web-fonts"><a class="anchor" href="#automatic-preloading-of-web-fonts"></a>Automatic Preloading of Web Fonts</h3>
       <div class="paragraph">
-       <p>Scout can now detect the Web Fonts (*.woff files) to preload automatically. It&#x2019;s therefore no longer necessary to list the font names manually in the boostrap argument of <code>scout.App</code>.</p>
+       <p>Scout can now detect the Web Fonts (*.woff files) to preload automatically. It&#x2019;s therefore no longer necessary to list the font names manually in the bootstrap argument of <code>scout.App</code>.</p>
       </div>
       <div class="paragraph">
        <p><em>Migration:</em></p>

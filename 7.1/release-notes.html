@@ -551,8 +551,8 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#layout-configuration">Layout Configuration</a></li>
        <li><a href="#sec-gb-sublabel">Sublabel</a></li>
       </ul> </li>
+     <li><a href="#traversal-engine-added">Traversal Engine Added</a></li>
      <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
-     <li><a href="#widget-js-new-argument-for-clone">Widget.js: New Argument for clone()</a></li>
      <li><a href="#new-widget-tilegrid">New Widget 'TileGrid'</a></li>
      <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
      <li><a href="#new-outline-overview">New Outline Overview</a></li>
@@ -795,18 +795,29 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="introducing-widget-java"><a class="anchor" href="#introducing-widget-java"></a>Introducing Widget.java</h2>
+    <h2 id="traversal-engine-added"><a class="anchor" href="#traversal-engine-added"></a>Traversal Engine Added</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>On JavaScript side, there has been a class <code>Widget.js</code> for a long time now. With this release the counterpart <code>Widget.java</code> has been added. This gives all existing widgets like <code>FormField</code>, <code>Form</code>, <code>MessageBox</code>, <code>Menu</code> etc. a new common base class. It also helps creating widgets which aren&#x2019;t necessarily form fields.</p>
+      <p>A tree (or graph) traversal engine has been added to the Scout Platform. The engine can traverse any tree- or graph-like structures. See the package <code>org.eclipse.scout.rt.platform.util.visitor</code> especially the class <code>org.eclipse.scout.rt.platform.util.visitor.TreeTraversals</code> as entry point.</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java">TreeTraversals.create(visitor, childrenSupplier).traverse(root);</code></pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>The <code>root</code> element can be of any type. The <code>childrenSupplier</code> is a Function that returns the child elements for a given parent. The visitor can be a <code>IBreadthFirstTreeVisitor</code> for Breadth-First visiting strategy or a <code>IDepthFirstTreeVisitor</code> for a Depth-First visiting strategy supporting pre-order and post-order traversals.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="widget-js-new-argument-for-clone"><a class="anchor" href="#widget-js-new-argument-for-clone"></a>Widget.js: New Argument for clone()</h2>
+    <h2 id="introducing-widget-java"><a class="anchor" href="#introducing-widget-java"></a>Introducing Widget.java</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The <em>clone()</em> function of any widget got an <code>options</code> parameter. The options define what properties and events are synchonized between the widget and its clone.</p>
+      <p>On JavaScript side, there has been a class <code>Widget.js</code> for a long time now. With this release the counterpart <code>Widget.java</code> has been added. This gives all existing widgets like <code>FormField</code>, <code>Form</code>, <code>MessageBox</code>, <code>Action</code> (e.g. <code>Menu</code>), <code>Tree</code>, <code>Table</code>, <code>Accordion</code>, <code>Calendar</code>, <code>Desktop</code>, <code>Tile</code>, etc. a new common base class. It also helps creating widgets which aren&#x2019;t necessarily form fields.</p>
+     </div>
+     <div class="paragraph">
+      <p>The new Widget class handles the widget lifecycle (initConfig, init, disposed) and offers methods to visit Widget hierarchies. See <code>org.eclipse.scout.rt.client.ui.IWidget</code> for more details.</p>
      </div>
     </div>
    </div>
