@@ -7732,10 +7732,10 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
          <div class="ulist">
           <ul>
            <li> <p>Mozilla Firefox &gt;= 35</p> </li>
-           <li> <p>Google Chrome &gt;= 36</p> </li>
-           <li> <p>Microsoft Internet Explorer &gt;= 9 (preferrably 10 or later, see limitations listed below)</p> </li>
+           <li> <p>Google Chrome &gt;= 40</p> </li>
+           <li> <p>Microsoft Internet Explorer 11</p> </li>
            <li> <p>Microsoft Edge &gt;= 12</p> </li>
-           <li> <p>Apple Safari &gt;= 7</p> </li>
+           <li> <p>Apple Safari &gt;= 8</p> </li>
           </ul>
          </div>
         </dd>
@@ -7769,22 +7769,6 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
         </tr>
        </thead>
        <tbody>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer 9</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Drag and drop</strong> of files from disk to the file chooser is not possible. IE9 is missing the required API (and it cannot be added with a polyfill). You can also only <strong>upload one file at a time</strong>, because the File API is missing as well.</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer 9</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>On-field labels</strong> are not visible in IE9 because it lacks support for the "placeholder" attribute.</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer 9</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Some <strong>loading animations</strong> may appear static, because IE9 does not support CSS3 animations.</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer 9</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Tables and trees with many entries tend to degrade <strong>performance</strong> in IE9.</p></td>
-        </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">If the browser is configured to enable the so-called <strong>"protected mode"</strong>, the state of a popup window cannot be determined correctly. This is noticeable when a <code>AbstractBrowserField</code> has the property <em>"show in external window"</em> set to <code>true</code>. Even though the popup window is still open, the method <code>execExternalWindowStateChanged()</code> is called immediately, telling you the window was closed (because IE reports so). There is no workaround for this problem, apart from disabling the "protected mode".</p></td>
