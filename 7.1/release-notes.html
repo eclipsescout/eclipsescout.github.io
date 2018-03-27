@@ -573,6 +573,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop Splitter Position Remembered Across sessions</a></li>
      <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: Support for SVG Images and Image URLs</a></li>
      <li><a href="#checkboxfield-add-support-for-key-strokes">CheckBoxField: Add Support for Key Strokes</a></li>
+     <li><a href="#layout-customizations-for-radio-button-group">Layout Customizations for Radio Button Group</a></li>
      <li><a href="#dynamic-fields">Dynamic Fields</a></li>
      <li><a href="#form-fields">Form Fields</a>
       <ul class="sectlevel2">
@@ -1023,6 +1024,20 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>The check box field (<code>IBooleanField</code>) got a new property called <code>keyStroke</code>. The property expects a string defining the key stroke, e.g. <code>ctrl-b</code>. When the key stroke is executed the check box value will be toggled. Other widgets like <code>Button</code>, <code>RadioButton</code> or <code>Menu</code> already support that feature in the same way.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="layout-customizations-for-radio-button-group"><a class="anchor" href="#layout-customizations-for-radio-button-group"></a>Layout Customizations for Radio Button Group</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>A new property <code>gridColumnCount</code> has been added to the radio button group. It can be used using <code>setGridColumnCount()</code>, <code>getGridColumnCount()</code> and <code>getConfiguredGridColumnCount()</code>. By default the columns are configured to be dependent on the height of the field to create columns as needed to show all radio buttons within the height available (this also corresponds to the existing behavior).</p>
+     </div>
+     <div class="paragraph">
+      <p>But it also allows to specify an exact number over how many columns radio buttons should be distributed. This is an alternative to layout the buttons using the group height and is especially useful if the number of radio buttons is unknown or dynamic. In that case the columns can be configured to e.g. 3 and the property <code>useUiHeight</code> to true allowing the group to vertically grow as needed to show all radio buttons within 3 columns. This property also corresponds to the layout possibilities of the group box.</p>
+     </div>
+     <div class="paragraph">
+      <p>The same possibilities also exist in the JavaScript only layer of Scout using the method <code>setGridColumnCount()</code>.</p>
      </div>
     </div>
    </div>

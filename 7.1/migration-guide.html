@@ -541,6 +541,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#java-8-required">Java 8 Required</a></li>
        <li><a href="#calendarcomponent">CalendarComponent</a></li>
+       <li><a href="#deprecation-of-sequencebox-equalcolumnwidths">Deprecation of SequenceBox EqualColumnWidths</a></li>
        <li><a href="#removed-constants-methods-from-clientuipreferences">Removed Constants/Methods From ClientUIPreferences</a></li>
        <li><a href="#removed-property-focusable-from-iformfield-abstractformfield">Removed Property "focusable" From IFormField, AbstractFormField</a></li>
        <li><a href="#removal-of-old-smartfield-renaming-of-smartfield2-back-to-smartfield">Removal of Old "SmartField", Renaming of "SmartField2" Back to "SmartField"</a></li>
@@ -567,6 +568,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#tree-_visitnodes-tree-visitnodes">Tree._visitNodes &amp; Tree.visitNodes</a></li>
        <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
        <li><a href="#radio-button-group">Radio Button Group</a></li>
+       <li><a href="#layout-of-fields-in-radio-button-group-and-sequence-box">Layout of fields in Radio Button Group and Sequence Box</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a></li>
     </ul>
@@ -682,6 +684,15 @@ table.CodeRay td.code>pre{padding:0}
       </div>
       <div class="paragraph">
        <p><em>Migration:</em> Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="deprecation-of-sequencebox-equalcolumnwidths"><a class="anchor" href="#deprecation-of-sequencebox-equalcolumnwidths"></a>Deprecation of SequenceBox EqualColumnWidths</h3>
+      <div class="paragraph">
+       <p>The methods <code>SequenceBox#getConfiguredEqualColumnWidths()</code>, <code>SequenceBox#isEqualColumnWidths()</code> and <code>SequenceBox#setEqualColumnWidths()</code> have been deprecated. As this property was not used by Scout since several releases it can be deleted.</p>
+      </div>
+      <div class="paragraph">
+       <p>You can search for these method names in your code to find any usages. Alternatively your IDE may mark the usage of deprecated methods (depends on settings).</p>
       </div>
      </div>
      <div class="sect2">
@@ -1512,6 +1523,15 @@ scout.cspDirective[img-src]=*</code></pre>
         <li> <p>The property <code>formFields</code> has been renamed to <code>fields</code> to be consistent with the Java implementation and with other composites like <code>GroupBox</code>.</p> </li>
         <li> <p>The function <code>selectButton</code> now selects the button even if it is disabled. Only the user must not select disabled buttons but the developer should still be able to do it. If you use this function, you may have to insert a check for the enabled state.</p> </li>
        </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="layout-of-fields-in-radio-button-group-and-sequence-box"><a class="anchor" href="#layout-of-fields-in-radio-button-group-and-sequence-box"></a>Layout of fields in Radio Button Group and Sequence Box</h3>
+      <div class="paragraph">
+       <p>Until now it was required to explicitly set grid positions for child fields of Radio Button Groups and Sequence Boxes. This was because the automatic grid layout was not yet implemented in the Scout JavaScript layer. This was no issue however if the fields have been used in connection with a Java model because then the Java layer takes care about the layout.</p>
+      </div>
+      <div class="paragraph">
+       <p>Now also pure JavaScript Scout applications have automatic layout for child fields of Radio Button Groups and Sequence Boxes. So if explicit grid positions (gridData.x, gridData.y) have been specified, it can be removed now as Scout takes care about it now (as it was in the Java layer already).</p>
       </div>
      </div>
     </div>
