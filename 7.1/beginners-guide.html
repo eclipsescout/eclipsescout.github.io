@@ -5134,6 +5134,10 @@ contacts.superuser=system</code></pre>
         <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridH() { <i class="conum" data-value="2"></i><b>(2)</b>
           <span class="keyword">return</span> <span class="integer">4</span>;
         }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">double</span> getConfiguredGridWeightY() { <i class="conum" data-value="3"></i><b>(3)</b>
+          <span class="keyword">return</span> <span class="integer">0</span>;
+        }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">NameField</span> <span class="directive">extends</span> AbstractStringField {
@@ -5142,7 +5146,7 @@ contacts.superuser=system</code></pre>
           <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">Name</span><span class="delimiter">"</span></span>);
         }
         <span class="annotation">@Override</span>
-        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredMandatory() { <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredMandatory() { <i class="conum" data-value="4"></i><b>(4)</b>
           <span class="keyword">return</span> <span class="predefined-constant">true</span>;
         }
       }
@@ -5163,7 +5167,7 @@ contacts.superuser=system</code></pre>
           <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">ContactInfo</span><span class="delimiter">"</span></span>);
         }
         <span class="annotation">@Order</span>(<span class="integer">10</span>)
-        <span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBox</span> <span class="directive">extends</span> AbstractAddressBox { <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBox</span> <span class="directive">extends</span> AbstractAddressBox { <i class="conum" data-value="5"></i><b>(5)</b>
         }
         <span class="annotation">@Order</span>(<span class="integer">20</span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">PhoneField</span> <span class="directive">extends</span> AbstractStringField {
@@ -5173,11 +5177,11 @@ contacts.superuser=system</code></pre>
           }
         }
         <span class="annotation">@Order</span>(<span class="integer">30</span>)
-        <span class="directive">public</span> <span class="type">class</span> <span class="class">EmailField</span> <span class="directive">extends</span> AbstractEmailField { <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="directive">public</span> <span class="type">class</span> <span class="class">EmailField</span> <span class="directive">extends</span> AbstractEmailField { <i class="conum" data-value="6"></i><b>(6)</b>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
-      <span class="directive">public</span> <span class="type">class</span> <span class="class">NotesBox</span> <span class="directive">extends</span> AbstractNotesBox { <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="directive">public</span> <span class="type">class</span> <span class="class">NotesBox</span> <span class="directive">extends</span> AbstractNotesBox { <i class="conum" data-value="7"></i><b>(7)</b>
       }
     }
     <span class="annotation">@Order</span>(<span class="integer">30</span>)
@@ -5203,18 +5207,22 @@ contacts.superuser=system</code></pre>
          </tr>
          <tr>
           <td><i class="conum" data-value="3"></i><b>3</b></td>
-          <td>We configure the company name field to be mandatory for an organization.</td>
+          <td>We do not allow the general box to grow or shrink vertically</td>
          </tr>
          <tr>
           <td><i class="conum" data-value="4"></i><b>4</b></td>
-          <td>As-is reuse of the address template box.</td>
+          <td>We configure the company name field to be mandatory for an organization.</td>
          </tr>
          <tr>
           <td><i class="conum" data-value="5"></i><b>5</b></td>
-          <td>As-is reuse of the email template field.</td>
+          <td>As-is reuse of the address template box.</td>
          </tr>
          <tr>
           <td><i class="conum" data-value="6"></i><b>6</b></td>
+          <td>As-is reuse of the email template field.</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="7"></i><b>7</b></td>
           <td>As-is reuse of the notes tab box.</td>
          </tr>
         </tbody>
