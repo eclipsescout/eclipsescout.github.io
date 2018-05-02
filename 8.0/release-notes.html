@@ -587,6 +587,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#refactored-eventlistenerlist">Refactored EventListenerList</a></li>
      <li><a href="#new-property-searchrequired-on-smartfields">New Property 'searchRequired' on Smartfields</a></li>
      <li><a href="#new-event-preparelookupcall-on-smartfields-and-tagfields">New Event 'prepareLookupCall' on Smartfields and TagFields</a></li>
+     <li><a href="#minimum-and-maximum-values-can-be-set-for-numberfields-in-scout-js">Minimum and maximum values can be set for NumberFields in Scout JS</a></li>
      <li><a href="#hierarchical-table-support">Hierarchical Table Support</a></li>
      <li><a href="#text-and-multi-language-support-moved-to-platform">Text and Multi-Language Support Moved to 'platform'</a></li>
     </ul>
@@ -1206,6 +1207,14 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>In Scout JS a new event <code>prepareLookupCall</code> has been added to the SmartField and TagField. It allows to be notified when the field is about to execute a LookupCall. Because for each call a fresh LookupCall clone is executed this event allows to propagate properties to the executing LookupCall clone. These properties may then be used when the call is executed (e.g. sent to the backend).</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="minimum-and-maximum-values-can-be-set-for-numberfields-in-scout-js"><a class="anchor" href="#minimum-and-maximum-values-can-be-set-for-numberfields-in-scout-js"></a>Minimum and maximum values can be set for NumberFields in Scout JS</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Scout JS NumberField now also supports min- and max-values as it was already present in Scout Classic.</p>
      </div>
     </div>
    </div>
