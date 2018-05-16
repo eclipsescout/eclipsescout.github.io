@@ -572,7 +572,7 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Eclipse Scout 7.0 is part of the Eclipse <em>Oxygen</em> release. It was released in June 2017 (<a href="https://wiki.eclipse.org/Simultaneous_Release">release schedule</a>), with the Service Release 1 released in September 2017. The latest version of this release is <em>7.0.200.005_Oxygen_2</em>.</p>
+      <p>Eclipse Scout 7.0 is part of the Eclipse <em>Oxygen</em> release. It was released in June 2017 (<a href="https://wiki.eclipse.org/Simultaneous_Release">release schedule</a>), with the Service Release 3 released in March 2018. The latest version of this release is <em>7.0.300.005_Oxygen_3</em>.</p>
      </div>
      <div class="admonitionblock important">
       <table>
@@ -593,17 +593,17 @@ table.CodeRay td.code>pre{padding:0}
        <p>The following changes were made after the initial 7.0 release (Eclipse Oxygen release). The following notes relate to a <em>service release</em>.</p>
       </div>
       <div class="sect3">
-       <h4 id="oxygen-3-7-0-300-release-expected-on-march-21-2018"><a class="anchor" href="#oxygen-3-7-0-300-release-expected-on-march-21-2018"></a>Oxygen.3 (7.0.300) Release Expected on March 21, 2018</h4>
-       <div class="paragraph">
-        <p><strong>Attention:</strong> The here described functionality has not yet been released and is part of an upcoming release.</p>
-       </div>
+       <h4 id="oxygen-3-7-0-300-released-on-march-21-2018"><a class="anchor" href="#oxygen-3-7-0-300-released-on-march-21-2018"></a>Oxygen.3 (7.0.300) Released on March 21, 2018</h4>
        <div class="ulist">
         <ul>
          <li> <p><a href="#new-property-auto-optimize-column-max-width-since-7-0-300"><em>New Property Auto Optimize Column Max Width (since 7.0.300)</em></a></p> </li>
          <li> <p><a href="#desktop-splitter-position-remembered-across-sessions-since-7-0-300"><em>Desktop Splitter Position Remembered Across Sessions (since 7.0.300)</em></a></p> </li>
-         <li> <p><a href="#No Value in JS for String Fields with Masked Input (since 7.0.300)">[No Value in JS for String Fields with Masked Input (since 7.0.300)]</a></p> </li>
+         <li> <p><a href="#no-value-in-js-for-string-fields-with-masked-input-since-7-0-300"><em>No Value in JS for String Fields With Masked Input (since 7.0.300)</em></a></p> </li>
          <li> <p><a href="#menus-in-the-status-tooltip-of-a-form-field-since-7-0-300"><em>Menus in the Status Tooltip of a Form Field (since 7.0.300)</em></a></p> </li>
         </ul>
+       </div>
+       <div class="paragraph">
+        <p>Detailed change log: <a href="https://github.com/eclipse/scout.rt/compare/7.0.200.005_Oxygen_2%2E%2E%2E7.0.300.005_Oxygen_3">https://github.com/eclipse/scout.rt/compare/7.0.200.005_Oxygen_2%2E%2E%2E7.0.300.005_Oxygen_3</a></p>
        </div>
       </div>
       <div class="sect3">
@@ -641,8 +641,8 @@ table.CodeRay td.code>pre{padding:0}
        </div>
        <div class="ulist">
         <ul>
-         <li> <p><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.scout.rt%22%20AND%20v%3A%227.0.200.005_Oxygen_2%22">7.0.200.005_Oxygen_2</a> on <em>Maven Central</em></p> </li>
-         <li> <p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/7.0.200.005_Oxygen_2">7.0.200.005_Oxygen_2</a> on <em>mvnrepository.com</em></p> </li>
+         <li> <p><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.scout.rt%22%20AND%20v%3A%227.0.300.005_Oxygen_3%22">7.0.300.005_Oxygen_3</a> on <em>Maven Central</em></p> </li>
+         <li> <p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/7.0.300.005_Oxygen_3">7.0.300.005_Oxygen_3</a> on <em>mvnrepository.com</em></p> </li>
         </ul>
        </div>
        <div class="paragraph">
@@ -653,7 +653,7 @@ table.CodeRay td.code>pre{padding:0}
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.eclipse.scout.rt<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>org.eclipse.scout.rt<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>7.0.200.005_Oxygen_2<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.300.005_Oxygen_3<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
     <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
@@ -666,7 +666,7 @@ table.CodeRay td.code>pre{padding:0}
         <p>You can download the complete Eclipse IDE with Scout SDK included (EPP) here:<br> <a href="https://www.eclipse.org/downloads/packages/eclipse-scout-developers/oxygen">Eclipse for Scout Developers</a></p>
        </div>
        <div class="paragraph">
-        <p>To install the Scout SDK into your existing Eclipse IDE, use this update site:<br> <a href="http://download.eclipse.org/scout/releases/7.0/7.0.200/005_Oxygen_2/" class="bare">http://download.eclipse.org/scout/releases/7.0/7.0.200/005_Oxygen_2/</a></p>
+        <p>To install the Scout SDK into your existing Eclipse IDE, use this update site:<br> <a href="http://download.eclipse.org/scout/releases/7.0/7.0.300/005_Oxygen_3/" class="bare">http://download.eclipse.org/scout/releases/7.0/7.0.300/005_Oxygen_3/</a></p>
        </div>
       </div>
       <div class="sect3">
