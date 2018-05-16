@@ -547,21 +547,28 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#default-value">Default Value</a></li>
        <li><a href="#validation">Validation</a></li>
       </ul> </li>
+     <li><a href="#tree-traversal-engine-added">Tree Traversal Engine Added</a></li>
+     <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop Splitter Position Remembered Across Sessions</a></li>
+     <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
+     <li><a href="#new-widget-tilegrid">New Widget 'TileGrid'</a></li>
+     <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
+     <li><a href="#new-outline-overview">New Outline Overview</a></li>
+     <li><a href="#form-fields">Form Fields</a>
+      <ul class="sectlevel2">
+       <li><a href="#new-field-style">New Field Style</a></li>
+       <li><a href="#improved-accessibility">Improved Accessibility</a></li>
+      </ul> </li>
+     <li><a href="#dynamic-fields">Dynamic Fields</a></li>
+     <li><a href="#menu-and-menubar-enhancements">Menu and MenuBar Enhancements</a>
+      <ul class="sectlevel2">
+       <li><a href="#form-field-in-menu">Form Field in Menu</a></li>
+       <li><a href="#new-property-stackable">New Property 'stackable'</a></li>
+      </ul> </li>
      <li><a href="#groupbox-enhancements">GroupBox Enhancements</a>
       <ul class="sectlevel2">
        <li><a href="#layout-configuration">Layout Configuration</a></li>
        <li><a href="#sec-gb-sublabel">Sublabel</a></li>
        <li><a href="#notification">Notification</a></li>
-      </ul> </li>
-     <li><a href="#tree-traversal-engine-added">Tree Traversal Engine Added</a></li>
-     <li><a href="#introducing-widget-java">Introducing Widget.java</a></li>
-     <li><a href="#new-widget-tilegrid">New Widget 'TileGrid'</a></li>
-     <li><a href="#new-widget-accordion">New Widget 'Accordion'</a></li>
-     <li><a href="#new-outline-overview">New Outline Overview</a></li>
-     <li><a href="#menu-and-menubar-enhancements">Menu and MenuBar Enhancements</a>
-      <ul class="sectlevel2">
-       <li><a href="#form-field-in-menu">Form Field in Menu</a></li>
-       <li><a href="#new-property-stackable">New Property 'stackable'</a></li>
       </ul> </li>
      <li><a href="#tabbox-enhancements">TabBox Enhancements</a>
       <ul class="sectlevel2">
@@ -571,24 +578,26 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#animated-selection-marker">Animated Selection Marker</a></li>
        <li><a href="#optimized-zoom-behavior">Optimized Zoom Behavior</a></li>
       </ul> </li>
-     <li><a href="#desktop-splitter-position-remembered-across-sessions">Desktop Splitter Position Remembered Across Sessions</a></li>
+     <li><a href="#hierarchical-table-support">Hierarchical Table Support</a></li>
      <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: Support for SVG Images and Image URLs</a></li>
      <li><a href="#checkboxfield-add-support-for-key-strokes">CheckBoxField: Add Support for Key Strokes</a></li>
-     <li><a href="#layout-customizations-for-radio-button-group">Layout Customizations for Radio Button Group</a></li>
-     <li><a href="#dynamic-fields">Dynamic Fields</a></li>
-     <li><a href="#form-fields">Form Fields</a>
+     <li><a href="#radio-button-group-enhancements">Radio Button Group Enhancements</a>
       <ul class="sectlevel2">
-       <li><a href="#new-field-style">New Field Style</a></li>
-       <li><a href="#improved-accessibility">Improved Accessibility</a></li>
+       <li><a href="#layout-customizations">Layout Customizations</a></li>
+       <li><a href="#grid-calculation-js">Grid Calculation (JS)</a></li>
+       <li><a href="#value-support-js">Value Support (JS)</a></li>
       </ul> </li>
+     <li><a href="#sequencebox-grid-calculation-js">SequenceBox: Grid Calculation (JS)</a></li>
+     <li><a href="#smartfield-enhancements">Smartfield Enhancements</a>
+      <ul class="sectlevel2">
+       <li><a href="#new-property-searchrequired">New Property 'searchRequired'</a></li>
+       <li><a href="#new-event-preparelookupcall-on-smartfields-js">New Event 'prepareLookupCall' on Smartfields (JS)</a></li>
+      </ul> </li>
+     <li><a href="#numberfield-support-for-minimum-and-maximum-values-js">NumberField: support for minimum and maximum values (JS)</a></li>
+     <li><a href="#improved-useuiheight-calculation">Improved useUiHeight Calculation</a></li>
      <li><a href="#enhanced-iuiservletrequesthandler">Enhanced IUiServletRequestHandler</a></li>
      <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
-     <li><a href="#improved-useuiheight-calculation">Improved useUiHeight Calculation</a></li>
      <li><a href="#refactored-eventlistenerlist">Refactored EventListenerList</a></li>
-     <li><a href="#new-property-searchrequired-on-smartfields">New Property 'searchRequired' on Smartfields</a></li>
-     <li><a href="#new-event-preparelookupcall-on-smartfields-and-tagfields">New Event 'prepareLookupCall' on Smartfields and TagFields</a></li>
-     <li><a href="#minimum-and-maximum-values-can-be-set-for-numberfields-in-scout-js">Minimum and maximum values can be set for NumberFields in Scout JS</a></li>
-     <li><a href="#hierarchical-table-support">Hierarchical Table Support</a></li>
      <li><a href="#text-and-multi-language-support-moved-to-platform">Text and Multi-Language Support Moved to 'platform'</a></li>
     </ul>
    </div>
@@ -760,6 +769,212 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
+    <h2 id="tree-traversal-engine-added"><a class="anchor" href="#tree-traversal-engine-added"></a>Tree Traversal Engine Added</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>A tree (or graph) traversal engine has been added to the Scout Platform. The engine can traverse any tree- or graph-like structures. See the package <code>org.eclipse.scout.rt.platform.util.visitor</code> especially the class <code>org.eclipse.scout.rt.platform.util.visitor.TreeTraversals</code> as entry point.</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java">TreeTraversals.create(visitor, childrenSupplier).traverse(root);</code></pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>The <code>root</code> element can be of any type. The <code>childrenSupplier</code> is a Function that returns the child elements for a given parent. The visitor can be a <code>IBreadthFirstTreeVisitor</code> for Breadth-First visiting strategy or a <code>IDepthFirstTreeVisitor</code> for a Depth-First visiting strategy supporting pre-order and post-order traversals.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="desktop-splitter-position-remembered-across-sessions"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions"></a>Desktop Splitter Position Remembered Across Sessions</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The position of the desktop splitter position (between the navigation and the bench) is now persisted across sessions, i.e. the previous setting will be restored even after you closed your browser. The position is stored in the HTML 5 <em>local storage</em> provided by the local browser. It is therefore a device-specific setting, which is especially useful when accessing the same application through screens with different resolutions.</p>
+     </div>
+     <div class="paragraph">
+      <p>In case the splitter position should never be remembered, the feature can be disabled globally by setting the property <code>cacheSplitterPosition</code> on the desktop to <em>false</em>.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="introducing-widget-java"><a class="anchor" href="#introducing-widget-java"></a>Introducing Widget.java</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>On JavaScript side, there has been a class <code>Widget.js</code> for a long time now. With this release the counterpart <code>Widget.java</code> has been added. This gives all existing widgets like <code>FormField</code>, <code>Form</code>, <code>MessageBox</code>, <code>Action</code> (e.g. <code>Menu</code>), <code>Tree</code>, <code>Table</code>, <code>Accordion</code>, <code>Calendar</code>, <code>Desktop</code>, <code>Tile</code>, etc. a new common base class. It also helps creating widgets which aren&#x2019;t necessarily form fields.</p>
+     </div>
+     <div class="paragraph">
+      <p>The new Widget class handles the widget lifecycle (initConfig, init, disposed) and offers methods to visit Widget hierarchies. See <code>org.eclipse.scout.rt.client.ui.IWidget</code> for more details.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-widget-tilegrid"><a class="anchor" href="#new-widget-tilegrid"></a>New Widget 'TileGrid'</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The new <code>TileGrid</code> widget arranges <code>Tile</code> s in a grid by using the <code>LogicalGridLayout</code>. This is the same layout as used for a <code>GroupBox</code>, so the same <code>GridData</code> object may be used to configure how the individual tiles should be arranged.</p>
+     </div>
+     <div class="paragraph">
+      <p>A <code>Tile</code> directly extends <code>Widget</code> and is not much more than a <code>&lt;div&gt;</code> with the CSS class <code>tile</code>. In order to customize your tile you have to create a custom widget, which is easier than it sounds. Just create a JS class lets say <code>CustomTile.js</code> which extends from <code>Tile.js</code>, create a Java class <code>CustomTile.java</code> which extends from <code>AbstractTile.java</code> and add some glue code to link them together. See the code of the demo widgets on <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/releases/8.0.x/code/widgets/org.eclipse.scout.widgets.client/src/main/java/org/eclipse/scout/widgets/client/ui/tiles">GitHub</a> for details. You could also use existing widgets as tiles. In that case instead of extending <code>AbstractTile</code> you would extend <code>AbstractWidgetTile</code> or <code>AbstractFormFieldTile</code> and set the property <code>tileWidget</code> accordingly.</p>
+     </div>
+     <div class="paragraph">
+      <p>In order to add the <code>TileGrid</code> to a form, you can use the class <code>TileField</code> which is basically a simple <code>FormField</code> wrapping the <code>TileGrid</code>. You cannot use the <code>TileGrid</code> directly because a <code>GroupBox</code> only accepts <code>FormField</code> s.</p>
+     </div>
+     <div class="paragraph">
+      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tilefield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tilefield</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tilefield" class="bare">https://scout.bsi-software.com/jswidgets/#tilefield</a>.</p>
+     </div>
+     <div id="img-tiles" class="imageblock">
+      <div class="content">
+       <img src="images/tiles.png" alt="tiles">
+      </div>
+      <div class="title">
+       Figure 1. TileGrid
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-widget-accordion"><a class="anchor" href="#new-widget-accordion"></a>New Widget 'Accordion'</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <code>Accordion</code> displays several collapsible <code>Group</code> s. The default behavior is to collapse every other group if one group is expanded. Because that is not in any case desired, the behavior may be disabled by setting the property <code>exclusiveExpand</code> to false.</p>
+     </div>
+     <div class="paragraph">
+      <p>The <code>Group</code> is a simple widget containing of a header and a body. The body may be any other widget like the new <code>TileGrid</code>. Because having tiles in an accordion is a typical use case, there is a widget called <code>TileAccordion</code> which helps creating the groups and provides some delegate methods to easily access the tiles of every group. It also takes care that selecting multiple tiles across the individual groups works as there were only one single <code>TileGrid</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p>A demo of the accordion may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-accordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-accordionfield</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#accordion" class="bare">https://scout.bsi-software.com/jswidgets/#accordion</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>A demo of the tile accordion may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tileaccordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tileaccordionfield</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tileaccordion" class="bare">https://scout.bsi-software.com/jswidgets/#tileaccordion</a>.</p>
+     </div>
+     <div id="img-accordion" class="imageblock">
+      <div class="content">
+       <img src="images/accordion.png" alt="accordion">
+      </div>
+      <div class="title">
+       Figure 2. Accordion
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-outline-overview"><a class="anchor" href="#new-outline-overview"></a>New Outline Overview</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <code>OutlineOverview</code> typically is the first thing a user sees when an outline based application starts. It is the widget displayed in the desktop bench when no page of the outline is selected. The previous <code>OutlineOverview</code> has been very simple, it basically just displayed the title and the icon of the outline. With this release a new widget has been added, it is called <code>TileOutlineOverview</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p>As the name implies it is based on the new <code>TileGrid</code> and shows the top level pages of the current outline. The tiles itself are very simple: they show the name of the page and an icon. Because they look a lot more interesting with an icon we encourage you to set a distinct icon for each page. You can do this by using the property <code>overviewIconId</code> of a page. Note that this is not the same property as <code>iconId</code>, to be able to use different icons for the outline tree itself and the outline overview tiles.</p>
+     </div>
+     <div class="paragraph">
+      <p>The new outline overview is enabled by default. If you don&#x2019;t like the new style you can either use a <code>defaultDetailForm</code> which will be used instead of the <code>outlineOverview</code> if it is set. Or you can use the old <code>OutlineOverview</code> or even create a custom one. Compared to <code>defaultDetailForm</code>, the <code>outlineOverview</code> can only be set using JavaScript.</p>
+     </div>
+     <div id="img-tile-outline-overview" class="imageblock">
+      <div class="content">
+       <img src="images/tile_outline_overview.png" alt="tile outline overview">
+      </div>
+      <div class="title">
+       Figure 3. Tile Outline Overview
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="form-fields"><a class="anchor" href="#form-fields"></a>Form Fields</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="new-field-style"><a class="anchor" href="#new-field-style"></a>New Field Style</h3>
+      <div class="paragraph">
+       <p>This release introduces a new field style called <code>alternative</code>. This is the new default style for every form field. The <code>classic</code> style is still available because it may be preferable in some circumstances, e.g. when used in a cell editor or on a form with background color like the search form. For these two cases the style is set to <code>classic</code> automatically but you can do it for your custom cases as well by setting the new property <code>FieldStyle</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you want to revert your whole application to the classic style you can create an extension to <code>AbstractFormField</code> and change the default of the <code>FieldStyle</code> property. For Scout JS applications you can set the variable <code>scout.FormField.DEFAULT_FIELD_STYLE</code> to <code>scout.FormField.FieldStyle.CLASSIC</code>;</p>
+      </div>
+      <div id="img-form-field-alternative-style" class="imageblock">
+       <div class="content">
+        <img src="images/formfield_alternative.png" alt="formfield alternative">
+       </div>
+       <div class="title">
+        Figure 4. New alternative field style
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="improved-accessibility"><a class="anchor" href="#improved-accessibility"></a>Improved Accessibility</h3>
+      <div class="paragraph">
+       <p>The label and the input are now linked by using <code>aria-labelledby</code>. This allows screen readers to read the label if an input is focused.</p>
+      </div>
+      <div class="paragraph">
+       <p>Furthermore, clicking the label will now activate the field. This is especially helpful on mobile devices when the new alternative style is active, because the field boundaries are not obvious anymore.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="dynamic-fields"><a class="anchor" href="#dynamic-fields"></a>Dynamic Fields</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>It is now possible to add and remove fields dynamically also when a form is already started. This feature is supported for <code>GroupBoxes</code> and <code>TabBoxes</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p>The Java API orders the added fields considering the <code>order</code> member.</p>
+     </div>
+     <div class="paragraph">
+      <p>API:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p>TabBox.js <code>insertTabItem</code>, <code>deleteTabItem</code>, <code>setTabItems</code></p> </li>
+       <li> <p>GroupBox.js <code>setFields</code>, <code>insertField</code>, <code>insertFieldBefore</code>, <code>deleteField</code></p> </li>
+       <li> <p>ICompositeField.java <code>setFields</code> and the already existing <code>addField</code>, <code>removeField</code> methods which don&#x2019;t throw an exception anymore when a form is already initialized.</p> </li>
+      </ul>
+     </div>
+     <div class="admonitionblock note">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+         <td class="content">
+          <div class="ulist">
+           <ul>
+            <li> <p>The support for adding ProcessButtons dynamically is not implemented so far.</p> </li>
+            <li> <p>Adding a field to container (<code>TabBox</code>, <code>GroupBox</code>) forces the container to be rendered. All fields in this container will be removed and rendered again.</p> </li>
+           </ul>
+          </div> </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="menu-and-menubar-enhancements"><a class="anchor" href="#menu-and-menubar-enhancements"></a>Menu and MenuBar Enhancements</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="form-field-in-menu"><a class="anchor" href="#form-field-in-menu"></a>Form Field in Menu</h3>
+      <div class="paragraph">
+       <p>The menubar now supports form field menu items (<code>FormFieldMenu</code>). On the model side extend <code>AbstractFormFieldMenu</code> with a form field as an inner class to use a form field menu in any menu supporting environment.</p>
+      </div>
+      <div id="img-form-field-menu" class="imageblock">
+       <div class="content">
+        <img src="images/FormFieldMenu.png" alt="FormFieldMenu">
+       </div>
+       <div class="title">
+        Figure 5. Menubar with form fields
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="new-property-stackable"><a class="anchor" href="#new-property-stackable"></a>New Property 'stackable'</h3>
+      <div class="paragraph">
+       <p>The menu property <code>stackable</code> defines if a menu is stackable or not. A stackable menu will be moved to the ellipsis dropdown menu when there is not enough space in the menubar. The ellipsis menu is placed after the last stackable menu in the menubar. Right and left aligned menus will be moved to a single ellipsis menu per menubar. The horizontal alignment of the ellipsis menu is the same as the last stackable menu in the menubar.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
     <h2 id="groupbox-enhancements"><a class="anchor" href="#groupbox-enhancements"></a>GroupBox Enhancements</h2>
     <div class="sectionbody">
      <div class="sect2">
@@ -824,138 +1039,11 @@ table.CodeRay td.code>pre{padding:0}
         <img src="images/groupBoxNotification.png" alt="groupBoxNotification">
        </div>
        <div class="title">
-        Figure 1. Group box notification
+        Figure 6. Group box notification
        </div>
       </div>
       <div class="paragraph">
        <p>A demo may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-groupbox" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-groupbox</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#groupbox" class="bare">https://scout.bsi-software.com/jswidgets/#groupbox</a>.</p>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="tree-traversal-engine-added"><a class="anchor" href="#tree-traversal-engine-added"></a>Tree Traversal Engine Added</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>A tree (or graph) traversal engine has been added to the Scout Platform. The engine can traverse any tree- or graph-like structures. See the package <code>org.eclipse.scout.rt.platform.util.visitor</code> especially the class <code>org.eclipse.scout.rt.platform.util.visitor.TreeTraversals</code> as entry point.</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="java">TreeTraversals.create(visitor, childrenSupplier).traverse(root);</code></pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>The <code>root</code> element can be of any type. The <code>childrenSupplier</code> is a Function that returns the child elements for a given parent. The visitor can be a <code>IBreadthFirstTreeVisitor</code> for Breadth-First visiting strategy or a <code>IDepthFirstTreeVisitor</code> for a Depth-First visiting strategy supporting pre-order and post-order traversals.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="introducing-widget-java"><a class="anchor" href="#introducing-widget-java"></a>Introducing Widget.java</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>On JavaScript side, there has been a class <code>Widget.js</code> for a long time now. With this release the counterpart <code>Widget.java</code> has been added. This gives all existing widgets like <code>FormField</code>, <code>Form</code>, <code>MessageBox</code>, <code>Action</code> (e.g. <code>Menu</code>), <code>Tree</code>, <code>Table</code>, <code>Accordion</code>, <code>Calendar</code>, <code>Desktop</code>, <code>Tile</code>, etc. a new common base class. It also helps creating widgets which aren&#x2019;t necessarily form fields.</p>
-     </div>
-     <div class="paragraph">
-      <p>The new Widget class handles the widget lifecycle (initConfig, init, disposed) and offers methods to visit Widget hierarchies. See <code>org.eclipse.scout.rt.client.ui.IWidget</code> for more details.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-widget-tilegrid"><a class="anchor" href="#new-widget-tilegrid"></a>New Widget 'TileGrid'</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The new <code>TileGrid</code> widget arranges <code>Tile</code> s in a grid by using the <code>LogicalGridLayout</code>. This is the same layout as used for a <code>GroupBox</code>, so the same <code>GridData</code> object may be used to configure how the individual tiles should be arranged.</p>
-     </div>
-     <div class="paragraph">
-      <p>A <code>Tile</code> directly extends <code>Widget</code> and is not much more than a <code>&lt;div&gt;</code> with the CSS class <code>tile</code>. In order to customize your tile you have to create a custom widget, which is easier than it sounds. Just create a JS class lets say <code>CustomTile.js</code> which extends from <code>Tile.js</code>, create a Java class <code>CustomTile.java</code> which extends from <code>AbstractTile.java</code> and add some glue code to link them together. See the code of the demo widgets on <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/releases/8.0.x/code/widgets/org.eclipse.scout.widgets.client/src/main/java/org/eclipse/scout/widgets/client/ui/tiles">GitHub</a> for details. You could also use existing widgets as tiles. In that case instead of extending <code>AbstractTile</code> you would extend <code>AbstractWidgetTile</code> or <code>AbstractFormFieldTile</code> and set the property <code>tileWidget</code> accordingly.</p>
-     </div>
-     <div class="paragraph">
-      <p>In order to add the <code>TileGrid</code> to a form, you can use the class <code>TileField</code> which is basically a simple <code>FormField</code> wrapping the <code>TileGrid</code>. You cannot use the <code>TileGrid</code> directly because a <code>GroupBox</code> only accepts <code>FormField</code> s.</p>
-     </div>
-     <div class="paragraph">
-      <p>A demo of the widget may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tilefield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tilefield</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tilefield" class="bare">https://scout.bsi-software.com/jswidgets/#tilefield</a>.</p>
-     </div>
-     <div id="img-tiles" class="imageblock">
-      <div class="content">
-       <img src="images/tiles.png" alt="tiles">
-      </div>
-      <div class="title">
-       Figure 2. TileGrid
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-widget-accordion"><a class="anchor" href="#new-widget-accordion"></a>New Widget 'Accordion'</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The <code>Accordion</code> displays several collapsible <code>Group</code> s. The default behavior is to collapse every other group if one group is expanded. Because that is not in any case desired, the behavior may be disabled by setting the property <code>exclusiveExpand</code> to false.</p>
-     </div>
-     <div class="paragraph">
-      <p>The <code>Group</code> is a simple widget containing of a header and a body. The body may be any other widget like the new <code>TileGrid</code>. Because having tiles in an accordion is a typical use case, there is a widget called <code>TileAccordion</code> which helps creating the groups and provides some delegate methods to easily access the tiles of every group. It also takes care that selecting multiple tiles across the individual groups works as there were only one single <code>TileGrid</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>A demo of the accordion may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-accordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-accordionfield</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#accordion" class="bare">https://scout.bsi-software.com/jswidgets/#accordion</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>A demo of the tile accordion may be found here: <a href="https://scout.bsi-software.com/widgets/?dl=widget-tileaccordionfield" class="bare">https://scout.bsi-software.com/widgets/?dl=widget-tileaccordionfield</a>.<br> And here for the JS only version: <a href="https://scout.bsi-software.com/jswidgets/#tileaccordion" class="bare">https://scout.bsi-software.com/jswidgets/#tileaccordion</a>.</p>
-     </div>
-     <div id="img-accordion" class="imageblock">
-      <div class="content">
-       <img src="images/accordion.png" alt="accordion">
-      </div>
-      <div class="title">
-       Figure 3. Accordion
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-outline-overview"><a class="anchor" href="#new-outline-overview"></a>New Outline Overview</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The <code>OutlineOverview</code> typically is the first thing a user sees when an outline based application starts. It is the widget displayed in the desktop bench when no page of the outline is selected. The previous <code>OutlineOverview</code> has been very simple, it basically just displayed the title and the icon of the outline. With this release a new widget has been added, it is called <code>TileOutlineOverview</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>As the name implies it is based on the new <code>TileGrid</code> and shows the top level pages of the current outline. The tiles itself are very simple: they show the name of the page and an icon. Because they look a lot more interesting with an icon we encourage you to set a distinct icon for each page. You can do this by using the property <code>overviewIconId</code> of a page. Note that this is not the same property as <code>iconId</code>, to be able to use different icons for the outline tree itself and the outline overview tiles.</p>
-     </div>
-     <div class="paragraph">
-      <p>The new outline overview is enabled by default. If you don&#x2019;t like the new style you can either use a <code>defaultDetailForm</code> which will be used instead of the <code>outlineOverview</code> if it is set. Or you can use the old <code>OutlineOverview</code> or even create a custom one. Compared to <code>defaultDetailForm</code>, the <code>outlineOverview</code> can only be set using JavaScript.</p>
-     </div>
-     <div id="img-tile-outline-overview" class="imageblock">
-      <div class="content">
-       <img src="images/tile_outline_overview.png" alt="tile outline overview">
-      </div>
-      <div class="title">
-       Figure 4. Tile Outline Overview
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="menu-and-menubar-enhancements"><a class="anchor" href="#menu-and-menubar-enhancements"></a>Menu and MenuBar Enhancements</h2>
-    <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="form-field-in-menu"><a class="anchor" href="#form-field-in-menu"></a>Form Field in Menu</h3>
-      <div class="paragraph">
-       <p>The menubar now supports form field menu items (<code>FormFieldMenu</code>). On the model side extend <code>AbstractFormFieldMenu</code> with a form field as an inner class to use a form field menu in any menu supporting environment.</p>
-      </div>
-      <div id="img-form-field-menu" class="imageblock">
-       <div class="content">
-        <img src="images/FormFieldMenu.png" alt="FormFieldMenu">
-       </div>
-       <div class="title">
-        Figure 5. Menubar with form fields
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="new-property-stackable"><a class="anchor" href="#new-property-stackable"></a>New Property 'stackable'</h3>
-      <div class="paragraph">
-       <p>The menu property <code>stackable</code> defines if a menu is stackable or not. A stackable menu will be moved to the ellipsis dropdown menu when there is not enough space in the menubar. The ellipsis menu is placed after the last stackable menu in the menubar. Right and left aligned menus will be moved to a single ellipsis menu per menubar. The horizontal alignment of the ellipsis menu is the same as the last stackable menu in the menubar.</p>
       </div>
      </div>
     </div>
@@ -973,7 +1061,7 @@ table.CodeRay td.code>pre{padding:0}
         <img src="images/tabbox_menu_alignment.png" alt="tabbox menu alignment">
        </div>
        <div class="title">
-        Figure 6. Menus in a tab box header
+        Figure 7. Menus in a tab box header
        </div>
       </div>
      </div>
@@ -987,7 +1075,7 @@ table.CodeRay td.code>pre{padding:0}
         <img src="images/tabbox_ellipsis.png" alt="tabbox ellipsis">
        </div>
        <div class="title">
-        Figure 7. Ellipsis menu for the tabs of a tab box
+        Figure 8. Ellipsis menu for the tabs of a tab box
        </div>
       </div>
      </div>
@@ -1012,13 +1100,18 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="desktop-splitter-position-remembered-across-sessions"><a class="anchor" href="#desktop-splitter-position-remembered-across-sessions"></a>Desktop Splitter Position Remembered Across Sessions</h2>
+    <h2 id="hierarchical-table-support"><a class="anchor" href="#hierarchical-table-support"></a>Hierarchical Table Support</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The position of the desktop splitter position (between the navigation and the bench) is now persisted across sessions, i.e. the previous setting will be restored even after you closed your browser. The position is stored in the HTML 5 <em>local storage</em> provided by the local browser. It is therefore a device-specific setting, which is especially useful when accessing the same application through screens with different resolutions.</p>
+      <p>Scout now supports hierarchical tables. The property <code>parentKey</code> on <code>IColumn</code> is responsible for the linking between parent and child rows. The property <code>hierarchicalStyle</code> on the table is used to switch between the default or structured style.</p>
      </div>
-     <div class="paragraph">
-      <p>In case the splitter position should never be remembered, the feature can be disabled globally by setting the property <code>cacheSplitterPosition</code> on the desktop to <em>false</em>.</p>
+     <div id="img-widget-table-hierarcical" class="imageblock">
+      <div class="content">
+       <img src="images/widget_table_hierarchical.png" alt="widget table hierarchical">
+      </div>
+      <div class="title">
+       Figure 9. Hierarchical Table Example
+      </div>
      </div>
     </div>
    </div>
@@ -1057,84 +1150,78 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="layout-customizations-for-radio-button-group"><a class="anchor" href="#layout-customizations-for-radio-button-group"></a>Layout Customizations for Radio Button Group</h2>
+    <h2 id="radio-button-group-enhancements"><a class="anchor" href="#radio-button-group-enhancements"></a>Radio Button Group Enhancements</h2>
     <div class="sectionbody">
-     <div class="paragraph">
-      <p>A new property <code>gridColumnCount</code> has been added to the radio button group. It can be used using <code>setGridColumnCount()</code>, <code>getGridColumnCount()</code> and <code>getConfiguredGridColumnCount()</code>. By default the columns are configured to be dependent on the height of the field to create columns as needed to show all radio buttons within the height available (this also corresponds to the existing behavior).</p>
+     <div class="sect2">
+      <h3 id="layout-customizations"><a class="anchor" href="#layout-customizations"></a>Layout Customizations</h3>
+      <div class="paragraph">
+       <p>A new property <code>gridColumnCount</code> has been added to the radio button group. It can be used using <code>setGridColumnCount()</code>, <code>getGridColumnCount()</code> and <code>getConfiguredGridColumnCount()</code>. By default the columns are configured to be dependent on the height of the field to create columns as needed to show all radio buttons within the height available (this also corresponds to the existing behavior).</p>
+      </div>
+      <div class="paragraph">
+       <p>But it also allows to specify an exact number over how many columns radio buttons should be distributed. This is an alternative to layout the buttons using the group height and is especially useful if the number of radio buttons is unknown or dynamic. In that case the columns can be configured to e.g. 3 and the property <code>useUiHeight</code> to true allowing the group to vertically grow as needed to show all radio buttons within 3 columns. This property also corresponds to the layout possibilities of the group box.</p>
+      </div>
+      <div class="paragraph">
+       <p>The same possibilities also exist in the JavaScript only layer of Scout using the method <code>setGridColumnCount()</code>.</p>
+      </div>
      </div>
-     <div class="paragraph">
-      <p>But it also allows to specify an exact number over how many columns radio buttons should be distributed. This is an alternative to layout the buttons using the group height and is especially useful if the number of radio buttons is unknown or dynamic. In that case the columns can be configured to e.g. 3 and the property <code>useUiHeight</code> to true allowing the group to vertically grow as needed to show all radio buttons within 3 columns. This property also corresponds to the layout possibilities of the group box.</p>
+     <div class="sect2">
+      <h3 id="grid-calculation-js"><a class="anchor" href="#grid-calculation-js"></a>Grid Calculation (JS)</h3>
+      <div class="paragraph">
+       <p>The logical grid is now calculated automatically as it is done for a <code>GroupBox</code> or for a <code>RadioButtonGroup</code> in Java. This means you can only specify the width (<code>w</code>) and height (<code>h</code>) of a cell using <code>gridDataHints</code>, the position (<code>x</code>, <code>y</code>) will be calculated automatically.</p>
+      </div>
      </div>
-     <div class="paragraph">
-      <p>The same possibilities also exist in the JavaScript only layer of Scout using the method <code>setGridColumnCount()</code>.</p>
+     <div class="sect2">
+      <h3 id="value-support-js"><a class="anchor" href="#value-support-js"></a>Value Support (JS)</h3>
+      <div class="paragraph">
+       <p>The <code>RadioButtonGroup</code> now supports the value operations provided by <code>ValueField</code>, similar to the Java implementation. This means you can define a <code>radioValue</code> on each <code>RadioButton</code> and then use <code>setValue()</code> to select a button using its radioValue. When reading the <code>value</code> of a <code>RadioButtonGroup</code>, the <code>radioValue</code> of the selected button is returned.</p>
+      </div>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="dynamic-fields"><a class="anchor" href="#dynamic-fields"></a>Dynamic Fields</h2>
+    <h2 id="sequencebox-grid-calculation-js"><a class="anchor" href="#sequencebox-grid-calculation-js"></a>SequenceBox: Grid Calculation (JS)</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>It is now possible to add and remove fields dynamically also when a form is already started. This feature is supported for <code>GroupBoxes</code> and <code>TabBoxes</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>The Java API orders the added fields considering the <code>order</code> member.</p>
-     </div>
-     <div class="paragraph">
-      <p>API:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>TabBox.js <code>insertTabItem</code>, <code>deleteTabItem</code>, <code>setTabItems</code></p> </li>
-       <li> <p>GroupBox.js <code>setFields</code>, <code>insertField</code>, <code>insertFieldBefore</code>, <code>deleteField</code></p> </li>
-       <li> <p>ICompositeField.java <code>setFields</code> and the already existing <code>addField</code>, <code>removeField</code> methods which don&#x2019;t throw an exception anymore when a form is already initialized.</p> </li>
-      </ul>
-     </div>
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content">
-          <div class="ulist">
-           <ul>
-            <li> <p>The support for adding ProcessButtons dynamically is not implemented so far.</p> </li>
-            <li> <p>Adding a field to container (<code>TabBox</code>, <code>GroupBox</code>) forces the container to be rendered. All fields in this container will be removed and rendered again.</p> </li>
-           </ul>
-          </div> </td>
-        </tr>
-       </tbody>
-      </table>
+      <p>The logical grid is now calculated automatically as it is done for a <code>GroupBox</code> or for a <code>SequenceBox</code> in Java. This means you can only specify the width (<code>w</code>) and height (<code>h</code>) of a cell using <code>gridDataHints</code>, the position (<code>x</code>, <code>y</code>) will be calculated automatically.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="form-fields"><a class="anchor" href="#form-fields"></a>Form Fields</h2>
+    <h2 id="smartfield-enhancements"><a class="anchor" href="#smartfield-enhancements"></a>Smartfield Enhancements</h2>
     <div class="sectionbody">
      <div class="sect2">
-      <h3 id="new-field-style"><a class="anchor" href="#new-field-style"></a>New Field Style</h3>
+      <h3 id="new-property-searchrequired"><a class="anchor" href="#new-property-searchrequired"></a>New Property 'searchRequired'</h3>
       <div class="paragraph">
-       <p>This release introduces a new field style called <code>alternative</code>. This is the new default style for every form field. The <code>classic</code> style is still available because it may be preferable in some circumstances, e.g. when used in a cell editor or on a form with background color like the search form. For these two cases the style is set to <code>classic</code> automatically but you can do it for your custom cases as well by setting the new property <code>FieldStyle</code>.</p>
+       <p>A new property <code>searchRequired</code> has been introduced for Smartfields. It is similar to the one already existing in <code>org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable</code> and controls the Smartfield behavior if the proposal-list is opened without having a search constraint. By default (<em>searchRequired</em> = <code>false</code>) all existing proposals are shown if no search constraint has been typed. But if the property is set to <code>true</code>, the Smartfield only shows proposals if a search constraint is available. This is especially useful if a large data set is expected in a Smartfield lookup which usually makes no sense to present all to the user. In that case a message is shown instead informing that a search constraint is required to load data and to see proposals.</p>
       </div>
       <div class="paragraph">
-       <p>If you want to revert your whole application to the classic style you can create an extension to <code>AbstractFormField</code> and change the default of the <code>FieldStyle</code> property. For Scout JS applications you can set the variable <code>scout.FormField.DEFAULT_FIELD_STYLE</code> to <code>scout.FormField.FieldStyle.CLASSIC</code>;</p>
-      </div>
-      <div id="img-form-field-alternative-style" class="imageblock">
-       <div class="content">
-        <img src="images/formfield_alternative.png" alt="formfield alternative">
-       </div>
-       <div class="title">
-        Figure 8. New alternative field style
-       </div>
+       <p>In Java the property can be set using <code>ISmartField.setSearchRequired()</code> or <code>AbstractSmartField.getConfiguredSearchRequired()</code>. In JavaScript the property can be set using <code>smartfield.setSearchRequired()</code>.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="improved-accessibility"><a class="anchor" href="#improved-accessibility"></a>Improved Accessibility</h3>
+      <h3 id="new-event-preparelookupcall-on-smartfields-js"><a class="anchor" href="#new-event-preparelookupcall-on-smartfields-js"></a>New Event 'prepareLookupCall' on Smartfields (JS)</h3>
       <div class="paragraph">
-       <p>The label and the input are now linked by using <code>aria-labelledby</code>. This allows screen readers to read the label if an input is focused.</p>
+       <p>In Scout JS a new event <code>prepareLookupCall</code> has been added to the SmartField. It allows to be notified when the field is about to execute a LookupCall. Because for each call a fresh LookupCall clone is executed this event allows to propagate properties to the executing LookupCall clone. These properties may then be used when the call is executed (e.g. sent to the backend).</p>
       </div>
-      <div class="paragraph">
-       <p>Furthermore, clicking the label will now activate the field. This is especially helpful on mobile devices when the new alternative style is active, because the field boundaries are not obvious anymore.</p>
-      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="numberfield-support-for-minimum-and-maximum-values-js"><a class="anchor" href="#numberfield-support-for-minimum-and-maximum-values-js"></a>NumberField: support for minimum and maximum values (JS)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Scout JS NumberField now also supports min- and max-values as it was already present in Scout Classic.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="improved-useuiheight-calculation"><a class="anchor" href="#improved-useuiheight-calculation"></a>Improved useUiHeight Calculation</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>If a form field is set to use its ui height, it is supposed to be as big as its content. A typical example is the group box: <code>useUiHeight</code> is true by default to make the group box as height as the containing form fields. In that case it works fine because the height does not depend on the width.</p>
+     </div>
+     <div class="paragraph">
+      <p>There are cases where the height depends on the width, e.g. if a label field is set to wrap its text (property <code>wrapText</code> = true). These cases did not work correctly because in order to calculate the preferred height the final width has to be known. This has been fixed so that setting <code>useUiHeight</code> to true should now work as expected.</p>
      </div>
     </div>
    </div>
@@ -1151,17 +1238,6 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>To prevent incorrect measurements or the so-called "FOUT effect" (Flash Of Unstyled Text), Scout tries to preload all necessary web font files (*.woff) before rendering the application. To make it easier for projects to add theme-dependent fonts, the font preloader has been improved. The list of fonts to preload is now detected automatically by inspecting the document&#x2019;s style sheet (<em>@font-face</em> rules). It&#x2019;s no longer necessary to manually list all fonts in the bootstrap argument of <code>scout.App</code> (see migration guide).</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="improved-useuiheight-calculation"><a class="anchor" href="#improved-useuiheight-calculation"></a>Improved useUiHeight Calculation</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>If a form field is set to use its ui height, it is supposed to be as big as its content. A typical example is the group box: <code>useUiHeight</code> is true by default to make the group box as height as the containing form fields. In that case it works fine because the height does not depend on the width.</p>
-     </div>
-     <div class="paragraph">
-      <p>There are cases where the height depends on the width, e.g. if a label field is set to wrap its text (property <code>wrapText</code> = true). These cases did not work correctly because in order to calculate the preferred height the final width has to be known. This has been fixed so that setting <code>useUiHeight</code> to true should now work as expected.</p>
      </div>
     </div>
    </div>
@@ -1189,49 +1265,6 @@ table.CodeRay td.code>pre{padding:0}
         </tr>
        </tbody>
       </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-property-searchrequired-on-smartfields"><a class="anchor" href="#new-property-searchrequired-on-smartfields"></a>New Property 'searchRequired' on Smartfields</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>A new property <code>searchRequired</code> has been introduced for Smartfields. It is similar to the one already existing in <code>org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable</code> and controls the Smartfield behavior if the proposal-list is opened without having a search constraint. By default (<em>searchRequired</em> = <code>false</code>) all existing proposals are shown if no search constraint has been typed. But if the property is set to <code>true</code>, the Smartfield only shows proposals if a search constraint is available. This is especially useful if a large data set is expected in a Smartfield lookup which usually makes no sense to present all to the user. In that case a message is shown instead informing that a search constraint is required to load data and to see proposals.</p>
-     </div>
-     <div class="paragraph">
-      <p>In Java the property can be set using <code>ISmartField.setSearchRequired()</code> or <code>AbstractSmartField.getConfiguredSearchRequired()</code>. In JavaScript the property can be set using <code>smartfield.setSearchRequired()</code>.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-event-preparelookupcall-on-smartfields-and-tagfields"><a class="anchor" href="#new-event-preparelookupcall-on-smartfields-and-tagfields"></a>New Event 'prepareLookupCall' on Smartfields and TagFields</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>In Scout JS a new event <code>prepareLookupCall</code> has been added to the SmartField and TagField. It allows to be notified when the field is about to execute a LookupCall. Because for each call a fresh LookupCall clone is executed this event allows to propagate properties to the executing LookupCall clone. These properties may then be used when the call is executed (e.g. sent to the backend).</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="minimum-and-maximum-values-can-be-set-for-numberfields-in-scout-js"><a class="anchor" href="#minimum-and-maximum-values-can-be-set-for-numberfields-in-scout-js"></a>Minimum and maximum values can be set for NumberFields in Scout JS</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The Scout JS NumberField now also supports min- and max-values as it was already present in Scout Classic.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="hierarchical-table-support"><a class="anchor" href="#hierarchical-table-support"></a>Hierarchical Table Support</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Scout now supports hierarchical tables. The property <code>parentKey</code> on <code>IColumn</code> is responsible for the linking between parent and child rows. The property <code>hierarchicalStyle</code> on the table is used to switch between the default or structured style.</p>
-     </div>
-     <div id="img-widget-table-hierarcical" class="imageblock">
-      <div class="content">
-       <img src="images/widget_table_hierarchical.png" alt="widget table hierarchical">
-      </div>
-      <div class="title">
-       Figure 9. Hierarchical Table Example
-      </div>
      </div>
     </div>
    </div>
