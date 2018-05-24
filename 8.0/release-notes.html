@@ -587,13 +587,20 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#hierarchical-table-support">Hierarchical Table Support</a></li>
      <li><a href="#imagefield-support-for-svg-images-and-image-urls">ImageField: Support for SVG Images and Image URLs</a></li>
      <li><a href="#checkboxfield-add-support-for-key-strokes">CheckBoxField: Add Support for Key Strokes</a></li>
-     <li><a href="#radio-button-group-enhancements">Radio Button Group Enhancements</a>
+     <li><a href="#radiobuttongroup-enhancements">RadioButtonGroup Enhancements</a>
       <ul class="sectlevel2">
        <li><a href="#layout-customizations">Layout Customizations</a></li>
        <li><a href="#grid-calculation-js">Grid Calculation (JS)</a></li>
        <li><a href="#value-support-js">Value Support (JS)</a></li>
+       <li><a href="#lookup-call-support-js">Lookup Call Support (JS)</a></li>
       </ul> </li>
      <li><a href="#sequencebox-grid-calculation-js">SequenceBox: Grid Calculation (JS)</a></li>
+     <li><a href="#listbox-enhancements">ListBox Enhancements</a>
+      <ul class="sectlevel2">
+       <li><a href="#default-table-creation-js">Default table creation (JS)</a></li>
+       <li><a href="#lookup-call-support-js-2">Lookup Call Support (JS)</a></li>
+       <li><a href="#value-support-js-2">Value Support (JS)</a></li>
+      </ul> </li>
      <li><a href="#smartfield-enhancements">Smartfield Enhancements</a>
       <ul class="sectlevel2">
        <li><a href="#new-property-searchrequired">New Property 'searchRequired'</a></li>
@@ -1205,7 +1212,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="radio-button-group-enhancements"><a class="anchor" href="#radio-button-group-enhancements"></a>Radio Button Group Enhancements</h2>
+    <h2 id="radiobuttongroup-enhancements"><a class="anchor" href="#radiobuttongroup-enhancements"></a>RadioButtonGroup Enhancements</h2>
     <div class="sectionbody">
      <div class="sect2">
       <h3 id="layout-customizations"><a class="anchor" href="#layout-customizations"></a>Layout Customizations</h3>
@@ -1231,6 +1238,12 @@ table.CodeRay td.code>pre{padding:0}
        <p>The <code>RadioButtonGroup</code> now supports the value operations provided by <code>ValueField</code>, similar to the Java implementation. This means you can define a <code>radioValue</code> on each <code>RadioButton</code> and then use <code>setValue()</code> to select a button using its radioValue. When reading the <code>value</code> of a <code>RadioButtonGroup</code>, the <code>radioValue</code> of the selected button is returned.</p>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="lookup-call-support-js"><a class="anchor" href="#lookup-call-support-js"></a>Lookup Call Support (JS)</h3>
+      <div class="paragraph">
+       <p>In addition to specify the radio buttons explicitly, a lookup call can now be used. When defining a lookup call the radio buttons are created based on the result of that lookup call.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -1238,6 +1251,29 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>The logical grid is now calculated automatically as it is done for a <code>GroupBox</code> or for a <code>SequenceBox</code> in Java. This means you can only specify the width (<code>w</code>) and height (<code>h</code>) of a cell using <code>gridDataHints</code>, the position (<code>x</code>, <code>y</code>) will be calculated automatically.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="listbox-enhancements"><a class="anchor" href="#listbox-enhancements"></a>ListBox Enhancements</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="default-table-creation-js"><a class="anchor" href="#default-table-creation-js"></a>Default table creation (JS)</h3>
+      <div class="paragraph">
+       <p>The Scout <code>ListBox</code> is based on the Scout <code>Table</code>. Such a list box table typically is checkable, only has one column and doesn&#x2019;t have a header. Since this is true for most list boxes it is not necessary anymore to specify the table explicitly. A default table will be created if none is provided.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="lookup-call-support-js-2"><a class="anchor" href="#lookup-call-support-js-2"></a>Lookup Call Support (JS)</h3>
+      <div class="paragraph">
+       <p>In order to fill the list box a <code>LookupCall</code> can now be used. The resulting lookup rows will be mapped to actual table rows and inserted into the list box table.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="value-support-js-2"><a class="anchor" href="#value-support-js-2"></a>Value Support (JS)</h3>
+      <div class="paragraph">
+       <p>The <code>ListBox</code> now supports the value operations provided by <code>ValueField</code>, similar to the Java implementation. The value represents the keys of the checked rows specified by the corresponding lookup rows.</p>
+      </div>
      </div>
     </div>
    </div>
