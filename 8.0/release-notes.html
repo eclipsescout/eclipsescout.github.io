@@ -1131,7 +1131,7 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="collapsible-menu-items"><a class="anchor" href="#collapsible-menu-items"></a>Collapsible Menu Items</h3>
       <div class="paragraph">
-       <p>Menus in the menubar will be moved to an ellipsis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is as following: all menus are collapsed first before the tabs will be collapsed from right to left.</p>
+       <p>Menus in the menubar will be moved to an ellipsis menu in case there is not enough space in the tabbox header. The tab items are moved to an ellipsis menu when there is not enough space for all tabs. The collapse order is as following: all menus are collapsed first before the tabs will be collapsed from right to left. A menu can be prevented from collapsing by setting the <code>stackable</code> (<code>AbstractMenu.getConfiguredStackable</code>) property to false.</p>
       </div>
       <div id="img-tab-box-ellipsis" class="imageblock">
        <div class="content">
@@ -1146,6 +1146,22 @@ table.CodeRay td.code>pre{padding:0}
       <h3 id="sublabel"><a class="anchor" href="#sublabel"></a>Sublabel</h3>
       <div class="paragraph">
        <p>TabItems got a <code>sublabel</code> property which is displayed in a very small font below the title (see also <a href="#sec-gb-sublabel">Sublabel</a>).</p>
+      </div>
+      <div id="img-widget-groupbox-sublabel" class="imageblock">
+       <div class="content">
+        <img src="images/groupbox_sublabel.png" alt="groupbox sublabel">
+       </div>
+       <div class="title">
+        Figure 12. GroupBox sublabel example
+       </div>
+      </div>
+      <div id="img-widget-tabitem-sublabel" class="imageblock">
+       <div class="content">
+        <img src="images/tabbox_sublabel.png" alt="tabbox sublabel">
+       </div>
+       <div class="title">
+        Figure 13. TabItem sublabel example
+       </div>
       </div>
      </div>
      <div class="sect2">
@@ -1173,7 +1189,7 @@ table.CodeRay td.code>pre{padding:0}
        <img src="images/widget_table_hierarchical.png" alt="widget table hierarchical">
       </div>
       <div class="title">
-       Figure 12. Hierarchical Table Example
+       Figure 14. Hierarchical Table Example
       </div>
      </div>
     </div>
