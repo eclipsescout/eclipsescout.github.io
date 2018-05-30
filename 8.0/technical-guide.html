@@ -5680,7 +5680,7 @@ protected void execInitField() {
     <h2 id="cha-data-objects"><a class="anchor" href="#cha-data-objects"></a>16. Data Objects</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Data objects are Scout beans, which are used as data transfer objects for synchroneous REST and asynchroneous MOM interfaces. Furthermore, they can be used as domain objects within business logic.</p>
+      <p>Data objects are Scout beans, which are used as data transfer objects for synchronous REST and asynchronous MOM interfaces. Furthermore, they can be used as domain objects within business logic.</p>
      </div>
      <div class="sect2">
       <h3 id="data-object-definition"><a class="anchor" href="#data-object-definition"></a>16.1. Data Object Definition</h3>
@@ -5745,7 +5745,7 @@ protected void execInitField() {
        <p>Using the <code>IDataObjectMapper</code> interface a data object can be converted from and to its string representation. The marshalling strategy is generic and replaceable. The Scout platform defines the <code>IDataObjectMapper</code> interface, at runtime a Scout bean implementing the interface must be available.</p>
       </div>
       <div class="paragraph">
-       <p>The Scout module <code>org.eclipse.scout.rt.jackson</code> provides a default implementation serializing data objects from and to JSON using the <a href="https://github.com/FasterXML/jackson">Jackson libary</a>.</p>
+       <p>The Scout module <code>org.eclipse.scout.rt.jackson</code> provides a default implementation serializing data objects from and to JSON using the <a href="https://github.com/FasterXML/jackson">Jackson library</a>.</p>
       </div>
       <div class="listingblock">
        <div class="title">
@@ -6346,7 +6346,7 @@ protected void execInitField() {
       <div class="sect3">
        <h4 id="marshaller"><a class="anchor" href="#marshaller"></a>17.1.3. Marshaller</h4>
        <div class="paragraph">
-        <p>A REST API may be used by non-Java consumers. In order to communicatate using a platform-independant format, ususally REST services use JSON as transport format. The marshaller between Java data objects and JSON is abstracted in the JAX-RS specification. Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produces data format.</p>
+        <p>A REST API may be used by non-Java consumers. In order to communicate using a platform-independent format, usually REST services use JSON as transport format. The marshaller between Java data objects and JSON is abstracted in the JAX-RS specification. Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produces data format.</p>
        </div>
        <div class="paragraph">
         <p>The Scout REST integration uses the popular Jackson library as default marshaller. Add a Maven dependency to <code>jersey-media-json-jackson</code> in your application <code>pom.xml</code> to use Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation.</p>
@@ -6358,7 +6358,7 @@ protected void execInitField() {
       <div class="sect3">
        <h4 id="runcontext-2"><a class="anchor" href="#runcontext-2"></a>17.1.4. RunContext</h4>
        <div class="paragraph">
-        <p>Like a ususal service call using the Scout service tunnel a REST request must ensure that processing of the request takes place within a <code>RunContext</code>. The <code>ServerRunContextFilter</code> filter is used to intercept incoming REST requests and wrap them within a RunContext. Therefore a REST resouce implementation is not required to deal with setting up a RunContext to wrap the request within each method. The filter must be added in the <code>web.xml</code> configuration file and should be configured to be called after the authentication filter. The filter expects that the authentication has been performed and that a <code>subject</code> is available. All following filters and servlets and thus also the REST resources run automatically in the correct context.</p>
+        <p>Like a usual service call using the Scout service tunnel a REST request must ensure that processing of the request takes place within a <code>RunContext</code>. The <code>ServerRunContextFilter</code> filter is used to intercept incoming REST requests and wrap them within a RunContext. Therefore a REST resource implementation is not required to deal with setting up a RunContext to wrap the request within each method. The filter must be added in the <code>web.xml</code> configuration file and should be configured to be called after the authentication filter. The filter expects that the authentication has been performed and that a <code>subject</code> is available. All following filters and servlets and thus also the REST resources run automatically in the correct context.</p>
        </div>
        <div class="listingblock">
         <div class="title">
@@ -6386,10 +6386,10 @@ protected void execInitField() {
        <p>The Scout module <code>org.eclipse.scout.rt.rest</code> offers a set of helper classes in order to call REST services.</p>
       </div>
       <div class="paragraph">
-       <p>Each REST service endpoint is represented by a specific REST resource client helper class. The (ususally application scoped bean) class is used to specify the resource URL and additional properties used to build up the connection (authentification, additiona headers,&#x2026;&#x200b;).</p>
+       <p>Each REST service endpoint is represented by a specific REST resource client helper class. The (usually application scoped bean) class is used to specify the resource URL and additional properties used to build up the connection (authentication, additional headers,&#x2026;&#x200b;).</p>
       </div>
       <div class="paragraph">
-       <p>At least the REST resource base path must be speficied:</p>
+       <p>At least the REST resource base path must be specified:</p>
       </div>
       <div class="listingblock">
        <div class="title">
