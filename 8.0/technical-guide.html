@@ -646,33 +646,49 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#session-cookie-jsessionid-cookie-configuration-validation">15.2. Session Cookie (JSESSIONID Cookie) Configuration Validation</a></li>
        <li><a href="#secure-output">15.3. Secure Output</a></li>
       </ul> </li>
-     <li><a href="#webservices-with-jax-ws">16. Webservices with JAX-WS</a>
+     <li><a href="#cha-data-objects">16. Data Objects</a>
       <ul class="sectlevel2">
-       <li><a href="#functionality-2">16.1. Functionality</a></li>
-       <li><a href="#jax-ws-implementor-and-deployment">16.2. JAX-WS implementor and deployment</a></li>
-       <li><a href="#jaxws.modularization">16.3. Modularization</a></li>
-       <li><a href="#build-webservice-stubs-and-artifacts">16.4. Build webservice stubs and artifacts</a></li>
-       <li><a href="#provide-a-webservice">16.5. Provide a webservice</a></li>
-       <li><a href="#consume-a-webservice">16.6. Consume a webservice</a></li>
-       <li><a href="#jaxws.xmladapters">16.7. XML adapters to work with java.util.Date and java.util.Calendar</a></li>
-       <li><a href="#jax-ws-appendix">16.8. JAX-WS Appendix</a></li>
+       <li><a href="#data-object-definition">16.1. Data Object Definition</a></li>
+       <li><a href="#marshalling">16.2. Marshalling</a></li>
+       <li><a href="#handling-of-doentity-attributes">16.3. Handling of DoEntity Attributes</a></li>
+       <li><a href="#abstract-data-objects-polymorphism">16.4. Abstract Data Objects &amp; Polymorphism</a></li>
+       <li><a href="#interfaces-to-data-objects">16.5. Interfaces to Data Objects</a></li>
+       <li><a href="#equals-and-hashcode">16.6. Equals and Hashcode</a></li>
+       <li><a href="#generic-doentity">16.7. Generic DoEntity</a></li>
+       <li><a href="#map-of-objects">16.8. Map of objects</a></li>
+       <li><a href="#idataobject-interface-data-objects-with-unknown-structure">16.9. IDataObject Interface - Data Objects with unknown structure</a></li>
+       <li><a href="#ad-hoc-data-objects">16.10. Ad-Hoc Data Objects</a></li>
+       <li><a href="#maven-dependencies">16.11. Maven Dependencies</a></li>
+       <li><a href="#extending-with-custom-serializer-and-deserializer">16.12. Extending with custom serializer and deserializer</a></li>
+       <li><a href="#sec-unit-testing">16.13. Unit Testing</a></li>
       </ul> </li>
-     <li><a href="#html-ui">17. HTML UI</a>
+     <li><a href="#webservices-with-jax-ws">17. Webservices with JAX-WS</a>
       <ul class="sectlevel2">
-       <li><a href="#browser-support">17.1. Browser Support</a></li>
+       <li><a href="#functionality-2">17.1. Functionality</a></li>
+       <li><a href="#jax-ws-implementor-and-deployment">17.2. JAX-WS implementor and deployment</a></li>
+       <li><a href="#jaxws.modularization">17.3. Modularization</a></li>
+       <li><a href="#build-webservice-stubs-and-artifacts">17.4. Build webservice stubs and artifacts</a></li>
+       <li><a href="#provide-a-webservice">17.5. Provide a webservice</a></li>
+       <li><a href="#consume-a-webservice">17.6. Consume a webservice</a></li>
+       <li><a href="#jaxws.xmladapters">17.7. XML adapters to work with java.util.Date and java.util.Calendar</a></li>
+       <li><a href="#jax-ws-appendix">17.8. JAX-WS Appendix</a></li>
       </ul> </li>
-     <li><a href="#scout-js">18. Scout JS</a>
+     <li><a href="#html-ui">18. HTML UI</a>
       <ul class="sectlevel2">
-       <li><a href="#widget">18.1. Widget</a></li>
-       <li><a href="#object-factory">18.2. Object Factory</a></li>
-       <li><a href="#form">18.3. Form</a></li>
-       <li><a href="#form-field">18.4. Form Field</a></li>
-       <li><a href="#value-field">18.5. Value Field</a></li>
-       <li><a href="#extensibility-2">18.6. Extensibility</a></li>
+       <li><a href="#browser-support">18.1. Browser Support</a></li>
       </ul> </li>
-     <li><a href="#using-smartfields-in-scout-js">19. Using SmartFields in Scout JS</a>
+     <li><a href="#scout-js">19. Scout JS</a>
       <ul class="sectlevel2">
-       <li><a href="#how-to-implement-a-lookupcall-in-scout-js">19.1. How to implement a LookupCall in Scout JS</a></li>
+       <li><a href="#widget">19.1. Widget</a></li>
+       <li><a href="#object-factory">19.2. Object Factory</a></li>
+       <li><a href="#form">19.3. Form</a></li>
+       <li><a href="#form-field">19.4. Form Field</a></li>
+       <li><a href="#value-field">19.5. Value Field</a></li>
+       <li><a href="#extensibility-2">19.6. Extensibility</a></li>
+      </ul> </li>
+     <li><a href="#using-smartfields-in-scout-js">20. Using SmartFields in Scout JS</a>
+      <ul class="sectlevel2">
+       <li><a href="#how-to-implement-a-lookupcall-in-scout-js">20.1. How to implement a LookupCall in Scout JS</a></li>
       </ul> </li>
      <li><a href="#apx-cclicence">Appendix A: Licence and Copyright</a>
       <ul class="sectlevel2">
@@ -5656,7 +5672,609 @@ protected void execInitField() {
     </div>
    </div>
    <div class="sect1">
-    <h2 id="webservices-with-jax-ws"><a class="anchor" href="#webservices-with-jax-ws"></a>16. Webservices with JAX-WS</h2>
+    <h2 id="cha-data-objects"><a class="anchor" href="#cha-data-objects"></a>16. Data Objects</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Data objects are Scout beans, which are used as data transfer objects for synchroneous REST and asynchroneous MOM interfaces. Furthermore, they can be used as domain objects within business logic.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="data-object-definition"><a class="anchor" href="#data-object-definition"></a>16.1. Data Object Definition</h3>
+      <div class="paragraph">
+       <p>A data object extends the <code>DoEntity</code> base class and declares each attribute as a single accessor method. Attributes of two kinds are available:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Value attribute of type <code>T</code></p> </li>
+        <li> <p>List attribute of type <code>List&lt;T&gt;</code></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>The name of the accessor method defines the attribute name. The return value of the accessor method defines the attribute type.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 71. Example: ExampleEntityDo
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleEntityDo</span> <span class="directive">extends</span> DoEntity {
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name() { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>);
+  }
+  <span class="directive">public</span> DoList&lt;<span class="predefined-type">Integer</span>&gt; values() { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="keyword">return</span> doList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Example attribute of type <code>String</code></td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>Example attribute of type <code>List&lt;Integer&gt;</code></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="paragraph">
+       <p>For convenience reasons when working with the data objects it is recommended to add a getter and a with (e.g. setter) method. Using the convenience with methods, new data objects can be created with fluent-style API:</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 72. Example: Create ExampleEntityDo instance
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName(<span class="string"><span class="delimiter">"</span><span class="content">Example</span><span class="delimiter">"</span></span>)
+        .withValues(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>);</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="marshalling"><a class="anchor" href="#marshalling"></a>16.2. Marshalling</h3>
+      <div class="paragraph">
+       <p>Using the <code>IDataObjectMapper</code> interface a data object can be converted from and to its string representation. The marshalling strategy is generic and replaceable. The Scout platform defines the <code>IDataObjectMapper</code> interface, at runtime a Scout bean implementing the interface must be available.</p>
+      </div>
+      <div class="paragraph">
+       <p>The Scout module <code>org.eclipse.scout.rt.jackson</code> provides a default implementation serializing data objects from and to JSON using the <a href="https://github.com/FasterXML/jackson">Jackson libary</a>.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 73. Example: Serialize ExampleEntityDo
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    <span class="predefined-type">String</span> string = BEANS.get(IDataObjectMapper.class).writeValue(entity);</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>The data object <code>ExampleEntityDo</code> serialized to JSON:</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 74. Example: ExampleEntityDo as JSON
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">example</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span> : [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>,<span class="integer">5</span>]
+}</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 75. Example: Deserialize ExampleEntityDo
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo marhalled = BEANS.get(IDataObjectMapper.class)
+        .readValue(string, ExampleEntityDo.class);</code></pre>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="type-name"><a class="anchor" href="#type-name"></a>16.2.1. Type Name</h4>
+       <div class="paragraph">
+        <p>A data object is annotated with a logical type name using the <code>@TypeName</code> annotation. The annotation value is added to the serialized JSON object as top-level <code>_type</code> property. Using the type property the data object marshaller is able to find and instantiate the matching data object class, without having to rely on a fully classified class name. If no <code>@TypeName</code> annotation is declared for a data object class, the simple class name is used as default value for the <code>_type</code> attribute.</p>
+       </div>
+       <div class="admonitionblock note">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+           <td class="content"> Declaring a logical type name using the `@TypeName`annotation is highly recommended to avoid a 1:1 dependency between the serialized JSON String and the fully classified class name. A stable type name is required in order to be able to change the data object structure without breaking the API. </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="data-object-naming-convention"><a class="anchor" href="#data-object-naming-convention"></a>16.2.2. Data Object Naming Convention</h4>
+       <div class="paragraph">
+        <p>Scout objects use the following naming conventions:</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p>A data object class should use the `Do' suffix.</p> </li>
+         <li> <p>The value of the <code>@TypeName</code> annotation corresponds to the simple class name without <code>Do</code> suffix</p> </li>
+        </ul>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="attribute-name"><a class="anchor" href="#attribute-name"></a>16.2.3. Attribute Name</h4>
+       <div class="paragraph">
+        <p>The default attribute name within the serialized string corresponds to the name of the attribute accessor method defined in the data object. To use a custom attribute name within the serialized string, the attribute accessor method can be annotated by <code>@AttributeName</code> providing the custom attribute name.</p>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 76. Example: Custom Attribute Name
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@AttributeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">myCustomName</span><span class="delimiter">"</span></span>)
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name() {
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">myCustomName</span><span class="delimiter">"</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+  }</code></pre>
+        </div>
+       </div>
+       <div class="colist arabic">
+        <table>
+         <tbody>
+          <tr>
+           <td><i class="conum" data-value="1"></i><b>1</b></td>
+           <td>Important: The annotation value must be equals to the string constant used for the <code>doValue()</code> or <code>doList()</code> attribute declaration.</td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 77. Example: Custom Attribute Name as JSON
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="JSON">{
+  <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">CustomAttributeNameEntity</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">myCustomName</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">example</span><span class="delimiter">"</span></span>
+}</code></pre>
+        </div>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="attribute-format"><a class="anchor" href="#attribute-format"></a>16.2.4. Attribute Format</h4>
+       <div class="paragraph">
+        <p>Using the <code>ValueFormat</code> annotation a data type dependent format string may be provided, which is used for the marshalling.</p>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 78. Example: Custom Attribute Format
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@ValueFormat</span>(pattern = IValueFormatConstants.DATE_PATTERN)
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">Date</span>&gt; date() {
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">date</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>The <code>IValueFormatConstants</code> interface declares a set of default format pattern constants.</p>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="handling-of-doentity-attributes"><a class="anchor" href="#handling-of-doentity-attributes"></a>16.3. Handling of DoEntity Attributes</h3>
+      <div class="paragraph">
+       <p>Instead of data objects, a REST or MOM interface could be build using simple plain old Java objects (POJOs). Compared to POJOs a Scout data object offer additional support and convenience when working with attributes.</p>
+      </div>
+      <div class="paragraph">
+       <p>A JSON attribute may have three different states:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Attribute available with a value</p> </li>
+        <li> <p>Attribute available with value <code>null</code></p> </li>
+        <li> <p>Attribute not available</p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>These three states cannot be represented with a POJO object which is based on a single variable with a pair of getter/setter. In order to differ between <em>value not available</em> and <em>value is null</em>, a wrapper type is required, which beside the value stores the information, if the attribute is available. Scout data objects solve this issue: Data objects internally use a <code>Map&lt;String, DoNode&lt;?&gt;&gt;</code> where the abstract <code>DoNode</code> at runtime is represented by a <code>DoValue&lt;T&gt;</code> or a <code>DoList&lt;T&gt;</code> object instance wrapping the value.</p>
+      </div>
+      <div class="sect3">
+       <h4 id="access-data-object-attributes"><a class="anchor" href="#access-data-object-attributes"></a>16.3.1. Access Data Object Attributes</h4>
+       <div class="ulist">
+        <ul>
+         <li> <p>Value: <code>DoNode.get()</code> returns the (wrapped) value of the attribute</p> </li>
+        </ul>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 79. Example: ExampleEntityDo Access the Attribute Value
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName(<span class="string"><span class="delimiter">"</span><span class="content">Example</span><span class="delimiter">"</span></span>)
+        .withValues(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>);
+    <span class="comment">// access using attribute accessor</span>
+    <span class="predefined-type">String</span> name1 = entity.name().get();
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">Integer</span>&gt; values1 = entity.values().get();
+    <span class="comment">// access using generated attribute getter</span>
+    <span class="predefined-type">String</span> name2 = entity.getName();
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">Integer</span>&gt; values2 = entity.getValues();</code></pre>
+        </div>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p>Existence: Using the <code>DoNode.exists()</code> method, each attribute may be checked for existence</p> </li>
+        </ul>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 80. Example: ExampleEntityDo Attribute Existence
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="java">    <span class="comment">// check existence of attribute</span>
+    <span class="type">boolean</span> hasName = entity.name().exists();</code></pre>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="abstract-data-objects-polymorphism"><a class="anchor" href="#abstract-data-objects-polymorphism"></a>16.4. Abstract Data Objects &amp; Polymorphism</h3>
+      <div class="paragraph">
+       <p>A simple data objects is implemented by subclassing the <code>DoEntity</code> class.</p>
+      </div>
+      <div class="paragraph">
+       <p>For a complex hierarchy of data objects the base class may be abstract and extends the <code>DoEntity</code> class, further subclasses extends the abstract base class. The abstract base data object class does not need to specify a <code>@TypeName</code> annotation since there are no instances of the abstract class which are serialized or deserialized directly. Each non-abstract subclass must specify a unique <code>@TypeName</code> annotation value.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 81. Example: Abstract class AbstractExampleEntityDo with one attribute
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractExampleEntityDo</span> <span class="directive">extends</span> DoEntity {
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name() {
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 82. Example: Subclass 1 with an additional attribute and a unique type name
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity1</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleEntity1Do</span> <span class="directive">extends</span> AbstractExampleEntityDo {
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name1Ex() {
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">name1Ex</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 83. Example: Subclass 2 with an additional attribute and a unique type name
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity2</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleEntity2Do</span> <span class="directive">extends</span> AbstractExampleEntityDo {
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name2Ex() {
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">name2Ex</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 84. Example: Class with attributes of type AbstractExampleEntityDo
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleDoEntityListDo</span> <span class="directive">extends</span> DoEntity {
+  <span class="directive">public</span> DoList&lt;AbstractExampleEntityDo&gt; listAttribute() {
+    <span class="keyword">return</span> doList(<span class="string"><span class="delimiter">"</span><span class="content">listAttribute</span><span class="delimiter">"</span></span>);
+  }
+  <span class="directive">public</span> DoValue&lt;AbstractExampleEntityDo&gt; singleAttribute() {
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">singleAttribute</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 85. Example: Using the ExampleDoEntityListDo class with different kinds of AbstractExampleEntityDo sub classes
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    ExampleDoEntityListDo entity = BEANS.get(ExampleDoEntityListDo.class);
+    entity.withListAttribute(
+        BEANS.get(ExampleEntity1Do.class)
+            .withName1Ex(<span class="string"><span class="delimiter">"</span><span class="content">one-ex</span><span class="delimiter">"</span></span>)
+            .withName(<span class="string"><span class="delimiter">"</span><span class="content">one</span><span class="delimiter">"</span></span>),
+        BEANS.get(ExampleEntity2Do.class)
+            .withName2Ex(<span class="string"><span class="delimiter">"</span><span class="content">two-ex</span><span class="delimiter">"</span></span>)
+            .withName(<span class="string"><span class="delimiter">"</span><span class="content">two</span><span class="delimiter">"</span></span>));
+    entity.withSingleAttribute(
+        BEANS.get(ExampleEntity1Do.class)
+            .withName1Ex(<span class="string"><span class="delimiter">"</span><span class="content">single-one-ex</span><span class="delimiter">"</span></span>)
+            .withName(<span class="string"><span class="delimiter">"</span><span class="content">single-one</span><span class="delimiter">"</span></span>));</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>If an instance of <code>ExampleDoEntityListDo</code> is serialized, each attribute is serialized using its runtime data type, adding an appropriate <code>_type</code> attribute to each serialized object. Therefore, the deserializer knows which concrete class to instantiate while deserializing the JSON document. This mechanism is used for simple value properties and list value properties. To each object which is part of a list value property the <code>_type</code> property is added to support polymorphism within single elements of a list.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 86. Example: ExampleDoEntityListDo as JSON
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleDoEntityListDo</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">listAttribute</span><span class="delimiter">"</span></span> : [ {
+    <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity1</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">one</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name1Ex</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">one-ex</span><span class="delimiter">"</span></span>
+  }, {
+    <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity2</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">two</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name2Ex</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">two-ex</span><span class="delimiter">"</span></span>
+  } ],
+  <span class="key"><span class="delimiter">"</span><span class="content">singleAttribute</span><span class="delimiter">"</span></span> : {
+    <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity1</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">single-one</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name1Ex</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">single-one-ex</span><span class="delimiter">"</span></span>
+  }
+}</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="interfaces-to-data-objects"><a class="anchor" href="#interfaces-to-data-objects"></a>16.5. Interfaces to Data Objects</h3>
+      <div class="paragraph">
+       <p>Use the basic data object interface <code>IDoEntity</code> to model a data object hierarchy with own base interfaces and a set of implementing classes.</p>
+      </div>
+      <div class="paragraph">
+       <p>Interfaces extending <code>IDataObject</code> do not need a <code>@TypeName</code> annotation, since they are never directly serialized or deserialized.</p>
+      </div>
+      <div class="paragraph">
+       <p>The interfaces may be used as types for attributes within a data object. At runtime the concrete classes implementing the interfaces are serialized and their <code>@TypeName</code> annotation value is used.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="equals-and-hashcode"><a class="anchor" href="#equals-and-hashcode"></a>16.6. Equals and Hashcode</h3>
+      <div class="paragraph">
+       <p>The base class <code>DoEntity</code> does not provide a default implementation of <code>equals()</code> and <code>hashCode()</code>, since a data object may contain any types of data which must not provide a useful <code>equals()</code> implementation. If a data object should be used as map key, a custom <code>equals()</code> and <code>hashCode()</code> method taking into account the relevant attributes should be added. For unit tests there is a utility providing different generic compare methods for data objects, see section <a href="#sec-unit-testing">Section 16.13</a>.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="generic-doentity"><a class="anchor" href="#generic-doentity"></a>16.7. Generic DoEntity</h3>
+      <div class="paragraph">
+       <p>An instance of the <code>DoEntity</code> class can represent any kind of JSON document. If the JSON document contains no type attributes or no matching data object class exists at runtime, the JSON document is deserialized into a raw <code>DoEntity</code> instance holding all attributes. To access the attributes of the data object a set of generic getter methods may be used by specifying the attribute name. A generic JSON document is deserialized into a generic tree-like structure of nested <code>DoEntity</code> instances.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 87. Example: ExampleEntityDo accessing attribute "by name"
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName(<span class="string"><span class="delimiter">"</span><span class="content">Example</span><span class="delimiter">"</span></span>)
+        .withValues(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>);
+    <span class="comment">// access name attribute by its attribute name</span>
+    <span class="predefined-type">Object</span> name1 = entity.get(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="predefined-type">String</span> name2 = entity.get(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>, <span class="predefined-type">String</span>.class); <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="predefined-type">String</span> name3 = entity.getString(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="comment">// access values attribute by its attribute name</span>
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">Object</span>&gt; values1 = entity.getList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>); <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; values2 = entity.getList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>, <span class="predefined-type">String</span>.class); <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; values3 = entity.getStringList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>); <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Accessing value attribute, default type is <code>Object</code></td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>Accessing value attribute, specify the type as class object if known</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="3"></i><b>3</b></td>
+          <td>Accessing value attribute, convenience method for a set of common types</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="4"></i><b>4</b></td>
+          <td>Accessing list attribute, default type is <code>Object</code></td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="5"></i><b>5</b></td>
+          <td>Accessing list attribute, specify the type as class object if known</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="6"></i><b>6</b></td>
+          <td>Accessing list attribute, convenience method for a set of common types</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="paragraph">
+       <p>Apart of the convenience methods available directly within the <code>DoEntity</code> class, the <code>DataObjectHelper</code> class contains a set of further convenience methods to access raw values of a data object.</p>
+      </div>
+      <div class="sect3">
+       <h4 id="accessing-number-values"><a class="anchor" href="#accessing-number-values"></a>16.7.1. Accessing number values</h4>
+       <div class="paragraph">
+        <p>If a generic JSON document is deserialized to a <code>DoEntity</code> class without using a subclass specifying the attribute types, all attributes of type JSON number are deserialized into the smallest possible Java type. For instance the number value 42 is deserialized into an Integer value, a large number may be deserialized into a <code>BigInteger</code> or <code>BigDecimal</code> if it is a floating point value. Using the convenience method <code>DoEntity.getDecimal(&#x2026;&#x200b;)</code> each number attribute is converted automatically into a <code>BigDecimal</code> instance on access.</p>
+       </div>
+       <div class="admonitionblock important">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
+           <td class="content"> If a generic JSON document is deserialized, only a set of basic Java types like String, Number, Double are supported. Every JSON object is deserialized into a (nested) <code>DoEntity</code> structure, which internally is represented by a nested structure of <code>Map&lt;String, Object&gt;</code>. </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="map-of-objects"><a class="anchor" href="#map-of-objects"></a>16.8. Map of objects</h3>
+      <div class="paragraph">
+       <p>To build map-like a data object (corresponds to <code>Map&lt;String, T&gt;</code>), the <code>DoMapEntity&lt;T&gt;</code> base class may be used.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 88. Example: Map&lt;String, ExampleEntityDo&gt; as ExampleMapEntityDo data object
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleMapEntity</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleMapEntityDo</span> <span class="directive">extends</span> DoMapEntity&lt;ExampleEntityDo&gt; {
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>The example JSON document of ExampleMapEntityDo instance with two elements:</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 89. Example: ExampleMapEntityDo with two elements:
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="JSON">{
+  <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleMapEntity</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">mapAttribute1</span><span class="delimiter">"</span></span> : {
+    <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">example-1</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span> : [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>,<span class="integer">5</span>]
+  },
+    <span class="key"><span class="delimiter">"</span><span class="content">mapAttribute2</span><span class="delimiter">"</span></span> : {
+    <span class="key"><span class="delimiter">"</span><span class="content">_type</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span> : <span class="string"><span class="delimiter">"</span><span class="content">example-2</span><span class="delimiter">"</span></span>,
+    <span class="key"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span> : [<span class="integer">6</span>,<span class="integer">7</span>,<span class="integer">8</span>,<span class="integer">9</span>]
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 90. Example: Accessing attributes
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    ExampleMapEntityDo mapEntity = BEANS.get(ExampleMapEntityDo.class);
+    mapEntity.put(<span class="string"><span class="delimiter">"</span><span class="content">mapAttribute1</span><span class="delimiter">"</span></span>,
+        BEANS.get(ExampleEntityDo.class)
+            .withName(<span class="string"><span class="delimiter">"</span><span class="content">Example</span><span class="delimiter">"</span></span>)
+            .withValues(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>));
+    mapEntity.put(<span class="string"><span class="delimiter">"</span><span class="content">mapAttribute2</span><span class="delimiter">"</span></span>,
+        BEANS.get(ExampleEntityDo.class)
+            .withName(<span class="string"><span class="delimiter">"</span><span class="content">Example</span><span class="delimiter">"</span></span>)
+            .withValues(<span class="integer">6</span>, <span class="integer">7</span>, <span class="integer">8</span>, <span class="integer">9</span>));
+    ExampleEntityDo attr1 = mapEntity.get(<span class="string"><span class="delimiter">"</span><span class="content">mapAttribute1</span><span class="delimiter">"</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, ExampleEntityDo&gt; allAttributes = mapEntity.all(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Accessing attribute using <code>get</code> method returns the attribute of declared type <code>T</code></td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>Accessing all attributes using <code>all</code> method returns a map with all attributes of type <code>T</code></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="admonitionblock important">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
+          <td class="content"> A <code>DoMapEntity&lt;T&gt;</code> subclass may declare custom attributes of another type than <code>T</code> (e.g. an integer size attribute). If attributes of other types are used, using the <code>all</code> method results in a <code>ClassCastException</code> since not all attributes are of the same type any longer. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="idataobject-interface-data-objects-with-unknown-structure"><a class="anchor" href="#idataobject-interface-data-objects-with-unknown-structure"></a>16.9. IDataObject Interface - Data Objects with unknown structure</h3>
+      <div class="paragraph">
+       <p>According to the <a href="http://json.org/">JSON specification</a> a JSON document at top level may contain a object or an array. If a JSON string of unknown structure is deserialized, the common super interface <code>IDataObject</code> may be used as target type for the call to the deserializer:</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 91. Example: Deserialize a JSON document with unknown structure
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    <span class="predefined-type">String</span> json = <span class="string"><span class="delimiter">"</span><span class="content">&lt;any JSON content&gt;</span><span class="delimiter">"</span></span>;
+    IDataObjectMapper mapper = BEANS.get(IDataObjectMapper.class);
+    IDataObject dataObject = mapper.readValue(json, IDataObject.class);
+    <span class="keyword">if</span> (dataObject <span class="keyword">instanceof</span> DoEntity) {
+      <span class="comment">// handle object content</span>
+    }
+    <span class="keyword">else</span> <span class="keyword">if</span> (dataObject <span class="keyword">instanceof</span> DoList) {
+      <span class="comment">// handle array content</span>
+    }</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="ad-hoc-data-objects"><a class="anchor" href="#ad-hoc-data-objects"></a>16.10. Ad-Hoc Data Objects</h3>
+      <div class="paragraph">
+       <p>The <code>DoEntityBuilder</code> may be used to build ad-hoc data objects without a concrete Java class defining its attributes.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 92. Example: DoEntityBuilder
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    DoEntity entity = BEANS.get(DoEntityBuilder.class)
+        .put(<span class="string"><span class="delimiter">"</span><span class="content">attr1</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">foo</span><span class="delimiter">"</span></span>)
+        .put(<span class="string"><span class="delimiter">"</span><span class="content">attr2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">bar</span><span class="delimiter">"</span></span>)
+        .putList(<span class="string"><span class="delimiter">"</span><span class="content">listAttr</span><span class="delimiter">"</span></span>, <span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>)
+        .build(); <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="predefined-type">String</span> entityString = BEANS.get(DoEntityBuilder.class)
+        .put(<span class="string"><span class="delimiter">"</span><span class="content">attr1</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">foo</span><span class="delimiter">"</span></span>)
+        .put(<span class="string"><span class="delimiter">"</span><span class="content">attr2</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">bar</span><span class="delimiter">"</span></span>)
+        .putList(<span class="string"><span class="delimiter">"</span><span class="content">listAttr</span><span class="delimiter">"</span></span>, <span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>)
+        .buildString(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Builder for a DoEntity object</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>Builder for the string representation of a DoEntity objects</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="maven-dependencies"><a class="anchor" href="#maven-dependencies"></a>16.11. Maven Dependencies</h3>
+      <div class="paragraph">
+       <p>The Scout data object implementation does not reference any specific Java serialization library or framework. The basic building blocs of data objects are part of the Scout platform and to not reference any thirdparty libraries. At runtime an implementation of the <code>IDataObjectMapper</code> interface must be provided. The Scout default implementation based on the JSON library Jackson is provided by adding a maven dependency to the module <code>org.eclipse.scout.rt.jackson</code>. The dependency to this module must be added in the top-level .dev/.app module. A dependency within the program code is not necessaray as long as no specific Jackson features should be used within the application code.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="extending-with-custom-serializer-and-deserializer"><a class="anchor" href="#extending-with-custom-serializer-and-deserializer"></a>16.12. Extending with custom serializer and deserializer</h3>
+      <div class="paragraph">
+       <p>The application scoped beans <code>DataObjectSerializers</code> resp. <code>DataObjectDeserializers</code> define the available serializer and deserializer classes used to marshal the data objects. Own custom serializer and deserializer implementations can be added by replacing the corresponding base class and register its own custom serializer or deserializer.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="sec-unit-testing"><a class="anchor" href="#sec-unit-testing"></a>16.13. Unit Testing</h3>
+      <div class="paragraph">
+       <p>A set of utility methods for unit tests with data objects are provided within the <code>DataObjectTestHelper</code> class. Commonly used are a set of assert methods (e.g. <code>assertDoEntityEquals()</code>) for testing data objects for (deep) equality.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="webservices-with-jax-ws"><a class="anchor" href="#webservices-with-jax-ws"></a>17. Webservices with JAX-WS</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The Java API for XML-Based Web Services (JAX-WS) is a Java programming language API for creating web services. JAX-WS is one of the Java XML programming APIs, and is part of the Java EE platform.</p>
@@ -5665,7 +6283,7 @@ protected void execInitField() {
       <p>Scout facilitates working with webservices, supports you in the generation of artifacts, and provides the following functionality:</p>
      </div>
      <div class="sect2">
-      <h3 id="functionality-2"><a class="anchor" href="#functionality-2"></a>16.1. Functionality</h3>
+      <h3 id="functionality-2"><a class="anchor" href="#functionality-2"></a>17.1. Functionality</h3>
       <div class="ulist">
        <ul>
         <li> <p>ready to go Maven profile for easy webservice stub and artifact generation</p> </li>
@@ -5680,9 +6298,9 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="jax-ws-implementor-and-deployment"><a class="anchor" href="#jax-ws-implementor-and-deployment"></a>16.2. JAX-WS implementor and deployment</h3>
+      <h3 id="jax-ws-implementor-and-deployment"><a class="anchor" href="#jax-ws-implementor-and-deployment"></a>17.2. JAX-WS implementor and deployment</h3>
       <div class="sect3">
-       <h4 id="jax-ws-version-and-implementor"><a class="anchor" href="#jax-ws-version-and-implementor"></a>16.2.1. JAX-WS version and implementor</h4>
+       <h4 id="jax-ws-version-and-implementor"><a class="anchor" href="#jax-ws-version-and-implementor"></a>17.2.1. JAX-WS version and implementor</h4>
        <div class="paragraph">
         <p>The JAX-WS Scout integration provides a thin layer on top of JAX-WS implementors to facilitate working with webservices. It depends on the JAX-WS 2.2.x API as specified in JSR 224. It is implementor neutral, and was tested with with the following implementations:</p>
        </div>
@@ -5698,7 +6316,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="running-jax-ws-in-a-servlet-container"><a class="anchor" href="#running-jax-ws-in-a-servlet-container"></a>16.2.2. Running JAX-WS in a servlet container</h4>
+       <h4 id="running-jax-ws-in-a-servlet-container"><a class="anchor" href="#running-jax-ws-in-a-servlet-container"></a>17.2.2. Running JAX-WS in a servlet container</h4>
        <div class="paragraph">
         <p>A servlet container like Apache Tomcat typically does not ship with a JAX-WS implementor. As the actual implementor, you can either use <em>JAX-WS RI</em> as shipped with the JRE, or provide a separate implementor like <em>JAX-WS METRO</em> or <em>Apache CXF</em> in the form of a Maven dependency. However, <em>JAX-WS RI</em> does not provide a servlet based entry point, because the Servlet API is not part of the Java SE specification.</p>
        </div>
@@ -5707,13 +6325,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="running-jax-ws-in-a-ee-container"><a class="anchor" href="#running-jax-ws-in-a-ee-container"></a>16.2.3. Running JAX-WS in a EE container</h4>
+       <h4 id="running-jax-ws-in-a-ee-container"><a class="anchor" href="#running-jax-ws-in-a-ee-container"></a>17.2.3. Running JAX-WS in a EE container</h4>
        <div class="paragraph">
         <p>When running in an EE container, the container typically ships with a JAX-WS implementor. It is highly recommended to use that implementor, primarily to avoid classloading issues, and to further profit from the container&#x2019;s monitoring and authentication facility. Refer to the containers documentation for more information.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.implementor.configuration"><a class="anchor" href="#jaxws.implementor.configuration"></a>16.2.4. Configure JAX-WS implementor</h4>
+       <h4 id="jaxws.implementor.configuration"><a class="anchor" href="#jaxws.implementor.configuration"></a>17.2.4. Configure JAX-WS implementor</h4>
        <div class="paragraph">
         <p>JAX-WS Scout integration is prepared to run with different implementors. Unfortunately, some implementors do not implement the JSR exactly, or some important functionality is missing in the JSR. To address this fact without loosing implementor independence, the delegate bean <a href="#JaxWsImplementorSpecifics">JaxWsImplementorSpecifics</a> exists.</p>
        </div>
@@ -5771,7 +6389,7 @@ protected void execInitField() {
          </ul>
         </div>
         <div class="paragraph">
-         <p>Learn more about how to configure a JAX-WS implementor: <a href="#jaxws.implementor.configuration">Section 16.2.4</a></p>
+         <p>Learn more about how to configure a JAX-WS implementor: <a href="#jaxws.implementor.configuration">Section 17.2.4</a></p>
         </div>
        </div>
        <div class="sect4">
@@ -5786,11 +6404,11 @@ protected void execInitField() {
          <p>If running in an EE application server, refer to the containers documentation for more information.</p>
         </div>
         <div class="paragraph">
-         <p><a href="#lst-maven.dep.metro">Listing 71</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 72</a> does the same for <em>Apache CXF</em></p>
+         <p><a href="#lst-maven.dep.metro">Listing 93</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 94</a> does the same for <em>Apache CXF</em></p>
         </div>
         <div id="lst-maven.dep.metro" class="listingblock">
          <div class="title">
-          Listing 71. Maven dependency for
+          Listing 93. Maven dependency for
           <em>JAX-WS METRO</em>
          </div>
          <div class="content">
@@ -5804,7 +6422,7 @@ protected void execInitField() {
         </div>
         <div id="lst-maven.dep.cxf" class="listingblock">
          <div class="title">
-          Listing 72. Maven dependency for
+          Listing 94. Maven dependency for
           <em>Apache CXF</em>
          </div>
          <div class="content">
@@ -5833,11 +6451,11 @@ protected void execInitField() {
          <p>This section describes the configuration of the entry point Servlet to publish webservices. If working with webservice consumers only, no configuration is required.</p>
         </div>
         <div class="paragraph">
-         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 16.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 73</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 74</a> for <em>Apache CXF</em>.</p>
+         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 17.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 95</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 96</a> for <em>Apache CXF</em>.</p>
         </div>
         <div id="lst-jaxws.webxml.metro" class="listingblock">
          <div class="title">
-          Listing 73. web.xml for
+          Listing 95. web.xml for
           <em>JAX-WS METRO</em> Servlet
          </div>
          <div class="content">
@@ -5875,7 +6493,7 @@ protected void execInitField() {
         </div>
         <div id="lst-jaxws.webxml.cxf" class="listingblock">
          <div class="title">
-          Listing 74. web.xml for
+          Listing 96. web.xml for
           <em>Apache CXF</em> Servlet
          </div>
          <div class="content">
@@ -5901,7 +6519,7 @@ protected void execInitField() {
           <tbody>
            <tr>
             <td><i class="conum" data-value="1"></i><b>1</b></td>
-            <td><em>Apache CXF</em> specific configuration file for endpoints to be published. See <a href="#jaxws.registration.endpoints.cxf">Section 16.5.8.2</a> for more information.</td>
+            <td><em>Apache CXF</em> specific configuration file for endpoints to be published. See <a href="#jaxws.registration.endpoints.cxf">Section 17.5.8.2</a> for more information.</td>
            </tr>
            <tr>
             <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -5937,7 +6555,7 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="jaxws.modularization"><a class="anchor" href="#jaxws.modularization"></a>16.3. Modularization</h3>
+      <h3 id="jaxws.modularization"><a class="anchor" href="#jaxws.modularization"></a>17.3. Modularization</h3>
       <div class="paragraph">
        <p>Scout JAX-WS integration does not prescribe how to organize your webservices in terms of Maven modules. You could either put all your webservices directly into the server module, or create a separate <em>jaxws</em> module containing all webservices, or even create a separate <em>jaxws</em> module for each webservice. Most often, the second approach of a single, separate <em>jaxws</em> module, which the server module depends on, is chosen.</p>
       </div>
@@ -5970,9 +6588,9 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="build-webservice-stubs-and-artifacts"><a class="anchor" href="#build-webservice-stubs-and-artifacts"></a>16.4. Build webservice stubs and artifacts</h3>
+      <h3 id="build-webservice-stubs-and-artifacts"><a class="anchor" href="#build-webservice-stubs-and-artifacts"></a>17.4. Build webservice stubs and artifacts</h3>
       <div class="sect3">
-       <h4 id="jaxws.stub.generation"><a class="anchor" href="#jaxws.stub.generation"></a>16.4.1. Configure webservice stub generation via wsimport</h4>
+       <h4 id="jaxws.stub.generation"><a class="anchor" href="#jaxws.stub.generation"></a>17.4.1. Configure webservice stub generation via wsimport</h4>
        <div class="paragraph">
         <p>The Maven plugin 'org.codehaus.mojo:jaxws-maven-plugin' with the goal 'wsimport' is used to generate a webservice stub from a WSDL file and its referenced XSD schema files. If your Maven module inherits from the Scout module 'maven_rt_plugin_config-master', the 'jaxws' profile is available, which activates automatically upon the presence of a 'WEB-INF/wsdl' folder. Instead of inheriting from that module, you can alternatively copy the 'jaxws' profile into your projects parent POM module.</p>
        </div>
@@ -5984,7 +6602,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.pom.scoutversion" class="listingblock">
         <div class="title">
-         Listing 75. Scout version defined as Maven property
+         Listing 97. Scout version defined as Maven property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -5993,11 +6611,11 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 76</a>).</p>
+        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 98</a>).</p>
        </div>
        <div id="lst-jaxws.pom.single-wsdl-file" class="listingblock">
         <div class="title">
-         Listing 76. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
+         Listing 98. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -6016,21 +6634,21 @@ protected void execInitField() {
         </table>
        </div>
        <div class="paragraph">
-        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 76</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 77</a>.</p>
+        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 98</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 99</a>.</p>
        </div>
        <div class="admonitionblock warning">
         <table>
          <tbody>
           <tr>
            <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 77</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 76</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
+           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 99</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 98</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
           </tr>
          </tbody>
         </table>
        </div>
        <div id="lst-jaxws.pom.multiple-wsdl" class="listingblock">
         <div class="title">
-         Listing 77. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
+         Listing 99. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
@@ -6111,13 +6729,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>16.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
+       <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>17.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
        <div class="paragraph">
-        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 78</a>.</p>
+        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 100</a>.</p>
        </div>
        <div id="lst-jaxws.pom.multiple-binding" class="listingblock">
         <div class="title">
-         Listing 78. explicit configuration of binding files
+         Listing 100. explicit configuration of binding files
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- YourFirstWebService.wsdl --&gt;</span>
@@ -6151,15 +6769,15 @@ protected void execInitField() {
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 79</a> for an example.</td>
+           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 101</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 80</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 102</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 81</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 103</a> for an example.</td>
           </tr>
          </tbody>
         </table>
@@ -6168,11 +6786,11 @@ protected void execInitField() {
         <p>With binding files in place, you can customize almost every WSDL component and XSD element that can be mapped to Java, such as the service endpoint interface class, packages, method name, parameter name, exception class, etc.</p>
        </div>
        <div class="paragraph">
-        <p>The global binding file typically contains some customization for common data types like <em>java.util.Date</em> or <em>java.util.Calendar</em>, whereas the custom binding files are specific for a WSDL or XSD schema. See <a href="#jaxws.xmladapters">Section 16.7</a>.</p>
+        <p>The global binding file typically contains some customization for common data types like <em>java.util.Date</em> or <em>java.util.Calendar</em>, whereas the custom binding files are specific for a WSDL or XSD schema. See <a href="#jaxws.xmladapters">Section 17.7</a>.</p>
        </div>
        <div id="lst-jaxws.example.globalbindingfile" class="listingblock">
         <div class="title">
-         Listing 79. example of global binding file in the namespace
+         Listing 101. example of global binding file in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -6205,7 +6823,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.ws" class="listingblock">
         <div class="title">
-         Listing 80. example of jaxws component customization in the namespace
+         Listing 102. example of jaxws component customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a>
         </div>
         <div class="content">
@@ -6231,7 +6849,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.xs" class="listingblock">
         <div class="title">
-         Listing 81. example of xsd schema element customization in the namespace
+         Listing 103. example of xsd schema element customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -6292,7 +6910,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="annotation-processing-tool-apt"><a class="anchor" href="#annotation-processing-tool-apt"></a>16.4.3. Annotation Processing Tool (APT)</h4>
+       <h4 id="annotation-processing-tool-apt"><a class="anchor" href="#annotation-processing-tool-apt"></a>17.4.3. Annotation Processing Tool (APT)</h4>
        <div class="paragraph">
         <p>Annotation Processing (APT) is a tool which can be enabled to fire for annotated types during compilation. In JAX-WS Scout integration, it is used as a trigger to generate webservice port type implementations. Such an auto-generated port type implementation is called an entry point. It is to be published as the webservice&#x2019;s endpoint, and acts as an interceptor for webservice requests. It optionally enforces for authentication, and makes the request to be executed in a <a href="#runcontext">RunContext</a>. Then, it handles the web request to the effectively implementing port type bean for actual processing.</p>
        </div>
@@ -6336,13 +6954,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="generate_artifacts_from_console"><a class="anchor" href="#generate_artifacts_from_console"></a>16.4.4. Build webservice stubs and APT artifacts from console</h4>
+       <h4 id="generate_artifacts_from_console"><a class="anchor" href="#generate_artifacts_from_console"></a>17.4.4. Build webservice stubs and APT artifacts from console</h4>
        <div class="paragraph">
         <p>Simply run <em>mvn clean compile</em> on the project. If you are experiencing some problems, run with -X debug flag to get a more detailed error message.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="generate_artifacts_from_eclipse"><a class="anchor" href="#generate_artifacts_from_eclipse"></a>16.4.5. Build webservice stubs and APT artifacts from within Eclipse IDE</h4>
+       <h4 id="generate_artifacts_from_eclipse"><a class="anchor" href="#generate_artifacts_from_eclipse"></a>17.4.5. Build webservice stubs and APT artifacts from within Eclipse IDE</h4>
        <div class="paragraph">
         <p>In the Eclipse IDE, there are three ways to generate webservice stubs and APT artifacts.</p>
        </div>
@@ -6358,25 +6976,25 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="exclude-derived-resources-from-version-control"><a class="anchor" href="#exclude-derived-resources-from-version-control"></a>16.4.6. Exclude derived resources from version control</h4>
+       <h4 id="exclude-derived-resources-from-version-control"><a class="anchor" href="#exclude-derived-resources-from-version-control"></a>17.4.6. Exclude derived resources from version control</h4>
        <div class="paragraph">
         <p>Stub and APT artifacts are derived resources, and should be excluded from version control. When working with Eclipse IDE, this is done automatically by eGit, because it adds derived resources to <em>.gitignore</em> (if configured to do so).</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxwsannotationprocessor"><a class="anchor" href="#jaxwsannotationprocessor"></a>16.4.7. JaxWsAnnotationProcessor</h4>
+       <h4 id="jaxwsannotationprocessor"><a class="anchor" href="#jaxwsannotationprocessor"></a>17.4.7. JaxWsAnnotationProcessor</h4>
        <div class="paragraph">
         <p><code>JaxWsAnnotationProcessor</code> is an annotation processor provided by Scout JAX-WS integration to generate an entry point for an endpoint interface during compilation. The instructions how to generate the entry point is given via a Java class or Java interface annotated with <a href="#WebServiceEntryPoint">WebServiceEntryPoint</a> annotation.</p>
        </div>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="provide-a-webservice"><a class="anchor" href="#provide-a-webservice"></a>16.5. Provide a webservice</h3>
+      <h3 id="provide-a-webservice"><a class="anchor" href="#provide-a-webservice"></a>17.5. Provide a webservice</h3>
       <div class="paragraph">
        <p>In this chapter, you will learn how to publish a webservice provider via an entry point.</p>
       </div>
       <div class="sect3">
-       <h4 id="WebServiceEntryPoint"><a class="anchor" href="#WebServiceEntryPoint"></a>16.5.1. The concept of an Entry Point</h4>
+       <h4 id="WebServiceEntryPoint"><a class="anchor" href="#WebServiceEntryPoint"></a>17.5.1. The concept of an Entry Point</h4>
        <div class="paragraph">
         <p>An entry point implements the endpoint interface (or port type interface), and is published as the webservice endpoint for that endpoint interface. The entry point itself is auto generated by <a href="#jaxwsannotationprocessor">JaxWsAnnotationProcessor</a> during compile time, based on instructions as given by the respective class/interface annotated with <code>WebServiceEntryPoint</code> annotation. The entry point is responsible to enforce authentication and to run the web request in a <code>RunContext</code>. In turn, the request is propagated to the bean implementing the endpoint interface.</p>
        </div>
@@ -6392,7 +7010,7 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>As you can see, both, entry point and port type implement the endpoint interface. But it is the entry point which is actually installed as the webservice endpoint, and which receives web requests. However, the webservice itself is implemented in the implementing bean, which typically is located in <em>server</em> module. See <a href="#jaxws.modularization">Section 16.3</a> for more information. Upon a web request, the entry point simply intercepts the web request, and then invokes the web method on the implementing bean for further processing.</p>
+        <p>As you can see, both, entry point and port type implement the endpoint interface. But it is the entry point which is actually installed as the webservice endpoint, and which receives web requests. However, the webservice itself is implemented in the implementing bean, which typically is located in <em>server</em> module. See <a href="#jaxws.modularization">Section 17.3</a> for more information. Upon a web request, the entry point simply intercepts the web request, and then invokes the web method on the implementing bean for further processing.</p>
        </div>
        <div class="paragraph">
         <p>See an <a href="#PingWebServicePortTypeBean.java">example</a> of an implementing port type bean, which is invoked by entry point.</p>
@@ -6409,12 +7027,12 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="generate-an-entry-point-as-an-endpoint-interface"><a class="anchor" href="#generate-an-entry-point-as-an-endpoint-interface"></a>16.5.2. Generate an Entry Point as an endpoint interface</h4>
+       <h4 id="generate-an-entry-point-as-an-endpoint-interface"><a class="anchor" href="#generate-an-entry-point-as-an-endpoint-interface"></a>17.5.2. Generate an Entry Point as an endpoint interface</h4>
        <div class="paragraph">
         <p>This section describes the steps required to generate an entry point. For demonstration purposes, a simple ping webservice is used, which provides a single method 'ping' to accept and return a <code>String</code> object.</p>
        </div>
        <div class="paragraph">
-        <p>See the WSDL file of ping webservice: <a href="#PingWebService.wsdl">Section 16.8.1</a><br> See the endpoint interface of ping webservice: <a href="#PingWebServicePortType.java">Section 16.8.2</a></p>
+        <p>See the WSDL file of ping webservice: <a href="#PingWebService.wsdl">Section 17.8.1</a><br> See the endpoint interface of ping webservice: <a href="#PingWebServicePortType.java">Section 17.8.2</a></p>
        </div>
        <div class="paragraph">
         <p>To generate an entry point for the webservice&#x2019;s endpoint interface, create an interface as following in your jaxws project.</p>
@@ -6444,14 +7062,14 @@ protected void execInitField() {
         <p>It is important to understand, that the interface <code>PingWebServiceEntryPointDefinition</code> solely acts as the anchor for the <code>WebServiceEntryPoint</code> annotation. This class or interface has no special meaning, except that it declares the annotation to be interpreted by annotation processor. Typically, this class is called <em>Entry Point Definition</em>.</p>
        </div>
        <div class="paragraph">
-        <p>If running <code>mvn clean compile</code>, an entry point is generated for that endpoint interface. See the entry point as generated for ping webservice: <a href="#PingWebServicePortTypeEntryPoint.java">Section 16.8.3</a></p>
+        <p>If running <code>mvn clean compile</code>, an entry point is generated for that endpoint interface. See the entry point as generated for ping webservice: <a href="#PingWebServicePortTypeEntryPoint.java">Section 17.8.3</a></p>
        </div>
        <div class="paragraph">
         <p>If you should experience some problems in the entry point generation, refer to <a href="#generate_artifacts_from_eclipse">Build webservice stubs and APT artifacts from within Eclipse IDE</a>, or <a href="#generate_artifacts_from_console">Build webservice stubs and APT artifacts from console</a>.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="instrument-the-entry-point-generation"><a class="anchor" href="#instrument-the-entry-point-generation"></a>16.5.3. Instrument the Entry Point generation</h4>
+       <h4 id="instrument-the-entry-point-generation"><a class="anchor" href="#instrument-the-entry-point-generation"></a>17.5.3. Instrument the Entry Point generation</h4>
        <div class="paragraph">
         <p>This section gives an overview on how to configure the entry point to be generated.</p>
        </div>
@@ -6493,11 +7111,11 @@ protected void execInitField() {
          </tr>
          <tr>
           <td class="tableblock halign-left valign-top"><p class="tableblock">authentication</p></td>
-          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the authentication mechanism to be installed, and in which <code>RunContext</code> to run authenticated requests. By default, authentication is <em>disabled</em>. If <em>enabled</em>, an <code>AuthenticationHandler</code> is generated and registered in the handler chain as very first handler. However, the position of that handler can be changed via <em>order</em> field on <code>Authentication</code> annotation.<br> See <a href="#jaxws.provider.authentication">Section 16.5.3.1</a> for more information.</p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the authentication mechanism to be installed, and in which <code>RunContext</code> to run authenticated requests. By default, authentication is <em>disabled</em>. If <em>enabled</em>, an <code>AuthenticationHandler</code> is generated and registered in the handler chain as very first handler. However, the position of that handler can be changed via <em>order</em> field on <code>Authentication</code> annotation.<br> See <a href="#jaxws.provider.authentication">Section 17.5.3.1</a> for more information.</p></td>
          </tr>
          <tr>
           <td class="tableblock halign-left valign-top"><p class="tableblock">handlerChain</p></td>
-          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the handlers to be installed. The order of the handlers is as declared. A handler is looked up as a bean, and must implement <code>javax.xml.ws.handler.Handler</code> interface.<br> See <a href="#jaxws.provider.handlerChain">Section 16.5.5</a> for more information.</p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the handlers to be installed. The order of the handlers is as declared. A handler is looked up as a bean, and must implement <code>javax.xml.ws.handler.Handler</code> interface.<br> See <a href="#jaxws.provider.handlerChain">Section 17.5.5</a> for more information.</p></td>
          </tr>
         </tbody>
        </table>
@@ -6599,10 +7217,10 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>16.5.4. Example of an Entry Point definition</h4>
+       <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>17.5.4. Example of an Entry Point definition</h4>
        <div id="jaxws.listing.porttypedefinition" class="listingblock">
         <div class="title">
-         Listing 82. Example configuration for an entry point definition
+         Listing 104. Example configuration for an entry point definition
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -6638,7 +7256,7 @@ protected void execInitField() {
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>Registers the 'CorrelationIdHandler' as the first handler to set a correlation ID onto the current message context. See <a href="#jaxws.provider.statepropagation">Section 16.5.6</a> for more information about state propagation.</td>
+           <td>Registers the 'CorrelationIdHandler' as the first handler to set a correlation ID onto the current message context. See <a href="#jaxws.provider.statepropagation">Section 17.5.6</a> for more information about state propagation.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -6690,7 +7308,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 83. PingWebServiceEntryPoint_handler-chain.xml
+         Listing 105. PingWebServiceEntryPoint_handler-chain.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">&lt;handler-chains xmlns=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/javaee</span><span class="delimiter">"</span></span>&gt;
@@ -6726,7 +7344,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 84. PingWebServiceEntryPoint.java
+         Listing 106. PingWebServiceEntryPoint.java
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebService</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PingWebServicePortType</span><span class="delimiter">"</span></span>,
@@ -6741,7 +7359,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.provider.handlerChain"><a class="anchor" href="#jaxws.provider.handlerChain"></a>16.5.5. Configure JAX-WS Handlers</h4>
+       <h4 id="jaxws.provider.handlerChain"><a class="anchor" href="#jaxws.provider.handlerChain"></a>17.5.5. Configure JAX-WS Handlers</h4>
        <div class="paragraph">
         <p>See <a href="#example.entrypoint.definition">listing</a> for an example of how to configure JAX-WS handlers.</p>
        </div>
@@ -6759,7 +7377,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 85. Example of a JAX-WS Handler
+         Listing 107. Example of a JAX-WS Handler
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span> <i class="conum" data-value="1"></i><b>(1)</b>
@@ -6812,7 +7430,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.provider.statepropagation"><a class="anchor" href="#jaxws.provider.statepropagation"></a>16.5.6. Propagate state among Handlers and port type</h4>
+       <h4 id="jaxws.provider.statepropagation"><a class="anchor" href="#jaxws.provider.statepropagation"></a>17.5.6. Propagate state among Handlers and port type</h4>
        <div class="paragraph">
         <p>Sometimes it is useful to share state among handlers, and even with the port type. This can be done via <code>javax.xml.ws.handler.MessageContext</code>. By default, a property put onto message context is only available in the handler chain. To make it available to the port type as well, set its scope to 'APPLICATION' accordingly.</p>
        </div>
@@ -6821,7 +7439,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 86. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
+         Listing 108. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -6862,7 +7480,7 @@ protected void execInitField() {
        </div>
        <div id="jaxws.handler.statepropagation.readcid" class="listingblock">
         <div class="title">
-         Listing 87. This handler accesses the 'correlation ID' as set by the previous handler.
+         Listing 109. This handler accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -6899,7 +7517,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 88. This port type accesses the 'correlation ID' as set by the previous handler.
+         Listing 110. This port type accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -6930,7 +7548,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jax-ws-correlation-id-propagation"><a class="anchor" href="#jax-ws-correlation-id-propagation"></a>16.5.7. JAX-WS Correlation ID Propagation</h4>
+       <h4 id="jax-ws-correlation-id-propagation"><a class="anchor" href="#jax-ws-correlation-id-propagation"></a>17.5.7. JAX-WS Correlation ID Propagation</h4>
        <div class="paragraph">
         <p>Scout&#x2019;s JAX-WS integration already provides complete support for reading a correlation ID from the HTTP header named <code>X-Scout-Correlation-Id</code> of the incoming web service request and propagates it to the <a href="#runcontext">RunContext</a> that executes the actual service operation. A new correlation ID is created if the HTTP header is empty or missing.</p>
        </div>
@@ -6956,7 +7574,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 89. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
+         Listing 111. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -6986,7 +7604,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="registration-of-webservice-endpoints"><a class="anchor" href="#registration-of-webservice-endpoints"></a>16.5.8. Registration of webservice endpoints</h4>
+       <h4 id="registration-of-webservice-endpoints"><a class="anchor" href="#registration-of-webservice-endpoints"></a>17.5.8. Registration of webservice endpoints</h4>
        <div class="paragraph">
         <p>The registration of webservice endpoints depends on the implementor you use, and whether you are running in an EE container with webservice auto discovery enabled.</p>
        </div>
@@ -7003,7 +7621,7 @@ protected void execInitField() {
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 90. WEB-INF/sun-jaxws.xml
+          Listing 112. WEB-INF/sun-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jws:endpoints</span> <span class="attribute-name">xmlns:jws</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/jax-ws/ri/runtime</span><span class="delimiter">"</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">"</span><span class="content">2.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
@@ -7021,11 +7639,11 @@ protected void execInitField() {
        <div class="sect4">
         <h5 id="jaxws.registration.endpoints.cxf"><a class="anchor" href="#jaxws.registration.endpoints.cxf"></a>Apache CXF</h5>
         <div class="paragraph">
-         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 74</a> for more information.</p>
+         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 96</a> for more information.</p>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 91. WEB-INF/cxf-jaxws.xml
+          Listing 113. WEB-INF/cxf-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;beans</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.springframework.org/schema/beans</span><span class="delimiter">"</span></span>
@@ -7064,7 +7682,7 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="consume-a-webservice"><a class="anchor" href="#consume-a-webservice"></a>16.6. Consume a webservice</h3>
+      <h3 id="consume-a-webservice"><a class="anchor" href="#consume-a-webservice"></a>17.6. Consume a webservice</h3>
       <div class="paragraph">
        <p>Communication with a webservice endpoint is done based on the webservice&#x2019;s port generated by 'wsimport'. Learn more how to <a href="#jaxws.stub.generation">generate a webservice stub from a WSDL file</a>.</p>
       </div>
@@ -7073,7 +7691,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 92. Example of a WS-Client
+        Listing 114. Example of a WS-Client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
@@ -7094,11 +7712,11 @@ protected void execInitField() {
        <p>A WS-Client can be configured with some default values like the endpoint URL, credentials, timeouts and more. However, the configuration can also be set or overwritten later when creating the <code>InvocationContext</code>.</p>
       </div>
       <div class="paragraph">
-       <p>See also <a href="#jaxws.consumer.configuration">Section 16.6.7</a>.</p>
+       <p>See also <a href="#jaxws.consumer.configuration">Section 17.6.7</a>.</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 93. Example of a WS-Client configuration
+        Listing 115. Example of a WS-Client configuration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient1</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
@@ -7144,13 +7762,13 @@ protected void execInitField() {
        </table>
       </div>
       <div class="sect3">
-       <h4 id="invoke-a-webservice"><a class="anchor" href="#invoke-a-webservice"></a>16.6.1. Invoke a webservice</h4>
+       <h4 id="invoke-a-webservice"><a class="anchor" href="#invoke-a-webservice"></a>17.6.1. Invoke a webservice</h4>
        <div class="paragraph">
         <p>A webservice operation is invoked on behalf of an invocation context, which is associated with a dedicated port, and which specifies the data to be included in the web request. Upon a webservice call, the invocation context should be discarded.</p>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 94. Example of a webservice call
+         Listing 116. Example of a webservice call
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">PingWebServicePortType port = BEANS.get(PingWebServiceClient.class).newInvocationContext().getPort(); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -7179,7 +7797,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 95. Configure invocation context with data to be included in the web request
+         Listing 117. Configure invocation context with data to be included in the web request
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> InvocationContext&lt;PingWebServicePortType&gt; context = BEANS.get(PingWebServiceClient.class).newInvocationContext();
@@ -7234,13 +7852,13 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="cancel-a-webservice-request"><a class="anchor" href="#cancel-a-webservice-request"></a>16.6.2. Cancel a webservice request</h4>
+       <h4 id="cancel-a-webservice-request"><a class="anchor" href="#cancel-a-webservice-request"></a>17.6.2. Cancel a webservice request</h4>
        <div class="paragraph">
         <p>The WS-Client supports for cancellation of webservice requests. Internally, every web request is run in another thread, which the calling thread waits for to complete. Upon cancellation, that other thread is interrupted, and the calling thread released with a <code>WebServiceRequestCancelledException</code>. However, depending on the JAX-WS implementor, the web request may still be running, because JAX-WS API does not support the cancellation of a web request.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="get-information-about-the-last-web-request"><a class="anchor" href="#get-information-about-the-last-web-request"></a>16.6.3. Get information about the last web request</h4>
+       <h4 id="get-information-about-the-last-web-request"><a class="anchor" href="#get-information-about-the-last-web-request"></a>17.6.3. Get information about the last web request</h4>
        <div class="paragraph">
         <p>The invocation context allows you to access HTTP status code and HTTP headers of the last web request.</p>
        </div>
@@ -7256,7 +7874,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="propagate-state-to-handlers"><a class="anchor" href="#propagate-state-to-handlers"></a>16.6.4. Propagate state to Handlers</h4>
+       <h4 id="propagate-state-to-handlers"><a class="anchor" href="#propagate-state-to-handlers"></a>17.6.4. Propagate state to Handlers</h4>
        <div class="paragraph">
         <p>An invocation context can be associated with request context properties, which are propagated to handlers and JAX-WS implementor.</p>
        </div>
@@ -7282,11 +7900,11 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
         </table>
        </div>
        <div class="paragraph">
-        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 87</a>.</p>
+        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 109</a>.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="install-handlers-and-provide-credentials-for-authentication"><a class="anchor" href="#install-handlers-and-provide-credentials-for-authentication"></a>16.6.5. Install handlers and provide credentials for authentication</h4>
+       <h4 id="install-handlers-and-provide-credentials-for-authentication"><a class="anchor" href="#install-handlers-and-provide-credentials-for-authentication"></a>17.6.5. Install handlers and provide credentials for authentication</h4>
        <div class="paragraph">
         <p>To install a handler, overwrite <code>execInstallHandlers</code> and add the handler to the given List. The handlers are invoked in the order as added to the handler-chain. By default, there is no handler installed.</p>
        </div>
@@ -7322,7 +7940,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jax-ws-client-correlation-id-propagation"><a class="anchor" href="#jax-ws-client-correlation-id-propagation"></a>16.6.6. JAX-WS Client Correlation ID Propagation</h4>
+       <h4 id="jax-ws-client-correlation-id-propagation"><a class="anchor" href="#jax-ws-client-correlation-id-propagation"></a>17.6.6. JAX-WS Client Correlation ID Propagation</h4>
        <div class="paragraph">
         <p>The current context&#x2019;s correlation ID can be forwarded to the consumed web service. Scout provides a handler that sets the <code>X-Scout-Correlation-Id</code> HTTP header on the outgoing request.</p>
        </div>
@@ -7350,7 +7968,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.consumer.configuration"><a class="anchor" href="#jaxws.consumer.configuration"></a>16.6.7. Default configuration of WS-Clients</h4>
+       <h4 id="jaxws.consumer.configuration"><a class="anchor" href="#jaxws.consumer.configuration"></a>17.6.7. Default configuration of WS-Clients</h4>
        <div class="paragraph">
         <p>The following properties can be set globally for all WS-Clients. However, a WS-Client can overwrite any of this values.</p>
        </div>
@@ -7398,9 +8016,9 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
       </div>
      </div>
      <div class="sect2">
-      <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>16.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
+      <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>17.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
       <div class="paragraph">
-       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 79</a> for an example.</p>
+       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 101</a> for an example.</p>
       </div>
       <div class="paragraph">
        <p>See the adapter&#x2019;s JavaDoc for more detailed information.</p>
@@ -7494,9 +8112,9 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
       </table>
      </div>
      <div class="sect2">
-      <h3 id="jax-ws-appendix"><a class="anchor" href="#jax-ws-appendix"></a>16.8. JAX-WS Appendix</h3>
+      <h3 id="jax-ws-appendix"><a class="anchor" href="#jax-ws-appendix"></a>17.8. JAX-WS Appendix</h3>
       <div class="sect3">
-       <h4 id="PingWebService.wsdl"><a class="anchor" href="#PingWebService.wsdl"></a>16.8.1. PingWebService.wsdl</h4>
+       <h4 id="PingWebService.wsdl"><a class="anchor" href="#PingWebService.wsdl"></a>17.8.1. PingWebService.wsdl</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
@@ -7547,7 +8165,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="PingWebServicePortType.java"><a class="anchor" href="#PingWebServicePortType.java"></a>16.8.2. PingWebServicePortType.java</h4>
+       <h4 id="PingWebServicePortType.java"><a class="anchor" href="#PingWebServicePortType.java"></a>17.8.2. PingWebServicePortType.java</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FunctionalInterface</span>
@@ -7562,7 +8180,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="PingWebServicePortTypeEntryPoint.java"><a class="anchor" href="#PingWebServicePortTypeEntryPoint.java"></a>16.8.3. PingWebServicePortTypeEntryPoint.java</h4>
+       <h4 id="PingWebServicePortTypeEntryPoint.java"><a class="anchor" href="#PingWebServicePortTypeEntryPoint.java"></a>17.8.3. PingWebServicePortTypeEntryPoint.java</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Generated</span>(value = <span class="string"><span class="delimiter">"</span><span class="content">org.eclipse.scout.jaxws.apt.JaxWsAnnotationProcessor</span><span class="delimiter">"</span></span>, date = <span class="string"><span class="delimiter">"</span><span class="content">2016-01-25T14:22:58:583+0100</span><span class="delimiter">"</span></span>, comments = <span class="string"><span class="delimiter">"</span><span class="content">EntryPoint to run webservice requests on behalf of a RunContext</span><span class="delimiter">"</span></span>)
@@ -7595,7 +8213,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="PingWebServicePortTypeBean.java"><a class="anchor" href="#PingWebServicePortTypeBean.java"></a>16.8.4. PingWebServicePortTypeBean.java</h4>
+       <h4 id="PingWebServicePortTypeBean.java"><a class="anchor" href="#PingWebServicePortTypeBean.java"></a>17.8.4. PingWebServicePortTypeBean.java</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7609,7 +8227,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="settings_org.eclipse.jdt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.core.prefs"></a>16.8.5. .settings/org.eclipse.jdt.core.prefs file to enable APT in Eclipse IDE</h4>
+       <h4 id="settings_org.eclipse.jdt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.core.prefs"></a>17.8.5. .settings/org.eclipse.jdt.core.prefs file to enable APT in Eclipse IDE</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml">...
@@ -7619,7 +8237,7 @@ org.eclipse.jdt.core.compiler.processAnnotations=enabled
        </div>
       </div>
       <div class="sect3">
-       <h4 id="settings_org.eclipse.jdt.apt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.apt.core.prefs"></a>16.8.6. .settings/org.eclipse.jdt.apt.core.prefs file to enable APT in Eclipse IDE</h4>
+       <h4 id="settings_org.eclipse.jdt.apt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.apt.core.prefs"></a>17.8.6. .settings/org.eclipse.jdt.apt.core.prefs file to enable APT in Eclipse IDE</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml">org.eclipse.jdt.apt.aptEnabled=true
@@ -7630,7 +8248,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="factorypath"><a class="anchor" href="#factorypath"></a>16.8.7. .factorypath file to enable APT in Eclipse IDE</h4>
+       <h4 id="factorypath"><a class="anchor" href="#factorypath"></a>17.8.7. .factorypath file to enable APT in Eclipse IDE</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- Replace 'XXX-VERSION-XXX' by the respective Scout RT version --&gt;</span>
@@ -7646,7 +8264,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="IAuthenticationMethod"><a class="anchor" href="#IAuthenticationMethod"></a>16.8.8. Authentication Method</h4>
+       <h4 id="IAuthenticationMethod"><a class="anchor" href="#IAuthenticationMethod"></a>17.8.8. Authentication Method</h4>
        <div class="paragraph">
         <p>The authentication method specifies the protocol to challenge the webservice client to provide credentials.<br> Scout provides an implementation for <em>BASIC</em> and <em>WSSE_UsernameToken</em>. You can implement your own authentication method by implementing <code>IAuthenticationMethod</code> interface.</p>
        </div>
@@ -7676,7 +8294,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="ICredentialVerifier"><a class="anchor" href="#ICredentialVerifier"></a>16.8.9. Credential Verifier</h4>
+       <h4 id="ICredentialVerifier"><a class="anchor" href="#ICredentialVerifier"></a>17.8.9. Credential Verifier</h4>
        <div class="paragraph">
         <p>Verifies user&#x2019;s credentials against a data source like <em>database</em>, <em>config.properties</em>, <em>Active Directory</em>, or others.<br> Scout provides an implementation for verification against users in <em>config.properties</em>. You can implement your own verifier by implementing <code>ICredentialVerifier</code> interface.</p>
        </div>
@@ -7713,10 +8331,10 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="html-ui"><a class="anchor" href="#html-ui"></a>17. HTML UI</h2>
+    <h2 id="html-ui"><a class="anchor" href="#html-ui"></a>18. HTML UI</h2>
     <div class="sectionbody">
      <div class="sect2">
-      <h3 id="browser-support"><a class="anchor" href="#browser-support"></a>17.1. Browser Support</h3>
+      <h3 id="browser-support"><a class="anchor" href="#browser-support"></a>18.1. Browser Support</h3>
       <div class="paragraph">
        <p>The Scout HTML UI requires a web browser with modern built-in technologies: HTML 5, CSS 3, JavaScript (ECMAScript 5). Scout does its best to support all browsers widely in use today by making use of vendor-specific prefixes, polyfills or other workarounds. However, some older or obscure browsers are not supported deliberately, simply because they are lacking basic capabilities or the required effort would be beyond reason.</p>
       </div>
@@ -7783,7 +8401,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>18. Scout JS</h2>
+    <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>19. Scout JS</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>A classic Scout application has a client model written in Java, and a UI which is rendered using JavaScript. With this approach you can write your client code using a mature and type safe language. Unfortunately you cannot develop applications which have to run offline because the UI and the Java model need to be synchronized.</p>
@@ -7798,12 +8416,12 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       <p>Scout JS is used in classic Scout applications as well. This means if you understand the concepts of Scout JS, writing custom widgets will be a lot easier.</p>
      </div>
      <div class="sect2">
-      <h3 id="widget"><a class="anchor" href="#widget"></a>18.1. Widget</h3>
+      <h3 id="widget"><a class="anchor" href="#widget"></a>19.1. Widget</h3>
       <div class="paragraph">
        <p>A widget is a component which may be rendered. It may be simple like a label, or more complex like a tree or table. A form is a widget and a form field, too. A widget contains the model, which represents the state of the widget. In a Scout Classic application, that model will be sent from the UI server to the browser and the Scout UI will use that model to create the widget. In a Scout JS app, the model may be provided using JSON or directly with JavaScript.</p>
       </div>
       <div class="sect3">
-       <h4 id="lifecycle"><a class="anchor" href="#lifecycle"></a>18.1.1. Lifecycle</h4>
+       <h4 id="lifecycle"><a class="anchor" href="#lifecycle"></a>19.1.1. Lifecycle</h4>
        <div class="paragraph">
         <p>Every widget has a lifecycle. After a widget is instantiated, it has to be initialized using <code>init</code>. If you want to display it, you have to call the <code>render</code> method. If you want to remove it from the DOM, call the <code>remove</code> method. Removing a widget is not the same as destroying it. You can still use it, you can for example change some properties and then render it again. If you really don&#x2019;t need it anymore, call the <code>destroy</code> method.</p>
        </div>
@@ -7825,14 +8443,14 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="creating-a-widget"><a class="anchor" href="#creating-a-widget"></a>18.1.2. Creating a Widget</h4>
+       <h4 id="creating-a-widget"><a class="anchor" href="#creating-a-widget"></a>19.1.2. Creating a Widget</h4>
        <div class="paragraph">
         <p>A widget may be created using the constructor function or <code>scout.create</code>. Best practice is to always use <code>scout.create</code> which gives you two benefits:</p>
        </div>
        <div class="olist arabic">
         <ol class="arabic">
          <li> <p>You don&#x2019;t have to call <code>init</code> by yourself.</p> </li>
-         <li> <p>The widget may be extended (see <a href="#object-factory">Section 18.2</a> for details).</p> </li>
+         <li> <p>The widget may be extended (see <a href="#object-factory">Section 19.2</a> for details).</p> </li>
         </ol>
        </div>
        <div class="paragraph">
@@ -7840,7 +8458,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 96. Creating a string field
+         Listing 118. Creating a string field
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>, {
@@ -7855,7 +8473,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 97. Creating a field considering the name space
+         Listing 119. Creating a field considering the name space
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">scout.create(<span class="string"><span class="delimiter">'</span><span class="content">mynamespace.StringField</span><span class="delimiter">'</span></span>, {})</code></pre>
@@ -7872,13 +8490,13 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="creating-a-widget-using-json"><a class="anchor" href="#creating-a-widget-using-json"></a>18.1.3. Creating a Widget using JSON</h4>
+       <h4 id="creating-a-widget-using-json"><a class="anchor" href="#creating-a-widget-using-json"></a>19.1.3. Creating a Widget using JSON</h4>
        <div class="paragraph">
         <p>Using the JSON based approach makes it easier to specify multiple widgets in a structured way. The following example defines a form with a group box and a string field.</p>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 98. A form model defined using JSON
+         Listing 120. A form model defined using JSON
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="json">{
@@ -7921,7 +8539,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="finding-a-widget"><a class="anchor" href="#finding-a-widget"></a>18.1.4. Finding a Widget</h4>
+       <h4 id="finding-a-widget"><a class="anchor" href="#finding-a-widget"></a>19.1.4. Finding a Widget</h4>
        <div class="paragraph">
         <p>In the example above we have seen how to create a widget, in that specific case we created a form. Typically it is not sufficient to just create a form, you most likely want to interact with the fields, like reading the values the user entered. In order to do that you need access to the fields. The easiest way is to use the IDs specified in the JSON.</p>
        </div>
@@ -7960,13 +8578,13 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="properties-2"><a class="anchor" href="#properties-2"></a>18.1.5. Properties</h4>
+       <h4 id="properties-2"><a class="anchor" href="#properties-2"></a>19.1.5. Properties</h4>
        <div class="paragraph">
         <p>As seen before, every widget has a model representing its state. This model is written onto the widget at the time it is being instantiated. The properties of that model are now available as properties of the widget. So in order to access such a property, just call <code>widget.yourProperty</code>. If you want to modify the property, just call <code>widget.setYourProperty(value)</code>.</p>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 99. Accessing and modifying a property
+         Listing 121. Accessing and modifying a property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.StringField</span><span class="delimiter">'</span></span>, {
@@ -7993,7 +8611,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
        </div>
       </div>
       <div class="sect3">
-       <h4 id="widget-properties"><a class="anchor" href="#widget-properties"></a>18.1.6. Widget Properties</h4>
+       <h4 id="widget-properties"><a class="anchor" href="#widget-properties"></a>19.1.6. Widget Properties</h4>
        <div class="paragraph">
         <p>A widget property is a special kind of a property which references another widget.</p>
        </div>
@@ -8002,7 +8620,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 100. Creating the string field automatically using a widget property
+         Listing 122. Creating the string field automatically using a widget property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> groupBox = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>, {
@@ -8040,7 +8658,7 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
        </div>
       </div>
       <div class="sect3">
-       <h4 id="events"><a class="anchor" href="#events"></a>18.1.7. Events</h4>
+       <h4 id="events"><a class="anchor" href="#events"></a>19.1.7. Events</h4>
        <div class="paragraph">
         <p>Every widget supports event handling by using the class <code>scout.EventSupport</code>. This allows the widgets to attach listeners to other widgets and getting informed when an event happens.</p>
        </div>
@@ -8062,7 +8680,7 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 101. Handling an event
+         Listing 123. Handling an event
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
@@ -8081,7 +8699,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 102. Stop listening for an event
+         Listing 124. Stop listening for an event
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
@@ -8113,7 +8731,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 103. Triggering an event with custom event data
+         Listing 125. Triggering an event with custom event data
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">trigger(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, {
@@ -8147,7 +8765,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 104. Example of a property change event
+          Listing 126. Example of a property change event
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
@@ -8166,7 +8784,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="icons-2"><a class="anchor" href="#icons-2"></a>18.1.8. Icons</h4>
+       <h4 id="icons-2"><a class="anchor" href="#icons-2"></a>19.1.8. Icons</h4>
        <div class="paragraph">
         <p>See chapter <a href="#icons">Chapter 5</a> for a general introduction to icons in Scout.</p>
        </div>
@@ -8200,7 +8818,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="parent-and-owner"><a class="anchor" href="#parent-and-owner"></a>18.1.9. Parent and Owner</h4>
+       <h4 id="parent-and-owner"><a class="anchor" href="#parent-and-owner"></a>19.1.9. Parent and Owner</h4>
        <div class="paragraph">
         <p>As seen in the previous chapters, the creation of a widget requires a parent. This establishes a link between the child and the parent widget which is necessary for several actions.</p>
        </div>
@@ -8208,7 +8826,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
         <ol class="arabic">
          <li> <p>Rendering a widget into the container of the parent<br> If you call <code>widget.render()</code> you don&#x2019;t have to specify the HTML container to which the widget should be appended. It takes the container of the parent widget by default which is <code>parent.$container</code>. You can still pass a custom <code>$parent</code> if you like.</p> </li>
          <li> <p>Removing a widget and its children<br> If <code>widget.remove()</code> is called, the widget will be removed from the DOM. Even though removing the parent HTML node would be sufficient in order to make the children disappear from the screen, every child widget will be removed as well. This gives the child widgets the possibility to clean up their rendering state and detach listeners. This is necessary because the widgets still exist after removal and their data can still be updated. Such cleanup actions are typically done by overriding <code>widget._remove()</code>. Remember to call the <code>_remove</code> of the super class as well.</p> </li>
-         <li> <p>Finding child widgets<br> This is something you will have to do very often if you specified your widgets in a JSON file. If you want to access these widgets from JavaScript you need to get them first. This is easy due to the linkage of the widgets. You can just use the function <code>widget(id)</code>. See also chapter <a href="#finding-a-widget">Section 18.1.4</a> for more details.</p> </li>
+         <li> <p>Finding child widgets<br> This is something you will have to do very often if you specified your widgets in a JSON file. If you want to access these widgets from JavaScript you need to get them first. This is easy due to the linkage of the widgets. You can just use the function <code>widget(id)</code>. See also chapter <a href="#finding-a-widget">Section 19.1.4</a> for more details.</p> </li>
          <li> <p>Establishing a link independent of the DOM structure<br> Normally a child widget contains HTML elements which are children of the parent&#x2019;s HTML elements. Even though this is the regular case it is not a must. Amongst others the following widgets have HTML elements appended to the HTML element of the desktop rather than their actual parents: dialogs, popups, tooltips. The main reason is because these widgets lay on top of every other widget. In order to not get into the z-index hell it is a lot easier to put these widgets on the top level of the DOM structure. But since the HTML elements are now separated, the only link is the parent/child hierarchy.<br> Imagine you have a string field which displays a tooltip. The parent of the tooltip is the string field but the HTML element is appended to the HTML element of the desktop. Removing the string field will now remove the tooltip as well even though their HTML elements are not linked.<br> Or think about the following case: there is a popup open which contains a smart field. The smart field shows a popup by itself displaying the proposals. The HTML elements of the main popup and the smart field popup are siblings meaning they are on the same level in the DOM. Normally a popup gets closed when an element not belonging to the popup is clicked. But why is the main popup not closed if the user clicks into the smart field popup even though their HTML elements are not linked? Exactly, because the smart field popup is a child of the smart field and therefore a child of the main popup.</p> </li>
         </ol>
        </div>
@@ -8221,9 +8839,9 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="object-factory"><a class="anchor" href="#object-factory"></a>18.2. Object Factory</h3>
+      <h3 id="object-factory"><a class="anchor" href="#object-factory"></a>19.2. Object Factory</h3>
       <div class="paragraph">
-       <p>As seen in the <a href="#creating-a-widget">Section 18.1.2</a> a widget may be created using <code>scout.create</code>. When using this function, the call is delegated to the <code>ObjectFactory</code>.</p>
+       <p>As seen in the <a href="#creating-a-widget">Section 19.1.2</a> a widget may be created using <code>scout.create</code>. When using this function, the call is delegated to the <code>ObjectFactory</code>.</p>
       </div>
       <div class="paragraph">
        <p>The <code>ObjectFactory</code> is responsible to create and initialize a Scout object. A typical Scout object has an <code>objectType</code> and an <code>init</code> function. But actually any kind of object with a constructor function in the scout or a custom namespace may be created.</p>
@@ -8233,7 +8851,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 105. Creating an object without the ObjectFactory
+        Listing 127. Creating an object without the ObjectFactory
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> table = <span class="keyword">new</span> scout.Table();
@@ -8248,7 +8866,7 @@ table.init(model);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 106. Adding a new object factory registration
+        Listing 128. Adding a new object factory registration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript">scout.objectFactories = <span class="predefined">$</span>.extend(scout.objectFactories, {
@@ -8263,7 +8881,7 @@ table.init(model);</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="form"><a class="anchor" href="#form"></a>18.3. Form</h3>
+      <h3 id="form"><a class="anchor" href="#form"></a>19.3. Form</h3>
       <div class="paragraph">
        <p>A form is typically used for two purposes:</p>
       </div>
@@ -8274,7 +8892,7 @@ table.init(model);</code></pre>
        </ol>
       </div>
       <div class="paragraph">
-       <p>This is achieved by using <a href="#form-field">Section 18.4</a>s. Every form has one root group box (also called main box) which has 1:n form fields. The form fields are layouted using the logical grid layout, unless no custom layout is used. This makes it easy to arrange the fields in a uniform way.</p>
+       <p>This is achieved by using <a href="#form-field">Section 19.4</a>s. Every form has one root group box (also called main box) which has 1:n form fields. The form fields are layouted using the logical grid layout, unless no custom layout is used. This makes it easy to arrange the fields in a uniform way.</p>
       </div>
       <div class="paragraph">
        <p>A form may be displayed in various ways, mainly controlled by the property <code>displayHint</code>. The following display hints are available by default:</p>
@@ -8293,7 +8911,7 @@ table.init(model);</code></pre>
        <p>Beside opening the form as separate dialog or view, you can also embed it into any other widget because it is actually a widget by itself. Just call <code>form.render()</code> for that purpose.</p>
       </div>
       <div class="sect3">
-       <h4 id="form-life-cycle"><a class="anchor" href="#form-life-cycle"></a>18.3.1. Form Life Cycle</h4>
+       <h4 id="form-life-cycle"><a class="anchor" href="#form-life-cycle"></a>19.3.1. Form Life Cycle</h4>
        <div class="paragraph">
         <p>When working with forms, you likely want to load, validate and save data as well. The form uses a so called <code>FormLifecycle</code> to manage the state of that data. The life cycle is installed by default, so you don&#x2019;t have to care about it. So whenever the user enters some data and presses the save button, the data is validated and if invalid, a message is shown. If it is valid the data will be saved. The following functions of a form may be used to control that behavior.</p>
        </div>
@@ -8318,7 +8936,7 @@ table.init(model);</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="form-field"><a class="anchor" href="#form-field"></a>18.4. Form Field</h3>
+      <h3 id="form-field"><a class="anchor" href="#form-field"></a>19.4. Form Field</h3>
       <div class="paragraph">
        <p>A form field is a special kind of a widget. It is mainly used on forms but may actually be added to any other widget.</p>
       </div>
@@ -8341,12 +8959,12 @@ table.init(model);</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="value-field"><a class="anchor" href="#value-field"></a>18.5. Value Field</h3>
+      <h3 id="value-field"><a class="anchor" href="#value-field"></a>19.5. Value Field</h3>
       <div class="paragraph">
        <p>A value field extends the form field by the ability to store a value. Typical form fields are <code>StringField</code>, <code>NumberField</code>, <code>DateField</code> or <code>SmartField</code>. All these fields provide a value which is accessible using <code>field.value</code> and may be set using <code>field.setValue(value)</code>.</p>
       </div>
       <div class="sect3">
-       <h4 id="parser-validator-formatter"><a class="anchor" href="#parser-validator-formatter"></a>18.5.1. Parser, Validator, Formatter</h4>
+       <h4 id="parser-validator-formatter"><a class="anchor" href="#parser-validator-formatter"></a>19.5.1. Parser, Validator, Formatter</h4>
        <div class="paragraph">
         <p>The value always has the target data type of the field. When using a <code>StringField</code> the type is <code>string</code>, when using a <code>NumberField</code> the type is <code>number</code>, when using a <code>DateField</code> the type is <code>date</code>. This means you don&#x2019;t have to care about how to parse the value from the user input, this will be done by the field for you. The field also validates the value, meaning if the user entered an invalid value, an error is shown. Furthermore, if you already have the value and want to show it in the field, you don&#x2019;t have to format the value by yourself.</p>
        </div>
@@ -8366,7 +8984,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 107. Example of a formatter
+          Listing 129. Example of a formatter
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">formatter</span>(value, defaultFormatter) {
@@ -8386,7 +9004,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 108. Setting the formatter
+          Listing 130. Setting the formatter
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript">field.setFormatter(formatter);</code></pre>
@@ -8397,7 +9015,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 109. Example of a parser
+          Listing 131. Example of a parser
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">parser</span>(displayText, defaultParser) {
@@ -8413,7 +9031,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 110. Setting the parser
+          Listing 132. Setting the parser
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript">field.setParser(parser);</code></pre>
@@ -8430,7 +9048,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 111. Example of a validator
+          Listing 133. Example of a validator
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span>(value) {
@@ -8460,7 +9078,7 @@ table.init(model);</code></pre>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 112. Adding a validator
+          Listing 134. Adding a validator
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="javascript">field.addValidator(validator);</code></pre>
@@ -8476,9 +9094,9 @@ table.init(model);</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="extensibility-2"><a class="anchor" href="#extensibility-2"></a>18.6. Extensibility</h3>
+      <h3 id="extensibility-2"><a class="anchor" href="#extensibility-2"></a>19.6. Extensibility</h3>
       <div class="sect3">
-       <h4 id="how-to-extend-scout-objects"><a class="anchor" href="#how-to-extend-scout-objects"></a>18.6.1. How to extend Scout objects</h4>
+       <h4 id="how-to-extend-scout-objects"><a class="anchor" href="#how-to-extend-scout-objects"></a>19.6.1. How to extend Scout objects</h4>
        <div class="paragraph">
         <p>The extension feature in Scout JS works by wrapping functions on the prototype of a Scout object with a wrapper function which is provided by an extension. The extension feature doesn&#x2019;t rely on subclassing, instead we simply register one or more extensions for a single Scout class. When a function is called on an extended object, the functions are called on the registered extensions first. Since a Scout class can have multiple extensions, we speak of an extension chain, where the last element of the chain is the original (extended) object.</p>
        </div>
@@ -8539,7 +9157,7 @@ table.init(model);</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="export-scout-model-from-a-scout-classic-online-application"><a class="anchor" href="#export-scout-model-from-a-scout-classic-online-application"></a>18.6.2. Export Scout model from a Scout classic (online) application</h4>
+       <h4 id="export-scout-model-from-a-scout-classic-online-application"><a class="anchor" href="#export-scout-model-from-a-scout-classic-online-application"></a>19.6.2. Export Scout model from a Scout classic (online) application</h4>
        <div class="paragraph">
         <p>With the steps described here you can export model-data (e.g. forms, tables, etc.) from an existing classic, online Scout application into JSON format which can be used in a Scout JS application. This is a fast and convenient method to re-use an existing form in a Scout JS application, because you don&#x2019;t have to build the model manually. Here&#x2019;s how to use the export feature:</p>
        </div>
@@ -8567,7 +9185,7 @@ table.init(model);</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="using-smartfields-in-scout-js"><a class="anchor" href="#using-smartfields-in-scout-js"></a>19. Using SmartFields in Scout JS</h2>
+    <h2 id="using-smartfields-in-scout-js"><a class="anchor" href="#using-smartfields-in-scout-js"></a>20. Using SmartFields in Scout JS</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>In a Scout JS application you can use SmartFields like in a classic Scout application. Any REST service can be used to provide results for a SmartField lookup call. However, the SmartField expects the result to have a defined structure. If the REST service API is in your hands, you can simply return a JSON response with the right structure. This means less work to do for you in the JavaScript layer, because you don&#x2019;t have to transform the response to a structure the SmartField can process. If you must use a service which API you cannot change, you have no other choice than doing some kind of transformation in JavaScript.</p>
@@ -8622,7 +9240,7 @@ table.init(model);</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="how-to-implement-a-lookupcall-in-scout-js"><a class="anchor" href="#how-to-implement-a-lookupcall-in-scout-js"></a>19.1. How to implement a LookupCall in Scout JS</h3>
+      <h3 id="how-to-implement-a-lookupcall-in-scout-js"><a class="anchor" href="#how-to-implement-a-lookupcall-in-scout-js"></a>20.1. How to implement a LookupCall in Scout JS</h3>
       <div class="paragraph">
        <p>Like in a classic Scout application each SmartField in Scout JS references a LookupCall class. The lookup call is in charge of querying a data source and returning results for that query. Example: when you type "f" into a SmartField, a lookup call could return a result which contains lookup rows starting with "F", like "Faz" and "Foo".</p>
       </div>
@@ -8800,7 +9418,7 @@ table.init(model);</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 8.0
-    <br> Last updated 2018-04-03 08:08:24 CEST
+    <br> Last updated 2018-05-30 10:29:18 CEST
    </div>
   </div>
  </body>

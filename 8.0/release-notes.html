@@ -613,6 +613,8 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
      <li><a href="#refactored-eventlistenerlist">Refactored EventListenerList</a></li>
      <li><a href="#text-and-multi-language-support-moved-to-platform">Text and Multi-Language Support Moved to 'platform'</a></li>
+     <li><a href="#data-object-support-for-rest-mom-apis">Data Object Support for REST &amp; MOM APIs</a></li>
+     <li><a href="#rest-resources-rest-clients">REST Resources &amp; REST Clients</a></li>
     </ul>
    </div>
   </div>
@@ -1395,6 +1397,64 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="paragraph">
       <p><em>Migration:</em> Change the <code>import</code>s in your <em>*.java</em> files accordingly.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="data-object-support-for-rest-mom-apis"><a class="anchor" href="#data-object-support-for-rest-mom-apis"></a>Data Object Support for REST &amp; MOM APIs</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Scout platform was extended by a generic data object support. Data objects are Scout beans, which can be used as data transfer objects for synchroneous REST and asynchroneous MOM interfaces. Furthermore they may be used as domain objects within business logic.</p>
+     </div>
+     <div class="paragraph">
+      <p>Using the new <code>DoEntity</code> class as base class, any kind of custom data objects can be built. An attributes of a data object is defined by adding an accessor method for the attribute. The name of the method corresponds to the attribute name; the attribute type is defined by the return value of the method.</p>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 1. Example data object definition
+      </div>
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleEntityDo</span> <span class="directive">extends</span> DoEntity {
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name() { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>);
+  }
+  <span class="directive">public</span> DoList&lt;<span class="predefined-type">Integer</span>&gt; values() { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="keyword">return</span> doList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>);
+  }
+}</code></pre>
+      </div>
+     </div>
+     <div class="colist arabic">
+      <table>
+       <tbody>
+        <tr>
+         <td><i class="conum" data-value="1"></i><b>1</b></td>
+         <td>String property</td>
+        </tr>
+        <tr>
+         <td><i class="conum" data-value="2"></i><b>2</b></td>
+         <td>List of integer property</td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="paragraph">
+      <p>The Scout platform defines the <code>IDataObjectMapper</code> interface which offers method to serialize and deserialize data objects from and to a string representation. The default implementation of <code>IDataObjectMapper</code> is based on the popular <a href="https://github.com/FasterXML/jackson">Jackson library</a> serializing data objects to a JSON document. The implementation can be exchanged by a custom implementation based on another library.</p>
+     </div>
+     <div class="paragraph">
+      <p>For further examples and documentation see <a href="https://eclipsescout.github.io/8.0/technical-guide.html#cha-data-objects">Technical Guide: Data Objects</a></p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="rest-resources-rest-clients"><a class="anchor" href="#rest-resources-rest-clients"></a>REST Resources &amp; REST Clients</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The new Scout module <code>org.eclipse.scout.rt.rest</code> adds basic support for REST resources and REST resource clients within the Scout framework. Available REST resources are automatically found by Jandex class inventory and registered at runtime.</p>
+     </div>
+     <div class="paragraph">
+      <p>For examples and documentation see <a href="https://eclipsescout.github.io/8.0/technical-guide.html#cha-rest">Technical Guide: REST</a></p>
      </div>
      <div class="admonitionblock tip">
       <table>
