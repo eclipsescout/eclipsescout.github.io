@@ -5203,7 +5203,7 @@ c.getSalary().setValue(<span class="keyword">new</span> <span class="predefined-
     <span class="local-variable">super</span>(ownerForm);
   }
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> execInitForm(FormInitFormChain chain) <span class="directive">throws</span> ProcessingException {
+  <span class="directive">public</span> <span class="type">void</span> execInitForm(FormInitFormChain chain) {
     chain.execInitForm();
     <span class="comment">// Example logic: Access the form, disable field</span>
     getOwner().getNameField().setEnabled(<span class="predefined-constant">false</span>, <span class="predefined-constant">true</span>, <span class="predefined-constant">true</span>);
@@ -5216,7 +5216,7 @@ c.getSalary().setValue(<span class="keyword">new</span> <span class="predefined-
       <span class="local-variable">super</span>(owner);
     }
     <span class="annotation">@Override</span>
-    <span class="directive">public</span> <span class="type">void</span> execPostLoad(FormHandlerPostLoadChain chain) <span class="directive">throws</span> ProcessingException {
+    <span class="directive">public</span> <span class="type">void</span> execPostLoad(FormHandlerPostLoadChain chain) {
       chain.execPostLoad();
       <span class="comment">// Example logic: Show a message box after load</span>
       MessageBoxes.create().withHeader(<span class="string"><span class="delimiter">"</span><span class="content">Extension test</span><span class="delimiter">"</span></span>).withBody(<span class="string"><span class="delimiter">"</span><span class="content">If you can read this, the extension works correctly</span><span class="delimiter">"</span></span>).show();
