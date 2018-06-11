@@ -572,6 +572,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#form-open">Form.open()</a></li>
        <li><a href="#status">Status</a></li>
        <li><a href="#menubar">MenuBar</a></li>
+       <li><a href="#lookuprow-removed-constructor">LookupRow: Removed constructor</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a>
       <ul class="sectlevel2">
@@ -1556,6 +1557,42 @@ scout.cspDirective[img-src]=*</code></pre>
       <h3 id="menubar"><a class="anchor" href="#menubar"></a>MenuBar</h3>
       <div class="paragraph">
        <p>So far right aligned menus where not stacked when there is not enough horizontal space. If this behavior is still required the property <code>stackabel</code> has to be set to false.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="lookuprow-removed-constructor"><a class="anchor" href="#lookuprow-removed-constructor"></a>LookupRow: Removed constructor</h3>
+      <div class="paragraph">
+       <p>The custom LookupRow constructor with key and text parameter was removed. LookupRows should be created using the <code>scout.create()</code> object factory call.</p>
+      </div>
+      <div class="paragraph">
+       <p>Old style code like:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> lookupRow = <span class="keyword">new</span> scout.LookupRow(data[<span class="integer">0</span>], data[<span class="integer">1</span>]);</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>should be replaced by:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> lookupRow = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">LookupRow</span><span class="delimiter">'</span></span>, {
+  <span class="key">key</span>: data[<span class="integer">0</span>],
+  <span class="key">text</span>: data[<span class="integer">1</span>],
+  <span class="key">parentKey</span>: data[<span class="integer">2</span>]  <i class="conum" data-value="1"></i><b>(1)</b>
+});</code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Optional parent key and other properties</td>
+         </tr>
+        </tbody>
+       </table>
       </div>
      </div>
     </div>
