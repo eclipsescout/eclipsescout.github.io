@@ -564,7 +564,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
        <li><a href="#widget-js-new-argument-for-clone">Widget.js: New Argument for clone()</a></li>
        <li><a href="#widget-js-addchild-removechild-changed-to-private">Widget.js: "addChild" &amp; "removeChild" Changed to Private</a></li>
-       <li><a href="#formfield-visit-renamed-to-formfield-visitfields">FormField.visit Renamed to FormField.visitFields</a></li>
+       <li><a href="#formfield-js-visit-renamed-to-visitfields">FormField.js: "visit()" Renamed to "visitFields"</a></li>
        <li><a href="#tree-_visitnodes-tree-visitnodes">Tree._visitNodes &amp; Tree.visitNodes</a></li>
        <li><a href="#automatic-preloading-of-web-fonts">Automatic Preloading of Web Fonts</a></li>
        <li><a href="#radio-button-group">Radio Button Group</a></li>
@@ -572,7 +572,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#form-open">Form.open()</a></li>
        <li><a href="#status">Status</a></li>
        <li><a href="#menubar">MenuBar</a></li>
-       <li><a href="#lookuprow-removed-constructor">LookupRow: Removed constructor</a></li>
+       <li><a href="#lookuprow-removed-constructor">LookupRow: Removed Constructor</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a>
       <ul class="sectlevel2">
@@ -1458,7 +1458,7 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="formfield-visit-renamed-to-formfield-visitfields"><a class="anchor" href="#formfield-visit-renamed-to-formfield-visitfields"></a>FormField.visit Renamed to FormField.visitFields</h3>
+      <h3 id="formfield-js-visit-renamed-to-visitfields"><a class="anchor" href="#formfield-js-visit-renamed-to-visitfields"></a>FormField.js: "visit()" Renamed to "visitFields"</h3>
       <div class="paragraph">
        <p>The <code>visit()</code> method on all FormFields has been renamed to <code>visitFields()</code>. This change is necessary to clarify what is visited and to distinguish between the visit methods available on widget level (e.g. <code>visitChildren()</code>).</p>
       </div>
@@ -1550,19 +1550,19 @@ scout.cspDirective[img-src]=*</code></pre>
      <div class="sect2">
       <h3 id="status"><a class="anchor" href="#status"></a>Status</h3>
       <div class="paragraph">
-       <p>The static function <code>scout.Status.warn()</code> was renamed to <code>scout.Status.warning()</code> to bring it in line with the name of corresponding severity constant <code>scout.Status.Severity.WARNING</code>.</p>
+       <p>The static function <code>scout.Status.warn()</code> was renamed to <code>scout.Status.warning()</code> to bring it in line with the name of the corresponding severity constant <code>scout.Status.Severity.WARNING</code>.</p>
       </div>
      </div>
      <div class="sect2">
       <h3 id="menubar"><a class="anchor" href="#menubar"></a>MenuBar</h3>
       <div class="paragraph">
-       <p>So far right aligned menus where not stacked when there is not enough horizontal space. If this behavior is still required the property <code>stackabel</code> has to be set to false.</p>
+       <p>In previous versions, right aligned menus were not stacked when there was not enough horizontal space. If this behavior is still required, the property <code>stackable</code> has to be set to <em>false</em>.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="lookuprow-removed-constructor"><a class="anchor" href="#lookuprow-removed-constructor"></a>LookupRow: Removed constructor</h3>
+      <h3 id="lookuprow-removed-constructor"><a class="anchor" href="#lookuprow-removed-constructor"></a>LookupRow: Removed Constructor</h3>
       <div class="paragraph">
-       <p>The custom LookupRow constructor with key and text parameter was removed. LookupRows should be created using the <code>scout.create()</code> object factory call.</p>
+       <p>The custom <em>LookupRow</em> constructor with key and text parameter was removed. LookupRows must be created using the <code>scout.create()</code> object factory call.</p>
       </div>
       <div class="paragraph">
        <p>Old style code like:</p>
@@ -1573,7 +1573,7 @@ scout.cspDirective[img-src]=*</code></pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>should be replaced by:</p>
+       <p>must be replaced by:</p>
       </div>
       <div class="listingblock">
        <div class="content">
@@ -1603,10 +1603,7 @@ scout.cspDirective[img-src]=*</code></pre>
      <div class="sect2">
       <h3 id="jquery-update"><a class="anchor" href="#jquery-update"></a>jQuery Update</h3>
       <div class="paragraph">
-       <p>The jQuery version bundled with Scout has been updated to version 3.3.1. If a SpecRunnerMaven.html is used to run Jasmine tests, the corresponding script tag must be updated to include <code>jquery-3.3.1.js</code> instead of <code>jquery-3.2.1.js</code>.</p>
-      </div>
-      <div class="paragraph">
-       <p>&#x2014;</p>
+       <p>The jQuery version bundled with Scout has been updated to version 3.3.1. If a <em>SpecRunnerMaven.html</em> is used to run Jasmine tests, the corresponding script tag must be updated to include <code>jquery-3.3.1.js</code> instead of <code>jquery-3.2.1.js</code>.</p>
       </div>
       <div class="admonitionblock tip">
        <table>
