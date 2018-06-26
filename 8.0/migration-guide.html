@@ -559,6 +559,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#table-remove-obsolete-populated-event-and-methods">Table: Remove Obsolete "POPULATED" Event and Methods</a></li>
        <li><a href="#pagefield-status-of-page-table-visible-by-default">PageField: Status of Page Table Visible by Default</a></li>
        <li><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-100">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.100)</a></li>
+       <li><a href="#moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved classes from org.eclipse.scout.rt.shared.mail to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
@@ -599,6 +600,7 @@ table.CodeRay td.code>pre{padding:0}
        <div class="ulist">
         <ul>
          <li> <p><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-100">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.100)</a></p> </li>
+         <li> <p><a href="#moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved classes from org.eclipse.scout.rt.shared.mail to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></p> </li>
         </ul>
        </div>
        <div class="paragraph">
@@ -1418,6 +1420,26 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
       <div class="paragraph">
        <p>Check the HowTo section <em>SmartField: how to apply colors and styles from a lookup-row</em> in Scout&#x2019;s technical guide to find examples for migration and how to work with the <code>cssClass</code> property.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100"><a class="anchor" href="#moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100"></a>Moved classes from org.eclipse.scout.rt.shared.mail to new module to org.eclipse.scout.rt.mail (since 8.0.100)</h3>
+      <div class="paragraph">
+       <p>The following classes were moved from <code>org.eclipse.scout.rt.shared.mail</code> to a new module named <code>org.eclipse.scout.rt.mail</code> to a package with the same module name:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>BinaryResourceDataSource</p> </li>
+        <li> <p>CharsetSafeMimeMessage</p> </li>
+        <li> <p>MailAttachment</p> </li>
+        <li> <p>MailHelper</p> </li>
+        <li> <p>MailMessage</p> </li>
+        <li> <p>MailParticipant</p> </li>
+        <li> <p>RFCWrapperPart</p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>For migration, replace all imports for <code>org.eclipse.scout.rt.shared.mail</code> by imports for <code>org.eclipse.scout.rt.mail</code> and add a dependency to the new module <code>org.eclipse.scout.rt.mail</code>.</p>
       </div>
      </div>
     </div>
