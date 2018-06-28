@@ -559,7 +559,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#table-remove-obsolete-populated-event-and-methods">Table: Remove Obsolete "POPULATED" Event and Methods</a></li>
        <li><a href="#pagefield-status-of-page-table-visible-by-default">PageField: Status of Page Table Visible by Default</a></li>
        <li><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-100">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.100)</a></li>
-       <li><a href="#moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved classes from org.eclipse.scout.rt.shared.mail to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></li>
+       <li><a href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved mail related classes to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
@@ -600,7 +600,7 @@ table.CodeRay td.code>pre{padding:0}
        <div class="ulist">
         <ul>
          <li> <p><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-100">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.100)</a></p> </li>
-         <li> <p><a href="#moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved classes from org.eclipse.scout.rt.shared.mail to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></p> </li>
+         <li> <p><a href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved mail related classes to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></p> </li>
         </ul>
        </div>
        <div class="paragraph">
@@ -1423,9 +1423,9 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100"><a class="anchor" href="#moved-classes-from-org-eclipse-scout-rt-shared-mail-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100"></a>Moved classes from org.eclipse.scout.rt.shared.mail to new module to org.eclipse.scout.rt.mail (since 8.0.100)</h3>
+      <h3 id="moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100"><a class="anchor" href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100"></a>Moved mail related classes to new module to org.eclipse.scout.rt.mail (since 8.0.100)</h3>
       <div class="paragraph">
-       <p>The following classes were moved from <code>org.eclipse.scout.rt.shared.mail</code> to a new module named <code>org.eclipse.scout.rt.mail</code> to a package with the same module name:</p>
+       <p>The following classes were moved from <code>org.eclipse.scout.rt.shared.mail</code> to a new module named <code>org.eclipse.scout.rt.mail</code> to the package <code>org.eclipse.scout.rt.mail</code>:</p>
       </div>
       <div class="ulist">
        <ul>
@@ -1440,6 +1440,12 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
       <div class="paragraph">
        <p>For migration, replace all imports for <code>org.eclipse.scout.rt.shared.mail</code> by imports for <code>org.eclipse.scout.rt.mail</code> and add a dependency to the new module <code>org.eclipse.scout.rt.mail</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>A new helper <code>org.eclipse.scout.rt.mail.smtp.SmtpHelper</code> replaces the service <code>org.eclipse.scout.rt.server.services.common.smtp.ISMTPService</code> and it&#x2019;s abstract implementation <code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService</code>. The only remaining property is <code>SmtpDebugReceiverEmailProperty</code> (<code>scout.smtp.debugReceiverEmail</code>), all others must be set in <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><code>SmtpHelper</code> has no support for subject prefix and default from email anymore. If a subject prefix is required, this must be prepended to the subject before calling <code>SmtpHelper</code> by using <code>MailHelper.addPrefixToSubject</code>. If a default from email is required, this must be ensured before calling <code>SmtpHelper</code> by using <code>MailHelper.ensureFromAddress</code>.</p>
       </div>
      </div>
     </div>
