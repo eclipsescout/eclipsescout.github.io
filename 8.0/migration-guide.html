@@ -575,6 +575,8 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#status">Status</a></li>
        <li><a href="#menubar">MenuBar</a></li>
        <li><a href="#lookuprow-removed-constructor">LookupRow: Removed Constructor</a></li>
+       <li><a href="#call-skip-retries-by-default-since-8-0-100">Call: Skip Retries by Default (since 8.0.100)</a></li>
+       <li><a href="#errorhandler-extended-support-for-arbitrary-errors-since-8-0-100">ErrorHandler: Extended Support for Arbitrary Errors (since 8.0.100)</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a>
       <ul class="sectlevel2">
@@ -601,6 +603,7 @@ table.CodeRay td.code>pre{padding:0}
         <ul>
          <li> <p><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-100">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.100)</a></p> </li>
          <li> <p><a href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved mail related classes to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></p> </li>
+         <li> <p><a href="#call-skip-retries-by-default-since-8-0-100">Call: Skip Retries by Default (since 8.0.100)</a></p> </li>
         </ul>
        </div>
        <div class="paragraph">
@@ -1629,6 +1632,79 @@ scout.cspDirective[img-src]=*</code></pre>
          </tr>
         </tbody>
        </table>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="call-skip-retries-by-default-since-8-0-100"><a class="anchor" href="#call-skip-retries-by-default-since-8-0-100"></a>Call: Skip Retries by Default (since 8.0.100)</h3>
+      <div class="paragraph">
+       <p><code>Call</code> objects no longer perform retries by default. Retries should only be active if the target service can handle repeated calls correctly.</p>
+      </div>
+      <div class="paragraph">
+       <p>The use retries, specify the desired number of maximal retries or a <em>retryIntervals</em> array in the model when creating the <code>Call</code> object:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> call1 = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">AjaxCall</span><span class="delimiter">'</span></span>, {
+  <span class="key">ajaxOptions</span>: { ... }
+  maxRetries: <span class="integer">5</span>
+});
+<span class="keyword">var</span> call2 = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">AjaxCall</span><span class="delimiter">'</span></span>, {
+  <span class="key">ajaxOptions</span>: { ... }
+  retryIntervals: [<span class="integer">100</span>, <span class="integer">200</span>, <span class="integer">500</span>, <span class="integer">500</span>, <span class="integer">500</span>];
+});</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="errorhandler-extended-support-for-arbitrary-errors-since-8-0-100"><a class="anchor" href="#errorhandler-extended-support-for-arbitrary-errors-since-8-0-100"></a>ErrorHandler: Extended Support for Arbitrary Errors (since 8.0.100)</h3>
+      <div class="paragraph">
+       <p>Because errors that happen in asynchronous calls (promise chains) are not delegated to the <code>window.onerror</code> handler, Scout&#x2019;s <code>ErrorHandler</code> class was extended. It can now be used to handle arbitrary erros in "catch" clauses or "promise fail" functions. As a consequnce, the signature of the <em>handle()</em> has been changed. It used to be hard-wired to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror">window.onerror</a> event. Now it supports a flexible number of arguments.</p>
+      </div>
+      <div class="paragraph">
+       <p>A global instance of <code>ErrorHandler</code> is still being installed as the <code>window.onerror</code> handler. Additionally, this instance is now available as <code>scout.errorHandler</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example usages:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// Handling errors in "try" blocks</span>
+<span class="keyword">try</span> {
+  <span class="comment">// ...</span>
+} <span class="keyword">catch</span> (err) {
+  scout.errorHandler.handle(err);
+}
+<span class="comment">// Handle errors in jQuery AJAX calls</span>
+<span class="predefined">$</span>.ajax(ajaxOptions)
+  .done(<span class="keyword">function</span>(data, textStatus, jqXHR) {
+    <span class="comment">/* handle success */</span>
+  })
+  .fail(<span class="keyword">function</span>(jqXHR, textStatus, errorThrown) {
+    <span class="comment">// Style 1:</span>
+    scout.errorHandler.handle(jqXHR, textStatus, errorThrown);
+    <span class="comment">// Style 2 (recommended!):</span>
+    scout.errorHandler.handle(<span class="local-variable">arguments</span>);
+  })
+<span class="comment">// Handling errors in promises</span>
+doSomethingAsynchronous()
+  .then(<span class="keyword">function</span>() { <span class="comment">/* handle result */</span> })
+  .then(<span class="keyword">function</span>() { <span class="comment">/* more handling */</span> })
+  .fail(<span class="keyword">function</span>() {
+    scout.errorHandler.handle(<span class="local-variable">arguments</span>);
+  });</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em></p>
+      </div>
+      <div class="paragraph">
+       <p>Projects that implemented their own <code>ErrorHandler</code> must update their code.</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Instead of overriding <em>handle()</em>, override <em>_onWindowError()</em>.</p> </li>
+        <li> <p>Please note that that the method <em>createLogMessage()</em> no longer exists. If you still need it, copy it from the old implementation or use <em>analyzeError()</em> to calculate a similar result.</p> </li>
+       </ul>
       </div>
      </div>
     </div>
