@@ -541,6 +541,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#java-8-required">Java 8 Required</a></li>
        <li><a href="#calendarcomponent">CalendarComponent</a></li>
+       <li><a href="#abstractcachevalueresolver">AbstractCacheValueResolver</a></li>
        <li><a href="#deprecation-of-sequencebox-equalcolumnwidths">Deprecation of SequenceBox EqualColumnWidths</a></li>
        <li><a href="#removed-constants-methods-from-clientuipreferences">Removed Constants/Methods From ClientUIPreferences</a></li>
        <li><a href="#removed-property-focusable-from-iformfield-abstractformfield">Removed Property "focusable" From IFormField, AbstractFormField</a></li>
@@ -693,6 +694,15 @@ table.CodeRay td.code>pre{padding:0}
       </div>
       <div class="paragraph">
        <p><em>Migration:</em> Use <code>Range&lt;Date&gt; getCoveredDaysRange()</code> instead with start and end date.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="abstractcachevalueresolver"><a class="anchor" href="#abstractcachevalueresolver"></a>AbstractCacheValueResolver</h3>
+      <div class="paragraph">
+       <p>Abstract implementation was replaced by default method in interface <code>ICacheValueResolver</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> Implement interface <code>ICacheValueResolver</code> directly instead of extending <code>AbstractCacheValueResolver</code>.</p>
       </div>
      </div>
      <div class="sect2">
