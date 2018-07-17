@@ -578,6 +578,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#lookuprow-removed-constructor">LookupRow: Removed Constructor</a></li>
        <li><a href="#call-skip-retries-by-default-since-8-0-100">Call: Skip Retries by Default (since 8.0.100)</a></li>
        <li><a href="#errorhandler-extended-support-for-arbitrary-errors-since-8-0-100">ErrorHandler: Extended Support for Arbitrary Errors (since 8.0.100)</a></li>
+       <li><a href="#smartfield-datefield-renamed-touch-to-touchmode-since-8-0-100">SmartField / DateField: Renamed touch to touchMode (since 8.0.100)</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a>
       <ul class="sectlevel2">
@@ -606,6 +607,7 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p><a href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-100">Moved mail related classes to new module to org.eclipse.scout.rt.mail (since 8.0.100)</a></p> </li>
          <li> <p><a href="#call-skip-retries-by-default-since-8-0-100">Call: Skip Retries by Default (since 8.0.100)</a></p> </li>
          <li> <p><a href="#errorhandler-extended-support-for-arbitrary-errors-since-8-0-100">ErrorHandler: Extended Support for Arbitrary Errors (since 8.0.100)</a></p> </li>
+         <li> <p><a href="#smartfield-datefield-renamed-touch-to-touchmode-since-8-0-100">SmartField / DateField: Renamed touch to touchMode (since 8.0.100)</a></p> </li>
         </ul>
        </div>
        <div class="paragraph">
@@ -1716,6 +1718,15 @@ doSomethingAsynchronous()
         <li> <p>Instead of overriding <em>handle()</em>, override <em>_onWindowError()</em>.</p> </li>
         <li> <p>Please note that that the method <em>createLogMessage()</em> no longer exists. If you still need it, copy it from the old implementation or use <em>analyzeError()</em> to calculate a similar result.</p> </li>
        </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="smartfield-datefield-renamed-touch-to-touchmode-since-8-0-100"><a class="anchor" href="#smartfield-datefield-renamed-touch-to-touchmode-since-8-0-100"></a>SmartField / DateField: Renamed touch to touchMode (since 8.0.100)</h3>
+      <div class="paragraph">
+       <p>Smart fields and date fields use the property <code>touch</code> to indicate that the field is running in touch mode. Unfortunately this property overrides the function <code>touch()</code> of the <code>FormField</code>. This means <code>touch()</code> cannot be used for these fields, which was not intended.</p>
+      </div>
+      <div class="paragraph">
+       <p><em>Migration:</em> The property <code>touch</code> is actually set automatically, so most people don&#x2019;t have to migrate anything. If you set the property manually (e.g. to always run such a field in touch mode), you need to rename it to <code>touchMode</code>.</p>
       </div>
      </div>
     </div>
