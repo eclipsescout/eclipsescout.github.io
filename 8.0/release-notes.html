@@ -606,6 +606,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#new-property-searchrequired">New Property 'searchRequired'</a></li>
        <li><a href="#new-event-preparelookupcall-on-smartfields-js">New Event 'prepareLookupCall' on Smartfields (JS)</a></li>
+       <li><a href="#support-for-horizontal-alignment-since-8-0-100">Support for Horizontal Alignment (since 8.0.100)</a></li>
       </ul> </li>
      <li><a href="#numberfield-support-for-minimum-and-maximum-values-js">NumberField: support for minimum and maximum values (JS)</a></li>
      <li><a href="#improved-useuiheight-calculation">Improved useUiHeight Calculation</a></li>
@@ -630,15 +631,16 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="sect2">
       <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
-      <div class="admonitionblock note">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-          <td class="content"> Please note that with the Eclipse Photon, there will no longer be regular <em>service releases</em>, but instead a faster release cycle. See <a href="https://wiki.eclipse.org/SimRel/Simultaneous_Release_Cycle_FAQ#What_is_the_Simultaneous_Release_cycle_.3F">the Simultaneous Release Cycle FAQ</a> for details. </td>
-         </tr>
-        </tbody>
-       </table>
+      <div class="paragraph">
+       <p>Even though with Eclipse Photon there will no longer be regular eclipse <em>service releases</em> (see <a href="https://wiki.eclipse.org/SimRel/Simultaneous_Release_Cycle_FAQ#What_is_the_Simultaneous_Release_cycle_.3F">the Simultaneous Release Cycle FAQ</a> for details), Scout 8.0 will continue to be maintained and a new build released from time to time. Beside bugfixes, these releases may even contain some minor features. See the following notes for details.</p>
+      </div>
+      <div class="sect3">
+       <h4 id="photon-1-8-0-100-release-expected-on-september-2018"><a class="anchor" href="#photon-1-8-0-100-release-expected-on-september-2018"></a>Photon.1 (8.0.100) Release Expected on September, 2018</h4>
+       <div class="ulist">
+        <ul>
+         <li> <p><a href="#support-for-horizontal-alignment-since-8-0-100">Support for Horizontal Alignment (since 8.0.100)</a></p> </li>
+        </ul>
+       </div>
       </div>
      </div>
      <div class="sect2">
@@ -1305,6 +1307,12 @@ table.CodeRay td.code>pre{padding:0}
       <h3 id="new-event-preparelookupcall-on-smartfields-js"><a class="anchor" href="#new-event-preparelookupcall-on-smartfields-js"></a>New Event 'prepareLookupCall' on Smartfields (JS)</h3>
       <div class="paragraph">
        <p>In Scout JS a new event <code>prepareLookupCall</code> has been added to the SmartField. It allows to be notified when the field is about to execute a LookupCall. Because for each call a fresh LookupCall clone is executed this event allows to propagate properties to the executing LookupCall clone. These properties may then be used when the call is executed (e.g. sent to the backend).</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="support-for-horizontal-alignment-since-8-0-100"><a class="anchor" href="#support-for-horizontal-alignment-since-8-0-100"></a>Support for Horizontal Alignment (since 8.0.100)</h3>
+      <div class="paragraph">
+       <p>The horizontal alignment can already be controlled for number and string fields using the <code>horizontalAlignment</code> property of the <code>gridData</code>. The property already existed for <code>SmartFields</code> but it had no effect, until now.</p>
       </div>
      </div>
     </div>
