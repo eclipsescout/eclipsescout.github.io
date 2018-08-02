@@ -1841,232 +1841,238 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.readTimeout</code> Socket read timeout value in milliseconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.readTimeout</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Socket read timeout value in milliseconds.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.directJdbcConnection</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.directJdbcConnection</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">If true a direct JDBC connection is created. Otherwise a JNDI connection is used. The default value is true.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverName</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverName</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The driver name to use. By default <code>oracle.jdbc.OracleDriver</code> is used.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverUnload</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.driverUnload</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether to uninstall JDBC driver upon platform shutdown. This property has no effect if working with JNDI JDBC connections. By default this property is enabled.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.mappingName</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.mappingName</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The JDBC mapping name. By default <code>jdbc:oracle:thin:@localhost:1521:ORCL</code> is used.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionBusyTimeout</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionBusyTimeout</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Connections will be closed after this timeout in milliseconds even if the connection is still busy. The default value is 6 hours.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionIdleTimeout</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.connectionIdleTimeout</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Idle connections will be closed after this timeout in milliseconds. The default value is 5 minutes.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.size</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.pool.size</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The maximum number of connections to create. The default pool size is 25.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.properties</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.properties</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Semicolon separated list of properties to pass to the JDBC connection. The default value is null. E.g.: key1=val1;key2=val2</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.statementCacheSize</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jdbc.statementCacheSize</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of cached SQL statements. The default value is 25.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.initialContextFactory</code></p></td>
-        </tr>
-        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the object to lookup in the JNDI context. Default is null.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.name</code></p></td>
-        </tr>
-        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the object to lookup in the JNDI context. Default is null.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.providerUrl</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.providerUrl</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">JNDI provider url (e.g. <code>ldap://somehost:389</code>). Default is null.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.urlPkgPrefixes</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.jndi.urlPkgPrefixes</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">A colon-separated list of package prefixes for the class name of the factory class that will create a URL context factory. Default is null.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.password</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.password</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The password to connect to the database (JDBC or JNDI)</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.transactionMemberId</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.transactionMemberId</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Id of the transaction member on which the connection is available.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.username</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.sql.username</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The username to connect to the database (JDBC or JNDI)</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.texts.showKeys</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.texts.showKeys</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">If this property is set to true, the <code>TextKeyTextProviderService</code> will be registered with high priority, and each call to TEXTS.get() will return the given text key instead of the translation.</p> <p class="tableblock">This is useful for debug/testing purposes or exporting forms to JSON.</p> <p class="tableblock">By default this property is false.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.maxConcurrentDataLoadThreads</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.maxConcurrentDataLoadThreads</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of threads per server that can be created to load tiles. The default value is 25.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.dataLoadQueueTimeoutSeconds</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.dataLoadQueueTimeoutSeconds</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of seconds a tile load job can execute until it is automatically cancelled. The default value is 2 minutes.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.backgroundPollingMaxWaitTime</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.backgroundPollingMaxWaitTime</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The polling request (which waits for a background job to complete) stays open until a background job has completed or the specified number of seconds elapsed.</p> <p class="tableblock">This property must have a value between 3 and the value of property <code>scout.ui.maxUserIdleTime</code>.</p> <p class="tableblock">By default this property is set to 1 minute.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.locales</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.locales</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Contains a comma separated list of supported locales (e.g. en,en-US,de-CH).</p> <p class="tableblock">This is only relevant if locales.json and texts.json should be sent to the client, which is not the case for remote apps. So this property is only used for JS only apps.</p> <p class="tableblock">By default no locales are supported.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.maxUserIdleTime</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.maxUserIdleTime</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">If a user is inactive (no user action) for the specified number of seconds, the session is stopped and the user is logged out.</p> <p class="tableblock">By default this property is set to 4 hours.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.modelJobTimeout</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.modelJobTimeout</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The maximal timeout in seconds to wait for model jobs to complete during a UI request. After that timeout the model jobs will be aborted so that the request may return to the client.</p> <p class="tableblock">By default this property is set to 1 hour.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.prebuild</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.prebuild</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">When this property returns true, file pre-building is performed when the UI application server starts up.</p> <p class="tableblock">This means the application start takes more time, but in return the first user request takes less time.</p> <p class="tableblock"><code>File</code> in this context means web-resources like HTML, CSS and JS.</p> <p class="tableblock">These files are typically processed by Scout`s <code>ScriptProcessor</code> and <code>org.eclipse.scout.rt.ui.html.res.loader.HtmlDocumentParser</code>.</p> <p class="tableblock">By default this property is enabled when the application is not running in development mode (property <code>scout.devMode</code> is false).</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.prebuild.files</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.prebuild.files</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Contains a comma separated list of files in <code>/WebContent/res</code> that should be pre-built when the (UI) application server starts up.</p> <p class="tableblock">Since it takes a while to build files, especially JS and CSS (LESS) files, we want to do this when the server starts. Otherwise its always the first user who must wait a long time until all files are built.</p> <p class="tableblock">Since CSS and JS files are always referenced by a HTML file, we simply specify the main HTML files in this property.</p> <p class="tableblock">By default no files are prebuild. This property only has an effect if property <code>scout.ui.prebuild</code> is enabled.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.maxWaitForAllShutdown</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.maxWaitForAllShutdown</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum time in second to wait for all client sessions to be stopped after the HTTP session has become invalid.</p> <p class="tableblock">After this number of seconds a <code>leak detection</code> test is performed. You are advised to change this value only if your sessions need an unusual long time to shutdown.</p> <p class="tableblock">By default this property is set to 1 minute.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum time in seconds to wait for the write lock when the session store is unbound from the HTTP session.</p> <p class="tableblock">This value should not be too large because waiting on the lock might suspend background processes of the application server.</p> <p class="tableblock">By default this property is set to 5 seconds.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingDelay</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingDelay</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Number of seconds before the housekeeping job starts after a UI session has been unregistered from the store.</p> <p class="tableblock">By default this property is set to 20 seconds.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum time in seconds to wait for a client session to be stopped by the housekeeping job.</p> <p class="tableblock">The value should be smaller than the session timeout (typically defined in the web.xml) and greater than the value of property <code>scout.client.jobCompletionDelayOnSessionShutdown</code></p> <p class="tableblock">By default this property is set to 1 minute.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.theme</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.theme</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the UI theme which is activated when the application starts.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.urlHints.enabled</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.urlHints.enabled</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable changing UrlHints using URL parameters in the browser address line.</p> <p class="tableblock">By default has the same value as the config property <code>scout.devMode</code> meaning it is by default only enabled in development mode.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter-exclude</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter-exclude</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of simple URI patterns for which the <code>TrivialAccessController</code> should be excluded.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">List of Strings</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>folder</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>folder</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Root folder of the <code>RemoteFileServlet</code>. Default value is null.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to the root folder.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_min_size</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_min_size</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The minimum number of bytes in the response of a GET request so that compression is applied. A value of &lt; 0 disables compression. Used in <code>GzipServletFilter</code>. The default value is 256.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_pattern</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_pattern</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Regex (not case sensitive) of servlet request pathInfo that is compressed for GET requests. Used in <code>GzipServletFilter</code>. The default value is <code>.*\.(html|css|js|json|txt)</code>.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>post_min_size</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>post_min_size</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The minimum number of bytes in the response of a POST request so that compression is applied. A value of &lt; 0 disables compression. Used in <code>GzipServletFilter</code>. The default value is 256.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>post_pattern</code></p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>post_pattern</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Regex (not case sensitive) of servlet request pathInfo that is compressed for POST requests. Used in <code>GzipServletFilter</code>. The default value is <code>.*/json</code>.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>war-path</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Path to resource within war file. Normally starting with /WEB-INF. Default is null.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Config</p></td>
         </tr>
        </tbody>
       </table>
