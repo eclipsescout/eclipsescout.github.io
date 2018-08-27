@@ -1458,10 +1458,57 @@ scout.cspDirective[img-src]=*</code></pre>
        <p>For migration, replace all imports for <code>org.eclipse.scout.rt.shared.mail</code> by imports for <code>org.eclipse.scout.rt.mail</code> and add a dependency to the new module <code>org.eclipse.scout.rt.mail</code>.</p>
       </div>
       <div class="paragraph">
-       <p>A new helper <code>org.eclipse.scout.rt.mail.smtp.SmtpHelper</code> replaces the service <code>org.eclipse.scout.rt.server.services.common.smtp.ISMTPService</code> and it&#x2019;s abstract implementation <code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService</code>. The only remaining property is <code>SmtpDebugReceiverEmailProperty</code> (<code>scout.smtp.debugReceiverEmail</code>), all others must be set in <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>.</p>
+       <p>A new helper <code>org.eclipse.scout.rt.mail.smtp.SmtpHelper</code> replaces the service <code>org.eclipse.scout.rt.server.services.common.smtp.ISMTPService</code> and it&#x2019;s abstract implementation <code>org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService</code>.</p>
       </div>
       <div class="paragraph">
-       <p><code>SmtpHelper</code> has no support for subject prefix and default from email anymore. If a subject prefix is required, this must be prepended to the subject before calling <code>SmtpHelper</code> by using <code>MailHelper.addPrefixToSubject</code>. If a default from email is required, this must be ensured before calling <code>SmtpHelper</code> by using <code>MailHelper.ensureFromAddress</code>.</p>
+       <p>The only remaining property is <code>SmtpDebugReceiverEmailProperty</code> (<code>scout.smtp.debugReceiverEmail</code>).<br> The following properties are obsolete and configuration must be set in <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>SmtpHostProperty</code> (<code>scout.smtp.host</code>)</p> </li>
+        <li> <p><code>SmtpPortProperty</code> (<code>scout.smtp.port</code>)</p> </li>
+        <li> <p><code>SmtpUsernameProperty (`scout.smtp.username</code>)</p> </li>
+        <li> <p><code>SmtpPasswordProperty</code> (<code>scout.smtp.password</code>)</p> </li>
+        <li> <p><code>SmtpSslProtocolsProperty</code> (<code>scout.smtp.sslProtocols</code>)</p> </li>
+        <li> <p><code>SmtpUseAuthenticationProperty</code> (<code>scout.smtp.useAuth</code>)</p> </li>
+        <li> <p><code>SmtpUseSmtpsProperty</code> (<code>scout.smtp.useSsl</code>)</p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p><code>SmtpHelper</code> has no support for subject prefix and default from email anymore.</p>
+      </div>
+      <div class="paragraph">
+       <p>If a subject prefix is required, i.e. the property <code>SmtpSubjectPrefixProperty</code> (<code>scout.smtp.subjectPrefix</code>) was in use, the subject prefix must be prepended to the subject before calling <code>SmtpHelper</code> by using <code>MailHelper.addPrefixToSubject</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>If a default from email is required, i.e. the property <code>SmtpDefaultFromEmailProperty</code> (<code>scout.smtp.defaultFromEmail</code>) was in use, the default from email must be ensured before calling <code>SmtpHelper</code> by using <code>MailHelper.ensureFromAddress</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>The following classes are marked deprecated:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>org.eclipse.scout.rt.server.services.common.imap.IIMAPService</code></p> </li>
+        <li> <p><code>org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService</code></p> </li>
+        <li> <p><code>org.eclipse.scout.rt.server.services.common.imap.IImapAdapter</code></p> </li>
+        <li> <p><code>org.eclipse.scout.rt.server.services.common.imap.ImapAdapter</code></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>A new helper <code>org.eclipse.scout.rt.mail.imap.ImapHelper</code> provides some basic (stateless) functionality to connect to an IMAP server, find and create folders or move message to a new folder. Any other functionality must be implemented manually by operating on <code>javax.mail.Message</code> or <code>javax.mail.Folder</code> objects directly.</p>
+      </div>
+      <div class="paragraph">
+       <p>The following properties are obsolete and configuration must be set in <code>org.eclipse.scout.rt.mail.imap.ImapServerConfig</code>:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>ImapHostProperty</code> (<code>scout.imap.host</code>)</p> </li>
+        <li> <p><code>ImapPortProperty</code> (<code>scout.imap.port</code>)</p> </li>
+        <li> <p><code>ImapMailboxProperty</code> (<code>scout.imap.mailbox</code>)</p> </li>
+        <li> <p><code>ImapUsernameProperty</code> (<code>scout.imap.username</code>)</p> </li>
+        <li> <p><code>ImapPasswordProperty</code> (<code>scout.imap.password</code>)</p> </li>
+        <li> <p><code>ImapSslProtocolsProperty</code> (<code>scout.imap.sslProtocols</code>)</p> </li>
+       </ul>
       </div>
      </div>
     </div>
