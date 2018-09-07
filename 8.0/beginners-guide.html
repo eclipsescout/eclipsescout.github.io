@@ -4953,6 +4953,12 @@ contacts.superuser=system</code></pre>
       <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">EditURL</span><span class="delimiter">"</span></span>);
     }
     <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;? <span class="directive">extends</span> IMenuType&gt; getConfiguredMenuTypes() {
+      <span class="keyword">return</span> CollectionUtility.&lt;IMenuType&gt; hashSet(
+          ImageFieldMenuType.Image,
+          ImageFieldMenuType.Null);
+    }
+    <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="type">void</span> execAction() {
       PictureUrlForm form = <span class="keyword">new</span> PictureUrlForm();
       <span class="predefined-type">String</span> oldUrl = getUrl();
