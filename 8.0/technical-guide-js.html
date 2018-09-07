@@ -751,6 +751,36 @@ table.CodeRay td.code>pre{padding:0}
         Figure 1. A form described using JSON
        </div>
       </div>
+      <div class="sect3">
+       <h4 id="using-constants-in-json"><a class="anchor" href="#using-constants-in-json"></a>2.3.1. Using constants in JSON</h4>
+       <div class="paragraph">
+        <p>When you define widget properties in a JSON model, you often want to set a property to a value defined by a constant. When you&#x2019;re writing JavaScript code you&#x2019;d simply write:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="javascript">field.labelPosition = scout.FormField.LabelPosition.ON_FIELD;</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>Since you cannot reference Scout&#x2019;s JavaScript enums/constants in JSON, you&#x2019;d have to write the following to assign the constant value in the JSON model:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="json">{ <span class="key"><span class="delimiter">"</span><span class="content">labelPosition</span><span class="delimiter">"</span></span>: <span class="integer">2</span> }</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>Obviously this makes the JSON code harder to read and understand and the developer has to lookup the enum/constant definition first. This is where the <em>${const:NAME}</em> tag comes to help. A widget can define a list of properties that can be used with the const-tag. The widget defines in which enum/constant the name provided by the tag is resolved. Using the const-tag, the JSON example now looks like this:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="json">{ <span class="key"><span class="delimiter">"</span><span class="content">labelPosition</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">${const:ON_FIELD}</span><span class="delimiter">"</span></span> }</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>When you want to provide const-tag support for a custom widget, you need to call <code>scout.Widget#resolveConsts</code> in the <code>_init</code> function of your widget and for each supported property specifiy the property name and the object that contains the enum/constant definition.</p>
+       </div>
+      </div>
      </div>
      <div class="sect2">
       <h3 id="finding-a-widget"><a class="anchor" href="#finding-a-widget"></a>2.4. Finding a Widget</h3>
