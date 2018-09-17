@@ -1528,6 +1528,9 @@ scout.cspDirective[img-src]=*</code></pre>
         <li> <p><code>ImapSslProtocolsProperty</code> (<code>scout.imap.sslProtocols</code>)</p> </li>
        </ul>
       </div>
+      <div class="paragraph">
+       <p><code>MailHelper#createMimeMessage</code> was improved regarding the structure of the generated mime message. So far a multipart message was always created, even if a simpler structure would have been enough. The new implementation only creates the required parts depending on the provided input: plain text, html, attachments and inline attachments (newly supported).</p>
+      </div>
      </div>
     </div>
    </div>
