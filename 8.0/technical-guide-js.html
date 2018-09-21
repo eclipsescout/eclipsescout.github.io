@@ -550,7 +550,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#object-factory">3. Object Factory</a></li>
      <li><a href="#form">4. Form</a>
       <ul class="sectlevel2">
-       <li><a href="#form-life-cycle">4.1. Form Life Cycle</a></li>
+       <li><a href="#form-lifecycle">4.1. Form Lifecycle</a></li>
       </ul> </li>
      <li><a href="#form-field">5. Form Field</a></li>
      <li><a href="#value-field">6. Value Field</a>
@@ -1159,9 +1159,9 @@ table.init(model);</code></pre>
       <p>Beside opening the form as separate dialog or view, you can also embed it into any other widget because it is actually a widget by itself. Just call <code>form.render()</code> for that purpose.</p>
      </div>
      <div class="sect2">
-      <h3 id="form-life-cycle"><a class="anchor" href="#form-life-cycle"></a>4.1. Form Life Cycle</h3>
+      <h3 id="form-lifecycle"><a class="anchor" href="#form-lifecycle"></a>4.1. Form Lifecycle</h3>
       <div class="paragraph">
-       <p>When working with forms, you likely want to load, validate and save data as well. The form uses a so called <code>FormLifecycle</code> to manage the state of that data. The life cycle is installed by default, so you don&#x2019;t have to care about it. So whenever the user enters some data and presses the save button, the data is validated and if invalid, a message is shown. If it is valid the data will be saved. The following functions of a form may be used to control that behavior.</p>
+       <p>When working with forms, you likely want to load, validate and save data as well. The form uses a so called <code>FormLifecycle</code> to manage the state of that data. The lifecycle is installed by default, so you don&#x2019;t have to care about it. So whenever the user enters some data and presses the save button, the data is validated and if invalid, a message is shown. If it is valid the data will be saved. The following functions of a form may be used to control that behavior.</p>
       </div>
       <div class="ulist">
        <ul>
@@ -1174,6 +1174,9 @@ table.init(model);</code></pre>
         <li> <p><strong>close</strong>: closes the form and discards any unsaved changes.</p> </li>
         <li> <p><strong>abort</strong>: called when the user presses the "x" icon. It will call <code>close</code> if there is a close menu or button, otherwise <code>cancel</code>.</p> </li>
        </ul>
+      </div>
+      <div class="paragraph">
+       <p>If you need to perform form validation which is not related to a particular form-field, you can implement the <code>_validate</code> function. This function is always called, even when there is no <em>touched</em> field.</p>
       </div>
       <div class="paragraph">
        <p>If you embed the form into another widget, you probably don&#x2019;t need the functions <code>open</code>, <code>ok</code>, <code>close</code>, <code>cancel</code> and <code>abort</code>. But <code>load</code>, <code>reset</code> and <code>save</code> may come in handy as well.</p>
