@@ -616,6 +616,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#text-and-multi-language-support-moved-to-platform">Text and Multi-Language Support Moved to 'platform'</a></li>
      <li><a href="#data-object-support-for-rest-mom-apis">Data Object Support for REST &amp; MOM APIs</a></li>
      <li><a href="#rest-resources-rest-clients">REST Resources &amp; REST Clients</a></li>
+     <li><a href="#deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021">Deprecated methods on DefaultAuthToken and introduced DefaultAuthTokenSigner and DefaultAuthTokenVerifier (since 8.0.0.021)</a></li>
     </ul>
    </div>
   </div>
@@ -1486,6 +1487,14 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="paragraph">
       <p>For examples and documentation see <a href="https://eclipsescout.github.io/8.0/technical-guide.html#cha-rest">Technical Guide: REST</a></p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021"><a class="anchor" href="#deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021"></a>Deprecated methods on DefaultAuthToken and introduced DefaultAuthTokenSigner and DefaultAuthTokenVerifier (since 8.0.0.021)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>In order to be able to reuse authentication token code <code>DefaultAuthToken</code> was refactored. Signing and verifying of tokens is now separated from token and its (de-)serialization. The new classes DefaultAuthTokenSigner and DefaultAuthTokenVerifier do now provide this functionality.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
