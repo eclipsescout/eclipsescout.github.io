@@ -560,6 +560,8 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#table-remove-obsolete-populated-event-and-methods">Table: Remove Obsolete "POPULATED" Event and Methods</a></li>
        <li><a href="#pagefield-status-of-page-table-visible-by-default">PageField: Status of Page Table Visible by Default</a></li>
        <li><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-0-021">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.0.021)</a></li>
+       <li><a href="#abstracticons-changed-constants">AbstractIcons: Changed constants</a></li>
+       <li><a href="#activitymapmenutype-removed">ActivityMapMenuType: Removed</a></li>
        <li><a href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-0-021">Moved mail related classes to new module to org.eclipse.scout.rt.mail (since 8.0.0.021)</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
@@ -1019,6 +1021,10 @@ table.CodeRay td.code>pre{padding:0}
           <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.credentialsPlaintext</code></p></td>
          </tr>
          <tr>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.publickey</code></p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.publicKey</code></p></td>
+         </tr>
+         <tr>
           <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.token.ttl</code></p></td>
           <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.auth.tokenTtl</code></p></td>
          </tr>
@@ -1454,6 +1460,21 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
       <div class="paragraph">
        <p>Check the HowTo section <em>SmartField: how to apply colors and styles from a lookup-row</em> in Scout&#x2019;s technical guide to find examples for migration and how to work with the <code>cssClass</code> property.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="abstracticons-changed-constants"><a class="anchor" href="#abstracticons-changed-constants"></a>AbstractIcons: Changed constants</h3>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>AbstractIcons.Menu</code> &#x21d2; <code>AbstractIcons.MenuBold</code></p> </li>
+        <li> <p><code>AbstractIcons.File</code> &#x21d2; <code>AbstractIcons.FileSolid</code></p> </li>
+       </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="activitymapmenutype-removed"><a class="anchor" href="#activitymapmenutype-removed"></a>ActivityMapMenuType: Removed</h3>
+      <div class="paragraph">
+       <p>For migration, simply remove any references to this class.</p>
       </div>
      </div>
      <div class="sect2">
