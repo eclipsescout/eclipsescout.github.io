@@ -856,18 +856,19 @@ table.CodeRay td.code>pre{padding:0}
       <div class="sect3">
        <h4 id="update-the-scout-application-to-work-with-http"><a class="anchor" href="#update-the-scout-application-to-work-with-http"></a>2.4.3. Update the Scout Application to work with HTTP</h4>
        <div class="paragraph">
-        <p>If you should prefer to work with HTTP only, you need to modify the security settings of your Scout application. This can be done in module <code>helloworld.ui.html.app.war</code> with the steps described below.</p>
+        <p>If you should prefer to work with HTTP only, you need to modify the security settings of your Scout application. This can be done with the steps described below.</p>
        </div>
        <div class="ulist">
         <ul>
-         <li> <p>In file <code>config.properties</code> (in folder <code>src/main/resources</code>):</p>
+         <li> <p>In file <code>config.properties</code> (in folder <code>helloworld.ui.html.app.war/src/main/resources</code>):</p>
           <div class="ulist">
            <ul>
             <li> <p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p> </li>
-            <li> <p>Change the <code>scout.backendUrl</code> property to use the HTTP port of your Tomcat, typically 8080.</p> </li>
+            <li> <p>Change the <code>scout.backendUrl</code> property to use HTTP instead of HTTPS and change the port according to your Tomcat setup, typically 8080.</p> </li>
            </ul>
           </div> </li>
-         <li> <p>In file <code>web.xml</code> (in folder <code>src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
+         <li> <p>In file <code>web.xml</code> (in folder <code>helloworld.ui.html.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
+         <li> <p>In file <code>web.xml</code> (in folder <code>helloworld.server.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
         </ul>
        </div>
        <div class="paragraph">
