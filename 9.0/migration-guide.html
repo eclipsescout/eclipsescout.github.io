@@ -539,6 +539,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#disabling-close-cancel-buttons">Disabling Close- &amp; Cancel-Buttons</a></li>
        <li><a href="#add-custom-header-for-rest-services">Add custom header for REST services</a></li>
        <li><a href="#replacements-for-serverruncontextfilter">Replacements for ServerRunContextFilter</a></li>
+       <li><a href="#menu-wrapping">Menu wrapping</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
@@ -638,6 +639,12 @@ table.CodeRay td.code>pre{padding:0}
         <li> <p><code>HttpServerRunContextFilter</code> with session support disabled if a server dependency is available in the application.</p> </li>
         <li> <p><code>HttpRunContextFilter</code> if only a server-commons dependency is available in the application.</p> </li>
        </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="menu-wrapping"><a class="anchor" href="#menu-wrapping"></a>Menu wrapping</h3>
+      <div class="paragraph">
+       <p>The <code>OutlineMenuWrapper</code> has been adapted so that no manual instance can be created anymore (the constructors are no longer public). Instead the new factory bean <code>org.eclipse.scout.rt.client.ui.desktop.outline.MenuWrapper</code> should be used. This helps to ensure that the correct wrapper is created for each menu type and because it is a bean it may be extended for custom menu types. The same is for the methods <code>unwrapMenu</code> and <code>containsWrappedMenu</code> which have been moved to the new <code>MenuWrapper</code> class as well.</p>
       </div>
      </div>
     </div>
