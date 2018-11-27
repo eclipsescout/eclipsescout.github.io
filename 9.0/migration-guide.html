@@ -539,6 +539,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#disabling-close-cancel-buttons">Disabling Close- &amp; Cancel-Buttons</a></li>
        <li><a href="#add-custom-header-for-rest-services">Add custom header for REST services</a></li>
        <li><a href="#replacements-for-serverruncontextfilter">Replacements for ServerRunContextFilter</a></li>
+       <li><a href="#property-lookup-order-changed">Property lookup order changed</a></li>
        <li><a href="#menu-wrapping">Menu wrapping</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
@@ -638,6 +639,50 @@ table.CodeRay td.code>pre{padding:0}
        <ul>
         <li> <p><code>HttpServerRunContextFilter</code> with session support disabled if a server dependency is available in the application.</p> </li>
         <li> <p><code>HttpRunContextFilter</code> if only a server-commons dependency is available in the application.</p> </li>
+       </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="property-lookup-order-changed"><a class="anchor" href="#property-lookup-order-changed"></a>Property lookup order changed</h3>
+      <div class="paragraph">
+       <p>The Scout properties are now resolved in a slightly different order. The environment variables are now resolved <em>before</em> the <code>config.properties</code> file.</p>
+      </div>
+      <div class="olist arabic">
+       <ol class="arabic">
+        <li> <p>System properties</p> </li>
+        <li> <p>Environment variables</p> </li>
+        <li> <p>Config properties file</p> </li>
+        <li> <p>Default value of property</p> </li>
+       </ol>
+      </div>
+      <div class="paragraph">
+       <p>Environment variable typically have stricter naming conventions for their names (POSIX). To allow overriding most Scout properties with environment variables, these lookup rules are applied in-order to find a matching environment variable:</p>
+      </div>
+      <div class="olist arabic">
+       <ol class="arabic">
+        <li> <p>An exact match of your property key (<code>my.property</code>)</p> </li>
+        <li> <p>A match where periods are replaced by underscores (<code>my_property</code>)</p> </li>
+        <li> <p>An uppercase match of your property key (<code>MY.PROPERTY</code>)</p> </li>
+        <li> <p>An uppercase match where periods are replaced by underscores (<code>MY_PROPERTY</code>)</p> </li>
+       </ol>
+      </div>
+      <div class="paragraph">
+       <p>If there are no environment variables which collide with Scout properties, then no migration is required.</p>
+      </div>
+      <div class="paragraph">
+       <p>In a deployment where a colliding environment variable exists, the following migration options exist:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>If it is an intentional override: No migration required</p> </li>
+        <li> <p>If the override is an unintended collision of the environment</p>
+         <div class="ulist">
+          <ul>
+           <li> <p>Remove the colliding environment variable from the environment of the process your application runs in, or</p> </li>
+           <li> <p>Change the property key, or</p> </li>
+           <li> <p>Force the intended property to the desired value using a Java system property (<code>-D</code> JVM parameter).</p> </li>
+          </ul>
+         </div> </li>
        </ul>
       </div>
      </div>

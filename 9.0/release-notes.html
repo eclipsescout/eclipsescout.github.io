@@ -546,6 +546,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-widget-mode-selector">New widget Mode Selector</a></li>
      <li><a href="#improvements-for-pages-in-scout-js-applications">Improvements for Pages in Scout JS applications</a></li>
      <li><a href="#new-event-lookupcalldone">New event 'lookupCallDone'</a></li>
+     <li><a href="#property-lookup-order-changed">Property lookup order changed</a></li>
     </ul>
    </div>
   </div>
@@ -751,6 +752,28 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>All fields having lookup calls (ListBox, RadioButtonGroup, SmartField, TagField) now fire a new event 'lookupCallDone' always when a lookup call has been executed and the result was processed by the field.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="property-lookup-order-changed"><a class="anchor" href="#property-lookup-order-changed"></a>Property lookup order changed</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Scout properties are now resolved in a slightly different order (<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=541099">Bug 541099</a>). The environment variables are now resolved <em>before</em> the <code>config.properties</code> file.</p>
+     </div>
+     <div class="olist arabic">
+      <ol class="arabic">
+       <li> <p>System properties</p> </li>
+       <li> <p>Environment variables</p> </li>
+       <li> <p>Config properties file</p> </li>
+       <li> <p>Default value of property</p> </li>
+      </ol>
+     </div>
+     <div class="paragraph">
+      <p>Using environment variables, it is now possible to override values in the configuration file, as is already possible using system properties (<code>-D</code> flags on JVM command line). This change should simplify the usage of Scout in environments where the application should be static (example: Kubernetes, Docker), but still allow a degree of flexibility.</p>
+     </div>
+     <div class="paragraph">
+      <p>Since environment variables are not allowed to contain dots/periods (<code>.</code>), the new lookup also searches for an equivalent environment variable by replacing periods with underscores (<code>_</code>) and converting the property to uppercase.</p>
      </div>
      <div class="admonitionblock tip">
       <table>

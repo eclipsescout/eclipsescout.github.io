@@ -1255,40 +1255,55 @@ BeanClass beanOrNull = BEANS.opt(BeanClass.class);</code></pre>
         <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Long</span> value = CONFIG.getPropertyValue(MyCustomTimeoutProperty.class);</code></pre>
        </div>
       </div>
-      <div class="paragraph">
-       <p>The given property key is searched in the following environments:</p>
-      </div>
-      <div class="olist arabic">
-       <ol class="arabic">
-        <li> <p>In the system properties (<code>java.lang.System.getProperty(String)</code>).</p> </li>
-        <li> <p>In the properties file. The properties file can be</p>
-         <div class="olist loweralpha">
-          <ol class="loweralpha" type="a">
-           <li> <p>a file on the local filesystem where the system property with key <code>config.properties</code> holds an absolute URL to the file or</p> </li>
-           <li> <p>a file on the classpath with path <code>/config.properties</code> (recommended).</p> </li>
-          </ol>
-         </div> </li>
-        <li> <p>In the environment variables of the system (<code>java.lang.System.getenv(String)</code>).</p> </li>
-       </ol>
-      </div>
-      <div class="paragraph">
-       <p>Supported formats are simple key-value pairs, list values and map values. For more details about the format please refer to the JavaDoc of the <code>org.eclipse.scout.rt.platform.config.PropertiesHelper</code> class.</p>
-      </div>
-      <div class="paragraph">
-       <p>A properties file may import other config files from the classpath or any other absolute URL. This is done using the special key <code>import</code>. It can be a single value or a list:</p>
-      </div>
-      <div class="ulist">
-       <ul>
-        <li> <p><code>import[0]=classpath:myConfigs/other.properties</code></p> </li>
-        <li> <p><code>import[1]=file:/C:/path/to/my/settings.properties</code></p> </li>
-        <li> <p><code>import[2]=file:${catalina.base}/conf/db_connection.properties</code></p> </li>
-       </ul>
-      </div>
-      <div class="paragraph">
-       <p>Scout already has some config properties. For a list and the corresponding documentation see <a href="#sec-app.configProperties">Section 2.5</a>.</p>
+      <div class="sect3">
+       <h4 id="property-resolution"><a class="anchor" href="#property-resolution"></a>2.4.1. Property resolution</h4>
+       <div class="paragraph">
+        <p>The given property key is searched in the following environments:</p>
+       </div>
+       <div class="olist arabic">
+        <ol class="arabic">
+         <li> <p>In the system properties (<code>java.lang.System.getProperty(String)</code>).</p> </li>
+         <li> <p>In the environment variables of the system (<code>java.lang.System.getenv(String)</code>).</p> </li>
+         <li> <p>In the properties file. The properties file can be</p>
+          <div class="olist loweralpha">
+           <ol class="loweralpha" type="a">
+            <li> <p>a file on the local filesystem where the system property with key <code>config.properties</code> holds an absolute URL to the file or</p> </li>
+            <li> <p>a file on the classpath with path <code>/config.properties</code> (recommended).</p> </li>
+           </ol>
+          </div> </li>
+         <li> <p>If none of the above is found, the default value of the property is applied.</p> </li>
+        </ol>
+       </div>
+       <div class="paragraph">
+        <p>Supported formats are simple key-value pairs, list values and map values. For more details about the format please refer to the JavaDoc of the <code>org.eclipse.scout.rt.platform.config.PropertiesHelper</code> class.</p>
+       </div>
+       <div class="paragraph">
+        <p>Since the environment variable names are more restrictive in many shells and systems than the property names in Java, overriding a property containing a dot/period (<code>.</code>) with an environment variable would not be possible. To still allow overriding of such properties, the folllowing lookup rules are applied in-order to find a matching environment variable:</p>
+       </div>
+       <div class="olist arabic">
+        <ol class="arabic">
+         <li> <p>An exact match of your property key (<code>my.property</code>)</p> </li>
+         <li> <p>A match where periods are replaced by underscores (<code>my_property</code>)</p> </li>
+         <li> <p>An uppercase match of your property key (<code>MY.PROPERTY</code>)</p> </li>
+         <li> <p>An uppercase match where periods are replaced by underscores (<code>MY_PROPERTY</code>)</p> </li>
+        </ol>
+       </div>
+       <div class="paragraph">
+        <p>A properties file may import other config files from the classpath or any other absolute URL. This is done using the special key <code>import</code>. It can be a single value or a list:</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p><code>import[0]=classpath:myConfigs/other.properties</code></p> </li>
+         <li> <p><code>import[1]=file:/C:/path/to/my/settings.properties</code></p> </li>
+         <li> <p><code>import[2]=file:${catalina.base}/conf/db_connection.properties</code></p> </li>
+        </ul>
+       </div>
+       <div class="paragraph">
+        <p>Scout already has some config properties. For a list and the corresponding documentation see <a href="#sec-app.configProperties">Section 2.5</a>.</p>
+       </div>
       </div>
       <div class="sect3">
-       <h4 id="additional-examples"><a class="anchor" href="#additional-examples"></a>2.4.1. Additional examples</h4>
+       <h4 id="additional-examples"><a class="anchor" href="#additional-examples"></a>2.4.2. Additional examples</h4>
        <div class="paragraph">
         <p>Because the property classes are managed by the bean manager, you can use all the mechanisms to change the behavior (<code>@Replace</code> in particular).</p>
        </div>
@@ -1343,7 +1358,7 @@ myproject.applicationName=My Project Application</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="configuration-validation"><a class="anchor" href="#configuration-validation"></a>2.4.2. Configuration validation</h4>
+       <h4 id="configuration-validation"><a class="anchor" href="#configuration-validation"></a>2.4.3. Configuration validation</h4>
        <div class="paragraph">
         <p>During the Platform startup all classes implementing the interface <code>org.eclipse.scout.rt.platform.config.IConfigurationValidator</code> are asked to validate configuration provided in the <code>config.properties</code> files. If there is at least one <code>IConfigurationValidator</code> that accepts a given key-value-pair the configuration is considered to be valid. Otherwise the platform will not start.</p>
        </div>
