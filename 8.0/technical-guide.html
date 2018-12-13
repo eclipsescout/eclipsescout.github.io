@@ -6327,10 +6327,10 @@ protected void execInitField() {
        <p>The Scout module <code>org.eclipse.scout.rt.rest</code> offers a set of helper classes in order to call REST services.</p>
       </div>
       <div class="paragraph">
-       <p>Each REST service endpoint is represented by a specific REST resource client helper class. The (usually application scoped bean) class is used to specify the resource URL and additional properties used to build up the connection (authentication, additional headers,&#x2026;&#x200b;).</p>
+       <p>Each REST service endpoint is represented by a specific REST resource client helper class. The (usually application scoped bean) class is used to specify the resource URL and additional properties used to build up the connection (authentication, additional headers,&#x2026;&#x200b;). Further it provides a call-back method for transforming unsuccessful responses into appropriate exception.</p>
       </div>
       <div class="paragraph">
-       <p>At least the REST resource base path must be specified:</p>
+       <p>At least the REST resource&#x2019;s base URI must be specified:</p>
       </div>
       <div class="listingblock">
        <div class="title">
@@ -6340,10 +6340,33 @@ protected void execInitField() {
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleRestClientHelper</span> <span class="directive">extends</span> AbstractRestClientHelper {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getBaseUri() {
-    <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">https://api.example.org/</span><span class="delimiter">"</span></span>;
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">https://api.example.org/</span><span class="delimiter">"</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="exception">RuntimeException</span> transformException(<span class="exception">RuntimeException</span> e, Response response) { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="keyword">if</span> (response != <span class="predefined-constant">null</span> &amp;&amp; response.hasEntity()) {
+      ErrorDo error = response.readEntity(ErrorResponse.class).getError();
+      <span class="keyword">throw</span> <span class="keyword">new</span> VetoException(error.getMessage())
+          .withTitle(error.getTitle());
+    }
+    <span class="keyword">return</span> e;
   }
 }</code></pre>
        </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Declare base uri.</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>Custom exception transformer that is used as default strategy for all invocations prepared by this helper. (This is just for demonstration. Better extend <code>org.eclipse.scout.rt.rest.client.proxy.AbstractEntityRestClientExceptionTransformer</code>).</td>
+         </tr>
+        </tbody>
+       </table>
       </div>
       <div class="paragraph">
        <p>Based on the helper class, an example REST resource client may be implemented:</p>
@@ -6356,18 +6379,68 @@ protected void execInitField() {
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResourceClient</span> {
   <span class="directive">protected</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> RESOURCE_PATH = <span class="string"><span class="delimiter">"</span><span class="content">example</span><span class="delimiter">"</span></span>;
   <span class="directive">protected</span> ExampleRestClientHelper m_helper = BEANS.get(ExampleRestClientHelper.class);
-  <span class="directive">public</span> ExampleEntityDo getExamlpeEntity(<span class="predefined-type">String</span> id) {
+  <span class="directive">public</span> ExampleEntityDo getExampleEntity(<span class="predefined-type">String</span> id) {
     WebTarget target = m_helper.target(RESOURCE_PATH)
         .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
         .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
-    Response response = target.request()
+    <span class="keyword">return</span> target.request()
         .accept(MediaType.APPLICATION_JSON)
-        .get();
-    m_helper.throwOnResponseError(target, response);
-    <span class="keyword">return</span> response.readEntity(ExampleEntityDo.class);
+        .get(ExampleEntityDo.class); <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+  <span class="directive">public</span> ExampleEntityDo updateExampleEntity(<span class="predefined-type">String</span> id, ExampleEntityDo entity) {
+    WebTarget target = m_helper.target(RESOURCE_PATH)
+        .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
+        .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
+    <span class="keyword">return</span> target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .post(<span class="predefined-type">Entity</span>.json(entity), ExampleEntityDo.class); <i class="conum" data-value="2"></i><b>(2)</b>
+  }
+  <span class="directive">public</span> <span class="type">void</span> deleteExampleEntity(<span class="predefined-type">String</span> id) {
+    WebTarget target = m_helper.target(RESOURCE_PATH)
+        .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
+        .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
+    Response response = target.request().delete(); <i class="conum" data-value="3"></i><b>(3)</b>
+    response.close();
+  }
+  <span class="directive">public</span> ExampleEntityDo getExampleEntityCustomExceptionHandling(<span class="predefined-type">String</span> id) {
+    WebTarget target = m_helper.target(RESOURCE_PATH, <span class="local-variable">this</span>::transformCustomException) <i class="conum" data-value="4"></i><b>(4)</b>
+        .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
+        .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
+    <span class="keyword">return</span> target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .get(ExampleEntityDo.class);
+  }
+  <span class="directive">protected</span> <span class="exception">RuntimeException</span> transformCustomException(<span class="exception">RuntimeException</span> e, Response r) {
+    <span class="keyword">if</span> (r != <span class="predefined-constant">null</span> &amp;&amp; r.hasEntity() &amp;&amp; MediaType.TEXT_PLAIN_TYPE.equals(r.getMediaType())) {
+      <span class="predefined-type">String</span> message = r.readEntity(<span class="predefined-type">String</span>.class);
+      <span class="keyword">throw</span> <span class="keyword">new</span> VetoException(message);
+    }
+    <span class="keyword">return</span> e;
   }
 }</code></pre>
        </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>HTTP GET example: Directly read response into an object. Exceptions are transformed transparently and the underlying resources are released (e.g. HTTP client).</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>HTTP POST example: Again, directly read the response into an object.</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="3"></i><b>3</b></td>
+          <td>HTTP DELETE example: This delete operation does not send a response if it was successful. Hence close the returned <code>Response</code> explicitly to release underlying resources (see next line). Note: Unsuccessful responses are already handled by the REST client proxy.</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="4"></i><b>4</b></td>
+          <td>Use custom exception transformer.</td>
+         </tr>
+        </tbody>
+       </table>
       </div>
      </div>
     </div>
