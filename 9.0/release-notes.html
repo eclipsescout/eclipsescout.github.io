@@ -540,14 +540,15 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#dark-theme">Dark Theme</a></li>
      <li><a href="#disabling-close-cancel-buttons">Disabling Close- &amp; Cancel-Buttons</a></li>
-     <li><a href="#new-servlet-filters-to-create-a-scout-run-context">New Servlet Filters to create a Scout run context</a></li>
+     <li><a href="#new-servlet-filters-to-create-a-scout-runcontext">New Servlet Filters to Create a Scout RunContext</a></li>
      <li><a href="#improved-scrollbar-usability">Improved Scrollbar Usability</a></li>
-     <li><a href="#design-change-for-wizardprogressfield">Design change for WizardProgressField</a></li>
-     <li><a href="#new-widget-mode-selector">New widget Mode Selector</a></li>
-     <li><a href="#improvements-for-pages-in-scout-js-applications">Improvements for Pages in Scout JS applications</a></li>
-     <li><a href="#new-event-lookupcalldone">New event 'lookupCallDone'</a></li>
-     <li><a href="#property-lookup-order-changed">Property lookup order changed</a></li>
+     <li><a href="#design-change-for-wizardprogressfield">Design Change for WizardProgressField</a></li>
+     <li><a href="#new-widget-mode-selector">New Widget "Mode Selector"</a></li>
+     <li><a href="#improvements-for-pages-in-scout-js-applications">Improvements for Pages in Scout JS Applications</a></li>
+     <li><a href="#new-event-lookupcalldone">New Event "lookupCallDone"</a></li>
+     <li><a href="#property-lookup-order-changed">Property Lookup Order Changed</a></li>
      <li><a href="#new-checkablestyle-for-table-and-tree">New CheckableStyle for Table and Tree</a></li>
+     <li><a href="#strings-sorted-with-natural-collator-by-default">Strings Sorted with "Natural" Collator by Default</a></li>
     </ul>
    </div>
   </div>
@@ -672,7 +673,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-servlet-filters-to-create-a-scout-run-context"><a class="anchor" href="#new-servlet-filters-to-create-a-scout-run-context"></a>New Servlet Filters to create a Scout run context</h2>
+    <h2 id="new-servlet-filters-to-create-a-scout-runcontext"><a class="anchor" href="#new-servlet-filters-to-create-a-scout-runcontext"></a>New Servlet Filters to Create a Scout RunContext</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>Before Scout 9 the <code>ServerRunContextFilter</code> was used to create Scout server contexts for REST APIs. This filter used a user based TTL cache that was not bound to the HTTP session.</p>
@@ -700,7 +701,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="design-change-for-wizardprogressfield"><a class="anchor" href="#design-change-for-wizardprogressfield"></a>Design change for WizardProgressField</h2>
+    <h2 id="design-change-for-wizardprogressfield"><a class="anchor" href="#design-change-for-wizardprogressfield"></a>Design Change for WizardProgressField</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The wizard progress has a new design.</p>
@@ -719,10 +720,10 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-widget-mode-selector"><a class="anchor" href="#new-widget-mode-selector"></a>New widget Mode Selector</h2>
+    <h2 id="new-widget-mode-selector"><a class="anchor" href="#new-widget-mode-selector"></a>New Widget "Mode Selector"</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The widget "ModeSelector" was added. It has similar functionality as the RadioButtonGroup but with another design.</p>
+      <p>The widget <em>ModeSelector</em> was added. It has similar functionality as the RadioButtonGroup but with another design.</p>
      </div>
      <div id="img-mode-selector" class="imageblock">
       <div class="content">
@@ -735,7 +736,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="improvements-for-pages-in-scout-js-applications"><a class="anchor" href="#improvements-for-pages-in-scout-js-applications"></a>Improvements for Pages in Scout JS applications</h2>
+    <h2 id="improvements-for-pages-in-scout-js-applications"><a class="anchor" href="#improvements-for-pages-in-scout-js-applications"></a>Improvements for Pages in Scout JS Applications</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The API to work with Pages (<code>PageWithTable</code>, <code>PageWithNodes</code>) has been improved. It is now possible to declare child pages in the static JSON model of outlines and the table within a <code>PageWithTable</code> has a default reload handler installed.</p>
@@ -749,15 +750,15 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-event-lookupcalldone"><a class="anchor" href="#new-event-lookupcalldone"></a>New event 'lookupCallDone'</h2>
+    <h2 id="new-event-lookupcalldone"><a class="anchor" href="#new-event-lookupcalldone"></a>New Event "lookupCallDone"</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>All fields having lookup calls (ListBox, RadioButtonGroup, SmartField, TagField) now fire a new event 'lookupCallDone' always when a lookup call has been executed and the result was processed by the field.</p>
+      <p>All fields having lookup calls (ListBox, RadioButtonGroup, SmartField, TagField) now fire a new event <code>'lookupCallDone'</code> always when a lookup call has been executed and the result was processed by the field.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="property-lookup-order-changed"><a class="anchor" href="#property-lookup-order-changed"></a>Property lookup order changed</h2>
+    <h2 id="property-lookup-order-changed"><a class="anchor" href="#property-lookup-order-changed"></a>Property Lookup Order Changed</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The Scout properties are now resolved in a slightly different order (<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=541099">Bug 541099</a>). The environment variables are now resolved <em>before</em> the <code>config.properties</code> file.</p>
@@ -783,6 +784,51 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>For both Table and Tree a new CheckableStyle was added. With the CHECKBOX_TABLE_ROW/CHECKBOX_TREE_NODE style it&#x2019;s possible to check/uncheck a row or node by clicking basically anywhere on the row or node. This new CheckableStyle is now the default in AbstractTree and AbstractListBox. With this CheckableStyle active, expansion on double click is not supported for enabled rows/nodes, since it interferes with the checking/unchecking action.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="strings-sorted-with-natural-collator-by-default"><a class="anchor" href="#strings-sorted-with-natural-collator-by-default"></a>Strings Sorted with "Natural" Collator by Default</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Scout now enables the <code>NaturalCollatorProvider</code> by default. When comparing text using a collator (e.g. via <em>StringUtility</em>), strings are now sorted more "naturally". Unlike with the JVM default, spaces (<code>" &#x201c;) and hyphens (&#x201d;-"</code>) are no longer ignored.</p>
+     </div>
+     <div class="paragraph">
+      <p>This is an old <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=390097">bug fix</a> that was finally made permanent.</p>
+     </div>
+     <div class="paragraph">
+      <p><em>Example:</em></p>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 1. Input list (unordered)
+      </div>
+      <div class="content">
+       <pre>[ "The dogs bark", "The dog barks", "The dog sleeps" ]</pre>
+      </div>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 2. Sorted list with JVM default (&lt; Scout 9)
+      </div>
+      <div class="content">
+       <pre>The dog barks
+The dogs bark
+The dog sleeps</pre>
+      </div>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 3. Sorted list with NaturalCollatorProvider (&#x21d2; Scout 9)
+      </div>
+      <div class="content">
+       <pre>The dog barks
+The dog sleeps
+The dogs bark</pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Projects that wish to keep the existing behavior can do so by providing their own <code>CollatorProvider</code> (see migration guide).</p>
      </div>
      <div class="admonitionblock tip">
       <table>
