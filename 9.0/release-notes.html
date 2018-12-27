@@ -539,11 +539,16 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#obtaining-the-latest-version">Obtaining the Latest Version</a></li>
       </ul> </li>
      <li><a href="#dark-theme">Dark Theme</a></li>
-     <li><a href="#disabling-close-cancel-buttons">Disabling Close- &amp; Cancel-Buttons</a></li>
      <li><a href="#new-servlet-filters-to-create-a-scout-runcontext">New Servlet Filters to Create a Scout RunContext</a></li>
+     <li><a href="#new-widgets">New Widgets</a>
+      <ul class="sectlevel2">
+       <li><a href="#mode-selector">Mode Selector</a></li>
+       <li><a href="#popup">Popup</a></li>
+       <li><a href="#label">Label</a></li>
+      </ul> </li>
+     <li><a href="#disabling-close-cancel-buttons">Disabling Close- &amp; Cancel-Buttons</a></li>
      <li><a href="#improved-scrollbar-usability">Improved Scrollbar Usability</a></li>
      <li><a href="#design-change-for-wizardprogressfield">Design Change for WizardProgressField</a></li>
-     <li><a href="#new-widget-mode-selector">New Widget "Mode Selector"</a></li>
      <li><a href="#improvements-for-pages-in-scout-js-applications">Improvements for Pages in Scout JS Applications</a></li>
      <li><a href="#new-event-lookupcalldone">New Event "lookupCallDone"</a></li>
      <li><a href="#property-lookup-order-changed">Property Lookup Order Changed</a></li>
@@ -585,7 +590,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>There may be additional maintenance builds of Scout 9.0, but no plans have been finalized yet. Beside bugfixes, these maintenance builds may even contain some minor features. See the following notes for details.</p>
       </div>
       <div class="sect3">
-       <h4 id="simrel-2018-06-9-0-x-release-expected-in-june-2018"><a class="anchor" href="#simrel-2018-06-9-0-x-release-expected-in-june-2018"></a>Simrel 2018-06 (9.0.x) Release Expected in June 2018</h4>
+       <h4 id="simrel-2019-06-9-0-1-release-expected-in-june-2019"><a class="anchor" href="#simrel-2019-06-9-0-1-release-expected-in-june-2019"></a>Simrel 2019-06 (9.0.1) Release Expected in June 2019</h4>
        <div class="paragraph">
         <p>(Section intentionally left blank for possible future release)</p>
        </div>
@@ -664,19 +669,8 @@ table.CodeRay td.code>pre{padding:0}
      <div class="paragraph">
       <p>Scout now provides a dark theme in addition to the default theme. You can either activate it by default by setting the property <code>scout.ui.theme</code> to <code>dark</code> in the <code>config.properties</code>, or let the user choose what he likes more.</p>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="disabling-close-cancel-buttons"><a class="anchor" href="#disabling-close-cancel-buttons"></a>Disabling Close- &amp; Cancel-Buttons</h2>
-    <div class="sectionbody">
      <div class="paragraph">
-      <p>Until Scout 8.0 a Close- or Cancel-Button ignored the enabled-granted property to ensure the form can be closed even if the full form has been disabled using <code>setEnabledGranted(false)</code>. This was confusing because the same convenience was not available for all other enabled dimensions.</p>
-     </div>
-     <div class="paragraph">
-      <p>Since Scout 9.0 Close- and Cancel-Buttons can be disabled like any other form field. But one special handling is still present: The method <code>isEnabledIncludingParents</code> ignores the enabled state of the parents and always returns the state of the button only.</p>
-     </div>
-     <div class="paragraph">
-      <p>So if a Form or GroupBox is disabled using <code>setEnabled(false)</code> or <code>setEnabledGranted(false)</code> or any other dimension, the full form gets disabled except the Close- and Cancel-Buttons. As soon as the button is disabled explicitly (e.g. by calling <code>setEnabled(false)</code> on the button itself or by propagating to the button using <code>setEnabled(false, false, true)</code> on a parent composite) it will be disabled and the form cannot be closed anymore.</p>
+      <p>In order to change the theme during runtime you can use the method <code>setTheme</code> of the desktop (Scout Classic and Scout JS). The chosen theme will be stored in a cookie and activated again on the next visit.</p>
      </div>
     </div>
    </div>
@@ -694,6 +688,71 @@ table.CodeRay td.code>pre{padding:0}
        <li> <p><code>HttpRunContextFilter</code>: Creates a Scout run-context without HTTP- and server sessions for stateless REST backends. It supports subject, correlationId, locale, transaction, etc.</p> </li>
        <li> <p><code>HttpServerRunContextFilter</code>: Creates a Scout server-run-context that additionally has a user-agent and an optional Scout server session.</p> </li>
       </ul>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-widgets"><a class="anchor" href="#new-widgets"></a>New Widgets</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="mode-selector"><a class="anchor" href="#mode-selector"></a>Mode Selector</h3>
+      <div class="paragraph">
+       <p>The widget <em>ModeSelector</em> was added. It has similar functionality as the RadioButtonGroup but with another design.</p>
+      </div>
+      <div id="img-mode-selector" class="imageblock">
+       <div class="content">
+        <img src="images/mode_selector.png" alt="mode selector">
+       </div>
+       <div class="title">
+        Figure 2. Mode Selector
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="popup"><a class="anchor" href="#popup"></a>Popup</h3>
+      <div class="paragraph">
+       <p>It is actually not really a new widget, since it has been used by Scout itself for some other widgets like <code>SmartField</code>, <code>DateField</code> or <code>ContextMenu</code>. What&#x2019;s new on this release is that you can use it as Scout developer, for Scout JS as well as Scout Classic. The <code>Popup</code> has the following features:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Take any widget you like and open it in a <code>Popup</code> by using the <code>WidgetPopup</code>.</p> </li>
+        <li> <p>Use any widget you like as anchor and align the <code>Popup</code> around it.</p> </li>
+        <li> <p>Decide whether you want to point the <code>Popup</code> to the anchor by using the property <code>withArrow</code>.</p> </li>
+        <li> <p>Control the behavior of what should happen if there is not enough space to display the whole <code>Popup</code> using various properties.</p> </li>
+        <li> <p>Choose how the popup should react when the user clicks on the outside or on the anchor.</p> </li>
+       </ul>
+      </div>
+      <div id="img-popup" class="imageblock">
+       <div class="content">
+        <img src="images/popup.png" alt="popup">
+       </div>
+       <div class="title">
+        Figure 3. Popup
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Check out these features and more in the widget apps!</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="label"><a class="anchor" href="#label"></a>Label</h3>
+      <div class="paragraph">
+       <p>The new <code>Label</code> is a very basic widget to display text. The difference to the existing <code>LabelField</code> is that it doesn&#x2019;t extend the <code>FormField</code> but the <code>Widget</code>. This has the advantage that it is easier to use without the overhead of the <code>FormField</code> meaning it is more lightweight. But you cannot use it on regular forms since a form only accepts form fields.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="disabling-close-cancel-buttons"><a class="anchor" href="#disabling-close-cancel-buttons"></a>Disabling Close- &amp; Cancel-Buttons</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Until Scout 8.0 a Close- or Cancel-Button ignored the enabled-granted property to ensure the form can be closed even if the full form has been disabled using <code>setEnabledGranted(false)</code>. This was confusing because the same convenience was not available for all other enabled dimensions.</p>
+     </div>
+     <div class="paragraph">
+      <p>Since Scout 9.0 Close- and Cancel-Buttons can be disabled like any other form field. But one special handling is still present: The method <code>isEnabledIncludingParents</code> ignores the enabled state of the parents and always returns the state of the button only.</p>
+     </div>
+     <div class="paragraph">
+      <p>So if a Form or GroupBox is disabled using <code>setEnabled(false)</code> or <code>setEnabledGranted(false)</code> or any other dimension, the full form gets disabled except the Close- and Cancel-Buttons. As soon as the button is disabled explicitly (e.g. by calling <code>setEnabled(false)</code> on the button itself or by propagating to the button using <code>setEnabled(false, false, true)</code> on a parent composite) it will be disabled and the form cannot be closed anymore.</p>
      </div>
     </div>
    </div>
@@ -719,27 +778,11 @@ table.CodeRay td.code>pre{padding:0}
        <img src="images/wizard_progress.png" alt="wizard progress">
       </div>
       <div class="title">
-       Figure 2. Wizard Progress
+       Figure 4. Wizard Progress
       </div>
      </div>
      <div class="paragraph">
       <p>Wizard steps can now be marked as finished, in this case they will be displayed with a check mark icon in the wizard progress.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-widget-mode-selector"><a class="anchor" href="#new-widget-mode-selector"></a>New Widget "Mode Selector"</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The widget <em>ModeSelector</em> was added. It has similar functionality as the RadioButtonGroup but with another design.</p>
-     </div>
-     <div id="img-mode-selector" class="imageblock">
-      <div class="content">
-       <img src="images/mode_selector.png" alt="mode selector">
-      </div>
-      <div class="title">
-       Figure 3. Mode Selector
-      </div>
      </div>
     </div>
    </div>
@@ -896,7 +939,7 @@ The dogs bark</pre>
         <img src="images/menu_bar_layout_properties.png" alt="menu bar layout properties">
        </div>
        <div class="title">
-        Figure 4. MenuBar layout properties
+        Figure 5. MenuBar layout properties
        </div>
       </div>
      </div>
