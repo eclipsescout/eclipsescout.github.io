@@ -567,6 +567,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#new-button-property-stackable">New Button Property 'stackable'</a></li>
       </ul> </li>
      <li><a href="#new-openuriaction">New OpenUriAction</a></li>
+     <li><a href="#new-column-property-nodecolumncandidate">New Column Property 'nodeColumnCandidate'</a></li>
     </ul>
    </div>
   </div>
@@ -955,6 +956,14 @@ The dogs bark</pre>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The URI Action <code>OpenUriAction.POPUP_WINDOW</code> is added. The existing URI Action <code>NEW_WINDOW</code> leaves it to the browser whether a new tab or a new window is opened. Using the new URI Action <code>POPUP_WINDOW</code>, the URI will always be opened in a new window.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-column-property-nodecolumncandidate"><a class="anchor" href="#new-column-property-nodecolumncandidate"></a>New Column Property 'nodeColumnCandidate'</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The new property defines if the column can be considered as a candidate for the node column. The node column is used to display the control to expand and collapse rows in a hierarchical table. If <code>false</code> the column will be skipped when scanning for the node column and the next suitable column will be chosen as node column.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
