@@ -556,6 +556,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#form-in-formtablecontrol-is-adapted-automatically">Form in FormTableControl is Adapted Automatically</a></li>
        <li><a href="#table-inside-pagewithtable-uses-default-reload-handler">Table Inside PageWithTable Uses Default Reload Handler</a></li>
        <li><a href="#possibility-to-prepare-a-lookupcall-in-listbox-radiobuttongroup">Possibility to Prepare a LookupCall in ListBox &amp; RadioButtonGroup</a></li>
+       <li><a href="#toggle-action-and-button-now-trigger-event">Toggle Action and Button Now Trigger Event</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a></li>
     </ul>
@@ -796,6 +797,21 @@ table.CodeRay td.code>pre{padding:0}
        <p>Until now it was necessary to set the lookup call programmatically to a ListBox or LookupCall if a <code>prepareLookupCall</code> listener was registered. Otherwise the call has been executed before the listener could have been attached. This is no longer the case: The LookupCall is executed on first use only and not during the creation of the widget which allows to attach <code>prepareLookupCall</code> listeners. The LookupCall may now also be declared in the static JSON model of the widget even though a <code>prepareLookupCall</code> listener is registered.</p>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="toggle-action-and-button-now-trigger-event"><a class="anchor" href="#toggle-action-and-button-now-trigger-event"></a>Toggle Action and Button Now Trigger Event</h3>
+      <div class="paragraph">
+       <p>The action resp. click event is currently not fired if the action/button is a toggle action or the button has menus. This means, if you want to be informed when a user clicks a regular button, you would listen for the action event. If you want to be informed when a user clicks a toggle button, you would have to listen for a property change event.</p>
+      </div>
+      <div class="paragraph">
+       <p>To make it easier, the action event is now always fired (in addition to the property change event). This helps, if you just want to know whether the button was clicked and aren&#x2019;t interested in the selected state.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you accidentally registered an action resp. click listener for toggle actions or buttons, or menu with child menus or buttons with menus, the listener will now be informed. So make sure to check your toggle actions and buttons so that the action is not executed twice.</p>
+      </div>
+      <div class="paragraph">
+       <p>Note: Due to compatibility reasons the behavior for Scout Classic has not been changed.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -817,7 +833,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2018-12-27 09:02:26 +0100
+    <br> Last updated 2019-01-09 09:02:24 +0100
    </div>
   </div>
  </body>
