@@ -645,7 +645,7 @@ table.CodeRay td.code>pre{padding:0}
       <p>Boosting developer productivity is of a very high importance and developers should be able to focus on the business value of the application. This is why Scout provides abstractions for areas/topics that are needed in most business applications again and again. Example areas/topics that are abstracted by the Scout framework are user interface (UI) technologies, databases, client-server communication or logging. For each of these abstractions Scout provides a default implementation out of the box. Typically, the default implementation of such an abstraction integrates a framework or technology that is commonly used.</p>
      </div>
      <div class="paragraph">
-      <p>Learning a new framework should be efficient and enjoyable. For developers that have a good understanding of the Java language learning the Scout framework will be straight forward. The required skill level roughly corresponds to the Oracle Certified Professional Java SE Programmer for Java version 7 or higher. As the Scout framework takes care of the transformation of the user interface from Java to HTML5, Scout developers only needs a minimal understanding of HTML5/CSS3/JavaScript. In the case of writing project specific UI components a deeper understanding of today&#x2019;s web technologies might be required of course.</p>
+      <p>Learning a new framework should be efficient and enjoyable. For developers that have a good understanding of the Java language learning the Scout framework will be straight forward. The required skill level roughly corresponds to the Oracle Certified Professional Java SE Programmer for Java version 11 or higher. As the Scout framework takes care of the transformation of the user interface from Java to HTML5, Scout developers only needs a minimal understanding of HTML5/CSS3/JavaScript. In the case of writing project specific UI components a deeper understanding of today&#x2019;s web technologies might be required of course.</p>
      </div>
      <div class="paragraph">
       <p>When needing a working prototype application by the end of the week, the developer just needs to care about the desired functionality. The necessary default implementations are then automatically included by the Scout tooling into the Scout project setup. The provided Scout SDK tooling also helps to get started quickly with Scout. It also allows to efficiently implement application components such as user interface components, server services or connections to databases.</p>
@@ -5897,110 +5897,93 @@ contacts.superuser=system</code></pre>
      <div class="sect2">
       <h3 id="download-and-install-a-jdk"><a class="anchor" href="#download-and-install-a-jdk"></a>B.2. Download and Install a JDK</h3>
       <div class="paragraph">
-       <p>The first step to install Scout is to have an existing and working installation of a JDK version 8. Please note that the Scout 9.0 Runtime does not support Java 9 yet. The Java 9 support is planned for Eclipse <em>Photon</em> release (Scout 8.0) in summer 2018.</p>
+       <p>The first step to install Scout is to have an existing and working installation of a JDK version 11. Please note that the Scout 9.0 Runtime does not officially support other Java versions. When downloading a Java 11 JDK it is recommended to choose version 11.0.1 or newer. Please note that only x64 hardware architectures are supported.</p>
       </div>
       <div class="paragraph">
-       <p>Currently, we recommend to install the Oracle JDK 8 together with Scout. Although, using OpenJDK with Scout should work too. To successfully install the JDK you need to have at least local admin rights. You also need to know your hardware architecture in order to download the correct JDK installer.</p>
+       <p>You can download the JDK archive matching your operating system from the Java homepage.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> Afterwards extract the archive to a location of your choice.</p>
       </div>
       <div class="paragraph">
-       <p>For Windows, the steps necessary to determine your hardware architecture are described on Microsoft&#x2019;s support site.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>. For Linux several ways to determine if your os is running with 32 or with 64 bits can be found on the web.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup> For Mac this step is simple, as only a 64 bit package is provided on JDK the download page.</p>
-      </div>
-      <div class="paragraph">
-       <p>Once you know your hardware architecture, go to Oracle&#x2019;s official download site.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> and accept the licence agreement by clicking on the appropriate radio button. Then, select the <em>Windows x64</em> package if you are running 64-bit Windows as shown in <a href="#img-jdk_download_oracle">Figure 58</a>. If you are running 32-bit Windows, go for the <em>Windows x86</em> package. It is also recommended to download the <em>Java SE 8 Documentation</em>. The Java API documentation package is available from the official download site.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup>, located further down under section <em>Additional Resources</em>.</p>
-      </div>
-      <div id="img-jdk_download_oracle" class="imageblock">
-       <div class="content">
-        <img src="images/oracle_jdk_download.png" alt="oracle jdk download">
-       </div>
-       <div class="title">
-        Figure 58. Installer download for Oracle JDK 8.
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>Once you have successfully downloaded the JDK installer, follow the Windows installation guide.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>. To verify the installation you might want to go through this Java &#x201c;Hello World!&#x201d; tutorial.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>.</p>
-      </div>
-      <div class="paragraph">
-       <p>Installation instructions for Linux.<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup> and Mac.<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup> are also available from Oracle.</p>
+       <p>To verify the installation you might want to go through this Java &#x201c;Hello World!&#x201d; tutorial.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
       </div>
      </div>
      <div class="sect2">
       <h3 id="sec-download_install"><a class="anchor" href="#sec-download_install"></a>B.3. Download and Install Scout</h3>
       <div class="paragraph">
-       <p>Before you can install Scout make sure that you have a working Java Development Kit (JDK) installation version 8. To download the Eclipse Scout package visit the official Eclipse download page as shown in <a href="#img-scout_download">Figure 59</a>.</p>
+       <p>Before you can install Scout make sure that you have a working Java Development Kit (JDK) installation version 11. To download the Eclipse Scout package visit the official Eclipse download page as shown in <a href="#img-scout_download">Figure 58</a>.</p>
       </div>
       <div id="img-scout_download" class="imageblock">
        <div class="content">
         <img src="images/scout_download.png" alt="scout download">
        </div>
        <div class="title">
-        Figure 59. The Eclipse download page. The platform filter is set to Windows and the available Packages are filtered for Scout.
+        Figure 58. The Eclipse download page. The platform filter is set to Windows and the available Packages are filtered for Scout.
        </div>
       </div>
       <div class="paragraph">
-       <p>If the download page shows the wrong platform, manually select the correct platform in the dropdown list. As shown in <a href="#img-scout_download">Figure 59</a>, the Scout package is available as a 32 bit and a 64 bit package. Make sure to pick the package that matches your JDK installation. You can check your installation on the command line as follows.</p>
+       <p>If the download page shows the wrong platform, manually select the correct platform in the dropdown list. As shown in <a href="#img-scout_download">Figure 58</a>, the Scout package is available as a 32 bit and a 64 bit package. Make sure to pick the package that matches your JDK installation (x64). You can check your installation on the command line as follows.</p>
       </div>
       <div class="listingblock">
        <div class="content">
         <pre>console-prompt&gt;java -version
-java version "1.8.0_77"
-Java(TM) SE Runtime Environment (build 1.8.0_77-b28)
-Java HotSpot(TM) 64-Bit Server VM (build 25.77-b28, mixed mode)</pre>
+openjdk version "11.0.1" 2018-10-16
+OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)</pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>If the output explicitly mentions the 64 bit installation as shown above, you have a 64 bit installation. Otherwise, you have a 32 bit JDK installed. Now you can select the correct Scout package from the Eclipse download site. After the package selection, confirm the suggested download mirror as shown in <a href="#img-scout_download_mirror">Figure 60</a>.</p>
+       <p>After the package selection, confirm the suggested download mirror as shown in <a href="#img-scout_download_mirror">Figure 59</a>.</p>
       </div>
       <div id="img-scout_download_mirror" class="imageblock">
        <div class="content">
         <img src="images/scout_download_mirror.png" alt="scout download mirror">
        </div>
        <div class="title">
-        Figure 60. Downloading the Scout package from a mirror.
+        Figure 59. Downloading the Scout package from a mirror.
        </div>
       </div>
       <div class="paragraph">
-       <p>As the Scout package is a simple ZIP (or tar.gz) file, you may unpack its content to a folder of your choice. Inside the eclipse sub-folder, you will then find the Eclipse executable file, such as the <code>eclipse.exe</code> file on a Windows plattform. Starting the Eclipse executable brings up the workspace launcher as shown in <a href="#img-scout_start">Figure 61</a>.</p>
+       <p>As the Scout package is a simple ZIP (or tar.gz) file, you may unpack its content to a folder of your choice. Inside the eclipse sub-folder, you will then find the Eclipse executable file, such as the <code>eclipse.exe</code> file on a Windows plattform. Starting the Eclipse executable brings up the workspace launcher as shown in <a href="#img-scout_start">Figure 60</a>.</p>
       </div>
       <div id="img-scout_start" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_select_workspace.png" alt="scout startup select workspace">
        </div>
        <div class="title">
-        Figure 61. Starting the Eclipse Scout package and selecting an empty workspace.
+        Figure 60. Starting the Eclipse Scout package and selecting an empty workspace.
        </div>
       </div>
       <div class="paragraph">
-       <p>Into the <em class="field">Workspace</em> field you enter an empty target directory for your first Scout project. After clicking the <b class="button">Ok</b> button, the Eclipse IDE creates any directories that do not yet exist and opens the specified workspace. When opening a new workspace for the first time, Eclipse then displays the welcome screen shown in <a href="#img-scout_welcome">Figure 62</a>.</p>
+       <p>Into the <em class="field">Workspace</em> field you enter an empty target directory for your first Scout project. After clicking the <b class="button">Ok</b> button, the Eclipse IDE creates any directories that do not yet exist and opens the specified workspace. When opening a new workspace for the first time, Eclipse then displays the welcome screen shown in <a href="#img-scout_welcome">Figure 61</a>.</p>
       </div>
       <div id="img-scout_welcome" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_welcome.png" alt="scout startup welcome">
        </div>
        <div class="title">
-        Figure 62. Eclipse Scout welcome screen.
+        Figure 61. Eclipse Scout welcome screen.
        </div>
       </div>
       <div class="paragraph">
-       <p>To close the welcome page and open the Scout perspective in the Eclipse IDE click on the <em class="icon">Workbench</em> icon. As a result the empty Java perspective is displayed according to <a href="#img-scout_perspective">Figure 63</a>.</p>
+       <p>To close the welcome page and open the Scout perspective in the Eclipse IDE click on the <em class="icon">Workbench</em> icon. As a result the empty Java perspective is displayed according to <a href="#img-scout_perspective">Figure 62</a>.</p>
       </div>
       <div id="img-scout_perspective" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_scout_explorer.png" alt="scout startup scout explorer">
        </div>
        <div class="title">
-        Figure 63. Eclipse Scout started in the Scout SDK perspective.
+        Figure 62. Eclipse Scout started in the Scout SDK perspective.
        </div>
       </div>
       <div class="paragraph">
        <p>Congratulations, you just have successfully completed the Eclipse Scout installation!</p>
       </div>
       <div class="paragraph">
-       <p>If you have only installed a single JDK you will not need to change the default <code>eclipse.ini</code> file of your Eclipse installation. In case you have installed multiple JDKs coming with their individual Java Runtime Environments (JREs), you might want to explicitly specifiy which JRE to use. Open the file <code>eclipse.ini</code> in a editor of your choice and insert the following two lines at the top of the file:</p>
+       <p>If you have only installed a single JDK you will not need to change the default <code>eclipse.ini</code> file of your Eclipse installation. In case you have installed multiple JDKs coming with their individual Java Runtime Environments (JREs), you might want to explicitly specify which JRE to use. Open the file <code>eclipse.ini</code> in a editor of your choice and insert the following two lines at the top of the file:</p>
       </div>
       <div class="listingblock">
        <div class="content">
         <pre>-vm
-C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll</pre>
+C:\jdk-11.0.1\bin\server\jvm.dll</pre>
        </div>
       </div>
       <div class="paragraph">
@@ -6016,7 +5999,7 @@ C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll</pre>
 *** System properties:
 ...
 -vm
-C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll
+C:\jdk-11.0.1\bin\server\jvm.dll
 ...
 sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs ...</pre>
        </div>
@@ -6035,33 +6018,33 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <img src="images/eclipse_install_new_software.png" alt="eclipse install new software">
        </div>
        <div class="title">
-        Figure 64. Eclipse menu to install additional software
+        Figure 63. Eclipse menu to install additional software
        </div>
       </div>
       <div class="paragraph">
-       <p>To add Scout to your existing Eclipse installation, you need to start Eclipse. Then select the <span class="menuseq"><b class="menu">Help</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#x2026;&#x200b;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 64</a> to open the install dialog.</p>
+       <p>To add Scout to your existing Eclipse installation, you need to start Eclipse. Then select the <span class="menuseq"><b class="menu">Help</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#x2026;&#x200b;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 63</a> to open the install dialog.</p>
       </div>
       <div id="img-eclipse_add_repository" class="imageblock">
        <div class="content">
         <img src="images/eclipse_add_repository.png" alt="eclipse add repository">
        </div>
        <div class="title">
-        Figure 65. Add the current Scout repository
+        Figure 64. Add the current Scout repository
        </div>
       </div>
       <div class="paragraph">
-       <p>In the install dialog, click on the <b class="button">Add&#x2026;&#x200b;</b> button to enter the link to the Scout repository. This opens the popup dialog <em>Add Repository</em> As shown in <a href="#img-eclipse_add_repository">Figure 65</a>, you may use &#x201c;Scout Oxygen&#x201d; for the <em class="field">Name</em> field. For the <em class="field">Location</em> field enter the Scout release repository as specified below. <a href="http://download.eclipse.org/scout/releases/9.0" class="bare">http://download.eclipse.org/scout/releases/9.0</a>.</p>
+       <p>In the install dialog, click on the <b class="button">Add&#x2026;&#x200b;</b> button to enter the link to the Scout repository. This opens the popup dialog <em>Add Repository</em> As shown in <a href="#img-eclipse_add_repository">Figure 64</a>, you may use &#x201c;Scout Oxygen&#x201d; for the <em class="field">Name</em> field. For the <em class="field">Location</em> field enter the Scout release repository as specified below. <a href="http://download.eclipse.org/scout/releases/9.0" class="bare">http://download.eclipse.org/scout/releases/9.0</a>.</p>
       </div>
       <div id="img-eclipse_select_scout_features" class="imageblock">
        <div class="content">
         <img src="images/eclipse_select_scout_features.png" alt="eclipse select scout features">
        </div>
        <div class="title">
-        Figure 66. Select the Scout features to add to the Eclipse installation
+        Figure 65. Select the Scout features to add to the Eclipse installation
        </div>
       </div>
       <div class="paragraph">
-       <p>After the Eclipse IDE has connected to the Scout repository, select the Scout feature <em>Scout Application Development</em> as shown in <a href="#img-eclipse_select_scout_features">Figure 66</a>. Then, move through the installation with the <b class="button">Next</b> button. On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button. To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse. After the restart of the Eclipse IDE, you may add the Scout perspective using the <span class="menuseq"><b class="menu">Window</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">Open Perspective</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other &#x2026;&#x200b;</b></span> menu and selecting the Scout perspective from the presented list. Clicking on the Scout perspective button should then result in a state very similar to <a href="#img-scout_perspective">Figure 63</a>.</p>
+       <p>After the Eclipse IDE has connected to the Scout repository, select the Scout feature <em>Scout Application Development</em> as shown in <a href="#img-eclipse_select_scout_features">Figure 65</a>. Then, move through the installation with the <b class="button">Next</b> button. On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button. To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse. After the restart of the Eclipse IDE, you may add the Scout perspective using the <span class="menuseq"><b class="menu">Window</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">Open Perspective</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other &#x2026;&#x200b;</b></span> menu and selecting the Scout perspective from the presented list. Clicking on the Scout perspective button should then result in a state very similar to <a href="#img-scout_perspective">Figure 62</a>.</p>
       </div>
      </div>
      <div class="sect2">
@@ -6076,32 +6059,32 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
     <h2 id="apx-install_tomcat"><a class="anchor" href="#apx-install_tomcat"></a>Appendix C: Apache Tomcat Installation</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Apache Tomcat is an open source web server that is a widely used implementation of the Java Servlet Specification. Specifically, Tomcat works very well to run Scout applications. In case you are interested in getting some general context around Tomcat you could start with the Wikipedia article.<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup>. Then get introduced to its core component &#x201c;Tomcat Catalina&#x201d;.<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup> before you switch to the official Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>.</p>
+      <p>Apache Tomcat is an open source web server that is a widely used implementation of the Java Servlet Specification. Specifically, Tomcat works very well to run Scout applications. In case you are interested in getting some general context around Tomcat you could start with the Wikipedia article.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>. Then get introduced to its core component &#x201c;Tomcat Catalina&#x201d;.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> before you switch to the official Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>.</p>
      </div>
      <div class="paragraph">
-      <p>This section is not really a step by step download and installation guide. Rather, it points you to the proper places for downloading and installing Tomcat. We recommend to work with Tomcat version 9.0. Start your download from the official download site.<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="#_footnotedef_17" title="View footnote.">17</a>]</sup>.</p>
+      <p>This section is not really a step by step download and installation guide. Rather, it points you to the proper places for downloading and installing Tomcat. We recommend to work with Tomcat version 9.0. Start your download from the official download site.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>.</p>
      </div>
      <div id="img-tomcat_install" class="imageblock">
       <div class="content">
        <img src="images/tomcat_install.png" alt="tomcat install">
       </div>
       <div class="title">
-       Figure 67. A successful Tomcat 7 installation.
+       Figure 66. A successful Tomcat 7 installation.
       </div>
      </div>
      <div class="paragraph">
-      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 67</a>.</p>
+      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 66</a>.</p>
      </div>
      <div class="sect2">
       <h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>C.1. Platform Specific Instructions</h3>
       <div class="paragraph">
-       <p>According to the Tomcat setup installation for Windows.<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnotedef_18" title="View footnote.">18</a>]</sup> download the package &#x201c;32-bit/64-bit Windows Service Installer&#x201d; from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, start the installer and accept the proposed default settings.</p>
+       <p>According to the Tomcat setup installation for Windows.<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup> download the package &#x201c;32-bit/64-bit Windows Service Installer&#x201d; from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, start the installer and accept the proposed default settings.</p>
       </div>
       <div class="paragraph">
-       <p>For installing Tomcat on OS X systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the installation guide.<sup class="footnote">[<a id="_footnoteref_19" class="footnote" href="#_footnotedef_19" title="View footnote.">19</a>]</sup> provided by Wolf Paulus.</p>
+       <p>For installing Tomcat on OS X systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the installation guide.<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup> provided by Wolf Paulus.</p>
       </div>
       <div class="paragraph">
-       <p>For Linux systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the description of the Unix setup.<sup class="footnote">[<a id="_footnoteref_20" class="footnote" href="#_footnotedef_20" title="View footnote.">20</a>]</sup> to run Tomcat as a deamon. If you use Ubuntu, you may want to follow the tutorial.<sup class="footnote">[<a id="_footnoteref_21" class="footnote" href="#_footnotedef_21" title="View footnote.">21</a>]</sup> for downloading and installing Tomcat provided by Lars Vogel.</p>
+       <p>For Linux systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the description of the Unix setup.<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup> to run Tomcat as a deamon. If you use Ubuntu, you may want to follow the tutorial.<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup> for downloading and installing Tomcat provided by Lars Vogel.</p>
       </div>
      </div>
      <div class="sect2">
@@ -6114,12 +6097,12 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <img src="images/tomcat_install_dir.png" alt="tomcat install dir">
        </div>
        <div class="title">
-        Figure 68. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
+        Figure 67. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
         <code>webapps</code>.
        </div>
       </div>
       <div class="paragraph">
-       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 68</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
+       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 67</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
       </div>
       <div class="paragraph">
        <p>The <span class="filename">conf</span> folder contains a set of XML and property configuration files. The file <span class="filename">server.xml</span> represents Tomcat&#x2019;s main configuration file. It is used to configure general web server aspects such as the port number of its connectors for the client server communication. For the default setup, port number 8080 is used for the communication between clients applications and the web server. The file <span class="filename">tomcat-users.xml</span> contains a database of users, passwords and associated roles.</p>
@@ -6128,7 +6111,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <p>Folder <span class="filename">logs</span> contains various logfiles of Tomcat itself as well as host and web application log files. TODO [7.0] jbr: need to provide more on what is where (especially application logs and exact setup to generate log entries from scout apps).</p>
       </div>
       <div class="paragraph">
-       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 68</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
+       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 67</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
       </div>
       <div class="paragraph">
        <p>Finally, folder <span class="filename">work</span> contains Tomcat&#x2019;s runtime &#x201c;cache&#x201d; for the deployed web applications. It is organized according to the hierarchy of the engine (Catalina), the host (localhost), and the web application (<span class="filename">helloworld_server</span>).</p>
@@ -6137,10 +6120,10 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
      <div class="sect2">
       <h3 id="apx-tomcat_manager_app"><a class="anchor" href="#apx-tomcat_manager_app"></a>C.3. The Tomcat Manager Application</h3>
       <div class="paragraph">
-       <p>Tomcat comes with the pre installed &#x201c;Manager App&#x201d;. This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications. A comprehensive documentation for the &#x201c;Manager App&#x201d; can be found under the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_22" class="footnote" href="#_footnotedef_22" title="View footnote.">22</a>]</sup>. Here we only show how to start this application from the hompage of a running Tomcat installation.</p>
+       <p>Tomcat comes with the pre installed &#x201c;Manager App&#x201d;. This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications. A comprehensive documentation for the &#x201c;Manager App&#x201d; can be found under the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>. Here we only show how to start this application from the hompage of a running Tomcat installation.</p>
       </div>
       <div class="paragraph">
-       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 67</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
+       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 66</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
       </div>
       <div id="lst-tomcat.users" class="listingblock">
        <div class="title">
@@ -6195,71 +6178,47 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
     <a href="http://wiki.eclipse.org/Oxygen/Simultaneous_Release_Plan" class="bare">http://wiki.eclipse.org/Oxygen/Simultaneous_Release_Plan</a>
    </div>
    <div class="footnote" id="_footnotedef_6">
-    <a href="#_footnoteref_6">6</a>. Windows 32/64-bit installation:
-    <a href="http://support.microsoft.com/kb/827218" class="bare">http://support.microsoft.com/kb/827218</a>
+    <a href="#_footnoteref_6">6</a>. OpenJDK 11 download:
+    <a href="https://jdk.java.net/11/" class="bare">https://jdk.java.net/11/</a>
    </div>
    <div class="footnote" id="_footnotedef_7">
-    <a href="#_footnoteref_7">7</a>. Linux 32/64-bit installation example page:
-    <a href="http://mylinuxbook.com/5-ways-to-check-if-linux-is-32-bit-or-64-bit/" class="bare">http://mylinuxbook.com/5-ways-to-check-if-linux-is-32-bit-or-64-bit/</a>
-   </div>
-   <div class="footnote" id="_footnotedef_8">
-    <a href="#_footnoteref_8">8</a>. Official JDK 8 download:
-    <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" class="bare">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>
-   </div>
-   <div class="footnote" id="_footnotedef_9">
-    <a href="#_footnoteref_9">9</a>. Java API documentation download:
-    <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" class="bare">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
-   </div>
-   <div class="footnote" id="_footnotedef_10">
-    <a href="#_footnoteref_10">10</a>. Install the JDK on Windows:
-    <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/windows/jdk-installation-windows.html#Run" class="bare">http://docs.oracle.com/javase/7/docs/webnotes/install/windows/jdk-installation-windows.html#Run</a>
-   </div>
-   <div class="footnote" id="_footnotedef_11">
-    <a href="#_footnoteref_11">11</a>. Windows Java &#x201c;Hello World!&#x201d;:
+    <a href="#_footnoteref_7">7</a>. Windows Java &#x201c;Hello World!&#x201d;:
     <a href="http://docs.oracle.com/javase/tutorial/getStarted/cupojava/win32.html" class="bare">http://docs.oracle.com/javase/tutorial/getStarted/cupojava/win32.html</a>
    </div>
-   <div class="footnote" id="_footnotedef_12">
-    <a href="#_footnoteref_12">12</a>. Install the JDK on Linux:
-    <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/linux_jdk.html" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/install/linux_jdk.html</a>
-   </div>
-   <div class="footnote" id="_footnotedef_13">
-    <a href="#_footnoteref_13">13</a>. Install the JDK on Mac:
-    <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html</a>.
-   </div>
-   <div class="footnote" id="_footnotedef_14">
-    <a href="#_footnoteref_14">14</a>. Apache Tomcat Wikipedia:
+   <div class="footnote" id="_footnotedef_8">
+    <a href="#_footnoteref_8">8</a>. Apache Tomcat Wikipedia:
     <a href="http://en.wikipedia.org/wiki/Apache_Tomcat" class="bare">http://en.wikipedia.org/wiki/Apache_Tomcat</a>.
    </div>
-   <div class="footnote" id="_footnotedef_15">
-    <a href="#_footnoteref_15">15</a>. Mulesoft&#x2019;s introduction to Tomcat Catalina:
+   <div class="footnote" id="_footnotedef_9">
+    <a href="#_footnoteref_9">9</a>. Mulesoft&#x2019;s introduction to Tomcat Catalina:
     <a href="http://www.mulesoft.com/tomcat-catalina" class="bare">http://www.mulesoft.com/tomcat-catalina</a>.
    </div>
-   <div class="footnote" id="_footnotedef_16">
-    <a href="#_footnoteref_16">16</a>. Apache Tomcat Homepage:
+   <div class="footnote" id="_footnotedef_10">
+    <a href="#_footnoteref_10">10</a>. Apache Tomcat Homepage:
     <a href="http://tomcat.apache.org/" class="bare">http://tomcat.apache.org/</a>
    </div>
-   <div class="footnote" id="_footnotedef_17">
-    <a href="#_footnoteref_17">17</a>. Tomcat 9 Downloads:
+   <div class="footnote" id="_footnotedef_11">
+    <a href="#_footnoteref_11">11</a>. Tomcat 9 Downloads:
     <a href="http://tomcat.apache.org/download-90.cgi" class="bare">http://tomcat.apache.org/download-90.cgi</a>
    </div>
-   <div class="footnote" id="_footnotedef_18">
-    <a href="#_footnoteref_18">18</a>. Tomcat Windows setup:
+   <div class="footnote" id="_footnotedef_12">
+    <a href="#_footnoteref_12">12</a>. Tomcat Windows setup:
     <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows</a>
    </div>
-   <div class="footnote" id="_footnotedef_19">
-    <a href="#_footnoteref_19">19</a>. Installing Tomcat on OS X:
+   <div class="footnote" id="_footnotedef_13">
+    <a href="#_footnoteref_13">13</a>. Installing Tomcat on OS X:
     <a href="http://wolfpaulus.com/journal/mac/tomcat8" class="bare">http://wolfpaulus.com/journal/mac/tomcat8</a>
    </div>
-   <div class="footnote" id="_footnotedef_20">
-    <a href="#_footnoteref_20">20</a>. Tomcat Linux setup:
+   <div class="footnote" id="_footnotedef_14">
+    <a href="#_footnoteref_14">14</a>. Tomcat Linux setup:
     <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon</a>
    </div>
-   <div class="footnote" id="_footnotedef_21">
-    <a href="#_footnoteref_21">21</a>. Apache Tomcat Tutorial:
+   <div class="footnote" id="_footnotedef_15">
+    <a href="#_footnoteref_15">15</a>. Apache Tomcat Tutorial:
     <a href="http://www.vogella.com/articles/ApacheTomcat/article.html" class="bare">http://www.vogella.com/articles/ApacheTomcat/article.html</a>
    </div>
-   <div class="footnote" id="_footnotedef_22">
-    <a href="#_footnoteref_22">22</a>. The Tomcat Manager Application:
+   <div class="footnote" id="_footnotedef_16">
+    <a href="#_footnoteref_16">16</a>. The Tomcat Manager Application:
     <a href="http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html</a>.
    </div>
   </div>

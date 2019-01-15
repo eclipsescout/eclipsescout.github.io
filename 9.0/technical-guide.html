@@ -730,8 +730,8 @@ table.CodeRay td.code>pre{padding:0}
      <div class="ulist">
       <ul>
        <li> <p>A server layer responsible for persisting data on a database and possibly providing and consuming webservices. The scout server layer provides utilities to simplify the most common tasks.</p> </li>
-       <li> <p>A client layer responsible for handling the java UI code. It consists of a model represented by plain java classes as well as services and utilities to implement behaviour associeted with client code. The scout client layer provides utilities to simplify the most common tasks. For simplicity, the client model is processed in a single threaded way to avoid synchronization. Callbacks, e.g. for validating a field or calling services when opening a form run inside a <a href="#modeljobs">model job</a>.</p> </li>
-       <li> <p>A UI layer responsible for rendering the client model in the browser. Since the scout UI layer already provides javascript/html/css code for many common UIs, the project specific code in this layer is typically quite small. Examples are specific css styling or a new custom input field for special purposes.</p> </li>
+       <li> <p>A client layer responsible for handling the Java UI code. It consists of a model represented by plain Java classes as well as services and utilities to implement behaviour associated with client code. The scout client layer provides utilities to simplify the most common tasks. For simplicity, the client model is processed in a single threaded way to avoid synchronization. Callbacks, e.g. for validating a field or calling services when opening a form run inside a <a href="#modeljobs">model job</a>.</p> </li>
+       <li> <p>A UI layer responsible for rendering the client model in the browser. Since the scout UI layer already provides JavaScript/HTML/CSS code for many common UIs, the project specific code in this layer is typically quite small. Examples are specific CSS styling or a new custom input field for special purposes.</p> </li>
       </ul>
      </div>
      <div class="paragraph">
@@ -6553,7 +6553,7 @@ protected void execInitField() {
        </div>
        <div class="ulist">
         <ul>
-         <li> <p><em>JAX-WS RI</em> (reference implementation) as shipped with Java 7 and Java 8</p> </li>
+         <li> <p><em>JAX-WS RI</em> (reference implementation) as shipped with Java 7 and Java 8. Please note that starting with Java 11 this is no longer part of the JRE.</p> </li>
          <li> <p><em>JAX-WS METRO</em> (2.2.10)</p> </li>
          <li> <p><em>Apache CXF</em> (3.1.3)</p> </li>
         </ul>

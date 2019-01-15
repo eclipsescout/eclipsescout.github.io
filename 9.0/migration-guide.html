@@ -558,7 +558,10 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#possibility-to-prepare-a-lookupcall-in-listbox-radiobuttongroup">Possibility to Prepare a LookupCall in ListBox &amp; RadioButtonGroup</a></li>
        <li><a href="#toggle-action-and-button-now-trigger-event">Toggle Action and Button Now Trigger Event</a></li>
       </ul> </li>
-     <li><a href="#other-changes">Other Changes</a></li>
+     <li><a href="#other-changes">Other Changes</a>
+      <ul class="sectlevel2">
+       <li><a href="#java-11-support">Java 11 Support</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -817,15 +820,77 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="other-changes"><a class="anchor" href="#other-changes"></a>Other Changes</h2>
     <div class="sectionbody">
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/9.0.x/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
+     <div class="sect2">
+      <h3 id="java-11-support"><a class="anchor" href="#java-11-support"></a>Java 11 Support</h3>
+      <div class="paragraph">
+       <p>Scout 9 officially supports <a href="https://jdk.java.net/11/">OpenJDK 11</a>. Please note that Java 9 and 10 are not supported and that <a href="https://www.oracle.com/technetwork/java/java-se-support-roadmap.html">Oracle only provides free Java 8 updates for commercial use until end of January 2019</a>. Therefore it is recommended to use OpenJDK 11.0.1 or newer. The following chapters describe the actions to migrate your code to be Java 11 capable.</p>
+      </div>
+      <div class="sect3">
+       <h4 id="general-migration"><a class="anchor" href="#general-migration"></a>General Migration</h4>
+       <div class="ulist">
+        <ul>
+         <li> <p>Scout increased the minimum Maven version from 3.2.1 to 3.5.3. You might need to update your tool-chain accordingly.</p> </li>
+         <li> <p>The JAX-RS API version has been updated from 2.0.1 to 2.1.1. This may be relevant if you use a container that already includes a JAX RS runtime instead of bundling your own runtime.</p> </li>
+         <li> <p>Update the <code>maven_rt_plugin_config-master</code> in all poms to version 3.1.0</p> </li>
+         <li> <p>If you use the Scout JAX-RS support using Jersey you have to add the dependency <code>org.glassfish.jersey.inject:jersey-hk2</code> to all poms where the artifact <code>jersey-container-servlet-core</code> is referenced as dependency.</p> </li>
+         <li> <p>Batik has been updated from 1.7 to 1.10. If you are using Batik in your project you might need to update some imports. E.g.:</p>
+          <div class="ulist">
+           <ul>
+            <li> <p><code>org.apache.batik.dom.svg.SAXSVGDocumentFactory</code> to <code>org.apache.batik.anim.dom.SAXSVGDocumentFactory</code></p> </li>
+            <li> <p><code>org.apache.batik.dom.svg.SVGDOMImplementation</code> to <code>org.apache.batik.anim.dom.SVGDOMImplementation</code></p> </li>
+           </ul>
+          </div> </li>
+         <li> <p>Because of duplicate classes in <code>javax.activation:javax.activation-api</code> and the corresponding implementation <code>com.sun.activation:javax.activation</code> it might be necessary to exclude the former dependency where both are present on the classpath. Such cases will be reported by the <code>duplicate-finder-maven-plugin</code> during maven build.</p> </li>
+         <li> <p>If you are using the <code>maven-assembly-plugin</code>: The <code>descriptor</code> tag pointing to the xml file has been replaced with a <code>descriptors</code> list element. Furthermore the <code>classifier</code> configuration element does no longer exist and must be deleted if present. Example: <code>&lt;descriptor&gt;assembly.xml&lt;/descriptor&gt;</code> can be replaced with</p> </li>
+        </ul>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre>    &lt;descriptors&gt;
+       &lt;descriptor&gt;assembly.xml&lt;/descriptor&gt;
+    &lt;/descriptors&gt;</pre>
+        </div>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="jax-ws-migration"><a class="anchor" href="#jax-ws-migration"></a>JAX WS Migration</h4>
+       <div class="ulist">
+        <ul>
+         <li> <p>The JAX WS API version has been updated from 2.2.10 to 2.3.1. This may be relevant if you use a container that already includes a JAX WS runtime instead of bundling your own runtime.</p> </li>
+         <li> <p>The JAX WS RI (reference implementation) has been removed from the JRE. Therefore <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsRISpecifics</code> should not longer by used unless the application is still running with Java 8. Otherwise migrate to <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsMetroSpecifics</code> (which is the new default value).</p> </li>
+         <li> <p>Because the RI is no longer part of the JRE, the Metro implementation must be added instead. To do so please add dependency <code>com.sun.xml.ws:jaxws-rt</code> to the poms of your server war and dev projects.</p> </li>
+         <li> <p>Because the JAX WS classes are no longer part of the JRE, the corresponding libraries must be added to all <code>.factorypath</code> files in your workspace. Please add the following elements:</p> </li>
+        </ul>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre>    &lt;factorypathentry kind="VARJAR"
+       id="M2_REPO/javax/jws/javax.jws-api/1.1/javax.jws-api-1.1.jar"
+       enabled="true" runInBatchMode="false"/&gt;
+    &lt;factorypathentry kind="VARJAR"
+       id="M2_REPO/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"
+       enabled="true" runInBatchMode="false"/&gt;
+    &lt;factorypathentry kind="VARJAR"
+       id="M2_REPO/javax/xml/ws/jaxws-api/2.3.1/jaxws-api-2.3.1.jar"
+       enabled="true" runInBatchMode="false"/&gt;</pre>
+        </div>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p>The <code>jaxws-maven-plugin</code> from <code>org.codehaus.mojo</code> is not Java 11 capable. Therefore replace the groupId with <code>com.helger.maven</code> in all your poms to use a Java 11 capable maven plugin.</p> </li>
+        </ul>
+       </div>
+       <div class="admonitionblock tip">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+           <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/9.0.x/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
      </div>
     </div>
    </div>
