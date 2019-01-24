@@ -3980,7 +3980,7 @@ future.whenDone(event -&gt; {
   operationCompleted.setBlocking(<span class="predefined-constant">false</span>);
 }, <span class="predefined-constant">null</span>);
 <span class="comment">// Wait until done. Thereby, the permit of the current job is released for the time while waiting.</span>
-operationCompleted.waitForUninterruptibly();</code></pre>
+operationCompleted.waitFor();</code></pre>
         </div>
        </div>
       </div>
@@ -4393,7 +4393,7 @@ future.whenDone(event -&gt; {
   operationCompleted.setBlocking(<span class="predefined-constant">false</span>);
 }, <span class="predefined-constant">null</span>);
 <span class="comment">// Wait until done. Thereby, the permit of the current job is released for the time while waiting.</span>
-operationCompleted.waitForUninterruptibly();</code></pre>
+operationCompleted.waitFor();</code></pre>
        </div>
       </div>
      </div>
