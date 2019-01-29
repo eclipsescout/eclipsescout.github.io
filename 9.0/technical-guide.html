@@ -5690,6 +5690,7 @@ protected void execInitField() {
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity</span><span class="delimiter">"</span></span>)
+<span class="annotation">@TypeVersion</span>(<span class="string"><span class="delimiter">"</span><span class="content">scout-8.0.0.027</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleEntityDo</span> <span class="directive">extends</span> DoEntity {
   <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name() { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>);
@@ -5784,7 +5785,26 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="data-object-naming-convention"><a class="anchor" href="#data-object-naming-convention"></a>16.2.2. Data Object Naming Convention</h4>
+       <h4 id="type-version"><a class="anchor" href="#type-version"></a>16.2.2. Type Version</h4>
+       <div class="paragraph">
+        <p>A data object may be annotated with a type version using the <code>@TypeVersion</code> annotation. The type version represents the version of the structure of the data object and not the version of the data within the data object. The type version value should be incremented, each time, the data object class is modified (add/remove/rename attributes). If a version is required for versioning the values of a data object, consider add a <code>version</code> attribute, incrementing its value, every time a value of the data object is modified.</p>
+       </div>
+       <div class="paragraph">
+        <p>The annotation value is added to the serialized JSON object as top-level <code>_typeVersion</code> property. The serialized <code>_typeVersion</code> value is not deserialized into an attribute, since the deserializer creates a concrete data object class at runtime, having the <code>@TypeVersion</code> annotation providing the type version value.</p>
+       </div>
+       <div class="admonitionblock note">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+           <td class="content"> Declaring a logical type version using the `@TypeVersion`annotation is highly recommended if a data object is persisted as JSON document to a file or database. </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="data-object-naming-convention"><a class="anchor" href="#data-object-naming-convention"></a>16.2.3. Data Object Naming Convention</h4>
        <div class="paragraph">
         <p>Scout objects use the following naming conventions:</p>
        </div>
@@ -5796,7 +5816,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="attribute-name"><a class="anchor" href="#attribute-name"></a>16.2.3. Attribute Name</h4>
+       <h4 id="attribute-name"><a class="anchor" href="#attribute-name"></a>16.2.4. Attribute Name</h4>
        <div class="paragraph">
         <p>The default attribute name within the serialized string corresponds to the name of the attribute accessor method defined in the data object. To use a custom attribute name within the serialized string, the attribute accessor method can be annotated by <code>@AttributeName</code> providing the custom attribute name.</p>
        </div>
@@ -5834,7 +5854,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="attribute-format"><a class="anchor" href="#attribute-format"></a>16.2.4. Attribute Format</h4>
+       <h4 id="attribute-format"><a class="anchor" href="#attribute-format"></a>16.2.5. Attribute Format</h4>
        <div class="paragraph">
         <p>Using the <code>ValueFormat</code> annotation a data type dependent format string may be provided, which is used for the marshalling.</p>
        </div>
@@ -6039,7 +6059,7 @@ protected void execInitField() {
      <div class="sect2">
       <h3 id="generic-doentity"><a class="anchor" href="#generic-doentity"></a>16.7. Generic DoEntity</h3>
       <div class="paragraph">
-       <p>An instance of the <code>DoEntity</code> class can represent any kind of JSON document. If the JSON document contains no type attributes or no matching data object class exists at runtime, the JSON document is deserialized into a raw <code>DoEntity</code> instance holding all attributes. To access the attributes of the data object a set of generic getter methods may be used by specifying the attribute name. A generic JSON document is deserialized into a generic tree-like structure of nested <code>DoEntity</code> instances.</p>
+       <p>An instance of the <code>DoEntity</code> class can represent any kind of JSON document. If the JSON document contains no type attributes or no matching data object class exists at runtime, the JSON document is deserialized into a raw <code>DoEntity</code> instance holding all attributes. To access the attributes of the data object a set of generic getter methods may be used by specifying the attribute name. A generic JSON document is deserialized into a generic tree-like structure of nested <code>DoEntity</code> instances. If the serialized JSON document contains a <code>_type</code> and/or <code>_typeVersion</code> attribute, the attribute and its value is added as attribute to the generic raw <code>DoEntity</code> instance.</p>
       </div>
       <div class="listingblock">
        <div class="title">
@@ -6270,6 +6290,9 @@ protected void execInitField() {
     attributes.forEach(
         (key, value) -&gt; <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">"</span><span class="content">Attribute </span><span class="delimiter">"</span></span> + key + <span class="string"><span class="delimiter">"</span><span class="content"> type </span><span class="delimiter">"</span></span> + value.getType()));</code></pre>
        </div>
+      </div>
+      <div class="paragraph">
+       <p>Apart from attribute descriptions, the inventory provides access to type name and type version of each data object class.</p>
       </div>
      </div>
      <div class="sect2">
