@@ -572,6 +572,8 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-column-property-nodecolumncandidate">New Column Property 'nodeColumnCandidate'</a></li>
      <li><a href="#responsiveness">Responsiveness</a></li>
      <li><a href="#mom-add-support-for-handling-incomingoutgoing-jms-messages">MOM: Add Support for Handling Incoming/Outgoing JMS Messages</a></li>
+     <li><a href="#propertychange-event-on-htmlenvironment">PropertyChange Event on HtmlEnvironment</a></li>
+     <li><a href="#new-displaystyle-dense-on-desktop">New DisplayStyle 'dense' on Desktop</a></li>
     </ul>
    </div>
   </div>
@@ -1015,6 +1017,22 @@ The dogs bark</pre>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The new interface <code>org.eclipse.scout.rt.mom.jms.IJmsMessageHandler</code> adds suport for incoming and outgoing JMS message handling. The default implementation <code>org.eclipse.scout.rt.mom.jms.LogJmsMessageHandler</code> logs all messages on level DEBUG.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="propertychange-event-on-htmlenvironment"><a class="anchor" href="#propertychange-event-on-htmlenvironment"></a>PropertyChange Event on HtmlEnvironment</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Now the HtmlEnvironment fires a <code>propertyChange</code> Event when it gets (re)initialized. All Layouts or other Components that depend on the HtmlEnvironment&#x2019;s properties should listen to that event and handle it appropriately.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-displaystyle-dense-on-desktop"><a class="anchor" href="#new-displaystyle-dense-on-desktop"></a>New DisplayStyle 'dense' on Desktop</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>This new display style is targeted at users working on laptops or other small screens. It reduces the whitespace between elements to display more content on the available screen size.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
