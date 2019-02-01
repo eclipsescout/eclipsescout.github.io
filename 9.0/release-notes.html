@@ -546,6 +546,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#java-11-support">Java 11 Support</a></li>
      <li><a href="#new-sdk-feature">New SDK Feature</a></li>
      <li><a href="#dark-theme">Dark Theme</a></li>
+     <li><a href="#responsiveness">Responsiveness</a></li>
      <li><a href="#new-servlet-filters-to-create-a-scout-runcontext">New Servlet Filters to Create a Scout RunContext</a></li>
      <li><a href="#new-widgets">New Widgets</a>
       <ul class="sectlevel2">
@@ -570,7 +571,6 @@ table.CodeRay td.code>pre{padding:0}
       </ul> </li>
      <li><a href="#new-openuriaction">New OpenUriAction</a></li>
      <li><a href="#new-column-property-nodecolumncandidate">New Column Property 'nodeColumnCandidate'</a></li>
-     <li><a href="#responsiveness">Responsiveness</a></li>
      <li><a href="#mom-add-support-for-handling-incomingoutgoing-jms-messages">MOM: Add Support for Handling Incoming/Outgoing JMS Messages</a></li>
      <li><a href="#propertychange-event-on-htmlenvironment">PropertyChange Event on HtmlEnvironment</a></li>
      <li><a href="#new-displaystyle-dense-on-desktop">New DisplayStyle 'dense' on Desktop</a></li>
@@ -714,6 +714,14 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="paragraph">
       <p>In order to change the theme during runtime you can use the method <code>setTheme</code> of the desktop (Scout Classic and Scout JS). The chosen theme will be stored in a cookie and activated again on the next visit.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="responsiveness"><a class="anchor" href="#responsiveness"></a>Responsiveness</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Once a group box becomes smaller than its preferred width it will transform its internal fields to increase readability. For more information consult the <a href="https://eclipsescout.github.io/9.0/technical-guide.html#groupbox">technical guide</a>.</p>
      </div>
     </div>
    </div>
@@ -1001,14 +1009,6 @@ The dogs bark</pre>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The new property defines if the column can be considered as a candidate for the node column. The node column is used to display the control to expand and collapse rows in a hierarchical table. If <code>false</code> the column will be skipped when scanning for the node column and the next suitable column will be chosen as node column.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="responsiveness"><a class="anchor" href="#responsiveness"></a>Responsiveness</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Once a group box becomes smaller than its preferred width it will transform its internal fields to increase readability. For more information consult the <a href="https://eclipsescout.github.io/9.0/technical-guide.html">technical guide</a>.</p>
      </div>
     </div>
    </div>
