@@ -893,6 +893,28 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p>The <code>jaxws-maven-plugin</code> from <code>org.codehaus.mojo</code> is not Java 11 capable. Therefore replace the groupId with <code>com.helger.maven</code> in all your poms to use a Java 11 capable maven plugin.</p> </li>
         </ul>
        </div>
+      </div>
+      <div class="sect3">
+       <h4 id="changed-computation-of-nodeidentifier"><a class="anchor" href="#changed-computation-of-nodeidentifier"></a>Changed Computation of NodeIdentifier</h4>
+       <div class="paragraph">
+        <p>If multiple Scout applications are connected together to form a cluster, the application-scoped bean <code>org.eclipse.scout.rt.platform.context.NodeIdentifier</code> provides an ID for each node. This string can be used to identify cluster nodes in log messages, cluster messages etc.</p>
+       </div>
+       <div class="paragraph">
+        <p>It is recommended to assign a unique and stable name to each node by setting the property <em>scout.nodeId</em> when launching the application. The default implementation of <code>NodeIdentifier</code> also checks for properties of some well-known application servers (e.g. <em>jboss.node.name</em>). If no explicitly assigned identifier is found, a random UUID is generated.</p>
+       </div>
+       <div class="admonitionblock tip">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+           <td class="content"> Note that a random ID will not be stable, i.e. it will change each time the application is restarted. This is fine for single-node and most multi-node setups. However, there are cases where stable IDs are required, for example when using durable topics or cleaning up node-specific data. </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div class="paragraph">
+        <p>In previous releases, <code>NodeIdentifier</code> sometimes returned the local hostname and a port number instead of a random UUID. This behavior was removed from Scout 9, because it is unreliable and the used port number was not always correct. If your application relies on the hostname, consider explicitly setting the <em>scout.nodeId</em> property or customizing the bean <code>NodeIdentifier</code>.</p>
+       </div>
        <div class="admonitionblock tip">
         <table>
          <tbody>
