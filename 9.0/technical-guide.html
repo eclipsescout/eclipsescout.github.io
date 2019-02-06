@@ -1976,6 +1976,12 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.trustedCertificates</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">URIs to DER (Base64) encoded certificate files that should be trusted. The URI may refer to a local file or a resource on the classpath (use classpath: prefix). The default value is an empty list.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">List of Strings</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.backgroundPollingMaxWaitTime</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">The polling request (which waits for a background job to complete) stays open until a background job has completed or the specified number of seconds elapsed.</p> <p class="tableblock">This property must have a value between 3 and the value of property <code>scout.ui.maxUserIdleTime</code>.</p> <p class="tableblock">By default this property is set to 1 minute.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
