@@ -624,7 +624,7 @@ table.CodeRay td.code>pre{padding:0}
       </div>
      </div>
      <div class="paragraph">
-      <p>Scout supports a modularization of applications into layers and slices. This helps to define a clean architecture for large applications. The layering is driven by the fact the Scout applications have a rendering part, a frontend part and a backend part. The modularization into slices is controlled by different business needs such as front office, back office, reporting or the administraion of application users, roles and permissions.</p>
+      <p>Scout supports a modularization of applications into layers and slices. This helps to define a clean architecture for large applications. The layering is driven by the fact the Scout applications have a rendering part, a frontend part and a backend part. The modularization into slices is controlled by different business needs such as front office, back office, reporting or the administration of application users, roles and permissions.</p>
      </div>
      <div class="paragraph">
       <p>The goals of the Scout framework can be summarized as follows.</p>
@@ -1896,7 +1896,7 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="sec-contacts_overview"><a class="anchor" href="#sec-contacts_overview"></a>4.2. Tutorial Overview</h3>
       <div class="paragraph">
-       <p>This tutorial walks you through the implementation of a Scout application consisting of a frontend and a backend application. The frontend application contains outlines with navigation trees, pages to present information in tabular form and forms to view and edit data. In the backend application the tutorial shows how to implement services, logging, databases access, and serveral other aspects of Scout applications.</p>
+       <p>This tutorial walks you through the implementation of a Scout application consisting of a frontend and a backend application. The frontend application contains outlines with navigation trees, pages to present information in tabular form and forms to view and edit data. In the backend application the tutorial shows how to implement services, logging, databases access, and several other aspects of Scout applications.</p>
       </div>
       <div class="paragraph">
        <p>The tutorial is organized into the sequence of the consecutive steps listed below. Each of the step is described in a individual section that results in a executable application that can be tested and compared against the full "Contacts" demo application.</p>
@@ -1922,7 +1922,7 @@ table.CodeRay td.code>pre{padding:0}
          <a href="#sec-contacts_jdbc">Section 4.5</a>)
         </dt>
         <dd>
-         <p>This step concentrates on the backend of the "Contacts" application. The covered topics includes dealing with application properties, setup and access of a database and using the database to povide data for the person and organization page created in the previous step.</p>
+         <p>This step concentrates on the backend of the "Contacts" application. The covered topics includes dealing with application properties, setup and access of a database and using the database to provide data for the person and organization page created in the previous step.</p>
         </dd>
         <dt class="hdlist1">
          Step 4: Adding a Form to Create/Edit Persons (
@@ -1973,7 +1973,7 @@ table.CodeRay td.code>pre{padding:0}
       <div class="ulist">
        <ul>
         <li> <p>Creating the initial Codebase (<a href="#sec-contacts_initial_codebase">Section 4.3.1</a>)</p> </li>
-        <li> <p>Removing unnecessery Components (<a href="#sec-contacts_remove_stuff">Section 4.3.2</a>)</p> </li>
+        <li> <p>Removing unnecessary Components (<a href="#sec-contacts_remove_stuff">Section 4.3.2</a>)</p> </li>
         <li> <p>Changes to Class WorkOutline (<a href="#sec-contacts_change_workoutline">Section 4.3.3</a>)</p> </li>
         <li> <p>Changes to Class Desktop (<a href="#sec-contacts_change_desktop">Section 4.3.4</a>)</p> </li>
        </ul>
@@ -2014,7 +2014,7 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
       <div class="sect3">
-       <h4 id="sec-contacts_remove_stuff"><a class="anchor" href="#sec-contacts_remove_stuff"></a>4.3.2. Removing unnecessery Components</h4>
+       <h4 id="sec-contacts_remove_stuff"><a class="anchor" href="#sec-contacts_remove_stuff"></a>4.3.2. Removing unnecessary Components</h4>
        <div class="paragraph">
         <p>We start with removing the <code>*.helloworld</code> and <code>\*.settings</code> packages in all Maven modules of the "Contacts" application. To delete packages, first select an individual package or packages in the Eclipse package explorer as shown in <a href="#img-contacts_package_explorer">Figure 27</a> and then hit the <kbd>Delete</kbd> key.</p>
        </div>
@@ -2507,7 +2507,7 @@ table.CodeRay td.code>pre{padding:0}
         <p>Table pages are an important UI element of Scout applications as they frequently play a central role in the interactions of a user with the application. Out of the box table pages offer powerful options to sort, filter and re-arrange the data contained in the table. This functionality offers a good starting point to decide which columns to add to a table page.</p>
        </div>
        <div class="paragraph">
-        <p>To decide the columns to add the following criterias have been useful in practice.</p>
+        <p>To decide the columns to add the following criteria have been useful in practice.</p>
        </div>
        <div class="ulist">
         <ul>
@@ -3126,7 +3126,7 @@ contacts.superuser=system</code></pre>
         </ul>
        </div>
        <div class="paragraph">
-        <p>The SQL statements related to the database structure are provided in <a href="#lst-contacts_sql_createdb">Listing 17</a>. The statements (or building blocks of statments) in class <code>SQLs</code> are plain SQL in many cases. In the other cases the statement texts include Scout specific syntax extensions with <code>:</code> as a prefix character. Examples are <code>:&lt;identifier&gt;</code> and <code>:{&lt;identifier&gt;.&lt;attribute&gt;}</code>.</p>
+        <p>The SQL statements related to the database structure are provided in <a href="#lst-contacts_sql_createdb">Listing 17</a>. The statements (or building blocks of statements) in class <code>SQLs</code> are plain SQL in many cases. In the other cases the statement texts include Scout specific syntax extensions with <code>:</code> as a prefix character. Examples are <code>:&lt;identifier&gt;</code> and <code>:{&lt;identifier&gt;.&lt;attribute&gt;}</code>.</p>
        </div>
        <div id="lst-contacts_sql_createdb" class="listingblock">
         <div class="title">
@@ -4809,7 +4809,7 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>As the last step we need slightly modify the SQL statement that loads and stores the picture URL information. The reason for the change is the replacement of the picture url field by an url property defined as a member of the picture field. For this change perform the steps listed below.</p>
+        <p>As the last step we need to slightly modify the SQL statement that loads and stores the picture URL information. The reason for the change is the replacement of the picture url field by an url property defined as a member of the picture field. For this change perform the steps listed below.</p>
        </div>
        <div class="olist arabic">
         <ol class="arabic">
@@ -5058,7 +5058,7 @@ contacts.superuser=system</code></pre>
        <ol class="arabic">
         <li> <p>Expand folder <code>src/main/java</code> in the client module in the package explorer</p> </li>
         <li> <p>Select package <code>org.eclipse.scout.contacts.client.organization</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p> </li>
-        <li> <p>Enter "form" into the search field of the wizard selection and double click on propsal <em class="element">Scout Form</em></p> </li>
+        <li> <p>Enter "form" into the search field of the wizard selection and double click on proposal <em class="element">Scout Form</em></p> </li>
         <li> <p>Use "OrganizationForm" as class name and make sure to select all check boxes in the lower part of the wizard</p> </li>
         <li> <p>Click <b class="button">Finish</b> to start the Scout form wizard.</p> </li>
        </ol>
@@ -5302,7 +5302,7 @@ contacts.superuser=system</code></pre>
         <ol class="arabic">
          <li> <p>Expand folder <code>src/main/java</code> in the client module in the package explorer</p> </li>
          <li> <p>Select package <code>org.eclipse.scout.contacts.shared.organization</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p> </li>
-         <li> <p>Enter "lookup" into the search field of the wizard selection and double click on propsal <em class="element">Scout LookupCall</em></p> </li>
+         <li> <p>Enter "lookup" into the search field of the wizard selection and double click on proposal <em class="element">Scout LookupCall</em></p> </li>
          <li> <p>Use "OrganizationLookupCall" as class name</p> </li>
          <li> <p>Enter "String" as the key class and use service super class "AbstractSqlLookupService" in the wizard</p> </li>
          <li> <p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_lookupcall_organization">Figure 53</a></p> </li>
@@ -5618,7 +5618,7 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>In the cases where the modified person page is shown as a child page of the organization page we can now improve the usability of the page&#x2019;s new menu. When creating a person under an existing organization we create the new person with a pre-filled organizaion id. See the modified <code>execAction</code> method in <code>NewMenu</code> of <a href="#lst-contacts_person_page_modification">Listing 53</a>.</p>
+        <p>In the cases where the modified person page is shown as a child page of the organization page we can now improve the usability of the page&#x2019;s new menu. When creating a person under an existing organization we create the new person with a pre-filled organization id. See the modified <code>execAction</code> method in <code>NewMenu</code> of <a href="#lst-contacts_person_page_modification">Listing 53</a>.</p>
        </div>
        <div class="paragraph">
         <p>The next step in the setup of the page hierarchy is the creation of the organization node page. Node pages allow to define a list of child pages that typically represent different entities. As mentioned before we will only have the person page as a child page in the "Contacts" tutorial application.</p>
@@ -5630,7 +5630,7 @@ contacts.superuser=system</code></pre>
         <ol class="arabic">
          <li> <p>Expand folder <code>src/main/java</code> in the client module in the package explorer</p> </li>
          <li> <p>Select package <code>org.eclipse.scout.contacts.client.organization</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p> </li>
-         <li> <p>Enter "scout page" into the search field of the wizard selection and double click on propsal <em class="element">Scout Page</em></p> </li>
+         <li> <p>Enter "scout page" into the search field of the wizard selection and double click on proposal <em class="element">Scout Page</em></p> </li>
          <li> <p>Add "Organization" to the class name field</p> </li>
          <li> <p>Switch the super class field to "AbstractPageWithNodes"</p> </li>
          <li> <p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_organization_nodepage">Figure 55</a></p> </li>
@@ -5646,7 +5646,7 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>After the wizard has created the initial implementation of the node page open class <code>OrganizationNodePage</code> in the Java editor and adapt its implementation accordin to <a href="#lst-contacts_organization_node_page">Listing 54</a>.</p>
+        <p>After the wizard has created the initial implementation of the node page open class <code>OrganizationNodePage</code> in the Java editor and adapt its implementation according to <a href="#lst-contacts_organization_node_page">Listing 54</a>.</p>
        </div>
        <div id="lst-contacts_organization_node_page" class="listingblock">
         <div class="title">
@@ -5690,7 +5690,7 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>We have now created a organization node page that contains a person page as its child page. The only missing step to create the discussed page hierarchy is the link between the organization page with the organization node page. Create this missing link by adding method <code>execCreateChildPage</code> to the organization page as shown in <a href="#lst-contacts_organization_page_modification">Listing 55</a>.</p>
+        <p>We have now created an organization node page that contains a person page as its child page. The only missing step to create the discussed page hierarchy is the link between the organization page with the organization node page. Create this missing link by adding method <code>execCreateChildPage</code> to the organization page as shown in <a href="#lst-contacts_organization_page_modification">Listing 55</a>.</p>
        </div>
        <div id="lst-contacts_organization_page_modification" class="listingblock">
         <div class="title">
@@ -5728,7 +5728,7 @@ contacts.superuser=system</code></pre>
          <img src="images/contacts_tutorial_result_step_7.png" alt="contacts tutorial result step 7">
         </div>
         <div class="title">
-         Figure 56. The linked person page only shows person related to the parent organization page.
+         Figure 56. The linked person page only shows persons related to the parent organization page.
         </div>
        </div>
       </div>
