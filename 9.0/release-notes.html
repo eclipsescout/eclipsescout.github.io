@@ -573,7 +573,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-column-property-nodecolumncandidate">New Column Property 'nodeColumnCandidate'</a></li>
      <li><a href="#mom-add-support-for-handling-incomingoutgoing-jms-messages">MOM: Add Support for Handling Incoming/Outgoing JMS Messages</a></li>
      <li><a href="#propertychange-event-on-htmlenvironment">PropertyChange Event on HtmlEnvironment</a></li>
-     <li><a href="#new-displaystyle-dense-on-desktop">New DisplayStyle 'dense' on Desktop</a></li>
+     <li><a href="#dense-mode">Dense Mode</a></li>
      <li><a href="#copy-to-clipboard-support-for-messageboxes">Copy to clipboard support for MessageBoxes</a></li>
     </ul>
    </div>
@@ -1041,10 +1041,21 @@ The dogs bark</pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-displaystyle-dense-on-desktop"><a class="anchor" href="#new-displaystyle-dense-on-desktop"></a>New DisplayStyle 'dense' on Desktop</h2>
+    <h2 id="dense-mode"><a class="anchor" href="#dense-mode"></a>Dense Mode</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>This new display style is targeted at users working on laptops or other small screens. It reduces the whitespace between elements to display more content on the available screen size.</p>
+      <p>This new display mode is targeted at users working on laptops or other small screens. It reduces the whitespace between elements to display more content on the available screen size.</p>
+     </div>
+     <div class="paragraph">
+      <p>Activate the dense mode by setting <code>IDesktop.setDense(true)</code>. An additional less file <code>displaystyle-dense.less</code> contains all necessary styling changes.</p>
+     </div>
+     <div id="img-dense-mode" class="imageblock">
+      <div class="content">
+       <img src="images/contacts_default_vs_dense.png" alt="contacts default vs dense">
+      </div>
+      <div class="title">
+       Figure 7. Dense Mode
+      </div>
      </div>
     </div>
    </div>
