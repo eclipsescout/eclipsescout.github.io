@@ -6399,11 +6399,13 @@ protected void execInitField() {
         Listing 98. Example: REST resource client
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResourceClient</span> {
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResourceClient</span> <span class="directive">implements</span> IRestResourceClient {
   <span class="directive">protected</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> RESOURCE_PATH = <span class="string"><span class="delimiter">"</span><span class="content">example</span><span class="delimiter">"</span></span>;
-  <span class="directive">protected</span> ExampleRestClientHelper m_helper = BEANS.get(ExampleRestClientHelper.class);
+  <span class="directive">protected</span> ExampleRestClientHelper helper() {
+    <span class="keyword">return</span> BEANS.get(ExampleRestClientHelper.class);
+  }
   <span class="directive">public</span> ExampleEntityDo getExampleEntity(<span class="predefined-type">String</span> id) {
-    WebTarget target = m_helper.target(RESOURCE_PATH)
+    WebTarget target = helper().target(RESOURCE_PATH)
         .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
         .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
     <span class="keyword">return</span> target.request()
@@ -6411,7 +6413,7 @@ protected void execInitField() {
         .get(ExampleEntityDo.class); <i class="conum" data-value="1"></i><b>(1)</b>
   }
   <span class="directive">public</span> ExampleEntityDo updateExampleEntity(<span class="predefined-type">String</span> id, ExampleEntityDo entity) {
-    WebTarget target = m_helper.target(RESOURCE_PATH)
+    WebTarget target = helper().target(RESOURCE_PATH)
         .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
         .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
     <span class="keyword">return</span> target.request()
@@ -6419,14 +6421,14 @@ protected void execInitField() {
         .post(<span class="predefined-type">Entity</span>.json(entity), ExampleEntityDo.class); <i class="conum" data-value="2"></i><b>(2)</b>
   }
   <span class="directive">public</span> <span class="type">void</span> deleteExampleEntity(<span class="predefined-type">String</span> id) {
-    WebTarget target = m_helper.target(RESOURCE_PATH)
+    WebTarget target = helper().target(RESOURCE_PATH)
         .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
         .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
     Response response = target.request().delete(); <i class="conum" data-value="3"></i><b>(3)</b>
     response.close();
   }
   <span class="directive">public</span> ExampleEntityDo getExampleEntityCustomExceptionHandling(<span class="predefined-type">String</span> id) {
-    WebTarget target = m_helper.target(RESOURCE_PATH, <span class="local-variable">this</span>::transformCustomException) <i class="conum" data-value="4"></i><b>(4)</b>
+    WebTarget target = helper().target(RESOURCE_PATH, <span class="local-variable">this</span>::transformCustomException) <i class="conum" data-value="4"></i><b>(4)</b>
         .path(<span class="string"><span class="delimiter">"</span><span class="content">/{id}</span><span class="delimiter">"</span></span>)
         .resolveTemplate(<span class="string"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>, id);
     <span class="keyword">return</span> target.request()
@@ -8757,7 +8759,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 8.0
-    <br> Last updated 2019-03-07 10:51:49 CET
+    <br> Last updated 2018-06-26 19:31:15 CEST
    </div>
   </div>
  </body>
