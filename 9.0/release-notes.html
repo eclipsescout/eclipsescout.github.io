@@ -575,6 +575,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#propertychange-event-on-htmlenvironment">PropertyChange Event on HtmlEnvironment</a></li>
      <li><a href="#dense-mode">Dense Mode</a></li>
      <li><a href="#copy-to-clipboard-support-for-messageboxes">Copy to clipboard support for MessageBoxes</a></li>
+     <li><a href="#dependency-to-java-util-resourcebundle-removed">Dependency to java.util.ResourceBundle removed</a></li>
     </ul>
    </div>
   </div>
@@ -1064,6 +1065,17 @@ The dogs bark</pre>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The <code>MessageBox</code> widget now supports the OS specific copy to clipboard key-shortcut. When pressed, all text of the MessageBox, including the <em>hiddenText</em> property, is copied to the clipboard.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="dependency-to-java-util-resourcebundle-removed"><a class="anchor" href="#dependency-to-java-util-resourcebundle-removed"></a>Dependency to java.util.ResourceBundle removed</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>As <code>NlsResourceBundle</code> does not use any built features of <code>java.util.ResourceBundle</code>, it does no longer depend on <code>java.util.ResourceBundle</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p>Configuration property <code>scout.resourceBundle.checkContainsKey</code> was removed as it is now obsolete.</p>
      </div>
      <div class="admonitionblock tip">
       <table>
