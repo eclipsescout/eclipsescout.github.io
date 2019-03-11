@@ -549,6 +549,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#collatorprovider-behavior-changed">CollatorProvider Behavior Changed</a></li>
        <li><a href="#mom-changed-logger-name-for-incomingoutgoing-jms-messages">MOM: Changed Logger Name for Incoming/Outgoing JMS Messages</a></li>
        <li><a href="#sorting-for-beancolumn">Sorting for BeanColumn</a></li>
+       <li><a href="#removal-of-deprecated-methods-and-classes">Removal of Deprecated Methods and Classes</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
@@ -751,6 +752,244 @@ table.CodeRay td.code>pre{padding:0}
        <p><strong>Migration:</strong> If your application uses a <code>AbstractBeanColumn</code> you now have to take care of the sorting by yourself. Either by providing comparable beans or by implementing <code>compareTableRows</code> or <code>getPlainText</code>.</p>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="removal-of-deprecated-methods-and-classes"><a class="anchor" href="#removal-of-deprecated-methods-and-classes"></a>Removal of Deprecated Methods and Classes</h3>
+      <div class="paragraph">
+       <p>Methods and classes that were marked as deprecated in previous relases were finally removed.</p>
+      </div>
+      <div class="paragraph">
+       <p><strong>Migration</strong>:</p>
+      </div>
+      <table class="tableblock frame-all grid-all stretch">
+       <colgroup>
+        <col style="width: 37.5%;">
+        <col style="width: 25%;">
+        <col style="width: 37.5%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">Class</th>
+         <th class="tableblock halign-left valign-top">Removed&nbsp;part</th>
+         <th class="tableblock halign-left valign-top">Replacement</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.action.IAction</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initAction()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.calendar.ICalendar</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initCalendar()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>disposeCalendar()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispose()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.planner.IPlanner</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initPlanner()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>disposePlanner()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispose()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getMinimumActivityDuration()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DisplayModeOptions.getMinSelectionIntervalCount()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>setMinimumActivityDuration()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DisplayModeOptions.withMinSelectionIntervalCount()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>setMinimumActivityDurationInMinutes()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DisplayModeOptions.withMinSelectionIntervalCount()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.table.ITable</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initTable()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>disposeTable()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispose()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>isTableInitialized()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>isInitDone()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.table.TableUtility</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>editNextTableCell()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(no replacement)</em></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.table.TableListener</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>tableChangedBatch()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">For maximum performance, only register listeners for the events that are really handled. See the vararg parameter to <code>ITable.addTableListener(TableListener, int&#x2026;&#x200b;)</code>.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.tree.ITree</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initTree()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>disposeTree()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispose()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getMenu()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getMenuByClass()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.basic.tree.TreeListener</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>treeChangedBatch()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">For maximum performance, only register listeners for the events that are really handled. See the vararg parameter to <code>ITree.addTreeListener(TreeListener, int&#x2026;&#x200b;)</code>.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">org.eclipse.scout.rt.client.ui.desktop.IDesktop</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initDesktop()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getMenu()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getMenuByClass()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>findMenu()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getMenuByClass()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>addDesktopListenerAtExecutionEnd()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>addUIDesktopListener()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.DataChangeListener</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(entire class)</em></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.client.ui.desktop.datachange.IDataChangeListener</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.WeakDataChangeListener</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(entire class)</em></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.client.ui.desktop.datachange.IDataChangeListener</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.IForm</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initForm()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.IFormField</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>initField()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>init()</code> or <code>reinit()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>disposeField()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispose()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>isInitialized()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>isInitConfigDone()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.CompositeFieldUtility</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getFieldByClass()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getWidgetByClass()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.splitbox.ISplitBox</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>PROP_COLLAPSE_KEY_STROKE</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PROP_TOGGLE_COLLAPSE_KEY_STROKE</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>setCollapseKeyStroke()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>setToggleCollapseKeyStroke()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getCollapseKeyStroke()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getToggleCollapseKeyStroke()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.splitbox.AbstractSplitBox</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getConfiguredCollapseKeyStroke()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getConfiguredToogleCollapseKeyStroke()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.sequencebox.ISequenceBox</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>isEqualColumnWidths()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(no replacement)</em></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>setEqualColumnWidths()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(no replacement)</em></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getConfiguredEqualColumnWidths()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(no replacement)</em></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.groupbox.IGroupBox</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getMinWidthInPixel()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getBodyLayoutConfig()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>setMinWidthInPixel()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>setBodyLayoutConfig()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="line-through"><code>getConfiguredMinWidthInPixel()</code></span></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>getConfiguredBodyLayoutConfig()</code></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.server.services.common.imap.IIMAPService<br> org.eclipse.scout.rt.server.services.common.imap.AbstractIMAPService</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(entire class)</em><br> Config properties starting with <code>scout.imap.</code> are obsolete (see section below).</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>ImapHelper</code> (from <em>org.eclipse.scout.rt.mail</em> module). Map config properties to <code>ImapServerConfig</code>. Interact with <code>javax.mail.Message</code> directly where no appropriate helper method is available.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.server.services.common.smtp.ISMTPService<br> org.eclipse.scout.rt.server.services.common.smtp.AbstractSMTPService</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(entire class)</em><br> Config properties starting with <code>scout.smtp.</code> are obsolete (see section below).</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>SmtpHelper</code> (from <em>org.eclipse.scout.rt.mail</em> module) instead. Map config properties to <code>SmtpServerConfig</code>. If a subject prefix is required, the prefix must be prepended before calling <code>SmtpHelper.sendMessage()</code>.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.scout.rt.server.services.common.pop3.POP3Adapter<br> org.eclipse.scout.rt.server.services.common.pop3.IPOP3MessageVisitor</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(entire class)</em><br></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">No replacement. If you really require this code, get the <a href="https://github.com/eclipse/scout.rt/blob/releases/8.0.x/org.eclipse.scout.rt.server/src/main/java/org/eclipse/scout/rt/server/services/common/pop3/POP3Adapter.java">latest revision</a> from the 8.0.x branch and add it to your project.</p></td>
+        </tr>
+       </tbody>
+      </table>
+      <div class="paragraph">
+       <p>Due to the removal of <code>IIMAPService</code> and <code>ISMTPService</code> (see above) the following config properties are now obsolete and are no longer valid. They must be removed from <em>config.properties</em> files.</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><span class="line-through"><code>scout.imap.host</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.imap.port</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.imap.mailbox</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.imap.username</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.imap.password</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.imap.sslProtocols</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.host</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.port</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.username</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.password</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.subjectPrefix</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.defaultFromEmail</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.sslProtocols</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.useAuth</code></span></p> </li>
+        <li> <p><span class="line-through"><code>scout.smtp.useSsl</code></span></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>Another consequence of this removal is a change in the module dependencies. <code>org.eclipse.scout.rt.server</code> no longer depends on <code>org.eclipse.scout.rt.mail</code>. If your code requires code from <code>org.eclipse.scout.rt.mail</code> you have to make sure that you declare this dependency in your own <em>pom.xml</em>.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -943,7 +1182,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-03-06 18:36:26 +0100
+    <br> Last updated 2019-03-11 14:02:29 +0100
    </div>
   </div>
  </body>
