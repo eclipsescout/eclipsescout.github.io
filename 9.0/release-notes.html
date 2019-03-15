@@ -576,6 +576,12 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#dense-mode">Dense Mode</a></li>
      <li><a href="#copy-to-clipboard-support-for-messageboxes">Copy to clipboard support for MessageBoxes</a></li>
      <li><a href="#removed-dependency-to-java-util-resourcebundle">Removed Dependency to java.util.ResourceBundle</a></li>
+     <li><a href="#improvements-for-group-widget">Improvements for 'Group' widget</a>
+      <ul class="sectlevel2">
+       <li><a href="#widget-in-header">Widget in header</a></li>
+       <li><a href="#collapse-style-bottom">Collapse style 'bottom'</a></li>
+       <li><a href="#property-visible">Property 'visible'</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -1077,15 +1083,48 @@ The dogs bark</pre>
      <div class="paragraph">
       <p>Configuration property <code>scout.resourceBundle.checkContainsKey</code> was removed as it is now obsolete.</p>
      </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/9.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="improvements-for-group-widget"><a class="anchor" href="#improvements-for-group-widget"></a>Improvements for 'Group' widget</h2>
+    <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="widget-in-header"><a class="anchor" href="#widget-in-header"></a>Widget in header</h3>
+      <div class="paragraph">
+       <p>It is now possible to define a custom widget as group header instead of only the title/suffix texts. This allows for example to add input-fields or buttons to group headers. This can be achieved by overriding the method <code>getConfiguredHeader</code> and returning a widget class or <code>createHeader</code> and returning the widget instance.</p>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/group_header-widget.png" alt="group header widget">
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="collapse-style-bottom"><a class="anchor" href="#collapse-style-bottom"></a>Collapse style 'bottom'</h3>
+      <div class="paragraph">
+       <p>The property <code>collapseStyle</code> was extended by the style <code>bottom</code> which displays a bottom border for the group and (if the group is collapsible) a collapse-arrow centered in the middle of the bottom-border.</p>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/group_collapse-style-bottom.png" alt="group collapse style bottom">
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="property-visible"><a class="anchor" href="#property-visible"></a>Property 'visible'</h3>
+      <div class="paragraph">
+       <p>The property <code>visible</code> in the Java model was migrated from a <code>boolean</code> to a <code>byte</code> type to achieve multiple dimension support for the visibility of a group (see also <a href="https://eclipsescout.github.io/9.0/technical-guide.html#multiple-dimensions-support" class="bare">https://eclipsescout.github.io/9.0/technical-guide.html#multiple-dimensions-support</a>).</p>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/9.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
      </div>
     </div>
    </div>
