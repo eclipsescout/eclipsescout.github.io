@@ -569,6 +569,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#sec-contacts_form_add_company">4.8. Adding the Company Form</a></li>
        <li><a href="#sec-contacts_link_organization_person">4.9. Linking Organizations and Persons</a></li>
        <li><a href="#sec-contacts_outlook">4.10. Additional Concepts and Features</a></li>
+       <li><a href="#sec-source_control">4.11. Git configuration</a></li>
       </ul> </li>
      <li><a href="#apx-cclicence">Appendix A: Licence and Copyright</a>
       <ul class="sectlevel2">
@@ -5801,6 +5802,27 @@ contacts.superuser=system</code></pre>
            </ul>
           </div> </li>
         </ul>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="sec-source_control"><a class="anchor" href="#sec-source_control"></a>4.11. Git configuration</h3>
+      <div class="paragraph">
+       <p>If you want to add the created application to a Git repository there might some configurations be helpful. If there are no plans to use Git, this chapter can be skipped.</p>
+      </div>
+      <div class="paragraph">
+       <p>E.g. it is best practice to exclude some files from adding to a Git repository. These exclusions can be configured by creating a file named <code>.gitignore</code> in the root folder of the repository (see the <a href="https://git-scm.com/docs/gitignore">Git Documentation</a> for details). Here is a sample file that might be used as starting point:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre># Git
+*.orig
+# Maven
+target/
+.surefire-*
+.flattened-pom.xml
+# Do not check in any log files
+*.log</pre>
        </div>
       </div>
      </div>
