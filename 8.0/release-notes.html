@@ -616,8 +616,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#text-and-multi-language-support-moved-to-platform">Text and Multi-Language Support Moved to 'platform'</a></li>
      <li><a href="#data-object-support-for-rest-mom-apis">Data Object Support for REST &amp; MOM APIs</a></li>
      <li><a href="#rest-resources-rest-clients">REST Resources &amp; REST Clients</a></li>
-     <li><a href="#deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021">Deprecated methods on DefaultAuthToken and introduced DefaultAuthTokenSigner and DefaultAuthTokenVerifier (since 8.0.0.021)</a></li>
-     <li><a href="#httpexception-deprecated-and-replaced-by-remotesystemunavailableexception">HttpException deprecated and replaced by RemoteSystemUnavailableException</a></li>
+     <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033">New RemoteSystemUnavailableException (since 8.0.0.033)</a></li>
     </ul>
    </div>
   </div>
@@ -644,12 +643,26 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
       <div class="paragraph">
-       <p>Even though with Eclipse Photon there will no longer be regular Eclipse <em>service releases</em> (see <a href="https://wiki.eclipse.org/SimRel/Simultaneous_Release_Cycle_FAQ#What_is_the_Simultaneous_Release_cycle_.3F">the Simultaneous Release Cycle FAQ</a> for details), Scout 8.0 will continue to be maintained and a new build may be released from time to time. Beside bugfixes, these releases may even contain some minor features. See the following notes for details.</p>
+       <p>After the final Eclipse Photon release, there are no more Eclipse <em>service releases</em> (see <a href="https://wiki.eclipse.org/SimRel/Simultaneous_Release_Cycle_FAQ#What_is_the_Simultaneous_Release_cycle_.3F">the Simultaneous Release Cycle FAQ</a> for details). Scout 8.0 will continue to be maintained for a while and a new build may be released from time to time. Beside bugfixes, these releases may even contain some minor features.</p>
+      </div>
+      <div class="paragraph">
+       <p>The following enhancements were made after the initial 8.0 release.</p>
       </div>
       <div class="sect3">
-       <h4 id="simrel-2018-12-released-on-december-19-2018"><a class="anchor" href="#simrel-2018-12-released-on-december-19-2018"></a>Simrel 2018-12, released on December 19, 2018</h4>
+       <h4 id="simrel-2018-09-released-on-september-19-2018"><a class="anchor" href="#simrel-2018-09-released-on-september-19-2018"></a>Simrel 2018-09&#x2009;&#x2014;&#x2009;Released on September 19, 2018</h4>
        <div class="paragraph">
-        <p>The initial release of this version was: 8.0.0.031 (Maven: 8.0.0.031_Simrel_2018_12)</p>
+        <p>The initial release of this version was <strong>8.0.0.021</strong> (Maven: 8.0.0.021_Simrel_2018_09).</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p><a href="#support-for-horizontal-alignment-since-8-0-0-021">Support for Horizontal Alignment (since 8.0.0.021)</a></p> </li>
+        </ul>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="simrel-2018-12-released-on-december-19-2018"><a class="anchor" href="#simrel-2018-12-released-on-december-19-2018"></a>Simrel 2018-12&#x2009;&#x2014;&#x2009;Released on December 19, 2018</h4>
+       <div class="paragraph">
+        <p>The initial release of this version was <strong>8.0.0.031</strong> (Maven: 8.0.0.031_Simrel_2018_12).</p>
        </div>
        <div class="ulist">
         <ul>
@@ -658,13 +671,23 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
       <div class="sect3">
-       <h4 id="simrel-2018-09-released-on-september-19-2018"><a class="anchor" href="#simrel-2018-09-released-on-september-19-2018"></a>Simrel 2018-09, released on September 19, 2018</h4>
+       <h4 id="upcoming-no-planned-release-date"><a class="anchor" href="#upcoming-no-planned-release-date"></a>Upcoming&#x2009;&#x2014;&#x2009;No Planned Release Date</h4>
        <div class="paragraph">
-        <p>The initial release of this version was: 8.0.0.021 (Maven: 8.0.0.021_Simrel_2018_09)</p>
+        <p>The following changes were made after the latest official release build. No release date has been fixed yet.</p>
+       </div>
+       <div class="admonitionblock warning">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
+           <td class="content"> The here described functionality has not yet been released and is part of an upcoming release. </td>
+          </tr>
+         </tbody>
+        </table>
        </div>
        <div class="ulist">
         <ul>
-         <li> <p><a href="#support-for-horizontal-alignment-since-8-0-0-021">Support for Horizontal Alignment (since 8.0.0.021)</a></p> </li>
+         <li> <p><a href="#new-remotesystemunavailableexception-since-8-0-0-033"><em>New RemoteSystemUnavailableException (since 8.0.0.033)</em></a></p> </li>
         </ul>
        </div>
       </div>
@@ -1429,9 +1452,6 @@ table.CodeRay td.code>pre{padding:0}
      <div class="paragraph">
       <p>This facility was moved from the module <code>org.eclipse.scout.rt.shared</code> to <code>org.eclipse.scout.rt.platform</code>. This allows the use of multi-language text support without the need to include <em>*.shared</em> dependencies in your project. This is especially useful for server-only applications (e.g. micro services).</p>
      </div>
-     <div class="paragraph">
-      <p><em>Migration:</em> Change the <code>import</code>s in your <em>*.java</em> files accordingly.</p>
-     </div>
     </div>
    </div>
    <div class="sect1">
@@ -1493,15 +1513,7 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021"><a class="anchor" href="#deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021"></a>Deprecated methods on DefaultAuthToken and introduced DefaultAuthTokenSigner and DefaultAuthTokenVerifier (since 8.0.0.021)</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>In order to be able to reuse authentication token code <code>DefaultAuthToken</code> was refactored. Signing and verifying of tokens is now separated from token and its (de-)serialization. The new classes DefaultAuthTokenSigner and DefaultAuthTokenVerifier do now provide this functionality.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="httpexception-deprecated-and-replaced-by-remotesystemunavailableexception"><a class="anchor" href="#httpexception-deprecated-and-replaced-by-remotesystemunavailableexception"></a>HttpException deprecated and replaced by RemoteSystemUnavailableException</h2>
+    <h2 id="new-remotesystemunavailableexception-since-8-0-0-033"><a class="anchor" href="#new-remotesystemunavailableexception-since-8-0-0-033"></a>New RemoteSystemUnavailableException (since 8.0.0.033)</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The <code>org.eclipse.scout.rt.shared.servicetunnel.HttpException</code> was replaced by a generalized <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code>. The exception is thrown within the UI server, when a call to the Scout backend server (through service tunnel) returns a status code &lt; 200 or &gt;= 299. The <code>RemoteSystemUnavailableException</code> is finally displayed as <em>network error</em> by the global <code>org.eclipse.scout.rt.client.services.common.exceptionhandler.ErrorPopup</code>. The new <code>RemoteSystemUnavailableException</code> may generally be thrown to indicate an error when the communication with a remote service failed.</p>
