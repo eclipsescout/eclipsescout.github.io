@@ -564,6 +564,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#table-inside-pagewithtable-uses-default-reload-handler">Table Inside PageWithTable Uses Default Reload Handler</a></li>
        <li><a href="#possibility-to-prepare-a-lookupcall-in-listbox-radiobuttongroup">Possibility to Prepare a LookupCall in ListBox &amp; RadioButtonGroup</a></li>
        <li><a href="#toggle-action-and-button-now-trigger-event">Toggle Action and Button Now Trigger Event</a></li>
+       <li><a href="#usage-of-css-class-active-in-firefox">Usage of CSS class 'active' in Firefox</a></li>
       </ul> </li>
      <li><a href="#other-changes">Other Changes</a>
       <ul class="sectlevel2">
@@ -1112,6 +1113,12 @@ table.CodeRay td.code>pre{padding:0}
       </div>
       <div class="paragraph">
        <p>Note: Due to compatibility reasons the behavior for Scout Classic has not been changed.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="usage-of-css-class-active-in-firefox"><a class="anchor" href="#usage-of-css-class-active-in-firefox"></a>Usage of CSS class 'active' in Firefox</h3>
+      <div class="paragraph">
+       <p>When the mousedown event is prevented in Firefox, the clicked DOM node does not have the active state, thus we cannot use the :active pseudo-class as in Chrome or Internet Explorer. Since Mozilla will not fix that issue, we implemented a workaround: when you run Scout with Firefox we add an 'active' class to every DOM element in the path to the clicked element. Thus you shall not use that class-name in your custom Scout widgets. You must rename existing class-names, like 'active-state' or 'mywidget-active'.</p>
       </div>
      </div>
     </div>
