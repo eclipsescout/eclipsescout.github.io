@@ -573,10 +573,19 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#smart-field">10.1. Smart Field</a></li>
       </ul> </li>
-     <li><a href="#browser-support">11. Browser Support</a></li>
-     <li><a href="#how-tos">12. How-Tos</a>
+     <li><a href="#html-document-parser">11. HTML Document Parser</a>
       <ul class="sectlevel2">
-       <li><a href="#how-to-create-a-custom-field">12.1. How to Create a Custom field</a></li>
+       <li><a href="#scoutbase">11.1. scout:base</a></li>
+       <li><a href="#scoutinclude">11.2. scout:include</a></li>
+       <li><a href="#scoutmessage">11.3. scout:message</a></li>
+       <li><a href="#scoutscript">11.4. scout:script</a></li>
+       <li><a href="#scoutstylesheet">11.5. scout:stylesheet</a></li>
+       <li><a href="#scoutversion">11.6. scout:version</a></li>
+      </ul> </li>
+     <li><a href="#browser-support">12. Browser Support</a></li>
+     <li><a href="#how-tos">13. How-Tos</a>
+      <ul class="sectlevel2">
+       <li><a href="#how-to-create-a-custom-field">13.1. How to Create a Custom field</a></li>
       </ul> </li>
      <li><a href="#apx-cclicence">Appendix A: Licence and Copyright</a>
       <ul class="sectlevel2">
@@ -1635,7 +1644,145 @@ table.init(model);</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="browser-support"><a class="anchor" href="#browser-support"></a>11. Browser Support</h2>
+    <h2 id="html-document-parser"><a class="anchor" href="#html-document-parser"></a>11. HTML Document Parser</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The HTML document parser is only available in the Scout UI server. If your Scout JS application uses a different backend, you cannot use the features described in this chapter.</p>
+     </div>
+     <div class="paragraph">
+      <p>The class <code>HtmlDocumentParser</code> is used by the Scout UI server in order to create dynamic HTML output on the server-side. Like JSP the parser supports a set of tags that are processed by the sever. The main purpose of the parser is to provide functions used for <code>login.html</code> and <code>index.html</code>, like bootstrapping and localization <em>before</em> JavaScript can be executed in the browser.</p>
+     </div>
+     <div class="paragraph">
+      <p>Note: some tags like <code>scout-version</code> and <code>scout-text</code> will be removed from the DOM once the Scout <code>App</code> is initialized.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutbase"><a class="anchor" href="#scoutbase"></a>11.1. scout:base</h3>
+      <div class="paragraph">
+       <p>Outputs the context-path (or the root-directory) of the deployed web application as <code>base</code> tag in the HTML document.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:base&gt;</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Output:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;base href="bsicrm_16_1/"&gt;</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutinclude"><a class="anchor" href="#scoutinclude"></a>11.2. scout:include</h3>
+      <div class="paragraph">
+       <p>This tag is used for server-side inlcudes, which means you can embed the HTML content of another file into the current HTML document. This avoids unnecessary code duplication by referencing the same fragement in multiple HTML documents.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:include template="head.html" /&gt;</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutmessage"><a class="anchor" href="#scoutmessage"></a>11.3. scout:message</h3>
+      <div class="paragraph">
+       <p>Depending on the current user language provided by the browser, this tag outputs a list of localized text strings. The texts are used to display error-messages during login in the correct language, because at this point we don&#x2019;t have a Scout session and thus no user language. The parser replaces the message tag through <code>scout-text</code> tags. These tags will be read by <code>scout.texts#readFromDOM</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:message style="tag" key="ui.Login" key="ui.LoginFailed" key="ui.User" key="ui.Password" /&gt;</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Output:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout-text data-key="ui.Login" data-value="Anmelden"&gt;&lt;/scout-text&gt;</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutscript"><a class="anchor" href="#scoutscript"></a>11.4. scout:script</h3>
+      <div class="paragraph">
+       <p>Loads the referenced JavaScript macro and starts the JavaScript build for that file. Outputs a <code>script</code> tag in the HTML document which references the generated .js file. "bsicrm-all-macro.js" will become "bsicrm-all.js" in the parsed HTML document. Depending on Scout&#x2019;s runtime properties the filename will be augmented: if caching is enabled an additional fingerprint is added to the filename. If minifying is enabled the suffix "-min" is appended to the filename.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:script src="res/bsicrm-all-macro.js" /&gt;</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Output:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;script src="res/bsicrm-all-98aea5b3.min.js"&gt;&lt;/script&gt;</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutstylesheet"><a class="anchor" href="#scoutstylesheet"></a>11.5. scout:stylesheet</h3>
+      <div class="paragraph">
+       <p>Loads the referenced LESS macro and starts the CSS build with LESS for that file. Outputs a <code>link</code> tag in the HTML document which references the generated .css file. "bsicrm-all-macro.less" will become "bsicrm-css.js" in the parsed HTML document. Depending on Scout&#x2019;s runtime properties the filename will be augmented: if caching is enabled an additional fingerprint is added to the filename. If minifying is enabled the suffix "-min" is appended to the filename.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:stylesheet src="res/bsicrm-all-macro.less" /&gt;</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Output:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;link rel="stylesheet" type="text/css" href="res/bsicrm-all-98aea5b3.min.css"&gt;</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutversion"><a class="anchor" href="#scoutversion"></a>11.6. scout:version</h3>
+      <div class="paragraph">
+       <p>Outputs the current version of the Scout application as <code>scout-version</code> tag in the HTML document. This tag is read by <code>scout.App#_initVersion</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:version&gt;</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Output:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout-version data-value="16.1.0.002"&gt;&lt;/scout-version&gt;</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="browser-support"><a class="anchor" href="#browser-support"></a>12. Browser Support</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The Scout HTML UI requires a web browser with modern built-in technologies: HTML 5, CSS 3, JavaScript (ECMAScript 5). Scout does its best to support all browsers widely in use today by making use of vendor-specific prefixes, polyfills or other workarounds. However, some older or obscure browsers are not supported deliberately, simply because they are lacking basic capabilities or the required effort would be beyond reason.</p>
@@ -1702,18 +1849,18 @@ table.init(model);</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="how-tos"><a class="anchor" href="#how-tos"></a>12. How-Tos</h2>
+    <h2 id="how-tos"><a class="anchor" href="#how-tos"></a>13. How-Tos</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>This chapter provides various small technical guides to very specific Scout JS subjects.</p>
      </div>
      <div class="sect2">
-      <h3 id="how-to-create-a-custom-field"><a class="anchor" href="#how-to-create-a-custom-field"></a>12.1. How to Create a Custom field</h3>
+      <h3 id="how-to-create-a-custom-field"><a class="anchor" href="#how-to-create-a-custom-field"></a>13.1. How to Create a Custom field</h3>
       <div class="paragraph">
        <p>This cheat sheet shows how to implement your own custom control for a ScoutJS application. In this example we will write a FlipCard field, which allows you to have a 'card' with a front and back side. Clicking on the card should flip the card from one to the other side.</p>
       </div>
       <div class="sect3">
-       <h4 id="files"><a class="anchor" href="#files"></a>12.1.1. Files</h4>
+       <h4 id="files"><a class="anchor" href="#files"></a>13.1.1. Files</h4>
        <div class="sect4">
         <h5 id="create-an-empty-javascript-file-and-stylesheet"><a class="anchor" href="#create-an-empty-javascript-file-and-stylesheet"></a>Create an empty JavaScript file and Stylesheet</h5>
         <div class="ulist">
@@ -1725,7 +1872,7 @@ table.init(model);</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="add-the-files-to-the-application"><a class="anchor" href="#add-the-files-to-the-application"></a>12.1.2. Add the files to the application</h4>
+       <h4 id="add-the-files-to-the-application"><a class="anchor" href="#add-the-files-to-the-application"></a>13.1.2. Add the files to the application</h4>
        <div class="sect4">
         <h5 id="include-the-javascript-file-to-the-module"><a class="anchor" href="#include-the-javascript-file-to-the-module"></a>Include the JavaScript file to the module</h5>
         <div class="paragraph">
@@ -1756,7 +1903,7 @@ table.init(model);</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="minimal-code-for-a-new-formfield"><a class="anchor" href="#minimal-code-for-a-new-formfield"></a>12.1.3. Minimal Code for a new FormField</h4>
+       <h4 id="minimal-code-for-a-new-formfield"><a class="anchor" href="#minimal-code-for-a-new-formfield"></a>13.1.3. Minimal Code for a new FormField</h4>
        <div class="sect4">
         <h5 id="create-a-minimal-formfield"><a class="anchor" href="#create-a-minimal-formfield"></a>Create a minimal FormField</h5>
         <div class="paragraph">
@@ -1852,7 +1999,7 @@ hellojs.FlipCard.prototype.<span class="function">_render</span> = <span class="
        </div>
       </div>
       <div class="sect3">
-       <h4 id="full-featured-flip-card-field"><a class="anchor" href="#full-featured-flip-card-field"></a>12.1.4. Full featured flip card field</h4>
+       <h4 id="full-featured-flip-card-field"><a class="anchor" href="#full-featured-flip-card-field"></a>13.1.4. Full featured flip card field</h4>
        <div class="paragraph">
         <p>FlipCard.js</p>
        </div>
@@ -2144,7 +2291,7 @@ hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span 
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-03-18 18:48:26 +0100
+    <br> Last updated 2019-04-01 13:24:25 +0200
    </div>
   </div>
  </body>
