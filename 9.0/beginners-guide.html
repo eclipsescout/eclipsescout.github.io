@@ -5931,18 +5931,10 @@ target/
      <div class="sect2">
       <h3 id="sec-download_install"><a class="anchor" href="#sec-download_install"></a>B.3. Download and Install Scout</h3>
       <div class="paragraph">
-       <p>Before you can install Scout make sure that you have a working Java Development Kit (JDK) installation version 11. To download the Eclipse Scout package visit the official Eclipse download page as shown in <a href="#img-scout_download">Figure 58</a>.</p>
-      </div>
-      <div id="img-scout_download" class="imageblock">
-       <div class="content">
-        <img src="images/scout_download.png" alt="scout download">
-       </div>
-       <div class="title">
-        Figure 58. The Eclipse download page. The platform filter is set to Windows and the available Packages are filtered for Scout.
-       </div>
+       <p>Before you can install Scout make sure that you have a working Java Development Kit (JDK) installation version 11.</p>
       </div>
       <div class="paragraph">
-       <p>If the download page shows the wrong platform, manually select the correct platform in the dropdown list. As shown in <a href="#img-scout_download">Figure 58</a>, the Scout package is available as a 32 bit and a 64 bit package. Make sure to pick the package that matches your JDK installation (x64). You can check your installation on the command line as follows.</p>
+       <p>You can check your installation on the command line as follows.</p>
       </div>
       <div class="listingblock">
        <div class="content">
@@ -5953,47 +5945,56 @@ OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)</pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>After the package selection, confirm the suggested download mirror as shown in <a href="#img-scout_download_mirror">Figure 59</a>.</p>
+       <p>To download the Eclipse Scout package visit the official Eclipse download page.</p>
+      </div>
+      <div class="paragraph">
+       <p><a href="https://www.eclipse.org/downloads/packages">www.eclipse.org/downloads/packages</a></p>
+      </div>
+      <div class="paragraph">
+       <p>The download page lists all available Eclipse packages. Scroll to the package "Eclipse IDE for Scout Developers" and select the download for your preferred platform.</p>
+      </div>
+      <div class="paragraph">
+       <p>After the package selection, confirm the suggested download mirror as shown in <a href="#img-scout_download_mirror">Figure 58</a>.</p>
       </div>
       <div id="img-scout_download_mirror" class="imageblock">
        <div class="content">
         <img src="images/scout_download_mirror.png" alt="scout download mirror">
        </div>
        <div class="title">
-        Figure 59. Downloading the Scout package from a mirror.
+        Figure 58. Downloading the Scout package from a mirror.
        </div>
       </div>
       <div class="paragraph">
-       <p>As the Scout package is a simple ZIP (or tar.gz) file, you may unpack its content to a folder of your choice. Inside the eclipse sub-folder, you will then find the Eclipse executable file, such as the <code>eclipse.exe</code> file on a Windows plattform. Starting the Eclipse executable brings up the workspace launcher as shown in <a href="#img-scout_start">Figure 60</a>.</p>
+       <p>As the Scout package is a simple ZIP (or tar.gz) file, you may unpack its content to a folder of your choice. Inside the eclipse sub-folder, you will then find the Eclipse executable file, such as the <code>eclipse.exe</code> file on a Windows plattform. Starting the Eclipse executable brings up the workspace launcher as shown in <a href="#img-scout_start">Figure 59</a>.</p>
       </div>
       <div id="img-scout_start" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_select_workspace.png" alt="scout startup select workspace">
        </div>
        <div class="title">
-        Figure 60. Starting the Eclipse Scout package and selecting an empty workspace.
+        Figure 59. Starting the Eclipse Scout package and selecting an empty workspace.
        </div>
       </div>
       <div class="paragraph">
-       <p>Into the <em class="field">Workspace</em> field you enter an empty target directory for your first Scout project. After clicking the <b class="button">Ok</b> button, the Eclipse IDE creates any directories that do not yet exist and opens the specified workspace. When opening a new workspace for the first time, Eclipse then displays the welcome screen shown in <a href="#img-scout_welcome">Figure 61</a>.</p>
+       <p>Into the <em class="field">Workspace</em> field you enter an empty target directory for your first Scout project. After clicking the <b class="button">Ok</b> button, the Eclipse IDE creates any directories that do not yet exist and opens the specified workspace. When opening a new workspace for the first time, Eclipse then displays the welcome screen shown in <a href="#img-scout_welcome">Figure 60</a>.</p>
       </div>
       <div id="img-scout_welcome" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_welcome.png" alt="scout startup welcome">
        </div>
        <div class="title">
-        Figure 61. Eclipse Scout welcome screen.
+        Figure 60. Eclipse Scout welcome screen.
        </div>
       </div>
       <div class="paragraph">
-       <p>To close the welcome page and open the Scout perspective in the Eclipse IDE click on the <em class="icon">Workbench</em> icon. As a result the empty Java perspective is displayed according to <a href="#img-scout_perspective">Figure 62</a>.</p>
+       <p>To close the welcome page and open the Scout perspective in the Eclipse IDE click on the <em class="icon">Workbench</em> icon. As a result the empty Java perspective is displayed according to <a href="#img-scout_perspective">Figure 61</a>.</p>
       </div>
       <div id="img-scout_perspective" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_scout_explorer.png" alt="scout startup scout explorer">
        </div>
        <div class="title">
-        Figure 62. Eclipse Scout started in the Scout SDK perspective.
+        Figure 61. Eclipse Scout started in the Scout SDK perspective.
        </div>
       </div>
       <div class="paragraph">
@@ -6040,33 +6041,33 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <img src="images/eclipse_install_new_software.png" alt="eclipse install new software">
        </div>
        <div class="title">
-        Figure 63. Eclipse menu to install additional software
+        Figure 62. Eclipse menu to install additional software
        </div>
       </div>
       <div class="paragraph">
-       <p>To add Scout to your existing Eclipse installation, you need to start Eclipse. Then select the <span class="menuseq"><b class="menu">Help</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#x2026;&#x200b;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 63</a> to open the install dialog.</p>
+       <p>To add Scout to your existing Eclipse installation, you need to start Eclipse. Then select the <span class="menuseq"><b class="menu">Help</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#x2026;&#x200b;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 62</a> to open the install dialog.</p>
       </div>
       <div id="img-eclipse_add_repository" class="imageblock">
        <div class="content">
         <img src="images/eclipse_add_repository.png" alt="eclipse add repository">
        </div>
        <div class="title">
-        Figure 64. Add the current Scout repository
+        Figure 63. Add the current Scout repository
        </div>
       </div>
       <div class="paragraph">
-       <p>In the install dialog, click on the <b class="button">Add&#x2026;&#x200b;</b> button to enter the link to the Scout repository. This opens the popup dialog <em>Add Repository</em> As shown in <a href="#img-eclipse_add_repository">Figure 64</a>, you may use &#x201c;Scout Oxygen&#x201d; for the <em class="field">Name</em> field. For the <em class="field">Location</em> field enter the Scout release repository as specified below. <a href="http://download.eclipse.org/scout/releases/9.0" class="bare">http://download.eclipse.org/scout/releases/9.0</a>.</p>
+       <p>In the install dialog, click on the <b class="button">Add&#x2026;&#x200b;</b> button to enter the link to the Scout repository. This opens the popup dialog <em>Add Repository</em> As shown in <a href="#img-eclipse_add_repository">Figure 63</a>, you may use &#x201c;Scout Oxygen&#x201d; for the <em class="field">Name</em> field. For the <em class="field">Location</em> field enter the Scout release repository as specified below. <a href="http://download.eclipse.org/scout/releases/9.0" class="bare">http://download.eclipse.org/scout/releases/9.0</a>.</p>
       </div>
       <div id="img-eclipse_select_scout_features" class="imageblock">
        <div class="content">
         <img src="images/eclipse_select_scout_features.png" alt="eclipse select scout features">
        </div>
        <div class="title">
-        Figure 65. Select the Scout features to add to the Eclipse installation
+        Figure 64. Select the Scout features to add to the Eclipse installation
        </div>
       </div>
       <div class="paragraph">
-       <p>After the Eclipse IDE has connected to the Scout repository, select the Scout feature <em>Scout Application Development</em> as shown in <a href="#img-eclipse_select_scout_features">Figure 65</a>. Then, move through the installation with the <b class="button">Next</b> button. On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button. To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse. After the restart of the Eclipse IDE, you may add the Scout perspective using the <span class="menuseq"><b class="menu">Window</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">Open Perspective</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other &#x2026;&#x200b;</b></span> menu and selecting the Scout perspective from the presented list. Clicking on the Scout perspective button should then result in a state very similar to <a href="#img-scout_perspective">Figure 62</a>.</p>
+       <p>After the Eclipse IDE has connected to the Scout repository, select the Scout feature <em>Scout Application Development</em> as shown in <a href="#img-eclipse_select_scout_features">Figure 64</a>. Then, move through the installation with the <b class="button">Next</b> button. On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button. To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse. After the restart of the Eclipse IDE, you may add the Scout perspective using the <span class="menuseq"><b class="menu">Window</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">Open Perspective</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other &#x2026;&#x200b;</b></span> menu and selecting the Scout perspective from the presented list. Clicking on the Scout perspective button should then result in a state very similar to <a href="#img-scout_perspective">Figure 61</a>.</p>
       </div>
      </div>
      <div class="sect2">
@@ -6091,11 +6092,11 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <img src="images/tomcat_install.png" alt="tomcat install">
       </div>
       <div class="title">
-       Figure 66. A successful Tomcat 7 installation.
+       Figure 65. A successful Tomcat 7 installation.
       </div>
      </div>
      <div class="paragraph">
-      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 66</a>.</p>
+      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 65</a>.</p>
      </div>
      <div class="sect2">
       <h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>C.1. Platform Specific Instructions</h3>
@@ -6119,12 +6120,12 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <img src="images/tomcat_install_dir.png" alt="tomcat install dir">
        </div>
        <div class="title">
-        Figure 67. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
+        Figure 66. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
         <code>webapps</code>.
        </div>
       </div>
       <div class="paragraph">
-       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 67</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
+       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 66</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
       </div>
       <div class="paragraph">
        <p>The <span class="filename">conf</span> folder contains a set of XML and property configuration files. The file <span class="filename">server.xml</span> represents Tomcat&#x2019;s main configuration file. It is used to configure general web server aspects such as the port number of its connectors for the client server communication. For the default setup, port number 8080 is used for the communication between clients applications and the web server. The file <span class="filename">tomcat-users.xml</span> contains a database of users, passwords and associated roles.</p>
@@ -6133,7 +6134,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <p>Folder <span class="filename">logs</span> contains various logfiles of Tomcat itself as well as host and web application log files. TODO [7.0] jbr: need to provide more on what is where (especially application logs and exact setup to generate log entries from scout apps).</p>
       </div>
       <div class="paragraph">
-       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 67</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
+       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 66</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
       </div>
       <div class="paragraph">
        <p>Finally, folder <span class="filename">work</span> contains Tomcat&#x2019;s runtime &#x201c;cache&#x201d; for the deployed web applications. It is organized according to the hierarchy of the engine (Catalina), the host (localhost), and the web application (<span class="filename">helloworld_server</span>).</p>
@@ -6145,7 +6146,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <p>Tomcat comes with the pre installed &#x201c;Manager App&#x201d;. This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications. A comprehensive documentation for the &#x201c;Manager App&#x201d; can be found under the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>. Here we only show how to start this application from the hompage of a running Tomcat installation.</p>
       </div>
       <div class="paragraph">
-       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 66</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
+       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 65</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
       </div>
       <div id="lst-tomcat.users" class="listingblock">
        <div class="title">
