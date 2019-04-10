@@ -563,7 +563,10 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#button-new-property-defaultbutton">Button: New Property &quot;defaultButton&quot;</a></li> 
      <li><a href="#icons-for-tree-nodes">Icons for Tree Nodes</a></li> 
      <li><a href="#file-chooser-field-improved-usability">File Chooser Field: Improved Usability</a></li> 
-     <li><a href="#configurable-desktop-bench-layout">Configurable Desktop Bench Layout</a></li> 
+     <li><a href="#configurable-desktop-bench-layout">Configurable Desktop Bench Layout</a> 
+      <ul class="sectlevel2"> 
+       <li><a href="#jms-connection-failover">JMS connection failover</a></li> 
+      </ul> </li> 
     </ul> 
    </div> 
   </div> 
@@ -923,15 +926,42 @@ table.CodeRay td.code>pre{padding:0}
      <div class="paragraph"> 
       <p>The Desktop Layout can be configured using the <code>IDesktop.setBenchLayoutData</code> method. This property is observed and might be changed during the applications lifecycle. For more information take a look at teh <a href="https://eclipsescout.github.io/6.1/technical-guide.html#desktop">Technical Guide</a>.</p> 
      </div> 
-     <div class="admonitionblock tip"> 
-      <table> 
-       <tbody>
-        <tr> 
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/6.1.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td> 
-        </tr> 
-       </tbody>
-      </table> 
+     <div class="sect2"> 
+      <h3 id="jms-connection-failover"><a class="anchor" href="#jms-connection-failover"></a>JMS connection failover</h3> 
+      <div class="paragraph"> 
+       <p>The scout MOM / JMS managed code supports for connection failover.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Connection failover is achieved using a connection wrapper and a session wrapper around the real jms connection and session. Connection loss is discovered with (jms)connection.setExceptionListener. J2EE jms providers are excluded since those do failover themselves.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>The main goal of connection failover is to maintain subscription listeners. All session wrapper methods do a one-time retry in case of failure. Default connection failover tries to reconnect 15 times every 2 seconds.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Subscription listeners are not stopped when the connection is dropped. However thy try to receive messages again and again until the connection is restored or the session is closed by custom code.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Another improvement with similar scope is the subscription process itself. When calling MOM.subscribe the call is blocked at maximum for 30 seconds in order to wait for the subscription event loop to effectively start waiting and receiving messages. That way it cannot happen anymore that in the snippet MOM.subscribe(&#x2026;&#x200b;) &#x2192; schedules a event loop job MOM.publish(message) the message is published BEFORE being received from the subscriber due to latency in starting the background job.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Configuration: There are 3 new config.properties defined in IMom and IMomImplementor - scout.mom.failover.connectionRetryCount default 15 - scout.mom.failover.connectionRetryIntervalMillis default 2000 - scout.mom.failover.sessionRetryIntervalMillis default 5000</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Migration: The interfaces and api are still stable, however customized jms code must check if some of the following old types/methods are being used or accessed: - method with IJmsSessionProvider.getSession() now throws JMSException - check override of JmsMomImplementor.createConnection() and postCreateConnection() so they do not call connection.setExceptionListener(&#x2026;&#x200b;) - check override of IJmsSessionProvider, JmsSessionProvider since these are wrapped in the new JmsSessionProviderWrapper - do not use JmsMomImplementor.m_connection and directly since during reconnect the member gets null and changes.</p> 
+      </div> 
+      <div class="paragraph"> 
+       <p>Test: JmsMomImplementorTest.testSubscribeFailover</p> 
+      </div> 
+      <div class="admonitionblock tip"> 
+       <table> 
+        <tbody>
+         <tr> 
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/6.1.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td> 
+         </tr> 
+        </tbody>
+       </table> 
+      </div> 
      </div> 
     </div> 
    </div> 
@@ -939,7 +969,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer"> 
    <div id="footer-text">
      Version 6.1
-    <br /> Last updated 2017-06-27 10:14:22 CEST 
+    <br /> Last updated 2019-04-10 23:18:22 CEST 
    </div> 
   </div>  
  </body>
