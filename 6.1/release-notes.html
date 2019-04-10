@@ -938,7 +938,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>The main goal of connection failover is to maintain subscription listeners. All session wrapper methods do a one-time retry in case of failure. Default connection failover tries to reconnect 15 times every 2 seconds.</p> 
       </div> 
       <div class="paragraph"> 
-       <p>Subscription listeners are not stopped when the connection is dropped. However thy try to receive messages again and again until the connection is restored or the session is closed by custom code.</p> 
+       <p>Subscription listeners are not stopped when the connection is dropped. However they try to receive messages again and again until the connection is restored or the session is closed by custom code.</p> 
       </div> 
       <div class="paragraph"> 
        <p>Another improvement with similar scope is the subscription process itself. When calling MOM.subscribe the call is blocked at maximum for 30 seconds in order to wait for the subscription event loop to effectively start waiting and receiving messages. That way it cannot happen anymore that in the snippet MOM.subscribe(&#x2026;&#x200b;) &#x2192; schedules a event loop job MOM.publish(message) the message is published BEFORE being received from the subscriber due to latency in starting the background job.</p> 
@@ -969,7 +969,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer"> 
    <div id="footer-text">
      Version 6.1
-    <br /> Last updated 2019-04-10 23:18:22 CEST 
+    <br /> Last updated 2019-04-09 13:28:24 CEST 
    </div> 
   </div>  
  </body>
