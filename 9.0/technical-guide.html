@@ -650,18 +650,20 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#data-object-definition">16.1. Data Object Definition</a></li>
        <li><a href="#marshalling">16.2. Marshalling</a></li>
-       <li><a href="#handling-of-doentity-attributes">16.3. Handling of DoEntity Attributes</a></li>
-       <li><a href="#abstract-data-objects-polymorphism">16.4. Abstract Data Objects &amp; Polymorphism</a></li>
-       <li><a href="#interfaces-to-data-objects">16.5. Interfaces to Data Objects</a></li>
-       <li><a href="#equals-and-hashcode">16.6. Equals and Hashcode</a></li>
-       <li><a href="#generic-doentity">16.7. Generic DoEntity</a></li>
-       <li><a href="#map-of-objects">16.8. Map of objects</a></li>
-       <li><a href="#idataobject-interface-data-objects-with-unknown-structure">16.9. IDataObject Interface - Data Objects with unknown structure</a></li>
-       <li><a href="#ad-hoc-data-objects">16.10. Ad-Hoc Data Objects</a></li>
-       <li><a href="#maven-dependencies">16.11. Maven Dependencies</a></li>
-       <li><a href="#data-object-inventory">16.12. Data Object Inventory</a></li>
-       <li><a href="#extending-with-custom-serializer-and-deserializer">16.13. Extending with custom serializer and deserializer</a></li>
-       <li><a href="#sec-unit-testing">16.14. Unit Testing</a></li>
+       <li><a href="#ignoring-an-attribute">16.3. Ignoring an Attribute</a></li>
+       <li><a href="#handling-of-doentity-attributes">16.4. Handling of DoEntity Attributes</a></li>
+       <li><a href="#abstract-data-objects-polymorphism">16.5. Abstract Data Objects &amp; Polymorphism</a></li>
+       <li><a href="#rename-an-attribute-of-a-data-object-in-a-subclass">16.6. Rename an attribute of a data object in a subclass</a></li>
+       <li><a href="#interfaces-to-data-objects">16.7. Interfaces to Data Objects</a></li>
+       <li><a href="#equals-and-hashcode">16.8. Equals and Hashcode</a></li>
+       <li><a href="#generic-doentity">16.9. Generic DoEntity</a></li>
+       <li><a href="#map-of-objects">16.10. Map of objects</a></li>
+       <li><a href="#idataobject-interface-data-objects-with-unknown-structure">16.11. IDataObject Interface - Data Objects with unknown structure</a></li>
+       <li><a href="#ad-hoc-data-objects">16.12. Ad-Hoc Data Objects</a></li>
+       <li><a href="#maven-dependencies">16.13. Maven Dependencies</a></li>
+       <li><a href="#data-object-inventory">16.14. Data Object Inventory</a></li>
+       <li><a href="#extending-with-custom-serializer-and-deserializer">16.15. Extending with custom serializer and deserializer</a></li>
+       <li><a href="#sec-unit-testing">16.16. Unit Testing</a></li>
       </ul> </li>
      <li><a href="#cha-rest">17. REST</a>
       <ul class="sectlevel2">
@@ -5854,7 +5856,31 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="handling-of-doentity-attributes"><a class="anchor" href="#handling-of-doentity-attributes"></a>16.3. Handling of DoEntity Attributes</h3>
+      <h3 id="ignoring-an-attribute"><a class="anchor" href="#ignoring-an-attribute"></a>16.3. Ignoring an Attribute</h3>
+      <div class="paragraph">
+       <p>The <code>@JsonIgnore</code> annotation included in the Jackson library is currently not supported for data objects. To ignore an attribute when serializing a data object, the attribute must be removed from the data object by either not setting a value for the desired attribute or by explicitly removing the attribute before a data object is serialized:</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 79. Example: Remove an attribute from a data object
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName(<span class="string"><span class="delimiter">"</span><span class="content">Example</span><span class="delimiter">"</span></span>)
+        .withValues(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>);
+    <span class="comment">// remove by attribute accessor method reference</span>
+    entity.remove(entity::name);
+    <span class="comment">// remove by attribute node</span>
+    entity.remove(entity.name());
+    <span class="comment">// remove by attribute name</span>
+    entity.remove(entity.name().getAttributeName());
+    <span class="comment">// remove by attribute name raw</span>
+    entity.remove(<span class="string"><span class="delimiter">"</span><span class="content">name</span><span class="delimiter">"</span></span>);</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="handling-of-doentity-attributes"><a class="anchor" href="#handling-of-doentity-attributes"></a>16.4. Handling of DoEntity Attributes</h3>
       <div class="paragraph">
        <p>Instead of data objects, a REST or MOM interface could be built using simple plain old Java objects (POJOs). Compared to POJOs a Scout data object offers additional support and convenience when working with attributes.</p>
       </div>
@@ -5872,7 +5898,7 @@ protected void execInitField() {
        <p>These three states cannot be represented with a POJO object which is based on a single variable with a pair of getter/setter. In order to differ between <em>value not available</em> and <em>value is null</em>, a wrapper type is required, which beside the value stores the information, if the attribute is available. Scout data objects solve this issue: Data objects internally use a <code>Map&lt;String, DoNode&lt;?&gt;&gt;</code> where the abstract <code>DoNode</code> at runtime is represented by a <code>DoValue&lt;T&gt;</code> or a <code>DoList&lt;T&gt;</code> object instance wrapping the value.</p>
       </div>
       <div class="sect3">
-       <h4 id="access-data-object-attributes"><a class="anchor" href="#access-data-object-attributes"></a>16.3.1. Access Data Object Attributes</h4>
+       <h4 id="access-data-object-attributes"><a class="anchor" href="#access-data-object-attributes"></a>16.4.1. Access Data Object Attributes</h4>
        <div class="ulist">
         <ul>
          <li> <p>Value: <code>DoNode.get()</code> returns the (wrapped) value of the attribute</p> </li>
@@ -5880,7 +5906,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 79. Example: ExampleEntityDo Access the Attribute Value
+         Listing 80. Example: ExampleEntityDo Access the Attribute Value
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
@@ -5901,7 +5927,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 80. Example: ExampleEntityDo Attribute Existence
+         Listing 81. Example: ExampleEntityDo Attribute Existence
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">    <span class="comment">// check existence of attribute</span>
@@ -5911,7 +5937,7 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="abstract-data-objects-polymorphism"><a class="anchor" href="#abstract-data-objects-polymorphism"></a>16.4. Abstract Data Objects &amp; Polymorphism</h3>
+      <h3 id="abstract-data-objects-polymorphism"><a class="anchor" href="#abstract-data-objects-polymorphism"></a>16.5. Abstract Data Objects &amp; Polymorphism</h3>
       <div class="paragraph">
        <p>A simple data objects is implemented by subclassing the <code>DoEntity</code> class.</p>
       </div>
@@ -5920,7 +5946,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 81. Example: Abstract class AbstractExampleEntityDo with one attribute
+        Listing 82. Example: Abstract class AbstractExampleEntityDo with one attribute
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractExampleEntityDo</span> <span class="directive">extends</span> DoEntity {
@@ -5931,7 +5957,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 82. Example: Subclass 1 with an additional attribute and a unique type name
+        Listing 83. Example: Subclass 1 with an additional attribute and a unique type name
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity1</span><span class="delimiter">"</span></span>)
@@ -5943,7 +5969,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 83. Example: Subclass 2 with an additional attribute and a unique type name
+        Listing 84. Example: Subclass 2 with an additional attribute and a unique type name
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntity2</span><span class="delimiter">"</span></span>)
@@ -5955,7 +5981,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 84. Example: Class with attributes of type AbstractExampleEntityDo
+        Listing 85. Example: Class with attributes of type AbstractExampleEntityDo
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleDoEntityListDo</span> <span class="directive">extends</span> DoEntity {
@@ -5969,7 +5995,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 85. Example: Using the ExampleDoEntityListDo class with different kinds of AbstractExampleEntityDo sub classes
+        Listing 86. Example: Using the ExampleDoEntityListDo class with different kinds of AbstractExampleEntityDo sub classes
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">    ExampleDoEntityListDo entity = BEANS.get(ExampleDoEntityListDo.class);
@@ -5991,7 +6017,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 86. Example: ExampleDoEntityListDo as JSON
+        Listing 87. Example: ExampleDoEntityListDo as JSON
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="json">{
@@ -6015,7 +6041,37 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="interfaces-to-data-objects"><a class="anchor" href="#interfaces-to-data-objects"></a>16.5. Interfaces to Data Objects</h3>
+      <h3 id="rename-an-attribute-of-a-data-object-in-a-subclass"><a class="anchor" href="#rename-an-attribute-of-a-data-object-in-a-subclass"></a>16.6. Rename an attribute of a data object in a subclass</h3>
+      <div class="paragraph">
+       <p>To rename a data object attribute in a subclass, override the attribute accessor method and annotate it with <code>@AttributeName</code> using the new attribute name as value. Additionally the overridden method must call the <code>doValue()</code> method providing the new attribute name as argument.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 88. Example: Rename attribute in a data object subclass
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleEntityEx</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleEntityExDo</span> <span class="directive">extends</span> ExampleEntityDo {
+  <span class="annotation">@Override</span>
+  <span class="annotation">@AttributeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">nameEx</span><span class="delimiter">"</span></span>)
+  <span class="directive">public</span> DoValue&lt;<span class="predefined-type">String</span>&gt; name() { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> doValue(<span class="string"><span class="delimiter">"</span><span class="content">nameEx</span><span class="delimiter">"</span></span>);
+  }</code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Rename <code>name</code> attribute of superclass to <code>nameEx</code></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="interfaces-to-data-objects"><a class="anchor" href="#interfaces-to-data-objects"></a>16.7. Interfaces to Data Objects</h3>
       <div class="paragraph">
        <p>Use the basic data object interface <code>IDoEntity</code> to model a data object hierarchy with own base interfaces and a set of implementing classes.</p>
       </div>
@@ -6027,19 +6083,19 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="equals-and-hashcode"><a class="anchor" href="#equals-and-hashcode"></a>16.6. Equals and Hashcode</h3>
+      <h3 id="equals-and-hashcode"><a class="anchor" href="#equals-and-hashcode"></a>16.8. Equals and Hashcode</h3>
       <div class="paragraph">
-       <p>The base class <code>DoEntity</code> does not provide a default implementation of <code>equals()</code> and <code>hashCode()</code>, since a data object may contain any types of data which must not provide a useful <code>equals()</code> implementation. If a data object should be used as map key, a custom <code>equals()</code> and <code>hashCode()</code> method taking into account the relevant attributes should be added. For unit tests there is a utility providing different generic compare methods for data objects, see section <a href="#sec-unit-testing">Section 16.14</a>.</p>
+       <p>The base class <code>DoEntity</code> does not provide a default implementation of <code>equals()</code> and <code>hashCode()</code>, since a data object may contain any types of data which must not provide a useful <code>equals()</code> implementation. If a data object should be used as map key, a custom <code>equals()</code> and <code>hashCode()</code> method taking into account the relevant attributes should be added. For unit tests there is a utility providing different generic compare methods for data objects, see section <a href="#sec-unit-testing">Section 16.16</a>.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="generic-doentity"><a class="anchor" href="#generic-doentity"></a>16.7. Generic DoEntity</h3>
+      <h3 id="generic-doentity"><a class="anchor" href="#generic-doentity"></a>16.9. Generic DoEntity</h3>
       <div class="paragraph">
        <p>An instance of the <code>DoEntity</code> class can represent any kind of JSON document. If the JSON document contains no type attributes or no matching data object class exists at runtime, the JSON document is deserialized into a raw <code>DoEntity</code> instance holding all attributes. To access the attributes of the data object a set of generic getter methods may be used by specifying the attribute name. A generic JSON document is deserialized into a generic tree-like structure of nested <code>DoEntity</code> instances. If the serialized JSON document contains a <code>_type</code> and/or <code>_typeVersion</code> attribute, the attribute and its value is added as attribute to the generic raw <code>DoEntity</code> instance.</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 87. Example: ExampleEntityDo accessing attribute "by name"
+        Listing 89. Example: ExampleEntityDo accessing attribute "by name"
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
@@ -6089,7 +6145,7 @@ protected void execInitField() {
        <p>Apart of the convenience methods available directly within the <code>DoEntity</code> class, the <code>DataObjectHelper</code> class contains a set of further convenience methods to access raw values of a data object.</p>
       </div>
       <div class="sect3">
-       <h4 id="accessing-number-values"><a class="anchor" href="#accessing-number-values"></a>16.7.1. Accessing number values</h4>
+       <h4 id="accessing-number-values"><a class="anchor" href="#accessing-number-values"></a>16.9.1. Accessing number values</h4>
        <div class="paragraph">
         <p>If a generic JSON document is deserialized to a <code>DoEntity</code> class without using a subclass specifying the attribute types, all attributes of type JSON number are deserialized into the smallest possible Java type. For instance the number value 42 is deserialized into an Integer value, a large number may be deserialized into a <code>BigInteger</code> or <code>BigDecimal</code> if it is a floating point value. Using the convenience method <code>DoEntity.getDecimal(&#x2026;&#x200b;)</code> each number attribute is converted automatically into a <code>BigDecimal</code> instance on access.</p>
        </div>
@@ -6106,13 +6162,13 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="map-of-objects"><a class="anchor" href="#map-of-objects"></a>16.8. Map of objects</h3>
+      <h3 id="map-of-objects"><a class="anchor" href="#map-of-objects"></a>16.10. Map of objects</h3>
       <div class="paragraph">
        <p>To build map-like a data object (corresponds to <code>Map&lt;String, T&gt;</code>), the <code>DoMapEntity&lt;T&gt;</code> base class may be used.</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 88. Example: Map&lt;String, ExampleEntityDo&gt; as ExampleMapEntityDo data object
+        Listing 90. Example: Map&lt;String, ExampleEntityDo&gt; as ExampleMapEntityDo data object
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">ExampleMapEntity</span><span class="delimiter">"</span></span>)
@@ -6125,7 +6181,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 89. Example: ExampleMapEntityDo with two elements:
+        Listing 91. Example: ExampleMapEntityDo with two elements:
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="JSON">{
@@ -6145,7 +6201,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 90. Example: Accessing attributes
+        Listing 92. Example: Accessing attributes
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">    ExampleMapEntityDo mapEntity = BEANS.get(ExampleMapEntityDo.class);
@@ -6187,13 +6243,13 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="idataobject-interface-data-objects-with-unknown-structure"><a class="anchor" href="#idataobject-interface-data-objects-with-unknown-structure"></a>16.9. IDataObject Interface - Data Objects with unknown structure</h3>
+      <h3 id="idataobject-interface-data-objects-with-unknown-structure"><a class="anchor" href="#idataobject-interface-data-objects-with-unknown-structure"></a>16.11. IDataObject Interface - Data Objects with unknown structure</h3>
       <div class="paragraph">
        <p>According to the <a href="http://json.org/">JSON specification</a> a JSON document at top level may contain a object or an array. If a JSON string of unknown structure is deserialized, the common super interface <code>IDataObject</code> may be used as target type for the call to the deserializer:</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 91. Example: Deserialize a JSON document with unknown structure
+        Listing 93. Example: Deserialize a JSON document with unknown structure
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">    <span class="predefined-type">String</span> json = <span class="string"><span class="delimiter">"</span><span class="content">&lt;any JSON content&gt;</span><span class="delimiter">"</span></span>;
@@ -6209,13 +6265,13 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="ad-hoc-data-objects"><a class="anchor" href="#ad-hoc-data-objects"></a>16.10. Ad-Hoc Data Objects</h3>
+      <h3 id="ad-hoc-data-objects"><a class="anchor" href="#ad-hoc-data-objects"></a>16.12. Ad-Hoc Data Objects</h3>
       <div class="paragraph">
        <p>The <code>DoEntityBuilder</code> may be used to build ad-hoc data objects without a concrete Java class defining its attributes.</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 92. Example: DoEntityBuilder
+        Listing 94. Example: DoEntityBuilder
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">    DoEntity entity = BEANS.get(DoEntityBuilder.class)
@@ -6246,19 +6302,19 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="maven-dependencies"><a class="anchor" href="#maven-dependencies"></a>16.11. Maven Dependencies</h3>
+      <h3 id="maven-dependencies"><a class="anchor" href="#maven-dependencies"></a>16.13. Maven Dependencies</h3>
       <div class="paragraph">
        <p>The Scout data object implementation does not reference any specific Java serialization library or framework. The basic building blocs of data objects are part of the Scout platform and to not reference any thirdparty libraries. At runtime an implementation of the <code>IDataObjectMapper</code> interface must be provided. The Scout default implementation based on the JSON library Jackson is provided by adding a maven dependency to the module <code>org.eclipse.scout.rt.jackson</code>. The dependency to this module must be added in the top-level .dev/.app module. A dependency within the program code is not necessaray as long as no specific Jackson features should be used within the application code.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="data-object-inventory"><a class="anchor" href="#data-object-inventory"></a>16.12. Data Object Inventory</h3>
+      <h3 id="data-object-inventory"><a class="anchor" href="#data-object-inventory"></a>16.14. Data Object Inventory</h3>
       <div class="paragraph">
        <p>The class <code>org.eclipse.scout.rt.platform.dataobject.DataObjectInventory</code> provides access to all available data objects at runtime. For each data object all available attributes and their properties (name, type, accessor method and format pattern) are available:</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 93. Example: Accessing data object inventory
+        Listing 95. Example: Accessing data object inventory
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java">    <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, DataObjectAttributeDescriptor&gt; attributes =
@@ -6272,13 +6328,13 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="extending-with-custom-serializer-and-deserializer"><a class="anchor" href="#extending-with-custom-serializer-and-deserializer"></a>16.13. Extending with custom serializer and deserializer</h3>
+      <h3 id="extending-with-custom-serializer-and-deserializer"><a class="anchor" href="#extending-with-custom-serializer-and-deserializer"></a>16.15. Extending with custom serializer and deserializer</h3>
       <div class="paragraph">
        <p>The application scoped beans <code>DataObjectSerializers</code> resp. <code>DataObjectDeserializers</code> define the available serializer and deserializer classes used to marshal the data objects. Own custom serializer and deserializer implementations can be added by replacing the corresponding base class and register its own custom serializer or deserializer.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="sec-unit-testing"><a class="anchor" href="#sec-unit-testing"></a>16.14. Unit Testing</h3>
+      <h3 id="sec-unit-testing"><a class="anchor" href="#sec-unit-testing"></a>16.16. Unit Testing</h3>
       <div class="paragraph">
        <p>A set of utility methods for unit tests with data objects are provided within the <code>DataObjectTestHelper</code> class. Commonly used are a set of assert methods (e.g. <code>assertDoEntityEquals()</code>) for testing data objects for (deep) equality.</p>
       </div>
@@ -6345,7 +6401,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 94. Example: REST resource
+        Listing 96. Example: REST resource
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Path</span>(<span class="string"><span class="delimiter">"</span><span class="content">example</span><span class="delimiter">"</span></span>)
@@ -6371,7 +6427,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 95. web.xml
+         Listing 97. web.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- JAX-RS Jersey Servlet --&gt;</span>
@@ -6419,7 +6475,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 96. web.xml registration example for HttpServerRunContextFilter.
+         Listing 98. web.xml registration example for HttpServerRunContextFilter.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;filter&gt;</span>
@@ -6454,7 +6510,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 97. Example: REST resource client helper
+        Listing 99. Example: REST resource client helper
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleRestClientHelper</span> <span class="directive">extends</span> AbstractRestClientHelper {
@@ -6493,7 +6549,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 98. Example: REST resource client
+        Listing 100. Example: REST resource client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResourceClient</span> <span class="directive">implements</span> IRestResourceClient {
@@ -6698,11 +6754,11 @@ protected void execInitField() {
          <p>If running in an EE application server, refer to the containers documentation for more information.</p>
         </div>
         <div class="paragraph">
-         <p><a href="#lst-maven.dep.metro">Listing 99</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 100</a> does the same for <em>Apache CXF</em></p>
+         <p><a href="#lst-maven.dep.metro">Listing 101</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 102</a> does the same for <em>Apache CXF</em></p>
         </div>
         <div id="lst-maven.dep.metro" class="listingblock">
          <div class="title">
-          Listing 99. Maven dependency for
+          Listing 101. Maven dependency for
           <em>JAX-WS METRO</em>
          </div>
          <div class="content">
@@ -6716,7 +6772,7 @@ protected void execInitField() {
         </div>
         <div id="lst-maven.dep.cxf" class="listingblock">
          <div class="title">
-          Listing 100. Maven dependency for
+          Listing 102. Maven dependency for
           <em>Apache CXF</em>
          </div>
          <div class="content">
@@ -6745,11 +6801,11 @@ protected void execInitField() {
          <p>This section describes the configuration of the entry point Servlet to publish webservices. If working with webservice consumers only, no configuration is required.</p>
         </div>
         <div class="paragraph">
-         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 18.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 101</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 102</a> for <em>Apache CXF</em>.</p>
+         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 18.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 103</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 104</a> for <em>Apache CXF</em>.</p>
         </div>
         <div id="lst-jaxws.webxml.metro" class="listingblock">
          <div class="title">
-          Listing 101. web.xml for
+          Listing 103. web.xml for
           <em>JAX-WS METRO</em> Servlet
          </div>
          <div class="content">
@@ -6787,7 +6843,7 @@ protected void execInitField() {
         </div>
         <div id="lst-jaxws.webxml.cxf" class="listingblock">
          <div class="title">
-          Listing 102. web.xml for
+          Listing 104. web.xml for
           <em>Apache CXF</em> Servlet
          </div>
          <div class="content">
@@ -6896,7 +6952,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.pom.scoutversion" class="listingblock">
         <div class="title">
-         Listing 103. Scout version defined as Maven property
+         Listing 105. Scout version defined as Maven property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -6905,11 +6961,11 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 104</a>).</p>
+        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 106</a>).</p>
        </div>
        <div id="lst-jaxws.pom.single-wsdl-file" class="listingblock">
         <div class="title">
-         Listing 104. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
+         Listing 106. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -6928,21 +6984,21 @@ protected void execInitField() {
         </table>
        </div>
        <div class="paragraph">
-        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 104</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 105</a>.</p>
+        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 106</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 107</a>.</p>
        </div>
        <div class="admonitionblock warning">
         <table>
          <tbody>
           <tr>
            <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 105</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 104</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
+           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 107</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 106</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
           </tr>
          </tbody>
         </table>
        </div>
        <div id="lst-jaxws.pom.multiple-wsdl" class="listingblock">
         <div class="title">
-         Listing 105. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
+         Listing 107. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
@@ -7025,11 +7081,11 @@ protected void execInitField() {
       <div class="sect3">
        <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>18.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
        <div class="paragraph">
-        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 106</a>.</p>
+        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 108</a>.</p>
        </div>
        <div id="lst-jaxws.pom.multiple-binding" class="listingblock">
         <div class="title">
-         Listing 106. explicit configuration of binding files
+         Listing 108. explicit configuration of binding files
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- YourFirstWebService.wsdl --&gt;</span>
@@ -7063,15 +7119,15 @@ protected void execInitField() {
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 107</a> for an example.</td>
+           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 109</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 108</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 110</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 109</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 111</a> for an example.</td>
           </tr>
          </tbody>
         </table>
@@ -7084,7 +7140,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.example.globalbindingfile" class="listingblock">
         <div class="title">
-         Listing 107. example of global binding file in the namespace
+         Listing 109. example of global binding file in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -7117,7 +7173,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.ws" class="listingblock">
         <div class="title">
-         Listing 108. example of jaxws component customization in the namespace
+         Listing 110. example of jaxws component customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a>
         </div>
         <div class="content">
@@ -7143,7 +7199,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.xs" class="listingblock">
         <div class="title">
-         Listing 109. example of xsd schema element customization in the namespace
+         Listing 111. example of xsd schema element customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -7514,7 +7570,7 @@ protected void execInitField() {
        <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>18.5.4. Example of an Entry Point definition</h4>
        <div id="jaxws.listing.porttypedefinition" class="listingblock">
         <div class="title">
-         Listing 110. Example configuration for an entry point definition
+         Listing 112. Example configuration for an entry point definition
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -7602,7 +7658,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 111. PingWebServiceEntryPoint_handler-chain.xml
+         Listing 113. PingWebServiceEntryPoint_handler-chain.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">&lt;handler-chains xmlns=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/javaee</span><span class="delimiter">"</span></span>&gt;
@@ -7638,7 +7694,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 112. PingWebServiceEntryPoint.java
+         Listing 114. PingWebServiceEntryPoint.java
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebService</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PingWebServicePortType</span><span class="delimiter">"</span></span>,
@@ -7671,7 +7727,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 113. Example of a JAX-WS Handler
+         Listing 115. Example of a JAX-WS Handler
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span> <i class="conum" data-value="1"></i><b>(1)</b>
@@ -7733,7 +7789,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 114. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
+         Listing 116. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7774,7 +7830,7 @@ protected void execInitField() {
        </div>
        <div id="jaxws.handler.statepropagation.readcid" class="listingblock">
         <div class="title">
-         Listing 115. This handler accesses the 'correlation ID' as set by the previous handler.
+         Listing 117. This handler accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7811,7 +7867,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 116. This port type accesses the 'correlation ID' as set by the previous handler.
+         Listing 118. This port type accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7868,7 +7924,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 117. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
+         Listing 119. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -7915,7 +7971,7 @@ protected void execInitField() {
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 118. WEB-INF/sun-jaxws.xml
+          Listing 120. WEB-INF/sun-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jws:endpoints</span> <span class="attribute-name">xmlns:jws</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/jax-ws/ri/runtime</span><span class="delimiter">"</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">"</span><span class="content">2.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
@@ -7933,11 +7989,11 @@ protected void execInitField() {
        <div class="sect4">
         <h5 id="jaxws.registration.endpoints.cxf"><a class="anchor" href="#jaxws.registration.endpoints.cxf"></a>Apache CXF</h5>
         <div class="paragraph">
-         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 102</a> for more information.</p>
+         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 104</a> for more information.</p>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 119. WEB-INF/cxf-jaxws.xml
+          Listing 121. WEB-INF/cxf-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;beans</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.springframework.org/schema/beans</span><span class="delimiter">"</span></span>
@@ -7985,7 +8041,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 120. Example of a WS-Client
+        Listing 122. Example of a WS-Client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
@@ -8010,7 +8066,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 121. Example of a WS-Client configuration
+        Listing 123. Example of a WS-Client configuration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient1</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
@@ -8062,7 +8118,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 122. Example of a webservice call
+         Listing 124. Example of a webservice call
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">PingWebServicePortType port = BEANS.get(PingWebServiceClient.class).newInvocationContext().getPort(); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -8091,7 +8147,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 123. Configure invocation context with data to be included in the web request
+         Listing 125. Configure invocation context with data to be included in the web request
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> InvocationContext&lt;PingWebServicePortType&gt; context = BEANS.get(PingWebServiceClient.class).newInvocationContext();
@@ -8194,7 +8250,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
         </table>
        </div>
        <div class="paragraph">
-        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 115</a>.</p>
+        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 117</a>.</p>
        </div>
       </div>
       <div class="sect3">
@@ -8312,7 +8368,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
      <div class="sect2">
       <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>18.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
       <div class="paragraph">
-       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 107</a> for an example.</p>
+       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 109</a> for an example.</p>
       </div>
       <div class="paragraph">
        <p>See the adapter&#x2019;s JavaDoc for more detailed information.</p>
@@ -8651,7 +8707,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 124. Java example, set the background-color of the lookup-row on the field
+        Listing 126. Java example, set the background-color of the lookup-row on the field
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
@@ -8674,7 +8730,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 125. LESS example, style lookup-row and field with the same CSS class
+        Listing 127. LESS example, style lookup-row and field with the same CSS class
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="less">.form-field.public &gt; .field, .table-row.public {
@@ -8856,7 +8912,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-04-01 13:24:25 +0200
+    <br> Last updated 2019-04-16 10:52:31 +0200
    </div>
   </div>
  </body>
