@@ -617,6 +617,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#data-object-support-for-rest-mom-apis">Data Object Support for REST &amp; MOM APIs</a></li>
      <li><a href="#rest-resources-rest-clients">REST Resources &amp; REST Clients</a></li>
      <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033">New RemoteSystemUnavailableException (since 8.0.0.033)</a></li>
+     <li><a href="#rest-application-contributions-since-8-0-0-035">Rest Application Contributions (since 8.0.0.035)</a></li>
     </ul>
    </div>
   </div>
@@ -688,6 +689,7 @@ table.CodeRay td.code>pre{padding:0}
        <div class="ulist">
         <ul>
          <li> <p><a href="#new-remotesystemunavailableexception-since-8-0-0-033"><em>New RemoteSystemUnavailableException (since 8.0.0.033)</em></a></p> </li>
+         <li> <p><a href="#rest-application-contributions-since-8-0-0-035"><em>Rest Application Contributions (since 8.0.0.035)</em></a></p> </li>
         </ul>
        </div>
       </div>
@@ -1517,6 +1519,37 @@ table.CodeRay td.code>pre{padding:0}
     <div class="sectionbody">
      <div class="paragraph">
       <p>The <code>org.eclipse.scout.rt.shared.servicetunnel.HttpException</code> was replaced by a generalized <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code>. The exception is thrown within the UI server, when a call to the Scout backend server (through service tunnel) returns a status code &lt; 200 or &gt;= 299. The <code>RemoteSystemUnavailableException</code> is finally displayed as <em>network error</em> by the global <code>org.eclipse.scout.rt.client.services.common.exceptionhandler.ErrorPopup</code>. The new <code>RemoteSystemUnavailableException</code> may generally be thrown to indicate an error when the communication with a remote service failed.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="rest-application-contributions-since-8-0-0-035"><a class="anchor" href="#rest-application-contributions-since-8-0-0-035"></a>Rest Application Contributions (since 8.0.0.035)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The JAX-RS application API (<code>javax.ws.rs.core.Application</code>) allows a REST application implementation to specify a set of classes, a set of singleton instances and a map of custom properties to be registered. The Scout REST application class <code>org.eclipse.scout.rt.rest.RestApplication</code> was modified in order to support contributions of those objects without need to extend the class.</p>
+     </div>
+     <div class="paragraph">
+      <p>Three different contributor interfaces are available:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><code>IRestApplicationClassesContributor</code> to contribute any classes</p> </li>
+       <li> <p><code>IRestApplicationSingletonsContributor</code> to contribute any object instances (singletons)</p> </li>
+       <li> <p><code>IRestApplicationPropertiesContributor</code> to contribute key/value properties</p> </li>
+      </ul>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 2. Example class contributor
+      </div>
+      <div class="content">
+       <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">ExampleClassContributor</span> <span class="directive">implements</span> IRestApplicationClassesContributor {
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="predefined-type">Set</span>&lt;<span class="predefined-type">Class</span>&lt;?&gt;&gt; contribute() {
+    <span class="keyword">return</span> <span class="predefined-type">Collections</span>.singleton(MyCustomExample.class);
+  }
+}</code></pre>
+      </div>
      </div>
      <div class="admonitionblock tip">
       <table>
