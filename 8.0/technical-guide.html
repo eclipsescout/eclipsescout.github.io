@@ -4419,7 +4419,7 @@ operationCompleted.waitFor();</code></pre>
        <p>Typically, a <code>RunContext</code> is created from a respective factory like <code>RunContexts</code> to create a <code>RunContext</code>, or <code>ServerRunContexts</code> to create a <code>ServerRunContext</code>, or <code>ClientRunContexts</code> to create a <code>ClientRunContext</code>. Internally, the <code>BeanManager</code> is asked to provide a new instance of the <code>RunContext</code>, which allows you to replace the default implementation of a <code>RunContext</code> in an easy way. The factories declare two factory methods: <code>empty()</code> and <code>copyCurrent()</code>. Whereas <code>empty()</code> provides you an empty <code>RunContext</code>, <code>copyCurrent()</code> takes a snapshot of the current calling context and initializes the <code>RunContext</code> accordingly. That is useful if only some few values are to be changed, or, if using <code>ServerRunContext</code>, to run the code on behalf of a new transaction.</p>
       </div>
       <div class="paragraph">
-       <p>The following <a href="#lst-RunContexts.copyCurrent">Listing 57</a> illustrates the creation of an empty <code>RunContext</code> initialized with a particular <code>Subject</code> and <code>Locale</code>.</p>
+       <p>The following <a href="#lst-RunContexts.empty">Listing 56</a> illustrates the creation of an empty <code>RunContext</code> initialized with a particular <code>Subject</code> and <code>Locale</code>.</p>
       </div>
       <div id="lst-RunContexts.empty" class="listingblock">
        <div class="title">
