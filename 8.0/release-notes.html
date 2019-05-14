@@ -618,6 +618,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#rest-resources-rest-clients">REST Resources &amp; REST Clients</a></li>
      <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033">New RemoteSystemUnavailableException (since 8.0.0.033)</a></li>
      <li><a href="#rest-application-contributions-since-8-0-0-035">Rest Application Contributions (since 8.0.0.035)</a></li>
+     <li><a href="#data-objects-equals-and-hashcode-since-8-0-0-036">Data Objects: Equals and HashCode (since 8.0.0.036)</a></li>
     </ul>
    </div>
   </div>
@@ -690,6 +691,7 @@ table.CodeRay td.code>pre{padding:0}
         <ul>
          <li> <p><a href="#new-remotesystemunavailableexception-since-8-0-0-033"><em>New RemoteSystemUnavailableException (since 8.0.0.033)</em></a></p> </li>
          <li> <p><a href="#rest-application-contributions-since-8-0-0-035"><em>Rest Application Contributions (since 8.0.0.035)</em></a></p> </li>
+         <li> <p><a href="#data-objects-equals-and-hashcode-since-8-0-0-036"><em>Data Objects: Equals and HashCode (since 8.0.0.036)</em></a></p> </li>
         </ul>
        </div>
       </div>
@@ -1550,6 +1552,23 @@ table.CodeRay td.code>pre{padding:0}
   }
 }</code></pre>
       </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="data-objects-equals-and-hashcode-since-8-0-0-036"><a class="anchor" href="#data-objects-equals-and-hashcode-since-8-0-0-036"></a>Data Objects: Equals and HashCode (since 8.0.0.036)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Data Object base class <code>DoEntity</code> was extended with a generic <code>equals()</code> and <code>hashCode()</code> implementation considering all attributes of a data object for equality. A data object is equals to another data object, if the Java class of both data objects is identical and the attribute maps (including their nested values) of both data objects are equals.</p>
+     </div>
+     <div class="paragraph">
+      <p>For futher details see:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoEntity.equals(Object)</code></p> </li>
+       <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoNode.equals(Object)</code></p> </li>
+      </ul>
      </div>
      <div class="admonitionblock tip">
       <table>

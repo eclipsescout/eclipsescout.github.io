@@ -6042,7 +6042,16 @@ protected void execInitField() {
      <div class="sect2">
       <h3 id="equals-and-hashcode"><a class="anchor" href="#equals-and-hashcode"></a>16.8. Equals and Hashcode</h3>
       <div class="paragraph">
-       <p>The base class <code>DoEntity</code> does not provide a default implementation of <code>equals()</code> and <code>hashCode()</code>, since a data object may contain any types of data which must not provide a useful <code>equals()</code> implementation. If a data object should be used as map key, a custom <code>equals()</code> and <code>hashCode()</code> method taking into account the relevant attributes should be added. For unit tests there is a utility providing different generic compare methods for data objects, see section <a href="#sec-unit-testing">Section 16.16</a>.</p>
+       <p>The Data Object base class <code>DoEntity</code> defines a generic <code>equals()</code> and <code>hashCode()</code> implementation considering all attributes of a data object for equality. A data object is equals to another data object, if the Java class of both data objects is identical and the attribute maps (including their nested values) of both data objects are equals.</p>
+      </div>
+      <div class="paragraph">
+       <p>For futher details see:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoEntity.equals(Object)</code></p> </li>
+        <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoNode.equals(Object)</code></p> </li>
+       </ul>
       </div>
      </div>
      <div class="sect2">
