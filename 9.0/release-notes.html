@@ -548,6 +548,10 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#dark-theme">Dark Theme</a></li>
      <li><a href="#responsiveness">Responsiveness</a></li>
      <li><a href="#new-servlet-filters-to-create-a-scout-runcontext">New Servlet Filters to Create a Scout RunContext</a></li>
+     <li><a href="#script-file-watcher">Script File Watcher</a>
+      <ul class="sectlevel2">
+       <li><a href="#script-file-watcher-enabled-by-default-since-simrel-2019-06">Script File Watcher Enabled by Default (since Simrel 2019-06)</a></li>
+      </ul> </li>
      <li><a href="#new-widgets">New Widgets</a>
       <ul class="sectlevel2">
        <li><a href="#mode-selector">Mode Selector</a></li>
@@ -618,8 +622,10 @@ table.CodeRay td.code>pre{padding:0}
          </tbody>
         </table>
        </div>
-       <div class="paragraph">
-        <p>(Section intentionally left blank for possible future release)</p>
+       <div class="ulist">
+        <ul>
+         <li> <p><a href="#script-file-watcher-enabled-by-default-since-simrel-2019-06">Script File Watcher Enabled by Default (since Simrel 2019-06)</a></p> </li>
+        </ul>
        </div>
       </div>
      </div>
@@ -765,6 +771,23 @@ table.CodeRay td.code>pre{padding:0}
        <li> <p><code>HttpRunContextFilter</code>: Creates a Scout run-context without HTTP- and server sessions for stateless REST backends. It supports subject, correlationId, locale, transaction, etc.</p> </li>
        <li> <p><code>HttpServerRunContextFilter</code>: Creates a Scout server-run-context that additionally has a user-agent and an optional Scout server session.</p> </li>
       </ul>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="script-file-watcher"><a class="anchor" href="#script-file-watcher"></a>Script File Watcher</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>During development, the JavaScript and CSS files are always rebuilt when requested by the browser. Depending on the size of the JS and Less code this may take a while, especially the processing of the Less code is expensive. This is unfortunate if only JavaScript code is adjusted or even if no JS or CSS code is touched at all.</p>
+     </div>
+     <div class="paragraph">
+      <p>To improve this, a Script File Watcher can now be activated which watches all the JS and Less files and triggers a rebuild only if a file changes. This means the files are not always rebuilt on every page reload anymore but only if a relevant file changes. In order to activate the watcher, you need to set the property <code>scout.dev.scriptfile.rebuild</code> to false.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="script-file-watcher-enabled-by-default-since-simrel-2019-06"><a class="anchor" href="#script-file-watcher-enabled-by-default-since-simrel-2019-06"></a>Script File Watcher Enabled by Default (since Simrel 2019-06)</h3>
+      <div class="paragraph">
+       <p>The watcher is now enabled by default when running in dev mode. This means, you don&#x2019;t have to set the property <code>scout.dev.scriptfile.rebuild</code> anymore, unless you want to disable the watcher.</p>
+      </div>
      </div>
     </div>
    </div>
@@ -1139,7 +1162,7 @@ The dogs bark</pre>
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-04-30 19:26:25 +0200
+    <br> Last updated 2019-05-17 13:36:24 +0200
    </div>
   </div>
  </body>
