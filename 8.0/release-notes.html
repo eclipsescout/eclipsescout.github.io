@@ -619,6 +619,12 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033">New RemoteSystemUnavailableException (since 8.0.0.033)</a></li>
      <li><a href="#rest-application-contributions-since-8-0-0-035">Rest Application Contributions (since 8.0.0.035)</a></li>
      <li><a href="#data-objects-equals-and-hashcode-since-8-0-0-036">Data Objects: Equals and HashCode (since 8.0.0.036)</a></li>
+     <li><a href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36">New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</a>
+      <ul class="sectlevel2">
+       <li><a href="#interface-ienum">Interface IEnum</a></li>
+       <li><a href="#interface-iid">Interface IID</a></li>
+       <li><a href="#serialization-deserialization">Serialization / Deserialization</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -692,6 +698,7 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p><a href="#new-remotesystemunavailableexception-since-8-0-0-033"><em>New RemoteSystemUnavailableException (since 8.0.0.033)</em></a></p> </li>
          <li> <p><a href="#rest-application-contributions-since-8-0-0-035"><em>Rest Application Contributions (since 8.0.0.035)</em></a></p> </li>
          <li> <p><a href="#data-objects-equals-and-hashcode-since-8-0-0-036"><em>Data Objects: Equals and HashCode (since 8.0.0.036)</em></a></p> </li>
+         <li> <p><a href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"><em>New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</em></a></p> </li>
         </ul>
        </div>
       </div>
@@ -1562,7 +1569,7 @@ table.CodeRay td.code>pre{padding:0}
       <p>The Data Object base class <code>DoEntity</code> was extended with a generic <code>equals()</code> and <code>hashCode()</code> implementation considering all attributes of a data object for equality. A data object is equals to another data object, if the Java class of both data objects is identical and the attribute maps (including their nested values) of both data objects are equals.</p>
      </div>
      <div class="paragraph">
-      <p>For futher details see:</p>
+      <p>For further details see:</p>
      </div>
      <div class="ulist">
       <ul>
@@ -1570,15 +1577,106 @@ table.CodeRay td.code>pre{padding:0}
        <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoNode.equals(Object)</code></p> </li>
       </ul>
      </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/8.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"><a class="anchor" href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"></a>New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Two new modules providing basic support for ID and enum handling within data objects were added.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="interface-ienum"><a class="anchor" href="#interface-ienum"></a>Interface IEnum</h3>
+      <div class="paragraph">
+       <p>Implementations of <code>org.eclipse.scout.rt.dataobject.enumeration.IEnum</code> add a <code>stringValue()</code> method to each enumeration value, guaranteeing a constant, fixed string value for each enumeration value. The default resolver mechanism matches the given string with the available string values in the current enumeration implementation to look up the matching enumeration value. An optional static <code>resolve()</code> method handles the resolve of a given string value into the correct enumeration value allowing to support even string values, whose enumeration values where changed or deleted.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 3. Example IEnum implementation
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">enum</span> ExampleEnum <span class="directive">implements</span> IEnum {
+  CURRENT(<span class="string"><span class="delimiter">"</span><span class="content">current</span><span class="delimiter">"</span></span>),
+  OTHER(<span class="string"><span class="delimiter">"</span><span class="content">other</span><span class="delimiter">"</span></span>);
+  <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> m_stringValue;
+  <span class="directive">private</span> ExampleEnum(<span class="predefined-type">String</span> stringValue) {
+    m_stringValue = stringValue;
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="predefined-type">String</span> stringValue() {
+    <span class="keyword">return</span> m_stringValue;
+  }
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> ExampleEnum resolve(<span class="predefined-type">String</span> value) {
+    <span class="comment">// custom null handling</span>
+    <span class="keyword">if</span> (value == <span class="predefined-constant">null</span>) {
+      <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+    }
+    <span class="keyword">switch</span> (value) {
+      <span class="comment">// custom handling of old values (assuming 'old' was used in earlier revisions)</span>
+      <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">old</span><span class="delimiter">"</span></span>:
+      <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">current</span><span class="delimiter">"</span></span>:
+        <span class="keyword">return</span> CURRENT;
+      <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">other</span><span class="delimiter">"</span></span>:
+        <span class="keyword">return</span> OTHER;
+      <span class="keyword">default</span>:
+        <span class="comment">// custom handling of unknown values</span>
+        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionException(<span class="string"><span class="delimiter">"</span><span class="content">unsupported status value '{}'</span><span class="delimiter">"</span></span>, value);
+    }
+  }
+}</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="interface-iid"><a class="anchor" href="#interface-iid"></a>Interface IID</h3>
+      <div class="paragraph">
+       <p>Implementations of <code>org.eclipse.scout.rt.dataobject.id.IId&lt;WRAPPED_TYPE&gt;</code> interface wrap an arbitrary value adding a concrete Java type to a scalar value. E.g. the key of an example entity which technically is a UUID becomes an instance of the <code>ExampleId</code> class. An exampleId instance may then be used as type-safe parameter for further referencing a given example entity record.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 4. Example ID implementation wrapping a UUID
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@IdTypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">PersonId</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">PersonId</span> <span class="directive">extends</span> AbstractUuId {
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
+  <span class="directive">public</span> <span class="directive">static</span> PersonId create() {
+    <span class="keyword">return</span> <span class="keyword">new</span> PersonId(<span class="predefined-type">UUID</span>.randomUUID());
+  }
+  <span class="directive">public</span> <span class="directive">static</span> PersonId of(<span class="predefined-type">UUID</span> id) {
+    <span class="keyword">if</span> (id == <span class="predefined-constant">null</span>) {
+      <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> PersonId(id);
+  }
+  <span class="directive">public</span> <span class="directive">static</span> PersonId of(<span class="predefined-type">String</span> id) {
+    <span class="keyword">if</span> (id == <span class="predefined-constant">null</span>) {
+      <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> PersonId(<span class="predefined-type">UUID</span>.fromString(id));
+  }
+  <span class="directive">private</span> PersonId(<span class="predefined-type">UUID</span> id) {
+    <span class="local-variable">super</span>(id);
+  }
+}</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="serialization-deserialization"><a class="anchor" href="#serialization-deserialization"></a>Serialization / Deserialization</h3>
+      <div class="paragraph">
+       <p>All instances of <code>IEnum</code> and <code>IId</code> may be used within data objects and automatically serialized to their JSON string representation and deserialized back to the correct Java class.</p>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/8.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
      </div>
     </div>
    </div>

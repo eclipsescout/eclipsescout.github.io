@@ -660,26 +660,31 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#extending-with-custom-serializer-and-deserializer">16.15. Extending with custom serializer and deserializer</a></li>
        <li><a href="#sec-unit-testing">16.16. Unit Testing</a></li>
       </ul> </li>
-     <li><a href="#cha-rest">17. REST</a>
+     <li><a href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36">17. New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</a>
       <ul class="sectlevel2">
-       <li><a href="#rest-resource-provider">17.1. REST Resource Provider</a></li>
-       <li><a href="#rest-client">17.2. REST Client</a></li>
+       <li><a href="#interface-ienum">17.1. Interface IEnum</a></li>
+       <li><a href="#interface-iid">17.2. Interface IID</a></li>
       </ul> </li>
-     <li><a href="#webservices-with-jax-ws">18. Webservices with JAX-WS</a>
+     <li><a href="#cha-rest">18. REST</a>
       <ul class="sectlevel2">
-       <li><a href="#functionality-2">18.1. Functionality</a></li>
-       <li><a href="#jax-ws-implementor-and-deployment">18.2. JAX-WS implementor and deployment</a></li>
-       <li><a href="#jaxws.modularization">18.3. Modularization</a></li>
-       <li><a href="#build-webservice-stubs-and-artifacts">18.4. Build webservice stubs and artifacts</a></li>
-       <li><a href="#provide-a-webservice">18.5. Provide a webservice</a></li>
-       <li><a href="#consume-a-webservice">18.6. Consume a webservice</a></li>
-       <li><a href="#jaxws.xmladapters">18.7. XML adapters to work with java.util.Date and java.util.Calendar</a></li>
-       <li><a href="#jax-ws-appendix">18.8. JAX-WS Appendix</a></li>
+       <li><a href="#rest-resource-provider">18.1. REST Resource Provider</a></li>
+       <li><a href="#rest-client">18.2. REST Client</a></li>
       </ul> </li>
-     <li><a href="#scout-js">19. Scout JS</a></li>
-     <li><a href="#how-tos">20. How-Tos</a>
+     <li><a href="#webservices-with-jax-ws">19. Webservices with JAX-WS</a>
       <ul class="sectlevel2">
-       <li><a href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row">20.1. SmartField: how to apply colors and styles from a lookup-row</a></li>
+       <li><a href="#functionality-2">19.1. Functionality</a></li>
+       <li><a href="#jax-ws-implementor-and-deployment">19.2. JAX-WS implementor and deployment</a></li>
+       <li><a href="#jaxws.modularization">19.3. Modularization</a></li>
+       <li><a href="#build-webservice-stubs-and-artifacts">19.4. Build webservice stubs and artifacts</a></li>
+       <li><a href="#provide-a-webservice">19.5. Provide a webservice</a></li>
+       <li><a href="#consume-a-webservice">19.6. Consume a webservice</a></li>
+       <li><a href="#jaxws.xmladapters">19.7. XML adapters to work with java.util.Date and java.util.Calendar</a></li>
+       <li><a href="#jax-ws-appendix">19.8. JAX-WS Appendix</a></li>
+      </ul> </li>
+     <li><a href="#scout-js">20. Scout JS</a></li>
+     <li><a href="#how-tos">21. How-Tos</a>
+      <ul class="sectlevel2">
+       <li><a href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row">21.1. SmartField: how to apply colors and styles from a lookup-row</a></li>
       </ul> </li>
      <li><a href="#apx-cclicence">Appendix A: Licence and Copyright</a>
       <ul class="sectlevel2">
@@ -6308,10 +6313,117 @@ protected void execInitField() {
     </div>
    </div>
    <div class="sect1">
-    <h2 id="cha-rest"><a class="anchor" href="#cha-rest"></a>17. REST</h2>
+    <h2 id="new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"><a class="anchor" href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"></a>17. New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Two new modules providing basic support for ID and enum handling within data objects were added.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="interface-ienum"><a class="anchor" href="#interface-ienum"></a>17.1. Interface IEnum</h3>
+      <div class="paragraph">
+       <p>Implementations of <code>org.eclipse.scout.rt.dataobject.enumeration.IEnum</code> add a <code>stringValue()</code> method to each enumeration value, guaranteeing a constant, fixed string value for each enumeration value. The default resolver mechanism matches the given string with the available string values in the current enumeration implementation to look up the matching enumeration value. An optional static <code>resolve()</code> method handles the resolve of a given string value into the correct enumeration value allowing to support even string values, whose enumeration values where changed or deleted.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 96. Example IEnum implementation
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@EnumName</span>(<span class="string"><span class="delimiter">"</span><span class="content">scout.FixtureEnum</span><span class="delimiter">"</span></span>)
+  <span class="annotation">@EnumVersion</span>(<span class="string"><span class="delimiter">"</span><span class="content">scout-8.0.0.036</span><span class="delimiter">"</span></span>)
+  <span class="directive">public</span> <span class="type">enum</span> ExampleEnum <span class="directive">implements</span> IEnum {
+    ONE(<span class="string"><span class="delimiter">"</span><span class="content">one</span><span class="delimiter">"</span></span>),
+    TWO(<span class="string"><span class="delimiter">"</span><span class="content">two</span><span class="delimiter">"</span></span>),
+    THREE(<span class="string"><span class="delimiter">"</span><span class="content">three</span><span class="delimiter">"</span></span>);
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> m_stringValue;
+    <span class="directive">private</span> ExampleEnum(<span class="predefined-type">String</span> stringValue) {
+      m_stringValue = stringValue;
+    }
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> stringValue() {
+      <span class="keyword">return</span> m_stringValue;
+    }
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> ExampleEnum resolve(<span class="predefined-type">String</span> value) { <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="comment">// custom null handling</span>
+      <span class="keyword">if</span> (value == <span class="predefined-constant">null</span>) {
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+      }
+      <span class="keyword">switch</span> (value) {
+        <span class="comment">// custom handling of old values (assuming 'old' was used in earlier revisions)</span>
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">one</span><span class="delimiter">"</span></span>:
+          <span class="keyword">return</span> ONE;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">two</span><span class="delimiter">"</span></span>:
+          <span class="keyword">return</span> TWO;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">three</span><span class="delimiter">"</span></span>:
+          <span class="keyword">return</span> THREE;
+        <span class="keyword">case</span> <span class="string"><span class="delimiter">"</span><span class="content">four</span><span class="delimiter">"</span></span>:
+          <span class="keyword">return</span> THREE;
+        <span class="keyword">default</span>:
+          <span class="comment">// custom handling of unknown values</span>
+          <span class="keyword">throw</span> <span class="keyword">new</span> AssertionException(<span class="string"><span class="delimiter">"</span><span class="content">unsupported status value '{}'</span><span class="delimiter">"</span></span>, value);
+      }
+    }
+  }</code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Optional resolve method</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="interface-iid"><a class="anchor" href="#interface-iid"></a>17.2. Interface IID</h3>
+      <div class="paragraph">
+       <p>Implementations of <code>org.eclipse.scout.rt.dataobject.id.IId&lt;WRAPPED_TYPE&gt;</code> interface wrap an arbitrary value adding a concrete Java type to a scalar value. E.g. the key of an example entity which technically is a UUID becomes an instance of the <code>ExampleId</code> class. An exampleId instance may then be used as type-safe parameter for further referencing a given example entity record.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 97. Example ID implementation wrapping a UUID
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@IdTypeName</span>(<span class="string"><span class="delimiter">"</span><span class="content">FixtureUuId</span><span class="delimiter">"</span></span>)
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">ExampleId</span> <span class="directive">extends</span> AbstractUuId {
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
+    <span class="directive">public</span> <span class="directive">static</span> ExampleId create() {
+      <span class="keyword">return</span> <span class="keyword">new</span> ExampleId(<span class="predefined-type">UUID</span>.randomUUID());
+    }
+    <span class="directive">public</span> <span class="directive">static</span> ExampleId of(<span class="predefined-type">UUID</span> id) {
+      <span class="keyword">if</span> (id == <span class="predefined-constant">null</span>) {
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+      }
+      <span class="keyword">return</span> <span class="keyword">new</span> ExampleId(id);
+    }
+    <span class="directive">public</span> <span class="directive">static</span> ExampleId of(<span class="predefined-type">String</span> id) {
+      <span class="keyword">if</span> (id == <span class="predefined-constant">null</span>) {
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+      }
+      <span class="keyword">return</span> <span class="keyword">new</span> ExampleId(<span class="predefined-type">UUID</span>.fromString(id));
+    }
+    <span class="directive">private</span> ExampleId(<span class="predefined-type">UUID</span> id) {
+      <span class="local-variable">super</span>(id);
+    }
+  }</code></pre>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="serialization-deserialization"><a class="anchor" href="#serialization-deserialization"></a>17.2.1. Serialization / Deserialization</h4>
+       <div class="paragraph">
+        <p>All instances of <code>IEnum</code> and <code>IId</code> may be used within data objects and automatically serialized to their JSON string representation and deserialized back to the correct Java class.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="cha-rest"><a class="anchor" href="#cha-rest"></a>18. REST</h2>
     <div class="sectionbody">
      <div class="sect2">
-      <h3 id="rest-resource-provider"><a class="anchor" href="#rest-resource-provider"></a>17.1. REST Resource Provider</h3>
+      <h3 id="rest-resource-provider"><a class="anchor" href="#rest-resource-provider"></a>18.1. REST Resource Provider</h3>
       <div class="paragraph">
        <p>A REST resource using the <a href="http://www.oracle.com/technetwork/java/javaee/tech/jax-rs-159890.html">JAX-RS</a> API is implemented by a POJO class annotated with a set of annotations.</p>
       </div>
@@ -6320,7 +6432,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 96. Example: REST resource
+        Listing 98. Example: REST resource
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Path</span>(<span class="string"><span class="delimiter">"</span><span class="content">example</span><span class="delimiter">"</span></span>)
@@ -6337,7 +6449,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="rest-resource-registration"><a class="anchor" href="#rest-resource-registration"></a>17.1.1. REST Resource Registration</h4>
+       <h4 id="rest-resource-registration"><a class="anchor" href="#rest-resource-registration"></a>18.1.1. REST Resource Registration</h4>
        <div class="paragraph">
         <p>All available REST resources are automatically registered by the <code>RestApplication</code> class while the Scout platform startup.</p>
        </div>
@@ -6346,7 +6458,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 97. web.xml
+         Listing 99. web.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- JAX-RS Jersey Servlet --&gt;</span>
@@ -6367,7 +6479,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="extend-rest-application"><a class="anchor" href="#extend-rest-application"></a>17.1.2. Extend REST Application</h4>
+       <h4 id="extend-rest-application"><a class="anchor" href="#extend-rest-application"></a>18.1.2. Extend REST Application</h4>
        <div class="paragraph">
         <p>The JAX-RS application API (<code>javax.ws.rs.core.Application</code>) allows a REST application implementation to specify a set of classes, a set of singleton instances and a map of custom properties to be registered. The Scout implementation of the REST application class <code>org.eclipse.scout.rt.rest.RestApplication</code> allows to contribute classes, singletons and properties without needing to extend the <code>RestApplication</code> class.</p>
        </div>
@@ -6383,7 +6495,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 98. Example class contributor
+         Listing 100. Example class contributor
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">ExampleClassContributor</span> <span class="directive">implements</span> IRestApplicationClassesContributor {
@@ -6396,13 +6508,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="data-objects"><a class="anchor" href="#data-objects"></a>17.1.3. Data Objects</h4>
+       <h4 id="data-objects"><a class="anchor" href="#data-objects"></a>18.1.3. Data Objects</h4>
        <div class="paragraph">
         <p>Scout data objects may be used as request and response objects for REST APIs. See <a href="#cha-data-objects">Chapter 16</a> for details and examples.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="marshaller"><a class="anchor" href="#marshaller"></a>17.1.4. Marshaller</h4>
+       <h4 id="marshaller"><a class="anchor" href="#marshaller"></a>18.1.4. Marshaller</h4>
        <div class="paragraph">
         <p>A REST API may be used by non-Java consumers. In order to communicate using a platform-independent format, usually REST services use JSON as transport format. The marshaller between Java data objects and JSON is abstracted in the JAX-RS specification. Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produces data format.</p>
        </div>
@@ -6414,13 +6526,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="runcontext-2"><a class="anchor" href="#runcontext-2"></a>17.1.5. RunContext</h4>
+       <h4 id="runcontext-2"><a class="anchor" href="#runcontext-2"></a>18.1.5. RunContext</h4>
        <div class="paragraph">
         <p>Like a usual service call using the Scout service tunnel a REST request must ensure that processing of the request takes place within a <code>RunContext</code>. The <code>ServerRunContextFilter</code> filter is used to intercept incoming REST requests and wrap them within a RunContext. Therefore a REST resource implementation is not required to deal with setting up a RunContext to wrap the request within each method. The filter must be added in the <code>web.xml</code> configuration file and should be configured to be called after the authentication filter. The filter expects that the authentication has been performed and that a <code>subject</code> is available. All following filters and servlets and thus also the REST resources run automatically in the correct context.</p>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 99. web.xml filter registration
+         Listing 101. web.xml filter registration
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;filter&gt;</span>
@@ -6439,7 +6551,7 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="rest-client"><a class="anchor" href="#rest-client"></a>17.2. REST Client</h3>
+      <h3 id="rest-client"><a class="anchor" href="#rest-client"></a>18.2. REST Client</h3>
       <div class="paragraph">
        <p>The Scout module <code>org.eclipse.scout.rt.rest</code> offers a set of helper classes in order to call REST services.</p>
       </div>
@@ -6451,7 +6563,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 100. Example: REST resource client helper
+        Listing 102. Example: REST resource client helper
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleRestClientHelper</span> <span class="directive">extends</span> AbstractRestClientHelper {
@@ -6490,7 +6602,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 101. Example: REST resource client
+        Listing 103. Example: REST resource client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResourceClient</span> <span class="directive">implements</span> IRestResourceClient {
@@ -6565,7 +6677,7 @@ protected void execInitField() {
     </div>
    </div>
    <div class="sect1">
-    <h2 id="webservices-with-jax-ws"><a class="anchor" href="#webservices-with-jax-ws"></a>18. Webservices with JAX-WS</h2>
+    <h2 id="webservices-with-jax-ws"><a class="anchor" href="#webservices-with-jax-ws"></a>19. Webservices with JAX-WS</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>The Java API for XML-Based Web Services (JAX-WS) is a Java programming language API for creating web services. JAX-WS is one of the Java XML programming APIs, and is part of the Java EE platform.</p>
@@ -6574,7 +6686,7 @@ protected void execInitField() {
       <p>Scout facilitates working with webservices, supports you in the generation of artifacts, and provides the following functionality:</p>
      </div>
      <div class="sect2">
-      <h3 id="functionality-2"><a class="anchor" href="#functionality-2"></a>18.1. Functionality</h3>
+      <h3 id="functionality-2"><a class="anchor" href="#functionality-2"></a>19.1. Functionality</h3>
       <div class="ulist">
        <ul>
         <li> <p>ready to go Maven profile for easy webservice stub and artifact generation</p> </li>
@@ -6589,9 +6701,9 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="jax-ws-implementor-and-deployment"><a class="anchor" href="#jax-ws-implementor-and-deployment"></a>18.2. JAX-WS implementor and deployment</h3>
+      <h3 id="jax-ws-implementor-and-deployment"><a class="anchor" href="#jax-ws-implementor-and-deployment"></a>19.2. JAX-WS implementor and deployment</h3>
       <div class="sect3">
-       <h4 id="jax-ws-version-and-implementor"><a class="anchor" href="#jax-ws-version-and-implementor"></a>18.2.1. JAX-WS version and implementor</h4>
+       <h4 id="jax-ws-version-and-implementor"><a class="anchor" href="#jax-ws-version-and-implementor"></a>19.2.1. JAX-WS version and implementor</h4>
        <div class="paragraph">
         <p>The JAX-WS Scout integration provides a thin layer on top of JAX-WS implementors to facilitate working with webservices. It depends on the JAX-WS 2.2.x API as specified in JSR 224. It is implementor neutral, and was tested with with the following implementations:</p>
        </div>
@@ -6607,7 +6719,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="running-jax-ws-in-a-servlet-container"><a class="anchor" href="#running-jax-ws-in-a-servlet-container"></a>18.2.2. Running JAX-WS in a servlet container</h4>
+       <h4 id="running-jax-ws-in-a-servlet-container"><a class="anchor" href="#running-jax-ws-in-a-servlet-container"></a>19.2.2. Running JAX-WS in a servlet container</h4>
        <div class="paragraph">
         <p>A servlet container like Apache Tomcat typically does not ship with a JAX-WS implementor. As the actual implementor, you can either use <em>JAX-WS RI</em> as shipped with the JRE, or provide a separate implementor like <em>JAX-WS METRO</em> or <em>Apache CXF</em> in the form of a Maven dependency. However, <em>JAX-WS RI</em> does not provide a servlet based entry point, because the Servlet API is not part of the Java SE specification.</p>
        </div>
@@ -6616,13 +6728,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="running-jax-ws-in-a-ee-container"><a class="anchor" href="#running-jax-ws-in-a-ee-container"></a>18.2.3. Running JAX-WS in a EE container</h4>
+       <h4 id="running-jax-ws-in-a-ee-container"><a class="anchor" href="#running-jax-ws-in-a-ee-container"></a>19.2.3. Running JAX-WS in a EE container</h4>
        <div class="paragraph">
         <p>When running in an EE container, the container typically ships with a JAX-WS implementor. It is highly recommended to use that implementor, primarily to avoid classloading issues, and to further profit from the container&#x2019;s monitoring and authentication facility. Refer to the containers documentation for more information.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.implementor.configuration"><a class="anchor" href="#jaxws.implementor.configuration"></a>18.2.4. Configure JAX-WS implementor</h4>
+       <h4 id="jaxws.implementor.configuration"><a class="anchor" href="#jaxws.implementor.configuration"></a>19.2.4. Configure JAX-WS implementor</h4>
        <div class="paragraph">
         <p>JAX-WS Scout integration is prepared to run with different implementors. Unfortunately, some implementors do not implement the JSR exactly, or some important functionality is missing in the JSR. To address this fact without loosing implementor independence, the delegate bean <a href="#JaxWsImplementorSpecifics">JaxWsImplementorSpecifics</a> exists.</p>
        </div>
@@ -6680,7 +6792,7 @@ protected void execInitField() {
          </ul>
         </div>
         <div class="paragraph">
-         <p>Learn more about how to configure a JAX-WS implementor: <a href="#jaxws.implementor.configuration">Section 18.2.4</a></p>
+         <p>Learn more about how to configure a JAX-WS implementor: <a href="#jaxws.implementor.configuration">Section 19.2.4</a></p>
         </div>
        </div>
        <div class="sect4">
@@ -6695,11 +6807,11 @@ protected void execInitField() {
          <p>If running in an EE application server, refer to the containers documentation for more information.</p>
         </div>
         <div class="paragraph">
-         <p><a href="#lst-maven.dep.metro">Listing 102</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 103</a> does the same for <em>Apache CXF</em></p>
+         <p><a href="#lst-maven.dep.metro">Listing 104</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 105</a> does the same for <em>Apache CXF</em></p>
         </div>
         <div id="lst-maven.dep.metro" class="listingblock">
          <div class="title">
-          Listing 102. Maven dependency for
+          Listing 104. Maven dependency for
           <em>JAX-WS METRO</em>
          </div>
          <div class="content">
@@ -6713,7 +6825,7 @@ protected void execInitField() {
         </div>
         <div id="lst-maven.dep.cxf" class="listingblock">
          <div class="title">
-          Listing 103. Maven dependency for
+          Listing 105. Maven dependency for
           <em>Apache CXF</em>
          </div>
          <div class="content">
@@ -6742,11 +6854,11 @@ protected void execInitField() {
          <p>This section describes the configuration of the entry point Servlet to publish webservices. If working with webservice consumers only, no configuration is required.</p>
         </div>
         <div class="paragraph">
-         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 18.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 104</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 105</a> for <em>Apache CXF</em>.</p>
+         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 19.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 106</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 107</a> for <em>Apache CXF</em>.</p>
         </div>
         <div id="lst-jaxws.webxml.metro" class="listingblock">
          <div class="title">
-          Listing 104. web.xml for
+          Listing 106. web.xml for
           <em>JAX-WS METRO</em> Servlet
          </div>
          <div class="content">
@@ -6784,7 +6896,7 @@ protected void execInitField() {
         </div>
         <div id="lst-jaxws.webxml.cxf" class="listingblock">
          <div class="title">
-          Listing 105. web.xml for
+          Listing 107. web.xml for
           <em>Apache CXF</em> Servlet
          </div>
          <div class="content">
@@ -6810,7 +6922,7 @@ protected void execInitField() {
           <tbody>
            <tr>
             <td><i class="conum" data-value="1"></i><b>1</b></td>
-            <td><em>Apache CXF</em> specific configuration file for endpoints to be published. See <a href="#jaxws.registration.endpoints.cxf">Section 18.5.8.2</a> for more information.</td>
+            <td><em>Apache CXF</em> specific configuration file for endpoints to be published. See <a href="#jaxws.registration.endpoints.cxf">Section 19.5.8.2</a> for more information.</td>
            </tr>
            <tr>
             <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -6846,7 +6958,7 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="jaxws.modularization"><a class="anchor" href="#jaxws.modularization"></a>18.3. Modularization</h3>
+      <h3 id="jaxws.modularization"><a class="anchor" href="#jaxws.modularization"></a>19.3. Modularization</h3>
       <div class="paragraph">
        <p>Scout JAX-WS integration does not prescribe how to organize your webservices in terms of Maven modules. You could either put all your webservices directly into the server module, or create a separate <em>jaxws</em> module containing all webservices, or even create a separate <em>jaxws</em> module for each webservice. Most often, the second approach of a single, separate <em>jaxws</em> module, which the server module depends on, is chosen.</p>
       </div>
@@ -6879,9 +6991,9 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="build-webservice-stubs-and-artifacts"><a class="anchor" href="#build-webservice-stubs-and-artifacts"></a>18.4. Build webservice stubs and artifacts</h3>
+      <h3 id="build-webservice-stubs-and-artifacts"><a class="anchor" href="#build-webservice-stubs-and-artifacts"></a>19.4. Build webservice stubs and artifacts</h3>
       <div class="sect3">
-       <h4 id="jaxws.stub.generation"><a class="anchor" href="#jaxws.stub.generation"></a>18.4.1. Configure webservice stub generation via wsimport</h4>
+       <h4 id="jaxws.stub.generation"><a class="anchor" href="#jaxws.stub.generation"></a>19.4.1. Configure webservice stub generation via wsimport</h4>
        <div class="paragraph">
         <p>The Maven plugin 'org.codehaus.mojo:jaxws-maven-plugin' with the goal 'wsimport' is used to generate a webservice stub from a WSDL file and its referenced XSD schema files. If your Maven module inherits from the Scout module 'maven_rt_plugin_config-master', the 'jaxws' profile is available, which activates automatically upon the presence of a 'WEB-INF/wsdl' folder. Instead of inheriting from that module, you can alternatively copy the 'jaxws' profile into your projects parent POM module.</p>
        </div>
@@ -6893,7 +7005,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.pom.scoutversion" class="listingblock">
         <div class="title">
-         Listing 106. Scout version defined as Maven property
+         Listing 108. Scout version defined as Maven property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -6902,11 +7014,11 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 107</a>).</p>
+        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 109</a>).</p>
        </div>
        <div id="lst-jaxws.pom.single-wsdl-file" class="listingblock">
         <div class="title">
-         Listing 107. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
+         Listing 109. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -6925,21 +7037,21 @@ protected void execInitField() {
         </table>
        </div>
        <div class="paragraph">
-        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 107</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 108</a>.</p>
+        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 109</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 110</a>.</p>
        </div>
        <div class="admonitionblock warning">
         <table>
          <tbody>
           <tr>
            <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 108</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 107</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
+           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 110</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 109</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
           </tr>
          </tbody>
         </table>
        </div>
        <div id="lst-jaxws.pom.multiple-wsdl" class="listingblock">
         <div class="title">
-         Listing 108. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
+         Listing 110. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
@@ -7020,13 +7132,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>18.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
+       <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>19.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
        <div class="paragraph">
-        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 109</a>.</p>
+        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 111</a>.</p>
        </div>
        <div id="lst-jaxws.pom.multiple-binding" class="listingblock">
         <div class="title">
-         Listing 109. explicit configuration of binding files
+         Listing 111. explicit configuration of binding files
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- YourFirstWebService.wsdl --&gt;</span>
@@ -7060,15 +7172,15 @@ protected void execInitField() {
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 110</a> for an example.</td>
+           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 112</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 111</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 113</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 112</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 114</a> for an example.</td>
           </tr>
          </tbody>
         </table>
@@ -7077,11 +7189,11 @@ protected void execInitField() {
         <p>With binding files in place, you can customize almost every WSDL component and XSD element that can be mapped to Java, such as the service endpoint interface class, packages, method name, parameter name, exception class, etc.</p>
        </div>
        <div class="paragraph">
-        <p>The global binding file typically contains some customization for common data types like <em>java.util.Date</em> or <em>java.util.Calendar</em>, whereas the custom binding files are specific for a WSDL or XSD schema. See <a href="#jaxws.xmladapters">Section 18.7</a>.</p>
+        <p>The global binding file typically contains some customization for common data types like <em>java.util.Date</em> or <em>java.util.Calendar</em>, whereas the custom binding files are specific for a WSDL or XSD schema. See <a href="#jaxws.xmladapters">Section 19.7</a>.</p>
        </div>
        <div id="lst-jaxws.example.globalbindingfile" class="listingblock">
         <div class="title">
-         Listing 110. example of global binding file in the namespace
+         Listing 112. example of global binding file in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -7114,7 +7226,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.ws" class="listingblock">
         <div class="title">
-         Listing 111. example of jaxws component customization in the namespace
+         Listing 113. example of jaxws component customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a>
         </div>
         <div class="content">
@@ -7140,7 +7252,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.xs" class="listingblock">
         <div class="title">
-         Listing 112. example of xsd schema element customization in the namespace
+         Listing 114. example of xsd schema element customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -7201,7 +7313,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="annotation-processing-tool-apt"><a class="anchor" href="#annotation-processing-tool-apt"></a>18.4.3. Annotation Processing Tool (APT)</h4>
+       <h4 id="annotation-processing-tool-apt"><a class="anchor" href="#annotation-processing-tool-apt"></a>19.4.3. Annotation Processing Tool (APT)</h4>
        <div class="paragraph">
         <p>Annotation Processing (APT) is a tool which can be enabled to fire for annotated types during compilation. In JAX-WS Scout integration, it is used as a trigger to generate webservice port type implementations. Such an auto-generated port type implementation is called an entry point. It is to be published as the webservice&#x2019;s endpoint, and acts as an interceptor for webservice requests. It optionally enforces for authentication, and makes the request to be executed in a <a href="#runcontext">RunContext</a>. Then, it handles the web request to the effectively implementing port type bean for actual processing.</p>
        </div>
@@ -7245,13 +7357,13 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="generate_artifacts_from_console"><a class="anchor" href="#generate_artifacts_from_console"></a>18.4.4. Build webservice stubs and APT artifacts from console</h4>
+       <h4 id="generate_artifacts_from_console"><a class="anchor" href="#generate_artifacts_from_console"></a>19.4.4. Build webservice stubs and APT artifacts from console</h4>
        <div class="paragraph">
         <p>Simply run <em>mvn clean compile</em> on the project. If you are experiencing some problems, run with -X debug flag to get a more detailed error message.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="generate_artifacts_from_eclipse"><a class="anchor" href="#generate_artifacts_from_eclipse"></a>18.4.5. Build webservice stubs and APT artifacts from within Eclipse IDE</h4>
+       <h4 id="generate_artifacts_from_eclipse"><a class="anchor" href="#generate_artifacts_from_eclipse"></a>19.4.5. Build webservice stubs and APT artifacts from within Eclipse IDE</h4>
        <div class="paragraph">
         <p>In the Eclipse IDE, there are three ways to generate webservice stubs and APT artifacts.</p>
        </div>
@@ -7267,25 +7379,25 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="exclude-derived-resources-from-version-control"><a class="anchor" href="#exclude-derived-resources-from-version-control"></a>18.4.6. Exclude derived resources from version control</h4>
+       <h4 id="exclude-derived-resources-from-version-control"><a class="anchor" href="#exclude-derived-resources-from-version-control"></a>19.4.6. Exclude derived resources from version control</h4>
        <div class="paragraph">
         <p>Stub and APT artifacts are derived resources, and should be excluded from version control. When working with Eclipse IDE, this is done automatically by eGit, because it adds derived resources to <em>.gitignore</em> (if configured to do so).</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxwsannotationprocessor"><a class="anchor" href="#jaxwsannotationprocessor"></a>18.4.7. JaxWsAnnotationProcessor</h4>
+       <h4 id="jaxwsannotationprocessor"><a class="anchor" href="#jaxwsannotationprocessor"></a>19.4.7. JaxWsAnnotationProcessor</h4>
        <div class="paragraph">
         <p><code>JaxWsAnnotationProcessor</code> is an annotation processor provided by Scout JAX-WS integration to generate an entry point for an endpoint interface during compilation. The instructions how to generate the entry point is given via a Java class or Java interface annotated with <a href="#WebServiceEntryPoint">WebServiceEntryPoint</a> annotation.</p>
        </div>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="provide-a-webservice"><a class="anchor" href="#provide-a-webservice"></a>18.5. Provide a webservice</h3>
+      <h3 id="provide-a-webservice"><a class="anchor" href="#provide-a-webservice"></a>19.5. Provide a webservice</h3>
       <div class="paragraph">
        <p>In this chapter, you will learn how to publish a webservice provider via an entry point.</p>
       </div>
       <div class="sect3">
-       <h4 id="WebServiceEntryPoint"><a class="anchor" href="#WebServiceEntryPoint"></a>18.5.1. The concept of an Entry Point</h4>
+       <h4 id="WebServiceEntryPoint"><a class="anchor" href="#WebServiceEntryPoint"></a>19.5.1. The concept of an Entry Point</h4>
        <div class="paragraph">
         <p>An entry point implements the endpoint interface (or port type interface), and is published as the webservice endpoint for that endpoint interface. The entry point itself is auto generated by <a href="#jaxwsannotationprocessor">JaxWsAnnotationProcessor</a> during compile time, based on instructions as given by the respective class/interface annotated with <code>WebServiceEntryPoint</code> annotation. The entry point is responsible to enforce authentication and to run the web request in a <code>RunContext</code>. In turn, the request is propagated to the bean implementing the endpoint interface.</p>
        </div>
@@ -7301,7 +7413,7 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>As you can see, both, entry point and port type implement the endpoint interface. But it is the entry point which is actually installed as the webservice endpoint, and which receives web requests. However, the webservice itself is implemented in the implementing bean, which typically is located in <em>server</em> module. See <a href="#jaxws.modularization">Section 18.3</a> for more information. Upon a web request, the entry point simply intercepts the web request, and then invokes the web method on the implementing bean for further processing.</p>
+        <p>As you can see, both, entry point and port type implement the endpoint interface. But it is the entry point which is actually installed as the webservice endpoint, and which receives web requests. However, the webservice itself is implemented in the implementing bean, which typically is located in <em>server</em> module. See <a href="#jaxws.modularization">Section 19.3</a> for more information. Upon a web request, the entry point simply intercepts the web request, and then invokes the web method on the implementing bean for further processing.</p>
        </div>
        <div class="paragraph">
         <p>See an <a href="#PingWebServicePortTypeBean.java">example</a> of an implementing port type bean, which is invoked by entry point.</p>
@@ -7318,12 +7430,12 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="generate-an-entry-point-as-an-endpoint-interface"><a class="anchor" href="#generate-an-entry-point-as-an-endpoint-interface"></a>18.5.2. Generate an Entry Point as an endpoint interface</h4>
+       <h4 id="generate-an-entry-point-as-an-endpoint-interface"><a class="anchor" href="#generate-an-entry-point-as-an-endpoint-interface"></a>19.5.2. Generate an Entry Point as an endpoint interface</h4>
        <div class="paragraph">
         <p>This section describes the steps required to generate an entry point. For demonstration purposes, a simple ping webservice is used, which provides a single method 'ping' to accept and return a <code>String</code> object.</p>
        </div>
        <div class="paragraph">
-        <p>See the WSDL file of ping webservice: <a href="#PingWebService.wsdl">Section 18.8.1</a><br> See the endpoint interface of ping webservice: <a href="#PingWebServicePortType.java">Section 18.8.2</a></p>
+        <p>See the WSDL file of ping webservice: <a href="#PingWebService.wsdl">Section 19.8.1</a><br> See the endpoint interface of ping webservice: <a href="#PingWebServicePortType.java">Section 19.8.2</a></p>
        </div>
        <div class="paragraph">
         <p>To generate an entry point for the webservice&#x2019;s endpoint interface, create an interface as following in your jaxws project.</p>
@@ -7353,14 +7465,14 @@ protected void execInitField() {
         <p>It is important to understand, that the interface <code>PingWebServiceEntryPointDefinition</code> solely acts as the anchor for the <code>WebServiceEntryPoint</code> annotation. This class or interface has no special meaning, except that it declares the annotation to be interpreted by annotation processor. Typically, this class is called <em>Entry Point Definition</em>.</p>
        </div>
        <div class="paragraph">
-        <p>If running <code>mvn clean compile</code>, an entry point is generated for that endpoint interface. See the entry point as generated for ping webservice: <a href="#PingWebServicePortTypeEntryPoint.java">Section 18.8.3</a></p>
+        <p>If running <code>mvn clean compile</code>, an entry point is generated for that endpoint interface. See the entry point as generated for ping webservice: <a href="#PingWebServicePortTypeEntryPoint.java">Section 19.8.3</a></p>
        </div>
        <div class="paragraph">
         <p>If you should experience some problems in the entry point generation, refer to <a href="#generate_artifacts_from_eclipse">Build webservice stubs and APT artifacts from within Eclipse IDE</a>, or <a href="#generate_artifacts_from_console">Build webservice stubs and APT artifacts from console</a>.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="instrument-the-entry-point-generation"><a class="anchor" href="#instrument-the-entry-point-generation"></a>18.5.3. Instrument the Entry Point generation</h4>
+       <h4 id="instrument-the-entry-point-generation"><a class="anchor" href="#instrument-the-entry-point-generation"></a>19.5.3. Instrument the Entry Point generation</h4>
        <div class="paragraph">
         <p>This section gives an overview on how to configure the entry point to be generated.</p>
        </div>
@@ -7402,11 +7514,11 @@ protected void execInitField() {
          </tr>
          <tr>
           <td class="tableblock halign-left valign-top"><p class="tableblock">authentication</p></td>
-          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the authentication mechanism to be installed, and in which <code>RunContext</code> to run authenticated requests. By default, authentication is <em>disabled</em>. If <em>enabled</em>, an <code>AuthenticationHandler</code> is generated and registered in the handler chain as very first handler. However, the position of that handler can be changed via <em>order</em> field on <code>Authentication</code> annotation.<br> See <a href="#jaxws.provider.authentication">Section 18.5.3.1</a> for more information.</p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the authentication mechanism to be installed, and in which <code>RunContext</code> to run authenticated requests. By default, authentication is <em>disabled</em>. If <em>enabled</em>, an <code>AuthenticationHandler</code> is generated and registered in the handler chain as very first handler. However, the position of that handler can be changed via <em>order</em> field on <code>Authentication</code> annotation.<br> See <a href="#jaxws.provider.authentication">Section 19.5.3.1</a> for more information.</p></td>
          </tr>
          <tr>
           <td class="tableblock halign-left valign-top"><p class="tableblock">handlerChain</p></td>
-          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the handlers to be installed. The order of the handlers is as declared. A handler is looked up as a bean, and must implement <code>javax.xml.ws.handler.Handler</code> interface.<br> See <a href="#jaxws.provider.handlerChain">Section 18.5.5</a> for more information.</p></td>
+          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the handlers to be installed. The order of the handlers is as declared. A handler is looked up as a bean, and must implement <code>javax.xml.ws.handler.Handler</code> interface.<br> See <a href="#jaxws.provider.handlerChain">Section 19.5.5</a> for more information.</p></td>
          </tr>
         </tbody>
        </table>
@@ -7508,10 +7620,10 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>18.5.4. Example of an Entry Point definition</h4>
+       <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>19.5.4. Example of an Entry Point definition</h4>
        <div id="jaxws.listing.porttypedefinition" class="listingblock">
         <div class="title">
-         Listing 113. Example configuration for an entry point definition
+         Listing 115. Example configuration for an entry point definition
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -7547,7 +7659,7 @@ protected void execInitField() {
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>Registers the 'CorrelationIdHandler' as the first handler to set a correlation ID onto the current message context. See <a href="#jaxws.provider.statepropagation">Section 18.5.6</a> for more information about state propagation.</td>
+           <td>Registers the 'CorrelationIdHandler' as the first handler to set a correlation ID onto the current message context. See <a href="#jaxws.provider.statepropagation">Section 19.5.6</a> for more information about state propagation.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -7599,7 +7711,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 114. PingWebServiceEntryPoint_handler-chain.xml
+         Listing 116. PingWebServiceEntryPoint_handler-chain.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">&lt;handler-chains xmlns=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/javaee</span><span class="delimiter">"</span></span>&gt;
@@ -7635,7 +7747,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 115. PingWebServiceEntryPoint.java
+         Listing 117. PingWebServiceEntryPoint.java
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebService</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PingWebServicePortType</span><span class="delimiter">"</span></span>,
@@ -7650,7 +7762,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.provider.handlerChain"><a class="anchor" href="#jaxws.provider.handlerChain"></a>18.5.5. Configure JAX-WS Handlers</h4>
+       <h4 id="jaxws.provider.handlerChain"><a class="anchor" href="#jaxws.provider.handlerChain"></a>19.5.5. Configure JAX-WS Handlers</h4>
        <div class="paragraph">
         <p>See <a href="#example.entrypoint.definition">listing</a> for an example of how to configure JAX-WS handlers.</p>
        </div>
@@ -7668,7 +7780,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 116. Example of a JAX-WS Handler
+         Listing 118. Example of a JAX-WS Handler
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span> <i class="conum" data-value="1"></i><b>(1)</b>
@@ -7721,7 +7833,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.provider.statepropagation"><a class="anchor" href="#jaxws.provider.statepropagation"></a>18.5.6. Propagate state among Handlers and port type</h4>
+       <h4 id="jaxws.provider.statepropagation"><a class="anchor" href="#jaxws.provider.statepropagation"></a>19.5.6. Propagate state among Handlers and port type</h4>
        <div class="paragraph">
         <p>Sometimes it is useful to share state among handlers, and even with the port type. This can be done via <code>javax.xml.ws.handler.MessageContext</code>. By default, a property put onto message context is only available in the handler chain. To make it available to the port type as well, set its scope to 'APPLICATION' accordingly.</p>
        </div>
@@ -7730,7 +7842,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 117. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
+         Listing 119. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7771,7 +7883,7 @@ protected void execInitField() {
        </div>
        <div id="jaxws.handler.statepropagation.readcid" class="listingblock">
         <div class="title">
-         Listing 118. This handler accesses the 'correlation ID' as set by the previous handler.
+         Listing 120. This handler accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7808,7 +7920,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 119. This port type accesses the 'correlation ID' as set by the previous handler.
+         Listing 121. This port type accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7839,7 +7951,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jax-ws-correlation-id-propagation"><a class="anchor" href="#jax-ws-correlation-id-propagation"></a>18.5.7. JAX-WS Correlation ID Propagation</h4>
+       <h4 id="jax-ws-correlation-id-propagation"><a class="anchor" href="#jax-ws-correlation-id-propagation"></a>19.5.7. JAX-WS Correlation ID Propagation</h4>
        <div class="paragraph">
         <p>Scout&#x2019;s JAX-WS integration already provides complete support for reading a correlation ID from the HTTP header named <code>X-Scout-Correlation-Id</code> of the incoming web service request and propagates it to the <a href="#runcontext">RunContext</a> that executes the actual service operation. A new correlation ID is created if the HTTP header is empty or missing.</p>
        </div>
@@ -7865,7 +7977,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 120. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
+         Listing 122. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -7895,7 +8007,7 @@ protected void execInitField() {
        </div>
       </div>
       <div class="sect3">
-       <h4 id="registration-of-webservice-endpoints"><a class="anchor" href="#registration-of-webservice-endpoints"></a>18.5.8. Registration of webservice endpoints</h4>
+       <h4 id="registration-of-webservice-endpoints"><a class="anchor" href="#registration-of-webservice-endpoints"></a>19.5.8. Registration of webservice endpoints</h4>
        <div class="paragraph">
         <p>The registration of webservice endpoints depends on the implementor you use, and whether you are running in an EE container with webservice auto discovery enabled.</p>
        </div>
@@ -7912,7 +8024,7 @@ protected void execInitField() {
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 121. WEB-INF/sun-jaxws.xml
+          Listing 123. WEB-INF/sun-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jws:endpoints</span> <span class="attribute-name">xmlns:jws</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/jax-ws/ri/runtime</span><span class="delimiter">"</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">"</span><span class="content">2.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
@@ -7930,11 +8042,11 @@ protected void execInitField() {
        <div class="sect4">
         <h5 id="jaxws.registration.endpoints.cxf"><a class="anchor" href="#jaxws.registration.endpoints.cxf"></a>Apache CXF</h5>
         <div class="paragraph">
-         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 105</a> for more information.</p>
+         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 107</a> for more information.</p>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 122. WEB-INF/cxf-jaxws.xml
+          Listing 124. WEB-INF/cxf-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;beans</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.springframework.org/schema/beans</span><span class="delimiter">"</span></span>
@@ -7973,7 +8085,7 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="consume-a-webservice"><a class="anchor" href="#consume-a-webservice"></a>18.6. Consume a webservice</h3>
+      <h3 id="consume-a-webservice"><a class="anchor" href="#consume-a-webservice"></a>19.6. Consume a webservice</h3>
       <div class="paragraph">
        <p>Communication with a webservice endpoint is done based on the webservice&#x2019;s port generated by 'wsimport'. Learn more how to <a href="#jaxws.stub.generation">generate a webservice stub from a WSDL file</a>.</p>
       </div>
@@ -7982,7 +8094,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 123. Example of a WS-Client
+        Listing 125. Example of a WS-Client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
@@ -8003,11 +8115,11 @@ protected void execInitField() {
        <p>A WS-Client can be configured with some default values like the endpoint URL, credentials, timeouts and more. However, the configuration can also be set or overwritten later when creating the <code>InvocationContext</code>.</p>
       </div>
       <div class="paragraph">
-       <p>See also <a href="#jaxws.consumer.configuration">Section 18.6.7</a>.</p>
+       <p>See also <a href="#jaxws.consumer.configuration">Section 19.6.7</a>.</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 124. Example of a WS-Client configuration
+        Listing 126. Example of a WS-Client configuration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient1</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
@@ -8053,13 +8165,13 @@ protected void execInitField() {
        </table>
       </div>
       <div class="sect3">
-       <h4 id="invoke-a-webservice"><a class="anchor" href="#invoke-a-webservice"></a>18.6.1. Invoke a webservice</h4>
+       <h4 id="invoke-a-webservice"><a class="anchor" href="#invoke-a-webservice"></a>19.6.1. Invoke a webservice</h4>
        <div class="paragraph">
         <p>A webservice operation is invoked on behalf of an invocation context, which is associated with a dedicated port, and which specifies the data to be included in the web request. Upon a webservice call, the invocation context should be discarded.</p>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 125. Example of a webservice call
+         Listing 127. Example of a webservice call
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">PingWebServicePortType port = BEANS.get(PingWebServiceClient.class).newInvocationContext().getPort(); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -8088,7 +8200,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 126. Configure invocation context with data to be included in the web request
+         Listing 128. Configure invocation context with data to be included in the web request
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> InvocationContext&lt;PingWebServicePortType&gt; context = BEANS.get(PingWebServiceClient.class).newInvocationContext();
@@ -8143,13 +8255,13 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="cancel-a-webservice-request"><a class="anchor" href="#cancel-a-webservice-request"></a>18.6.2. Cancel a webservice request</h4>
+       <h4 id="cancel-a-webservice-request"><a class="anchor" href="#cancel-a-webservice-request"></a>19.6.2. Cancel a webservice request</h4>
        <div class="paragraph">
         <p>The WS-Client supports for cancellation of webservice requests. Internally, every web request is run in another thread, which the calling thread waits for to complete. Upon cancellation, that other thread is interrupted, and the calling thread released with a <code>WebServiceRequestCancelledException</code>. However, depending on the JAX-WS implementor, the web request may still be running, because JAX-WS API does not support the cancellation of a web request.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="get-information-about-the-last-web-request"><a class="anchor" href="#get-information-about-the-last-web-request"></a>18.6.3. Get information about the last web request</h4>
+       <h4 id="get-information-about-the-last-web-request"><a class="anchor" href="#get-information-about-the-last-web-request"></a>19.6.3. Get information about the last web request</h4>
        <div class="paragraph">
         <p>The invocation context allows you to access HTTP status code and HTTP headers of the last web request.</p>
        </div>
@@ -8165,7 +8277,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="propagate-state-to-handlers"><a class="anchor" href="#propagate-state-to-handlers"></a>18.6.4. Propagate state to Handlers</h4>
+       <h4 id="propagate-state-to-handlers"><a class="anchor" href="#propagate-state-to-handlers"></a>19.6.4. Propagate state to Handlers</h4>
        <div class="paragraph">
         <p>An invocation context can be associated with request context properties, which are propagated to handlers and JAX-WS implementor.</p>
        </div>
@@ -8191,11 +8303,11 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
         </table>
        </div>
        <div class="paragraph">
-        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 118</a>.</p>
+        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 120</a>.</p>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="install-handlers-and-provide-credentials-for-authentication"><a class="anchor" href="#install-handlers-and-provide-credentials-for-authentication"></a>18.6.5. Install handlers and provide credentials for authentication</h4>
+       <h4 id="install-handlers-and-provide-credentials-for-authentication"><a class="anchor" href="#install-handlers-and-provide-credentials-for-authentication"></a>19.6.5. Install handlers and provide credentials for authentication</h4>
        <div class="paragraph">
         <p>To install a handler, overwrite <code>execInstallHandlers</code> and add the handler to the given List. The handlers are invoked in the order as added to the handler-chain. By default, there is no handler installed.</p>
        </div>
@@ -8231,7 +8343,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jax-ws-client-correlation-id-propagation"><a class="anchor" href="#jax-ws-client-correlation-id-propagation"></a>18.6.6. JAX-WS Client Correlation ID Propagation</h4>
+       <h4 id="jax-ws-client-correlation-id-propagation"><a class="anchor" href="#jax-ws-client-correlation-id-propagation"></a>19.6.6. JAX-WS Client Correlation ID Propagation</h4>
        <div class="paragraph">
         <p>The current context&#x2019;s correlation ID can be forwarded to the consumed web service. Scout provides a handler that sets the <code>X-Scout-Correlation-Id</code> HTTP header on the outgoing request.</p>
        </div>
@@ -8259,7 +8371,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="jaxws.consumer.configuration"><a class="anchor" href="#jaxws.consumer.configuration"></a>18.6.7. Default configuration of WS-Clients</h4>
+       <h4 id="jaxws.consumer.configuration"><a class="anchor" href="#jaxws.consumer.configuration"></a>19.6.7. Default configuration of WS-Clients</h4>
        <div class="paragraph">
         <p>The following properties can be set globally for all WS-Clients. However, a WS-Client can overwrite any of this values.</p>
        </div>
@@ -8307,9 +8419,9 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
       </div>
      </div>
      <div class="sect2">
-      <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>18.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
+      <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>19.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
       <div class="paragraph">
-       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 110</a> for an example.</p>
+       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 112</a> for an example.</p>
       </div>
       <div class="paragraph">
        <p>See the adapter&#x2019;s JavaDoc for more detailed information.</p>
@@ -8403,9 +8515,9 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
       </table>
      </div>
      <div class="sect2">
-      <h3 id="jax-ws-appendix"><a class="anchor" href="#jax-ws-appendix"></a>18.8. JAX-WS Appendix</h3>
+      <h3 id="jax-ws-appendix"><a class="anchor" href="#jax-ws-appendix"></a>19.8. JAX-WS Appendix</h3>
       <div class="sect3">
-       <h4 id="PingWebService.wsdl"><a class="anchor" href="#PingWebService.wsdl"></a>18.8.1. PingWebService.wsdl</h4>
+       <h4 id="PingWebService.wsdl"><a class="anchor" href="#PingWebService.wsdl"></a>19.8.1. PingWebService.wsdl</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
@@ -8456,7 +8568,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="PingWebServicePortType.java"><a class="anchor" href="#PingWebServicePortType.java"></a>18.8.2. PingWebServicePortType.java</h4>
+       <h4 id="PingWebServicePortType.java"><a class="anchor" href="#PingWebServicePortType.java"></a>19.8.2. PingWebServicePortType.java</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FunctionalInterface</span>
@@ -8471,7 +8583,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="PingWebServicePortTypeEntryPoint.java"><a class="anchor" href="#PingWebServicePortTypeEntryPoint.java"></a>18.8.3. PingWebServicePortTypeEntryPoint.java</h4>
+       <h4 id="PingWebServicePortTypeEntryPoint.java"><a class="anchor" href="#PingWebServicePortTypeEntryPoint.java"></a>19.8.3. PingWebServicePortTypeEntryPoint.java</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Generated</span>(value = <span class="string"><span class="delimiter">"</span><span class="content">org.eclipse.scout.jaxws.apt.JaxWsAnnotationProcessor</span><span class="delimiter">"</span></span>, date = <span class="string"><span class="delimiter">"</span><span class="content">2016-01-25T14:22:58:583+0100</span><span class="delimiter">"</span></span>, comments = <span class="string"><span class="delimiter">"</span><span class="content">EntryPoint to run webservice requests on behalf of a RunContext</span><span class="delimiter">"</span></span>)
@@ -8504,7 +8616,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="PingWebServicePortTypeBean.java"><a class="anchor" href="#PingWebServicePortTypeBean.java"></a>18.8.4. PingWebServicePortTypeBean.java</h4>
+       <h4 id="PingWebServicePortTypeBean.java"><a class="anchor" href="#PingWebServicePortTypeBean.java"></a>19.8.4. PingWebServicePortTypeBean.java</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -8518,7 +8630,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
       </div>
       <div class="sect3">
-       <h4 id="settings_org.eclipse.jdt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.core.prefs"></a>18.8.5. .settings/org.eclipse.jdt.core.prefs file to enable APT in Eclipse IDE</h4>
+       <h4 id="settings_org.eclipse.jdt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.core.prefs"></a>19.8.5. .settings/org.eclipse.jdt.core.prefs file to enable APT in Eclipse IDE</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml">...
@@ -8528,7 +8640,7 @@ org.eclipse.jdt.core.compiler.processAnnotations=enabled
        </div>
       </div>
       <div class="sect3">
-       <h4 id="settings_org.eclipse.jdt.apt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.apt.core.prefs"></a>18.8.6. .settings/org.eclipse.jdt.apt.core.prefs file to enable APT in Eclipse IDE</h4>
+       <h4 id="settings_org.eclipse.jdt.apt.core.prefs"><a class="anchor" href="#settings_org.eclipse.jdt.apt.core.prefs"></a>19.8.6. .settings/org.eclipse.jdt.apt.core.prefs file to enable APT in Eclipse IDE</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml">org.eclipse.jdt.apt.aptEnabled=true
@@ -8539,7 +8651,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="factorypath"><a class="anchor" href="#factorypath"></a>18.8.7. .factorypath file to enable APT in Eclipse IDE</h4>
+       <h4 id="factorypath"><a class="anchor" href="#factorypath"></a>19.8.7. .factorypath file to enable APT in Eclipse IDE</h4>
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- Replace 'XXX-VERSION-XXX' by the respective Scout RT version --&gt;</span>
@@ -8555,7 +8667,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="IAuthenticationMethod"><a class="anchor" href="#IAuthenticationMethod"></a>18.8.8. Authentication Method</h4>
+       <h4 id="IAuthenticationMethod"><a class="anchor" href="#IAuthenticationMethod"></a>19.8.8. Authentication Method</h4>
        <div class="paragraph">
         <p>The authentication method specifies the protocol to challenge the webservice client to provide credentials.<br> Scout provides an implementation for <em>BASIC</em> and <em>WSSE_UsernameToken</em>. You can implement your own authentication method by implementing <code>IAuthenticationMethod</code> interface.</p>
        </div>
@@ -8585,7 +8697,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="ICredentialVerifier"><a class="anchor" href="#ICredentialVerifier"></a>18.8.9. Credential Verifier</h4>
+       <h4 id="ICredentialVerifier"><a class="anchor" href="#ICredentialVerifier"></a>19.8.9. Credential Verifier</h4>
        <div class="paragraph">
         <p>Verifies user&#x2019;s credentials against a data source like <em>database</em>, <em>config.properties</em>, <em>Active Directory</em>, or others.<br> Scout provides an implementation for verification against users in <em>config.properties</em>. You can implement your own verifier by implementing <code>ICredentialVerifier</code> interface.</p>
        </div>
@@ -8622,7 +8734,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>19. Scout JS</h2>
+    <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>20. Scout JS</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>Scout JS is the technology used by Scout to render your application. The client model defined using Java code is sent to the browser where Scout JS comes into action by taking that model and generating HTML elements.</p>
@@ -8633,13 +8745,13 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="how-tos"><a class="anchor" href="#how-tos"></a>20. How-Tos</h2>
+    <h2 id="how-tos"><a class="anchor" href="#how-tos"></a>21. How-Tos</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>This chapter provides various small technical guides to very specific Scout subjects.</p>
      </div>
      <div class="sect2">
-      <h3 id="smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"><a class="anchor" href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"></a>20.1. SmartField: how to apply colors and styles from a lookup-row</h3>
+      <h3 id="smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"><a class="anchor" href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"></a>21.1. SmartField: how to apply colors and styles from a lookup-row</h3>
       <div class="paragraph">
        <p>When a user selects a lookup-row from the proposal chooser in Scout versions &#x21d0; 6.0, the properties <code>foregroundColor</code>, <code>backgroundColor</code>, <code>font</code> and <code>tooltipText</code> have been automatically copied from the lookup-row to the field. In some cases this was exactly what a specific application needed, but in other cases it was hard to implement a specific behavior without overriding internal methods from the <code>SmartField</code>. For instance it was not possible to have a lookup-row with background-color red in the proposal-chooser and at the same time avoid the background-color of the field changing to red, when that row was being selected.</p>
       </div>
@@ -8648,7 +8760,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 127. Java example, set the background-color of the lookup-row on the field
+        Listing 129. Java example, set the background-color of the lookup-row on the field
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
@@ -8671,7 +8783,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 128. LESS example, style lookup-row and field with the same CSS class
+        Listing 130. LESS example, style lookup-row and field with the same CSS class
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="less">.form-field.public &gt; .field, .table-row.public {
