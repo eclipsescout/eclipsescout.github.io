@@ -586,6 +586,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#collapse-style-bottom">Collapse style 'bottom'</a></li>
        <li><a href="#property-visible">Property 'visible'</a></li>
       </ul> </li>
+     <li><a href="#data-objects-equals-and-hashcode-since-8-0-0-036">Data Objects: Equals and HashCode (since 8.0.0.036)</a></li>
     </ul>
    </div>
   </div>
@@ -1145,16 +1146,33 @@ The dogs bark</pre>
       <div class="paragraph">
        <p>The property <code>visible</code> in the Java model was migrated from a <code>boolean</code> to a <code>byte</code> type to achieve multiple dimension support for the visibility of a group (see also <a href="https://eclipsescout.github.io/9.0/technical-guide.html#multiple-dimensions-support" class="bare">https://eclipsescout.github.io/9.0/technical-guide.html#multiple-dimensions-support</a>).</p>
       </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/9.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="data-objects-equals-and-hashcode-since-8-0-0-036"><a class="anchor" href="#data-objects-equals-and-hashcode-since-8-0-0-036"></a>Data Objects: Equals and HashCode (since 8.0.0.036)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Data Object base class <code>DoEntity</code> was extended with a generic <code>equals()</code> and <code>hashCode()</code> implementation considering all attributes of a data object for equality. A data object is equals to another data object, if the Java class of both data objects is identical and the attribute maps (including their nested values) of both data objects are equals.</p>
+     </div>
+     <div class="paragraph">
+      <p>For futher details see:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoEntity.equals(Object)</code></p> </li>
+       <li> <p><code>org.eclipse.scout.rt.platform.dataobject.DoNode.equals(Object)</code></p> </li>
+      </ul>
+     </div>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/9.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
     </div>
    </div>
