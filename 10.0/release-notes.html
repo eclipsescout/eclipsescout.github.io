@@ -547,6 +547,8 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#groupbox-new-menubar-position-title">GroupBox: New MenuBar Position TITLE</a></li>
        <li><a href="#tilegrid-groups-show-loading-state-per-group">TileGrid Groups: Show Loading State per Group</a></li>
+       <li><a href="#radiobutton-and-checkbox-wrap-text">RadioButton and CheckBox: Wrap Text</a></li>
+       <li><a href="#button-support-for-html-and-binary-resources">Button: Support for HTML and Binary Resources</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -670,6 +672,33 @@ table.CodeRay td.code>pre{padding:0}
       <div class="imageblock">
        <div class="content">
         <img src="images/tile_grid_group_loading.gif" alt="tile grid group loading">
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="radiobutton-and-checkbox-wrap-text"><a class="anchor" href="#radiobutton-and-checkbox-wrap-text"></a>RadioButton and CheckBox: Wrap Text</h3>
+      <div class="paragraph">
+       <p>Both widgets <code>RadioButton</code> and <code>CheckBox</code> (aka BooleanField), now support the <code>wrapText</code> property. This means a radio button or a check box can have a label with a long text on multiple lines. In order to see the wrapped text, the field must have a <code>gridH</code> &gt; 1 or set the <code>gridUseUiHeight</code> property to true.</p>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/check_box_text_wrap.png" alt="check box text wrap">
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="button-support-for-html-and-binary-resources"><a class="anchor" href="#button-support-for-html-and-binary-resources"></a>Button: Support for HTML and Binary Resources</h3>
+      <div class="paragraph">
+       <p>The <code>Button</code> now supports the property <code>htmlEnabled</code> which allows to use HTML in the label part of the button. You can even reference binary resources in your HTML. Simply call the method <code>AbstractButton#setAttachments(Collection&lt;? extends BinaryResource&gt;)</code> and define a reference, say an image URL, in your label HTML:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">binaryResource:business-card.jpg</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span></code></pre>
+       </div>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/button_html_enabled.png" alt="button html enabled">
        </div>
       </div>
       <div class="admonitionblock tip">
