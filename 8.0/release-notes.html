@@ -625,6 +625,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#interface-iid">Interface IID</a></li>
        <li><a href="#serialization-deserialization">Serialization / Deserialization</a></li>
       </ul> </li>
+     <li><a href="#dataobjecttesthelper-deprecated-moved-to-scoutassert-since-8-0-0-036">DataObjectTestHelper deprecated, moved to ScoutAssert (since 8.0.0.036)</a></li>
     </ul>
    </div>
   </div>
@@ -699,6 +700,7 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p><a href="#rest-application-contributions-since-8-0-0-035"><em>Rest Application Contributions (since 8.0.0.035)</em></a></p> </li>
          <li> <p><a href="#data-objects-equals-and-hashcode-since-8-0-0-036"><em>Data Objects: Equals and HashCode (since 8.0.0.036)</em></a></p> </li>
          <li> <p><a href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"><em>New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</em></a></p> </li>
+         <li> <p><a href="#DataObjectTestHelper deprecated">moved to ScoutAssert (since 8.0.0.036)</a></p> </li>
         </ul>
        </div>
       </div>
@@ -1667,16 +1669,30 @@ table.CodeRay td.code>pre{padding:0}
       <div class="paragraph">
        <p>All instances of <code>IEnum</code> and <code>IId</code> may be used within data objects and automatically serialized to their JSON string representation and deserialized back to the correct Java class.</p>
       </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/8.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="dataobjecttesthelper-deprecated-moved-to-scoutassert-since-8-0-0-036"><a class="anchor" href="#dataobjecttesthelper-deprecated-moved-to-scoutassert-since-8-0-0-036"></a>DataObjectTestHelper deprecated, moved to ScoutAssert (since 8.0.0.036)</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <code>org.eclipse.scout.rt.testing.platform.dataobject.DataObjectTestHelper</code> was deprecated and a consolidated set of methods were moved to <code>org.eclipse.scout.rt.testing.platform.util.ScoutAssert</code>. Use the following methods to compare data objects:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><code>org.eclipse.scout.rt.testing.platform.util.ScoutAssert.assertEqualsWithComparisonFailure(Object, Object)</code></p> </li>
+       <li> <p><code>org.eclipse.scout.rt.testing.platform.util.ScoutAssert.assertEqualsWithComparisonFailure(Object, Object)</code></p> </li>
+      </ul>
+     </div>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/8.0.x/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
     </div>
    </div>
