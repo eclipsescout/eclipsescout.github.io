@@ -550,6 +550,11 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#radiobutton-and-checkbox-wrap-text">RadioButton and CheckBox: Wrap Text</a></li>
        <li><a href="#button-support-for-html-and-binary-resources">Button: Support for HTML and Binary Resources</a></li>
       </ul> </li>
+     <li><a href="#data-objects">Data Objects</a>
+      <ul class="sectlevel2">
+       <li><a href="#renamings">Renamings</a></li>
+       <li><a href="#dependencies">Dependencies</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -700,6 +705,32 @@ table.CodeRay td.code>pre{padding:0}
        <div class="content">
         <img src="images/button_html_enabled.png" alt="button html enabled">
        </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="data-objects"><a class="anchor" href="#data-objects"></a>Data Objects</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The Scout data object support was moved from the Scout platform to the module <code>org.eclipse.scout.rt.dataobject</code>. The package imports of all data object related classes therefore changed: From <code>org.eclipse.scout.rt.platform.dataobject</code> to <code>org.eclipse.scout.rt.dataobject</code></p>
+     </div>
+     <div class="sect2">
+      <h3 id="renamings"><a class="anchor" href="#renamings"></a>Renamings</h3>
+      <div class="paragraph">
+       <p><code>org.eclipse.scout.rt.client.ui.desktop.datachange.DoChangeEvent</code> &#x2192; <code>org.eclipse.scout.rt.client.ui.desktop.datachange.ItemDataChangeEvent</code></p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="dependencies"><a class="anchor" href="#dependencies"></a>Dependencies</h3>
+      <div class="paragraph">
+       <p>All modules which use data objects were extended with a dependency to <code>org.eclipse.scout.rt.dataobject</code></p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>org.eclipse.scout.rt.rest</code></p> </li>
+        <li> <p><code>org.eclipse.scout.rt.mom.api</code></p> </li>
+       </ul>
       </div>
       <div class="admonitionblock tip">
        <table>
