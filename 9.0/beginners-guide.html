@@ -3999,21 +3999,16 @@ contacts.superuser=system</code></pre>
         <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridH() {
           <span class="keyword">return</span> <span class="integer">5</span>;
         }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredAutoFit() {
+          <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredImageId() {
+          <span class="keyword">return</span> Icons.Person;
+        }
         <span class="directive">protected</span> <span class="type">void</span> updateImage(<span class="predefined-type">String</span> url) {
-          clearErrorStatus(); <i class="conum" data-value="4"></i><b>(4)</b>
-          <span class="keyword">if</span> (url == <span class="predefined-constant">null</span>) {
-            setImage(<span class="predefined-constant">null</span>);
-          }
-          <span class="keyword">else</span> {
-            <span class="keyword">try</span> {
-              setImage(IOUtility.readFromUrl(<span class="keyword">new</span> <span class="predefined-type">URL</span>((<span class="predefined-type">String</span>) url)));
-              setAutoFit(<span class="predefined-constant">true</span>);
-            }
-            <span class="keyword">catch</span> (<span class="exception">Exception</span> e) { <i class="conum" data-value="5"></i><b>(5)</b>
-              <span class="predefined-type">String</span> message = TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">FailedToAccessImageFromUrl</span><span class="delimiter">"</span></span>);
-              addErrorStatus(<span class="keyword">new</span> Status(message, IStatus.WARNING));
-            }
-          }
+          setImageUrl(url);
         }
       }</code></pre>
         </div>
@@ -4023,7 +4018,7 @@ contacts.superuser=system</code></pre>
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>Sets the field invisible. An invisible field does not need space in the user interface.</td>
+           <td>Sets the field invisible. An invisible field does not occupy space in the user interface.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -4033,14 +4028,6 @@ contacts.superuser=system</code></pre>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
            <td>This method will be called when the value of the master field has changed.</td>
           </tr>
-          <tr>
-           <td><i class="conum" data-value="4"></i><b>4</b></td>
-           <td>Clears any field error status.</td>
-          </tr>
-          <tr>
-           <td><i class="conum" data-value="5"></i><b>5</b></td>
-           <td>Sets the field error status in case of an exception during the loading of the image.</td>
-          </tr>
          </tbody>
         </table>
        </div>
@@ -4048,11 +4035,23 @@ contacts.superuser=system</code></pre>
         <p>Using the combination of the <code>PictureField</code> and <code>PictureUrlField</code> as its master field has two benefits. First, having a field that contains the the URL makes sure that this information is also stored in the form data and second, the method <code>execChangedMasterValue</code> can then be used to trigger the refresh of the actual picture when the picture URL is changed.</p>
        </div>
        <div class="paragraph">
-        <p>The remaining fields for the general box can then be added using the Scout content assist or by copying <a href="#lst-contacts_general_fields">Listing 31</a> into the code below the picture field, again not forgetting the getters above the MainBox.</p>
+        <p>For security reasons, the browser is not allowed to load content from other servers by default. For our demo images, we add a well-considered exception. Open the <em>config.properties</em> file of your UI server project and make sure it contains the following line:</p>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 31. Content Security Policy Configuration (
+         <em>config.properties</em>)
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="text">scout.cspDirective[img-src]='self' www.gravatar.com wiki.eclipse.org upload.wikimedia.org</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>The remaining fields for the general box can then be added using the Scout content assist or by copying <a href="#lst-contacts_general_fields">Listing 32</a> into the code below the picture field, again not forgetting the getters above the MainBox.</p>
        </div>
        <div id="lst-contacts_general_fields" class="listingblock">
         <div class="title">
-         Listing 31. The other fields in the general box.
+         Listing 32. The other fields in the general box.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">30</span>)
@@ -4117,11 +4116,11 @@ contacts.superuser=system</code></pre>
         </ul>
        </div>
        <div class="paragraph">
-        <p>The "Notes" tab represented by the container field <code>NotesBox</code> only contains a single string field. This field will not need a label, span 4 rows of the logical grid and hold a multi line text according to <a href="#lst-contacts_notes_box">Listing 32</a>.</p>
+        <p>The "Notes" tab represented by the container field <code>NotesBox</code> only contains a single string field. This field will not need a label, span 4 rows of the logical grid and hold a multi line text according to <a href="#lst-contacts_notes_box">Listing 33</a>.</p>
        </div>
        <div id="lst-contacts_notes_box" class="listingblock">
         <div class="title">
-         Listing 32. The notes tab box with its multi line text field.
+         Listing 33. The notes tab box with its multi line text field.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">30</span>)
@@ -4156,11 +4155,11 @@ contacts.superuser=system</code></pre>
         <p>In the Scout default layout each form field uses up a single cell of the logical grid. Whenever we like to be more economical with the space occupied by several fields, we can work with a Scout sequence box. Inner fields of a sequence box will be arranged on a single row from left to right and the spacing between the inner fields will be minimal.</p>
        </div>
        <div class="paragraph">
-        <p>Taking advantage of these properties we implement the location box as a sequence field according to <a href="#lst-contacts_address_box">Listing 33</a>. To further optimize screen real estate we also switch to on-field labels for the city field and the country field.</p>
+        <p>Taking advantage of these properties we implement the location box as a sequence field according to <a href="#lst-contacts_address_box">Listing 34</a>. To further optimize screen real estate we also switch to on-field labels for the city field and the country field.</p>
        </div>
        <div id="lst-contacts_address_box" class="listingblock">
         <div class="title">
-         Listing 33. The content of the address box.
+         Listing 34. The content of the address box.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">        <span class="annotation">@Order</span>(<span class="integer">10</span>)
@@ -4290,11 +4289,11 @@ contacts.superuser=system</code></pre>
         <p>Form handler classes provide a number of callback methods that are invoked at various stages during the life cycle of the form. The implementation created by the Scout wizard includes the methods <code>execLoad</code> and <code>execStore</code> for each form handler. In these methods the form fetches data from the Scout backend application and/or sends new data to the backend server.</p>
        </div>
        <div class="paragraph">
-        <p>Adapt the default implementation of the form handlers according to <a href="#lst-contacts_form_handler">Listing 34</a>.</p>
+        <p>Adapt the default implementation of the form handlers according to <a href="#lst-contacts_form_handler">Listing 35</a>.</p>
        </div>
        <div id="lst-contacts_form_handler" class="listingblock">
         <div class="title">
-         Listing 34. The new handler and modify handler for the person form.
+         Listing 35. The new handler and modify handler for the person form.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PersonForm</span> <span class="directive">extends</span> AbstractForm {
@@ -4326,8 +4325,9 @@ contacts.superuser=system</code></pre>
       importFormData(formData);
     }
   }
-  <span class="directive">private</span> <span class="predefined-type">String</span> calculateSubTitle() {
-    <span class="keyword">return</span> StringUtility.join(<span class="string"><span class="delimiter">"</span><span class="content"> </span><span class="delimiter">"</span></span>, getFirstNameField().getValue(),
+  <span class="directive">protected</span> <span class="predefined-type">String</span> calculateSubTitle() {
+    <span class="keyword">return</span> StringUtility.join(<span class="string"><span class="delimiter">"</span><span class="content"> </span><span class="delimiter">"</span></span>,
+        getFirstNameField().getValue(),
         getLastNameField().getValue());
   }
 }</code></pre>
@@ -4368,17 +4368,17 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>With the implementation provided in <a href="#lst-contacts_form_handler">Listing 34</a> the classes <code>ModifyHandler</code> and <code>NewHandler</code> orchestrate the complete roundtrip between the frontend and the backend of the "Contacts" application.</p>
+        <p>With the implementation provided in <a href="#lst-contacts_form_handler">Listing 35</a> the classes <code>ModifyHandler</code> and <code>NewHandler</code> orchestrate the complete roundtrip between the frontend and the backend of the "Contacts" application.</p>
        </div>
        <div class="paragraph">
         <p>The only part that is now missing is the implementation of the form service methods <code>create</code>, <code>load</code> and <code>store</code> on the backend of the "Contacts" application. For these methods we can again rely on the default implementations created by the Scout new form wizard.</p>
        </div>
        <div class="paragraph">
-        <p>Modify the person service methods according to <a href="#lst-contacts_form_service">Listing 35</a>.</p>
+        <p>Modify the person service methods according to <a href="#lst-contacts_form_service">Listing 36</a>.</p>
        </div>
        <div id="lst-contacts_form_service" class="listingblock">
         <div class="title">
-         Listing 35. The PersonService methods to load, create and update person data.
+         Listing 36. The PersonService methods to load, create and update person data.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PersonService</span> <span class="directive">implements</span> IPersonService {
@@ -4474,11 +4474,11 @@ contacts.superuser=system</code></pre>
       <div class="sect3">
        <h4 id="sec-contacts_field_validation"><a class="anchor" href="#sec-contacts_field_validation"></a>4.7.1. Simple Form Field Validation</h4>
        <div class="paragraph">
-        <p>This section explains the form field validation on the level of a single field. As an example we will use the email address field defined in the "Contact Info" tab. The validation implemented in <a href="#lst-contacts_validate_email">Listing 36</a> checks the length and the format of the entered email address.</p>
+        <p>This section explains the form field validation on the level of a single field. As an example we will use the email address field defined in the "Contact Info" tab. The validation implemented in <a href="#lst-contacts_validate_email">Listing 37</a> checks the length and the format of the entered email address.</p>
        </div>
        <div id="lst-contacts_validate_email" class="listingblock">
         <div class="title">
-         Listing 36. The validation of the email field
+         Listing 37. The validation of the email field
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">        <span class="annotation">@Order</span>(<span class="integer">40</span>)
@@ -4551,11 +4551,11 @@ contacts.superuser=system</code></pre>
         </ul>
        </div>
        <div class="paragraph">
-        <p>The simplest rule is about entering only valid countries. This rule is already implemented as the country smart field only allows the user to select a single entry of the list of valid countries. A possible implementation to enforce the other rules is provided in <a href="#lst-contacts_validate_address">Listing 37</a>.</p>
+        <p>The simplest rule is about entering only valid countries. This rule is already implemented as the country smart field only allows the user to select a single entry of the list of valid countries. A possible implementation to enforce the other rules is provided in <a href="#lst-contacts_validate_address">Listing 38</a>.</p>
        </div>
        <div id="lst-contacts_validate_address" class="listingblock">
         <div class="title">
-         Listing 37. The validation of the fields in the address box
+         Listing 38. The validation of the fields in the address box
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">        <span class="annotation">@Order</span>(<span class="integer">10</span>)
@@ -4618,11 +4618,11 @@ contacts.superuser=system</code></pre>
         <p>The verification of user input can also be triggered before the form is closed. This behavior can be implemented by overriding method <code>execValidate</code> on the form level. As an example we use this mechanism to make sure that a user can only enter persons that have at least some name information.</p>
        </div>
        <div class="paragraph">
-        <p>Now add this validation to the person form using the implementation provided in <a href="#lst-contacts_validate_names">Listing 38</a>.</p>
+        <p>Now add this validation to the person form using the implementation provided in <a href="#lst-contacts_validate_names">Listing 39</a>.</p>
        </div>
        <div id="lst-contacts_validate_names" class="listingblock">
         <div class="title">
-         Listing 38. The validation of the first and last names on the form level
+         Listing 39. The validation of the first and last names on the form level
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PersonForm</span> <span class="directive">extends</span> AbstractForm {
@@ -4699,12 +4699,12 @@ contacts.superuser=system</code></pre>
          <li> <p>Expand the shared module of the "Contacts" application</p> </li>
          <li> <p>Navigate into folder <code>src/generated/java</code></p> </li>
          <li> <p>Add a new package <code>org.eclipse.scout.contacts.shared.common</code></p> </li>
-         <li> <p>Create class <code>AbstractUrlImageFieldData</code> in this package as shown in <a href="#lst-contacts_empty_form_data">Listing 39</a></p> </li>
+         <li> <p>Create class <code>AbstractUrlImageFieldData</code> in this package as shown in <a href="#lst-contacts_empty_form_data">Listing 40</a></p> </li>
         </ol>
        </div>
        <div id="lst-contacts_empty_form_data" class="listingblock">
         <div class="title">
-         Listing 39. The empty form data class for the picture template field.
+         Listing 40. The empty form data class for the picture template field.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.eclipse.scout.contacts.shared.common</span>;
@@ -4720,13 +4720,13 @@ contacts.superuser=system</code></pre>
          <li> <p>Navigate to the client module of the "Contacts" application</p> </li>
          <li> <p>Select package <code>org.eclipse.scout.contacts.client.common</code> in folder <code>src/main/java</code></p> </li>
          <li> <p>Create class <code>AbstractUrlImageField</code> using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p> </li>
-         <li> <p>Update the implementation according to <a href="#lst-contacts_refactor_picture">Listing 40</a></p> </li>
+         <li> <p>Update the implementation according to <a href="#lst-contacts_refactor_picture">Listing 41</a></p> </li>
          <li> <p>Fix the imports using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span></p> </li>
         </ol>
        </div>
        <div id="lst-contacts_refactor_picture" class="listingblock">
         <div class="title">
-         Listing 40. The refactored picture field.
+         Listing 41. The refactored picture field.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FormData</span>(value = AbstractUrlImageFieldData.class, <i class="conum" data-value="1"></i><b>(1)</b>
@@ -4751,21 +4751,16 @@ contacts.superuser=system</code></pre>
   <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridH() {
     <span class="keyword">return</span> <span class="integer">5</span>;
   }
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredAutoFit() {
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredImageId() {
+    <span class="keyword">return</span> Icons.Person;
+  }
   <span class="directive">protected</span> <span class="type">void</span> updateImage() {
-    clearErrorStatus();
-    <span class="keyword">if</span> (url == <span class="predefined-constant">null</span>) {
-      setImage(<span class="predefined-constant">null</span>);
-    }
-    <span class="keyword">else</span> {
-      <span class="keyword">try</span> {
-        setImage(IOUtility.readFromUrl(<span class="keyword">new</span> <span class="predefined-type">URL</span>((<span class="predefined-type">String</span>) url)));
-        setAutoFit(<span class="predefined-constant">true</span>);
-      }
-      <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
-        addErrorStatus(<span class="keyword">new</span> Status(TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">FailedToAccessImageFromUrl</span><span class="delimiter">"</span></span>), IStatus.WARNING));
-      }
-    }
-    getForm().touch();
+    setImageUrl(<span class="local-variable">this</span>.url);
   }
 }</code></pre>
         </div>
@@ -4785,11 +4780,11 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>The next step is to replace the original code of the picture field with the newly created template field. As the functionality of the template field exactly matches with the original code, class <code>PictureField</code> only needs to extend the newly created template field as shown in <a href="#lst-contacts_picture_exends_urlimagefield">Listing 41</a>.</p>
+        <p>The next step is to replace the original code of the picture field with the newly created template field. As the functionality of the template field exactly matches with the original code, class <code>PictureField</code> only needs to extend the newly created template field as shown in <a href="#lst-contacts_picture_exends_urlimagefield">Listing 42</a>.</p>
        </div>
        <div id="lst-contacts_picture_exends_urlimagefield" class="listingblock">
         <div class="title">
-         Listing 41. The refactored picture field.
+         Listing 42. The refactored picture field.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Order</span>(<span class="integer">10</span>)
@@ -4850,11 +4845,11 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>Now adapt the content of the URL form according to <a href="#lst-contacts_form_pictureurl">Listing 42</a>. As you can see, there is no roundtrip to a backend server and the form only contains a single editable field.</p>
+        <p>Now adapt the content of the URL form according to <a href="#lst-contacts_form_pictureurl">Listing 43</a>. As you can see, there is no roundtrip to a backend server and the form only contains a single editable field.</p>
        </div>
        <div id="lst-contacts_form_pictureurl" class="listingblock">
         <div class="title">
-         Listing 42. The form to edit the picture URL
+         Listing 43. The form to edit the picture URL
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PictureUrlForm</span> <span class="directive">extends</span> AbstractForm {
@@ -4868,6 +4863,9 @@ contacts.superuser=system</code></pre>
   <span class="directive">public</span> UrlField getUrlField() {
     <span class="keyword">return</span> getFieldByClass(UrlField.class);
   }
+  <span class="directive">public</span> InfoField getInfoField() {
+    <span class="keyword">return</span> getFieldByClass(InfoField.class);
+  }
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox {
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
@@ -4877,6 +4875,37 @@ contacts.superuser=system</code></pre>
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredLabelVisible() { <i class="conum" data-value="1"></i><b>(1)</b>
           <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredStatusVisible() {
+          <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridW() {
+          <span class="keyword">return</span> <span class="integer">2</span>;
+        }
+      }
+      <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="directive">public</span> <span class="type">class</span> <span class="class">InfoField</span> <span class="directive">extends</span> AbstractHtmlField {
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredLabelVisible() {
+          <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredStatusVisible() {
+          <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridW() {
+          <span class="keyword">return</span> <span class="integer">2</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredGridUseUiHeight() {
+          <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+        }
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> <span class="type">void</span> execInitField() {
+          setValue(<span class="predefined-type">HTML</span>.fragment(<span class="predefined-type">HTML</span>.icon(Icons.Info), <span class="predefined-type">HTML</span>.bold(<span class="string"><span class="delimiter">"</span><span class="content"> </span><span class="delimiter">"</span></span> + TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">PleaseNote</span><span class="delimiter">"</span></span>) + <span class="string"><span class="delimiter">"</span><span class="content">: </span><span class="delimiter">"</span></span>), TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">SecurityUrlRestrictedMsg</span><span class="delimiter">"</span></span>)).toHtml());
         }
       }
     }
@@ -4907,11 +4936,11 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>We can now add an "Edit URL" menu to the picture template field. The implementation of the edit context menu is provided in <a href="#lst-contacts_picture_edit_menu">Listing 43</a>.</p>
+        <p>We can now add an "Edit URL" menu to the picture template field. The implementation of the edit context menu is provided in <a href="#lst-contacts_picture_edit_menu">Listing 44</a>.</p>
        </div>
        <div id="lst-contacts_picture_edit_menu" class="listingblock">
         <div class="title">
-         Listing 43. The "Edit URL" menu for the refactored picture field
+         Listing 44. The "Edit URL" menu for the refactored picture field
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
@@ -4924,7 +4953,7 @@ contacts.superuser=system</code></pre>
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;? <span class="directive">extends</span> IMenuType&gt; getConfiguredMenuTypes() {
       <span class="keyword">return</span> CollectionUtility.&lt;IMenuType&gt; hashSet(
-          ImageFieldMenuType.Image,
+          ImageFieldMenuType.ImageUrl,
           ImageFieldMenuType.Null);
     }
     <span class="annotation">@Override</span>
@@ -4938,6 +4967,7 @@ contacts.superuser=system</code></pre>
       form.waitFor(); <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="keyword">if</span> (form.isFormStored()) { <i class="conum" data-value="3"></i><b>(3)</b>
         setUrl(form.getUrlField().getValue());
+        getForm().touch();
       }
     }
   }
@@ -5070,11 +5100,11 @@ contacts.superuser=system</code></pre>
        </ol>
       </div>
       <div class="paragraph">
-       <p>After creating the initial form class using Scout&#x2019;s new form wizard the form layout can be implemented according to <a href="#lst-contacts_organization">Listing 44</a>.</p>
+       <p>After creating the initial form class using Scout&#x2019;s new form wizard the form layout can be implemented according to <a href="#lst-contacts_organization">Listing 45</a>.</p>
       </div>
       <div id="lst-contacts_organization" class="listingblock">
        <div class="title">
-        Listing 44. The layout implementation of the organization form
+        Listing 45. The layout implementation of the organization form
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationForm</span> <span class="directive">extends</span> AbstractForm {
@@ -5207,11 +5237,11 @@ contacts.superuser=system</code></pre>
        <p>To be able to open the organization form we need to link the form to the user interface. Following the pattern for the person form we define the context menus "Edit" and "New" for the organization table and a menu "Create new organization" under the "Quick access" top level menu.</p>
       </div>
       <div class="paragraph">
-       <p>The implementation of the organization form is completed by providing the logic to interact with the database in the organization service according to <a href="#lst-contacts_form_service_organization">Listing 45</a>. The technical setup exactly follows the implementation of the person service.</p>
+       <p>The implementation of the organization form is completed by providing the logic to interact with the database in the organization service according to <a href="#lst-contacts_form_service_organization">Listing 46</a>. The technical setup exactly follows the implementation of the person service.</p>
       </div>
       <div id="lst-contacts_form_service_organization" class="listingblock">
        <div class="title">
-        Listing 45. The OrganizationService methods to load, create and update organization data.
+        Listing 46. The OrganizationService methods to load, create and update organization data.
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationService</span> <span class="directive">implements</span> IOrganizationService {
@@ -5324,11 +5354,11 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>The Scout wizard will then create the lookup class <code>OrganizationLookupCall</code> and the corresponding lookup service with the interface <code>IOrganizationLookupService</code> and its initial implementation <code>OrganizationLookupService</code>. We will only need to provide some implementation for the lookup service. The service interface and the lookup call class can be used as provided by the Scout wizard. <a href="#lst-contacts_lookup_call_organization">Listing 46</a> shows the code generated for the lookup call</p>
+        <p>The Scout wizard will then create the lookup class <code>OrganizationLookupCall</code> and the corresponding lookup service with the interface <code>IOrganizationLookupService</code> and its initial implementation <code>OrganizationLookupService</code>. We will only need to provide some implementation for the lookup service. The service interface and the lookup call class can be used as provided by the Scout wizard. <a href="#lst-contacts_lookup_call_organization">Listing 47</a> shows the code generated for the lookup call</p>
        </div>
        <div id="lst-contacts_lookup_call_organization" class="listingblock">
         <div class="title">
-         Listing 46. The OrganizationLookupCall implemented by the Scout wizard.
+         Listing 47. The OrganizationLookupCall implemented by the Scout wizard.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationLookupCall</span> <span class="directive">extends</span> LookupCall&lt;<span class="predefined-type">String</span>&gt; {
@@ -5341,11 +5371,11 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>We are now ready to implement method <code>getConfiguredSqlSelect</code> of the organization lookup service. Open class <code>OrganizationLookupService</code> in the Java editor and change the implementation according to <a href="#lst-contacts_lookup_service_organization">Listing 47</a>.</p>
+        <p>We are now ready to implement method <code>getConfiguredSqlSelect</code> of the organization lookup service. Open class <code>OrganizationLookupService</code> in the Java editor and change the implementation according to <a href="#lst-contacts_lookup_service_organization">Listing 48</a>.</p>
        </div>
        <div id="lst-contacts_lookup_service_organization" class="listingblock">
         <div class="title">
-         Listing 47. The OrganizationService methods to load, create and update organization data.
+         Listing 48. The OrganizationService methods to load, create and update organization data.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationLookupService</span>
@@ -5369,11 +5399,11 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>The SQL statement that backs the lookup service is provided in <a href="#lst-contacts_lookup_service_sql">Listing 48</a>. Lookup services can provide data for three different use cases. The most straightforward case is the mapping of a key to a specific lookup row. Next is the case where the lookup service returns a number of lookup rows that match a provided substring and finally the case where the lookup service simply returns all available rows.</p>
+        <p>The SQL statement that backs the lookup service is provided in <a href="#lst-contacts_lookup_service_sql">Listing 49</a>. Lookup services can provide data for three different use cases. The most straightforward case is the mapping of a key to a specific lookup row. Next is the case where the lookup service returns a number of lookup rows that match a provided substring and finally the case where the lookup service simply returns all available rows.</p>
        </div>
        <div id="lst-contacts_lookup_service_sql" class="listingblock">
         <div class="title">
-         Listing 48. The SQL statement to provide the data for the organization lookup service.
+         Listing 49. The SQL statement to provide the data for the organization lookup service.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">  <span class="predefined-type">String</span> ORGANIZATION_LOOKUP = <span class="string"><span class="delimiter">"</span><span class="delimiter">"</span></span>
@@ -5408,11 +5438,11 @@ contacts.superuser=system</code></pre>
       <div class="sect3">
        <h4 id="sec-contacts_modify_person_form_and_page"><a class="anchor" href="#sec-contacts_modify_person_form_and_page"></a>4.9.2. Using the Lookup Call in the Person Form and the Person Table</h4>
        <div class="paragraph">
-        <p>Now we can use the organization lookup call to transform the organization field in the "Work" tab of the person form into a smart field. To do this we open class <code>PersonForm</code> in the Java editor and navigate to its inner class <code>WorkBox</code>. Then, update the implementation of the OrganizationField according to <a href="#lst-contacts_organization_smart_field">Listing 49</a></p>
+        <p>Now we can use the organization lookup call to transform the organization field in the "Work" tab of the person form into a smart field. To do this we open class <code>PersonForm</code> in the Java editor and navigate to its inner class <code>WorkBox</code>. Then, update the implementation of the OrganizationField according to <a href="#lst-contacts_organization_smart_field">Listing 50</a></p>
        </div>
        <div id="lst-contacts_organization_smart_field" class="listingblock">
         <div class="title">
-         Listing 49. The organization smart field in the "Work" tab backed by the OrganizationLookupCall.
+         Listing 50. The organization smart field in the "Work" tab backed by the OrganizationLookupCall.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">20</span>)
@@ -5449,11 +5479,11 @@ contacts.superuser=system</code></pre>
         <p>This change has the effect, that now we can assign an organization in the person form by typing a substring of the organizations name into the organization field. The conversion of the field into a smart field has the additional benefit that only valid organizations can be selected that respect the referential integrity defined by the database.</p>
        </div>
        <div class="paragraph">
-        <p>As a next step we also modify the organization column of the person page. For this open class <code>PersonTablePage</code> in the Java editor and navigate to its inner class <code>Table</code>. Then, change the implementation of <code>OrganizationColumn</code> according to <a href="#lst-contacts_organization_smart_column">Listing 50</a>.</p>
+        <p>As a next step we also modify the organization column of the person page. For this open class <code>PersonTablePage</code> in the Java editor and navigate to its inner class <code>Table</code>. Then, change the implementation of <code>OrganizationColumn</code> according to <a href="#lst-contacts_organization_smart_column">Listing 51</a>.</p>
        </div>
        <div id="lst-contacts_organization_smart_column" class="listingblock">
         <div class="title">
-         Listing 50. The organization smart column in the person page.
+         Listing 51. The organization smart column in the person page.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">  <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
@@ -5514,11 +5544,11 @@ contacts.superuser=system</code></pre>
         <p>For the "Contacts" tutorial application we will create the exact same structure but only add the person page as child page to the organization node page.</p>
        </div>
        <div class="paragraph">
-        <p>To implement this sequence of linked pages we will follow the dependencies of the linked classes. We start with adapting method <code>getPersonTableData</code> in the person service by adding an organization id parameter. Using this parameter we can then restrict the person search to the subset that is linked to the specified organization. For this change we first update the person service interface as shown in <a href="#lst-contacts_ipersonservice">Listing 51</a>.</p>
+        <p>To implement this sequence of linked pages we will follow the dependencies of the linked classes. We start with adapting method <code>getPersonTableData</code> in the person service by adding an organization id parameter. Using this parameter we can then restrict the person search to the subset that is linked to the specified organization. For this change we first update the person service interface as shown in <a href="#lst-contacts_ipersonservice">Listing 52</a>.</p>
        </div>
        <div id="lst-contacts_ipersonservice" class="listingblock">
         <div class="title">
-         Listing 51. The updated method
+         Listing 52. The updated method
          <code>getPersonTableData</code> for the person service interface.
         </div>
         <div class="content">
@@ -5543,11 +5573,11 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>We now adapt the method implementation in the person service according to <a href="#lst-contacts_personservice_organization">Listing 52</a>.</p>
+        <p>We now adapt the method implementation in the person service according to <a href="#lst-contacts_personservice_organization">Listing 53</a>.</p>
        </div>
        <div id="lst-contacts_personservice_organization" class="listingblock">
         <div class="title">
-         Listing 52. Method getPersonTableData to access the database and map the data into a page data object.
+         Listing 53. Method getPersonTableData to access the database and map the data into a page data object.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PersonService</span> <span class="directive">implements</span> IPersonService {
@@ -5568,11 +5598,11 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>Having modified the person service we add a organization id property to the person page. We can then populate this property when the person page is attached to the company node page. Finally we can use in method <code>execLoadData</code> according to <a href="#lst-contacts_person_page_modification">Listing 53</a>.</p>
+        <p>Having modified the person service we add a organization id property to the person page. We can then populate this property when the person page is attached to the company node page. Finally we can use in method <code>execLoadData</code> according to <a href="#lst-contacts_person_page_modification">Listing 54</a>.</p>
        </div>
        <div id="lst-contacts_person_page_modification" class="listingblock">
         <div class="title">
-         Listing 53. Add the possibility to restrict the list of persons to those assigned to a specific organization.
+         Listing 54. Add the possibility to restrict the list of persons to those assigned to a specific organization.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(PersonTablePageData.class)
@@ -5624,7 +5654,7 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>In the cases where the modified person page is shown as a child page of the organization page we can now improve the usability of the page&#x2019;s new menu. When creating a person under an existing organization we create the new person with a pre-filled organization id. See the modified <code>execAction</code> method in <code>NewMenu</code> of <a href="#lst-contacts_person_page_modification">Listing 53</a>.</p>
+        <p>In the cases where the modified person page is shown as a child page of the organization page we can now improve the usability of the page&#x2019;s new menu. When creating a person under an existing organization we create the new person with a pre-filled organization id. See the modified <code>execAction</code> method in <code>NewMenu</code> of <a href="#lst-contacts_person_page_modification">Listing 54</a>.</p>
        </div>
        <div class="paragraph">
         <p>The next step in the setup of the page hierarchy is the creation of the organization node page. Node pages allow to define a list of child pages that typically represent different entities. As mentioned before we will only have the person page as a child page in the "Contacts" tutorial application.</p>
@@ -5652,11 +5682,11 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>After the wizard has created the initial implementation of the node page open class <code>OrganizationNodePage</code> in the Java editor and adapt its implementation according to <a href="#lst-contacts_organization_node_page">Listing 54</a>.</p>
+        <p>After the wizard has created the initial implementation of the node page open class <code>OrganizationNodePage</code> in the Java editor and adapt its implementation according to <a href="#lst-contacts_organization_node_page">Listing 55</a>.</p>
        </div>
        <div id="lst-contacts_organization_node_page" class="listingblock">
         <div class="title">
-         Listing 54. The complete implementation of the class
+         Listing 55. The complete implementation of the class
          <code>OrganizationNodePage</code>.
         </div>
         <div class="content">
@@ -5696,11 +5726,11 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>We have now created an organization node page that contains a person page as its child page. The only missing step to create the discussed page hierarchy is the link between the organization page with the organization node page. Create this missing link by adding method <code>execCreateChildPage</code> to the organization page as shown in <a href="#lst-contacts_organization_page_modification">Listing 55</a>.</p>
+        <p>We have now created an organization node page that contains a person page as its child page. The only missing step to create the discussed page hierarchy is the link between the organization page with the organization node page. Create this missing link by adding method <code>execCreateChildPage</code> to the organization page as shown in <a href="#lst-contacts_organization_page_modification">Listing 56</a>.</p>
        </div>
        <div id="lst-contacts_organization_page_modification" class="listingblock">
         <div class="title">
-         Listing 55. Add the organization node page as a child page to the organization page.
+         Listing 56. Add the organization node page as a child page to the organization page.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(OrganizationTablePageData.class)
@@ -6150,7 +6180,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
       </div>
       <div id="lst-tomcat.users" class="listingblock">
        <div class="title">
-        Listing 56. Tomcat Users configuration file.
+        Listing 57. Tomcat Users configuration file.
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;tomcat-users&gt;</span>
@@ -6160,7 +6190,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        </div>
       </div>
       <div class="paragraph">
-       <p>To get at user names and passwords you can open file <span class="filename">tomcat-users.xml</span> located in Tomcat&#x2019;s <span class="filename">conf</span> directory. In this file the active users with their passwords and associated roles are stored. See Listing <a href="#lst-tomcat.users">Listing 56</a> for an example. From the content of this file, we see that user <span class="java">admin</span> has password <span class="java">s3cret</span> and also posesses the necessary role <span class="java">manager-gui</span> to access the &#x201c;Manager App&#x201d;. If file <span class="filename">tomcat-users.xml</span> does not contain any user with this role, you can simply add new user with this role to the existing users. Alternatively, you also can add the necessary role to an existing user. Just append a comma to the existing right(s) followed by the string <span class="java">manager-gui</span>. Note that you will need to restart your Tomcat application after adapting the content of file <span class="filename">tomcat-users.xml</span>.</p>
+       <p>To get at user names and passwords you can open file <span class="filename">tomcat-users.xml</span> located in Tomcat&#x2019;s <span class="filename">conf</span> directory. In this file the active users with their passwords and associated roles are stored. See Listing <a href="#lst-tomcat.users">Listing 57</a> for an example. From the content of this file, we see that user <span class="java">admin</span> has password <span class="java">s3cret</span> and also posesses the necessary role <span class="java">manager-gui</span> to access the &#x201c;Manager App&#x201d;. If file <span class="filename">tomcat-users.xml</span> does not contain any user with this role, you can simply add new user with this role to the existing users. Alternatively, you also can add the necessary role to an existing user. Just append a comma to the existing right(s) followed by the string <span class="java">manager-gui</span>. Note that you will need to restart your Tomcat application after adapting the content of file <span class="filename">tomcat-users.xml</span>.</p>
       </div>
       <div class="paragraph">
        <p>With working credentials you can now start the &#x201c;Manager App&#x201d; as described the &#x201c;Hello World&#x201d; tutorial in <a href="#sec-helloworld_deploy">Section 2.5</a>.</p>
