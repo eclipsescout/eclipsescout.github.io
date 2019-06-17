@@ -684,10 +684,18 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#jaxws.xmladapters">18.7. XML adapters to work with java.util.Date and java.util.Calendar</a></li>
        <li><a href="#jax-ws-appendix">18.8. JAX-WS Appendix</a></li>
       </ul> </li>
-     <li><a href="#scout-js">19. Scout JS</a></li>
-     <li><a href="#how-tos">20. How-Tos</a>
+     <li><a href="#smtphelper">19. SmtpHelper</a>
       <ul class="sectlevel2">
-       <li><a href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row">20.1. SmartField: how to apply colors and styles from a lookup-row</a></li>
+       <li><a href="#smtpserverconfig">19.1. SmtpServerConfig</a></li>
+       <li><a href="#sending-messages">19.2. Sending messages</a></li>
+       <li><a href="#smtphelper-configuration">19.3. SmtpHelper Configuration</a></li>
+       <li><a href="#connection-pooling-chapter">19.4. Connection Pooling</a></li>
+       <li><a href="#smtpconnectionpool-configuration">19.5. SmtpConnectionPool Configuration</a></li>
+      </ul> </li>
+     <li><a href="#scout-js">20. Scout JS</a></li>
+     <li><a href="#how-tos">21. How-Tos</a>
+      <ul class="sectlevel2">
+       <li><a href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row">21.1. SmartField: how to apply colors and styles from a lookup-row</a></li>
       </ul> </li>
      <li><a href="#apx-cclicence">Appendix A: Licence and Copyright</a>
       <ul class="sectlevel2">
@@ -8835,7 +8843,291 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>19. Scout JS</h2>
+    <h2 id="smtphelper"><a class="anchor" href="#smtphelper"></a>19. SmtpHelper</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <code>org.eclipse.scout.rt.mail.smtp.SmtpHelper</code> is an <code>@ApplicationScoped</code> Bean that provides means of sending emails described by <code>javax.mail.internet.MimeMessage</code> objects via SMTP. The SMTP connection can either be provided as a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object containing all the required connection parameters or as an already created <code>javax.mail.Session</code> object. The <code>SmtpHelper</code> also supports pooling of SMTP connections as described in the section <a href="#connection-pooling-chapter">Section 19.4</a>.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="smtpserverconfig"><a class="anchor" href="#smtpserverconfig"></a>19.1. SmtpServerConfig</h3>
+      <div class="paragraph">
+       <p>The <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> class allows to specify details of an SMTP connection to be made. It supports the following properties:</p>
+      </div>
+      <table class="tableblock frame-all grid-all stretch">
+       <colgroup>
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3334%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">Property</th>
+         <th class="tableblock halign-left valign-top">Description</th>
+         <th class="tableblock halign-left valign-top">Example</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">The hostname or ip address of the SMTP server to use.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost</code> or <code>192.168.10.199</code>.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">port</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">The TCP port the SMTP server listens on.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">E.g. 25 or 465.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">username</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">The username to use for authentication.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">The password to use for authentication.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">useAuthentication</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use authentication or not. This setting is only effective, if a username has been provided.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">useSmtps</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">If true, the protocol will be 'smtps', else the protocol will be 'smtp'.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">useStartTls</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">If true, STARTTLS will be used to create the connection to the SMTP server.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">sslProtocols</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Limits the SSL protocols to support when connecting to the SMTP server. The value is a space separated list of protocol names returned by the <code>javax.net.ssl.SSLSocket.getSupportedProtocols()</code> method.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">E.g. "TLSv1.1 TLSv1.2"</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">additionalSessionProperties</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Can be used to specify any other property for the <code>javax.mail.Session</code> that is created from <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>. These additional properties are applied after all the other properties, thus may override already specified properties.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">"mail.smtp.socketFactory.class": "com.example.net.SocketFactory"</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">poolSize</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Allows to specify the size of the connection pool for this <code>SmtpServerConfig</code>. The Default value is 0 which effectively deactives connection pooling.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">maxMessagesPerConnection</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Allows to specify the max number of messages to be sent per connection when using connection pooling (<code>poolSize</code> &gt; 0). The default value is 0 which effectively disables limiting the maximum number of messages sent per connection. You should consult with the operator of the SMTP server you are using to define this value. Local mail servers probably allow less than 20 messages per connection, bigger white mailers may allow up to 100 or even more.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+        </tr>
+       </tbody>
+      </table>
+      <div class="paragraph">
+       <p><a href="#lst-SmtpServerConfig.example">Listing 129</a> demonstrates how to use the SmtpServerConfig class.</p>
+      </div>
+      <div id="lst-SmtpServerConfig.example" class="listingblock">
+       <div class="title">
+        Listing 129. Create and configure an instance of
+        <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@SuppressWarnings</span>(<span class="string"><span class="delimiter">"</span><span class="content">unused</span><span class="delimiter">"</span></span>)
+SmtpServerConfig smtpServerConfig = BEANS.get(SmtpServerConfig.class)
+    .withHost(<span class="string"><span class="delimiter">"</span><span class="content">mail.example.com</span><span class="delimiter">"</span></span>)
+    .withPort(<span class="integer">465</span>)
+    .withUsername(<span class="string"><span class="delimiter">"</span><span class="content">smtpuser</span><span class="delimiter">"</span></span>)
+    .withPassword(<span class="string"><span class="delimiter">"</span><span class="content">smtpuserpwd</span><span class="delimiter">"</span></span>)
+    .withUseAuthentication(<span class="predefined-constant">true</span>)
+    .withUseSmtps(<span class="predefined-constant">true</span>)
+    .withUseStartTls(<span class="predefined-constant">true</span>);</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="sending-messages"><a class="anchor" href="#sending-messages"></a>19.2. Sending messages</h3>
+      <div class="paragraph">
+       <p>Messages can be sent using the <code>sendMessage</code> Methods of the <code>SmtpHelper</code> class. In Order to prepare the message to be sent, Scout provides a number of classes and helpers:</p>
+      </div>
+      <table class="tableblock frame-all grid-all stretch">
+       <colgroup>
+        <col style="width: 50%;">
+        <col style="width: 50%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">Class</th>
+         <th class="tableblock halign-left valign-top">Description</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.mail.MailMessage</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Encapsulates all the information about a single mail message (sender, recipient, carbon-copy recipients, subject, body, attachments, etc.).</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.mail.MailParticipant</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Defines email address and name of a mail participant. A participant can be a recipient, a carbon-copy recipient, a blind-carbon-copy recipient, the sender and a replyTo contact.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.mail.MailAttachment</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Contains information about an email attachment.</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.mail.MailHelper</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Provides various helper methods around email bodies, attachments, etc.</p></td>
+        </tr>
+       </tbody>
+      </table>
+      <div class="paragraph">
+       <p><a href="#lst-SmtpHelper.prepareMimeMessage">Listing 130</a> shows the usage of the mentioned classes Scout provides in order to create a MimeMessage object.</p>
+      </div>
+      <div id="lst-SmtpHelper.prepareMimeMessage" class="listingblock">
+       <div class="title">
+        Listing 130. Create
+        <code>org.eclipse.scout.rt.mail.CharsetSafeMimeMessage</code> object
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// create BinaryResource for an attachment.</span>
+BinaryResource screenshotResource = BinaryResources.create()
+    .withFilename(<span class="string"><span class="delimiter">"</span><span class="content">screenshot.jpg</span><span class="delimiter">"</span></span>)
+    .withContentType(<span class="string"><span class="delimiter">"</span><span class="content">image/jpeg</span><span class="delimiter">"</span></span>)
+    .withContent(bytes)
+    .build();
+<span class="comment">// wrap BinaryResource in MailAttachment</span>
+MailAttachment screenshotAttachment = <span class="keyword">new</span> MailAttachment(screenshotResource);
+<span class="comment">// prepare Scout MailMessage</span>
+MailMessage mailMessage = BEANS.get(MailMessage.class)
+    .withSender(BEANS.get(MailParticipant.class).withName(<span class="string"><span class="delimiter">"</span><span class="content">sender</span><span class="delimiter">"</span></span>).withEmail(<span class="string"><span class="delimiter">"</span><span class="content">me@example.com</span><span class="delimiter">"</span></span>))
+    .addToRecipient(BEANS.get(MailParticipant.class).withName(<span class="string"><span class="delimiter">"</span><span class="content">recipient</span><span class="delimiter">"</span></span>).withEmail(<span class="string"><span class="delimiter">"</span><span class="content">somebody@example.com</span><span class="delimiter">"</span></span>))
+    .withAttachment(screenshotAttachment)
+    .withSubject(<span class="string"><span class="delimiter">"</span><span class="content">Screenshot</span><span class="delimiter">"</span></span>)
+    .withBodyPlainText(<span class="string"><span class="delimiter">"</span><span class="content">Dear recipient,</span><span class="char">\n</span><span class="char">\n</span><span class="content">Please have a look at my screenshot!</span><span class="char">\n</span><span class="char">\n</span><span class="content">Regards,</span><span class="char">\n</span><span class="content">sender</span><span class="delimiter">"</span></span>);
+<span class="comment">// convert MailMessage to MimeMessage</span>
+CharsetSafeMimeMessage mimeMessage = BEANS.get(MailHelper.class).createMimeMessage(mailMessage);</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>In order to send the message you can either use a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object or an existing <code>javax.mail.Session</code> object as demonstrated in <a href="#lst-SmtpHelper.sendWithSmtpServerConfig">Listing 131</a> and <a href="#lst-SmtpHelper.sendWithSession">Listing 132</a>.</p>
+      </div>
+      <div id="lst-SmtpHelper.sendWithSmtpServerConfig" class="listingblock">
+       <div class="title">
+        Listing 131. Send email using an
+        <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object.
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">BEANS.get(SmtpHelper.class).sendMessage(smtpServerConfig, mimeMessage);</code></pre>
+       </div>
+      </div>
+      <div id="lst-SmtpHelper.sendWithSession" class="listingblock">
+       <div class="title">
+        Listing 132. Send email using an existing
+        <code>javax.mail.Session</code> object.
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// The password has to be provided additionally as it is not stored in the session object.</span>
+BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="smtphelper-configuration"><a class="anchor" href="#smtphelper-configuration"></a>19.3. SmtpHelper Configuration</h3>
+      <div class="paragraph">
+       <p>The <code>SmtpHelper</code> provides some config properties that allow to modify certain behaviour.</p>
+      </div>
+      <table class="tableblock frame-all grid-all stretch">
+       <colgroup>
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3334%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">Key</th>
+         <th class="tableblock halign-left valign-top">Description</th>
+         <th class="tableblock halign-left valign-top">Example</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">scout.smtp.debugReceiverEmail</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">If this property is set, the <code>SmtpHelper</code> sends all emails to the specified email address instead of the recipients specified in the <code>MimeMessage</code> object. This is useful for development and testing environments.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="mailto:debug-receiver@example.com">debug-receiver@example.com</a></p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">scout.smtp.connectionTimeout</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the connection timeout for SMTP connections in milliseconds. Default is 60 seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">30000</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">scout.smtp.readTimeout</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the read timeout for SMTP connections in milliseconds. Default is 60 seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">30000</p></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="sect2">
+      <h3 id="connection-pooling-chapter"><a class="anchor" href="#connection-pooling-chapter"></a>19.4. Connection Pooling</h3>
+      <div class="paragraph">
+       <p>Normally, the <code>SmtpHelper</code> opens a new connection for every email which is then closed after the email has been sent. If you want to send a lot of emails, this behaviour is rather inefficient as opening a new SMTP connection takes a long time compared to sending the email especially when using encrypted connections. To mitigate this overhead, the <code>SmtpHelper</code> supports pooling of SMTP connections which is activated using the <code>poolSize</code> property of <code>SmtpServerConfig</code> objects. If you set the pool size property to a value &gt; 0, the <code>SmtpHelper</code> will create parallel connections up to the specified number. This means, that connection pooling is not possible when you use the <code>sendMessage</code> method accepting an already prepared <code>javax.mail.Session</code> object.</p>
+      </div>
+      <div class="paragraph">
+       <p><strong>Pooling</strong> in this context means the following:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>All SMTP server connections sharing the same <code>SmtpServerConfig</code> object (by same meaning being equal according to <code>SmtpServerConfig.equals()</code>) belong to the same pool</p> </li>
+        <li> <p>For each different <code>SmtpServerConfig</code> object (again using <code>SmtpServerConfig.equals()</code>) up to the specified pool size connections are created</p> </li>
+        <li> <p>Connections are not immediately closed after an email has been sent, instead they are returned to the pool as idle connections.</p> </li>
+        <li> <p>Before creating new connections, idle connections are reused.</p> </li>
+        <li> <p>When trying to send an email while all the SMTP connections are currently in use and the pool size has already been reached, the calling thread is blocked until a connection is returned as idle to the pool or as soon as the wait-for-connection-timeout has exceeded.</p> </li>
+        <li> <p>As long as connections are open, a background job monitors their state and closes idle and old connections.</p> </li>
+       </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="smtpconnectionpool-configuration"><a class="anchor" href="#smtpconnectionpool-configuration"></a>19.5. SmtpConnectionPool Configuration</h3>
+      <div class="paragraph">
+       <p>The following config properties allow to modify the behavior of the connection pool implementation at the global level:</p>
+      </div>
+      <table class="tableblock frame-all grid-all stretch">
+       <colgroup>
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3333%;">
+        <col style="width: 33.3334%;">
+       </colgroup>
+       <thead>
+        <tr>
+         <th class="tableblock halign-left valign-top">key</th>
+         <th class="tableblock halign-left valign-top">Description</th>
+         <th class="tableblock halign-left valign-top">Example</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">scout.smtp.pool.maxIdleTime</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how long in seconds a connection can be idle before it is closed by the background cleanup job. Default is 60 seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">scout.smtp.pool.maxConnectionLifetime</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how long in seconds a connection can be open before it is closed. This is to prevent connections from being open forever when sending emails on a regular basis. Default is 1h.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">7200</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">scout.smtp.pool.waitForConnectionTimeout</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Max. wait time for SMTP connection in seconds. If the value is 0, callers will wait infinitely long for SMTP connections. Default is 300 seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>20. Scout JS</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>Scout JS is the technology used by Scout to render your application. The client model defined using Java code is sent to the browser where Scout JS comes into action by taking that model and generating HTML elements.</p>
@@ -8846,13 +9138,13 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="how-tos"><a class="anchor" href="#how-tos"></a>20. How-Tos</h2>
+    <h2 id="how-tos"><a class="anchor" href="#how-tos"></a>21. How-Tos</h2>
     <div class="sectionbody">
      <div class="paragraph">
       <p>This chapter provides various small technical guides to very specific Scout subjects.</p>
      </div>
      <div class="sect2">
-      <h3 id="smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"><a class="anchor" href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"></a>20.1. SmartField: how to apply colors and styles from a lookup-row</h3>
+      <h3 id="smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"><a class="anchor" href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row"></a>21.1. SmartField: how to apply colors and styles from a lookup-row</h3>
       <div class="paragraph">
        <p>When a user selects a lookup-row from the proposal chooser in Scout versions &#x21d0; 6.0, the properties <code>foregroundColor</code>, <code>backgroundColor</code>, <code>font</code> and <code>tooltipText</code> have been automatically copied from the lookup-row to the field. In some cases this was exactly what a specific application needed, but in other cases it was hard to implement a specific behavior without overriding internal methods from the <code>SmartField</code>. For instance it was not possible to have a lookup-row with background-color red in the proposal-chooser and at the same time avoid the background-color of the field changing to red, when that row was being selected.</p>
       </div>
@@ -8861,7 +9153,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 129. Java example, set the background-color of the lookup-row on the field
+        Listing 133. Java example, set the background-color of the lookup-row on the field
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
@@ -8884,7 +9176,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 130. LESS example, style lookup-row and field with the same CSS class
+        Listing 134. LESS example, style lookup-row and field with the same CSS class
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="less">.form-field.public &gt; .field, .table-row.public {
@@ -9066,7 +9358,7 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-06-03 12:20:25 +0200
+    <br> Last updated 2019-06-17 12:36:28 +0200
    </div>
   </div>
  </body>
