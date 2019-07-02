@@ -552,6 +552,8 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#button-support-for-html-and-binary-resources">Button: Support for HTML and Binary Resources</a></li>
        <li><a href="#imagefield-support-for-file-upload">ImageField: Support for File Upload</a></li>
        <li><a href="#mode-selector-implemented-alternative-display-style">Mode Selector: Implemented alternative display style</a></li>
+       <li><a href="#enabled-inheritaccessibility">Enabled &amp; InheritAccessibility</a></li>
+       <li><a href="#consistent-parent">Consistent Parent</a></li>
       </ul> </li>
      <li><a href="#data-objects">Data Objects</a>
       <ul class="sectlevel2">
@@ -744,6 +746,21 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="enabled-inheritaccessibility"><a class="anchor" href="#enabled-inheritaccessibility"></a>Enabled &amp; InheritAccessibility</h3>
+      <div class="paragraph">
+       <p>The <code>enabled</code> property already existing for FormFields, Actions and other Scout elements has been moved to the top level Widget class. Therefore all widgets can now be disabled as it already was in Scout JS. Additionally Scout Classic widgets also support dynamic enabled/disabled dimensions on all widgets now as it already existed for FormFields.</p>
+      </div>
+      <div class="paragraph">
+       <p>The <code>inheritAccessibility</code> property that already existed for Actions (e.g. Menus) can now be used on all widgets. This is especially interesting for FormFields for which it was necessary to do that using multiple setEnabled() calls until now.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="consistent-parent"><a class="anchor" href="#consistent-parent"></a>Consistent Parent</h3>
+      <div class="paragraph">
+       <p>Lots of Scout widgets like <code>Actions</code>, <code>FormFields</code>, <code>Tiles</code> or <code>Tables</code> can have a parent element. Until now there have been several methods to access parent elements (e.g. <code>IActionNode#getParent()</code>, <code>ITile#getContainer()</code>, <code>IFormField#getParentField</code>, etc.) and it was only available on the specific element (e.g. for a Table). Now there is one <code>getParent()</code> method for all widgets. Furthermore visit methods have been added to traverse up the parent hierarchy.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -786,7 +803,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2019-06-17 12:36:26 +0200
+    <br> Last updated 2019-07-02 15:48:23 +0200
    </div>
   </div>
  </body>
