@@ -726,6 +726,16 @@ table.CodeRay td.code>pre{padding:0}
         Figure 5. The inital set of Maven modules created for the Hello World application.
        </div>
       </div>
+      <div class="admonitionblock warning">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
+          <td class="content"> You need to adjust the Maven build if Java 9 is the minimal required version of your project. Open <code>helloworld/pom.xml</code> (replace <code>helloworld</code> with the <code>artifact id</code> you chose earlier) and add <code>&lt;master_signatureCheck_skip&gt;true&lt;/master_signatureCheck_skip&gt;</code> to the <code>&lt;properties&gt;</code>-element. Note: the minimal required Java version is declared by property <code>jdk.source.version</code> within the very same <code>&lt;properties&gt;</code>-element. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
      </div>
      <div class="sect2">
       <h3 id="sec-run_initial"><a class="anchor" href="#sec-run_initial"></a>2.3. Run the Initial Application</h3>
@@ -6278,7 +6288,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-06-17 12:36:28 +0200
+    <br> Last updated 2019-07-03 16:06:26 +0200
    </div>
   </div>
  </body>
