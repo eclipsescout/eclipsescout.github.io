@@ -546,8 +546,14 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#strictsimpledateformat">StrictSimpleDateFormat</a></li>
        <li><a href="#objectutility">ObjectUtility</a></li>
+       <li><a href="#data-objects">Data Objects</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a></li>
+     <li><a href="#rest-service-changes">REST Service Changes</a>
+      <ul class="sectlevel2">
+       <li><a href="#renamings-in-errordo-2">Renamings in ErrorDo</a></li>
+       <li><a href="#different-http-status-codes">Different HTTP status codes</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -597,20 +603,89 @@ table.CodeRay td.code>pre{padding:0}
        <p><code>nvlOptional()</code> was renamed to <code>nvlOpt()</code>.</p>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="data-objects"><a class="anchor" href="#data-objects"></a>Data Objects</h3>
+      <div class="paragraph">
+       <p>The Scout data object support was moved from the Scout platform to the module <code>org.eclipse.scout.rt.dataobject</code>. The package imports of all data object related classes therefore changed: From <code>org.eclipse.scout.rt.platform.dataobject</code> to <code>org.eclipse.scout.rt.dataobject</code></p>
+      </div>
+      <div class="sect3">
+       <h4 id="renamings"><a class="anchor" href="#renamings"></a>Renamings</h4>
+       <div class="paragraph">
+        <p><code>org.eclipse.scout.rt.client.ui.desktop.datachange.DoChangeEvent</code> &#x2192; <code>org.eclipse.scout.rt.client.ui.desktop.datachange.ItemDataChangeEvent</code></p>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="dependencies"><a class="anchor" href="#dependencies"></a>Dependencies</h4>
+       <div class="paragraph">
+        <p>All modules which use data objects were extended with a dependency to <code>org.eclipse.scout.rt.dataobject</code></p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p><code>org.eclipse.scout.rt.rest</code></p> </li>
+         <li> <p><code>org.eclipse.scout.rt.mom.api</code></p> </li>
+        </ul>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="renamings-in-errordo"><a class="anchor" href="#renamings-in-errordo"></a>Renamings in ErrorDo</h4>
+       <div class="ulist">
+        <ul>
+         <li> <p><code>org.eclipse.scout.rt.rest.error.ErrorDo#status</code> &#x2192; <code>org.eclipse.scout.rt.rest.error.ErrorDo#httpStatus</code></p> </li>
+         <li> <p><code>org.eclipse.scout.rt.rest.error.ErrorDo#code</code> &#x2192; <code>org.eclipse.scout.rt.rest.error.ErrorDo#errorCode</code></p> </li>
+        </ul>
+       </div>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
     <h2 id="api-changes-javascript"><a class="anchor" href="#api-changes-javascript"></a>API Changes (JavaScript)</h2>
     <div class="sectionbody">
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/10.0.x/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="rest-service-changes"><a class="anchor" href="#rest-service-changes"></a>REST Service Changes</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Any changes which may change how REST consumer or provider behave.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="renamings-in-errordo-2"><a class="anchor" href="#renamings-in-errordo-2"></a>Renamings in ErrorDo</h3>
+      <div class="paragraph">
+       <p><code>org.eclipse.scout.rt.rest.error.ErrorDo</code> used by <code>org.eclipse.scout.rt.rest.client.proxy.ErrorDoRestClientExceptionTransformer</code> and some <code>org.eclipse.scout.rt.rest.exception.AbstractExceptionMapper&lt;E&gt;</code> was slightly changed:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>ErrorDo#status</code> &#x2192; <code>ErrorDo#httpStatus</code></p> </li>
+        <li> <p><code>ErrorDo#code</code> &#x2192; <code>ErrorDo#errorCode</code></p> </li>
+       </ul>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="different-http-status-codes"><a class="anchor" href="#different-http-status-codes"></a>Different HTTP status codes</h3>
+      <div class="paragraph">
+       <p>A REST service client using <code>ErrorDoRestClientExceptionTransformer</code> will now transform</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>any client request error (HTTP <code>4xx</code> status codes) into a <code>VetoException</code></p> </li>
+        <li> <p><code>403 - Forbidden</code> into a <code>org.eclipse.scout.rt.dataobject.exception.AccessForbiddenException</code></p> </li>
+        <li> <p><code>404 - Not Found</code> into a <code>org.eclipse.scout.rt.dataobject.exception.ResourceNotFoundException</code></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>The <code>org.eclipse.scout.rt.rest.exception.VetoExceptionMapper</code> used by a REST service provide will now create an error response with status <code>400 - Bad Request</code> (this was formerly a <code>403</code>).</p>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/10.0.x/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
      </div>
     </div>
    </div>
