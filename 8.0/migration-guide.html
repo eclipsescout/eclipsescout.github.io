@@ -566,6 +566,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#moved-mail-related-classes-to-new-module-to-org-eclipse-scout-rt-mail-since-8-0-0-021">Moved Mail-Related Classes to New Module to org.eclipse.scout.rt.mail (since 8.0.0.021)</a></li>
        <li><a href="#deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021">Deprecated Methods on DefaultAuthToken and Introduced DefaultAuthTokenSigner and DefaultAuthTokenVerifier (since 8.0.0.021)</a></li>
        <li><a href="#stylehelper-moved-to-platform-since-8-0-0-034">StyleHelper Moved to Platform (since 8.0.0.034)</a></li>
+       <li><a href="#implementation-of-abstractentityrestclientexceptiontransformer-sub-classes-changed-since-8-0-0-037">Implementation of AbstractEntityRestClientExceptionTransformer sub-classes changed (since 8.0.0.037)</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
@@ -1596,6 +1597,12 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
       <div class="paragraph">
        <p><em>Migration:</em> Update your imports to point to the new <code>org.eclipse.scout.rt.platform.html.StyleHelper</code> bean. Methods that passed an <code>IStylable</code> as first argument are no longer available. Instead, directly call the corresponding method on the <code>IStylable</code> element itself.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="implementation-of-abstractentityrestclientexceptiontransformer-sub-classes-changed-since-8-0-0-037"><a class="anchor" href="#implementation-of-abstractentityrestclientexceptiontransformer-sub-classes-changed-since-8-0-0-037"></a>Implementation of AbstractEntityRestClientExceptionTransformer sub-classes changed (since 8.0.0.037)</h3>
+      <div class="paragraph">
+       <p>The implementation of <code>AbstractEntityRestClientExceptionTransformer</code> was change an this might break implementation of sub-classes. Please refer to JavaDoc for any details.</p>
       </div>
      </div>
     </div>
