@@ -616,7 +616,6 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#text-and-multi-language-support-moved-to-platform">Text and Multi-Language Support Moved to 'platform'</a></li>
      <li><a href="#data-object-support-for-rest-mom-apis">Data Object Support for REST &amp; MOM APIs</a></li>
      <li><a href="#rest-resources-rest-clients">REST Resources &amp; REST Clients</a></li>
-     <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033">New RemoteSystemUnavailableException (since 8.0.0.033)</a></li>
      <li><a href="#rest-application-contributions-since-8-0-0-035">Rest Application Contributions (since 8.0.0.035)</a></li>
      <li><a href="#data-objects-equals-and-hashcode-since-8-0-0-036">Data Objects: Equals and HashCode (since 8.0.0.036)</a></li>
      <li><a href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36">New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</a>
@@ -696,7 +695,6 @@ table.CodeRay td.code>pre{padding:0}
        </div>
        <div class="ulist">
         <ul>
-         <li> <p><a href="#new-remotesystemunavailableexception-since-8-0-0-033"><em>New RemoteSystemUnavailableException (since 8.0.0.033)</em></a></p> </li>
          <li> <p><a href="#rest-application-contributions-since-8-0-0-035"><em>Rest Application Contributions (since 8.0.0.035)</em></a></p> </li>
          <li> <p><a href="#data-objects-equals-and-hashcode-since-8-0-0-036"><em>Data Objects: Equals and HashCode (since 8.0.0.036)</em></a></p> </li>
          <li> <p><a href="#new-modules-org-eclipse-scout-rt-dataobject-and-org-eclipse-scout-rt-dataobject-test-since-8-0-0-36"><em>New modules org.eclipse.scout.rt.dataobject and org.eclipse.scout.rt.dataobject.test (since 8.0.0.36)</em></a></p> </li>
@@ -1526,14 +1524,6 @@ table.CodeRay td.code>pre{padding:0}
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-remotesystemunavailableexception-since-8-0-0-033"><a class="anchor" href="#new-remotesystemunavailableexception-since-8-0-0-033"></a>New RemoteSystemUnavailableException (since 8.0.0.033)</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The <code>org.eclipse.scout.rt.shared.servicetunnel.HttpException</code> was replaced by a generalized <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code>. The exception is thrown within the UI server, when a call to the Scout backend server (through service tunnel) returns a status code &lt; 200 or &gt;= 299. The <code>RemoteSystemUnavailableException</code> is finally displayed as <em>network error</em> by the global <code>org.eclipse.scout.rt.client.services.common.exceptionhandler.ErrorPopup</code>. The new <code>RemoteSystemUnavailableException</code> may generally be thrown to indicate an error when the communication with a remote service failed.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
     <h2 id="rest-application-contributions-since-8-0-0-035"><a class="anchor" href="#rest-application-contributions-since-8-0-0-035"></a>Rest Application Contributions (since 8.0.0.035)</h2>
     <div class="sectionbody">
      <div class="paragraph">
@@ -1700,7 +1690,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer">
    <div id="footer-text">
      Version 8.0
-    <br> Last updated 2018-04-03 08:08:24 CEST
+    <br> Last updated 2019-08-06 13:43:53 CEST
    </div>
   </div>
  </body>
