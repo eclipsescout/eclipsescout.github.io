@@ -547,6 +547,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#strictsimpledateformat">StrictSimpleDateFormat</a></li>
        <li><a href="#objectutility">ObjectUtility</a></li>
        <li><a href="#data-objects">Data Objects</a></li>
+       <li><a href="#move-icache-and-transactional-map">Move ICache and transactional Map</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a></li>
      <li><a href="#rest-service-changes">REST Service Changes</a>
@@ -634,6 +635,15 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p><code>org.eclipse.scout.rt.rest.error.ErrorDo#code</code> &#x2192; <code>org.eclipse.scout.rt.rest.error.ErrorDo#errorCode</code></p> </li>
         </ul>
        </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="move-icache-and-transactional-map"><a class="anchor" href="#move-icache-and-transactional-map"></a>Move ICache and transactional Map</h3>
+      <div class="paragraph">
+       <p><code>AbstractTransactionalMap</code> and its concrete implementations <code>ConcurrentTransactionalMap</code> and <code>CopyOnWriteTransactionalMap</code> have been moved to <code>org.eclipse.scout.rt.platform.util.collection</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p><code>ICache</code>, its implementations and cache wrappers have been moved to <code>org.eclipse.scout.rt.platform.cache</code>.</p>
       </div>
      </div>
     </div>
