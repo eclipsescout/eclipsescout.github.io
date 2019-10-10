@@ -645,6 +645,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#default-http-response-headers">15.1. Default HTTP Response Headers</a></li>
        <li><a href="#session-cookie-jsessionid-cookie-configuration-validation">15.2. Session Cookie (JSESSIONID Cookie) Configuration Validation</a></li>
        <li><a href="#secure-output">15.3. Secure Output</a></li>
+       <li><a href="#authorization-granting">15.4. Authorization (Granting)</a></li>
       </ul> </li>
      <li><a href="#cha-data-objects">16. Data Objects</a>
       <ul class="sectlevel2">
@@ -1775,12 +1776,6 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.nodeId</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the cluster node name. If not specified a default id is computed.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.permissionLevelCacheTtl</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Time to live for level permission check caching in milliseconds.</p> <p class="tableblock">If calculating the permission level for a permission instance, it can be internally cached. This caching is typically useful in a client and should be relative small (few minutes). If no value is set, caching is disabled.</p> <p class="tableblock">As default, no time to live is set and therefore caching is disabled.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -5654,6 +5649,199 @@ protected void execInitField() {
          <p>If HTML or XML from external sources or more complex HTML are used in the Scout model, using a white-list filter might be the best way to avoid security bugs. Libraries, such as <a href="http://jsoup.org/">JSoup</a> provide such a white-list filter. Scout currently does not include any services or utilities for using white-list filters, because the configuration and usage is very use-case-specific and would therefore not add much benefit.</p>
         </div>
        </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="authorization-granting"><a class="anchor" href="#authorization-granting"></a>15.4. Authorization (Granting)</h3>
+      <div class="paragraph">
+       <p>Scout uses the <code>java.security</code> API principles to grant access to a specific resource.</p>
+      </div>
+      <div class="paragraph">
+       <p>Each user has a set of granted <code>java.security.Permission</code> instances. This set is a <code>java.security.PermissionCollection</code>. A call to <code>PermissionCollection.implies(Permission p)</code> does the access check. The argument <code>p</code> in this call is a new permission instance for which we want to do the access check and which is compared against the granted permissions. Usually, the permission collection implementation iterates through all granted permissions and calls on each <code>Permission.implies(Permission p)</code> until one call returns <code>true</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Scouts adds some concepts and helpers to this API:</p>
+      </div>
+      <div class="dlist">
+       <dl>
+        <dt class="hdlist1">
+         <code>IPermission</code>
+        </dt>
+        <dd>
+         <p>Unlike other permissions, a permission implementing this interface can only be implied by another <code>IPermission</code> <strong>with the same name</strong>. A permission used together with scouts security API does not have to implement the <code>IPermission</code> interface but it is recommended.</p>
+        </dd>
+        <dt class="hdlist1">
+         <code>PermissionLevel</code>
+        </dt>
+        <dd>
+         <p>An <code>IPermission</code>, which is part of an <code>IPermissionCollection</code> has always a granted access level assigned (<code>IPermission.getLevel()</code>). If the granted level is <code>PermissionLevel.NONE</code>, any access checks will fail.</p>
+        </dd>
+        <dt class="hdlist1">
+         <code>IAccessControlService</code>
+        </dt>
+        <dd>
+         <p>This service is responsible to provide and manage a users set of granted permissions. A scout application usually extends <code>AbstractAccessControlService</code> and implements <code>#execLoadPermissions</code>.</p>
+        </dd>
+        <dt class="hdlist1">
+         <code>ACCESS</code>
+        </dt>
+        <dd>
+         <p>Provides a set of convenience methods to check access.</p>
+        </dd>
+       </dl>
+      </div>
+      <div class="paragraph">
+       <p>Let us assume you require a permission to allow a user to access companies.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ReadCompanyPermission</span> <span class="directive">extends</span> AbstractPermission {
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
+  <span class="directive">public</span> ReadCompanyPermission() {
+    <span class="local-variable">super</span>(<span class="string"><span class="delimiter">"</span><span class="content">scoutdoc.ReadCompany</span><span class="delimiter">"</span></span>);
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>To check access one can use <code>ACCESS</code>.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (ACCESS.check(<span class="keyword">new</span> ReadCompanyPermission())) { <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="keyword">throw</span> <span class="keyword">new</span> AccessForbiddenException(TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">YouAreNotAllowedToReadThisData</span><span class="delimiter">"</span></span>));
+}
+ACCESS.checkAndThrow(<span class="keyword">new</span> ReadCompanyPermission()); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+       </div>
+      </div>
+      <div class="colist arabic">
+       <table>
+        <tbody>
+         <tr>
+          <td><i class="conum" data-value="1"></i><b>1</b></td>
+          <td>Checks permission against granted permissions of current user.</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="2"></i><b>2</b></td>
+          <td>Checks permission and if this check fails, throw an <code>AccessForbiddenException</code> with a default message.</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="paragraph">
+       <p>We can defined a default access check failed message for a permission.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CreateCompanyPermission</span> <span class="directive">extends</span> AbstractPermission {
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
+  <span class="directive">public</span> CreateCompanyPermission() {
+    <span class="local-variable">super</span>(<span class="string"><span class="delimiter">"</span><span class="content">scoutdoc.CreateCompany</span><span class="delimiter">"</span></span>);
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="predefined-type">String</span> getAccessCheckFailedMessage() {
+    <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">YouAreNotAllowedToRegisterThisData</span><span class="delimiter">"</span></span>);
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p><code>ACCESS</code> allows to check multiple permissions at once.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">ACCESS.checkAllAndThrow(<span class="keyword">new</span> ReadCompanyPermission(), <span class="keyword">new</span> CreateCompanyPermission());
+ACCESS.checkAnyAndThrow(<span class="keyword">new</span> ReadCompanyPermission(), <span class="keyword">new</span> CreateCompanyPermission());</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>We have seen some simple permission checks. Now let us assume, that some users may modify a company only if they have registered the company by themselves. For this use case we introduce a new permission level <code>ScoutdocPermissionLevels.OWN</code>. This is the permission level which is granted for those users.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">ScoutdocPermissionLevels</span> {
+  <span class="directive">private</span> ScoutdocPermissionLevels() {
+  }
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">int</span> LEVEL_NONE = PermissionLevel.LEVEL_NONE;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">int</span> LEVEL_OWN = <span class="integer">10</span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">int</span> LEVEL_ALL = PermissionLevel.LEVEL_ALL;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> PermissionLevel NONE = PermissionLevel.NONE;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> PermissionLevel OWN =
+      PermissionLevel.register(LEVEL_OWN, <span class="string"><span class="delimiter">"</span><span class="content">OWN</span><span class="delimiter">"</span></span>, <span class="predefined-constant">true</span>, () -&gt; TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">Own</span><span class="delimiter">"</span></span>));
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> PermissionLevel ALL = PermissionLevel.ALL;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> init() {
+    <span class="comment">// ensures all static initializers have been called</span>
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>In order to check access for this new level we have to override <code>AbstractPermission#evalPermission</code>.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UpdateCompanyPermission</span> <span class="directive">extends</span> AbstractPermission {
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
+  <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">UUID</span> m_companyId;
+  <span class="directive">public</span> UpdateCompanyPermission() {
+    <span class="local-variable">this</span>(<span class="predefined-constant">null</span>);
+  }
+  <span class="directive">public</span> UpdateCompanyPermission(<span class="predefined-type">UUID</span> companyId) {
+    <span class="local-variable">super</span>(<span class="string"><span class="delimiter">"</span><span class="content">scoutdoc.UpdateCompany</span><span class="delimiter">"</span></span>);
+    m_companyId = companyId;
+  }
+  <span class="directive">public</span> <span class="predefined-type">UUID</span> getCompanyId() {
+    <span class="keyword">return</span> m_companyId;
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="type">boolean</span> evalPermission(IPermission p) {
+    <span class="comment">// Precondition: p.getClass() == getClass() &amp;&amp; getName().equals(p.getName()) &amp;&amp;</span>
+    <span class="comment">// getLevel() != PermissionLevel.NONE</span>
+    <span class="keyword">if</span> (ScoutdocPermissionLevels.OWN == getLevel()) {
+      <span class="predefined-type">UUID</span> companyId = ((UpdateCompanyPermission) p).getCompanyId();
+      <span class="keyword">return</span> BEANS.get(ICompanyService.class).isOwnCompany(companyId);
+    }
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>; <span class="comment">// ScoutdocPermissionLevels.ALL == getLevel()</span>
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="type">int</span> hashCode() {
+    <span class="directive">final</span> <span class="type">int</span> prime = <span class="integer">31</span>;
+    <span class="type">int</span> result = <span class="local-variable">super</span>.hashCode();
+    result = prime * result + ((m_companyId == <span class="predefined-constant">null</span>) ? <span class="integer">0</span> : m_companyId.hashCode());
+    <span class="keyword">return</span> result;
+  }
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="type">boolean</span> equals(<span class="predefined-type">Object</span> obj) {
+    <span class="keyword">if</span> (<span class="local-variable">this</span> == obj) {
+      <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+    }
+    <span class="keyword">if</span> (!<span class="local-variable">super</span>.equals(obj)) {
+      <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="keyword">if</span> (getClass() != obj.getClass()) {
+      <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    UpdateCompanyPermission other = (UpdateCompanyPermission) obj;
+    <span class="keyword">if</span> (m_companyId == <span class="predefined-constant">null</span>) {
+      <span class="keyword">if</span> (other.m_companyId != <span class="predefined-constant">null</span>) {
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+      }
+    }
+    <span class="keyword">else</span> <span class="keyword">if</span> (!m_companyId.equals(other.m_companyId)) {
+      <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="java">ACCESS.checkAndThrow(<span class="keyword">new</span> UpdateCompanyPermission(companyId));</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>If such a service call would be expensive, one may cache the result of such a permission check. You have to implement this by yourself. A recommended solution is to create a wrapper around <code>IPermissionCollection</code> and this wrapper caches calls to <code>IPermissionCollection#implies</code> if required.</p>
       </div>
      </div>
     </div>

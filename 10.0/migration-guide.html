@@ -549,6 +549,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#data-objects">Data Objects</a></li>
        <li><a href="#cachebuilder">CacheBuilder</a></li>
        <li><a href="#move-icache-and-transactional-map">Move ICache and transactional Map</a></li>
+       <li><a href="#authorization-api">Authorization API</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a></li>
      <li><a href="#rest-service-changes">REST Service Changes</a>
@@ -657,6 +658,45 @@ table.CodeRay td.code>pre{padding:0}
       </div>
       <div class="paragraph">
        <p><code>ICache</code>, its implementations and cache wrappers have been moved to <code>org.eclipse.scout.rt.platform.cache</code>.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="authorization-api"><a class="anchor" href="#authorization-api"></a>Authorization API</h3>
+      <div class="paragraph">
+       <p>The authorization API of scout was extended and moved from <code>org.eclipse.scout.rt.shared</code> into its own module. You may check the technical guide for further details.</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>Introduced <code>IPermissionCollection</code> and <code>IPermission</code> interfaces</p> </li>
+        <li> <p>Let all current scout permission (e.g. <code>CopyToClipboardPermission</code>) implement <code>IPermission</code></p> </li>
+        <li> <p>All scout permission names are now prefixed with <code>scout.</code></p> </li>
+        <li> <p><code>RemoteServiceAccessPermission#getName</code> returns a stable name instead of the service operation pattern</p> </li>
+        <li> <p>Deleted <code>BasicHierarchyPermission</code>. If required, you may copy from an older version of scout.</p> </li>
+        <li> <p><code>org.eclipse.scout.rt.shared.services.common.security.IAccessControlService</code> moved to <code>org.eclipse.scout.rt.security</code></p> </li>
+        <li> <p><code>IAccessControlService#getPermissionLevel</code> removed; use instead <code>ACCESS#getGrantedPermissionLevel</code></p> </li>
+        <li> <p><code>IAccessControlService#checkPermission</code> removed; use instead <code>ACCESS#check</code></p> </li>
+        <li> <p><code>IAccessControlService#getPermissions</code> must now <strong>never</strong> return <code>null</code>. Instead <code>NonePermissionCollection</code> or <code>AllPermissionCollection</code> may be returned.</p> </li>
+        <li> <p><code>org.eclipse.scout.rt.shared.services.common.security.ACCESS</code> moved to <code>org.eclipse.scout.rt.security.ACCESS</code></p> </li>
+        <li> <p><code>ACCESS#check</code> now fails if argument is <code>null</code> (before succeeds).</p> </li>
+        <li> <p><code>org.eclipse.scout.rt.shared.services.common.security.AbstractAccessControlService</code> moved to <code>org.eclipse.scout.rt.security</code></p> </li>
+        <li> <p><code>AbstractAccessControlService#getUserIdOfCurrentUser</code> moved to <code>Sessions#getCurrentUserId()</code></p> </li>
+       </ul>
+      </div>
+      <div class="sect3">
+       <h4 id="load-permissions"><a class="anchor" href="#load-permissions"></a>Load Permissions</h4>
+       <div class="paragraph">
+        <p>With the new <code>IPermissionCollection</code>, loading of permissions in <code>AbstractAccessControlService#execLoadPermissions</code> has changed.</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p>Create a new instance by calling <code>BEANS.get(DefaultPermissionCollection.class)</code> instead of <code>new java.security.Permissions()</code>.</p> </li>
+         <li> <p>Add permissions with a permission level: <code>permissions.add(new ReadUsersPermission(), PermissionLevel.ALL);</code></p> </li>
+         <li> <p>Do not forget to set permission collection as read only: <code>permissions.setReadOnly();</code></p> </li>
+        </ul>
+       </div>
+       <div class="paragraph">
+        <p>There is also a <code>AllPermissionCollection</code> which may be used instead of <code>DefaultPermissionCollection</code>.</p>
+       </div>
       </div>
      </div>
     </div>
