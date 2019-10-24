@@ -550,6 +550,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#cachebuilder">CacheBuilder</a></li>
        <li><a href="#move-icache-and-transactional-map">Move ICache and transactional Map</a></li>
        <li><a href="#authorization-api">Authorization API</a></li>
+       <li><a href="#testingutility-beantestinghelper">TestingUtility &#x2192; BeanTestingHelper</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a></li>
      <li><a href="#rest-service-changes">REST Service Changes</a>
@@ -697,6 +698,34 @@ table.CodeRay td.code>pre{padding:0}
        <div class="paragraph">
         <p>There is also a <code>AllPermissionCollection</code> which may be used instead of <code>DefaultPermissionCollection</code>.</p>
        </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="testingutility-beantestinghelper"><a class="anchor" href="#testingutility-beantestinghelper"></a>TestingUtility &#x2192; BeanTestingHelper</h3>
+      <div class="paragraph">
+       <p>The following methods are deprecated. Use the corresponding methods on <code>BeanTestingHelper</code> via <code>BeanTestingHelper.get()</code> instead:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>registerBeans</code></p> </li>
+        <li> <p><code>registerBean</code></p> </li>
+        <li> <p><code>unregisterBean</code></p> </li>
+        <li> <p><code>unregisterBeans</code></p> </li>
+        <li> <p><code>mockConfigProperty</code></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>The following replacement regex can be applied on all Java files:<br> <code>\bTestingUtility\.(registerBeans|registerBean|unregisterBean|unregisterBeans|mockConfigProperty)</code> to <code>BeanTestingHelper.get().$1</code></p>
+      </div>
+      <div class="paragraph">
+       <p>The following methods are deprecated and will be removed in a future release without a replacement:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><code>registerWithReplace</code></p> </li>
+        <li> <p><code>registerWithTestingOrder</code></p> </li>
+        <li> <p><code>clearHttpAuthenticationCache</code></p> </li>
+       </ul>
       </div>
      </div>
     </div>
