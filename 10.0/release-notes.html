@@ -555,6 +555,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#popup-new-properties-closable-movable-resizable">Popup: New Properties Closable, Movable, Resizable</a></li>
        <li><a href="#enabled-inheritaccessibility">Enabled &amp; InheritAccessibility</a></li>
        <li><a href="#consistent-parent">Consistent Parent</a></li>
+       <li><a href="#propertychange-shortcut-js">PropertyChange Shortcut (JS)</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -766,6 +767,24 @@ table.CodeRay td.code>pre{padding:0}
       <h3 id="consistent-parent"><a class="anchor" href="#consistent-parent"></a>Consistent Parent</h3>
       <div class="paragraph">
        <p>Lots of Scout widgets like <code>Actions</code>, <code>FormFields</code>, <code>Tiles</code> or <code>Tables</code> can have a parent element. Until now there have been several methods to access parent elements (e.g. <code>IActionNode#getParent()</code>, <code>ITile#getContainer()</code>, <code>IFormField#getParentField</code>, etc.) and it was only available on the specific element (e.g. for a Table). Now there is one <code>getParent()</code> method for all widgets. Furthermore visit methods have been added to traverse up the parent hierarchy.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="propertychange-shortcut-js"><a class="anchor" href="#propertychange-shortcut-js"></a>PropertyChange Shortcut (JS)</h3>
+      <div class="paragraph">
+       <p>It is now possible to listen for specific property changes rather than listening to all property change events and then checking for the right property manually. This can be done using the new notation <code>propertyChange:propertyName</code>, see the example below.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 1. Listen for specific property changes
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript">field.on(<span class="string"><span class="delimiter">'</span><span class="content">propertyChange:value</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
+  <span class="comment">// This listener is only executed when the 'value' property changes</span>
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Property </span><span class="delimiter">'</span></span> + event.propertyName + <span class="string"><span class="delimiter">'</span><span class="content"> changed from </span><span class="delimiter">'</span></span> + event.oldValue + <span class="string"><span class="delimiter">'</span><span class="content"> to </span><span class="delimiter">'</span></span> + event.newValue);
+});
+field.setValue(<span class="string"><span class="delimiter">'</span><span class="content">New Value.</span><span class="delimiter">'</span></span>);</code></pre>
+       </div>
       </div>
       <div class="admonitionblock tip">
        <table>

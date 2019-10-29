@@ -1033,7 +1033,31 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
 });
 button.render();
 button.on(<span class="string"><span class="delimiter">'</span><span class="content">propertyChange</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
-  <span class="comment">// prints 'Property selected changed from false to true'</span>
+  <span class="keyword">if</span> (event.propertyName === <span class="string"><span class="delimiter">'</span><span class="content">selected</span><span class="delimiter">'</span></span>) {
+    <span class="comment">// prints 'Property selected changed from false to true'</span>
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">Property </span><span class="delimiter">'</span></span> + event.propertyName + <span class="string"><span class="delimiter">'</span><span class="content"> changed from </span><span class="delimiter">'</span></span> + event.oldValue + <span class="string"><span class="delimiter">'</span><span class="content"> to </span><span class="delimiter">'</span></span> + event.newValue);
+  }
+});
+button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
+        </div>
+       </div>
+       <div class="admonitionblock note">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+           <td class="content"> The above propertyChange handler ist executed for ALL property changes of that button. This makes it necessary to check for the right property name inside the listener as it is done here with the <code>if</code> statement at the start of the listener. Because this is a very common pattern there is a shortcut available. You can listen for a specific property change with the following notation: <code>propertyChange:propertyName</code>. </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div class="listingblock">
+        <div class="title">
+         Listing 10. Listen for specific property changes
+        </div>
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="javascript">button.on(<span class="string"><span class="delimiter">'</span><span class="content">propertyChange:selected</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
+  <span class="comment">// This listener is only executed when the 'selected' property changes</span>
   console.log(<span class="string"><span class="delimiter">'</span><span class="content">Property </span><span class="delimiter">'</span></span> + event.propertyName + <span class="string"><span class="delimiter">'</span><span class="content"> changed from </span><span class="delimiter">'</span></span> + event.oldValue + <span class="string"><span class="delimiter">'</span><span class="content"> to </span><span class="delimiter">'</span></span> + event.newValue);
 });
 button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
@@ -1111,7 +1135,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
      </div>
      <div class="listingblock">
       <div class="title">
-       Listing 10. Creating an object without the ObjectFactory
+       Listing 11. Creating an object without the ObjectFactory
       </div>
       <div class="content">
        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> table = <span class="keyword">new</span> scout.Table();
@@ -1126,7 +1150,7 @@ table.init(model);</code></pre>
      </div>
      <div class="listingblock">
       <div class="title">
-       Listing 11. Adding a new object factory registration
+       Listing 12. Adding a new object factory registration
       </div>
       <div class="content">
        <pre class="CodeRay highlight"><code data-lang="javascript">scout.objectFactories = <span class="predefined">$</span>.extend(scout.objectFactories, {
@@ -1253,7 +1277,7 @@ table.init(model);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 12. Example of a formatter
+         Listing 13. Example of a formatter
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">formatter</span>(value, defaultFormatter) {
@@ -1273,7 +1297,7 @@ table.init(model);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 13. Setting the formatter
+         Listing 14. Setting the formatter
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">field.setFormatter(formatter);</code></pre>
@@ -1284,7 +1308,7 @@ table.init(model);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 14. Example of a parser
+         Listing 15. Example of a parser
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">parser</span>(displayText, defaultParser) {
@@ -1300,7 +1324,7 @@ table.init(model);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 15. Setting the parser
+         Listing 16. Setting the parser
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">field.setParser(parser);</code></pre>
@@ -1317,7 +1341,7 @@ table.init(model);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 16. Example of a validator
+         Listing 17. Example of a validator
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span>(value) {
@@ -1347,7 +1371,7 @@ table.init(model);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 17. Adding a validator
+         Listing 18. Adding a validator
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">field.addValidator(validator);</code></pre>
@@ -1411,7 +1435,7 @@ table.init(model);</code></pre>
      </div>
      <div class="listingblock">
       <div class="title">
-       Listing 18. Including a LESS file
+       Listing 19. Including a LESS file
       </div>
       <div class="content">
        <pre class="CodeRay highlight"><code data-lang="LESS">@import "helloworld/style/colors.less";</code></pre>
@@ -1425,7 +1449,7 @@ table.init(model);</code></pre>
      </div>
      <div class="listingblock">
       <div class="title">
-       Listing 19. Changing the background color of the navigation
+       Listing 20. Changing the background color of the navigation
       </div>
       <div class="content">
        <pre class="CodeRay highlight"><code data-lang="LESS">@navigation-background-color: @palette-red-4;</code></pre>
