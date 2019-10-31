@@ -551,6 +551,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#move-icache-and-transactional-map">Move ICache and transactional Map</a></li>
        <li><a href="#authorization-api">Authorization API</a></li>
        <li><a href="#testingutility-beantestinghelper">TestingUtility &#x2192; BeanTestingHelper</a></li>
+       <li><a href="#mailhelper-getcharacterencodingofpartpart">MailHelper.getCharacterEncodingOfPart(Part)</a></li>
       </ul> </li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a></li>
      <li><a href="#rest-service-changes">REST Service Changes</a>
@@ -728,6 +729,12 @@ table.CodeRay td.code>pre{padding:0}
        </ul>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="mailhelper-getcharacterencodingofpartpart"><a class="anchor" href="#mailhelper-getcharacterencodingofpartpart"></a>MailHelper.getCharacterEncodingOfPart(Part)</h3>
+      <div class="paragraph">
+       <p><code>MailHelper.getCharacterEncodingOfPart(Part)</code> is deprecated, use <code>ObjectUtility.nvl(BEANS.get(MailHelper.class).getPartCharset(part), StandardCharsets.UTF_8).name()</code> instead if same behavior is required.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -785,7 +792,7 @@ table.CodeRay td.code>pre{padding:0}
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2019-10-31 13:44:21 +0100
+    <br> Last updated 2019-10-28 14:16:23 +0100
    </div>
   </div>
  </body>
