@@ -846,7 +846,7 @@ table.CodeRay td.code>pre{padding:0}
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.StringField</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.sessions[<span class="integer">0</span>].desktop,
+  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
   <span class="key">labelVisible</span>: <span class="predefined-constant">false</span>
 });
 console.log(field.labelVisible); <span class="comment">// prints false</span>
@@ -882,7 +882,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> groupBox = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.sessions[<span class="integer">0</span>].desktop,
+  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">My Group Box</span><span class="delimiter">'</span></span>,
   <span class="key">fields</span>: [{
     <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
@@ -942,7 +942,7 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.sessions[<span class="integer">0</span>].desktop,
+  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>
 });
 button.render();
@@ -961,7 +961,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.sessions[<span class="integer">0</span>].desktop,
+  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>
 });
 button.render();
@@ -1027,7 +1027,7 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.sessions[<span class="integer">0</span>].desktop,
+  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>,
   <span class="key">displayStyle</span>: scout.Button.DisplayStyle.TOGGLE
 });
