@@ -625,14 +625,14 @@ table.CodeRay td.code>pre{padding:0}
         <li> <p>Create a new simple Maven project in Eclipse (File &#x2192; New &#x2192; Project &#x2192; Maven &#x2192; Maven Project &#x2192; Next, choose <code>Create a simple project</code>). Click Next.</p> </li>
         <li> <p>Choose a Group- and Artifact Id and click Finish.</p> </li>
         <li> <p>Open the created pom.xml and add a dependency to <code>org.eclipse.scout.rt:org.eclipse.scout.migration.ecma6:10.0.0-SNAPSHOT</code> and update the project using Alt+F5.</p> </li>
-        <li> <p>Create a new class <code>Config</code> in src/main/js extending the class <code>org.eclipse.scout.migration.ecma6.Configuration</code>.</p> </li>
+        <li> <p>Create a new class <code>Config</code> in src/main/java extending the class <code>org.eclipse.scout.migration.ecma6.Configuration</code>.</p> </li>
         <li> <p>Add an <code>@Replace</code> annotation to the class</p> </li>
         <li> <p>In the src/main/resources folder create a folder <code>META-INF</code> and within a file <code>scout.xml</code> (can be empty).</p> </li>
         <li> <p>Overwrite the following methods in the created <code>Config</code> class to configure the migration application to your local setup:</p>
          <div class="olist loweralpha">
           <ol class="loweralpha" type="a">
            <li> <p><code>getLibraryApiDirectory</code>: Point to the local directory where the API files from the first step are stored.</p> </li>
-           <li> <p><code>getPersistLibraryFileName</code>: The application will create an API file for your project too. This is the place to specify the file name.</p> </li>
+           <li> <p><code>getPersistLibraryFileName</code>: The application will create an API file for your project too (like the ones downloaded at the beginning). This is the place to specify the file name. Choose a name that matches the module name under migration.</p> </li>
            <li> <p><code>getPersistLibraryName</code>: Choose the simple name of the module under migration.</p> </li>
            <li> <p><code>getSourceModuleDirectory</code>: Absolute path to the Maven module that should be migrated. If you have a Scout Classic application this is the module that ends with .ui.html. If you have a Scout JS application it is typically the module that ends with .ui.</p> </li>
            <li> <p><code>getTargetModuleDirectory</code>: Where the migrated files should be stored. If you want to perform an in-place migration to commit the changes to VCS return <code>getSourceModuleDirectory()</code>. To test and tweak the migration you can choose an temporary output directory.</p> </li>
@@ -705,7 +705,7 @@ test-results</pre>
          </div> </li>
         <li> <p>Copy the following file to the root of the .ui module: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui/karma.conf.js?h=releases/10.0">karma.conf.js</a></p> </li>
         <li> <p>Copy the following file to the directory src/test/js of the .ui module: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui/src/test/js/test-index.js?h=releases/10.0">test-index.js</a></p> </li>
-        <li> <p>Move your existing index.js from the WebContent folder to src/main/js in the same module and adjust it accordingly (replace the placeholder ${simpleArtifactName} with your application name).</p>
+        <li> <p>Open your existing index.js file. It may exist in the WebContent folder (or the res sub folder) or the root of the module and replace the content with the following (replace the placeholder ${simpleArtifactName} with your application name):</p>
          <div class="listingblock">
           <div class="title">
            Listing 1. For Scout Classic
@@ -739,6 +739,7 @@ test-results</pre>
            </tbody>
           </table>
          </div> </li>
+        <li> <p>Move this index.js to the src/main/js directory in the same module. If a file with that name already exists, append the content to the existing file and remove the former one.</p> </li>
         <li> <p>Move the file src/main/resources/WebContent/res/login.js (if it exists) to src/main/js in the same module and replace it with the following content:</p>
          <div class="listingblock">
           <div class="content">
