@@ -1563,6 +1563,24 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.cspExclusions</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">A list of regex strings. If the pathInfo of the request matches one of these strings the csp headers won`t be set. This property only has an effect if csp is enabled, see <code>scout.cspEnabled</code>.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.dev.scriptfile.persist.key</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a key to store the keys (HttpCacheKey) scripts in development cache. The keys of the last application start in dev mode will be stored in the user.home/.eclipse/org.eclipse.scout.dev/scriptfile_cache_{key}.obj. For the next run in dev mode the keys stored under this key are preloaded.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.dev.scriptfile.rebuild</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if scriptfiles (*.js, *.less) should be rebuilt only when the files change or with every page reload.</p> <p class="tableblock">True = Build on every page reload. False = Build only when a file is modified. The default value is false.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.devMode</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Property to specify if the application is running in development mode. Default is false.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
@@ -1582,7 +1600,7 @@ myproject.applicationName=My Project Application</code></pre>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.connectionTtl</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the maximum life time in milliseconds for kept alive connections of the Apache HTTP client. The defautl value is 1 hour.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the maximum life time in milliseconds for kept alive connections of the Apache HTTP client. The default value is 1 hour.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
@@ -1612,8 +1630,26 @@ myproject.applicationName=My Project Application</code></pre>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.proxyPatterns</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Configure proxies for the <code>ConfigurableProxySelector</code>. If an URI matches a pattern the corresponding proxy will be used.</p> <p class="tableblock">By default no proxy is used.</p> <p class="tableblock">The property value is of the format REGEXP_FOR_URI=PROXY_HOST:PROXY_PORT</p> <p class="tableblock">Example:</p> <p class="tableblock">scout.http.proxyPatterns[0]=.*\.example.com(:\d+)?=127.0.0.1:8888</p> <p class="tableblock">scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Configure proxies for the <code>ConfigurableProxySelector</code>. If an URI matches a pattern the corresponding proxy will be used.</p> <p class="tableblock">By default no proxy is used.</p> <p class="tableblock">The property value is of the format REGEXP_FOR_URI=PROXY_HOST:PROXY_PORT</p> <p class="tableblock">Example:</p> <p class="tableblock">scout.http.proxyPatterns[0]=.<strong>\.example.com(:\d+)?=127.0.0.1:8888</strong></p><strong> </strong><p class="tableblock"><strong>scout.http.proxyPatterns[1]=.</strong>\.example.org(:\d+)?=proxy.company.com</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.redirectPost</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Enable redirect of POST requests (includes non-idempotent requests). The default value is true</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.retryOnNoHttpResponseException</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Enable retry of request (includes non-idempotent requests) on NoHttpResponseException</p> <p class="tableblock">Assuming that the cause of the exception was most probably a stale socket channel on the server side.</p> <p class="tableblock">For apache tomcat see <a href="http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e659" class="bare">http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e659</a></p> <p class="tableblock">The default value is true</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.http.retryOnSocketExceptionByConnectionReset</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Enable retry of request (includes non-idempotent requests) on {@link SocketException} with message <code>Connection reset</code></p> <p class="tableblock">Assuming that the cause of the exception was most probably a stale socket channel on the server side.</p> <p class="tableblock">For apache tomcat see <a href="http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e659" class="bare">http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e659</a></p> <p class="tableblock">The default value is true</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -1625,7 +1661,7 @@ myproject.applicationName=My Project Application</code></pre>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jandex.rebuild</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if Jandex indexes should be rebuilt. Is only necessary to enable during development when the class files change often. The default value is false.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">RebuildStrategy</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -1671,12 +1707,6 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.implementor</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name of the JAX-WS implementor to use. The class must extend <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsImplementorSpecifics</code>.</p> <p class="tableblock">By default, JAX-WS Metro (not bundled with JRE) is used. For that to work, add the Maven dependency to JAX-WS Metro to your server application`s pom.xml: com.sun.xml.ws:jaxws-rt:2.2.10.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsImplementorSpecifics</code> in its super hierarchy.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.loghandlerDebug</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether to log SOAP messages in debug or info level. The default value is false.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
@@ -1698,6 +1728,12 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jaxws.provider.user.handler</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Technical subject used to invoke JAX-WS handlers if the request is not authenticated yet; used by <code>org.eclipse.scout.rt.server.jaxws.provider.handler.HandlerDelegate</code>.</p> <p class="tableblock">The default value is <code>jaxws-handler</code>.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Subject name as String</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.jetty.port</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">The port under which the jetty will be running.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer between 1 and 65535</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -1731,9 +1767,27 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.cluster.destination.clusterNotificationTopic</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the topic for cluster notifications published by scout application.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">IDestination</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.loadWebResourcesFromFilesystem</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if the application should look for web resources (like .js, .html or .css) on the local filesystem. If true, the resources will be searched in modules that follow the Scout naming conventions (e.g. name.ui.app.dev, name.ui.app, name.ui) on the local filesystem first and (if not found) on the classpath second. If false, the resources are searched on the Java classpath only. By default this property is true in dev mode and false otherwise.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mail.bouncedetector.heuristic.contents</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Non standard email bounce detection: content is checked against the provided list of heuristic contents (partial match, case-insensitive)</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mail.bouncedetector.heuristic.senderPrefixes</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Non standard email bounce detection: sender is checked against the provided list of heuristic sender prefixes (prefix match, case-insensitive)</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mail.bouncedetector.heuristic.subjects</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Non standard email bounce detection: subject is checked against the provided list of heuristic subjects (partial match, case-insensitive)</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -1751,13 +1805,31 @@ myproject.applicationName=My Project Application</code></pre>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.cluster.implementor</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the MOM implementor.</p> <p class="tableblock">Example to work with a JMS based implementor:</p> <p class="tableblock">scout.mom.cluster.implementor=org.eclipse.scout.rt.mom.jms.JmsMomImplementor</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout .rt.mom.api.IMomImplementor</code> in its super hierarchy.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout.rt.mom.api.IMomImplementor</code> in its super hierarchy.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.failover.connectionRetryCount</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the connection retry count for connection failover. Default is 15. The value 0 disables connection failover.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.failover.connectionRetryIntervalMillis</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the connection retry interval in milliseconds. Default is 2000ms.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.failover.sessionRetryIntervalMillis</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the session retry interval in milliseconds. Default is 5000ms.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.mom.marshaller</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the default Marshaller to use if no marshaller is specified for a MOM or a destination. By default the <code>JsonMarshaller</code> is used.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout .rt.mom.api.marshaller.IMarshaller</code> in its super hierarchy.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout.rt.mom.api.marshaller.IMarshaller</code> in its super hierarchy.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -1815,21 +1887,39 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.connectionTimeout</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Socket connection timeout value in milliseconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.debugReceiverEmail</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">If specified all emails are sent to this address instead of the real one. This may be useful during development to not send emails to real users by accident.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.connectionTimeout</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Socket connection timeout value in milliseconds.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.pool.maxConnectionLifetime</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Max. lifetime of pooled connections in seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.pool.maxIdleTime</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Max. idle time for pooled connections in seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.pool.waitForConnectionTimeout</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Max. wait time for SMTP connection in seconds. If the value is 0, callers will wait infinitely long for SMTP connections.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.smtp.readTimeout</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Socket read timeout value in milliseconds.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -1935,21 +2025,21 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.maxConcurrentDataLoadThreads</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of threads per server that can be created to load tiles. The default value is 25.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.dataLoadQueueTimeoutSeconds</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of seconds a tile load job can execute until it is automatically cancelled. The default value is 2 minutes.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
+         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.tiles.maxConcurrentDataLoadThreads</code></p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of threads per server that can be created to load tiles. The default value is 25.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
+        </tr>
+        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.trustedCertificates</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">URIs to DER (Base64) encoded certificate files that should be trusted. The URI may refer to a local file or a resource on the classpath (use classpath: prefix). The default value is an empty list.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">List of Strings</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -2002,7 +2092,7 @@ myproject.applicationName=My Project Application</code></pre>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingDelay</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Number of seconds before the housekeeping job starts after a UI session has been unregistered from the store.</p> <p class="tableblock">By default this property is set to 20 seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Number of seconds before the housekeeping job starts after a UI session has been unregistered from the store.</p> <p class="tableblock">By default this property is set to 30 seconds.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
@@ -2026,51 +2116,9 @@ myproject.applicationName=My Project Application</code></pre>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.util.defaultDecimalSupportProvider</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the default DefaultDecimalSupportProvider to use. By default the 'DefaultDecimalSupportProvider' is used.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout.rt.platform.util.DECIMAL.DefaultDecimalSupportProvider</code> in its super hierarchy.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the default DefaultDecimalSupportProvider to use. By default the <code>DefaultDecimalSupportProvider</code> is used.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified class name. The class must have <code>org.eclipse.scout.rt.platform.util.DECIMAL$DefaultDecimalSupportProvider</code> in its super hierarchy.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter-exclude</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of simple URI patterns for which the <code>TrivialAccessController</code> should be excluded.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">List of Strings</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>folder</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Root folder of the <code>RemoteFileServlet</code>. Default value is null.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to the root folder.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_min_size</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">The minimum number of bytes in the response of a GET request so that compression is applied. A value of &lt; 0 disables compression. Used in <code>GzipServletFilter</code>. The default value is 256.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_pattern</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Regex (not case sensitive) of servlet request pathInfo that is compressed for GET requests. Used in <code>GzipServletFilter</code>. The default value is <code>.*\.(html|css|js|json|txt)</code>.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>post_min_size</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">The minimum number of bytes in the response of a POST request so that compression is applied. A value of &lt; 0 disables compression. Used in <code>GzipServletFilter</code>. The default value is 256.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>post_pattern</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Regex (not case sensitive) of servlet request pathInfo that is compressed for POST requests. Used in <code>GzipServletFilter</code>. The default value is <code>.*/json</code>.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Filter Config</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>war-path</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Path to resource within war file. Normally starting with /WEB-INF. Default is null.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Servlet Config</p></td>
         </tr>
        </tbody>
       </table>
