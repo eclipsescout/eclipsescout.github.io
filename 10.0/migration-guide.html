@@ -555,6 +555,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#data-objects">Data Objects</a></li>
        <li><a href="#cachebuilder">CacheBuilder</a></li>
        <li><a href="#move-icache-and-transactional-map">Move ICache and transactional Map</a></li>
+       <li><a href="#remove-sessionstore-properties">Remove SessionStore Properties</a></li>
        <li><a href="#authorization-api">Authorization API</a></li>
        <li><a href="#testingutility-beantestinghelper">TestingUtility &#x2192; BeanTestingHelper</a></li>
        <li><a href="#mailhelper-getcharacterencodingofpartpart">MailHelper.getCharacterEncodingOfPart(Part)</a></li>
@@ -819,6 +820,7 @@ test-results</pre>
            <li> <p><code>master_skip_copy_webpack_build_output=true</code></p> </li>
           </ol>
          </div> </li>
+        <li> <p>Remove the following properties from all your config.properties files: <code>scout.ui.prebuild</code>, <code>scout.ui.prebuild.files</code>, <code>scout.dev.scriptfile.rebuild</code>, <code>scout.dev.scriptfile.persist.key</code>.</p> </li>
         <li> <p>If you use pnpm (see below), create a file called <code>pnpm-workspace.yaml</code> in the parent folder of your modules (which is most likely the root of your git repository) and include your npm modules.</p> </li>
         <li> <p>Open a terminal in the folder of the .ui module and run the command <code>npm install</code> (or <code>pnpm install</code>, if you use pnpm). This installs all dependencies that are required by the .ui module.</p> </li>
         <li> <p>Open a terminal in the folder of the .app module and run the command <code>npm install</code> (or <code>pnpm install</code>, if you use pnpm). This installs all dependencies that are required by the .app module (including the .ui module of your project).</p> </li>
@@ -850,11 +852,10 @@ test-results</pre>
         <li> <p>Node is installed automatically during maven build when the module contains a package.json. So there is no need to install node on the build server. Nothing to do here for you.</p> </li>
         <li> <p>To run JavaScript specs Scout now uses ChromeHeadless instead of PhantomJS. If you have JS specs you need to make sure there is a Chrome installed on your build server. The following installation guide worked for our linux servers: <a href="https://gist.github.com/ipepe/94389528e2263486e53645fa0e65578b#gistcomment-2379515" class="bare">https://gist.github.com/ipepe/94389528e2263486e53645fa0e65578b#gistcomment-2379515</a>.</p> </li>
         <li> <p>In order to display the test results you need to add the new test-results dir in your job configuration (e.g. <code>*/test-results/*/test-*.xml</code>)</p> </li>
-        <li> <p>You only have to do this step if you want to share your npm packages between different applications.<br> If you want to deploy npm artifacts to a custom npm repository (e.g. Artifactory), you need to add <code>.npmrc</code> file to the home directory of your build user on the build server (similar to the <code>.settings.xml</code> of maven). In order to deploy the artifacts you can use the official npm cli interface (npm publish). If you want to publish snapshots you can use Scout&#x2019;s snapshot-version script.</p>
+        <li> <p>You only have to do this step if you want to share your npm packages between different applications.<br> If you want to deploy npm artifacts to a custom npm repository (e.g. Artifactory), you need to add <code>.npmrc</code> file to the home directory of your build user on the build server (similar to the <code>.settings.xml</code> of maven). In order to deploy the artifacts you can use the official npm cli interface (npm publish). If you want to publish snapshots you can use the following command.</p>
          <div class="listingblock">
           <div class="content">
            <pre class="CodeRay highlight"><code>cd your.app.ui
-./target/node/node ./target/node/node_modules/npm/bin/npm-cli.js run snapshot-version
 ./target/node/node ./target/node/node_modules/npm/bin/npm-cli.js publish --tag=snapshot</code></pre>
           </div>
          </div> </li>
@@ -930,6 +931,12 @@ test-results</pre>
       </div>
       <div class="paragraph">
        <p><code>ICache</code>, its implementations and cache wrappers have been moved to <code>org.eclipse.scout.rt.platform.cache</code>.</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="remove-sessionstore-properties"><a class="anchor" href="#remove-sessionstore-properties"></a>Remove SessionStore Properties</h3>
+      <div class="paragraph">
+       <p>The following properties are no longer used and can be deleted without replacement: * <code>scout.ui.sessionStore.maxWaitForAllShutdown</code> * <code>scout.ui.sessionStore.valueUnboundMaxWaitForWriteLock</code> * <code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code></p>
       </div>
      </div>
      <div class="sect2">

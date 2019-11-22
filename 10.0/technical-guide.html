@@ -1486,7 +1486,7 @@ myproject.applicationName=My Project Application</code></pre>
         </tr>
         <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.client.jobCompletionDelayOnSessionShutdown</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the maximal time (in seconds) to wait until running jobs are cancelled on session shutdown.</p> <p class="tableblock">Should be smaller than <code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code>.</p> <p class="tableblock">The default value is 10 seconds.</p></td>
+         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the maximal time (in seconds) to wait until running jobs are cancelled on session shutdown.</p> <p class="tableblock">The default value is 10 seconds.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Long &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
@@ -1566,18 +1566,6 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.cspExclusions</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">A list of regex strings. If the pathInfo of the request matches one of these strings the csp headers won`t be set. This property only has an effect if csp is enabled, see <code>scout.cspEnabled</code>.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.dev.scriptfile.persist.key</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a key to store the keys (HttpCacheKey) scripts in development cache. The keys of the last application start in dev mode will be stored in the user.home/.eclipse/org.eclipse.scout.dev/scriptfile_cache_{key}.obj. For the next run in dev mode the keys stored under this key are preloaded.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.dev.scriptfile.rebuild</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if scriptfiles (*.js, *.less) should be rebuilt only when the files change or with every page reload.</p> <p class="tableblock">True = Build on every page reload. False = Build only when a file is modified. The default value is false.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
@@ -2067,38 +2055,8 @@ myproject.applicationName=My Project Application</code></pre>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
         <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.prebuild</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">When this property returns true, file pre-building is performed when the UI application server starts up.</p> <p class="tableblock">This means the application start takes more time, but in return the first user request takes less time.</p> <p class="tableblock"><code>File</code> in this context means web-resources like HTML, CSS and JS.</p> <p class="tableblock">These files are typically processed by Scout`s <code>ScriptProcessor</code> and <code>org.eclipse.scout.rt.ui.html.res.loader.HtmlDocumentParser</code>.</p> <p class="tableblock">By default this property is enabled when the application is not running in development mode (property <code>scout.devMode</code> is false).</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.prebuild.files</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Contains a comma separated list of files in <code>/WebContent/res</code> that should be pre-built when the (UI) application server starts up.</p> <p class="tableblock">Since it takes a while to build files, especially JS and CSS (LESS) files, we want to do this when the server starts. Otherwise its always the first user who must wait a long time until all files are built.</p> <p class="tableblock">Since CSS and JS files are always referenced by a HTML file, we simply specify the main HTML files in this property.</p> <p class="tableblock">By default no files are prebuild. This property only has an effect if property <code>scout.ui.prebuild</code> is enabled.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.maxWaitForAllShutdown</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum time in second to wait for all client sessions to be stopped after the HTTP session has become invalid.</p> <p class="tableblock">After this number of seconds a <code>leak detection</code> test is performed. You are advised to change this value only if your sessions need an unusual long time to shutdown.</p> <p class="tableblock">By default this property is set to 1 minute.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionStore.valueUnboundMaxWaitForWriteLock</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum time in seconds to wait for the write lock when the session store is unbound from the HTTP session.</p> <p class="tableblock">This value should not be too large because waiting on the lock might suspend background processes of the application server.</p> <p class="tableblock">By default this property is set to 5 seconds.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
          <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingDelay</code></p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Number of seconds before the housekeeping job starts after a UI session has been unregistered from the store.</p> <p class="tableblock">By default this property is set to 30 seconds.</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
-        </tr>
-        <tr>
-         <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.ui.sessionstore.housekeepingMaxWaitForShutdown</code></p></td>
-         <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum time in seconds to wait for a client session to be stopped by the housekeeping job.</p> <p class="tableblock">The value should be smaller than the session timeout (typically defined in the web.xml) and greater than the value of property <code>scout.client.jobCompletionDelayOnSessionShutdown</code></p> <p class="tableblock">By default this property is set to 1 minute.</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Integer &gt;= 0</p></td>
          <td class="tableblock halign-left valign-top"><p class="tableblock">Config Property</p></td>
         </tr>
