@@ -542,8 +542,10 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#service-releases">Service Releases</a></li>
        <li><a href="#obtaining-the-latest-version">Obtaining the Latest Version</a></li>
+       <li><a href="#demo-applications">Demo Applications</a></li>
       </ul> </li>
-     <li><a href="#widgets">Widgets</a>
+     <li><a href="#new-web-tool-stack">New Web Tool Stack</a></li>
+     <li><a href="#widget-enhancements">Widget Enhancements</a>
       <ul class="sectlevel2">
        <li><a href="#groupbox-new-menubar-position-title">GroupBox: New MenuBar Position TITLE</a></li>
        <li><a href="#tabbox-new-tab-style">TabBox: New Tab Style</a></li>
@@ -566,9 +568,6 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The Eclipse Scout 10.0 version was released as part of the <a href="https://wiki.eclipse.org/Simultaneous_Release">Eclipse 2019-06 Simultaneous Release</a> on June, 2019.</p>
-     </div>
-     <div class="paragraph">
       <p>The latest version of this release is: 10.0.0.009_Simrel_2019_06.</p>
      </div>
      <div class="paragraph">
@@ -580,34 +579,15 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
       <div class="paragraph">
-       <p>After the final simultaneous Eclipse release, there are no more Eclipse <em>service releases</em>. Scout 10.0 will continue to be maintained for a while and a new build may be released from time to time. Beside bug fixes, these releases may even contain some minor features. See the <a href="https://wiki.eclipse.org/SimRel/Simultaneous_Release_Cycle_FAQ#What_is_the_Simultaneous_Release_cycle_.3F">Simultaneous Release FAQ</a> for details.</p>
-      </div>
-      <div class="paragraph">
-       <p>The following enhancements were made after the initial 10.0 release.</p>
-      </div>
-      <div class="sect3">
-       <h4 id="simrel-2019-06-10-0release-expected-june-2019"><a class="anchor" href="#simrel-2019-06-10-0release-expected-june-2019"></a>Simrel 2019-06 (10.0)&#x2009;&#x2014;&#x2009;Release Expected June, 2019</h4>
-       <div class="admonitionblock warning">
-        <table>
-         <tbody>
-          <tr>
-           <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> The here described functionality has not yet been released and is part of an upcoming release. </td>
-          </tr>
-         </tbody>
-        </table>
-       </div>
-       <div class="paragraph">
-        <p>(Section intentionally left blank for possible future release)</p>
-       </div>
+       <p>Scout 10.0 will continue to be maintained for a while and a new build may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
       </div>
      </div>
      <div class="sect2">
       <h3 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h3>
       <div class="sect3">
-       <h4 id="runtime-scout-rt"><a class="anchor" href="#runtime-scout-rt"></a>Runtime (Scout RT)</h4>
+       <h4 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h4>
        <div class="paragraph">
-        <p>Scout RT artifacts are distributed via Maven:</p>
+        <p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
        </div>
        <div class="ulist">
         <ul>
@@ -631,35 +611,82 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
       <div class="sect3">
-       <h4 id="eclipse-ide-tooling-scout-sdk"><a class="anchor" href="#eclipse-ide-tooling-scout-sdk"></a>Eclipse IDE Tooling (Scout SDK)</h4>
+       <h4 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h4>
        <div class="paragraph">
-        <p>You can download the complete Eclipse IDE with Scout SDK included (EPP) here:<br> <a href="https://www.eclipse.org/downloads/packages/release/2019-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
-       </div>
-       <div class="paragraph">
-        <p>To install the Scout SDK into your existing Eclipse IDE, use this update site:<br> <a href="http://download.eclipse.org/scout/releases/10.0/10.0.0/009_Simrel_2019_06/" class="bare">http://download.eclipse.org/scout/releases/10.0/10.0.0/009_Simrel_2019_06/</a></p>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h4>
-       <div class="paragraph">
-        <p>The demo applications for this version can be found on the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/features/version/10.0.0.009_Simrel_2019_06">features/version/10.0.0.009_Simrel_2019_06</a> branch of our docs repository on GitHub.</p>
-       </div>
-       <div class="paragraph">
-        <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+        <p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
        </div>
        <div class="ulist">
         <ul>
-         <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
-         <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
-         <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
+         <li> <p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p> </li>
+         <li> <p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p> </li>
         </ul>
        </div>
+      </div>
+      <div class="sect3">
+       <h4 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h4>
+       <div class="paragraph">
+        <p>In addition to the Eclipse IDE Scout 10 now officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> as well &#x1f680;</p>
+       </div>
+       <div class="paragraph">
+        <p>Please find more details about the new plugin and how to install it in the corresponding section below.</p>
+       </div>
+       <div class="sect4">
+        <h5 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h5>
+        <div class="paragraph">
+         <p>You can download the complete Eclipse IDE with Scout SDK included (EPP) here:<br> <a href="https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+        </div>
+        <div class="paragraph">
+         <p>To install the Scout SDK into your existing Eclipse IDE, use this update site:<br> <a href="http://download.eclipse.org/scout/releases/10.0/10.0.0/009_Simrel_2019_06/" class="bare">http://download.eclipse.org/scout/releases/10.0/10.0.0/009_Simrel_2019_06/</a></p>
+        </div>
+       </div>
+       <div class="sect4">
+        <h5 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h5>
+        <div class="paragraph">
+         <p>We are happy to announce Scout support for <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> which combines the power of IntelliJ and Scout and gives you more flexibility in choosing your favourite development environment.</p>
+        </div>
+        <div class="paragraph">
+         <p>However as this is the very first version of the IntelliJ plugin not all features that are available in Eclipse are available in IntelliJ yet. We are working towards closing the gaps and bring your favourite features to IntelliJ as well. The features supported by the latest version can bee seen in the <code>What&#x2019;s New</code> section of the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">plugin description</a>. More features will come in future releases as soon as possible.</p>
+        </div>
+        <div class="paragraph">
+         <p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA. Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h3>
+      <div class="paragraph">
+       <p>The demo applications for this version can be found on the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/features/version/10.0.0.009_Simrel_2019_06">features/version/10.0.0.009_Simrel_2019_06</a> branch of our docs repository on GitHub.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
+        <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
+        <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
+       </ul>
       </div>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="widgets"><a class="anchor" href="#widgets"></a>Widgets</h2>
+    <h2 id="new-web-tool-stack"><a class="anchor" href="#new-web-tool-stack"></a>New Web Tool Stack</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Scout updated the web tool stack from a custom implementation to a standard <a href="https://nodejs.org/">Node.js</a>, <a href="https://webpack.js.org/">Webpack</a> and <a href="https://babeljs.io/">Babel</a> based setup. This was required as some of the frameworks used until now (e.g. to minimize CSS and JavaScript code or to run JavaScript tests) cannot handle modern code and are no longer supported (end-of-life).</p>
+     </div>
+     <div class="paragraph">
+      <p>Thanks to the power of the new tool stack it is now possible to write modern JavaScript code which will be transpiled at build time so that old browsers can execute the code. Furthermore it is easier to integrate and update 3rd party JavaScript frameworks available in the huge <a href="https://www.npmjs.com/">npm registry</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>The old Scout JavaScript code has already been migrated to a modern EcmaScript 6+ code level and uses these new features. Because of this your project specific JavaScript code must be migrated to the new level as well. Please refer to the tech doc for details about the new tool stack and to the migration guide on how to update your project.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="widget-enhancements"><a class="anchor" href="#widget-enhancements"></a>Widget Enhancements</h2>
     <div class="sectionbody">
      <div class="sect2">
       <h3 id="groupbox-new-menubar-position-title"><a class="anchor" href="#groupbox-new-menubar-position-title"></a>GroupBox: New MenuBar Position TITLE</h3>
@@ -773,7 +800,10 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="consistent-parent"><a class="anchor" href="#consistent-parent"></a>Consistent Parent</h3>
       <div class="paragraph">
-       <p>Lots of Scout widgets like <code>Actions</code>, <code>FormFields</code>, <code>Tiles</code> or <code>Tables</code> can have a parent element. Until now there have been several methods to access parent elements (e.g. <code>IActionNode#getParent()</code>, <code>ITile#getContainer()</code>, <code>IFormField#getParentField</code>, etc.) and it was only available on the specific element (e.g. for a Table). Now there is one <code>getParent()</code> method for all widgets. Furthermore visit methods have been added to traverse up the parent hierarchy.</p>
+       <p>Lots of Scout widgets like <code>Actions</code>, <code>FormFields</code>, <code>Tiles</code> or <code>Tables</code> can have a parent element. Until now there have been several methods to access parent elements (e.g. <code>IActionNode#getParent()</code>, <code>ITile#getContainer()</code>, <code>IFormField#getParentField()</code>, etc.) and it was only available on the specific element (e.g. on an Action).</p>
+      </div>
+      <div class="paragraph">
+       <p>Now there is one <code>getParent()</code> method for all widgets. Furthermore visit methods have been added to traverse up the parent hierarchy.</p>
       </div>
      </div>
      <div class="sect2">
@@ -810,7 +840,7 @@ field.setValue(<span class="string"><span class="delimiter">'</span><span class=
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2019-11-20 05:40:24 +0100
+    <br> Last updated 2019-11-29 12:26:14 +0100
    </div>
   </div>
  </body>

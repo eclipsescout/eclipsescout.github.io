@@ -579,23 +579,7 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
       <div class="paragraph">
-       <p>Scout 10.0 will continue to be maintained for a while and a new build may be released from time to time, following the <a href="https://wiki.eclipse.org/SimRel/Simultaneous_Release_Cycle_FAQ#What_is_the_Simultaneous_Release_cycle_.3F">Simultaneous Release Cycle</a>. Beside bugfixes, these service releases may even contain some minor features.</p>
-      </div>
-      <div class="paragraph">
-       <p>The following changes were made after the initial 10.0 release.</p>
-      </div>
-      <div class="sect3">
-       <h4 id="simrel-2020-03tbd"><a class="anchor" href="#simrel-2020-03tbd"></a>Simrel 2020-03&#x2009;&#x2014;&#x2009;TBD</h4>
-       <div class="admonitionblock warning">
-        <table>
-         <tbody>
-          <tr>
-           <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> The here described functionality has not yet been released and is part of an upcoming release. </td>
-          </tr>
-         </tbody>
-        </table>
-       </div>
+       <p>Scout 10.0 will continue to be maintained for a while and a new build may be released from time to time. Beside bugfixes, these service releases may even contain some minor features.</p>
       </div>
      </div>
     </div>
@@ -604,10 +588,13 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="new-web-tool-stack"><a class="anchor" href="#new-web-tool-stack"></a>New Web Tool Stack</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Scout updated the web tool stack from a custom implementation to a standard Node.js, Webpack and Babel based setup. Thanks to the power of these tools it is now possible to write modern JavaScript code which will be transpiled at build time so that old browsers can execute the code.</p>
+      <p>Scout updated the web tool stack from a custom implementation to a standard <a href="https://nodejs.org/">Node.js</a>, <a href="https://webpack.js.org/">Webpack</a> and <a href="https://babeljs.io/">Babel</a> based setup.</p>
      </div>
      <div class="paragraph">
-      <p>To run the JavaScript build a JavaScript runtime is required. This can be downloaded from <a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>. It is recommended to use a Node.js version 12 because this is a LTS release. After downloading run the installer and add the installation directory to the PATH environment variable. This allows to use commands like <code>node</code> or <code>npm</code> from the command line. These commands will be required later.</p>
+      <p>Thanks to the power of these tools it is now possible to write modern JavaScript code which will be transpiled at build time so that old browsers can execute the code.</p>
+     </div>
+     <div class="paragraph">
+      <p>To run the JavaScript build a JavaScript runtime is required. This can be downloaded from <a href="https://nodejs.org/">Node.js</a>. It is recommended to use a Node.js version 12 because this is a LTS release. After downloading run the installer and add the installation directory to the PATH environment variable. This allows to use commands like <code>node</code> or <code>npm</code> from the command line. These commands will be required later.</p>
      </div>
      <div class="sect2">
       <h3 id="javascript-migration"><a class="anchor" href="#javascript-migration"></a>JavaScript Migration</h3>
