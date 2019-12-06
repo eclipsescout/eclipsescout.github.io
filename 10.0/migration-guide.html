@@ -565,6 +565,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#renamings-in-errordo-2">Renamings in ErrorDo</a></li>
        <li><a href="#different-http-status-codes">Different HTTP status codes</a></li>
+       <li><a href="#cookies-disabled-by-default">Cookies disabled by default</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -1038,6 +1039,20 @@ test-results</pre>
       </div>
       <div class="paragraph">
        <p>The <code>org.eclipse.scout.rt.rest.exception.VetoExceptionMapper</code> used by a REST service provide will now create an error response with status <code>400 - Bad Request</code> (this was formerly a <code>403</code>).</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="cookies-disabled-by-default"><a class="anchor" href="#cookies-disabled-by-default"></a>Cookies disabled by default</h3>
+      <div class="paragraph">
+       <p>By default, a REST service client will no longer use cookies.<br> If required, cookies can be enabled by using</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>clientBuilder.property(RestClientProperties.ENABLE_COOKIES, true);</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>in <code>configureClientBuilder</code> of <code>AbstractRestClientHelper</code>.</p>
       </div>
       <div class="admonitionblock tip">
        <table>
