@@ -4640,13 +4640,11 @@ contacts.superuser=system</code></pre>
   <span class="directive">protected</span> <span class="type">boolean</span> execValidate() {
     <span class="type">boolean</span> noFirstName = StringUtility.isNullOrEmpty(getFirstNameField().getValue());
     <span class="type">boolean</span> noLastName = StringUtility.isNullOrEmpty(getLastNameField().getValue());
-    getGeneralBox().clearErrorStatus(); <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="keyword">if</span> (noFirstName &amp;&amp; noLastName) {
-      getGeneralBox().addErrorStatus(TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">MissingName</span><span class="delimiter">"</span></span>)); <i class="conum" data-value="3"></i><b>(3)</b>
-      getFirstNameField().requestFocus();
-      <span class="keyword">throw</span> <span class="keyword">new</span> VetoException(TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">MissingName</span><span class="delimiter">"</span></span>)); <i class="conum" data-value="4"></i><b>(4)</b>
+      getFirstNameField().requestFocus(); <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="keyword">throw</span> <span class="keyword">new</span> VetoException(TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">MissingName</span><span class="delimiter">"</span></span>)); <i class="conum" data-value="3"></i><b>(3)</b>
     }
-    <span class="keyword">return</span> <span class="predefined-constant">true</span>; <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>; <i class="conum" data-value="4"></i><b>(4)</b>
   }
 }</code></pre>
         </div>
@@ -4660,11 +4658,11 @@ contacts.superuser=system</code></pre>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>In case both the first name and the last name fields are empty add an error status to the parent container widget.</td>
+           <td>Place the focus on the first name field.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>Place the focus on the first name field.</td>
+           <td>In case both the first name and the last name fields are empty throw a VetoException, this will fail the validation.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="4"></i><b>4</b></td>
