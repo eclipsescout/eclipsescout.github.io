@@ -4962,6 +4962,7 @@ contacts.superuser=system</code></pre>
     <span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;? <span class="directive">extends</span> IMenuType&gt; getConfiguredMenuTypes() {
       <span class="keyword">return</span> CollectionUtility.&lt;IMenuType&gt; hashSet(
           ImageFieldMenuType.ImageUrl,
+          ImageFieldMenuType.ImageId,
           ImageFieldMenuType.Null);
     }
     <span class="annotation">@Override</span>
