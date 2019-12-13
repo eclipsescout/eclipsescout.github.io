@@ -546,6 +546,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#javascript-migration">JavaScript Migration</a></li>
        <li><a href="#build-stack-migration">Build Stack Migration</a></li>
+       <li><a href="#troubleshooting">Troubleshooting</a></li>
        <li><a href="#build-continuous-integration">Build / Continuous Integration</a></li>
       </ul> </li>
      <li><a href="#api-changes-java">API Changes (Java)</a>
@@ -606,21 +607,31 @@ table.CodeRay td.code>pre{padding:0}
        <p>In order to reduce the time needed for migrating all the JavaScript code there is a migration application available which will migrate the code automatically.</p>
       </div>
       <div class="paragraph">
-       <p>This application migrates a single Maven module. For a standard Scout JS application it must be executed for the .ui module. If the project contains more modules with JavaScript code, the migration application must be executed for each of these. To launch the migration application follow these steps:</p>
+       <p>This application migrates a single Maven module. For a standard Scout application it must be executed for the .ui module. If the project contains more modules with JavaScript code, the migration application must be executed for each of these (e.g. .app module). To launch the migration application follow these steps:</p>
       </div>
       <div class="olist arabic">
        <ol class="arabic">
-        <li> <p>Open a Browser and download the API definition files from the <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/tree/js-mig-apis?h=releases/10.0">Scout Git Repository</a>. To do so right click on the small <code>plain</code> link for each file and save the target in a local directory.</p> </li>
-        <li> <p>Create a new simple Maven project in Eclipse (File &#x2192; New &#x2192; Project &#x2192; Maven &#x2192; Maven Project &#x2192; Next, choose <code>Create a simple project</code>). Click Next.</p> </li>
-        <li> <p>Choose a Group- and Artifact Id and click Finish.</p> </li>
+        <li> <p>Create an empty Eclipse workspace. The workspace is only necessary temporarily and can be deleted again after the migration.</p> </li>
+        <li> <p>Create a new simple Maven project in your new empty workspace (File &#x2192; New &#x2192; Project &#x2192; Maven &#x2192; Maven Project &#x2192; Next, choose <code>Create a simple project</code>). Click Next.</p> </li>
+        <li> <p>Choose a Group- and Artifact Id and click Finish. Since the project is only necessary for the migration and can be deleted afterwards, the naming does not matter.</p> </li>
         <li> <p>Open the created pom.xml and add a dependency to <code>org.eclipse.scout.rt:org.eclipse.scout.migration.ecma6:10.0.0-SNAPSHOT</code> and update the project using Alt+F5.</p> </li>
+        <li> <p>The migration app requires Java 8. Add the following properties to the pom.xml and press Alt+F5 again:</p>
+         <div class="listingblock">
+          <div class="content">
+           <pre>  &lt;properties&gt;
+    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+  &lt;/properties&gt;</pre>
+          </div>
+         </div> </li>
         <li> <p>Create a new class <code>Config</code> in src/main/java extending the class <code>org.eclipse.scout.migration.ecma6.configuration.Configuration</code>.</p> </li>
         <li> <p>Add an <code>@Replace</code> annotation to the class</p> </li>
-        <li> <p>In the src/main/resources folder create a folder <code>META-INF</code> and within a file <code>scout.xml</code> (can be empty).</p> </li>
+        <li> <p>In the src/main/resources folder create a folder <code>META-INF</code> and within an empty file called <code>scout.xml</code>.</p> </li>
+        <li> <p>Open a Browser and download the API definition files from the <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/tree/js-mig-apis?h=releases/10.0">Scout Git Repository</a>. To do so right click on the small <code>plain</code> link for each file and save the target in a local directory (e.g. in a folder called api in your newly created migration app).<br> If your JavaScript code depends on other libraries built with Scout and not only org.eclipse.scout.rt.ui.html, then you need to include the api files from these libraries as well.</p> </li>
         <li> <p>Overwrite the following methods in the created <code>Config</code> class to configure the migration application to your local setup:</p>
          <div class="olist loweralpha">
           <ol class="loweralpha" type="a">
-           <li> <p><code>getConfiguredApiBase</code>: Point to the local directory where the API files from the first step are stored.</p> </li>
+           <li> <p><code>getConfiguredApiBase</code>: Point to the local directory where the API files from the previous step are stored.</p> </li>
            <li> <p><code>getPersistLibraryFileName</code>: The application will create an API file for your project too (like the ones downloaded at the beginning). This is the place to specify the file name. Choose a name that matches the module name under migration.</p> </li>
            <li> <p><code>getPersistLibraryName</code>: Choose the simple name of the module under migration.</p> </li>
            <li> <p><code>getSourceModuleDirectory</code>: Absolute path to the Maven module that should be migrated. If you have a Scout Classic application this is the module that ends with .ui.html. If you have a Scout JS application it is typically the module that ends with .ui.</p> </li>
@@ -638,14 +649,19 @@ table.CodeRay td.code>pre{padding:0}
           </ol>
          </div> </li>
         <li> <p>If the above conditions are fulfilled the migration can be started using the created launch config.</p> </li>
-        <li> <p>The migration is executed in two steps:</p>
+        <li> <p>The migration is executed in two steps (which will result in two separate VCS commits):</p>
          <div class="olist loweralpha">
           <ol class="loweralpha" type="a">
-           <li> <p>First all existing files are overwritten with the migrated content.</p> </li>
-           <li> <p>Second the files are moved to their new locations.</p> </li>
+           <li> <p>First: all existing files are overwritten with the migrated content.</p> </li>
+           <li> <p>Second: the files are moved to theirs new locations.</p> </li>
           </ol>
          </div> </li>
-        <li> <p>When the first step finished, the migration app requests confirmation to continue with the second step. This gives you the possibility to commit the first step to VCS which preserves the history.</p> </li>
+        <li> <p>Having two steps is necessary to preserve the VCS history. When the first step is finished, the migration app asks you to commit the changes and confirm. Do NOT commit and confirm yet.</p> </li>
+        <li> <p>Have a look at the output. If there is an error you should revise your configuration (maybe you didn&#x2019;t copy all api files?) and your code (did you extract all JS classes into a separate file?, etc.). To fix the errors abort the migration, reset all files (e.g. use git reset --hard), fix the configuration and run the migration again.</p> </li>
+        <li> <p>If there are no errors anymore have a look at the the migrated files. You will notice that the files are not properly formatted yet. You can do it now, if you like to have a clean git history, or do it later after the migration.</p> </li>
+        <li> <p>If you are pleased with the files commit them. Make sure all files are committed.</p> </li>
+        <li> <p>Now it is time to proceed with the second step. Confirm the message.</p> </li>
+        <li> <p>The migrated files are now moved to theirs new location. When it&#x2019;s done, commit all the files.</p> </li>
        </ol>
       </div>
       <div class="paragraph">
@@ -654,19 +670,29 @@ table.CodeRay td.code>pre{padding:0}
      </div>
      <div class="sect2">
       <h3 id="build-stack-migration"><a class="anchor" href="#build-stack-migration"></a>Build Stack Migration</h3>
+      <div class="admonitionblock note">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+          <td class="content"> Dependencies to other JS modules are defined in a package.json file and can be installed using <a href="https://www.npmjs.com/">NPM</a>. You will notice that sometimes the tool <a href="https://pnpm.js.org/">PNPM</a> will be mentioned. This is a different package manager also used by Scout itself to build the Scout modules. This results in slightly different tasks. If you don&#x2019;t know what to use yet we suggest starting with npm, you can always upgrade to pnpm (or maybe even <a href="https://yarnpkg.com">Yarn</a>) later. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
       <div class="admonitionblock important">
        <table>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
-          <td class="content"> Depending on the type of application, you either have a \*.ui.html module or a *.ui and an *.app module. The ui module typically contains the JS code and the app module the static resources (WebContent folder). If you only have one module it contains both. So if the guide tells you to do something in the .app module and you don&#x2019;t have one, do it in the .ui.html module instead. </td>
+          <td class="content"> Depending on the type of application, you either have a *.ui.html module or a *.ui and an *.app module. The ui module typically contains the JS code and the app module the static resources (WebContent folder). If you only have one module it contains both. So if the guide tells you to do something in the .app module and you don&#x2019;t have one, do it in the .ui.html module instead. </td>
          </tr>
         </tbody>
        </table>
       </div>
       <div class="olist arabic">
        <ol class="arabic">
-        <li> <p>Please do the automatic migration first if you have JS or CSS files in your project, see <a href="#javascript-migration">JavaScript Migration</a></p> </li>
+        <li> <p>Please do the automatic migration first if you have JS or CSS files in your project, see <a href="#javascript-migration">JavaScript Migration</a>. If you ran the automatic migration for the module that contains the entry HTML files (e.g. index.html), and you should have done that, then some of the following tasks may have already been done, either completely or partially. However, please read carefully and follow step by step.</p> </li>
         <li> <p>In the pom.xml of your parent project change the version of the parent maven_rt_plugin_config-master to 3.7.0.</p> </li>
         <li> <p>Create a file named <code>.gitignore</code> in the .ui module and the .app module (if available) with the following content:</p>
          <div class="listingblock">
@@ -688,13 +714,13 @@ test-results</pre>
           <ol class="loweralpha" type="a">
            <li> <p>Copy the following file to the root of the .ui module (replace the placeholders ${simpleArtifactName} with your application name and ${version} with your application version): <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui/package.json?h=releases/10.0">package.json</a></p> </li>
            <li> <p>Copy the following file to the root of the .ui module: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui/webpack.config.js?h=releases/10.0">webpack.config.js</a></p> </li>
-           <li> <p>Copy the following file to the root of the .app module (replace the placeholders ${simpleArtifactName} with your application name, ${version} with your application version and ${rootArtifactId} with the root module name): <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.app/package.json?h=releases/10.0">package.json</a></p> </li>
+           <li> <p>Copy the following file to the root of the .app module (replace the placeholders ${simpleArtifactName} with your application name, ${version} with your application version and ${rootArtifactId} with the root module name): <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.app/package.json?h=releases/10.0">package.json</a><br> If you use pnpm, referencing other npm modules in the same workspace is easier. In that case you should replace "file:../${rootArtifactId}.ui/" with the version of your .ui module (e.g. 1.0.0-snapshot).</p> </li>
            <li> <p>Copy the following file to the root of the .app module (replace the placeholder ${simpleArtifactName} with your application name): <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.app/webpack.config.js?h=releases/10.0">webpack.config.js</a></p> </li>
           </ol>
          </div> </li>
         <li> <p>If you have JavaScript tests, copy the following file to the root of the .ui module: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui/karma.conf.js?h=releases/10.0">karma.conf.js</a></p> </li>
         <li> <p>Copy the following file to the directory src/test/js of the .ui module: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-hellojs-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui/src/test/js/test-index.js?h=releases/10.0">test-index.js</a></p> </li>
-        <li> <p>Open your existing index.js file. It may exist in the WebContent folder (or the res sub folder) or the root of the module and replace the content with the following (replace the placeholder ${simpleArtifactName} with your application name):</p>
+        <li> <p>Open your existing index.js file in the .app module. It either exists in the WebContent folder (or the res sub folder) or in the src folder of the module. Replace the content with the following (replace the placeholder ${simpleArtifactName} with your application name):</p>
          <div class="listingblock">
           <div class="title">
            Listing 1. For Scout Classic
@@ -743,7 +769,7 @@ test-results</pre>
 <span class="keyword">new</span> LogoutApp().init();</code></pre>
           </div>
          </div> </li>
-        <li> <p>Move the file *-macro.less to src/main/js in the .ui module and rename it to theme.less. Make sure the imports point to the new index.less files of the corresponding npm modules (the migrator renamed the former *-module.less to index.less).</p>
+        <li> <p>Move the file *-macro.less to src/main/js in same module and rename it to theme.less. Make sure the imports point to the new index.less files of the corresponding npm modules (the migrator renamed the former *-module.less to index.less).</p>
          <div class="listingblock">
           <div class="content">
            <pre class="CodeRay highlight"><code data-lang="less">@import "~@eclipse-scout/core/src/index";
@@ -774,9 +800,10 @@ test-results</pre>
         <li> <p>Replace the content of file src/main/resources/WebContent/login.html (if available) in the .app module with <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui.html/src/main/resources/WebContent/login.html?h=releases/10.0">login.html</a> (replace ${displayName} with the title of your application and ${simpleArtifactName} with your application name)).</p> </li>
         <li> <p>Replace the content of file src/main/resources/WebContent/logout.html (if available) in the .app module with <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/%5F%5FrootArtifactId%5F%5F.ui.html/src/main/resources/WebContent/logout.html?h=releases/10.0">logout.html</a> (replace ${displayName} with the title of your application and ${simpleArtifactName} with your application name)).</p> </li>
         <li> <p>In the file src/main/resources/WebContent/popup-window.html in the .app module add <code>includes/</code> in front of the template attribute of the &lt;scout:include&gt; tag.</p> </li>
+        <li> <p>If you have other html files, to the same for those as you have done for index.html or login.html (adjust script, style and include tags).</p> </li>
         <li> <p>Move all files and folders in src/main/resources/WebContent/res one folder up directly into WebContent and delete the empty res folder.</p> </li>
-        <li> <p>Search for all occurrences of <code>res</code> within the <code>WebContent</code> folder and remove the res folder.</p> </li>
-        <li> <p>In the file src/main/webapp/WEB-INF/web.xml files of the .ui.html.app.dev and .ui.html.app.war modules change the <code>filter-exclude</code> list of the <code>UiServletFilter</code> declaration to the following and replace ${simpleArtifactName} with your application name (if your application uses the Scout LoginApp):</p>
+        <li> <p>Search for all occurrences of <code>/res</code> within the .ui and .app modules and remove the res folder.</p> </li>
+        <li> <p>In the file src/main/webapp/WEB-INF/web.xml files of the .ui.html.app.dev and .ui.html.app.war modules change the <code>filter-exclude</code> list of the <code>AuthFilter</code> declaration to the following and replace ${simpleArtifactName} with your application name (if your application uses the Scout LoginApp). The <code>AuthFilter</code> may also be called <code>UiServletFilter</code> or <code>YourAppNameUiServletFilter</code>.</p>
          <div class="listingblock">
           <div class="content">
            <pre>/favicon/*
@@ -785,7 +812,7 @@ test-results</pre>
 /jquery*.js
 /login*.js
 /logout*.js
-/@${simpleArtifactName}-theme*.css
+/${simpleArtifactName}-theme*.css
 /eclipse-scout*.js</pre>
           </div>
          </div> </li>
@@ -809,25 +836,35 @@ test-results</pre>
           </ol>
          </div> </li>
         <li> <p>Remove the following properties from all your config.properties files: <code>scout.ui.prebuild</code>, <code>scout.ui.prebuild.files</code>, <code>scout.dev.scriptfile.rebuild</code>, <code>scout.dev.scriptfile.persist.key</code>.</p> </li>
-        <li> <p>If you use pnpm (see below), create a file called <code>pnpm-workspace.yaml</code> in the parent folder of your modules (which is most likely the root of your git repository) and include your npm modules.</p> </li>
+        <li> <p>If you use pnpm, create a file called <code>pnpm-workspace.yaml</code> in the parent folder of your modules (which is most likely the root of your git repository) and include your npm modules (.ui, .app).</p> </li>
         <li> <p>Open a terminal in the folder of the .ui module and run the command <code>npm install</code> (or <code>pnpm install</code>, if you use pnpm). This installs all dependencies that are required by the .ui module.</p> </li>
         <li> <p>Open a terminal in the folder of the .app module and run the command <code>npm install</code> (or <code>pnpm install</code>, if you use pnpm). This installs all dependencies that are required by the .app module (including the .ui module of your project).</p> </li>
         <li> <p>In the terminal of the .app module run the following command: <code>npm run build:dev</code>. This triggers the transpiler that creates the JavaScript build output in the dist folder of the .app module. Only after this command has been executed the server can find the web resources to deliver them to the browser.</p> </li>
-        <li> <p>In the terminal of the .ui module run the following command: <code>npm run testserver:start</code>. This executes the Jasmine Specs in a Chrome browser (Chrome must be installed locally, the same applies to ChromeHeadless if running the build in a CI environment, see <a href="#build-continuous-integration">Build / Continuous Integration</a>).</p> </li>
         <li> <p>If there are any build errors, fix them manually. The migration application might not fix every possible code correctly.</p> </li>
+        <li> <p>In the terminal of the .ui module run the following command: <code>npm run testserver:start</code>. This executes the Jasmine Specs in a Chrome browser (Chrome must be installed locally, the same applies to ChromeHeadless if running the build in a CI environment, see <a href="#build-continuous-integration">Build / Continuous Integration</a>).</p> </li>
+        <li> <p>Now it is time to start your app!<br> Since you already ran <code>npm run build:dev</code> all the required JS and CSS files should be created and you can start the UI server using your existing launch file. If you now use IntelliJ you need to create a run configuration that uses <code>JettyServer</code> as main class (have a look at your Eclipse launch file for details).</p> </li>
+        <li> <p>Test all your html files (index.html, login.html, logout.html etc.) and all your themes (dark, custom). If everything looks fine, you are done. If not, have a look at the <a href="#troubleshooting">Troubleshooting</a> section.</p> </li>
        </ol>
       </div>
-      <div class="paragraph">
-       <p>The steps above used NPM to install dependencies (<code>npm install</code>). Depending on your needs there might be other frameworks that better suit your setup. We recommend having a look at the following alternatives:</p>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Instead of <code>npm run build:dev</code> you can also use <code>npm run build:dev:watch</code> which will watch your JS and CSS files. This means you do not need to restart the task when you change JS or CSS files. This does not include the webpack.config.js, changing that file requires running the npm task again. </td>
+         </tr>
+        </tbody>
+       </table>
       </div>
+     </div>
+     <div class="sect2">
+      <h3 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>Troubleshooting</h3>
       <div class="olist arabic">
        <ol class="arabic">
-        <li> <p><a href="https://pnpm.js.org/">PNPM</a></p> </li>
-        <li> <p><a href="https://yarnpkg.com">Yarn</a></p> </li>
+        <li> <p>After starting the server the page in the browser stays blank.<br> This most likely happens when your created bundles don&#x2019;t match the bundles required by the HTML files. Check the Network tab in your browser&#x2019;s DevTools. Which files are being loaded? Are there 404 requests? Check your dist folder. What files are there? To fix it, adjust your HTML files or the entrypoints and chunks in <code>webpack.conf.js</code>.</p> </li>
+        <li> <p>I am not sure if I missed something.<br> You can always create a new Scout app based on the arche type and compare it with your code. The easiest way is to use Eclipse and create a new Scout Project. Make sure you choose the correct application type (Java for Scout Classic apps, JavaScript for Scout JS apps).</p> </li>
+        <li> <p>I did everything you said but it still does not work.<br> Ask at <a href="https://stackoverflow.com/tags/eclipse-scout">Stack Overflow</a> or the <a href="https://www.eclipse.org/forums/index.php?t=thread&amp;frm_id=174">Forum</a>, we are happy to help you out.</p> </li>
        </ol>
-      </div>
-      <div class="paragraph">
-       <p>Please note that Scout uses PNPM internally during the Maven build.</p>
       </div>
      </div>
      <div class="sect2">
