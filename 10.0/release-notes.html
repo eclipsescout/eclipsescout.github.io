@@ -548,6 +548,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#new-web-tool-stack">New Web Tool Stack</a></li>
      <li><a href="#widget-enhancements">Widget Enhancements</a>
       <ul class="sectlevel2">
+       <li><a href="#table-visualize-tablerows-as-tiles">Table: Visualize TableRows as Tiles</a></li>
        <li><a href="#groupbox-new-menubar-position-title">GroupBox: New MenuBar Position TITLE</a></li>
        <li><a href="#tabbox-new-tab-style">TabBox: New Tab Style</a></li>
        <li><a href="#tilegrid-groups-show-loading-state-per-group">TileGrid Groups: Show Loading State per Group</a></li>
@@ -695,6 +696,15 @@ table.CodeRay td.code>pre{padding:0}
    <div class="sect1">
     <h2 id="widget-enhancements"><a class="anchor" href="#widget-enhancements"></a>Widget Enhancements</h2>
     <div class="sectionbody">
+     <div class="sect2">
+      <h3 id="table-visualize-tablerows-as-tiles"><a class="anchor" href="#table-visualize-tablerows-as-tiles"></a>Table: Visualize TableRows as Tiles</h3>
+      <div class="paragraph">
+       <p>The table has now a new way to visualize it&#x2019;s data: the tile mode. The property <code>tileMode</code> in <code>AbstractTable</code> controls which visualization is used. To use this feature, your table needs to implement <code>execCreateTile(ITableRow row)</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>When in tile mode, the Table uses a <code>TileGrid</code> to visualize it&#x2019;s tiles. All relevant events (selection, action, &#x2026;&#x200b;) and properties (selectable, filter, &#x2026;&#x200b;) are synchronized between the table and it&#x2019;s internal tileGrid.</p>
+      </div>
+     </div>
      <div class="sect2">
       <h3 id="groupbox-new-menubar-position-title"><a class="anchor" href="#groupbox-new-menubar-position-title"></a>GroupBox: New MenuBar Position TITLE</h3>
       <div class="paragraph">
@@ -853,7 +863,7 @@ field.setValue(<span class="string"><span class="delimiter">'</span><span class=
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2019-12-04 10:46:21 +0100
+    <br> Last updated 2019-12-17 12:30:21 +0100
    </div>
   </div>
  </body>
