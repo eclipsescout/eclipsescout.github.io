@@ -3492,8 +3492,8 @@ contacts.superuser=system</code></pre>
   <span class="directive">public</span> PersonTablePageData getPersonTableData(SearchFilter filter) {
     PersonTablePageData pageData = <span class="keyword">new</span> PersonTablePageData();
     <span class="predefined-type">String</span> sql = SQLs.PERSON_PAGE_SELECT + SQLs.PERSON_PAGE_DATA_SELECT_INTO;
-      SQL.selectInto(sql, <span class="keyword">new</span> NVPair(<span class="string"><span class="delimiter">"</span><span class="content">page</span><span class="delimiter">"</span></span>, pageData));
-      <span class="keyword">return</span> pageData;
+    SQL.selectInto(sql, <span class="keyword">new</span> NVPair(<span class="string"><span class="delimiter">"</span><span class="content">page</span><span class="delimiter">"</span></span>, pageData));
+    <span class="keyword">return</span> pageData;
   }
 }</code></pre>
         </div>
@@ -6287,7 +6287,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2019-12-03 15:18:23 +0100
+    <br> Last updated 2020-01-06 11:20:22 +0100
    </div>
   </div>
  </body>
