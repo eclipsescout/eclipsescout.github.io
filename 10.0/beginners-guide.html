@@ -3493,8 +3493,8 @@ contacts.superuser=system</code></pre>
   <span class="directive">public</span> PersonTablePageData getPersonTableData(SearchFilter filter) {
     PersonTablePageData pageData = <span class="keyword">new</span> PersonTablePageData();
     <span class="predefined-type">String</span> sql = SQLs.PERSON_PAGE_SELECT + SQLs.PERSON_PAGE_DATA_SELECT_INTO;
-      SQL.selectInto(sql, <span class="keyword">new</span> NVPair(<span class="string"><span class="delimiter">"</span><span class="content">page</span><span class="delimiter">"</span></span>, pageData));
-      <span class="keyword">return</span> pageData;
+    SQL.selectInto(sql, <span class="keyword">new</span> NVPair(<span class="string"><span class="delimiter">"</span><span class="content">page</span><span class="delimiter">"</span></span>, pageData));
+    <span class="keyword">return</span> pageData;
   }
 }</code></pre>
         </div>
