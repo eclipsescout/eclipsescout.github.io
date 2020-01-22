@@ -6313,7 +6313,10 @@ ACCESS.checkAnyAndThrow(<span class="keyword">new</span> ReadCompanyPermission()
     <span class="comment">// access values attribute by its attribute name</span>
     <span class="predefined-type">List</span>&lt;<span class="predefined-type">Object</span>&gt; values1 = entity.getList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>); <i class="conum" data-value="4"></i><b>(4)</b>
     <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; values2 = entity.getList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>, <span class="predefined-type">String</span>.class); <i class="conum" data-value="5"></i><b>(5)</b>
-    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; values3 = entity.getStringList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>); <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; values3 = entity.getStringList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>); <i class="conum" data-value="6"></i><b>(6)</b>
+    <span class="comment">// optional list attribute access by its attribute name</span>
+    Optional&lt;<span class="predefined-type">List</span>&lt;<span class="predefined-type">Object</span>&gt;&gt; values4 = entity.optList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>); <i class="conum" data-value="7"></i><b>(7)</b>
+    Optional&lt;<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;&gt; values5 = entity.optList(<span class="string"><span class="delimiter">"</span><span class="content">values</span><span class="delimiter">"</span></span>, <span class="predefined-type">String</span>.class); <i class="conum" data-value="8"></i><b>(8)</b></code></pre>
        </div>
       </div>
       <div class="colist arabic">
@@ -6342,6 +6345,24 @@ ACCESS.checkAnyAndThrow(<span class="keyword">new</span> ReadCompanyPermission()
          <tr>
           <td><i class="conum" data-value="6"></i><b>6</b></td>
           <td>Accessing list attribute, convenience method for a set of common types</td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="7"></i><b>7</b></td>
+          <td>Accessing optional list attribute, default type is <code>Object</code></td>
+         </tr>
+         <tr>
+          <td><i class="conum" data-value="8"></i><b>8</b></td>
+          <td>Accessing optional list attribute, specify the type as class object if known</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <div class="admonitionblock note">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+          <td class="content"> If a list attribute is not available, using one of the <code>getList(&#x2026;&#x200b;)</code> getters adds an empty list as attribute value into the entity and returns the list. Use <code>optList(&#x2026;&#x200b;)</code> in order to get an optionally available list without adding a new empty list as attribute. </td>
          </tr>
         </tbody>
        </table>
@@ -6564,14 +6585,14 @@ ACCESS.checkAnyAndThrow(<span class="keyword">new</span> ReadCompanyPermission()
     TWO(<span class="string"><span class="delimiter">"</span><span class="content">two</span><span class="delimiter">"</span></span>),
     THREE(<span class="string"><span class="delimiter">"</span><span class="content">three</span><span class="delimiter">"</span></span>);
     <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> m_stringValue;
-    <span class="directive">private</span> ExampleEnum(<span class="predefined-type">String</span> stringValue) {
+    ExampleEnum(<span class="predefined-type">String</span> stringValue) {
       m_stringValue = stringValue;
     }
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">String</span> stringValue() {
       <span class="keyword">return</span> m_stringValue;
     }
-    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> ExampleEnum resolve(<span class="predefined-type">String</span> value) { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="directive">public</span> <span class="directive">static</span> ExampleEnum resolve(<span class="predefined-type">String</span> value) { <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="comment">// custom null handling</span>
       <span class="keyword">if</span> (value == <span class="predefined-constant">null</span>) {
         <span class="keyword">return</span> <span class="predefined-constant">null</span>;

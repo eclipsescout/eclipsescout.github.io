@@ -914,6 +914,28 @@ test-results</pre>
        <p>The Scout data object support was moved from the Scout platform to the module <code>org.eclipse.scout.rt.dataobject</code>. The package imports of all data object related classes therefore changed: From <code>org.eclipse.scout.rt.platform.dataobject</code> to <code>org.eclipse.scout.rt.dataobject</code></p>
       </div>
       <div class="sect3">
+       <h4 id="idoentity-raw-list-access"><a class="anchor" href="#idoentity-raw-list-access"></a>IDoEntity raw list access</h4>
+       <div class="paragraph">
+        <p>The following methods to access a raw list attribute where changed semantically. The getter now always return a non-null value. If the attribute is not available, an empty list is added as attribute value into the entity and the new created empty list is returned.</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p><code>List&lt;Object&gt; getList(String attributeName)</code></p> </li>
+         <li> <p><code>&lt;T&gt; List&lt;T&gt; getList(String attributeName, Class&lt;T&gt; type)</code></p> </li>
+         <li> <p><code>&lt;T&gt; List&lt;T&gt; getList(String attributeName, Function&lt;Object, T&gt; mapper)</code></p> </li>
+        </ul>
+       </div>
+       <div class="paragraph">
+        <p>Additionally two new methods were added, which allows to access an optionally available list attribute, without adding a new attribute value to the entity, if the attribute is not available:</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p><code>Optional&lt;List&lt;Object&gt;&gt; optList(String attributeName)</code></p> </li>
+         <li> <p><code>&lt;T&gt; Optional&lt;List&lt;T&gt;&gt; optList(String attributeName, Class&lt;T&gt; type)</code></p> </li>
+        </ul>
+       </div>
+      </div>
+      <div class="sect3">
        <h4 id="renamings"><a class="anchor" href="#renamings"></a>Renamings</h4>
        <div class="paragraph">
         <p><code>org.eclipse.scout.rt.client.ui.desktop.datachange.DoChangeEvent</code> &#x2192; <code>org.eclipse.scout.rt.client.ui.desktop.datachange.ItemDataChangeEvent</code></p>
