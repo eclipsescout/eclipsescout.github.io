@@ -2110,6 +2110,22 @@ JasmineScout.runTestSuite(context);</code></pre>
         </table>
        </div>
       </div>
+      <div class="sect3">
+       <h4 id="test-prod-scripts-on-your-local-machine"><a class="anchor" href="#test-prod-scripts-on-your-local-machine"></a>12.4.3. Test prod scripts on your local machine</h4>
+       <div class="paragraph">
+        <p>In case you need to test the files built by <code>build:prod</code> locally, follow this procedure:</p>
+       </div>
+       <div class="ulist">
+        <ul>
+         <li> <p>Stop the UI server.</p> </li>
+         <li> <p>Run <code>npm run build:prod</code>, this script will copy minified script files to the <em>/dist</em> folder.</p> </li>
+         <li> <p>Copy <em>/dist/prod</em> and <em>/dist/res</em> to the folder <em>/target/classes</em></p> </li>
+         <li> <p>Start the UI server. Stopping and starting the UI server makes sure the server-side script cache is cleared.</p> </li>
+         <li> <p>Start the application with the URL parameter <code>/?debug=false</code>.</p> </li>
+         <li> <p>Check your index.html in the browser. Each referenced script or CSS file should have a fingerprint, example: <code>eclipse-scout-2c6053b2fdf5b816fae5.min.js</code>.</p> </li>
+        </ul>
+       </div>
+      </div>
      </div>
      <div class="sect2">
       <h3 id="eslint"><a class="anchor" href="#eslint"></a>12.5. ESLint</h3>
