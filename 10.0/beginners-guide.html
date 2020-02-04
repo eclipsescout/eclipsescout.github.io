@@ -2186,7 +2186,8 @@ table.CodeRay td.code>pre{padding:0}
          Listing 1. Initial implementation of class ContactOutline.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ContactOutline</span> <span class="directive">extends</span> AbstractOutline {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">303c0267-3c99-4736-a7f5-3097c5e011b6</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ContactOutline</span> <span class="directive">extends</span> AbstractOutline {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="type">void</span> execCreateChildPages(<span class="predefined-type">List</span>&lt;IPage&lt;?&gt;&gt; pageList) {
   }
@@ -2248,16 +2249,20 @@ table.CodeRay td.code>pre{padding:0}
          Listing 3. Structure of class Desktop with outline buttons and top level menus.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Desktop</span> <span class="directive">extends</span> AbstractDesktop {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">70eda4c8-5aed-4e61-85b4-6098edad8416</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Desktop</span> <span class="directive">extends</span> AbstractDesktop {
   <span class="comment">// outline buttons of the application</span>
   <span class="annotation">@Order</span>(<span class="integer">1</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">9405937b-66e8-491a-831d-69adca724b90</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">ContactOutlineViewButton</span> <span class="directive">extends</span> AbstractOutlineViewButton {
   }
   <span class="annotation">@Order</span>(<span class="integer">2</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">55febc84-ad6d-4ee8-9963-d1d40169a63a</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">SearchOutlineViewButton</span> <span class="directive">extends</span> AbstractOutlineViewButton {
   }
   <span class="comment">// top level menus for the header area of the application</span>
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">50df7a9d-dd3c-40a3-abc4-4619eff8d841</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">QuickAccessMenu</span> <span class="directive">extends</span> AbstractMenu {
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
@@ -2265,6 +2270,7 @@ table.CodeRay td.code>pre{padding:0}
     }
   }
   <span class="annotation">@Order</span>(<span class="integer">20</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">4fce42bf-85f9-4892-96a2-2e89e18eeaee</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">OptionsMenu</span> <span class="directive">extends</span> AbstractFormMenu&lt;OptionsForm&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
@@ -2280,6 +2286,7 @@ table.CodeRay td.code>pre{padding:0}
     }
   }
   <span class="annotation">@Order</span>(<span class="integer">30</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8dbfbe9d-0382-471a-ae43-3178f7a9e720</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">UserMenu</span> <span class="directive">extends</span> AbstractFormMenu&lt;UserForm&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredIconId() {
@@ -2405,7 +2412,8 @@ table.CodeRay td.code>pre{padding:0}
          Listing 4. The Scout lookup call for countries. This lookup call will be used for the address field.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CountryLookupCall</span> <span class="directive">extends</span> LocalLookupCall&lt;<span class="predefined-type">String</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">37736ea5-e861-43d8-a6bc-144dad3c208f</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CountryLookupCall</span> <span class="directive">extends</span> LocalLookupCall&lt;<span class="predefined-type">String</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">List</span>&lt;LookupRow&lt;<span class="predefined-type">String</span>&gt;&gt; execCreateLookupRows() { <i class="conum" data-value="2"></i><b>(2)</b>
@@ -2472,6 +2480,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(PersonTablePageData.class)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">23c10251-66b1-4bd6-a9d7-93c7d1aedede</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">PersonTablePage</span> <span class="directive">extends</span> AbstractPageWithTable&lt;Table&gt; {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredTitle() {
@@ -2486,6 +2495,7 @@ table.CodeRay td.code>pre{padding:0}
   <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredLeaf() {
     <span class="keyword">return</span> <span class="predefined-constant">true</span>;
   }
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3fa1374b-9635-441b-b2f8-feb24b50740a</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
     <span class="comment">// container class to hold columns and other elements for this table page </span><i class="conum" data-value="4"></i><b>(4)</b>
   }
@@ -2604,6 +2614,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Order</span>(<span class="integer">1</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">1cbc9059-caef-4684-b013-bfa3bc0d0642</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">PersonIdColumn</span> <span class="directive">extends</span> AbstractStringColumn {
       <span class="annotation">@Override</span> <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredDisplayable() {
@@ -2642,6 +2653,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Order</span>(<span class="integer">2</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">99df594a-6731-4757-a799-aacdbb4788d3</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">FirstNameColumn</span> <span class="directive">extends</span> AbstractStringColumn {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredHeaderText() {
@@ -2666,6 +2678,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Order</span>(<span class="integer">5</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">a39ad408-b5e5-4794-b86a-ddc13025862e</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">CountryColumn</span> <span class="directive">extends</span> AbstractSmartColumn&lt;<span class="predefined-type">String</span>&gt; {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredHeaderText() {
@@ -2701,6 +2714,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Order</span>(<span class="integer">6</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">fa879506-d38c-46a6-990c-1f1ae4b74d4e</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">PhoneColumn</span> <span class="directive">extends</span> AbstractStringColumn {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredHeaderText() {
@@ -2791,6 +2805,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(OrganizationTablePageData.class)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">18f7a78e-0dd0-4e4e-9234-99892bb4459f</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationTablePage</span> <span class="directive">extends</span> AbstractPageWithTable&lt;Table&gt; {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredTitle() {
@@ -2800,6 +2815,7 @@ table.CodeRay td.code>pre{padding:0}
   <span class="directive">protected</span> <span class="type">void</span> execLoadData(SearchFilter filter) {
     importPageData(BEANS.get(IOrganizationService.class).getOrganizationTableData(filter));
   }
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">54f3d730-7a62-462b-99ec-78fd1e6bb69d</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
     <span class="comment">// container class to hold columns and other elements for this table page</span>
   }
@@ -3633,7 +3649,8 @@ contacts.superuser=system</code></pre>
          Listing 25. Add getConfiguredDisplayHint and the methods related to the person&#x2019;s primary key.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FormData</span>(value = PersonFormData.class, sdkCommand = SdkCommand.CREATE) <i class="conum" data-value="1"></i><b>(1)</b>
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">1cde38c1-da32-4fdd-92e7-28d82a5d7bf9</span><span class="delimiter">"</span></span>)
+<span class="annotation">@FormData</span>(value = PersonFormData.class, sdkCommand = SdkCommand.CREATE) <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">PersonForm</span> <span class="directive">extends</span> AbstractForm {
   <span class="comment">// represents the person's primary key</span>
   <span class="directive">private</span> <span class="predefined-type">String</span> personId;
@@ -3695,29 +3712,38 @@ contacts.superuser=system</code></pre>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PersonForm</span> <span class="directive">extends</span> AbstractForm {
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">27a040ac-eac5-47c6-a826-572633b9d4ef</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">08832a97-8845-4ff4-8dfd-c29366c22742</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="2"></i><b>(2)</b>
     }
     <span class="annotation">@Order</span>(<span class="integer">20</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3469046e-ee95-4e86-b0c9-a8ed01fbf664</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">DetailsBox</span> <span class="directive">extends</span> AbstractTabBox { <i class="conum" data-value="3"></i><b>(3)</b>
       <span class="annotation">@Order</span>(<span class="integer">10</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">2081b483-3d6e-4239-b7da-b6e2d2aa3b7a</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">ContactInfoBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="4"></i><b>(4)</b>
         <span class="annotation">@Order</span>(<span class="integer">10</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">736450dd-ba89-43cd-ba52-bcd31196b462</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBox</span> <span class="directive">extends</span> AbstractGroupBox {
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8e18a673-aca5-44a2-898f-60a744e4467a</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">WorkBox</span> <span class="directive">extends</span> AbstractGroupBox {
       }
       <span class="annotation">@Order</span>(<span class="integer">30</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">fcb5b155-2c89-4ef8-9a96-ac41e9032107</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">NotesBox</span> <span class="directive">extends</span> AbstractGroupBox {
       }
     }
     <span class="annotation">@Order</span>(<span class="integer">30</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">e54548b8-601e-41a4-842c-db25b5f1cad1</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">OkButton</span> <span class="directive">extends</span> AbstractOkButton {
     }
     <span class="annotation">@Order</span>(<span class="integer">40</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">26612eb9-1832-4284-ac5a-9f450dc7ff9b</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">CancelButton</span> <span class="directive">extends</span> AbstractCancelButton {
     }
   }
@@ -3758,13 +3784,16 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(PersonTablePageData.class)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">23c10251-66b1-4bd6-a9d7-93c7d1aedede</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">PersonTablePage</span> <span class="directive">extends</span> AbstractPageWithTable&lt;Table&gt; {
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3fa1374b-9635-441b-b2f8-feb24b50740a</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">Class</span>&lt;? <span class="directive">extends</span> IMenu&gt; getConfiguredDefaultMenu() { <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="keyword">return</span> EditMenu.class;
     }
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">4a8f5e0e-6eb8-4296-8ad7-012151f572f2</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">EditMenu</span> <span class="directive">extends</span> AbstractMenu {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
@@ -3780,6 +3809,7 @@ contacts.superuser=system</code></pre>
       }
     }
     <span class="annotation">@Order</span>(<span class="integer">20</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8ac358f2-de17-4b2b-93f3-73e21a7415d8</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">NewMenu</span> <span class="directive">extends</span> AbstractMenu {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
@@ -3837,14 +3867,17 @@ contacts.superuser=system</code></pre>
          Listing 28. The "Create new person" menu on the desktop.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Desktop</span> <span class="directive">extends</span> AbstractDesktop {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">70eda4c8-5aed-4e61-85b4-6098edad8416</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Desktop</span> <span class="directive">extends</span> AbstractDesktop {
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">50df7a9d-dd3c-40a3-abc4-4619eff8d841</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">QuickAccessMenu</span> <span class="directive">extends</span> AbstractMenu {
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
       <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">QuickAccess</span><span class="delimiter">"</span></span>);
     }
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">effb3b69-f488-4aed-8923-d430a5f1fd97</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">NewPersonMenu</span> <span class="directive">extends</span> AbstractMenu {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
@@ -3910,7 +3943,8 @@ contacts.superuser=system</code></pre>
          Listing 29. The Scout code type to represent the gender of a person. This code type will be used for the gender field.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">GenderCodeType</span> <span class="directive">extends</span> AbstractCodeType&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">bbe8fae2-4923-42bc-9745-3bb3ef592b12</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">GenderCodeType</span> <span class="directive">extends</span> AbstractCodeType&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; {
   <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
   <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ID = <span class="string"><span class="delimiter">"</span><span class="content">Gender</span><span class="delimiter">"</span></span>;
   <span class="annotation">@Override</span>
@@ -3918,6 +3952,7 @@ contacts.superuser=system</code></pre>
     <span class="keyword">return</span> ID;
   }
   <span class="annotation">@Order</span>(<span class="integer">1000</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8893e1e4-7b6c-46c2-8c84-42c914ec29d5</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">MaleCode</span> <span class="directive">extends</span> AbstractCode&lt;<span class="predefined-type">String</span>&gt; {
     <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
     <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ID = <span class="string"><span class="delimiter">"</span><span class="content">M</span><span class="delimiter">"</span></span>;
@@ -3931,6 +3966,7 @@ contacts.superuser=system</code></pre>
     }
   }
   <span class="annotation">@Order</span>(<span class="integer">2000</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">23e1540e-2914-401f-9f42-e409ac2fb605</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">FemaleCode</span> <span class="directive">extends</span> AbstractCode&lt;<span class="predefined-type">String</span>&gt; {
     <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
     <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ID = <span class="string"><span class="delimiter">"</span><span class="content">F</span><span class="delimiter">"</span></span>;
@@ -3984,6 +4020,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">10</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">617ffd40-0d69-4d02-b4f8-90c28c68c6ce</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">PictureUrlField</span> <span class="directive">extends</span> AbstractStringField {
         <span class="annotation">@Override</span> <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredVisible() {
@@ -3991,6 +4028,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">6366a23e-f8ba-4b50-b814-202e63daffc8</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">PictureField</span> <span class="directive">extends</span> AbstractImageField {
         <span class="annotation">@Override</span> <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="directive">protected</span> <span class="predefined-type">Class</span>&lt;PictureUrlField&gt; getConfiguredMasterField() {
@@ -4064,6 +4102,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">30</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">359be835-439f-456e-9b0d-c832b034a298</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">FirstNameField</span> <span class="directive">extends</span> AbstractStringField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4071,6 +4110,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">40</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8679ade5-21fb-470e-8f00-13bd15199101</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">LastNameField</span> <span class="directive">extends</span> AbstractStringField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4078,6 +4118,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">50</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">7c602360-9daa-44b8-abb6-94ccf9b9db59</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">DateOfBirthField</span> <span class="directive">extends</span> AbstractDateField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4085,6 +4126,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">60</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">b9d0593e-3938-4f97-bdca-fdb6a1ce1d77</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">GenderGroup</span> <span class="directive">extends</span> AbstractRadioButtonGroup&lt;<span class="predefined-type">String</span>&gt; {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4133,12 +4175,14 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">30</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">fcb5b155-2c89-4ef8-9a96-ac41e9032107</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">NotesBox</span> <span class="directive">extends</span> AbstractGroupBox {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
           <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">Notes</span><span class="delimiter">"</span></span>);
         }
         <span class="annotation">@Order</span>(<span class="integer">10</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">ce791f14-fca6-4f11-8476-89cbf905eb2e</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">NotesField</span> <span class="directive">extends</span> AbstractStringField {
           <span class="annotation">@Override</span>
           <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridH() {
@@ -4172,6 +4216,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">        <span class="annotation">@Order</span>(<span class="integer">10</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">736450dd-ba89-43cd-ba52-bcd31196b462</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBox</span> <span class="directive">extends</span> AbstractGroupBox {
           <span class="annotation">@Override</span>
           <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredBorderVisible() {
@@ -4190,6 +4235,7 @@ contacts.superuser=system</code></pre>
             <span class="keyword">return</span> <span class="integer">1</span>;
           }
           <span class="annotation">@Order</span>(<span class="integer">10</span>)
+          <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">a9137ad1-af9d-4fef-a69d-3e3d9ce48f21</span><span class="delimiter">"</span></span>)
           <span class="directive">public</span> <span class="type">class</span> <span class="class">StreetField</span> <span class="directive">extends</span> AbstractStringField {
             <span class="annotation">@Override</span>
             <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4198,6 +4244,7 @@ contacts.superuser=system</code></pre>
           }
           <span class="comment">// use a sequence box for horizontal layout </span><i class="conum" data-value="3"></i><b>(3)</b>
           <span class="annotation">@Order</span>(<span class="integer">20</span>)
+          <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">a278333c-057e-4c1d-a442-0c1dd62fdca7</span><span class="delimiter">"</span></span>)
           <span class="directive">public</span> <span class="type">class</span> <span class="class">LocationBox</span> <span class="directive">extends</span> AbstractSequenceBox {
             <span class="annotation">@Override</span>
             <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4208,6 +4255,7 @@ contacts.superuser=system</code></pre>
               <span class="keyword">return</span> <span class="predefined-constant">false</span>;
             }
             <span class="annotation">@Order</span>(<span class="integer">10</span>)
+            <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3ea6ac2a-976e-4c7f-b04b-ec0d7d1ae5ec</span><span class="delimiter">"</span></span>)
             <span class="directive">public</span> <span class="type">class</span> <span class="class">CityField</span> <span class="directive">extends</span> AbstractStringField {
               <span class="annotation">@Override</span>
               <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4219,6 +4267,7 @@ contacts.superuser=system</code></pre>
               }
             }
             <span class="annotation">@Order</span>(<span class="integer">20</span>)
+            <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">d4dfce4f-019b-4a61-ba78-347ef67cf80f</span><span class="delimiter">"</span></span>)
             <span class="directive">public</span> <span class="type">class</span> <span class="class">CountryField</span> <span class="directive">extends</span> AbstractSmartField&lt;<span class="predefined-type">String</span>&gt; {
               <span class="annotation">@Override</span>
               <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -4491,6 +4540,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">        <span class="annotation">@Order</span>(<span class="integer">40</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">5f9d9363-8e57-4151-b281-7d401e64702c</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">EmailField</span> <span class="directive">extends</span> AbstractStringField {
           <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> EMAIL_PATTERN = <i class="conum" data-value="1"></i><b>(1)</b>
               <span class="string"><span class="delimiter">"</span><span class="content">^[_A-Za-z0-9-</span><span class="char">\\</span><span class="content">+]+(</span><span class="char">\\</span><span class="content">.[_A-Za-z0-9-]+)*@</span><span class="delimiter">"</span></span> +
@@ -4568,8 +4618,10 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">        <span class="annotation">@Order</span>(<span class="integer">10</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">736450dd-ba89-43cd-ba52-bcd31196b462</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBox</span> <span class="directive">extends</span> AbstractGroupBox {
           <span class="annotation">@Order</span>(<span class="integer">10</span>)
+          <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">a9137ad1-af9d-4fef-a69d-3e3d9ce48f21</span><span class="delimiter">"</span></span>)
           <span class="directive">public</span> <span class="type">class</span> <span class="class">StreetField</span> <span class="directive">extends</span> AbstractStringField {
             <span class="annotation">@Override</span> <i class="conum" data-value="1"></i><b>(1)</b>
             <span class="directive">protected</span> <span class="type">void</span> execChangedValue() {
@@ -4577,8 +4629,10 @@ contacts.superuser=system</code></pre>
             }
           }
           <span class="annotation">@Order</span>(<span class="integer">20</span>)
+          <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">a278333c-057e-4c1d-a442-0c1dd62fdca7</span><span class="delimiter">"</span></span>)
           <span class="directive">public</span> <span class="type">class</span> <span class="class">LocationBox</span> <span class="directive">extends</span> AbstractSequenceBox {
             <span class="annotation">@Order</span>(<span class="integer">10</span>)
+            <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3ea6ac2a-976e-4c7f-b04b-ec0d7d1ae5ec</span><span class="delimiter">"</span></span>)
             <span class="directive">public</span> <span class="type">class</span> <span class="class">CityField</span> <span class="directive">extends</span> AbstractStringField {
               <span class="annotation">@Override</span>
               <span class="directive">protected</span> <span class="type">void</span> execChangedValue() {
@@ -4586,6 +4640,7 @@ contacts.superuser=system</code></pre>
               }
             }
             <span class="annotation">@Order</span>(<span class="integer">20</span>)
+            <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">d4dfce4f-019b-4a61-ba78-347ef67cf80f</span><span class="delimiter">"</span></span>)
             <span class="directive">public</span> <span class="type">class</span> <span class="class">CountryField</span> <span class="directive">extends</span> AbstractSmartField&lt;<span class="predefined-type">String</span>&gt; {
               <span class="annotation">@Override</span>
               <span class="directive">protected</span> <span class="type">void</span> execChangedValue() {
@@ -4735,7 +4790,8 @@ contacts.superuser=system</code></pre>
          Listing 41. The refactored picture field.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FormData</span>(value = AbstractUrlImageFieldData.class, <i class="conum" data-value="1"></i><b>(1)</b>
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">73a4276f-77b2-4ad2-b414-7f806284bdb3</span><span class="delimiter">"</span></span>)
+<span class="annotation">@FormData</span>(value = AbstractUrlImageFieldData.class, <i class="conum" data-value="1"></i><b>(1)</b>
     sdkCommand = SdkCommand.CREATE,
     defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
 <span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
@@ -4794,10 +4850,13 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">e7efc084-fe7a-462f-ba23-914e58f7b82d</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox {
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">b20aad47-e070-4f3c-bafc-ddbaa3ae2a4c</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox {
       <span class="annotation">@Order</span>(<span class="integer">10</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">d80625e3-b548-47e4-9cae-42d70aaa568f</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">PictureField</span> <span class="directive">extends</span> AbstractUrlImageField { <i class="conum" data-value="1"></i><b>(1)</b>
       }
       <span class="comment">// additional form field</span>
@@ -4858,7 +4917,8 @@ contacts.superuser=system</code></pre>
          Listing 43. The form to edit the picture URL
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PictureUrlForm</span> <span class="directive">extends</span> AbstractForm {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3b30ebf1-e8fe-4dd3-8124-5f5038b1d47c</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">PictureUrlForm</span> <span class="directive">extends</span> AbstractForm {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredTitle() {
     <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">PictureURL</span><span class="delimiter">"</span></span>);
@@ -4873,10 +4933,13 @@ contacts.superuser=system</code></pre>
     <span class="keyword">return</span> getFieldByClass(InfoField.class);
   }
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">6c5e0da2-cf04-402f-9784-43e3a138796b</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox {
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">fdcc7087-a693-45e8-a889-3725b0995558</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">UrlBox</span> <span class="directive">extends</span> AbstractGroupBox {
       <span class="annotation">@Order</span>(<span class="integer">10</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">32b71aa6-1109-4b39-996f-f35a677faa06</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">UrlField</span> <span class="directive">extends</span> AbstractStringField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredLabelVisible() { <i class="conum" data-value="1"></i><b>(1)</b>
@@ -4892,6 +4955,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">999c32e9-ca87-4b5c-a907-29d7a7400abf</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">InfoField</span> <span class="directive">extends</span> AbstractHtmlField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="type">boolean</span> getConfiguredLabelVisible() {
@@ -4916,9 +4980,11 @@ contacts.superuser=system</code></pre>
       }
     }
     <span class="annotation">@Order</span>(<span class="integer">20</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">4e15ce0e-502c-4290-aeca-e83359f3bc5b</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">OkButton</span> <span class="directive">extends</span> AbstractOkButton {
     }
     <span class="annotation">@Order</span>(<span class="integer">30</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">f278815a-f4cf-4e86-a057-66cb7ce43fc3</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">CancelButton</span> <span class="directive">extends</span> AbstractCancelButton {
     }
   }
@@ -4951,6 +5017,7 @@ contacts.superuser=system</code></pre>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">99c1c12a-84d4-4c1a-a009-dfd2b7b55ded</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">EditURLMenu</span> <span class="directive">extends</span> AbstractMenu {
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredText() {
@@ -5140,10 +5207,13 @@ contacts.superuser=system</code></pre>
     <span class="keyword">return</span> IForm.DISPLAY_HINT_VIEW;
   }
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">e7efc084-fe7a-462f-ba23-914e58f7b82d</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox {
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">b20aad47-e070-4f3c-bafc-ddbaa3ae2a4c</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox {
       <span class="annotation">@Order</span>(<span class="integer">10</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">d80625e3-b548-47e4-9cae-42d70aaa568f</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">PictureField</span> <span class="directive">extends</span> AbstractUrlImageField { <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="type">int</span> getConfiguredGridH() { <i class="conum" data-value="2"></i><b>(2)</b>
@@ -5155,6 +5225,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">4c1a0dea-6c04-4cad-b26b-8d5cc1b786a9</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">NameField</span> <span class="directive">extends</span> AbstractStringField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -5166,6 +5237,7 @@ contacts.superuser=system</code></pre>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">30</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">68008603-257f-45dc-b8ea-d1e066682205</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">HomepageField</span> <span class="directive">extends</span> AbstractStringField {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -5174,17 +5246,21 @@ contacts.superuser=system</code></pre>
       }
     }
     <span class="annotation">@Order</span>(<span class="integer">20</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">4e48c196-22e4-4e22-965a-5e305af5e6a9</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">DetailsBox</span> <span class="directive">extends</span> AbstractTabBox {
       <span class="annotation">@Order</span>(<span class="integer">10</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">c6c9e644-2ab3-436e-9d8a-bdcc5482eb5b</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">ContactInfoBox</span> <span class="directive">extends</span> AbstractGroupBox {
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
           <span class="keyword">return</span> TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="content">ContactInfo</span><span class="delimiter">"</span></span>);
         }
         <span class="annotation">@Order</span>(<span class="integer">10</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">2a10bd00-de56-4a97-a5b2-6a8a0aae925f</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBox</span> <span class="directive">extends</span> AbstractAddressBox { <i class="conum" data-value="5"></i><b>(5)</b>
         }
         <span class="annotation">@Order</span>(<span class="integer">20</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">504a4845-d307-4238-a2e9-9e785c1477ac</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">PhoneField</span> <span class="directive">extends</span> AbstractStringField {
           <span class="annotation">@Override</span>
           <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -5192,17 +5268,21 @@ contacts.superuser=system</code></pre>
           }
         }
         <span class="annotation">@Order</span>(<span class="integer">30</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">0b4d059d-ec81-4e93-9a99-2512d734ebac</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">EmailField</span> <span class="directive">extends</span> AbstractEmailField { <i class="conum" data-value="6"></i><b>(6)</b>
         }
       }
       <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">85f4dfb0-f375-4e90-be92-b59e9bc2ebcf</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">NotesBox</span> <span class="directive">extends</span> AbstractNotesBox { <i class="conum" data-value="7"></i><b>(7)</b>
       }
     }
     <span class="annotation">@Order</span>(<span class="integer">30</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">97c3ceed-d005-47da-b44d-def4b07f92ab</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">OkButton</span> <span class="directive">extends</span> AbstractOkButton {
     }
     <span class="annotation">@Order</span>(<span class="integer">40</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">d63bfcd6-7464-4e4f-a07e-eb1173a77f8c</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">CancelButton</span> <span class="directive">extends</span> AbstractCancelButton {
     }
   }
@@ -5371,7 +5451,8 @@ contacts.superuser=system</code></pre>
          Listing 47. The OrganizationLookupCall implemented by the Scout wizard.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationLookupCall</span> <span class="directive">extends</span> LookupCall&lt;<span class="predefined-type">String</span>&gt; {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">22789824-ad89-4208-bc11-5c08b56ce998</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationLookupCall</span> <span class="directive">extends</span> LookupCall&lt;<span class="predefined-type">String</span>&gt; {
   <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">Class</span>&lt;? <span class="directive">extends</span> ILookupService&lt;<span class="predefined-type">String</span>&gt;&gt; getConfiguredService() {
@@ -5456,8 +5537,10 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">      <span class="annotation">@Order</span>(<span class="integer">20</span>)
+      <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8e18a673-aca5-44a2-898f-60a744e4467a</span><span class="delimiter">"</span></span>)
       <span class="directive">public</span> <span class="type">class</span> <span class="class">WorkBox</span> <span class="directive">extends</span> AbstractGroupBox {
         <span class="annotation">@Order</span>(<span class="integer">20</span>)
+        <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">cd4a7afd-e0ac-4c79-bf2e-819aa491db27</span><span class="delimiter">"</span></span>)
         <span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationField</span> <span class="directive">extends</span> AbstractSmartField&lt;<span class="predefined-type">String</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
           <span class="annotation">@Override</span>
           <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredLabel() {
@@ -5496,8 +5579,10 @@ contacts.superuser=system</code></pre>
          Listing 51. The organization smart column in the person page.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java">  <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
+         <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3fa1374b-9635-441b-b2f8-feb24b50740a</span><span class="delimiter">"</span></span>)
+  <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
     <span class="annotation">@Order</span>(<span class="integer">9</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">2e53e50e-5bd5-421e-8bca-fc50f27d790b</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationColumn</span> <span class="directive">extends</span> AbstractSmartColumn&lt;<span class="predefined-type">String</span>&gt; {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredHeaderText() {
@@ -5616,6 +5701,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(PersonTablePageData.class)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">23c10251-66b1-4bd6-a9d7-93c7d1aedede</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">PersonTablePage</span> <span class="directive">extends</span> AbstractPageWithTable&lt;Table&gt; {
   <span class="directive">private</span> <span class="predefined-type">String</span> organizationId; <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="directive">public</span> <span class="predefined-type">String</span> getOrganizationId() {
@@ -5629,8 +5715,10 @@ contacts.superuser=system</code></pre>
     importPageData(BEANS.get(IPersonService.class)
         .getPersonTableData(filter, getOrganizationId())); <i class="conum" data-value="2"></i><b>(2)</b>
   }
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">3fa1374b-9635-441b-b2f8-feb24b50740a</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">Table</span> <span class="directive">extends</span> AbstractTable {
     <span class="annotation">@Order</span>(<span class="integer">20</span>)
+    <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">8ac358f2-de17-4b2b-93f3-73e21a7415d8</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">NewMenu</span> <span class="directive">extends</span> AbstractMenu {
       <span class="annotation">@Override</span>
       <span class="directive">protected</span> <span class="type">void</span> execAction() {
@@ -5700,7 +5788,8 @@ contacts.superuser=system</code></pre>
          <code>OrganizationNodePage</code>.
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationNodePage</span> <span class="directive">extends</span> AbstractPageWithNodes {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">f074181d-462a-40dc-b7cd-46bb4e50e7fb</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationNodePage</span> <span class="directive">extends</span> AbstractPageWithNodes {
   <span class="directive">private</span> <span class="predefined-type">String</span> organizationId; <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="directive">public</span> <span class="predefined-type">String</span> getOrganizationId() {
     <span class="keyword">return</span> organizationId;
@@ -5744,6 +5833,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PageData</span>(OrganizationTablePageData.class)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">18f7a78e-0dd0-4e4e-9234-99892bb4459f</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">OrganizationTablePage</span> <span class="directive">extends</span> AbstractPageWithTable&lt;Table&gt; {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> IPage&lt;?&gt; execCreateChildPage(ITableRow row) {

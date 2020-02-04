@@ -2564,7 +2564,8 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">LanguageLookupCall</span> <span class="directive">extends</span> LookupCall&lt;<span class="predefined-type">String</span>&gt; {
+        <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">6154090e-86ac-4c08-9769-bf3ef61c1b4b</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">LanguageLookupCall</span> <span class="directive">extends</span> LookupCall&lt;<span class="predefined-type">String</span>&gt; {
   <span class="comment">// other stuff like serialVersionUID, Lookup Service definition...</span>
   <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
   <span class="directive">private</span> <span class="predefined-type">Date</span> m_validityFrom;
@@ -2757,7 +2758,8 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">YesOrNoSmartField</span> <span class="directive">extends</span> AbstractSmartField&lt;<span class="predefined-type">Boolean</span>&gt; {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">08ccc68e-7b72-4fe0-b666-245ddb8b8441</span><span class="delimiter">"</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">YesOrNoSmartField</span> <span class="directive">extends</span> AbstractSmartField&lt;<span class="predefined-type">Boolean</span>&gt; {
   <span class="comment">// other configuration of properties.</span>
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">Class</span>&lt;? <span class="directive">extends</span> ICodeType&lt;?, <span class="predefined-type">Boolean</span>&gt;&gt; getConfiguredCodeType() {
@@ -5056,9 +5058,11 @@ cs.reloadCodeType(UiThemeCodeType.class);
     <span class="local-variable">super</span>(ownerBox);
   }
   <span class="annotation">@Order</span>(<span class="integer">2000</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">fda7cd67-0df1-4194-9d70-22a9b3ce890d</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">SalaryField</span> <span class="directive">extends</span> AbstractBigDecimalField {
   }
   <span class="annotation">@Order</span>(<span class="integer">3000</span>)
+  <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">478037fb-759f-4fa1-b737-c77f903c6881</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">BirthdayField</span> <span class="directive">extends</span> AbstractDateField {
   }
 }</code></pre>
@@ -5249,6 +5253,7 @@ c.getSalary().setValue(<span class="keyword">new</span> <span class="predefined-
        <div class="listingblock">
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Order</span>(<span class="integer">20</span>)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">98af1bc6-2d62-4132-9953-55e08492f65f</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">MyGroupBox</span> <span class="directive">extends</span> AbstractGroupBox {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> TriState getConfiguredResponsive() {
@@ -5324,6 +5329,7 @@ c.getSalary().setValue(<span class="keyword">new</span> <span class="predefined-
       <div class="listingblock">
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Order</span>(<span class="integer">20</span>)
+<span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">032f5ffb-bb1a-477a-95c8-f185e930a977</span><span class="delimiter">"</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">MyField</span> <span class="directive">extends</span> AbstractStringField {
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="type">void</span> execInitField() {
