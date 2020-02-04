@@ -660,7 +660,7 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="cha-helloworld"><a class="anchor" href="#cha-helloworld"></a>2. &#x201c;Hello World&#x201d; Tutorial</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The &#x201c;Hello World&#x201d; chapter walks you through the creation of an Eclipse Scout client server application. When the user starts the client part of this application, the client connects to the server.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> and asks for some text content that is to be displayed to the user. Next, the server retrieves the desired information and sends it back to the client. The client then copies the content obtained from the server into a text field widget. Finally, the client displays the message obtained from the server in a text field widget.</p>
+      <p>The &#x201c;Hello World&#x201d; chapter walks you through the creation of an Eclipse Scout client server application. When the user starts the client part of this application, the client connects to the server <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> and asks for some text content that is to be displayed to the user. Next, the server retrieves the desired information and sends it back to the client. The client then copies the content obtained from the server into a text field widget and displays it.</p>
      </div>
      <div class="paragraph">
       <p>The goal of this chapter is to provide a first impression of working with the Scout framework using the Scout SDK. We will start by building the application from scratch and then we&#x2019;ll deploy the complete application to a Tomcat web server.</p>
@@ -761,7 +761,7 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
       <div class="paragraph">
-       <p>Starting the Scout frontend server works exactely the same. But first select the <code>[webapp] dev ui.launch</code> file in the Eclipse IDE. This launch file is located under module <code>helloworld.ui.html.app.dev</code> in the Package Explorer.</p>
+       <p>Starting the Scout frontend server works exactly the same. But first select the <code>[webapp] dev ui.launch</code> file in the Eclipse IDE. This launch file is located under module <code>helloworld.ui.html.app.dev</code> in the Package Explorer.</p>
       </div>
       <div class="paragraph">
        <p>During startup of the Scout applications you should see console output providing information about the startup. After having successfully started the Scout backend and frontend servers the Hello World application can then be accessed by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in your favorite web browser.</p>
@@ -1856,7 +1856,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>It is recommended that you first import the full &#x201c;Contacts&#x201d; demo application as described in the Eclipse Scout User Guide into a separate workspace. This gives you the possibility to check your source code against the full implementation during the various steps of the tutorial. Alternatively, you can also view the source code of the &#x201c;Contacts&#x201d; demo application on Github.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.</p>
       </div>
       <div class="paragraph">
-       <p>Figure <a href="#img-app_contacts_personpage">Figure 24</a> below shows the &#x201c;Contacts&#x201d; application after connecting to the Scout UI application.</p>
+       <p><a href="#img-app_contacts_personpage">Figure 24</a> below shows the &#x201c;Contacts&#x201d; application after connecting to the Scout UI application.</p>
       </div>
       <div id="img-app_contacts_personpage" class="imageblock">
        <div class="content">
@@ -1898,7 +1898,7 @@ table.CodeRay td.code>pre{padding:0}
        </dl>
       </div>
       <div class="paragraph">
-       <p>For entering and editing of data in Scout applications views are used in most cases. Views are displayed in the bench area of a Scout application. Several views can also be opened simultaneously. To show a specific view the user has to click on the view button associated with the desired view. An example of an opened view is shown for person "Alice" in in <a href="#img-app_contacts_personform">Figure 25</a>.</p>
+       <p>For entering and editing of data in Scout applications views are used in most cases. Views are displayed in the bench area of a Scout application. Several views can also be opened simultaneously. To show a specific view the user has to click on the view button associated with the desired view. An example of an opened view is shown for person "Alice" in <a href="#img-app_contacts_personform">Figure 25</a>.</p>
       </div>
       <div id="img-app_contacts_personform" class="imageblock">
        <div class="content">
@@ -1912,10 +1912,10 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="sec-contacts_overview"><a class="anchor" href="#sec-contacts_overview"></a>4.2. Tutorial Overview</h3>
       <div class="paragraph">
-       <p>This tutorial walks you through the implementation of a Scout application consisting of a frontend and a backend application. The frontend application contains outlines with navigation trees, pages to present information in tabular form and forms to view and edit data. In the backend application the tutorial shows how to implement services, logging, databases access, and several other aspects of Scout applications.</p>
+       <p>This tutorial walks you through the implementation of a Scout application consisting of a frontend and a backend application. The frontend application contains outlines with navigation trees, pages to present information in tabular form, and forms to view and edit data. In the backend application the tutorial shows how to implement services, logging, database access, and several other aspects of Scout applications.</p>
       </div>
       <div class="paragraph">
-       <p>The tutorial is organized into the sequence of the consecutive steps listed below. Each of the step is described in a individual section that results in a executable application that can be tested and compared against the full "Contacts" demo application.</p>
+       <p>The tutorial is organized as a sequence of consecutive steps as listed below. Each step is described in a individual section that results in a executable application that can be tested and compared against the full "Contacts" demo application.</p>
       </div>
       <div class="dlist">
        <dl>
@@ -1924,7 +1924,7 @@ table.CodeRay td.code>pre{padding:0}
          <a href="#sec-contacts_initial_project">Section 4.3</a>)
         </dt>
         <dd>
-         <p>We start with an empty workspace and the "Hello World" project. At the end of step one we have a project setup that matches the "Contacts" application. This includes the organization and naming of Maven modules and the individual Java packages.</p>
+         <p>We will create a new project and prepare the generated code base by adapting existing components and deleting unnecessary components. At the end of step one we have a project setup that allows us to start adding new components to the application.</p>
         </dd>
         <dt class="hdlist1">
          Step 2: Adding the Person and Organization Page (
@@ -1938,14 +1938,14 @@ table.CodeRay td.code>pre{padding:0}
          <a href="#sec-contacts_jdbc">Section 4.5</a>)
         </dt>
         <dd>
-         <p>This step concentrates on the backend of the "Contacts" application. The covered topics includes dealing with application properties, setup and access of a database and using the database to provide data for the person and organization page created in the previous step.</p>
+         <p>This step concentrates on the backend of the "Contacts" application. The covered topics include dealing with application properties, setup and access of a database and using the database to provide data for the person and organization page created in the previous step.</p>
         </dd>
         <dt class="hdlist1">
          Step 4: Adding a Form to Create/Edit Persons (
          <a href="#sec-contacts_forms">Section 4.6</a>)
         </dt>
         <dd>
-         <p>Having access to the database is used in this step to add the components that allow a user to create and edit persons and organizations in the user interface of the "Contacts" application. In addition, this tutorial step also demonstrates how to design and implement complex form layouts with the Scout framework.</p>
+         <p>After having access to the database the components that allow a user to create and edit persons and organizations in the user interface of the "Contacts" application can be added. In addition, this tutorial step also demonstrates how to design and implement complex form layouts with the Scout framework.</p>
         </dd>
         <dt class="hdlist1">
          Step 5: Form Field Validation and Template Fields (
@@ -1981,10 +1981,7 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="sec-contacts_initial_project"><a class="anchor" href="#sec-contacts_initial_project"></a>4.3. Setting up the Initial Project</h3>
       <div class="paragraph">
-       <p>This section deals with setting up the initial workspace and codebase for the "Contacts" application. The goal of this step lies in the project setup that closely matches the "Contacts" application. This includes the organization and naming of Maven modules and the individual Java packages.</p>
-      </div>
-      <div class="paragraph">
-       <p>The creation up of the initial project setup described in this section consists of the tasks listed below.</p>
+       <p>This section deals with setting up the initial workspace and code base for the "Contacts" application. The creation up of the initial project setup consists of the tasks listed below.</p>
       </div>
       <div class="ulist">
        <ul>
@@ -2000,7 +1997,7 @@ table.CodeRay td.code>pre{padding:0}
       <div class="sect3">
        <h4 id="sec-contacts_initial_codebase"><a class="anchor" href="#sec-contacts_initial_codebase"></a>4.3.1. Creating the initial Codebase</h4>
        <div class="paragraph">
-        <p>The initial code for the &#x201c;Contacts&#x201d; application is generated using the <em class="wizard">New Scout Project</em> wizard. For the wizard fields you may use the values below and as shown in <a href="#img-sdk_new_project_tutorial">Figure 26</a></p>
+        <p>In case your workspace contains modules from the &#x201c;Hello World&#x201d; tutorial, you may want to multi-select them and to either close them by invoking the context menu &#x201c;Close Projects&#x201d; or to delete them by invoking the context menu &#x201c;Delete&#x201d;. The initial code for the &#x201c;Contacts&#x201d; application is then generated using the <em class="wizard">New Scout Project</em> wizard. For the wizard fields you may use the values below and as shown in <a href="#img-sdk_new_project_tutorial">Figure 26</a></p>
        </div>
        <div class="ulist">
         <ul>
@@ -2137,7 +2134,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
        </div>
        <div class="paragraph">
-        <p>We start with the package rename. To rename the package <code>org.eclipse.scout.contacts.client.work</code> to <code>org.eclipse.scout.contacts.client.contact</code> click into the word "work" of the package name and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>. This opens the package rename dialog as shown in <a href="#img-sdk_rename_package">Figure 29</a> where we replace "work" by "contact" in the <em class="element">New name</em> field.</p>
+        <p>We start with the package rename. To rename the package <code>org.eclipse.scout.contacts.client.work</code> to <code>org.eclipse.scout.contacts.client.contact</code> click into the word "work" of the package name and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>. This opens the package rename dialog as shown in <a href="#img-sdk_rename_package">Figure 29</a> where we replace "work" by "contact" in the <em class="element">New name</em> field. After pressing the <b class="button">Ok</b> button Eclipse informs the programmer that the code modification may not be accurate as the resource has compile errors. This warning can be acknowledged by clicking <b class="button">Continue</b>.</p>
        </div>
        <div id="img-sdk_rename_package" class="imageblock">
         <div class="content">
@@ -2148,10 +2145,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
        </div>
        <div class="paragraph">
-        <p>In next step we rename class <code>WorkOutline</code> to <code>ContactOutline</code>. In the Java editor we can then rename the class by clicking into the class identifier <code>WorkOutline</code> and hitting <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>.</p>
-       </div>
-       <div class="paragraph">
-        <p>Inside the edit box we can then change the class name to <code>ContactOutline</code> and hit the <b class="button">Enter</b> key to execute the change. If Eclipse shows a Rename Type dialog just hit button <b class="button">Continue</b> to let Eclipse complete the rename operation. To get rid of the compile error in method <code>execCreateChildPages</code> we simply delete the content in the method body.</p>
+        <p>In next step we rename class <code>WorkOutline</code> to <code>ContactOutline</code>. In the Java editor we can rename the class by clicking into the class identifier <code>WorkOutline</code> and hitting <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>. Inside the edit box we can then change the class name to <code>ContactOutline</code> and hit the <b class="button">Enter</b> key to execute the change. If Eclipse shows a Rename Type dialog just hit button <b class="button">Continue</b> to let Eclipse complete the rename operation. To get rid of the compile error in method <code>execCreateChildPages</code> we simply delete the content in the method body.</p>
        </div>
        <div class="paragraph">
         <p>Next, we change the outline title in method <code>getConfiguredTitle</code> by replacing the string "Work" with "Contacts", setting the cursor at the end of the word "Contacts" and hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> to open the Scout content assist as shown in <a href="#img-sdk_new_text_entry_contact">Figure 30</a>.</p>
@@ -2178,6 +2172,15 @@ table.CodeRay td.code>pre{padding:0}
        <div class="paragraph">
         <p>As the last modification we change the return value of method <code>getConfiguredIconId</code> to value <code>Icons.CategoryBold</code> and end with the code shown in <a href="#lst-contacts_outline">Listing 1</a>.</p>
        </div>
+       <div class="paragraph">
+        <p>To conclude the modifications we must get rid of the faulty import statement. To do this we could in principle press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span> to organize the imports automatically. However, we want to register the organization of imports as a so-called &#x201c;Save Action&#x201d;. This can be done in the Eclipse preferences.</p>
+       </div>
+       <div class="paragraph">
+        <p>Invoke the top-level menu &#x201c;Window/Preferences&#x201d; and enter &#x201c;Save Action&#x201d; as a filter text to narrow down the tree on the left side of the preferences window. Then, chose the &#x201c;Java/Editor/Save Actions&#x201d; node and check the boxes "[x] Format Source Code" and "[x] Organize imports". As you may have guessed, this formats the source code and organizes the import statements every time the user saves a Java class.</p>
+       </div>
+       <div class="paragraph">
+        <p>After having done so, perform a dummy modification in the class <code>ContactOutline</code> (e.g. add a space somewhere in the class body) and save the file. As a consequence, the faulty import statement at the beginning of the class file should have vanished and the class should show no compile errors anymore.</p>
+       </div>
        <div id="lst-contacts_outline" class="listingblock">
         <div class="title">
          Listing 1. Initial implementation of class ContactOutline.
@@ -2198,9 +2201,6 @@ table.CodeRay td.code>pre{padding:0}
 }</code></pre>
         </div>
        </div>
-       <div class="paragraph">
-        <p>To conclude the modifications we update the imports by hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span> and save the modified class using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>S</kbd></span>.</p>
-       </div>
       </div>
       <div class="sect3">
        <h4 id="sec-contacts_change_desktop"><a class="anchor" href="#sec-contacts_change_desktop"></a>4.3.4. Changes to Class Desktop</h4>
@@ -2211,7 +2211,7 @@ table.CodeRay td.code>pre{padding:0}
         <p>For the "Contacts" application we adapt the initial implementation to have outline view buttons for the "Contacts" and "Search" outlines. The top level menus are then adapted to hold the menus "Quick Access", "Options" and a menu for the logged in user.</p>
        </div>
        <div class="paragraph">
-        <p>Start with opening the class in the Java editor using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> to quickly access the class. In the source code of method <code>getConfiguredOutlines</code> remove <code>SettingsOutline.class</code> from the list of return values in as shown in <a href="#lst-contacts_getConfiguredOutlines">Listing 2</a>.</p>
+        <p>Start with opening the class in the Java editor using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> to quickly access the class. In the source code of method <code>getConfiguredOutlines</code> remove <code>SettingsOutline.class</code> from the list of return values as shown in <a href="#lst-contacts_getConfiguredOutlines">Listing 2</a>.</p>
        </div>
        <div id="lst-contacts_getConfiguredOutlines" class="listingblock">
         <div class="title">
@@ -2232,9 +2232,12 @@ table.CodeRay td.code>pre{padding:0}
          <li> <p>Delete the inner class <code>SettingOutlineViewButton</code></p> </li>
          <li> <p>Delete the inner class <code>UserProfileMenu</code>.</p> </li>
          <li> <p>Rename inner class WorkOutlineViewButton to <code>ContactOutlineViewButton</code></p> </li>
-         <li> <p>Create a new inner class called <code>QuickAccessMenu</code> after the <code>SearchOutlineViewButton</code>. For this navigate the cursor after the <code>SearchOutlineViewButton</code> class, press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and select the <code>Menu</code> entry. Adapt the created code until it matches the template as shown in <a href="#lst-contacts_desktop">Listing 3</a>.</p> </li>
-         <li> <p>Create another menu called <code>OptionsMenu</code> right after the newly created <code>QuickAccessMenu</code> according to <a href="#lst-contacts_desktop">Listing 3</a> (for now you can skip the method <code>getConfiguredForm</code> and keep the super class as it is).</p> </li>
+         <li> <p>Create a new inner class called <code>QuickAccessMenu</code> after the <code>SearchOutlineViewButton</code>. For this navigate the cursor after the <code>SearchOutlineViewButton</code> class, press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and select the <code>Menu</code> entry. Adapt the created code until it matches the template as shown in <a href="#lst-contacts_desktop">Listing 3</a>. Note that in your implementation, the menu should extend <code>AbstractMenu</code> instead of <code>AbstractFormMenu</code> in contrast to what is shown in <a href="#lst-contacts_desktop">Listing 3</a>. As a consequence, the method <code>getConfiguredForm</code> from <a href="#lst-contacts_desktop">Listing 3</a> is obsolete.</p> </li>
+         <li> <p>Create another menu called <code>OptionsMenu</code> right after the newly created <code>QuickAccessMenu</code> according to <a href="#lst-contacts_desktop">Listing 3</a>.</p> </li>
          <li> <p>Create a last menu called <code>UserMenu</code> after the <code>OptionsMenu</code> according to <a href="#lst-contacts_desktop">Listing 3</a>.</p> </li>
+         <li> <p>Delete the method <code>onThemeChanged</code>.</p> </li>
+         <li> <p>Remove the statement in the body of the constructor.</p> </li>
+         <li> <p>Note that it is not necessary to organize the imports since you have registered the organization of imports as a save action earlier in this tutorial.</p> </li>
         </ul>
        </div>
        <div class="paragraph">
@@ -2295,11 +2298,11 @@ table.CodeRay td.code>pre{padding:0}
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>In your implementation <code>OptionsMenu</code> should extend <code>AbstractMenu</code></td>
+           <td>In your implementation <code>OptionsMenu</code> should extend <code>AbstractMenu</code> and the method <code>getConfiguredForm</code> should be deleted.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>In your implementation <code>UserMenu</code> should extend <code>AbstractMenu</code></td>
+           <td>In your implementation <code>UserMenu</code> should extend <code>AbstractMenu</code> and the method <code>getConfiguredForm</code> should be deleted.</td>
           </tr>
          </tbody>
         </table>
@@ -2329,7 +2332,7 @@ table.CodeRay td.code>pre{padding:0}
         </div>
        </div>
        <div class="paragraph">
-        <p>From the coding perspective we now have all necessary maven Modules for "Contacts" application including Java package and class names to match with the complete Scout "Contacts" demo application. This point is important as it simplifies the comparison of intermediate stages of the tutorial application with the Scout demo application. The same is true for the user perspective: The layout of the current state of the tutorial matches with the complete "Contacts" sample application.</p>
+        <p>From the coding perspective we now have all necessary maven Modules for the "Contacts" application including Java package and class names to match with the complete Scout "Contacts" demo application. This point is important as it simplifies the comparison of intermediate stages of the tutorial application with the Scout demo application. The same is true for the user perspective: The layout of the current state of the tutorial matches with the complete "Contacts" sample application.</p>
        </div>
       </div>
      </div>
@@ -2339,7 +2342,7 @@ table.CodeRay td.code>pre{padding:0}
        <p>In the second step of the Scout tutorial the components to display persons and organizations are added to the "Contacts" outline of the user interface of the Scout application. Specifically, a "Persons" page and an "Organizations" page are created and added to the navigation tree of the "Contacts" outline.</p>
       </div>
       <div class="paragraph">
-       <p>Database access and populating the pages with actual data from the database is not part of this section but will be covered in <a href="#sec-contacts_jdbc">Section 4.5</a> in the next tutorial step.</p>
+       <p>Database access and populating the pages with actual data from the database is not part of this section but will be covered in the next tutorial step (<a href="#sec-contacts_jdbc">Section 4.5</a>).</p>
       </div>
       <div class="paragraph">
        <p>The addition of the "Persons" page is described in detail in the sections listed below.</p>
@@ -2523,7 +2526,7 @@ table.CodeRay td.code>pre{padding:0}
         <p>Table pages are an important UI element of Scout applications as they frequently play a central role in the interactions of a user with the application. Out of the box table pages offer powerful options to sort, filter and re-arrange the data contained in the table. This functionality offers a good starting point to decide which columns to add to a table page.</p>
        </div>
        <div class="paragraph">
-        <p>To decide the columns to add the following criteria have been useful in practice.</p>
+        <p>To decide about the columns to add the following criteria have been useful in practice.</p>
        </div>
        <div class="ulist">
         <ul>
@@ -2564,7 +2567,7 @@ table.CodeRay td.code>pre{padding:0}
          <tbody>
           <tr>
            <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-           <td class="content"> Use the column class names as indicated above. Working with different names is possible but requires additional work later in the tutorial when the data retrieved from the database is mapped to these column class names. </td>
+           <td class="content"> Make sure to use column class names exactly as indicated above. Working with different names is possible but requires additional work later in the tutorial when the data retrieved from the database is mapped to these column class names. </td>
           </tr>
          </tbody>
         </table>
@@ -2654,7 +2657,7 @@ table.CodeRay td.code>pre{padding:0}
         <p>For column <code>CountryColumn</code> we will use a smart column. We again use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> to open the wizard and enter "Country" for the class name box and press <kbd>Tab</kbd> once and select <em class="element">AbstractSmartColumn</em> as column type. Next we press <kbd>Tab</kbd> again to enter "Country" as the translated text.</p>
        </div>
        <div class="paragraph">
-        <p>In the created class <code>CountryColumn</code> we need to update the class to extend <code>AbstractSmartColumn&lt;String&gt;</code> and add the method <code>getConfiguredLookupCall</code> according to <a href="#lst-contacts_CountryColumn">Listing 8</a>.</p>
+        <p>In the created class <code>CountryColumn</code> we need to add the generic type parameter to the super class declaration (<code>AbstractSmartColumn&lt;String&gt;</code>) and add the method <code>getConfiguredLookupCall</code> according to <a href="#lst-contacts_CountryColumn">Listing 8</a>.</p>
        </div>
        <div id="lst-contacts_CountryColumn" class="listingblock">
         <div class="title">
@@ -2689,7 +2692,7 @@ table.CodeRay td.code>pre{padding:0}
         </table>
        </div>
        <div class="paragraph">
-        <p>After the country column we add the three columns <code>PhoneColumn</code>, <code>MobileColumn</code>, <code>EmailColumn</code> and <code>OrganizationColumn</code> that are initially not visible in the user interface. As an example for such a column <a href="#lst-contacts_PhoneColumn">Listing 9</a> is provided below.</p>
+        <p>After the country column we add the four columns <code>PhoneColumn</code>, <code>MobileColumn</code>, <code>EmailColumn</code> and <code>OrganizationColumn</code> that are initially not visible in the user interface. As an example for such a column <a href="#lst-contacts_PhoneColumn">Listing 9</a> is provided below.</p>
        </div>
        <div id="lst-contacts_PhoneColumn" class="listingblock">
         <div class="title">
@@ -2768,9 +2771,6 @@ table.CodeRay td.code>pre{padding:0}
         </table>
        </div>
        <div class="paragraph">
-        <p>Before we can save the class <code>ContactOutline</code> we have to update its imports to include the import statement for class <code>PersonTablePage</code>. To update the imports you can either user the menu <span class="menuseq"><b class="menu">Source</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Organize Imports</b></span> or use the keyboard shortcut <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span>.</p>
-       </div>
-       <div class="paragraph">
         <p>The application is now in a state where we can restart the backend and the frontend server to verify our changes in the user interface.</p>
        </div>
       </div>
@@ -2781,7 +2781,6 @@ table.CodeRay td.code>pre{padding:0}
        </div>
        <div class="ulist">
         <ul>
-         <li> <p>Add client package <code>org.eclipse.scout.contacts.client.organization</code></p> </li>
          <li> <p>Add page <code>OrganizationTablePage</code> with title "Organizations" using the Scout new page wizard</p> </li>
         </ul>
        </div>
@@ -3006,7 +3005,7 @@ table.CodeRay td.code>pre{padding:0}
         <p>Scout Config properties can greatly improve the flexibility of Scout applications. For the "Contacts" application this feature is used to keep its database setup configurable. Moving from a in-memory setup to a disk based database is then possible without any reprogramming.</p>
        </div>
        <div class="paragraph">
-        <p>The Scout backend (and frontent) applications initialize config properties from matching values found in file <code>config.properties</code>. For missing property values the default values defined in the config property classes are used.</p>
+        <p>The Scout backend (and frontend) applications initialize config properties from matching values found in file <code>config.properties</code>. For missing property values the default values defined in the config property classes are used.</p>
        </div>
        <div class="paragraph">
         <p>In the case of the "Contacts" application the config property files are located in the subfolder <code>src/main/resources</code> of the Maven modules that specify the frontend and the backend application.</p>
@@ -3219,7 +3218,7 @@ contacts.superuser=system</code></pre>
         </ul>
        </div>
        <div class="paragraph">
-        <p>How these elements are used in class <code>DatabaseSetupService</code> is shown in <a href="#lst-contacts_dbsetup_service">Listing 18</a>. The actual creation of the "Contacts" database is performed by method <code>autoCreateDatabase</code>.</p>
+        <p>How these elements are used in class <code>DatabaseSetupService</code> is shown in <a href="#lst-contacts_dbsetup_service">Listing 18</a>. The actual creation of the "Contacts" database is performed by the method <code>autoCreateDatabase</code>.</p>
        </div>
        <div class="paragraph">
         <p>At the time of the database creation no user is yet logged into the application. This is why we use a run context associated with the super user. The context is then used to execute the runnable that creates the organization and person tables.</p>
@@ -3409,7 +3408,7 @@ contacts.superuser=system</code></pre>
       <div class="sect3">
        <h4 id="sec-contacts_jdbc_fetching_data"><a class="anchor" href="#sec-contacts_jdbc_fetching_data"></a>4.5.6. Fetching Organization and Person Data</h4>
        <div class="paragraph">
-        <p>We are now ready to fetch data from the Derby database using the available infrastructure and the SQL statements prepared in class <code>SQLs</code>. For the implementation of method <code>getOrganizationTableData</code> in class <code>OrganizationService</code> we will use the two SQL snippet provided in <a href="#lst-contacts_sql_list_org">Listing 22</a>.</p>
+        <p>We are now ready to fetch data from the Derby database using the available infrastructure and the SQL statements prepared in class <code>SQLs</code>. For the implementation of method <code>getOrganizationTableData</code> in class <code>OrganizationService</code> we will use the two SQL snippets provided in <a href="#lst-contacts_sql_list_org">Listing 22</a>.</p>
        </div>
        <div id="lst-contacts_sql_list_org" class="listingblock">
         <div class="title">
@@ -3520,7 +3519,7 @@ contacts.superuser=system</code></pre>
      <div class="sect2">
       <h3 id="sec-contacts_forms"><a class="anchor" href="#sec-contacts_forms"></a>4.6. Adding a Form to Create/Edit Persons</h3>
       <div class="paragraph">
-       <p>In this tutorial step we add the Scout forms that are used to create and edit persons and organizations in the user interface. This tutorial step also provides an introduction into the design and implementation complex form layouts with the Scout framework.</p>
+       <p>In this tutorial step we add the Scout forms that are used to create and edit persons and organizations in the user interface. This tutorial step also provides an introduction into the design and implementation of complex form layouts with the Scout framework.</p>
       </div>
       <div class="paragraph">
        <p>Before we start with the actual implementation of the form <a href="#sec-contacts_form_design">Section 4.6.1</a> provides an introduction to the layouting concepts of the Scout framework. Based on this information we design a hierarchical form layout for the person form and can then dive into the creation of the person form.</p>
@@ -3976,7 +3975,6 @@ contacts.superuser=system</code></pre>
          <li> <p>Place the cursor in the body of the inner class <code>GeneralBox</code>.</p> </li>
          <li> <p>Copy the code provided in <a href="#lst-contacts_picture_field">Listing 30</a> into the general box.</p> </li>
          <li> <p>Add for each field a getter method above the MainBox (where all other getters are). Alternatively you could use the SDK to create both fields (including getters) and add the code from <a href="#lst-contacts_picture_field">Listing 30</a>.</p> </li>
-         <li> <p>Hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span> and fix the necessary imports.</p> </li>
         </ol>
        </div>
        <div id="lst-contacts_picture_field" class="listingblock">
@@ -4015,7 +4013,7 @@ contacts.superuser=system</code></pre>
         }
         <span class="annotation">@Override</span>
         <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredImageId() {
-          <span class="keyword">return</span> Icons.Person;
+          <span class="keyword">return</span> Icons.User;
         }
         <span class="directive">protected</span> <span class="type">void</span> updateImage(<span class="predefined-type">String</span> url) {
           setImageUrl(url);
@@ -4455,7 +4453,7 @@ contacts.superuser=system</code></pre>
         <p>We have also seen how we can use context menus to integrate the forms in the user interface of the application and have implemented the interaction of the frontend with the backend application including the persistance of person data in the database.</p>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. We can now verify the creation of new person entries and the modification of existing person data in the current state of the "Contacts" application. The created person form is shown in <a href="#img-contacts_tutorial_result_step_4">Figure 47</a>.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. We can now verify the creation of new person entries and the modification of existing person data in the current state of the "Contacts" application. The created person form is shown in <a href="#img-contacts_tutorial_result_step_4">Figure 47</a>. In case you copied some code snippets from the tutorial, you may see the text "undefined text {&#x2026;&#x200b;}" in some labels in the person field. You may want to define these texts using the Scout content assist for defining new texts as was already presented earlier in this tutorial.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_4" class="imageblock">
         <div class="content">
@@ -4470,7 +4468,7 @@ contacts.superuser=system</code></pre>
      <div class="sect2">
       <h3 id="sec-contacts_fields"><a class="anchor" href="#sec-contacts_fields"></a>4.7. Form Field Validation and Template Fields</h3>
       <div class="paragraph">
-       <p>This tutorial step introduces two additional concepts that are used in most Scout applications. Form field validation and template fields. Form field validation helps to keep data quality high and template fields are used to increase the code quality of Scout application.</p>
+       <p>This tutorial step introduces two additional concepts that are used in most Scout applications. Form field validation and template fields. Form field validation helps to keep data quality high and template fields are used to increase the code quality of a Scout application.</p>
       </div>
       <div class="paragraph">
        <p>In addition to just retrieving and storing new data, a business application should also help the user to maintain the quality of the entered data. To validate user input, the Scout framework offers form field validation. Simple input validation is possible on the level of individual fields as shown in <a href="#sec-contacts_field_validation">Section 4.7.1</a>. Scout also offers mechanisms to validate field values on the level of container fields or on the level of a form as shown in <a href="#sec-contacts_field_validation_complex">Section 4.7.2</a>. In the text below we add a number of form field validations that implement this approach for the person form.</p>
@@ -4716,7 +4714,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.eclipse.scout.contacts.shared.common</span>;
-<span class="directive">public</span> <span class="type">class</span> <span class="class">AbstractUrlImageFieldData</span> {
+<span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractUrlImageFieldData</span> {
 }</code></pre>
         </div>
        </div>
@@ -4729,7 +4727,6 @@ contacts.superuser=system</code></pre>
          <li> <p>Select package <code>org.eclipse.scout.contacts.client.common</code> in folder <code>src/main/java</code></p> </li>
          <li> <p>Create class <code>AbstractUrlImageField</code> using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p> </li>
          <li> <p>Update the implementation according to <a href="#lst-contacts_refactor_picture">Listing 41</a></p> </li>
-         <li> <p>Fix the imports using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span></p> </li>
         </ol>
        </div>
        <div id="lst-contacts_refactor_picture" class="listingblock">
@@ -4740,7 +4737,7 @@ contacts.superuser=system</code></pre>
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FormData</span>(value = AbstractUrlImageFieldData.class, <i class="conum" data-value="1"></i><b>(1)</b>
     sdkCommand = SdkCommand.CREATE,
     defaultSubtypeSdkCommand = DefaultSubtypeSdkCommand.CREATE)
-<span class="directive">public</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
+<span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
   <span class="directive">private</span> <span class="predefined-type">String</span> url; <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="annotation">@FormData</span> <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="directive">public</span> <span class="predefined-type">String</span> getUrl() {
@@ -4765,7 +4762,7 @@ contacts.superuser=system</code></pre>
   }
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredImageId() {
-    <span class="keyword">return</span> Icons.Person;
+    <span class="keyword">return</span> Icons.User;
   }
   <span class="directive">protected</span> <span class="type">void</span> updateImage() {
     setImageUrl(<span class="local-variable">this</span>.url);
@@ -4788,7 +4785,7 @@ contacts.superuser=system</code></pre>
         </table>
        </div>
        <div class="paragraph">
-        <p>The next step is to replace the original code of the picture field with the newly created template field. As the functionality of the template field exactly matches with the original code, class <code>PictureField</code> only needs to extend the newly created template field as shown in <a href="#lst-contacts_picture_exends_urlimagefield">Listing 42</a>.</p>
+        <p>The next step is to replace the original code of the picture field with the newly created template field. Delete the field <code>PictureUrlField</code> and remove all the code from the field <code>PictureField</code> and let <code>PictureField</code> extend the newly created template field as shown in <a href="#lst-contacts_picture_exends_urlimagefield">Listing 42</a>.</p>
        </div>
        <div id="lst-contacts_picture_exends_urlimagefield" class="listingblock">
         <div class="title">
@@ -4951,7 +4948,7 @@ contacts.superuser=system</code></pre>
          Listing 44. The "Edit URL" menu for the refactored picture field
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
+         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">AbstractUrlImageField</span> <span class="directive">extends</span> AbstractImageField {
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">EditURLMenu</span> <span class="directive">extends</span> AbstractMenu {
     <span class="annotation">@Override</span>
@@ -5028,6 +5025,9 @@ contacts.superuser=system</code></pre>
         </ul>
        </div>
        <div class="paragraph">
+        <p>Note that both the <code>AbstractAddressBox</code> and the <code>AbstractNotesBox</code> need their own form data object, whereas the <code>AbstractEmailField</code> does not.</p>
+       </div>
+       <div class="paragraph">
         <p>Replacing the concrete fields with the template fields in the person form will result in a number of compile errors in the field getter methods of the person form. In the case of the "Contacts" application these getter methods are not needed and can simply be deleted.</p>
        </div>
        <div class="paragraph">
@@ -5065,7 +5065,7 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>In the next tutorial step we are going to implement the company form to enter and edit company information. For the creation of this form we can then reuse the template fields that we have created.</p>
+        <p>In the next tutorial step we are going to implement the company form to enter and edit company information. For the creation of this form we can reuse the template fields that we have created.</p>
        </div>
       </div>
      </div>
@@ -5520,7 +5520,7 @@ contacts.superuser=system</code></pre>
         <p>In this section we will implement a drill-down functionality on the organization page. The goal is to let the user of the application expand a row in the organization page to provide access to the persons of the organization.</p>
        </div>
        <div class="paragraph">
-        <p>Scout node pages are useful when we want to display different entities that are related to a specific entry in a parent page. In the "Contacts" demo application this mechanism is used to link both persons and events to an organization as shown in <a href="#img-contacts_demo_organization_nodepage">Figure 54</a>. The coloring of the application has been modified to indicate that this is a screenshot of the "Contacts" demo application, not the tutorial application that we are building here.</p>
+        <p>Scout node pages are useful when we want to display different entities that are related to a specific entry in a parent page. In the "Contacts" demo application this mechanism is used to link both persons and events to an organization as shown in <a href="#img-contacts_demo_organization_nodepage">Figure 54</a>. Note that this is a screenshot of the "Contacts" demo application, not the tutorial application that we are building here.</p>
        </div>
        <div id="img-contacts_demo_organization_nodepage" class="imageblock">
         <div class="content">
@@ -5607,7 +5607,7 @@ contacts.superuser=system</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>Having modified the person service we add a organization id property to the person page. We can then populate this property when the person page is attached to the company node page. Finally we can use in method <code>execLoadData</code> according to <a href="#lst-contacts_person_page_modification">Listing 54</a>.</p>
+        <p>Having modified the person service we add a organization id property to the person page. We can then populate this property when the person page is attached to the organization node page. Finally we can use in method <code>execLoadData</code> according to <a href="#lst-contacts_person_page_modification">Listing 54</a>.</p>
        </div>
        <div id="lst-contacts_person_page_modification" class="listingblock">
         <div class="title">
@@ -5669,7 +5669,7 @@ contacts.superuser=system</code></pre>
         <p>The next step in the setup of the page hierarchy is the creation of the organization node page. Node pages allow to define a list of child pages that typically represent different entities. As mentioned before we will only have the person page as a child page in the "Contacts" tutorial application.</p>
        </div>
        <div class="paragraph">
-        <p>To create the company node page follow the steps listed below.</p>
+        <p>To create the organization node page follow the steps listed below.</p>
        </div>
        <div class="olist arabic">
         <ol class="arabic">
@@ -6287,7 +6287,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2020-01-06 11:20:22 +0100
+    <br> Last updated 2020-02-04 09:08:26 +0100
    </div>
   </div>
  </body>
