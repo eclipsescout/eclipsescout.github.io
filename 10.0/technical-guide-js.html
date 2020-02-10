@@ -2042,8 +2042,8 @@ JasmineScout.runTestSuite(context);</code></pre>
        </div>
        <div class="olist arabic">
         <ol class="arabic">
-         <li> <p>dev: contains not minified versions of the JS and CSS bundles with <a href="https://developer.mozilla.org/de/docs/Tools/Debugger/How_to/Use_a_source_map">Source Maps</a>. The source maps are necessary to map the bundles to the actual source files which makes debugging a lot easier. The Scout server delivers these files if it runs in dev mode (<code>scout.devMode=true</code>).</p> </li>
-         <li> <p>prod: contains minified versions of the JS and CSS bundles without source maps. Content hashes are generated and added to the files for optimal cashing. The Scout server delivers these files if it runs in production mode (<code>scout.devMode=false</code>).</p> </li>
+         <li> <p>dev: contains not minified versions of the JS and CSS bundles with <a href="https://developer.mozilla.org/de/docs/Tools/Debugger/How_to/Use_a_source_map">Source Maps</a>. The source maps are necessary to map the bundles to the actual source files which makes debugging a lot easier. The Scout server delivers such bundles if it runs in dev mode (<code>scout.devMode=true</code>).</p> </li>
+         <li> <p>prod: contains minified versions of the JS and CSS bundles with restricted source maps (the maps don&#x2019;t contain the actual source code, only the information necessary to create meaningful stack traces, see also the <a href="https://webpack.js.org/configuration/devtool/">devtool</a> property <code>nosources-source-map</code>). Content hashes are generated and added to the bundles for optimal cashing. The Scout server delivers such bundles if it runs in production mode (<code>scout.devMode=false</code>).</p> </li>
          <li> <p>res: contains all static resources from the various resource folders specified by the <code>resDir</code> array, see <a href="#static-web-resources">Section 12.2.2</a>.</p> </li>
         </ol>
        </div>
