@@ -617,13 +617,25 @@ table.CodeRay td.code>pre{padding:0}
         <li> <p>Create an empty Eclipse workspace. The workspace is only necessary temporarily and can be deleted again after the migration.</p> </li>
         <li> <p>Create a new simple Maven project in your new empty workspace (File &#x2192; New &#x2192; Project &#x2192; Maven &#x2192; Maven Project &#x2192; Next, choose <code>Create a simple project</code>). Click Next.</p> </li>
         <li> <p>Choose a Group- and Artifact Id and click Finish. Since the project is only necessary for the migration and can be deleted afterwards, the naming does not matter.</p> </li>
-        <li> <p>Open the created pom.xml and add a dependency to <code>org.eclipse.scout.rt:org.eclipse.scout.migration.ecma6:10.0.0-SNAPSHOT</code> and update the project using Alt+F5.</p> </li>
-        <li> <p>The migration app requires Java 8. Add the following properties to the pom.xml and press Alt+F5 again:</p>
+        <li> <p>Open the created pom.xml and add a dependency to <code>org.eclipse.scout.rt:org.eclipse.scout.migration.ecma6:10.0.0-SNAPSHOT</code> and update the project using Alt+F5.</p>
+         <div class="listingblock">
+          <div class="content">
+           <pre>  &lt;dependencies&gt;
+    &lt;dependency&gt;
+	  &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+      &lt;artifactId&gt;org.eclipse.scout.migration.ecma6&lt;/artifactId&gt;
+	  &lt;version&gt;10.0.0-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;</pre>
+          </div>
+         </div> </li>
+        <li> <p>The migration app requires Java 8. Also make sure the migration project uses the same encoding as your source code files (a regular scout project uses UTF-8 by default). Add the following properties to the pom.xml and press Alt+F5 again:</p>
          <div class="listingblock">
           <div class="content">
            <pre>  &lt;properties&gt;
     &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
     &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
   &lt;/properties&gt;</pre>
           </div>
          </div> </li>
