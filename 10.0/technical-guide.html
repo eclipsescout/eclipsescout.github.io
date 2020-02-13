@@ -2378,6 +2378,12 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
         <p>The encoding is the "Unicode escape characters": \uHHHH where HHHH is a hexadecimal id of the character in the <a href="http://en.wikipedia.org/wiki/List_of_Unicode_characters">Unicode character table</a>. Read more on the .properties File on <a href="http://en.wikipedia.org/wiki/.properties">wikipedia</a>.</p>
        </div>
       </div>
+      <div class="sect3">
+       <h4 id="file-watcher"><a class="anchor" href="#file-watcher"></a>4.2.2. File Watcher</h4>
+       <div class="paragraph">
+        <p>The <code>NlsFileWatcher</code> observes changes in text property files. If a change in a text property file occurs, the nls resource bundle cache will be invalidated. This means that there is no need to restart the server when working on texts and translations. The file watcher is only active if <code>scout.devMode=true</code> is set and can be disabled with <code>scout.dev.texts.fileWatcherEnabled=false</code>. By default, the file watcher is enabled in development mode.</p>
+       </div>
+      </div>
      </div>
     </div>
    </div>
