@@ -3714,6 +3714,10 @@ contacts.superuser=system</code></pre>
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
   <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">27a040ac-eac5-47c6-a826-572633b9d4ef</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> injectMenusInternal(OrderedCollection&lt;IMenu&gt; menus) {
+      BEANS.get(ContactsHelper.class).injectReadOnlyMenu(menus);
+    }
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
     <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">08832a97-8845-4ff4-8dfd-c29366c22742</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="2"></i><b>(2)</b>
@@ -4852,6 +4856,10 @@ contacts.superuser=system</code></pre>
          <pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Order</span>(<span class="integer">10</span>)
   <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">e7efc084-fe7a-462f-ba23-914e58f7b82d</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox {
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> injectMenusInternal(OrderedCollection&lt;IMenu&gt; menus) {
+      BEANS.get(ContactsHelper.class).injectReadOnlyMenu(menus);
+    }
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
     <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">b20aad47-e070-4f3c-bafc-ddbaa3ae2a4c</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox {
@@ -5206,9 +5214,17 @@ contacts.superuser=system</code></pre>
   <span class="directive">protected</span> <span class="type">int</span> getConfiguredDisplayHint() {
     <span class="keyword">return</span> IForm.DISPLAY_HINT_VIEW;
   }
+  <span class="annotation">@Override</span>
+  <span class="directive">protected</span> <span class="type">void</span> execInitForm() {
+    BEANS.get(ContactsHelper.class).handleReadOnly(getOkButton());
+  }
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
   <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">e7efc084-fe7a-462f-ba23-914e58f7b82d</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox {
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> injectMenusInternal(OrderedCollection&lt;IMenu&gt; menus) {
+      BEANS.get(ContactsHelper.class).injectReadOnlyMenu(menus);
+    }
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
     <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">b20aad47-e070-4f3c-bafc-ddbaa3ae2a4c</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox {
