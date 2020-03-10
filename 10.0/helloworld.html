@@ -611,41 +611,55 @@ table.CodeRay td.code>pre{padding:0}
     <h2 id="run-the-application"><a class="anchor" href="#run-the-application"></a>Run the Application</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>After the initial project creation step we can start the Scout application for the first time. For this, the following three steps are necessary</p>
-     </div>
-     <div class="olist arabic">
-      <ol class="arabic">
-       <li> <p>Start the Scout backend server</p> </li>
-       <li> <p>Start the Scout frontend server</p> </li>
-       <li> <p>Open the application in the browser</p> </li>
-      </ol>
+      <p>After the initial project creation step we can try to start the Scout application for the first time. Since the Hello World app consists of a backend and a frontend, we need to start two servers, one for the backend and one for the frontend. We also need to launch the JavaScript build that creates the JS and CSS bundles which will be served by the frontend server. We could start each launch configuration separately, but for the sake of convenience there is a launch group available which starts all at once.</p>
      </div>
      <div class="paragraph">
-      <p>To start the Scout backend server we first select the <code>[webapp] dev server.launch</code> file in the Package Explorer view of the Eclipse IDE and then use the <em class="menu">Run As</em> menu as shown in <a href="#img-start_client">Figure 5</a>.</p>
+      <p>To start the launch group we use the <em class="menu">Run As</em> menu as shown in <a href="#img-start_all">Figure 5</a>.</p>
      </div>
-     <div id="img-start_client" class="imageblock">
+     <div id="img-start_all" class="imageblock">
       <div class="content">
-       <img src="images/sdk_start_client_product.png" alt="sdk start client product">
+       <img src="images/sdk_start_all.png" alt="sdk start all">
       </div>
       <div class="title">
        Figure 5. Starting the Hello World application.
       </div>
      </div>
      <div class="paragraph">
-      <p>Starting the Scout frontend server works exactly the same. But first select the <code>[webapp] dev ui.launch</code> file in the Eclipse IDE. This launch file is located under module <code>helloworld.ui.html.app.dev</code> in the Package Explorer.</p>
+      <p>Because the JavaScript build needs a Node.js installation, the launching will fail if Node.js is not installed, see <a href="#img-start_missing_node">Figure 6</a></p>
+     </div>
+     <div id="img-start_missing_node" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_start_missing_node.png" alt="sdk start missing node">
+      </div>
+      <div class="title">
+       Figure 6. Launching fails due to missing Node.js
+      </div>
      </div>
      <div class="paragraph">
-      <p>During startup of the Scout applications you should see console output providing information about the startup. After having successfully started the Scout backend and frontend servers the Hello World application can then be accessed by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in your favorite web browser.</p>
+      <p>If that is the case, we need to install a recent Node.js version. To do this, we visit the official download page <a href="https://nodejs.org/en/" class="bare">https://nodejs.org/en/</a>, download the LTS version for our platform and install it.</p>
+     </div>
+     <div class="admonitionblock important">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
+         <td class="content"> The installation process could also fail if the installed Node.js is too old. Scout requires at least Node.js 12.1.0. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
      <div class="paragraph">
-      <p>The running Hello World application should then be started in your browser as shown in <a href="#img-start_browser">Figure 6</a>.</p>
+      <p>After Node.js has been installed, we can try to launch the application again using the <em class="menu">Run as</em> menu we used before. This time you should see console output providing information about the JS build process. Once the JS build has been completed successfully, the frontend and backend servers will be started automatically. The servers are ready as soon as the console shows <em>Server ready</em>. We can now access the Hello World application by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in our favorite web browser.</p>
+     </div>
+     <div class="paragraph">
+      <p>The running Hello World application should then be started in your browser as shown in <a href="#img-start_browser">Figure 7</a>.</p>
      </div>
      <div id="img-start_browser" class="imageblock">
       <div class="content">
        <img src="images/run_helloworld_in_browser.png" alt="run helloworld in browser">
       </div>
       <div class="title">
-       Figure 6. The Hello World application in the browser.
+       Figure 7. The Hello World application in the browser.
       </div>
      </div>
     </div>
