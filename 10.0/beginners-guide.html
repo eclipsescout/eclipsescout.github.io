@@ -581,9 +581,10 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#overview">B.1. Overview</a></li>
        <li><a href="#download-and-install-a-jdk">B.2. Download and Install a JDK</a></li>
-       <li><a href="#sec-download_install">B.3. Download and Install Scout</a></li>
-       <li><a href="#add-scout-to-your-eclipse-installation">B.4. Add Scout to your Eclipse Installation</a></li>
-       <li><a href="#verifying-the-installation">B.5. Verifying the Installation</a></li>
+       <li><a href="#sec-download_install">B.3. Download and Install Node.js</a></li>
+       <li><a href="#download-and-install-scout">B.4. Download and Install Scout</a></li>
+       <li><a href="#add-scout-to-your-eclipse-installation">B.5. Add Scout to your Eclipse Installation</a></li>
+       <li><a href="#verifying-the-installation">B.6. Verifying the Installation</a></li>
       </ul> </li>
      <li><a href="#apx-install_tomcat">Appendix C: Apache Tomcat Installation</a>
       <ul class="sectlevel2">
@@ -1323,6 +1324,7 @@ table.CodeRay td.code>pre{padding:0}
             <ul>
              <li> <p>Contains servlet filters and the HTML pages as well as custom CSS and JavaScript files for the Scout UI Server.</p> </li>
              <li> <p>See class <code>UiServletFilter</code> in <code>src/main/java</code> and folder <code>WebContent</code> in <code>source/main/resources</code>.</p> </li>
+             <li> <p>The file <code>js build.launch</code> contains the launch configuration for the Eclipse IDE that executes the JavaScript build.</p> </li>
             </ul>
            </div> </li>
           <li> <p>Maven module <strong>helloworld.ui.html.app.dev</strong></p>
@@ -2339,8 +2341,7 @@ table.CodeRay td.code>pre{padding:0}
        </div>
        <div class="ulist">
         <ul>
-         <li> <p>Start the backend application</p> </li>
-         <li> <p>Start the frontend application</p> </li>
+         <li> <p>Activate the launch group <em>[webapp] all</em> to start the JS build, the frontend and the backend</p> </li>
          <li> <p>Open address <a href="http://localhost:8082/">http://localhost:8082/</a> in your browser</p> </li>
         </ul>
        </div>
@@ -6079,7 +6080,7 @@ target/
      <div class="sect2">
       <h3 id="download-and-install-a-jdk"><a class="anchor" href="#download-and-install-a-jdk"></a>B.2. Download and Install a JDK</h3>
       <div class="paragraph">
-       <p>The first step to install Scout is to have an existing and working installation of a JDK version 11. Please note that the Scout 9.0 Runtime does not officially support other Java versions. When downloading a Java 11 JDK it is recommended to choose version 11.0.1 or newer. Please note that only x64 hardware architectures are supported.</p>
+       <p>The first step to install Scout is to have an existing and working installation of a JDK version 11. Please note that the Scout 10.0 Runtime does not officially support other Java versions, but it may still work. When downloading a Java 11 JDK it is recommended to choose version 11.0.1 or newer. Please note that only x64 hardware architectures are supported.</p>
       </div>
       <div class="paragraph">
        <p>You can download the JDK archive matching your operating system from the Java homepage.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> Afterwards extract the archive to a location of your choice.</p>
@@ -6089,7 +6090,22 @@ target/
       </div>
      </div>
      <div class="sect2">
-      <h3 id="sec-download_install"><a class="anchor" href="#sec-download_install"></a>B.3. Download and Install Scout</h3>
+      <h3 id="sec-download_install"><a class="anchor" href="#sec-download_install"></a>B.3. Download and Install Node.js</h3>
+      <div class="paragraph">
+       <p>Beside the JDK, you also need a recent Node.js installation. Scout requires at least version 12.1.0, so if you don&#x2019;t have a node installation or only an old one, go to <a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>, download the LTS build for your platform and install it.</p>
+      </div>
+      <div class="paragraph">
+       <p>Also make sure the Node.js installation is on the PATH. You can verify it by using your command line.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre>c:\&gt;node --version
+v12.12.0</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="download-and-install-scout"><a class="anchor" href="#download-and-install-scout"></a>B.4. Download and Install Scout</h3>
       <div class="paragraph">
        <p>Before you can install Scout make sure that you have a working Java Development Kit (JDK) installation version 11.</p>
       </div>
@@ -6192,7 +6208,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
       </div>
      </div>
      <div class="sect2">
-      <h3 id="add-scout-to-your-eclipse-installation"><a class="anchor" href="#add-scout-to-your-eclipse-installation"></a>B.4. Add Scout to your Eclipse Installation</h3>
+      <h3 id="add-scout-to-your-eclipse-installation"><a class="anchor" href="#add-scout-to-your-eclipse-installation"></a>B.5. Add Scout to your Eclipse Installation</h3>
       <div class="paragraph">
        <p>This section describes the installation of Scout into an existing Eclipse installation. As the audience of this section is assumed to be familiar with Eclipse, we do not describe how you got your Eclipse installation in the first place. For the provided screenshots we start from the popular package <em>Eclipse IDE for Java EE Developers</em>.</p>
       </div>
@@ -6231,7 +6247,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
       </div>
      </div>
      <div class="sect2">
-      <h3 id="verifying-the-installation"><a class="anchor" href="#verifying-the-installation"></a>B.5. Verifying the Installation</h3>
+      <h3 id="verifying-the-installation"><a class="anchor" href="#verifying-the-installation"></a>B.6. Verifying the Installation</h3>
       <div class="paragraph">
        <p>After you can start your Eclipse Scout package you need to verify that Scout is working as intended. The simplest way to verify your Scout installation is to create a &#x201c;Hello World&#x201d; Scout project and run the corresponding Scout application as described in <a href="#cha-helloworld">Chapter 2</a>.</p>
       </div>
