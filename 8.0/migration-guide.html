@@ -559,6 +559,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#iuiservletrequesthandler">IUiServletRequestHandler</a></li>
        <li><a href="#table-remove-obsolete-populated-event-and-methods">Table: Remove Obsolete "POPULATED" Event and Methods</a></li>
        <li><a href="#pagefield-status-of-page-table-visible-by-default">PageField: Status of Page Table Visible by Default</a></li>
+       <li><a href="#scout-rest-integration-dependencies">Scout REST integration dependencies</a></li>
        <li><a href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-0-021">SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.0.021)</a></li>
        <li><a href="#abstracticons-changed-constants">AbstractIcons: Changed constants</a></li>
        <li><a href="#removed-activitymapmenutype">Removed ActivityMapMenuType</a></li>
@@ -567,8 +568,8 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#deprecated-methods-on-defaultauthtoken-and-introduced-defaultauthtokensigner-and-defaultauthtokenverifier-since-8-0-0-021">Deprecated Methods on DefaultAuthToken and Introduced DefaultAuthTokenSigner and DefaultAuthTokenVerifier (since 8.0.0.021)</a></li>
        <li><a href="#stylehelper-moved-to-platform-since-8-0-0-034">StyleHelper Moved to Platform (since 8.0.0.034)</a></li>
        <li><a href="#implementation-of-abstractentityrestclientexceptiontransformer-sub-classes-changed-since-8-0-0-037">Implementation of AbstractEntityRestClientExceptionTransformer sub-classes changed (since 8.0.0.037)</a></li>
+       <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033-updated-since-8-0-0-037">New RemoteSystemUnavailableException (since 8.0.0.033), updated (since 8.0.0.037)</a></li>
       </ul> </li>
-     <li><a href="#new-remotesystemunavailableexception-since-8-0-0-033-updated-since-8-0-0-037">New RemoteSystemUnavailableException (since 8.0.0.033), updated (since 8.0.0.037)</a></li>
      <li><a href="#api-changes-javascript">API Changes (JavaScript)</a>
       <ul class="sectlevel2">
        <li><a href="#rename-of-less-variables">Rename of LESS Variables</a></li>
@@ -1475,6 +1476,33 @@ scout.cspDirective[img-src]=*</code></pre>
       </div>
      </div>
      <div class="sect2">
+      <h3 id="scout-rest-integration-dependencies"><a class="anchor" href="#scout-rest-integration-dependencies"></a>Scout REST integration dependencies</h3>
+      <div class="paragraph">
+       <p>The Scout REST integration uses the popular Jackson library as default marshaller. When migrating to Scout 8.x add a maven dependency to jersey-media-json-jackson in your application pom.xml to use Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation. Additionally add a dependency to the Scout <code>module org.eclipse.scout.rt.rest.jackson</code>. This module adds a set of Jackson additions in order to use the Jackson library together with Scout data objects.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 1. Depencency section of pom.xml to use Scout REST services with Jackson &amp; Jersey
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- JAX-RS Jersey --&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.glassfish.jersey.containers<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>jersey-container-servlet-core<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.glassfish.jersey.media<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>jersey-media-json-jackson<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="comment">&lt;!-- Jackson/Scout integration --&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.eclipse.scout.rt<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>org.eclipse.scout.rt.rest.jackson<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
       <h3 id="smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-0-021"><a class="anchor" href="#smartfield-changed-behavior-for-applying-styles-from-a-lookup-row-on-the-field-since-8-0-0-021"></a>SmartField: changed behavior for applying styles from a lookup-row on the field (since 8.0.0.021)</h3>
       <div class="paragraph">
        <p>The SmartField in Scout &#x21d0; 6.0 applied the lookup-row properties <code>foregroundColor</code>, <code>backgroundColor</code>, <code>font</code> and <code>tooltipText</code> automatically on the field when a lookup-row has been selected. Because that automatic behavior didn&#x2019;t fit every business requirement, we removed it completely. This means you must implement the property-synchronization where required.</p>
@@ -1608,13 +1636,11 @@ scout.cspDirective[img-src]=*</code></pre>
        <p>The implementation of <code>AbstractEntityRestClientExceptionTransformer</code> was change an this might break implementation of sub-classes. Please refer to JavaDoc for any details.</p>
       </div>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-remotesystemunavailableexception-since-8-0-0-033-updated-since-8-0-0-037"><a class="anchor" href="#new-remotesystemunavailableexception-since-8-0-0-033-updated-since-8-0-0-037"></a>New RemoteSystemUnavailableException (since 8.0.0.033), updated (since 8.0.0.037)</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The <code>org.eclipse.scout.rt.shared.servicetunnel.HttpException</code> was replaced by <code>org.eclipse.scout.rt.sharedservicetunnel.http.HttpServiceTunnelException</code> which is derived from the new, general <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code>. The <code>HttpServiceTunnelException</code> is thrown within the UI server, when a call to the Scout backend server (through the HTTP service tunnel) was unsuccessful and returned a status code &lt; 200 or &gt;= 299. The <code>RemoteSystemUnavailableException</code> and therefore its subclass <code>HttpServiceTunnelException</code> is finally displayed as <em>network error</em> by the global <code>org.eclipse.scout.rt.client.services.common.exceptionhandler.ErrorPopup</code>. The new <code>RemoteSystemUnavailableException</code> may generally be thrown to indicate an error when the communication with a remote service failed.</p>
+     <div class="sect2">
+      <h3 id="new-remotesystemunavailableexception-since-8-0-0-033-updated-since-8-0-0-037"><a class="anchor" href="#new-remotesystemunavailableexception-since-8-0-0-033-updated-since-8-0-0-037"></a>New RemoteSystemUnavailableException (since 8.0.0.033), updated (since 8.0.0.037)</h3>
+      <div class="paragraph">
+       <p>The <code>org.eclipse.scout.rt.shared.servicetunnel.HttpException</code> was replaced by <code>org.eclipse.scout.rt.sharedservicetunnel.http.HttpServiceTunnelException</code> which is derived from the new, general <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code>. The <code>HttpServiceTunnelException</code> is thrown within the UI server, when a call to the Scout backend server (through the HTTP service tunnel) was unsuccessful and returned a status code &lt; 200 or &gt;= 299. The <code>RemoteSystemUnavailableException</code> and therefore its subclass <code>HttpServiceTunnelException</code> is finally displayed as <em>network error</em> by the global <code>org.eclipse.scout.rt.client.services.common.exceptionhandler.ErrorPopup</code>. The new <code>RemoteSystemUnavailableException</code> may generally be thrown to indicate an error when the communication with a remote service failed.</p>
+      </div>
      </div>
     </div>
    </div>
