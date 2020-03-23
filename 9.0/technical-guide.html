@@ -671,7 +671,8 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#rest-resource-conventions">17.1. REST Resource Conventions</a></li>
        <li><a href="#rest-resource-provider">17.2. REST Resource Provider</a></li>
-       <li><a href="#rest-client">17.3. REST Client</a></li>
+       <li><a href="#dependency-management">17.3. Dependency Management</a></li>
+       <li><a href="#rest-client">17.4. REST Client</a></li>
       </ul> </li>
      <li><a href="#webservices-with-jax-ws">18. Webservices with JAX-WS</a>
       <ul class="sectlevel2">
@@ -6621,10 +6622,7 @@ protected void execInitField() {
         <p>A REST API may be used by non-Java consumers. In order to communicate using a platform-independent format, usually REST services use JSON as transport format. The marshaller between Java data objects and JSON is abstracted in the JAX-RS specification. Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produces data format.</p>
        </div>
        <div class="paragraph">
-        <p>The Scout REST integration uses the popular Jackson library as default marshaller. Add a Maven dependency to <code>jersey-media-json-jackson</code> in your application <code>pom.xml</code> to use Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation.</p>
-       </div>
-       <div class="paragraph">
-        <p>Additionally add a dependency to the Scout module <code>org.eclipse.scout.rt.rest.jackson</code>. This module adds a set of Jackson additions in order to use Jackson with Scout data objects.</p>
+        <p>The Scout REST integration uses the popular Jackson library as default marshaller.</p>
        </div>
       </div>
       <div class="sect3">
@@ -6660,7 +6658,34 @@ protected void execInitField() {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="rest-client"><a class="anchor" href="#rest-client"></a>17.3. REST Client</h3>
+      <h3 id="dependency-management"><a class="anchor" href="#dependency-management"></a>17.3. Dependency Management</h3>
+      <div class="paragraph">
+       <p>Scout REST services based on JAX-RS using the Jersey library and the Jackson JSON marshaller need a maven dependency to <code>jersey-media-json-jackson</code> in your application pom.xml. This enables to use Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation. Additionally a dependency to the Scout module <code>org.eclipse.scout.rt.rest.jackson</code> is necessary. This module adds a set of Jackson additions in order to use the Jackson library together with Scout data objects.</p>
+      </div>
+      <div class="listingblock">
+       <div class="title">
+        Listing 102. Depencency section of pom.xml to use Scout REST services with Jackson &amp; Jersey
+       </div>
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- JAX-RS Jersey --&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.glassfish.jersey.containers<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>jersey-container-servlet-core<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.glassfish.jersey.media<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>jersey-media-json-jackson<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="comment">&lt;!-- Jackson/Scout integration --&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.eclipse.scout.rt<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>org.eclipse.scout.rt.rest.jackson<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="rest-client"><a class="anchor" href="#rest-client"></a>17.4. REST Client</h3>
       <div class="paragraph">
        <p>The Scout module <code>org.eclipse.scout.rt.rest</code> offers a set of helper classes in order to call REST services.</p>
       </div>
@@ -6672,7 +6697,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 102. Example: REST resource client helper
+        Listing 103. Example: REST resource client helper
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleRestClientHelper</span> <span class="directive">extends</span> AbstractRestClientHelper {
@@ -6711,7 +6736,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 103. Example: REST resource client
+        Listing 104. Example: REST resource client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleResourceClient</span> <span class="directive">implements</span> IRestResourceClient {
@@ -6916,11 +6941,11 @@ protected void execInitField() {
          <p>If running in an EE application server, refer to the containers documentation for more information.</p>
         </div>
         <div class="paragraph">
-         <p><a href="#lst-maven.dep.metro">Listing 104</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 105</a> does the same for <em>Apache CXF</em></p>
+         <p><a href="#lst-maven.dep.metro">Listing 105</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 106</a> does the same for <em>Apache CXF</em></p>
         </div>
         <div id="lst-maven.dep.metro" class="listingblock">
          <div class="title">
-          Listing 104. Maven dependency for
+          Listing 105. Maven dependency for
           <em>JAX-WS METRO</em>
          </div>
          <div class="content">
@@ -6934,7 +6959,7 @@ protected void execInitField() {
         </div>
         <div id="lst-maven.dep.cxf" class="listingblock">
          <div class="title">
-          Listing 105. Maven dependency for
+          Listing 106. Maven dependency for
           <em>Apache CXF</em>
          </div>
          <div class="content">
@@ -6963,11 +6988,11 @@ protected void execInitField() {
          <p>This section describes the configuration of the entry point Servlet to publish webservices. If working with webservice consumers only, no configuration is required.</p>
         </div>
         <div class="paragraph">
-         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 18.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 106</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 107</a> for <em>Apache CXF</em>.</p>
+         <p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Section 18.2.4.2</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 107</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 108</a> for <em>Apache CXF</em>.</p>
         </div>
         <div id="lst-jaxws.webxml.metro" class="listingblock">
          <div class="title">
-          Listing 106. web.xml for
+          Listing 107. web.xml for
           <em>JAX-WS METRO</em> Servlet
          </div>
          <div class="content">
@@ -7005,7 +7030,7 @@ protected void execInitField() {
         </div>
         <div id="lst-jaxws.webxml.cxf" class="listingblock">
          <div class="title">
-          Listing 107. web.xml for
+          Listing 108. web.xml for
           <em>Apache CXF</em> Servlet
          </div>
          <div class="content">
@@ -7114,7 +7139,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.pom.scoutversion" class="listingblock">
         <div class="title">
-         Listing 108. Scout version defined as Maven property
+         Listing 109. Scout version defined as Maven property
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -7123,11 +7148,11 @@ protected void execInitField() {
         </div>
        </div>
        <div class="paragraph">
-        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 109</a>).</p>
+        <p>If your project design envisions a separate JAR module per WSDL, you simply have to set the property 'jaxws.wsdl.file' with the name of your WSDL file in the module&#x2019;s pom.xml (example in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 110</a>).</p>
        </div>
        <div id="lst-jaxws.pom.single-wsdl-file" class="listingblock">
         <div class="title">
-         Listing 109. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
+         Listing 110. wsimport configuration in pom.xml if working with a single WSDL file per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
@@ -7146,21 +7171,21 @@ protected void execInitField() {
         </table>
        </div>
        <div class="paragraph">
-        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 109</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 110</a>.</p>
+        <p>Otherwise, if having multiple WSDL files in your JAR module, some little more configuration is required, namely a respective execution section per WSDL file. Thereby, the 'id' of the execution section must be unique. Scout 'jaxws' profile already provides one such section, which is used to generate the stub for a single WSDL file (see such configuration in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 110</a>), and names it 'wsimport-1'. It is simplest to name the subsequent execution sections 'wsimport-2', 'wsimport-3', and so on.<br> For each execution section, you must configure its unique <em>id</em>, the <em>goal</em> 'wsimport', and in the configuration section the respective <em>wsdlLocation</em> and <em>wsdlFile</em>. For 'wsimport' to work, <em>wsdlLocation</em> is not required. However, that location will be referenced in generated artifacts to set the wsdl location via <code>@WebService</code> and <code>@WebServiceClient</code>. The complete configuration is presented in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 111</a>.</p>
        </div>
        <div class="admonitionblock warning">
         <table>
          <tbody>
           <tr>
            <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 110</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 109</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
+           <td class="content"> If you decide to configure multiple WSDL files in your POM as described in <a href="#lst-jaxws.pom.multiple-wsdl">Listing 111</a>, the configuration defined in the parent POM (<code>maven_rt_plugin_config-master</code>) and expecting a configuration as presented in <a href="#lst-jaxws.pom.single-wsdl-file">Listing 110</a> needs to be overridden, therefore one of your execution id needs to be <code>wsimport-1</code>. </td>
           </tr>
          </tbody>
         </table>
        </div>
        <div id="lst-jaxws.pom.multiple-wsdl" class="listingblock">
         <div class="title">
-         Listing 110. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
+         Listing 111. wsimport configuration in pom.xml if working with multiple WSDL files per JAR module
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
@@ -7243,11 +7268,11 @@ protected void execInitField() {
       <div class="sect3">
        <h4 id="customize-wsdl-components-and-xsd-schema-elements-via-binding-files"><a class="anchor" href="#customize-wsdl-components-and-xsd-schema-elements-via-binding-files"></a>18.4.2. Customize WSDL components and XSD schema elements via binding files</h4>
        <div class="paragraph">
-        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 111</a>.</p>
+        <p>By default, all XML files contained in folder 'WEB-INF/binding' are used as binding files. But, most often, you will have a global binding file, which applies to all your WSDL files, and some custom binding files different per WSDL file and XSD schema files. See how to explicitly configure binding files in <a href="#lst-jaxws.pom.multiple-binding">Listing 112</a>.</p>
        </div>
        <div id="lst-jaxws.pom.multiple-binding" class="listingblock">
         <div class="title">
-         Listing 111. explicit configuration of binding files
+         Listing 112. explicit configuration of binding files
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- YourFirstWebService.wsdl --&gt;</span>
@@ -7281,15 +7306,15 @@ protected void execInitField() {
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 112</a> for an example.</td>
+           <td>global binding file which applies to all XSD schema elements. See <a href="#lst-jaxws.example.globalbindingfile">Listing 113</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 113</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s WSDL components in the namespace <em><a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a></em>. See <a href="#lst-jaxws.bindingfile.ws">Listing 114</a> for an example.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
-           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 114</a> for an example.</td>
+           <td>custom binding file to customize the webservice&#x2019;s XSD schema elements in the namespace <em><a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a></em>. See <a href="#lst-jaxws.bindingfile.xs">Listing 115</a> for an example.</td>
           </tr>
          </tbody>
         </table>
@@ -7302,7 +7327,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.example.globalbindingfile" class="listingblock">
         <div class="title">
-         Listing 112. example of global binding file in the namespace
+         Listing 113. example of global binding file in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -7335,7 +7360,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.ws" class="listingblock">
         <div class="title">
-         Listing 113. example of jaxws component customization in the namespace
+         Listing 114. example of jaxws component customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxws" class="bare">http://java.sun.com/xml/ns/jaxws</a>
         </div>
         <div class="content">
@@ -7361,7 +7386,7 @@ protected void execInitField() {
        </div>
        <div id="lst-jaxws.bindingfile.xs" class="listingblock">
         <div class="title">
-         Listing 114. example of xsd schema element customization in the namespace
+         Listing 115. example of xsd schema element customization in the namespace
          <a href="http://java.sun.com/xml/ns/jaxb" class="bare">http://java.sun.com/xml/ns/jaxb</a>
         </div>
         <div class="content">
@@ -7732,7 +7757,7 @@ protected void execInitField() {
        <h4 id="example.entrypoint.definition"><a class="anchor" href="#example.entrypoint.definition"></a>18.5.4. Example of an Entry Point definition</h4>
        <div id="jaxws.listing.porttypedefinition" class="listingblock">
         <div class="title">
-         Listing 115. Example configuration for an entry point definition
+         Listing 116. Example configuration for an entry point definition
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -7820,7 +7845,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 116. PingWebServiceEntryPoint_handler-chain.xml
+         Listing 117. PingWebServiceEntryPoint_handler-chain.xml
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">&lt;handler-chains xmlns=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/javaee</span><span class="delimiter">"</span></span>&gt;
@@ -7856,7 +7881,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 117. PingWebServiceEntryPoint.java
+         Listing 118. PingWebServiceEntryPoint.java
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebService</span>(name = <span class="string"><span class="delimiter">"</span><span class="content">PingWebServicePortType</span><span class="delimiter">"</span></span>,
@@ -7889,7 +7914,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 118. Example of a JAX-WS Handler
+         Listing 119. Example of a JAX-WS Handler
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span> <i class="conum" data-value="1"></i><b>(1)</b>
@@ -7951,7 +7976,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 119. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
+         Listing 120. This handler puts the correlation ID onto message context to be accessible by subsequent handlers and the port type.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -7992,7 +8017,7 @@ protected void execInitField() {
        </div>
        <div id="jaxws.handler.statepropagation.readcid" class="listingblock">
         <div class="title">
-         Listing 120. This handler accesses the 'correlation ID' as set by the previous handler.
+         Listing 121. This handler accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -8029,7 +8054,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 121. This port type accesses the 'correlation ID' as set by the previous handler.
+         Listing 122. This port type accesses the 'correlation ID' as set by the previous handler.
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
@@ -8086,7 +8111,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 122. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
+         Listing 123. Add Scout&#x2019;s WsProviderCorrelationIdHandler to the handler chain
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@WebServiceEntryPoint</span>(
@@ -8133,7 +8158,7 @@ protected void execInitField() {
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 123. WEB-INF/sun-jaxws.xml
+          Listing 124. WEB-INF/sun-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;jws:endpoints</span> <span class="attribute-name">xmlns:jws</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://java.sun.com/xml/ns/jax-ws/ri/runtime</span><span class="delimiter">"</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">"</span><span class="content">2.0</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
@@ -8151,11 +8176,11 @@ protected void execInitField() {
        <div class="sect4">
         <h5 id="jaxws.registration.endpoints.cxf"><a class="anchor" href="#jaxws.registration.endpoints.cxf"></a>Apache CXF</h5>
         <div class="paragraph">
-         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 107</a> for more information.</p>
+         <p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 108</a> for more information.</p>
         </div>
         <div class="listingblock">
          <div class="title">
-          Listing 124. WEB-INF/cxf-jaxws.xml
+          Listing 125. WEB-INF/cxf-jaxws.xml
          </div>
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;beans</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.springframework.org/schema/beans</span><span class="delimiter">"</span></span>
@@ -8203,7 +8228,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 125. Example of a WS-Client
+        Listing 126. Example of a WS-Client
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
@@ -8228,7 +8253,7 @@ protected void execInitField() {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 126. Example of a WS-Client configuration
+        Listing 127. Example of a WS-Client configuration
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PingWebServiceClient1</span> <span class="directive">extends</span> AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
@@ -8280,7 +8305,7 @@ protected void execInitField() {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 127. Example of a webservice call
+         Listing 128. Example of a webservice call
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java">PingWebServicePortType port = BEANS.get(PingWebServiceClient.class).newInvocationContext().getPort(); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -8309,7 +8334,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 128. Configure invocation context with data to be included in the web request
+         Listing 129. Configure invocation context with data to be included in the web request
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> InvocationContext&lt;PingWebServicePortType&gt; context = BEANS.get(PingWebServiceClient.class).newInvocationContext();
@@ -8412,7 +8437,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
         </table>
        </div>
        <div class="paragraph">
-        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 120</a>.</p>
+        <p>Learn more how to access context properties from within a handler in <a href="#jaxws.handler.statepropagation.readcid">Listing 121</a>.</p>
        </div>
       </div>
       <div class="sect3">
@@ -8530,7 +8555,7 @@ port.ping(<span class="string"><span class="delimiter">"</span><span class="cont
      <div class="sect2">
       <h3 id="jaxws.xmladapters"><a class="anchor" href="#jaxws.xmladapters"></a>18.7. XML adapters to work with java.util.Date and java.util.Calendar</h3>
       <div class="paragraph">
-       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 112</a> for an example.</p>
+       <p>Scout ships with some XML adapters to not have to work with <code>XMLGregorianCalendar</code>, but with <code>java.util.Date</code> instead.<br> It is recommended to configure your global binding file accordingly. See <a href="#lst-jaxws.example.globalbindingfile">Listing 113</a> for an example.</p>
       </div>
       <div class="paragraph">
        <p>See the adapter&#x2019;s JavaDoc for more detailed information.</p>
@@ -8925,11 +8950,11 @@ org.eclipse.jdt.apt.reconcileEnabled=true</code></pre>
        </tbody>
       </table>
       <div class="paragraph">
-       <p><a href="#lst-SmtpServerConfig.example">Listing 129</a> demonstrates how to use the SmtpServerConfig class.</p>
+       <p><a href="#lst-SmtpServerConfig.example">Listing 130</a> demonstrates how to use the SmtpServerConfig class.</p>
       </div>
       <div id="lst-SmtpServerConfig.example" class="listingblock">
        <div class="title">
-        Listing 129. Create and configure an instance of
+        Listing 130. Create and configure an instance of
         <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>
        </div>
        <div class="content">
@@ -8981,11 +9006,11 @@ SmtpServerConfig smtpServerConfig = BEANS.get(SmtpServerConfig.class)
        </tbody>
       </table>
       <div class="paragraph">
-       <p><a href="#lst-SmtpHelper.prepareMimeMessage">Listing 130</a> shows the usage of the mentioned classes Scout provides in order to create a MimeMessage object.</p>
+       <p><a href="#lst-SmtpHelper.prepareMimeMessage">Listing 131</a> shows the usage of the mentioned classes Scout provides in order to create a MimeMessage object.</p>
       </div>
       <div id="lst-SmtpHelper.prepareMimeMessage" class="listingblock">
        <div class="title">
-        Listing 130. Create
+        Listing 131. Create
         <code>org.eclipse.scout.rt.mail.CharsetSafeMimeMessage</code> object
        </div>
        <div class="content">
@@ -9009,11 +9034,11 @@ CharsetSafeMimeMessage mimeMessage = BEANS.get(MailHelper.class).createMimeMessa
        </div>
       </div>
       <div class="paragraph">
-       <p>In order to send the message you can either use a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object or an existing <code>javax.mail.Session</code> object as demonstrated in <a href="#lst-SmtpHelper.sendWithSmtpServerConfig">Listing 131</a> and <a href="#lst-SmtpHelper.sendWithSession">Listing 132</a>.</p>
+       <p>In order to send the message you can either use a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object or an existing <code>javax.mail.Session</code> object as demonstrated in <a href="#lst-SmtpHelper.sendWithSmtpServerConfig">Listing 132</a> and <a href="#lst-SmtpHelper.sendWithSession">Listing 133</a>.</p>
       </div>
       <div id="lst-SmtpHelper.sendWithSmtpServerConfig" class="listingblock">
        <div class="title">
-        Listing 131. Send email using an
+        Listing 132. Send email using an
         <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object.
        </div>
        <div class="content">
@@ -9022,7 +9047,7 @@ CharsetSafeMimeMessage mimeMessage = BEANS.get(MailHelper.class).createMimeMessa
       </div>
       <div id="lst-SmtpHelper.sendWithSession" class="listingblock">
        <div class="title">
-        Listing 132. Send email using an existing
+        Listing 133. Send email using an existing
         <code>javax.mail.Session</code> object.
        </div>
        <div class="content">
@@ -9153,7 +9178,7 @@ BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code><
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 133. Java example, set the background-color of the lookup-row on the field
+        Listing 134. Java example, set the background-color of the lookup-row on the field
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
@@ -9176,7 +9201,7 @@ BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code><
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 134. LESS example, style lookup-row and field with the same CSS class
+        Listing 135. LESS example, style lookup-row and field with the same CSS class
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="less">.form-field.public &gt; .field, .table-row.public {
@@ -9358,7 +9383,7 @@ BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code><
   <div id="footer">
    <div id="footer-text">
      Version 9.0
-    <br> Last updated 2020-02-25 18:10:30 +0100
+    <br> Last updated 2020-03-23 15:20:26 +0100
    </div>
   </div>
  </body>
