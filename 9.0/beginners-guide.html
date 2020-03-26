@@ -3102,6 +3102,7 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DerbySqlService</span> <span class="directive">extends</span> AbstractDerbySqlService {
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOG = LoggerFactory.getLogger(DerbySqlService.class);
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredJdbcMappingName() {
     <span class="predefined-type">String</span> mappingName = CONFIG.getPropertyValue(JdbcMappingNameProperty.class);
