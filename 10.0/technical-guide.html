@@ -2441,10 +2441,10 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
        <p>You can use your own icon font. The required file format for an icon font is <em>.woff</em>. For the following examples we assume the name of your font file is <em>awesomeIcons.woff</em>. The following steps are required:</p>
       </div>
       <div class="paragraph">
-       <p>Place the font file in the WebContent/res directory of your <em>html.ui</em> module. This makes it available for http requests on the URL <code>http://[base]/res/awesomeIcons.woff</code>.</p>
+       <p>Place the font file in the WebContent/fonts directory of your <em>html.ui</em> module. This makes it available for http requests on the URL <code>http://[base]/fonts/awesomeIcons.woff</code>.</p>
       </div>
       <div class="paragraph">
-       <p>Create a CSS/LESS definition, to reference the icon font in stylesheets. Make sure the definition is added to the LESS module of your project.</p>
+       <p>Create a CSS/LESS definition to reference the icon font in stylesheets (e.g. in a file called <code>fonts.less</code>). Make sure the definition is added to the <code>index.less</code> of your project.</p>
       </div>
       <div class="listingblock">
        <div class="title">
@@ -2454,26 +2454,26 @@ TEXTS.get(<span class="string"><span class="delimiter">"</span><span class="cont
         <pre class="CodeRay highlight"><code data-lang="less">@font-face {
   font-family: awesomeIcons;
   font-weight: normal;
-  src: url('awesomeIcons.woff') format('woff');
+  src: url('fonts/awesomeIcons.woff') format('woff');
 }
 /* Overrides definitions in fonts.css &gt; .font-icon
 * Use iconId 'font:awesomeIcons [character]' in Scout model.
 * See icons.js and usage of this class to see how iconId is used.
 */
 .font-awesomeIcons {
-  font-family: awesomeIcons, @defaultFont;
+  font-family: awesomeIcons, @font-default-family;
 }</code></pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>To check if your CSS definition is correct, you should download the CSS file directly via URL and check if the CSS file contains the required font definition. Assuming your LESS macro is named <em>hello-scout-macro.less</em> the URL is: <code>http://[base]/res/hello-scout.css</code></p>
+       <p>To check if your CSS definition is correct, you should download the CSS file directly via URL and check if the CSS file contains the required font definition. Have a look at your <code>index.html</code> to find the path to your CSS (e.g. <code>http://[base]/yourapp-theme.css</code>).</p>
       </div>
       <div class="admonitionblock note">
        <table>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-          <td class="content"> When you request resources from the <em>/res</em> folder via http, Scout will find resources from parent modules too. Thus the <em>scoutIcons.woff</em> is always available in a Scout project. However, you must avoid naming conflicts, since at runtime all files exist on the same classpath. </td>
+          <td class="content"> When you request resources from the <em>WebContent</em> folder via http, Scout will find resources from other modules on the classpath too. Thus the <em>scoutIcons.woff</em> is always available in a Scout project. However, you must avoid naming conflicts, since at runtime all files exist on the same classpath. </td>
          </tr>
         </tbody>
        </table>

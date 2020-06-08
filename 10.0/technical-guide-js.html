@@ -544,7 +544,7 @@ table.CodeRay td.code>pre{padding:0}
       <ul class="sectlevel2">
        <li><a href="#lifecycle">2.1. Lifecycle</a></li>
        <li><a href="#creating-a-widget">2.2. Creating a Widget</a></li>
-       <li><a href="#creating-a-widget-using-json">2.3. Creating a Widget using JSON</a></li>
+       <li><a href="#creating-a-widget-declaratively">2.3. Creating a Widget Declaratively</a></li>
        <li><a href="#finding-a-widget">2.4. Finding a Widget</a></li>
        <li><a href="#properties">2.5. Properties</a></li>
        <li><a href="#widget-properties">2.6. Widget Properties</a></li>
@@ -593,7 +593,7 @@ table.CodeRay td.code>pre{padding:0}
      <li><a href="#browser-support">13. Browser Support</a></li>
      <li><a href="#how-tos">14. How-Tos</a>
       <ul class="sectlevel2">
-       <li><a href="#how-to-create-a-custom-field">14.1. How to Create a Custom field</a></li>
+       <li><a href="#how-to-create-a-custom-field">14.1. How to Create a Custom Field</a></li>
       </ul> </li>
      <li><a href="#apx-cclicence">Appendix A: Licence and Copyright</a>
       <ul class="sectlevel2">
@@ -716,38 +716,36 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
       <div class="paragraph">
-       <p>The second parameter of scout.create is the model. The model actually is the specification for your widget. In case of the <code>StringField</code> you can specify the label, the max length, whether it is enabled and visible and more. If you don&#x2019;t specify them, the defaults are used. The only needed property is the <code>parent</code>. To see what the defaults are, have a look at the source code of the widget constructor.</p>
+       <p>The second parameter of scout.create is the model. The model is the specification for your widget. In case of the <code>StringField</code> you can specify the label, the max length, whether it is enabled and visible and more. If you don&#x2019;t specify them, the defaults are used. The only needed property is the <code>parent</code>. To see what the defaults are, have a look at the source code of the widget constructor.</p>
       </div>
       <div class="paragraph">
        <p>Every widget needs a parent. The parent is responsible to render (and remove) its children. In the example above, the parent is a group box. This group box has a property called <code>fields</code>. If the group box is rendered, it will render its fields too.</p>
       </div>
       <div class="paragraph">
-       <p>You don&#x2019;t need a group box to render the string field, you could render it directly onto the desktop. But if you want to use a form, you need a group box and create the form, group box and the field. Doing this programmatically is time consuming, that is why we suggest to use the declarative JSON based approach.</p>
+       <p>You don&#x2019;t need a group box to render the string field, you could render it directly onto the desktop. But if you want to use a form, you need a group box and create the form, group box and the field. Doing this programmatically, meaning creating each widget separately using scout.create, is time consuming, that is why we suggest to use the declarative approach.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="creating-a-widget-using-json"><a class="anchor" href="#creating-a-widget-using-json"></a>2.3. Creating a Widget using JSON</h3>
+      <h3 id="creating-a-widget-declaratively"><a class="anchor" href="#creating-a-widget-declaratively"></a>2.3. Creating a Widget Declaratively</h3>
       <div class="paragraph">
-       <p>Using the JSON based approach makes it easier to specify multiple widgets in a structured way. The following example defines a form with a group box and a string field.</p>
+       <p>Have a look at the above example again. The second parameter, the model, defines some properties of the string field. This actually already is the declarative approach, because you could also set each property manually after creating the string field using the according methods. In order to create a form, we need to specify multiple widgets, respectively a widget hierarchy, at once. The following example defines a form with a group box and a string field.</p>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 3. A form model defined using JSON
+        Listing 3. A form model defined declaratively
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">example.MyForm</span><span class="delimiter">"</span></span>,
-  <span class="key"><span class="delimiter">"</span><span class="content">type</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">model</span><span class="delimiter">"</span></span>,
-  <span class="key"><span class="delimiter">"</span><span class="content">title</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">My first form!</span><span class="delimiter">"</span></span>,
-  <span class="key"><span class="delimiter">"</span><span class="content">rootGroupBox</span><span class="delimiter">"</span></span>: {
-    <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MainBox</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">GroupBox</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">My first form!</span><span class="delimiter">'</span></span>,
+  <span class="key">rootGroupBox</span>: {
+    <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MainBox</span><span class="delimiter">'</span></span>,
+    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>,
+    <span class="key">fields</span>: [
       {
-        <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MyStringField</span><span class="delimiter">"</span></span>,
-        <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">StringField</span><span class="delimiter">"</span></span>,
-        <span class="key"><span class="delimiter">"</span><span class="content">label</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>,
-        <span class="key"><span class="delimiter">"</span><span class="content">value</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">world</span><span class="delimiter">"</span></span>
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MyStringField</span><span class="delimiter">'</span></span>,
+        <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+        <span class="key">value</span>: <span class="string"><span class="delimiter">'</span><span class="content">world</span><span class="delimiter">'</span></span>
       }
     ]
   }
@@ -755,36 +753,63 @@ table.CodeRay td.code>pre{padding:0}
        </div>
       </div>
       <div class="paragraph">
-       <p>This description of the form is put in a separate file called <code>MyForm.json</code>. Typically you would create a file called <code>MyForm.js</code> as well, which contains the logic to interact with the fields. But since we just want to open the form it is not necessary. Instead you can use the following code to create the form:</p>
+       <p>To keep things nice and clean we separate the model from the code by putting this description of the form in a separate file called <code>MyFormModel.js</code>. Typically you would create a file called <code>MyForm.js</code> as well, which contains the logic to interact with the fields. But since we just want to open the form it is not necessary. Instead you can use the following code to create the form:</p>
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> form = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>, scout.models.getModel(<span class="string"><span class="delimiter">'</span><span class="content">example.MyForm</span><span class="delimiter">'</span></span>, parent));</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> model from <span class="string"><span class="delimiter">'</span><span class="content">./MyFormModel</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> form = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>, <span class="predefined">$</span>.extend({<span class="key">parent</span>: desktop}, model));</code></pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>When the form is shown it will look like this:</p>
+       <p>Now you can open the form using <code>form.open()</code> and it will look like this:</p>
       </div>
       <div id="img-scoutjs_myform" class="imageblock">
        <div class="content">
         <img src="images/scoutjs_myform.png" alt="scoutjs myform">
        </div>
        <div class="title">
-        Figure 1. A form described using JSON
+        Figure 1. First form
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>As soon as you would like to add some code that interacts with the fields or maybe just want to not always load the model manually when creating the form, you should create a file called <code>MyForm.js</code>. The content of that file would be a class <code>MyForm</code> that extends the <code>Form</code> from Scout and a method called <code>_jsonModel</code> that returns our model.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Form} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> model from <span class="string"><span class="delimiter">'</span><span class="content">./MyFormModel</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyForm <span class="reserved">extends</span> Form {
+  _jsonModel() {
+    <span class="keyword">return</span> model;
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Creating the form is now possible using the following code (assuming your namespace is called 'example' and you&#x2019;ve added the file <code>MyForm.js</code> to your <code>index.js</code>).</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> form = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">example.MyForm</span><span class="delimiter">'</span></span>, {<span class="key">parent</span>: desktop});</code></pre>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="using-constants-in-json"><a class="anchor" href="#using-constants-in-json"></a>2.3.1. Using constants in JSON</h4>
+       <h4 id="using-constants-in-a-json-model"><a class="anchor" href="#using-constants-in-a-json-model"></a>2.3.1. Using constants in a JSON model</h4>
        <div class="paragraph">
-        <p>When you define widget properties in a JSON model, you often want to set a property to a value defined by a constant. When you&#x2019;re writing JavaScript code you&#x2019;d simply write:</p>
+        <p>In previous Scout versions, the model was defined in a JSON file. Even though it is still possible, it is not recommended anymore, because writing the model using JavaScript is much more convenient. One advantage is, that you can use constants the same way as in your regular JavaScript code.</p>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="javascript">field.labelPosition = scout.FormField.LabelPosition.ON_FIELD;</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {FormField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> {
+  ...
+  labelPosition: FormField.LabelPosition.TOP
+}</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>Since you cannot reference Scout&#x2019;s JavaScript enums/constants in JSON, you&#x2019;d have to write the following to assign the constant value in the JSON model:</p>
+        <p>If you use a JSON based model, you cannot reference Scout&#x2019;s JavaScript enums/constants and you&#x2019;d have to write the following to assign the constant value:</p>
        </div>
        <div class="listingblock">
         <div class="content">
@@ -807,26 +832,24 @@ table.CodeRay td.code>pre{padding:0}
      <div class="sect2">
       <h3 id="finding-a-widget"><a class="anchor" href="#finding-a-widget"></a>2.4. Finding a Widget</h3>
       <div class="paragraph">
-       <p>In the example above we have seen how to create a widget, in that specific case we created a form. Typically it is not sufficient to just create a form, you most likely want to interact with the fields, like reading the values the user entered. In order to do that you need access to the fields. The easiest way is to use the IDs specified in the JSON.</p>
+       <p>In the example from the previous chapter we have seen how to create a widget, in that specific case we created a form. Typically it is not sufficient to just create a form, you most likely want to interact with the fields, like reading the values the user entered. In order to do that you need access to the fields. The easiest way is to use the IDs specified in the JSON.</p>
       </div>
       <div class="paragraph">
        <p>Let&#x2019;s have a look at our example form again:</p>
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">example.MyForm</span><span class="delimiter">"</span></span>,
-  <span class="key"><span class="delimiter">"</span><span class="content">type</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">model</span><span class="delimiter">"</span></span>,
-  <span class="key"><span class="delimiter">"</span><span class="content">title</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">My first form!</span><span class="delimiter">"</span></span>,
-  <span class="key"><span class="delimiter">"</span><span class="content">rootGroupBox</span><span class="delimiter">"</span></span>: {
-    <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MainBox</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">GroupBox</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">My first form!</span><span class="delimiter">'</span></span>,
+  <span class="key">rootGroupBox</span>: {
+    <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MainBox</span><span class="delimiter">'</span></span>,
+    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>,
+    <span class="key">fields</span>: [
       {
-        <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">MyStringField</span><span class="delimiter">"</span></span>,
-        <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">StringField</span><span class="delimiter">"</span></span>,
-        <span class="key"><span class="delimiter">"</span><span class="content">label</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hello</span><span class="delimiter">"</span></span>,
-        <span class="key"><span class="delimiter">"</span><span class="content">value</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">world</span><span class="delimiter">"</span></span>
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MyStringField</span><span class="delimiter">'</span></span>,
+        <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+        <span class="key">value</span>: <span class="string"><span class="delimiter">'</span><span class="content">world</span><span class="delimiter">'</span></span>
       }
     ]
   }
@@ -853,8 +876,8 @@ table.CodeRay td.code>pre{padding:0}
         Listing 4. Accessing and modifying a property
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.StringField</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
   <span class="key">labelVisible</span>: <span class="predefined-constant">false</span>
 });
 console.log(field.labelVisible); <span class="comment">// prints false</span>
@@ -867,7 +890,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
       </div>
       <div class="olist arabic">
        <ol class="arabic">
-        <li> <p>It will check if the property has changed at all. If the value is still the same, nothing happens. To compare the values <code>scout.objects.equals</code> is used, which uses <code>===</code> to compare and if that returns false, uses the equals methods of the given objects, if available.</p> </li>
+        <li> <p>It will check if the property has changed at all. If the value is still the same, nothing happens. To compare the values <code>objects.equals</code> is used, which uses <code>===</code> to compare and if that returns false, uses the equals methods of the given objects, if available.</p> </li>
         <li> <p>If the values are not equal, the model is updated using the method <code>_setProperty</code> (notice the <code>_</code>). Beside setting the value it also notifies every listener about the property change. So if another widget is interested in that property it may attach a listener and will be informed on every property change (see also the <a href="#events">Events</a> for details).</p> </li>
         <li> <p>In order to reflect the property change in the UI, the <code>_render</code> method is called, if available. The name of this method depends on the property name, it always starts with <code>_render</code> and ends with the property name. Example: <code>_renderLabelVisible</code>. If the widget does not implement such a method, nothing happens.</p> </li>
        </ol>
@@ -882,15 +905,16 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
        <p>A widget property is a special kind of a property which references another widget.</p>
       </div>
       <div class="paragraph">
-       <p>Defining a property as widget property has the benefit that the widget is created automatically. Lets take the group box as an example. A group box has a widget property called fields. The fields are widgets, namely form fields. If I create a group box, I may specify its fields directly:</p>
+       <p>Defining a property as widget property has the benefit that the widget is created automatically. Lets take the group box as an example. A group box has a widget property called fields. The fields are widgets, namely form fields. If you create a group box, you may specify its fields directly:</p>
       </div>
       <div class="listingblock">
        <div class="title">
         Listing 5. Creating the string field automatically using a widget property
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> groupBox = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {StringField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> groupBox = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">My Group Box</span><span class="delimiter">'</span></span>,
   <span class="key">fields</span>: [{
     <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
@@ -898,7 +922,7 @@ console.log(field.labelVisible); <span class="comment">// prints true</span></co
   }]
 });
 <span class="comment">// check if the string field was created as well</span>
-console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword">instanceof</span> scout.StringField);</code></pre>
+console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword">instanceof</span> StringField);</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -926,7 +950,7 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
      <div class="sect2">
       <h3 id="events"><a class="anchor" href="#events"></a>2.7. Events</h3>
       <div class="paragraph">
-       <p>Every widget supports event handling by using the class <code>scout.EventSupport</code>. This allows the widgets to attach listeners to other widgets and getting informed when an event happens.</p>
+       <p>Every widget supports event handling by using the class <code>EventSupport</code>. This allows the widgets to attach listeners to other widgets and getting informed when an event happens.</p>
       </div>
       <div class="paragraph">
        <p>The 3 most important methods are the following:</p>
@@ -949,8 +973,8 @@ console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword
         Listing 6. Handling an event
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>
 });
 button.render();
@@ -968,8 +992,8 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
         Listing 7. Stop listening for an event
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>
 });
 button.render();
@@ -1034,10 +1058,11 @@ button.on(<span class="string"><span class="delimiter">'</span><span class="cont
          Listing 9. Example of a property change event
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">scout.Button</span><span class="delimiter">'</span></span>, {
-  <span class="key">parent</span>: scout.App.get().sessions[<span class="integer">0</span>].desktop,
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Button} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
   <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>,
-  <span class="key">displayStyle</span>: scout.Button.DisplayStyle.TOGGLE
+  <span class="key">displayStyle</span>: Button.DisplayStyle.TOGGLE
 });
 button.render();
 button.on(<span class="string"><span class="delimiter">'</span><span class="content">propertyChange</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
@@ -1097,9 +1122,9 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
          <div class="paragraph">
           <p>Example: <code>font:fooIcons \uE109</code>, references a character in custom font <em>fooIcons.ttf</em></p>
          </div> </li>
-        <li> <p><strong>Icon Constants</strong>: iconId has the format: <code>${iconId:[constant]}</code>, where constant is a constant in <code>scout.icons</code>. This format is especially useful when you configure a Scout widget with a JSON model. The value of the constant is again either an image or a font-icon as described above.</p>
+        <li> <p><strong>Icon Constants</strong>: iconId has the format: <code>${iconId:[constant]}</code>, where constant is a constant in the module <code>icons.js</code>. This format is especially useful when you configure a Scout widget with a JSON model. The value of the constant is again either an image or a font-icon as described above.</p>
          <div class="paragraph">
-          <p>Example: <code>${iconId:ANGLE_UP}</code> uses <code>scout.icons.ANGLE_UP</code>, icons predefined by Scout</p>
+          <p>Example: <code>${iconId:ANGLE_UP}</code> uses <code>icons.ANGLE_UP</code>, icons predefined by Scout</p>
          </div>
          <div class="paragraph">
           <p>Example: <code>${iconId:foo.BAR}</code> uses <code>foo.icons.BAR</code>, use this for custom icon constant objects</p>
@@ -1146,7 +1171,8 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
        Listing 11. Creating an object without the ObjectFactory
       </div>
       <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> table = <span class="keyword">new</span> scout.Table();
+       <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Table} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> table = <span class="keyword">new</span> Table();
 table.init(model);</code></pre>
       </div>
      </div>
@@ -1154,17 +1180,17 @@ table.init(model);</code></pre>
       <p>This will work fine, but you will loose the big benefit of the <code>ObjectFactory</code>: the ability to replace existing classes. So if you want to customize the default <code>Table</code>, you would likely extend that table and override some functions. In that case you need to make sure every time a table is created, your class is used instead of the default. To do that you have to register your class in the <code>ObjectFactory</code> with the <code>objectType</code> <code>Table</code>. If <code>scout.create('Table')</code> is called the object factory will check if there is a class registered for the type <code>Table</code> and, if yes, that class is used. Only if there is no registration found, the default approach using the naming convention is performed.</p>
      </div>
      <div class="paragraph">
-      <p>In order to register you class, you need a file called <code>objectFactories</code> and add that to your JavaScript module (e.g. yourproject-module.js). The content of that file may look as following:</p>
+      <p>In order to register you class, you need a file called <code>objectFactories</code> and add that to your JavaScript module (e.g. index.js). The content of that file may look as following:</p>
      </div>
      <div class="listingblock">
       <div class="title">
        Listing 12. Adding a new object factory registration
       </div>
       <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="javascript">scout.objectFactories = <span class="predefined">$</span>.extend(scout.objectFactories, {
-  <span class="key"><span class="delimiter">'</span><span class="content">Table</span><span class="delimiter">'</span></span>: <span class="keyword">function</span>() {
-    <span class="keyword">return</span> <span class="keyword">new</span> yourproject.CustomTable();
-  }
+       <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {CustomTable} from <span class="string"><span class="delimiter">'</span><span class="content">./index</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> {scout} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+scout.addObjectFactories({
+  <span class="key"><span class="delimiter">'</span><span class="content">Table</span><span class="delimiter">'</span></span>: () =&gt; <span class="keyword">new</span> CustomTable()
 });</code></pre>
       </div>
      </div>
@@ -1352,8 +1378,9 @@ table.init(model);</code></pre>
          Listing 17. Example of a validator
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span>(value) {
-  <span class="keyword">if</span> (scout.dates.isSameDay(value, <span class="keyword">new</span> Date())) {
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {dates} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">function</span>(value) {
+  <span class="keyword">if</span> (dates.isSameDay(value, <span class="keyword">new</span> Date())) {
     <span class="keyword">throw</span> <span class="string"><span class="delimiter">'</span><span class="content">You are not allowed to select the current date</span><span class="delimiter">'</span></span>;
   }
   <span class="keyword">return</span> value;
@@ -1372,7 +1399,7 @@ table.init(model);</code></pre>
         </div>
        </div>
        <div class="paragraph">
-        <p>As you can see in the example, in order to mark a value as invalid just throw the error message you want to show to the user. You could also throw an error or a <code>scout.Status</code> object. In that case a generic error message will be displayed.</p>
+        <p>As you can see in the example, in order to mark a value as invalid just throw the error message you want to show to the user. You could also throw an error or a <code>Status</code> object. In that case a generic error message will be displayed.</p>
        </div>
        <div class="paragraph">
         <p>In order to activate your validator, you can either call <code>setValidator</code> to replace the existing validator. In that case you should consider calling the default validator first, like you did it for the formatter or parser. Or you can use <code>addValidator</code> which adds the validator to the list of validators of the field.</p>
@@ -1430,30 +1457,30 @@ table.init(model);</code></pre>
     <h2 id="styling"><a class="anchor" href="#styling"></a>8. Styling</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Beside JS for business logic and JSON for the models, every Scout JS app probably needs some CSS code at some point of time. If you are writing custom widgets, you need it for sure. But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
+      <p>Beside JavaScript for business logic and for the models, every Scout JS app probably needs some CSS code at some point of time. If you are writing custom widgets, you need it for sure. But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
      </div>
      <div class="paragraph">
       <p>Scout uses LESS as CSS preprocessor. It has a lot of advantages to pure CSS: variables, mixins, functions, imports etc. If you use the default build infrastructure provided by Scout, you can not only use LESS easily without getting a headache on how to integrate it in your build system, you get access to all of the LESS constructs used by Scout itself. This means you can use variables for colors, icons and sizes, mixins for animations and to avoid browser specific prefixes, you can import or replace whole Scout LESS files for custom themes and you get a lot of sample code in the Scout code base because Scout itself uses the same concepts.</p>
      </div>
      <div class="paragraph">
-      <p>In order to get started you need a place to put all your LESS code. The recommendation is to create one LESS file for each widget. That means if your widget is called <code>MyWidget.js</code> you would create a file called <code>MyWidget.less</code>. Even if you adjust the look of an existing widget you can create a file called let&#x2019;s say <code>StringField.less</code> and put the rules there. Remember to use a custom namespace (folder) in your project for your JS, JSON and LESS files otherwise it could get name clashes if you name your files the same way as Scout does. (Note: theme files are put in the default namespace, as you will learn in the theme chapter.) If you only have a few rules or non widget specific rules you can create a file called <code>main.less</code> and put them there. However, these are only recommendations, you can always do it as you like.</p>
+      <p>In order to get started you need a place to put all your LESS code. The recommendation is to create one LESS file for each widget. That means if your widget is called <code>MyWidget.js</code> you would create a file called <code>MyWidget.less</code>. Even if you adjust the look of an existing widget you can create a file called let&#x2019;s say <code>StringField.less</code> and put the rules there. If you only have a few rules or non widget specific rules you can create a file called <code>main.less</code> and put them there. However, these are only recommendations, you can always do it as you like.</p>
      </div>
      <div class="paragraph">
-      <p>The creation of these files won&#x2019;t make them loaded automatically, you have to register them in your <code>module</code> file. The module should be put into your <code>src/main/js</code> folder and named according to your namespace, for example <code>helloworld-module.less</code>. Just include your new files using the LESS <code>@import</code> keyword.</p>
+      <p>The creation of these files won&#x2019;t make them loaded automatically, you have to register them in your <code>index</code> file. This file should be put into your <code>src/main/js</code> folder and named <code>index.less</code>. Just include your new files using the LESS <code>@import</code> keyword.</p>
      </div>
      <div class="listingblock">
       <div class="title">
        Listing 19. Including a LESS file
       </div>
       <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="LESS">@import "helloworld/style/colors.less";</code></pre>
+       <pre class="CodeRay highlight"><code data-lang="LESS">@import "style/colors";</code></pre>
       </div>
      </div>
      <div class="paragraph">
-      <p>This module file is either directly included in your <code>index.html</code> or in a <code>macro</code> file which is included in the <code>index.html</code>. The intention of the macro file is to group individual module files and make one file in order to load all rules at once within one request.</p>
+      <p>In addition to this <code>index</code> file you normally also have a <code>theme</code> file which will be used as entry point in your <code>webpack.config.js</code> and included in the <code>index.html</code>. The intention of the <code>theme</code> file is to group individual <code>index</code> files and make one file in order to load all rules at once within one request.</p>
      </div>
      <div class="paragraph">
-      <p>Now that we have all the infrastructure set up we can start adding some rules. As already said you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>org.eclipse.scout.rt.ui.html</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#x2019;s say you want to change the background color of the navigation, you can redefine the variable <code>@navigation-background-color</code>.</p>
+      <p>Now that we have all the infrastructure set up we can start adding some rules. As already said you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#x2019;s say you want to change the background color of the navigation, you can redefine the variable <code>@navigation-background-color</code>.</p>
      </div>
      <div class="listingblock">
       <div class="title">
@@ -1494,14 +1521,16 @@ table.init(model);</code></pre>
        <p>The extension feature in Scout JS works by wrapping functions on the prototype of a Scout object with a wrapper function which is provided by an extension. The extension feature doesn&#x2019;t rely on subclassing, instead we simply register one or more extensions for a single Scout class. When a function is called on an extended object, the functions are called on the registered extensions first. Since a Scout class can have multiple extensions, we speak of an extension chain, where the last element of the chain is the original (extended) object.</p>
       </div>
       <div class="paragraph">
-       <p>The base class for all extensions is <code>scout.Extension</code>. This class is used to extend an existing Scout object. In order to use the extension feature you must subclass scout.Extension and implement an <code>init</code> function, where you register the functions you want to extend. Example:</p>
+       <p>The base class for all extensions is <code>Extension</code>. This class is used to extend an existing Scout object. In order to use the extension feature you must subclass Extension and implement an <code>init</code> function, where you register the functions you want to extend. Example:</p>
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript">scout.MyExtension.prototype.<span class="function">init</span> = <span class="keyword">function</span>() {
-  <span class="local-variable">this</span>.extend(scout.MyStringField.prototype, <span class="string"><span class="delimiter">'</span><span class="content">_init</span><span class="delimiter">'</span></span>);
-  <span class="local-variable">this</span>.extend(scout.MyStringField.prototype, <span class="string"><span class="delimiter">'</span><span class="content">_renderProperties</span><span class="delimiter">'</span></span>);
-};</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Extension, StringField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyExtension <span class="reserved">extends</span> Extension {
+  init() {
+    <span class="local-variable">this</span>.extend(StringField.prototype, <span class="string"><span class="delimiter">'</span><span class="content">_init</span><span class="delimiter">'</span></span>);
+  }
+}</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1509,10 +1538,13 @@ table.init(model);</code></pre>
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript">scout.MyExtension.prototype.<span class="function">_init</span> = <span class="keyword">function</span>(model) {
+        <pre class="CodeRay highlight"><code data-lang="javascript">_init(model) {
+  <span class="comment">// Call the original _init() method of the StringField class</span>
   <span class="local-variable">this</span>.next(model);
+  <span class="comment">// Extend the instance with a new property called bar with the value foo</span>
+  <span class="comment">// -&gt; EVERY string field now has this new property</span>
   <span class="local-variable">this</span>.extended.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">bar</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>);
-};</code></pre>
+}</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1535,17 +1567,18 @@ table.init(model);</code></pre>
        </dl>
       </div>
       <div class="paragraph">
-       <p>All extensions must be registered in the <code>installExtensions</code> function of your <code>scout.App</code>. Example:</p>
+       <p>All extensions must be registered in the <code>_installExtensions</code> function of your <code>App</code> (make sure to use the namespace which is defined in your <code>index.js</code> instead of <code>custom</code>). Example:</p>
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="javascript">scout.MyApp.prototype.<span class="function">installExtensions</span> = <span class="keyword">function</span>() {
-  scout.Extension.install([
-    <span class="string"><span class="delimiter">'</span><span class="content">scout.FooExtension</span><span class="delimiter">'</span></span>,
-    <span class="string"><span class="delimiter">'</span><span class="content">scout.BarExtension</span><span class="delimiter">'</span></span>,
-    <span class="comment">// ...</span>
-  ]);
-};</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {App, Extension} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyApp <span class="reserved">extends</span> App {
+  _installExtensions() {
+    Extension.install([
+      <span class="string"><span class="delimiter">'</span><span class="content">custom.MyExtension</span><span class="delimiter">'</span></span>
+    ]);
+  }
+}</code></pre>
        </div>
       </div>
      </div>
@@ -1565,7 +1598,7 @@ table.init(model);</code></pre>
            <li> <p>Replace numeric adapter IDs by human-readable, semantic string IDs. You will need these IDs to reference a model element from the JSON model in your JavaScript code, e.g. to register a listener on a Menu.</p> </li>
            <li> <p>Maybe you&#x2019;ll have to adjust objectType and namespace of some widgets in the JSON. This needs to be done for widgets that do not belong to the default <em>scout</em> namespace.</p> </li>
            <li> <p>Remove form fields and menus which are never used in your Scout JS app</p> </li>
-           <li> <p>Remove unused menu types from the menuTypes property of a scout.Menu</p> </li>
+           <li> <p>Remove unused menu types from the menuTypes property of a <code>Menu</code></p> </li>
           </ul>
          </div> </li>
        </ul>
@@ -1636,7 +1669,7 @@ table.init(model);</code></pre>
   "lookupRows": [ # the result set of this lookup, contains 0-n lookup rows
     {
       # key and text are mandatory properties, all other properties are optional
-      "key": "unqiue lookup row key",
+      "key": "unique lookup row key",
       "text": "lookup row text",
       "iconId": "person.svg",
       "tooltipText": "foo",
@@ -1748,14 +1781,14 @@ table.init(model);</code></pre>
      <div class="sect2">
       <h3 id="scoutscript"><a class="anchor" href="#scoutscript"></a>11.4. scout:script</h3>
       <div class="paragraph">
-       <p>Loads the referenced JavaScript macro and starts the JavaScript build for that file. Outputs a <code>script</code> tag in the HTML document which references the generated .js file. "bsicrm-all-macro.js" will become "bsicrm-all.js" in the parsed HTML document. Depending on Scout&#x2019;s runtime properties the filename will be augmented: if caching is enabled an additional fingerprint is added to the filename. If minifying is enabled the suffix "-min" is appended to the filename.</p>
+       <p>Converts the tag to a regular <code>script</code> tag in the HTML document so that the referenced JavaScript bundle can be loaded by the browser. Prior to that, the file name will be augmented depending on Scout&#x2019;s runtime properties: if caching is enabled an additional fingerprint is added to the filename. If minifying is enabled the suffix ".min" is appended to the filename.</p>
       </div>
       <div class="paragraph">
        <p>Example:</p>
       </div>
       <div class="literalblock">
        <div class="content">
-        <pre>&lt;scout:script src="res/bsicrm-all-macro.js" /&gt;</pre>
+        <pre>&lt;scout:script src="yourapp.js" /&gt;</pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1763,21 +1796,21 @@ table.init(model);</code></pre>
       </div>
       <div class="literalblock">
        <div class="content">
-        <pre>&lt;script src="res/bsicrm-all-98aea5b3.min.js"&gt;&lt;/script&gt;</pre>
+        <pre>&lt;script src="yourapp-98aea5b3.min.js"&gt;&lt;/script&gt;</pre>
        </div>
       </div>
      </div>
      <div class="sect2">
       <h3 id="scoutstylesheet"><a class="anchor" href="#scoutstylesheet"></a>11.5. scout:stylesheet</h3>
       <div class="paragraph">
-       <p>Loads the referenced LESS macro and starts the CSS build with LESS for that file. Outputs a <code>link</code> tag in the HTML document which references the generated .css file. "bsicrm-all-macro.less" will become "bsicrm-css.js" in the parsed HTML document. Depending on Scout&#x2019;s runtime properties the filename will be augmented: if caching is enabled an additional fingerprint is added to the filename. If minifying is enabled the suffix "-min" is appended to the filename.</p>
+       <p>Converts the tag to a regular <code>style</code> tag in the HTML document so that the referenced CSS bundle can be loaded by the browser. Prior to that, the file name will be augmented depending on Scout&#x2019;s runtime properties: if caching is enabled an additional fingerprint is added to the filename. If minifying is enabled the suffix "-min" is appended to the filename.</p>
       </div>
       <div class="paragraph">
        <p>Example:</p>
       </div>
       <div class="literalblock">
        <div class="content">
-        <pre>&lt;scout:stylesheet src="res/bsicrm-all-macro.less" /&gt;</pre>
+        <pre>&lt;scout:stylesheet src="yourtheme.css" /&gt;</pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1785,7 +1818,7 @@ table.init(model);</code></pre>
       </div>
       <div class="literalblock">
        <div class="content">
-        <pre>&lt;link rel="stylesheet" type="text/css" href="res/bsicrm-all-98aea5b3.min.css"&gt;</pre>
+        <pre>&lt;link rel="stylesheet" type="text/css" href="yourtheme-98aea5b3.min.css"&gt;</pre>
        </div>
       </div>
      </div>
@@ -2411,117 +2444,127 @@ JasmineScout.runTestSuite(context);</code></pre>
       <p>This chapter provides various small technical guides to very specific Scout JS subjects.</p>
      </div>
      <div class="sect2">
-      <h3 id="how-to-create-a-custom-field"><a class="anchor" href="#how-to-create-a-custom-field"></a>14.1. How to Create a Custom field</h3>
+      <h3 id="how-to-create-a-custom-field"><a class="anchor" href="#how-to-create-a-custom-field"></a>14.1. How to Create a Custom Field</h3>
       <div class="paragraph">
-       <p>This cheat sheet shows how to implement your own custom control for a ScoutJS application. In this example we will write a FlipCard field, which allows you to have a 'card' with a front and back side. Clicking on the card should flip the card from one to the other side.</p>
+       <p>This cheat sheet shows how to implement your own custom field for a ScoutJS application. In this example we will write a FlipCard field that will show a playing card. Clicking on the card will flip it from one side to the other.</p>
       </div>
       <div class="sect3">
-       <h4 id="files"><a class="anchor" href="#files"></a>14.1.1. Files</h4>
+       <h4 id="setup"><a class="anchor" href="#setup"></a>14.1.1. Setup</h4>
+       <div class="paragraph">
+        <p>For this example we use the helloscout git repository, but you can easily create the field in your own code base as well. In case you want to use the helloscout repo, clone and import it into your favourite IDE:</p>
+       </div>
+       <div class="literalblock">
+        <div class="content">
+         <pre>git clone https://github.com/BSI-Business-Systems-Integration-AG/helloscout.git</pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>Read the readme and start the hellojs application to make sure it works.</p>
+       </div>
        <div class="sect4">
-        <h5 id="create-an-empty-javascript-file-and-stylesheet"><a class="anchor" href="#create-an-empty-javascript-file-and-stylesheet"></a>Create an empty JavaScript file and Stylesheet</h5>
+        <h5 id="add-empty-js-and-css-files"><a class="anchor" href="#add-empty-js-and-css-files"></a>Add Empty JS and CSS Files</h5>
+        <div class="paragraph">
+         <p>Create the following files in the folder <code>org.eclipse.scout.hellojs.ui.html</code></p>
+        </div>
         <div class="ulist">
          <ul>
-          <li> <p><code>src/main/js/hellojs/<strong>custom/FlipCard.js</strong></code> The java script file representing the field.</p> </li>
-          <li> <p><code>src/main/js/hellojs/<strong>custom/FlipCard.less</strong></code> Styling of the field.</p> </li>
+          <li> <p><code>src/main/js/<strong>flipcard/FlipCardField.js</strong></code> The JavaScript file representing the field.</p> </li>
+          <li> <p><code>src/main/js/<strong>flipcard/FlipCardField.less</strong></code> The LESS file containing the styles of the field.</p> </li>
          </ul>
         </div>
        </div>
-      </div>
-      <div class="sect3">
-       <h4 id="add-the-files-to-the-application"><a class="anchor" href="#add-the-files-to-the-application"></a>14.1.2. Add the files to the application</h4>
        <div class="sect4">
-        <h5 id="include-the-javascript-file-to-the-module"><a class="anchor" href="#include-the-javascript-file-to-the-module"></a>Include the JavaScript file to the module</h5>
+        <h5 id="add-the-js-file-to-the-js-index"><a class="anchor" href="#add-the-js-file-to-the-js-index"></a>Add the JS file to the JS index</h5>
         <div class="paragraph">
-         <p>hellojs-module.js</p>
+         <p>index.js</p>
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="CodeRay highlight"><code data-lang="js">(<span class="keyword">function</span>(hellojs, scout, <span class="predefined">$</span>, <span class="predefined-constant">undefined</span>) {
-  ...
-  __include(<span class="string"><span class="delimiter">"</span><span class="content">hellojs/custom/FlipCard.js</span><span class="delimiter">"</span></span>);
-  ...
-}(window.hellojs = window.hellojs || {}, scout, jQuery));</code></pre>
+          <pre class="CodeRay highlight"><code data-lang="js">...
+<span class="reserved">export</span> {<span class="keyword">default</span> as FlipCardField} from <span class="string"><span class="delimiter">'</span><span class="content">./flipcard/FlipCardField</span><span class="delimiter">'</span></span>;
+...</code></pre>
          </div>
         </div>
        </div>
        <div class="sect4">
-        <h5 id="include-the-stylesheet-to-the-module"><a class="anchor" href="#include-the-stylesheet-to-the-module"></a>Include the Stylesheet to the module</h5>
+        <h5 id="add-the-less-file-to-the-less-index"><a class="anchor" href="#add-the-less-file-to-the-less-index"></a>Add the LESS file to the LESS index</h5>
         <div class="paragraph">
-         <p>hellojs-module.less</p>
+         <p>index.less</p>
         </div>
         <div class="listingblock">
          <div class="content">
           <pre class="CodeRay highlight"><code data-lang="css">...
-<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">hellojs/custom/FlipCard.less</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">flipcard/FlipCardField</span><span class="delimiter">"</span></span>;
 ...</code></pre>
          </div>
         </div>
        </div>
       </div>
       <div class="sect3">
-       <h4 id="minimal-code-for-a-new-formfield"><a class="anchor" href="#minimal-code-for-a-new-formfield"></a>14.1.3. Minimal Code for a new FormField</h4>
+       <h4 id="minimal-code-for-a-new-formfield"><a class="anchor" href="#minimal-code-for-a-new-formfield"></a>14.1.2. Minimal Code for a New FormField</h4>
        <div class="sect4">
-        <h5 id="create-a-minimal-formfield"><a class="anchor" href="#create-a-minimal-formfield"></a>Create a minimal FormField</h5>
+        <h5 id="create-a-minimal-formfield"><a class="anchor" href="#create-a-minimal-formfield"></a>Create a Minimal FormField</h5>
         <div class="paragraph">
-         <p>The FlipCard will inherit from FormField which has already a label and field container.</p>
+         <p>The FlipCard will inherit from FormField. Every form field consists of a container, a label, the actual field, a mandatory-indicator and a status.</p>
         </div>
         <div class="paragraph">
-         <p>FlipCard.js</p>
+         <p>FlipCardField.js</p>
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="CodeRay highlight"><code data-lang="js">hellojs.<span class="function">FlipCard</span> = <span class="keyword">function</span>() {
-  hellojs.FlipCard.parent.call(<span class="local-variable">this</span>);
-};
-scout.inherits(hellojs.FlipCard, scout.FormField);
-hellojs.FlipCard.prototype.<span class="function">_render</span> = <span class="keyword">function</span>() {
-  <span class="comment">// create the field container</span>
-  <span class="local-variable">this</span>.addContainer(<span class="local-variable">this</span>.<span class="predefined">$parent</span>, <span class="string"><span class="delimiter">'</span><span class="content">flip-card</span><span class="delimiter">'</span></span>);
-  <span class="comment">// create a label</span>
-  <span class="local-variable">this</span>.addLabel();
-  <span class="comment">// create a field</span>
-  <span class="keyword">var</span> <span class="predefined">$field</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
-  <span class="comment">// add the field to the form field.</span>
-  <span class="local-variable">this</span>.addField(<span class="predefined">$field</span>);
-  <span class="local-variable">this</span>.addMandatoryIndicator();
-  <span class="local-variable">this</span>.addStatus();
-};</code></pre>
+          <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {FormField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> FlipCardField <span class="reserved">extends</span> FormField {
+  _render() {
+    <span class="comment">// Create the container</span>
+    <span class="local-variable">this</span>.addContainer(<span class="local-variable">this</span>.<span class="predefined">$parent</span>, <span class="string"><span class="delimiter">'</span><span class="content">flip-card-field</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Add a label</span>
+    <span class="local-variable">this</span>.addLabel();
+    <span class="comment">// Create the actual field. This will be your flip card.</span>
+    <span class="keyword">var</span> <span class="predefined">$field</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
+    <span class="comment">// add the field to the form field.</span>
+    <span class="local-variable">this</span>.addField(<span class="predefined">$field</span>);
+    <span class="comment">// Add other required form field elements</span>
+    <span class="local-variable">this</span>.addMandatoryIndicator();
+    <span class="local-variable">this</span>.addStatus();
+  };
+}</code></pre>
          </div>
         </div>
        </div>
        <div class="sect4">
         <h5 id="add-the-flipcard-to-the-helloform"><a class="anchor" href="#add-the-flipcard-to-the-helloform"></a>Add the FlipCard to the HelloForm</h5>
         <div class="paragraph">
-         <p>HelloForm.json</p>
+         <p>HelloFormModel.js</p>
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hellojs.HelloForm</span><span class="delimiter">"</span></span>,
-  <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-  <span class="key"><span class="delimiter">"</span><span class="content">rootGroupBox</span><span class="delimiter">"</span></span>: {
-    <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-    <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
+          <pre class="CodeRay highlight"><code data-lang="js">{
+  <span class="key">id</span>: <span class="string"><span class="delimiter">"</span><span class="content">hellojs.HelloForm</span><span class="delimiter">"</span></span>,
+  ...
+  rootGroupBox: {
+    ...
+    fields: [
       {
-        <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">DetailBox</span><span class="delimiter">"</span></span>,
-        <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-        <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">DetailBox</span><span class="delimiter">'</span></span>,
+        ...
+        fields: [
           {
-            <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">NameField</span><span class="delimiter">"</span></span>,
-            <span class="error">.</span><span class="error">.</span><span class="error">.</span>
+            <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">NameField</span><span class="delimiter">'</span></span>,
+            ...
           },
-          {  <i class="conum" data-value="1"></i><b>(1)</b>
-            <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">FlipCard</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hellojs.FlipCard</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">label</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Flip the card</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">gridDataHints</span><span class="delimiter">"</span></span>: {
-              <span class="key"><span class="delimiter">"</span><span class="content">h</span><span class="delimiter">"</span></span>: <span class="integer">5</span>,
-              <span class="key"><span class="delimiter">"</span><span class="content">weightY</span><span class="delimiter">"</span></span>: <span class="integer">0</span>
+          <i class="conum" data-value="1"></i><b>(1)</b>
+          {
+            <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">FlipCardField</span><span class="delimiter">'</span></span>,
+            <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">hellojs.FlipCardField</span><span class="delimiter">'</span></span>,
+            <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Flip the card</span><span class="delimiter">'</span></span>,
+            <span class="key">gridDataHints</span>: {
+              <span class="key">h</span>: <span class="integer">5</span>,
+              <span class="key">weightY</span>: <span class="integer">0</span>
             }
           },
           {
-            <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">GreetButton</span><span class="delimiter">"</span></span>,
-            <span class="error">.</span><span class="error">.</span><span class="error">.</span>
+            <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">GreetButton</span><span class="delimiter">'</span></span>,
+            ...
           }
         ]
       }
@@ -2540,6 +2583,9 @@ hellojs.FlipCard.prototype.<span class="function">_render</span> = <span class="
           </tbody>
          </table>
         </div>
+        <div class="paragraph">
+         <p>Now reload your browser and you should get the following result:</p>
+        </div>
         <div class="sidebarblock">
          <div class="content">
           <div class="title">
@@ -2555,68 +2601,73 @@ hellojs.FlipCard.prototype.<span class="function">_render</span> = <span class="
        </div>
       </div>
       <div class="sect3">
-       <h4 id="full-featured-flip-card-field"><a class="anchor" href="#full-featured-flip-card-field"></a>14.1.4. Full featured flip card field</h4>
+       <h4 id="full-featured-flip-card-field"><a class="anchor" href="#full-featured-flip-card-field"></a>14.1.3. Full Featured Flip Card Field</h4>
        <div class="paragraph">
         <p>FlipCard.js</p>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js">hellojs.<span class="function">FlipCard</span> = <span class="keyword">function</span>() {
-  hellojs.FlipCard.parent.call(<span class="local-variable">this</span>);
-  <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined-constant">null</span>;
-  <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="predefined-constant">null</span>;
-  <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="predefined-constant">null</span>;
-  <span class="local-variable">this</span>.flipped = <span class="predefined-constant">false</span>;
-};
-scout.inherits(hellojs.FlipCard, scout.FormField);
-hellojs.FlipCard.prototype.<span class="function">_render</span> = <span class="keyword">function</span>() {
-  <span class="comment">// create the field container</span>
-  <span class="local-variable">this</span>.addContainer(<span class="local-variable">this</span>.<span class="predefined">$parent</span>, <span class="string"><span class="delimiter">'</span><span class="content">flip-card</span><span class="delimiter">'</span></span>);
-  <span class="comment">// create a label</span>
-  <span class="local-variable">this</span>.addLabel();
-  <span class="comment">// create a field</span>
-  <span class="keyword">var</span> <span class="predefined">$field</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
-  <span class="comment">// add the field to the form field.</span>
-  <span class="local-variable">this</span>.addField(<span class="predefined">$field</span>);
-  <span class="local-variable">this</span>.addMandatoryIndicator();
-  <span class="local-variable">this</span>.addStatus();
-  <span class="comment">// create the field content </span><i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined">$field</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">card</span><span class="delimiter">'</span></span>)
-    .on(<span class="string"><span class="delimiter">'</span><span class="content">mousedown</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>._onCardMouseDown.bind(<span class="local-variable">this</span>)); <i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="local-variable">this</span>.<span class="predefined">$card</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">front</span><span class="delimiter">'</span></span>);
-  <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="local-variable">this</span>.<span class="predefined">$card</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">back</span><span class="delimiter">'</span></span>);
-};
-hellojs.FlipCard.prototype.<span class="function">_renderProperties</span> = <span class="keyword">function</span>() { <i class="conum" data-value="3"></i><b>(3)</b>
-  hellojs.FlipCard.parent.prototype._renderProperties.call(<span class="local-variable">this</span>);
-  <span class="local-variable">this</span>._renderFrontImage();
-  <span class="local-variable">this</span>._renderBackImage();
-  <span class="local-variable">this</span>._renderFlipped();
-};
-hellojs.FlipCard.prototype.<span class="function">_renderFrontImage</span> = <span class="keyword">function</span>() {
-  <span class="keyword">if</span> (<span class="local-variable">this</span>.frontImage) {
-    <span class="local-variable">this</span>.<span class="predefined">$front</span>.append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;img src=</span><span class="content">\"</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.frontImage + <span class="string"><span class="delimiter">'</span><span class="content">\"</span><span class="content">&gt;</span><span class="delimiter">'</span></span>);
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {FormField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> FlipCardField <span class="reserved">extends</span> FormField {
+    constructor() {
+    <span class="reserved">super</span>();
+      <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.flipped = <span class="predefined-constant">false</span>;
+      <span class="local-variable">this</span>.frontImage = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.backImage = <span class="predefined-constant">null</span>;
   }
-};
-hellojs.FlipCard.prototype.<span class="function">_renderBackImage</span> = <span class="keyword">function</span>() {
-  <span class="keyword">if</span> (<span class="local-variable">this</span>.backImage) {
-    <span class="local-variable">this</span>.<span class="predefined">$back</span>.append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;img src=</span><span class="content">\"</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.backImage + <span class="string"><span class="delimiter">'</span><span class="content">\"</span><span class="content">&gt;</span><span class="delimiter">'</span></span>);
+  _render() {
+    <span class="comment">// Create the container</span>
+    <span class="local-variable">this</span>.addContainer(<span class="local-variable">this</span>.<span class="predefined">$parent</span>, <span class="string"><span class="delimiter">'</span><span class="content">flip-card-field</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Add a label</span>
+    <span class="local-variable">this</span>.addLabel();
+    <span class="comment">// Create the actual field </span><i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">var</span> <span class="predefined">$field</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Create the card inside the field</span>
+    <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined">$field</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">card</span><span class="delimiter">'</span></span>)
+      .on(<span class="string"><span class="delimiter">'</span><span class="content">mousedown</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>._onCardMouseDown.bind(<span class="local-variable">this</span>)); <span class="comment">//(2)</span>
+    <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="local-variable">this</span>.<span class="predefined">$card</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">front</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="local-variable">this</span>.<span class="predefined">$card</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">back</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Add the field to the form field. It will be available as this.$field.</span>
+    <span class="local-variable">this</span>.addField(<span class="predefined">$field</span>);
+    <span class="comment">// Add other required form field elements</span>
+    <span class="local-variable">this</span>.addMandatoryIndicator();
+    <span class="local-variable">this</span>.addStatus();
   }
-};
-hellojs.FlipCard.prototype.<span class="function">_remove</span> = <span class="keyword">function</span>() {  <i class="conum" data-value="4"></i><b>(4)</b>
-  hellojs.FlipCard.parent.prototype._remove.call(<span class="local-variable">this</span>);
-  <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined-constant">null</span>;
-  <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="predefined-constant">null</span>;
-  <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="predefined-constant">null</span>;
-};
-hellojs.FlipCard.prototype.<span class="function">_onCardMouseDown</span> = <span class="keyword">function</span>() { <i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="local-variable">this</span>.setFlipped(!<span class="local-variable">this</span>.flipped);
-};
-hellojs.FlipCard.prototype.<span class="function">setFlipped</span> = <span class="keyword">function</span>(flipped) {
-  <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">flipped</span><span class="delimiter">'</span></span>, flipped);
-};
-hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span class="keyword">function</span>() {
-  <span class="local-variable">this</span>.<span class="predefined">$card</span>.toggleClass(<span class="string"><span class="delimiter">'</span><span class="content">flipped</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>.flipped);
-};</code></pre>
+  _renderProperties() { <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="reserved">super</span>._renderProperties();
+    <span class="local-variable">this</span>._renderFrontImage();
+    <span class="local-variable">this</span>._renderBackImage();
+    <span class="local-variable">this</span>._renderFlipped();
+  }
+  _renderFrontImage() {
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.frontImage) {
+      <span class="local-variable">this</span>.<span class="predefined">$front</span>.append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;img src=</span><span class="content">\"</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.frontImage + <span class="string"><span class="delimiter">'</span><span class="content">\"</span><span class="content">&gt;</span><span class="delimiter">'</span></span>);
+    }
+  }
+  _renderBackImage() {
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.backImage) {
+      <span class="local-variable">this</span>.<span class="predefined">$back</span>.append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;img src=</span><span class="content">\"</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.backImage + <span class="string"><span class="delimiter">'</span><span class="content">\"</span><span class="content">&gt;</span><span class="delimiter">'</span></span>);
+    }
+  }
+  _remove() { <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="reserved">super</span>._remove();
+    <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined-constant">null</span>;
+    <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="predefined-constant">null</span>;
+    <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="predefined-constant">null</span>;
+  }
+  _onCardMouseDown() { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="local-variable">this</span>.setFlipped(!<span class="local-variable">this</span>.flipped);
+  }
+  setFlipped(flipped) {
+    <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">flipped</span><span class="delimiter">'</span></span>, flipped);
+  }
+  _renderFlipped() {
+    <span class="local-variable">this</span>.<span class="predefined">$card</span>.toggleClass(<span class="string"><span class="delimiter">'</span><span class="content">flipped</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>.flipped);
+  }
+}</code></pre>
         </div>
        </div>
        <div class="colist arabic">
@@ -2628,7 +2679,7 @@ hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span 
           </tr>
           <tr>
            <td><i class="conum" data-value="2"></i><b>2</b></td>
-           <td>Event handling to flip the card. Add/remove the CSS class <code>flipped</code> to the card element.</td>
+           <td>Add event handler which toggles the CSS class <code>flipped</code>.</td>
           </tr>
           <tr>
            <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -2636,7 +2687,7 @@ hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span 
           </tr>
           <tr>
            <td><i class="conum" data-value="4"></i><b>4</b></td>
-           <td>Keep the reference tree clean. Reset DOM references when the field has been removed.</td>
+           <td>Keep the references clean. Reset DOM references when the field has been removed.</td>
           </tr>
          </tbody>
         </table>
@@ -2646,40 +2697,10 @@ hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span 
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hellojs.HelloForm</span><span class="delimiter">"</span></span>,
-  <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-  <span class="key"><span class="delimiter">"</span><span class="content">rootGroupBox</span><span class="delimiter">"</span></span>: {
-    <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-    <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
-      {
-        <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">DetailBox</span><span class="delimiter">"</span></span>,
-        <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-        <span class="key"><span class="delimiter">"</span><span class="content">fields</span><span class="delimiter">"</span></span>: [
-          {
-            <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">NameField</span><span class="delimiter">"</span></span>,
-            <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-          },
-          {  <i class="conum" data-value="1"></i><b>(1)</b>
-            <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">FlipCard</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">objectType</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">hellojs.FlipCard</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">label</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">Flip the card</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">frontImage</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">res/img/card-back.jpg</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">backImage</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">res/img/card-front.jpg</span><span class="delimiter">"</span></span>,
-            <span class="key"><span class="delimiter">"</span><span class="content">gridDataHints</span><span class="delimiter">"</span></span>: {
-              <span class="key"><span class="delimiter">"</span><span class="content">h</span><span class="delimiter">"</span></span>: <span class="integer">5</span>,
-              <span class="key"><span class="delimiter">"</span><span class="content">weightY</span><span class="delimiter">"</span></span>: <span class="integer">0</span>
-            }
-          },
-          {
-            <span class="key"><span class="delimiter">"</span><span class="content">id</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">GreetButton</span><span class="delimiter">"</span></span>,
-            <span class="error">.</span><span class="error">.</span><span class="error">.</span>
-          }
-        ]
-      }
-    ]
-  }
-}</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">hellojs.HelloForm</span><span class="delimiter">'</span></span>,
+  ...
+  rootGroupBox<span class="string"><span class="delimiter">'</span><span class="content">: { ... fields: [ { id: </span><span class="delimiter">'</span></span>DetailBox<span class="string"><span class="delimiter">'</span><span class="content">, ... fields: [ { id: </span><span class="delimiter">'</span></span>NameField<span class="string"><span class="delimiter">'</span><span class="content">, ... }, <i class="conum" data-value="1"></i><b>(1)</b> { id: </span><span class="delimiter">'</span></span>FlipCardField<span class="string"><span class="delimiter">'</span><span class="content">, objectType: </span><span class="delimiter">'</span></span>hellojs.FlipCardField<span class="string"><span class="delimiter">'</span><span class="content">, label: </span><span class="delimiter">'</span></span>Flip the card<span class="string"><span class="delimiter">'</span><span class="content">, frontImage: </span><span class="delimiter">'</span></span>img/card-back.jpg<span class="string"><span class="delimiter">'</span><span class="content">, backImage: </span><span class="delimiter">'</span></span>img/card-front.jpg<span class="string"><span class="delimiter">'</span><span class="content">, gridDataHints: { h: 5, weightY: 0 } }, { id: </span><span class="delimiter">'</span></span>GreetButton<span class="string"><span class="delimiter">'</span><span class="content">, ... } ] } ] } }</span></span></code></pre>
         </div>
        </div>
        <div class="colist arabic">
@@ -2687,17 +2708,17 @@ hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span 
          <tbody>
           <tr>
            <td><i class="conum" data-value="1"></i><b>1</b></td>
-           <td>The FlipCard field</td>
+           <td>FlipCard field is inserted after the name field.</td>
           </tr>
          </tbody>
         </table>
        </div>
        <div class="paragraph">
-        <p>FlipCard.less</p>
+        <p>FlipCardField.less</p>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="css"><span class="class">.flip-card</span> {
+         <pre class="CodeRay highlight"><code data-lang="css"><span class="class">.flip-card-field</span> {
   .<span class="key">card</span> {
     <span class="key">position</span>: <span class="value">absolute</span>;
     <span class="key">cursor</span>: <span class="value">pointer</span>;
@@ -2743,6 +2764,9 @@ hellojs.FlipCard.prototype.<span class="function">_renderFlipped</span> = <span 
           </tr>
          </tbody>
         </table>
+       </div>
+       <div class="paragraph">
+        <p>Finally, create a folder <code>img</code> in the WebContent folder (org.eclipse.scout.hellojs.ui.html.app/src/main/resources/WebContent) and paste the two images of the card into that folder. You should be able to find the images using Google ;-)</p>
        </div>
        <div class="sidebarblock">
         <div class="content">
