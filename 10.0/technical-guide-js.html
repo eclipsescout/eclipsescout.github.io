@@ -563,7 +563,10 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#parser-validator-formatter">6.1. Parser, Validator, Formatter</a></li>
       </ul> </li>
      <li><a href="#lookup-call">7. Lookup Call</a></li>
-     <li><a href="#styling">8. Styling</a></li>
+     <li><a href="#styling">8. Styling</a>
+      <ul class="sectlevel2">
+       <li><a href="#themes">8.1. Themes</a></li>
+      </ul> </li>
      <li><a href="#extensibility">9. Extensibility</a>
       <ul class="sectlevel2">
        <li><a href="#how-to-extend-scout-objects">9.1. How to extend Scout objects</a></li>
@@ -1508,7 +1511,127 @@ scout.addObjectFactories({
       <p>Beside colors there are some other files in the style folder of the Scout module: <code>animations.less</code>, <code>fonts.less</code>, <code>icons.less</code>, <code>mixins.less</code> and <code>sizes.less</code>. All these files contain variables or mixins which are used by various Scout widgets and may be used by your project as well.</p>
      </div>
      <div class="paragraph">
-      <p>Redefining a variable is the simplest way of customizing. If you need more control you can always write a custom CSS rule. Keep in mind that these rules need to be more specific than the default CSS rules of Scout, otherwise they won&#x2019;t be executed (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class="bare">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a> for details). Beside that we cannot guarantee that your custom rules will still work when migrating to a newer Scout version, because changing only a small part of the rule might make it more specific so that your rule won&#x2019;t work anymore. That only applies to custom rules which are supposed to change existing look or behavior. If you are writing a custom widget without overriding default Scout rules there shouldn&#x2019;t be any problems regarding migration.</p>
+      <p>Redefining a variable is the simplest way of customizing. If you need more control you can always write a custom CSS rule. Keep in mind that these rules need to be more specific than the default CSS rules of Scout, otherwise they won&#x2019;t be executed (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class="bare">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a> for details). We cannot guarantee that your custom rules will still work when migrating to a newer Scout version, because changing only a small part of the rule might make it more specific so that your rule won&#x2019;t work anymore. That only applies to custom rules which are supposed to change existing look or behavior. If you are writing a custom widget without overriding default Scout rules there shouldn&#x2019;t be any problems regarding migration.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="themes"><a class="anchor" href="#themes"></a>8.1. Themes</h3>
+      <div class="paragraph">
+       <p>Scout applications support styling via CSS/LESS themes. Scout comes with two themes by default: the <em>default</em> theme with blue colors and the <em>dark</em> theme with gray/black colors. Technically a theme has a name and a set of LESS files.</p>
+      </div>
+      <div class="paragraph">
+       <p>In Scout Classic a theme is activated by calling the method <code>AbstractDesktop#setTheme(String name)</code>. This causes the document in the browser to reload and load the CSS theme for that name, like <code>myapp-theme.css</code> for the <em>default</em> theme or <code>myapp-theme-dark.css</code> for the <em>dark</em> theme. The <em>default</em> theme is activated by passing a <code>null</code> value as name.</p>
+      </div>
+      <div class="paragraph">
+       <p>In Scout JS you do the same thing by calling the method <code>Desktop#setTheme(name)</code>.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you have multiple themes and you want to start with a defined theme by default, you can set a property in the <code>config.properties</code> file on the Scout UI server. In the following example the theme <em>rainbow</em> will be activated, which means the Scout application tries to load the CSS file <code>myapp-theme-rainbow.css</code> on start-up:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>scout.ui.theme=rainbow</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Note that Scout only provides an API to switch between themes. If the user of your Scout applications must switch between various themes, your application must provide an UI element to do that. Scout provides no standard UI element for that. However, the Widgets apps for Scout Classic and Scout JS give you an idea of how you could implement that feature.</p>
+      </div>
+      <div class="paragraph">
+       <p>There are two options to customize CSS properties in your Scout project:</p>
+      </div>
+      <div class="olist arabic">
+       <ol class="arabic">
+        <li> <p>Change CSS properties (or LESS variables) by overriding styles from the default theme</p> </li>
+        <li> <p>Provide your own theme with a unique name like <code>rainbow</code></p> </li>
+       </ol>
+      </div>
+      <div class="paragraph">
+       <p>When the user of your application should have only a single theme option 1 is the way to go. However, if users should have the option to switch between various themes, you should go with option 2. In this chapter we will focus the latter option.</p>
+      </div>
+      <div class="paragraph">
+       <p>In order to understand Scout themes, take a look at the <code>myapp-theme.less</code> file which has been generated for your project. In the following examples we assume that the name of your project is <em>myapp</em>.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="LESS">@import "~@eclipse-scout/core/src/index";
+@import "./src/main/js/index";</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>As you can see the theme bundles various LESS modules. Line 1 imports the LESS module for Scout. This module contains style definitions for all UI elements provided by Scout. Line 2 imports the LESS module for your. This module contains style definitions for your custom widgets used in your project. The build creates a single CSS file <code>myapp-theme.css</code> which is used as theme for your project.</p>
+      </div>
+      <div class="paragraph">
+       <p>We recommend making an index file for each Scout module. These index files import each .less file which belongs to that module. This excerpt from Scouts <code>index.less</code> shows how we import all distinct .less files required to style the desktop or the LESS variable definitions for all colors used in the stylesheet:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="LESS">...
+@import "desktop/Desktop";
+@import "desktop/DesktopLogo";
+@import "desktop/DesktopDense";
+@import "desktop/bench/DesktopBench";
+@import "desktop/bench/BenchColumn";
+@import "style/colors";
+...</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>How does the dark theme for your Scout application look like? Like for the default theme we create a LESS file <code>myapp-theme-dark.less</code>, but this time we import the <code>index-dark</code> modules.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="LESS">@import "~@eclipse-scout/core/src/index-dark";
+@import "./src/main/js/index-dark";</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Let&#x2019;s take a look of the details in the <code>index-dark.less</code> file.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="LESS">@import "index";
+@import "style/colors-dark";
+@import "desktop/outline/Outline-dark";</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>As you see the first thing we do on line 1 is to import the default theme 'index'. This the <em>dark</em> theme inherits all style definitions from the default theme. The dark theme only extends new additional style and LESS variables or overrides styles or LESS variables from the default. This is what happens on line 2. <code>Colors-dark.less</code> overrides some variables defined in the <code>colors.less</code> file from the default theme, like the gray colors. Excerpt:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="CodeRay highlight"><code data-lang="LESS">...
+@palette-gray-1: #e4e4e6;
+@palette-gray-2: #999999;
+@palette-gray-2-1: #79818d;
+@palette-gray-3: #495465;
+@palette-gray-4: #394051;
+@palette-gray-5: #2d3748;
+...</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Note that all variables except <code>@palette-gray-2-1</code> override variables from <code>colors.less</code>. <code>@palette-gray-2-1</code> is a variable which is only defined and used in the <em>dark</em> theme.</p>
+      </div>
+      <div class="sect3">
+       <h4 id="build-and-runtime"><a class="anchor" href="#build-and-runtime"></a>8.1.1. Build and Runtime</h4>
+       <div class="paragraph">
+        <p>Scout uses Webpack to start the LESS parser and build the CSS themes. Your application needs at least one default theme. This theme is added by default to your <code>webpack.config.js</code>. If your application needs to work with multiple themes you must add them to the list of config entries. In this example we add the two themes <em>dark</em> and <em>rainbow</em>:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre class="CodeRay highlight"><code data-lang="js">config.entry = {
+  <span class="key"><span class="delimiter">'</span><span class="content">bsicrm</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp.js</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">login</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/login.js</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">logout</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/logout.js</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">myapp-theme</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp-theme.less</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">myapp-theme-dark</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp-theme-dark.less</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">myapp-theme-rainbow</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp-theme-rainbow.less</span><span class="delimiter">'</span></span>
+};</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>When you use a Scout UI server as backend for your Scout JS application the class <code>WebResourceLoader</code> is responsible for supplying the requested CSS theme file to the browser. This class uses the current theme name as provided by the <code>UiThemeHelper</code>, which checks if a theme name is set by a cookie, the HTTP session or by an HTTP request parameter. These are good starting points for debugging, in case something unexpected happens while developing themes.</p>
+       </div>
+      </div>
      </div>
     </div>
    </div>
