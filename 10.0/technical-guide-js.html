@@ -1460,37 +1460,37 @@ scout.addObjectFactories({
     <h2 id="styling"><a class="anchor" href="#styling"></a>8. Styling</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Beside JavaScript for business logic and for the models, every Scout JS app probably needs some CSS code at some point of time. If you are writing custom widgets, you need it for sure. But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
+      <p>Beside JavaScript for business logic and for the models, every Scout JS app probably needs some CSS code at some point in time. If you are writing custom widgets, you need it for sure. But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
      </div>
      <div class="paragraph">
-      <p>Scout uses LESS as CSS preprocessor. It has a lot of advantages to pure CSS: variables, mixins, functions, imports etc. If you use the default build infrastructure provided by Scout, you can not only use LESS easily without getting a headache on how to integrate it in your build system, you get access to all of the LESS constructs used by Scout itself. This means you can use variables for colors, icons and sizes, mixins for animations and to avoid browser specific prefixes, you can import or replace whole Scout LESS files for custom themes and you get a lot of sample code in the Scout code base because Scout itself uses the same concepts.</p>
+      <p>Scout uses LESS as CSS preprocessor. It has a lot of advantages to pure CSS: variables, mixins, functions, imports etc. If you use the default build infrastructure provided by Scout, you cannot only use LESS easily without getting a headache on how to integrate it in your build system, you get access to all the LESS constructs used by Scout itself. This means you can use variables for colors, icons and sizes, mixins for animations and to avoid browser specific prefixes. You can import whole Scout LESS files for your custom themes and you get a lot of sample code in the Scout code base because Scout itself uses the same concepts.</p>
      </div>
      <div class="paragraph">
       <p>In order to get started you need a place to put all your LESS code. The recommendation is to create one LESS file for each widget. That means if your widget is called <code>MyWidget.js</code> you would create a file called <code>MyWidget.less</code>. Even if you adjust the look of an existing widget you can create a file called let&#x2019;s say <code>StringField.less</code> and put the rules there. If you only have a few rules or non widget specific rules you can create a file called <code>main.less</code> and put them there. However, these are only recommendations, you can always do it as you like.</p>
      </div>
      <div class="paragraph">
-      <p>The creation of these files won&#x2019;t make them loaded automatically, you have to register them in your <code>index</code> file. This file should be put into your <code>src/main/js</code> folder and named <code>index.less</code>. Just include your new files using the LESS <code>@import</code> keyword.</p>
+      <p>The creation of these files won&#x2019;t make them load automatically. You have to register them in your <code>index</code> file. This file should be put into your <code>src/main/js</code> folder and named <code>index.less</code>. Just include your new files using the LESS <code>@import</code> keyword.</p>
      </div>
      <div class="listingblock">
       <div class="title">
-       Listing 19. Including a LESS file
+       Listing 19. Include a LESS file
       </div>
       <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="LESS">@import "style/colors";</code></pre>
+       <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">style/colors</span><span class="delimiter">"</span></span>;</code></pre>
       </div>
      </div>
      <div class="paragraph">
       <p>In addition to this <code>index</code> file you normally also have a <code>theme</code> file which will be used as entry point in your <code>webpack.config.js</code> and included in the <code>index.html</code>. The intention of the <code>theme</code> file is to group individual <code>index</code> files and make one file in order to load all rules at once within one request.</p>
      </div>
      <div class="paragraph">
-      <p>Now that we have all the infrastructure set up we can start adding some rules. As already said you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#x2019;s say you want to change the background color of the navigation, you can redefine the variable <code>@navigation-background-color</code>.</p>
+      <p>Now that we have all the infrastructure set up, we can start adding some rules. As already said, you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#x2019;s say you want to change the background color of the navigation, you can redefine the variable <code>@navigation-background-color</code>.</p>
      </div>
      <div class="listingblock">
       <div class="title">
        Listing 20. Changing the background color of the navigation
       </div>
       <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="LESS">@navigation-background-color: @palette-red-4;</code></pre>
+       <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@navigation-background-color</span>: <span class="directive">@palette-red-4</span>;</code></pre>
       </div>
      </div>
      <div class="paragraph">
@@ -1505,7 +1505,7 @@ scout.addObjectFactories({
       </div>
      </div>
      <div class="paragraph">
-      <p>In this example a color from the Scout color palette is used. You can also use a custom hex code instead of <code>@palette-red-4</code> or define a custom color palette if you want to use the same colors for different rules.</p>
+      <p>In this example a color from the Scout color palette is used. You can also use a custom hex code instead of <code>@palette-red-4</code> or define a custom color palette, if you want to use the same colors for different rules.</p>
      </div>
      <div class="paragraph">
       <p>Beside colors there are some other files in the style folder of the Scout module: <code>animations.less</code>, <code>fonts.less</code>, <code>icons.less</code>, <code>mixins.less</code> and <code>sizes.less</code>. All these files contain variables or mixins which are used by various Scout widgets and may be used by your project as well.</p>
@@ -1528,6 +1528,9 @@ scout.addObjectFactories({
        <p>If you have multiple themes and you want to start with a defined theme by default, you can set a property in the <code>config.properties</code> file on the Scout UI server. In the following example the theme <em>rainbow</em> will be activated, which means the Scout application tries to load the CSS file <code>myapp-theme-rainbow.css</code> on start-up:</p>
       </div>
       <div class="literalblock">
+       <div class="title">
+        config.properties
+       </div>
        <div class="content">
         <pre>scout.ui.theme=rainbow</pre>
        </div>
@@ -1555,8 +1558,8 @@ scout.addObjectFactories({
         Listing 21. myapp-theme.less
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="LESS">@import "~@eclipse-scout/core/src/index";
-@import "./src/main/js/index";</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">~@eclipse-scout/core/src/index</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">./src/main/js/index</span><span class="delimiter">"</span></span>;</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1570,13 +1573,13 @@ scout.addObjectFactories({
         Listing 22. Excerpt from Scout core index.less
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="LESS">...
-@import "desktop/Desktop";
-@import "desktop/DesktopLogo";
-@import "desktop/DesktopDense";
-@import "desktop/bench/DesktopBench";
-@import "desktop/bench/BenchColumn";
-@import "style/colors";
+        <pre class="CodeRay highlight"><code data-lang="css">...
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/Desktop</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/DesktopLogo</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/DesktopDense</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/bench/DesktopBench</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/bench/BenchColumn</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">style/colors</span><span class="delimiter">"</span></span>;
 ...</code></pre>
        </div>
       </div>
@@ -1588,8 +1591,8 @@ scout.addObjectFactories({
         Listing 23. myapp-theme-dark.less
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="LESS">@import "~@eclipse-scout/core/src/index-dark";
-@import "./src/main/js/index-dark";</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">~@eclipse-scout/core/src/index-dark</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">./src/main/js/index-dark</span><span class="delimiter">"</span></span>;</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1600,9 +1603,9 @@ scout.addObjectFactories({
         Listing 24. index-dark.less
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="LESS">@import "index";
-@import "style/colors-dark";
-@import "desktop/outline/Outline-dark";</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">index</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">style/colors-dark</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/outline/Outline-dark</span><span class="delimiter">"</span></span>;</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1613,13 +1616,13 @@ scout.addObjectFactories({
         Listing 25. Excerpt from Scout core index-dark.less
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="LESS">...
-@palette-gray-1: #e4e4e6;
-@palette-gray-2: #999999;
-@palette-gray-2-1: #79818d;
-@palette-gray-3: #495465;
-@palette-gray-4: #394051;
-@palette-gray-5: #2d3748;
+        <pre class="CodeRay highlight"><code data-lang="css">...
+<span class="directive">@palette-gray-1</span>: <span class="color">#e4e4e6</span>;
+<span class="directive">@palette-gray-2</span>: <span class="color">#999999</span>;
+<span class="directive">@palette-gray-2-1</span>: <span class="color">#79818d</span>;
+<span class="directive">@palette-gray-3</span>: <span class="color">#495465</span>;
+<span class="directive">@palette-gray-4</span>: <span class="color">#394051</span>;
+<span class="directive">@palette-gray-5</span>: <span class="color">#2d3748</span>;
 ...</code></pre>
        </div>
       </div>
