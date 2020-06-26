@@ -1519,7 +1519,7 @@ scout.addObjectFactories({
        <p>Scout applications support styling via CSS/LESS themes. Scout comes with two themes by default: the <em>default</em> theme with blue colors and the <em>dark</em> theme with gray/black colors. Technically a theme has a name and a set of LESS files.</p>
       </div>
       <div class="paragraph">
-       <p>In Scout Classic a theme is activated by calling the method <code>AbstractDesktop#setTheme(String name)</code>. This causes the document in the browser to reload and load the CSS theme for that name, like <code>myapp-theme.css</code> for the <em>default</em> theme or <code>myapp-theme-dark.css</code> for the <em>dark</em> theme. The <em>default</em> theme is activated by passing a <code>null</code> value as name.</p>
+       <p>In Scout Classic a theme is activated by calling the method <code>AbstractDesktop#setTheme(String name)</code>. This causes the browser to reload the page and loads the CSS theme for that name, like <code>myapp-theme.css</code> for the <em>default</em> theme or <code>myapp-theme-dark.css</code> for the <em>dark</em> theme. The <em>default</em> theme is activated by passing a <code>null</code> value as name.</p>
       </div>
       <div class="paragraph">
        <p>In Scout JS you do the same thing by calling the method <code>Desktop#setTheme(name)</code>.</p>
@@ -1533,10 +1533,10 @@ scout.addObjectFactories({
        </div>
       </div>
       <div class="paragraph">
-       <p>Note that Scout only provides an API to switch between themes. If the user of your Scout applications must switch between various themes, your application must provide an UI element to do that. Scout provides no standard UI element for that. However, the Widgets apps for Scout Classic and Scout JS give you an idea of how you could implement that feature.</p>
+       <p>Note that Scout only provides an API to switch between themes. If the user of your Scout application should switch between various themes, your application must provide an UI element to do that. Scout provides no standard UI element for that. However, the Widgets apps for <a href="https://scout.bsi-software.com/widgets/">Scout Classic</a> and <a href="https://scout.bsi-software.com/jswidgets/">Scout JS</a> give you an idea of how you could implement that feature.</p>
       </div>
       <div class="paragraph">
-       <p>There are two options to customize CSS properties in your Scout project:</p>
+       <p>You have two options to customize CSS styles in your Scout project:</p>
       </div>
       <div class="olist arabic">
        <ol class="arabic">
@@ -1545,24 +1545,30 @@ scout.addObjectFactories({
        </ol>
       </div>
       <div class="paragraph">
-       <p>When the user of your application should have only a single theme option 1 is the way to go. However, if users should have the option to switch between various themes, you should go with option 2. In this chapter we will focus the latter option.</p>
+       <p>If your Scout application should have only a single theme, option 1 is the way to go. If users should have the option to switch between various themes, you should go with option 2. In this chapter we will focus on the latter option.</p>
       </div>
       <div class="paragraph">
-       <p>In order to understand Scout themes, take a look at the <code>myapp-theme.less</code> file which has been generated for your project. In the following examples we assume that the name of your project is <em>myapp</em>.</p>
+       <p>In order to understand Scout themes, take a look at the <code>myapp-theme.less</code> file which has been generated for your project by the Scout archetype. In the following examples we assume that the name of your project is <em>myapp</em>.</p>
       </div>
       <div class="listingblock">
+       <div class="title">
+        Listing 21. myapp-theme.less
+       </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="LESS">@import "~@eclipse-scout/core/src/index";
 @import "./src/main/js/index";</code></pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>As you can see the theme bundles various LESS modules. Line 1 imports the LESS module for Scout. This module contains style definitions for all UI elements provided by Scout. Line 2 imports the LESS module for your. This module contains style definitions for your custom widgets used in your project. The build creates a single CSS file <code>myapp-theme.css</code> which is used as theme for your project.</p>
+       <p>As you can see the theme bundles various LESS modules. Line 1 imports the LESS module from the Scout core. This module contains style definitions for all UI elements provided by Scout. Line 2 imports the LESS module from your application. This module contains style definitions for custom widgets used in your project. The build creates a single CSS file <code>myapp-theme.css</code>, which is used as theme for your project.</p>
       </div>
       <div class="paragraph">
-       <p>We recommend making an index file for each Scout module. These index files import each .less file which belongs to that module. This excerpt from Scouts <code>index.less</code> shows how we import all distinct .less files required to style the desktop or the LESS variable definitions for all colors used in the stylesheet:</p>
+       <p>We recommend making an index file for each Scout module. These index files import each single LESS file which belongs to that module. This excerpt from Scouts <code>index.less</code> shows how we import all distinct LESS files required to style the desktop or the LESS variable definitions for all colors used in the stylesheet:</p>
       </div>
       <div class="listingblock">
+       <div class="title">
+        Listing 22. Excerpt from Scout core index.less
+       </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="LESS">...
 @import "desktop/Desktop";
@@ -1575,18 +1581,24 @@ scout.addObjectFactories({
        </div>
       </div>
       <div class="paragraph">
-       <p>How does the dark theme for your Scout application look like? Like for the default theme we create a LESS file <code>myapp-theme-dark.less</code>, but this time we import the <code>index-dark</code> modules.</p>
+       <p>How does the dark theme for your Scout application look like? Like for the <em>default</em> theme, we create a LESS file <code>myapp-theme-dark.less</code>, but this time we import the <code>index-dark</code> modules.</p>
       </div>
       <div class="listingblock">
+       <div class="title">
+        Listing 23. myapp-theme-dark.less
+       </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="LESS">@import "~@eclipse-scout/core/src/index-dark";
 @import "./src/main/js/index-dark";</code></pre>
        </div>
       </div>
       <div class="paragraph">
-       <p>Let&#x2019;s take a look of the details in the <code>index-dark.less</code> file.</p>
+       <p>Let&#x2019;s take a look at the details in the <code>index-dark.less</code> file from the Scout core:</p>
       </div>
       <div class="listingblock">
+       <div class="title">
+        Listing 24. index-dark.less
+       </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="LESS">@import "index";
 @import "style/colors-dark";
@@ -1594,9 +1606,12 @@ scout.addObjectFactories({
        </div>
       </div>
       <div class="paragraph">
-       <p>As you see the first thing we do on line 1 is to import the default theme 'index'. This the <em>dark</em> theme inherits all style definitions from the default theme. The dark theme only extends new additional style and LESS variables or overrides styles or LESS variables from the default. This is what happens on line 2. <code>Colors-dark.less</code> overrides some variables defined in the <code>colors.less</code> file from the default theme, like the gray colors. Excerpt:</p>
+       <p>As you see, the first thing we do on line 1 is to import the default theme 'index'. This means the <em>dark</em> theme inherits all style definitions from the default theme. The dark theme only extends new additional style and LESS variables or overrides styles or LESS variables from the default theme. This is what happens on line 2: <code>colors-dark.less</code> overrides some variables defined in the <code>colors.less</code> file from the default theme, like the gray colors:</p>
       </div>
       <div class="listingblock">
+       <div class="title">
+        Listing 25. Excerpt from Scout core index-dark.less
+       </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="LESS">...
 @palette-gray-1: #e4e4e6;
@@ -1614,9 +1629,12 @@ scout.addObjectFactories({
       <div class="sect3">
        <h4 id="build-and-runtime"><a class="anchor" href="#build-and-runtime"></a>8.1.1. Build and Runtime</h4>
        <div class="paragraph">
-        <p>Scout uses Webpack to start the LESS parser and build the CSS themes. Your application needs at least one default theme. This theme is added by default to your <code>webpack.config.js</code>. If your application needs to work with multiple themes you must add them to the list of config entries. In this example we add the two themes <em>dark</em> and <em>rainbow</em>:</p>
+        <p>Scout uses Webpack to run the LESS parser and build the CSS themes. Your application needs at least one default theme. The Scout archetype adds this theme to your <code>webpack.config.js</code>. If your application needs to work with multiple themes you must add them to the list of config entries. In this example we add the two themes <em>dark</em> and <em>rainbow</em>:</p>
        </div>
        <div class="listingblock">
+        <div class="title">
+         Listing 26. Excerpt from webpack.config.js
+        </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="js">config.entry = {
   <span class="key"><span class="delimiter">'</span><span class="content">bsicrm</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp.js</span><span class="delimiter">'</span></span>,
@@ -1993,7 +2011,7 @@ scout.addObjectFactories({
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 21. Importing ES6 modules
+         Listing 27. Importing ES6 modules
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> PersonFormModel from <span class="string"><span class="delimiter">'</span><span class="content">./PersonFormModel</span><span class="delimiter">'</span></span>;
@@ -2017,7 +2035,7 @@ scout.addObjectFactories({
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 22. Using Scout&#x2019;s default Webpack config
+        Listing 28. Using Scout&#x2019;s default Webpack config
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
@@ -2063,7 +2081,7 @@ module.exports = (env, args) =&gt; {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 23. Using Scout&#x2019;s default Webpack config
+         Listing 29. Using Scout&#x2019;s default Webpack config
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
@@ -2091,7 +2109,7 @@ module.exports = (env, args) =&gt; {
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 24. Specifying res folders
+         Listing 30. Specifying res folders
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
@@ -2131,7 +2149,7 @@ module.exports = (env, args) =&gt; {
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 25. karma.conf.js
+        Listing 31. karma.conf.js
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/karma-defaults</span><span class="delimiter">'</span></span>);
@@ -2146,7 +2164,7 @@ module.exports = config =&gt; baseConfig(config, <span class="string"><span clas
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 26. karma.conf.js
+        Listing 32. karma.conf.js
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {JasmineScout} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/testing</span><span class="delimiter">'</span></span>;
@@ -2171,7 +2189,7 @@ JasmineScout.runTestSuite(context);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 27. CLI dependency and scripts in package.json
+        Listing 33. CLI dependency and scripts in package.json
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">"</span><span class="content">scripts</span><span class="delimiter">"</span></span>: {
@@ -2366,7 +2384,7 @@ JasmineScout.runTestSuite(context);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 28. ESLint Dependencies
+        Listing 34. ESLint Dependencies
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">"</span><span class="content">devDependencies</span><span class="delimiter">"</span></span>: {
@@ -2380,7 +2398,7 @@ JasmineScout.runTestSuite(context);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 29. .eslintrc.js
+        Listing 35. .eslintrc.js
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="JavaScript">module.exports = {
@@ -2409,7 +2427,7 @@ JasmineScout.runTestSuite(context);</code></pre>
       </div>
       <div class="listingblock">
        <div class="title">
-        Listing 30. Disabling the linebreak rule
+        Listing 36. Disabling the linebreak rule
        </div>
        <div class="content">
         <pre class="CodeRay highlight"><code data-lang="JavaScript">  rules: {
@@ -2440,7 +2458,7 @@ JasmineScout.runTestSuite(context);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 31. Class properties
+         Listing 37. Class properties
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="JavaScript">class Example {
@@ -2453,7 +2471,7 @@ JasmineScout.runTestSuite(context);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 32. Babel-eslint dependencies
+         Listing 38. Babel-eslint dependencies
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">"</span><span class="content">devDependencies</span><span class="delimiter">"</span></span>: {
@@ -2467,7 +2485,7 @@ JasmineScout.runTestSuite(context);</code></pre>
        </div>
        <div class="listingblock">
         <div class="title">
-         Listing 33. Babel-eslint configuration
+         Listing 39. Babel-eslint configuration
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="JavaScript">  plugins: ['babel'],
@@ -2994,7 +3012,7 @@ JasmineScout.runTestSuite(context);</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2020-06-19 01:10:07 +0200
+    <br> Last updated 2020-05-04 23:54:21 +0200
    </div>
   </div>
  </body>
