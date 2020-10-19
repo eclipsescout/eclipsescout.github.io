@@ -3134,11 +3134,10 @@ contacts.superuser=system</code></pre>
         </div>
         <div class="content">
          <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DerbySqlService</span> <span class="directive">extends</span> AbstractDerbySqlService {
-  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOG = LoggerFactory.getLogger(DerbySqlService.class);
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredJdbcMappingName() {
     <span class="predefined-type">String</span> mappingName = CONFIG.getPropertyValue(JdbcMappingNameProperty.class);
-    <span class="comment">// add create attribute if we need to autocreate the db</span>
+    <span class="comment">// add create attribute if we need to auto create the db</span>
     <span class="keyword">if</span> (CONFIG.getPropertyValue(DatabaseAutoCreateProperty.class)) {
       <span class="keyword">return</span> mappingName + <span class="string"><span class="delimiter">"</span><span class="content">;create=true</span><span class="delimiter">"</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
     }
@@ -3730,10 +3729,6 @@ contacts.superuser=system</code></pre>
   <span class="annotation">@Order</span>(<span class="integer">10</span>)
   <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">27a040ac-eac5-47c6-a826-572633b9d4ef</span><span class="delimiter">"</span></span>)
   <span class="directive">public</span> <span class="type">class</span> <span class="class">MainBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="annotation">@Override</span>
-    <span class="directive">protected</span> <span class="type">void</span> injectMenusInternal(OrderedCollection&lt;IMenu&gt; menus) {
-      BEANS.get(ContactsHelper.class).injectReadOnlyMenu(menus);
-    }
     <span class="annotation">@Order</span>(<span class="integer">10</span>)
     <span class="annotation">@ClassId</span>(<span class="string"><span class="delimiter">"</span><span class="content">08832a97-8845-4ff4-8dfd-c29366c22742</span><span class="delimiter">"</span></span>)
     <span class="directive">public</span> <span class="type">class</span> <span class="class">GeneralBox</span> <span class="directive">extends</span> AbstractGroupBox { <i class="conum" data-value="2"></i><b>(2)</b>
@@ -6347,7 +6342,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/10.0/docs/build/beginners_guide/src/docs/beginners-guide.adoc">sources</a> on GitHub. </td>
+          <td class="content"> Do you want to improve this document? Have a look at the sources on GitHub. </td>
          </tr>
         </tbody>
        </table>
@@ -6425,7 +6420,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2020-07-15 13:50:26 +0200
+    <br> Last updated 2020-10-19 18:27:14 +0200
    </div>
   </div>
  </body>
