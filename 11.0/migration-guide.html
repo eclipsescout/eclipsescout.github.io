@@ -461,6 +461,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#removal-of-module-eclipse-scouttesting">Removal of module <code>@eclipse-scout/testing</code></a></li>
      <li><a href="#tabbox-new-behavior-of-labelvisible">TabBox: New Behavior of LabelVisible</a></li>
+     <li><a href="#smartcolumns-new-behavior-of-preparelookupcall-events">SmartColumns: New Behavior of PrepareLookupCall Events</a>
+      <ul class="sectlevel2">
+       <li><a href="#new-property-event-row">New property event.row</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -604,15 +608,36 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <div class="paragraph">
       <p>As already mentioned in the release notes, it is now possible to hide the tab box header with the property labelVisible. Since this had no effect in previous Scout versions you should check whether you accidentally set the property to false. The default of the property is true, so if the property was not set at all or set to true it will be fine.</p>
      </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the git-<a href="self" class="bare">self</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="smartcolumns-new-behavior-of-preparelookupcall-events"><a class="anchor" href="#smartcolumns-new-behavior-of-preparelookupcall-events"></a>SmartColumns: New Behavior of PrepareLookupCall Events</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Upto version 10.0 no prepareLookupCall event has been triggered when doing key lookup calls for cells inside <code>SmartColumns</code>. These key lookup calls are for example relevant for initally loading the values of the cells inside the column. Starting from version 11.0 a key lookup call always triggers a prepareLookupCall events.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="new-property-event-row"><a class="anchor" href="#new-property-event-row"></a>New property event.row</h3>
+      <div class="paragraph">
+       <p>The property row was given to the prepareLookupCall event in <code>SmartColumns</code>. There are a few things to consider:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p>The property <code>selectedRow</code> from <code>Table</code> must not be used anymore when a reference to the selected row is needed. Instead, <code>event.row</code> should be used to find the selected row.</p> </li>
+        <li> <p><code>event.row</code> can be <code>null</code> or <code>undefined</code>. The latter is for example the case when initially loading the values from the cells inside the column.</p> </li>
+        <li> <p>Batch lookup calls have no property <code>event.row</code> when triggering the prepareLookupCall event. Hence, if your prepareLookupCall event depends on the selected row during key lookups, you should set the property <code>batch: false</code> inside the corresponding lookupCall of your <code>ConfigFormModel.js</code> file.</p> </li>
+       </ul>
+      </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
      </div>
     </div>
    </div>
@@ -620,7 +645,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-10-19 18:37:22 +0200
+    <br> Last updated 2020-10-20 14:38:36 +0200
    </div>
   </div>
  </body>
