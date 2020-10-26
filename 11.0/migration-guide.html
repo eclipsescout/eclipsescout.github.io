@@ -529,31 +529,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
      </div>
      <div class="paragraph">
-      <p>For IntelliJ IDEA Developers: Update the content of the element <code>&lt;annotationProcessing&gt;</code> in the file <code>.idea/compiler.xml</code> as follows (replace profile name and module names accordingly):</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;profile name="&lt;your_name&gt;" enabled="true"&gt;
-  &lt;sourceOutputDir name="target/generated-sources/annotations" /&gt;
-  &lt;sourceTestOutputDir name="target/generated-test-sources/test-annotations" /&gt;
-  &lt;outputRelativeToContentRoot value="true" /&gt;
-  &lt;option name="consoleLog" value="true" /&gt;
-  &lt;processorPath useClasspath="false"&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/org/eclipse/scout/rt/org.eclipse.scout.jaxws.apt/11.0-SNAPSHOT/org.eclipse.scout.jaxws.apt-11.0-SNAPSHOT.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/org/glassfish/jaxb/codemodel/2.3.3/codemodel-2.3.3.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/org/eclipse/scout/rt/org.eclipse.scout.rt.platform/11.0-SNAPSHOT/org.eclipse.scout.rt.platform-11.0-SNAPSHOT.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/org/eclipse/scout/rt/org.eclipse.scout.rt.server.jaxws/11.0-SNAPSHOT/org.eclipse.scout.rt.server.jaxws-11.0-SNAPSHOT.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/jakarta/servlet/jakarta.servlet-api/4.0.4/jakarta.servlet-api-4.0.4.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/jakarta/jws/jakarta.jws-api/2.1.0/jakarta.jws-api-2.1.0.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar" /&gt;
-    &lt;entry name="$MAVEN_REPOSITORY$/jakarta/xml/ws/jakarta.xml.ws-api/2.3.3/jakarta.xml.ws-api-2.3.3.jar" /&gt;
-  &lt;/processorPath&gt;
-  &lt;module name="&lt;your_first_module_having_jaxws_providers&gt;" /&gt;
-  &lt;module name="&lt;your_second_module_having_jaxws_providers&gt;" /&gt;
-  ...
-&lt;/profile&gt;</code></pre>
-      </div>
+      <p>For IntelliJ IDEA Developers: The annotationProcessing path in the file <code>.idea/compiler.xml</code> is automatically updated when performing a maven reload.</p>
      </div>
     </div>
    </div>
@@ -645,7 +621,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-10-25 18:37:14 +0100
+    <br> Last updated 2020-10-26 18:38:42 +0100
    </div>
   </div>
  </body>
