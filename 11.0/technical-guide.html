@@ -4810,14 +4810,9 @@ List&lt;? extends ICode&lt;String&gt;&gt; reloadedCodes = cs.getCodeType(UiTheme
          <pre class="highlight"><code class="language-java" data-lang="java">@Override
 public void handleNotification(final MessageNotification notification) {
   ModelJobs.schedule(() -&gt; {
-    UserNodePage userPage = getUserNodePage();
-    String buddy = notification.getSenderName();
-    if (userPage != null) {
-      ChatForm form = userPage.getChatForm(buddy);
-      if (form != null) {
-        form.getHistoryField().addMessage(false, buddy, form.getUserName(), new Date(), notification.getMessage());
-      }
-    }
+    IDesktop desktop = ClientSessionProvider.currentSession().getDesktop();
+    // e.g. send dataChanged event to UI listeners
+    desktop.dataChanged(notification.getMessage());
   }, ModelJobs.newInput(ClientRunContexts.copyCurrent()));
 }</code></pre>
         </div>
@@ -9890,7 +9885,7 @@ protected void updateFieldBackgroundColor() {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-10-28 18:37:13 +0100
+    <br> Last updated 2020-10-29 18:37:29 +0100
    </div>
   </div>
  </body>
