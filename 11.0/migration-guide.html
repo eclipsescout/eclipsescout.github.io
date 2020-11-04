@@ -465,6 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#migration-if-you-want-to-use-automatic-chunk-creation-recommended">Migration if you want to use automatic chunk creation (recommended)</a></li>
        <li><a href="#migration-if-you-dont-want-to-use-automatic-chunks-not-recommended">Migration if you don&#x2019;t want to use automatic chunks (not recommended)</a></li>
       </ul> </li>
+     <li><a href="#web-resource-resolver">Web Resource Resolver</a></li>
      <li><a href="#tabbox-new-behavior-of-labelvisible">TabBox: New Behavior of LabelVisible</a></li>
      <li><a href="#smartcolumns-new-behavior-of-preparelookupcall-events">SmartColumns: New Behavior of PrepareLookupCall Events</a>
       <ul class="sectlevel2">
@@ -641,6 +642,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     </div>
    </div>
    <div class="sect1">
+    <h2 id="web-resource-resolver"><a class="anchor" href="#web-resource-resolver"></a>Web Resource Resolver</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The <code>IWebResourceResolver</code> interface has been extended to return multiple resources instead of one. For this the methods now return <code>List&lt;WebResourceDescriptor&gt;</code> instead of <code>Optional&lt;WebResourceDescriptor&gt;</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p>If the <code>FilesystemWebResourceResolver</code> or the <code>ClasspathWebResourceResolver</code> has been replaced in your project, perform the following migration:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p>Adjust the return type of <code>getResourceImpl</code> to <code>Stream&lt;URL&gt;</code>.</p> </li>
+       <li> <p>Adapt the returned value depending on your implementation:</p>
+        <div class="ulist">
+         <ul>
+          <li> <p>If the resolver observes different locations: return all resources found from all the locations.</p> </li>
+          <li> <p>If the resolver only uses one location: return a stream containing one element or an empty stream.</p> </li>
+         </ul>
+        </div> </li>
+      </ul>
+     </div>
+     <div class="paragraph">
+      <p>You may use the inherited methods <code>resolveUrls</code> and <code>toUrl</code> if your resolver replaces the <code>FilesystemWebResourceResolver</code>. These methods may be handy to search for a relative path in one or multiple root directories.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
     <h2 id="tabbox-new-behavior-of-labelvisible"><a class="anchor" href="#tabbox-new-behavior-of-labelvisible"></a>TabBox: New Behavior of LabelVisible</h2>
     <div class="sectionbody">
      <div class="paragraph">
@@ -683,7 +710,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-11-03 18:37:12 +0100
+    <br> Last updated 2020-11-04 18:38:40 +0100
    </div>
   </div>
  </body>

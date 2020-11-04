@@ -2285,10 +2285,9 @@ JasmineScout.runTestSuite(context);</code></pre>
         <ul>
          <li> <p>Stop the UI server.</p> </li>
          <li> <p>Run <code>npm run build:prod</code>, this script will copy minified script files to the <em>/dist</em> folder.</p> </li>
-         <li> <p>Copy <em>/dist/prod</em> and <em>/dist/res</em> to the folder <em>/target/classes</em></p> </li>
          <li> <p>Start the UI server. Stopping and starting the UI server makes sure the server-side script cache is cleared.</p> </li>
          <li> <p>Start the application with the URL parameter <code>/?debug=false</code>.</p> </li>
-         <li> <p>Check your index.html in the browser. Each referenced script or CSS file should have a fingerprint, example: <code>eclipse-scout-2c6053b2fdf5b816fae5.min.js</code>.</p> </li>
+         <li> <p>Check your index.html in the browser. Each referenced script or CSS file should have a fingerprint, example: <code>yourapp-2c6053b2fdf5b816fae5.min.js</code>.</p> </li>
         </ul>
        </div>
       </div>
@@ -2972,7 +2971,7 @@ export default class FlipCardField extends FormField {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-11-03 18:37:12 +0100
+    <br> Last updated 2020-11-04 18:38:40 +0100
    </div>
   </div>
  </body>
