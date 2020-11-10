@@ -473,6 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#new-widgets">New Widgets</a>
       <ul class="sectlevel2">
        <li><a href="#breadcrumb-bar-field">Breadcrumb Bar Field</a></li>
+       <li><a href="#chart">Chart</a></li>
       </ul> </li>
      <li><a href="#widget-enhancements">Widget Enhancements</a>
       <ul class="sectlevel2">
@@ -716,6 +717,66 @@ module.exports = (env, args) =&gt; {
        </div>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="chart"><a class="anchor" href="#chart"></a>Chart</h3>
+      <div class="paragraph">
+       <p>The new chart widget allows visualizing data in several ways. It can be used inside a chart field, a chart tile or as a plain chart. The supported chart types include bar (vertical and horizontal), line, bar and line combined, pie, doughnut, bubble, polar area, radar, fulfillment, salesfunnel, speedo and venn. All charts support different color schemes and themes.</p>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/pieTileDefault.png" alt="pieTileDefault">
+       </div>
+       <div class="title">
+        Figure 1. Pie chart in a tile using the default color scheme.
+       </div>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/comboBarLineTileAlternativeInverted.png" alt="comboBarLineTileAlternativeInverted">
+       </div>
+       <div class="title">
+        Figure 2. Combined bar line chart in a tile using the alternative inverted color scheme.
+       </div>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/bubbleRainbowDarkTheme.png" alt="bubbleRainbowDarkTheme">
+       </div>
+       <div class="title">
+        Figure 3. Bubble chart using the rainbow color scheme and the dark theme.
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>There are numerous styling options, e.g. tension and fill for line and radar charts, stacked bar charts or a transparent and a checkable mode.</p>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/lineDefaultTensionFill.png" alt="lineDefaultTensionFill">
+       </div>
+       <div class="title">
+        Figure 4. Tension and fill for line charts.
+       </div>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/barHorizontalRainbowStacked.png" alt="barHorizontalRainbowStacked">
+       </div>
+       <div class="title">
+        Figure 5. Stacked horizontal bar chart.
+       </div>
+      </div>
+      <div class="imageblock">
+       <div class="content">
+        <img src="images/bubbleTileDefaultCheckable.png" alt="bubbleTileDefaultCheckable">
+       </div>
+       <div class="title">
+        Figure 6. Checkable bubble chart.
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>For more information about the chart widget see <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html#chart">Technical Guide for Scout JS</a>.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -792,7 +853,7 @@ module.exports = (env, args) =&gt; {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-11-09 18:37:02 +0100
+    <br> Last updated 2020-11-10 18:37:13 +0100
    </div>
   </div>
  </body>
