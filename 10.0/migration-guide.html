@@ -571,6 +571,7 @@ table.CodeRay td.code>pre{padding:0}
        <li><a href="#renamings-in-errordo-2">Renamings in ErrorDo</a></li>
        <li><a href="#different-http-status-codes">Different HTTP status codes</a></li>
        <li><a href="#cookies-disabled-by-default">Cookies disabled by default</a></li>
+       <li><a href="#streamutility-tomap">StreamUtility.toMap</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -1137,6 +1138,12 @@ ajaxCall.call()
       <div class="paragraph">
        <p>in <code>configureClientBuilder</code> of <code>AbstractRestClientHelper</code>.</p>
       </div>
+     </div>
+     <div class="sect2">
+      <h3 id="streamutility-tomap"><a class="anchor" href="#streamutility-tomap"></a>StreamUtility.toMap</h3>
+      <div class="paragraph">
+       <p>The default re-map function for duplicated keys used by <code>StreamUtility.toMap</code> was changed from a throwing merger to a replacing merger mapper. E.g. if a stream containing duplicated keys is collected into a map, the value of the latest key within the stream is collected into the target map.</p>
+      </div>
       <div class="admonitionblock tip">
        <table>
         <tbody>
@@ -1154,7 +1161,7 @@ ajaxCall.call()
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2020-11-25 18:25:23 +0100
+    <br> Last updated 2020-11-26 18:25:21 +0100
    </div>
   </div>
  </body>
