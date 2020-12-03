@@ -471,6 +471,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <ul class="sectlevel2">
        <li><a href="#new-property-event-row">New property event.row</a></li>
       </ul> </li>
+     <li><a href="#messagebox-new-behavior-of-doclose">MessageBox: New Behavior of doClose()</a></li>
     </ul>
    </div>
   </div>
@@ -693,16 +694,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <li> <p>Batch lookup calls have no property <code>event.row</code> when triggering the prepareLookupCall event. Hence, if your prepareLookupCall event depends on the selected row during key lookups, you should set the property <code>batch: false</code> inside the corresponding lookupCall of your <code>ConfigFormModel.js</code> file.</p> </li>
        </ul>
       </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="messagebox-new-behavior-of-doclose"><a class="anchor" href="#messagebox-new-behavior-of-doclose"></a>MessageBox: New Behavior of doClose()</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The priorities of the answer of <code>MessageBox.doClose()</code> will now be <code>CANCEL_OPTION</code>, <code>NO_OPTION</code>, <code>YES_OPTION</code>. The old behavior is still available in the form of the method <code>MessageBox.doOk()</code>.</p>
+     </div>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_migration/src/docs/migration-guide.adoc">sources</a> on GitHub. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
     </div>
    </div>
@@ -710,7 +719,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2020-12-02 18:36:58 +0100
+    <br> Last updated 2020-12-03 18:39:04 +0100
    </div>
   </div>
  </body>
