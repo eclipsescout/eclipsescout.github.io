@@ -500,7 +500,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#scoutscript">11.4. scout:script</a></li>
        <li><a href="#scoutscripts">11.5. scout:scripts</a></li>
        <li><a href="#scoutstylesheet">11.6. scout:stylesheet</a></li>
-       <li><a href="#scoutversion">11.7. scout:version</a></li>
+       <li><a href="#scoutstylesheets">11.7. scout:stylesheets</a></li>
+       <li><a href="#scoutversion">11.8. scout:version</a></li>
       </ul> </li>
      <li><a href="#build-stack">12. Build Stack</a>
       <ul class="sectlevel2">
@@ -1957,7 +1958,7 @@ export default class MyApp extends App {
       </div>
       <div class="literalblock">
        <div class="content">
-        <pre>&lt;scout:scripts entryPoint="yourapp"/&gt;</pre>
+        <pre>&lt;scout:scripts entrypoint="yourapp"/&gt;</pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1994,7 +1995,30 @@ export default class MyApp extends App {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="scoutversion"><a class="anchor" href="#scoutversion"></a>11.7. scout:version</h3>
+      <h3 id="scoutstylesheets"><a class="anchor" href="#scoutstylesheets"></a>11.7. scout:stylesheets</h3>
+      <div class="paragraph">
+       <p>Writes all <code>link</code> tags in the HTML document which contain the webpack entryPoint name given. This requires that no custom splitChunks are defined. It automatically includes all chunks that are required by the given entry point. The entry point name must match the name in the <code>entry</code> section of the <code>webpack.config.js</code> file.</p>
+      </div>
+      <div class="paragraph">
+       <p>Example:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;scout:stylesheets entrypoint="yourapp-theme"/&gt;</pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Output:</p>
+      </div>
+      <div class="literalblock">
+       <div class="content">
+        <pre>&lt;link rel="stylesheet" type="text/css" href="yourapp-theme-9858a5b3.min.css"&gt;
+&lt;link rel="stylesheet" type="text/css" href="vendors~yourapp-theme-675d7813.min.css"&gt;</pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scoutversion"><a class="anchor" href="#scoutversion"></a>11.8. scout:version</h3>
       <div class="paragraph">
        <p>Outputs the current version of the Scout application as <code>scout-version</code> tag in the HTML document. This tag is read by <code>scout.App#_initVersion</code>.</p>
       </div>
@@ -3376,7 +3400,7 @@ chart.on('valueClick', clickHandler);</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-01-19 18:37:09 +0100
+    <br> Last updated 2021-01-20 18:37:24 +0100
    </div>
   </div>
  </body>

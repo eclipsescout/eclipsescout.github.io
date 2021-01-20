@@ -460,7 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#updated-3rd-party-dependencies">Updated 3rd party dependencies</a></li>
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#removal-of-module-eclipse-scouttesting">Removal of module <code>@eclipse-scout/testing</code></a></li>
-     <li><a href="#automatic-javascript-chunks">Automatic JavaScript Chunks</a>
+     <li><a href="#automatic-script-chunks">Automatic Script Chunks</a>
       <ul class="sectlevel2">
        <li><a href="#migration-if-you-want-to-use-automatic-chunk-creation-recommended">Migration if you want to use automatic chunk creation (recommended)</a></li>
        <li><a href="#migration-if-you-dont-want-to-use-automatic-chunks-not-recommended">Migration if you don&#x2019;t want to use automatic chunks (not recommended)</a></li>
@@ -586,18 +586,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     </div>
    </div>
    <div class="sect1">
-    <h2 id="automatic-javascript-chunks"><a class="anchor" href="#automatic-javascript-chunks"></a>Automatic JavaScript Chunks</h2>
+    <h2 id="automatic-script-chunks"><a class="anchor" href="#automatic-script-chunks"></a>Automatic Script Chunks</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Before Scout 11 JavaScript chunks have been declared explicitly. While you have full control on the output using this explicit definition, it is often not optimal concerning performance and might require modifications when a new module or library is added to the project. Therefore starting with version 11 Scout additionally supports automatic chunk creation for your JavaScript assets.</p>
+      <p>Before Scout 11 script (JavaScript and CSS) chunks have been declared explicitly. While you have full control on the output using this explicit definition, it is often not optimal concerning performance and might require modifications when a new module or library is added to the project. Therefore starting with version 11 Scout additionally supports automatic chunk creation for your script assets.</p>
      </div>
      <div class="paragraph">
-      <p>When using this new feature (which is the default configuration now), chunks are automatically created based on size and code usage (JavaScript imports). Therefore, it is no longer necessary to list every chunk manually in the html file. Instead, Scout automatically inserts the necessary script tags according to the chunks created.</p>
+      <p>When using this new feature (which is the default configuration now), chunks are automatically created based on size and code usage (imports). Therefore, it is no longer necessary to list every chunk manually in the html file. Instead, Scout automatically inserts the necessary script tags according to the chunks created.</p>
      </div>
      <div class="sect2">
       <h3 id="migration-if-you-want-to-use-automatic-chunk-creation-recommended"><a class="anchor" href="#migration-if-you-want-to-use-automatic-chunk-creation-recommended"></a>Migration if you want to use automatic chunk creation (recommended)</h3>
       <div class="paragraph">
-       <p>Replace all <code>scout:script</code> tags in your html files with a single <code>scout:scripts</code> tag (please note the extra "s" at the end). So instead of:</p>
+       <p>Replace all <code>scout:script</code> and <code>scout:stylesheet</code> tags in your html files with a single <code>scout:scripts</code> and <code>scout:stylesheets</code> tag (please note the extra "s" at the end).</p>
+      </div>
+      <div class="paragraph">
+       <p>Example for scripts:</p>
       </div>
       <div class="listingblock">
        <div class="content">
@@ -612,20 +615,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-html" data-lang="html">&lt;scout:scripts entryPoint="yourApp"/&gt;</code></pre>
+        <pre class="highlight"><code class="language-html" data-lang="html">&lt;scout:scripts entrypoint="yourApp"/&gt;</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>Example for stylesheet:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="highlight"><code class="language-html" data-lang="html">&lt;scout:stylesheet src="yourApp-theme.css"/&gt;</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>replace it with:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="highlight"><code class="language-html" data-lang="html">&lt;scout:stylesheets entrypoint="yourApp-theme"/&gt;</code></pre>
        </div>
       </div>
       <div class="paragraph">
        <p>The name to write in the <code>entryPoint</code> attribute is the same as used in the <code>entry</code> section of your <code>webpack.config.js</code> file. Typically you also have entries named <code>login</code> and <code>logout</code>. These are the names to put in the <code>entryPoint</code> attribute within the corresponding html file that should launch this entry point.</p>
       </div>
       <div class="paragraph">
-       <p>Accordingly, the example html file above will include all chunks required by the webpack <code>entry</code> named <code>yourApp</code>.</p>
-      </div>
-      <div class="paragraph">
        <p>If you specified custom chunk cache groups in your webpack.config.js (e.g. by defining <code>config.optimization.splitChunks.cacheGroups.yourChunkName = {&#x2026;&#x200b;}</code>), remove these chunk definitions.</p>
       </div>
       <div class="paragraph">
-       <p>In your <code>web.xml</code> files remove the old chunk names (<code>/jquery*.js</code>, <code>/login*.js</code>, <code>/logout*.js</code>, <code>/eclipse-scout*.js</code>) from the <code>filter-exclude</code> values of the servlet filter. Instead, add new exclusions of the form <code>/*entryPointName*.js</code> for each entry point that may be accessed without authentication. Typically, these are <code>/*login*.js</code> and <code>/*logout*.js</code>.</p>
+       <p>In your <code>web.xml</code> files remove the old chunk names (<code>/jquery*.js</code>, <code>/login*.js</code>, <code>/logout*.js</code>, <code>/eclipse-scout*.js</code>, <code>/yourApp-theme*.css</code>) from the <code>filter-exclude</code> values of the servlet filter. Instead, add new exclusions of the form <code>/*entryPointName*.js</code> and <code>/*entryPointName*.css</code> for each entry point that may be accessed without authentication. Typically, these are <code>/*login*.js</code>, <code>/*logout*.js</code> and the themes css files.</p>
       </div>
      </div>
      <div class="sect2">
@@ -635,7 +651,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="ulist">
        <ul>
-        <li> <p>To include the old default Scout chunks copy the chunk definitions from the old <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/tree/eclipse-scout-cli/scripts/webpack-defaults.js?h=releases/10.0#n169">Scout defaults</a>.</p> </li>
+        <li> <p>To include the old default Scout chunks copy the chunk definitions from the old <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/tree/eclipse-scout-cli/scripts/webpack-defaults.js?h=releases/10.0#n164">Scout defaults</a>.</p> </li>
         <li> <p>If you already have custom chunk definitions, you can keep them as they are.</p> </li>
        </ul>
       </div>
@@ -719,7 +735,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-01-19 18:37:09 +0100
+    <br> Last updated 2021-01-20 18:37:24 +0100
    </div>
   </div>
  </body>
