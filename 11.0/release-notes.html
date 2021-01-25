@@ -467,6 +467,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#fullscreen-dialogs">Fullscreen Dialogs</a></li>
        <li><a href="#wizard-improved-progress-field">Wizard: Improved Progress Field</a></li>
        <li><a href="#new-mobilepopup">New MobilePopup</a></li>
+       <li><a href="#new-tablet-transformation-auto-hide-navigation">New Tablet Transformation: Auto Hide Navigation</a></li>
       </ul> </li>
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#custom-webpack-config">Custom Webpack Config</a></li>
@@ -661,6 +662,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <p>MobilePopup was only available on Scout JS but is now available for Scout Classic as well. A mobile popup slides in from the bottom. This is it, not more. It has already been used for search or tool forms on mobile.</p>
       </div>
      </div>
+     <div class="sect2">
+      <h3 id="new-tablet-transformation-auto-hide-navigation"><a class="anchor" href="#new-tablet-transformation-auto-hide-navigation"></a>New Tablet Transformation: Auto Hide Navigation</h3>
+      <div class="paragraph">
+       <p>The navigation is now automatically hidden when a view is opened and shown again when the last view is closed. This was introduced because the space is very limited and the navigation mostly not needed when a view is open.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you don&#x2019;t like the change you can simply disable it by disabling the transformation <code>TabletDeviceTransformation#AUTO_HIDE_NAVIGATION</code>. Check out the mobile chapter in the <a href="https://eclipsescout.github.io/11.0/technical-guide.html#disable-transformations">Tech Doc</a> on how to do it.</p>
+      </div>
+     </div>
     </div>
    </div>
    <div class="sect1">
@@ -853,7 +863,7 @@ module.exports = (env, args) =&gt; {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-01-24 18:37:16 +0100
+    <br> Last updated 2021-01-25 18:36:48 +0100
    </div>
   </div>
  </body>
