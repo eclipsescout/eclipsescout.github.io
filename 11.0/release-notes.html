@@ -481,7 +481,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#table-new-property-compact">Table: New Property 'compact'</a></li>
        <li><a href="#menu-new-property-textposition">Menu: New Property 'textPosition'</a></li>
        <li><a href="#form">Form</a></li>
-       <li><a href="#widget-execfocusin-execfocusout">Widget: ExecFocusIn, ExecFocusOut</a></li>
+       <li><a href="#widget">Widget</a></li>
        <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
       </ul> </li>
     </ul>
@@ -599,7 +599,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="imageblock">
        <div class="content">
-        <img src="images/outline_overview.png.png" alt="outline overview.png">
+        <img src="images/outline_overview.png" alt="outline overview">
        </div>
       </div>
      </div>
@@ -610,7 +610,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="imageblock">
        <div class="content">
-        <img src="images/mobile_summary_cell.png.png" alt="mobile summary cell.png">
+        <img src="images/mobile_summary_cell.png" alt="mobile summary cell">
        </div>
       </div>
       <div class="paragraph">
@@ -624,7 +624,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="imageblock">
        <div class="content">
-        <img src="images/mobile_view.png.png.png" alt="mobile view.png.png">
+        <img src="images/mobile_view.png" alt="mobile view">
        </div>
       </div>
       <div class="paragraph">
@@ -813,7 +813,7 @@ module.exports = (env, args) =&gt; {
       </div>
       <div class="imageblock">
        <div class="content">
-        <img src="images/menu_text_bottom.png.png" alt="menu text bottom.png">
+        <img src="images/menu_text_bottom.png" alt="menu text bottom">
        </div>
       </div>
      </div>
@@ -833,12 +833,24 @@ module.exports = (env, args) =&gt; {
       </div>
      </div>
      <div class="sect2">
-      <h3 id="widget-execfocusin-execfocusout"><a class="anchor" href="#widget-execfocusin-execfocusout"></a>Widget: ExecFocusIn, ExecFocusOut</h3>
-      <div class="paragraph">
-       <p>Every widget now supports focus event. You can either use a <code>WidgetListener</code> or implement <code>execFocusIn</code> and <code>execFocusOut</code>. The currently focused element is available using <code>IDesktop#getFocusedElement()</code>.</p>
+      <h3 id="widget"><a class="anchor" href="#widget"></a>Widget</h3>
+      <div class="sect3">
+       <h4 id="execfocusin-execfocusout"><a class="anchor" href="#execfocusin-execfocusout"></a>ExecFocusIn, ExecFocusOut</h4>
+       <div class="paragraph">
+        <p>Every widget now supports focus events. You can either use a <code>WidgetListener</code> or implement <code>execFocusIn</code> and <code>execFocusOut</code>. The currently focused element is available using <code>IDesktop#getFocusedElement()</code>.</p>
+       </div>
+       <div class="paragraph">
+        <p>Important: the focus tracking needs to be explicitly activated before it can be used. Just call <code>IDesktop#setTrackFocus(true)</code> to do so. And remember to deactivate it again once you don&#x2019;t need it anymore to not produce unnecessary requests.</p>
+       </div>
       </div>
-      <div class="paragraph">
-       <p>Important: the focus tracking needs to be explicitly activated before it can be used. Just call <code>IDesktop#setTrackFocus(true)</code> to do so. And remember to deactivate it again once you don&#x2019;t need it anymore to not produce unnecessary requests.</p>
+      <div class="sect3">
+       <h4 id="new-method-reveal"><a class="anchor" href="#new-method-reveal"></a>New Method 'reveal'</h4>
+       <div class="paragraph">
+        <p>If a widget in a scrollable container is out of view you can bring it back by using the new reveal method.</p>
+       </div>
+       <div class="paragraph">
+        <p>On JS side this method was already available, now it is available for Scout Classic apps as well.</p>
+       </div>
       </div>
      </div>
      <div class="sect2">
@@ -863,7 +875,7 @@ module.exports = (env, args) =&gt; {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-01-28 18:36:51 +0100
+    <br> Last updated 2021-01-29 18:37:12 +0100
    </div>
   </div>
  </body>
