@@ -543,12 +543,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        </tbody>
       </table>
      </div>
-     <div class="admonitionblock warning">
+     <div class="admonitionblock note">
       <table>
        <tbody>
         <tr>
-         <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td>
-         <td class="content"> This document is not complete. Contributions are welcome!<br> If you like to help, please create a pull request. Thanks!<br> <br> Repository:<br> <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs" class="bare">https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs</a> </td>
+         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+         <td class="content"> This document is not complete. Contributions are welcome!<br> If you like to help, please create a pull request. Thanks!<br> <br> Repository:<br> <a href="https://github.com/bsi-software/org.eclipse.scout.docs" class="bare">https://github.com/bsi-software/org.eclipse.scout.docs</a> </td>
         </tr>
        </tbody>
       </table>
@@ -2246,10 +2246,10 @@ JasmineScout.runTestSuite(context);</code></pre>
       <div class="sect3">
        <h4 id="building"><a class="anchor" href="#building"></a>12.4.1. Building</h4>
        <div class="paragraph">
-        <p>Before you can open your application in the browser, you need to build it. The build takes all your source code and resources and creates the artifacts needed for the browser according to your <a href="#webpack-configuration">Section 12.2</a>. Once the build is complete all the produced artifacts are put in the <code>dist</code> folder.</p>
+        <p>Before you can open your application in the browser, you need to build it. The build takes all your source code and resources and creates the artifacts needed for the browser according to your <a href="#webpack-configuration">Section 12.2</a>. Once the build is complete all the produced artifacts are put in the <code>target/dist</code> folder.</p>
        </div>
        <div class="paragraph">
-        <p>The <code>dist</code> folder contains three sub folders:</p>
+        <p>The <code>target/dist</code> folder contains three sub folders:</p>
        </div>
        <div class="olist arabic">
         <ol class="arabic">
@@ -2293,11 +2293,11 @@ JasmineScout.runTestSuite(context);</code></pre>
         </div>
         <div class="olist arabic">
          <ol class="arabic">
-          <li> <p>mode: 'development' or 'production'. This argument is set automatically when using build:dev or build:prod.</p> </li>
-          <li> <p>clean: true, to clean the dist folder before each build. Default is false if watcher is enabled (build:dev:watch), otherwise true.</p> </li>
-          <li> <p>progress: true, to show build progress in percentage. Default is true.</p> </li>
-          <li> <p>profile: true, to show timing information for each build step. Default is false.</p> </li>
-          <li> <p>resDirArray: an array containing directories which should be copied to dist/res.</p> </li>
+          <li> <p>mode: <code>development</code> or <code>production</code>. This argument is set automatically when using build:dev or build:prod.</p> </li>
+          <li> <p>clean: true, to clean the <code>target/dist</code> folder before each build. Default is <code>false</code> if watcher is enabled (build:dev:watch), otherwise <code>true</code>.</p> </li>
+          <li> <p>progress: <code>true</code>, to show build progress in percentage. Default is <code>true</code>.</p> </li>
+          <li> <p>profile: <code>true</code>, to show timing information for each build step. Default is <code>false</code>.</p> </li>
+          <li> <p>resDirArray: an array containing directories which should be copied to <code>dist/res</code>.</p> </li>
           <li> <p>stats: object to control the build output. There are some presets available as shortcuts (e.g. 'detailed' or 'errors-only'), see also: <a href="https://webpack.js.org/configuration/stats/" class="bare">https://webpack.js.org/configuration/stats/</a>.</p> </li>
          </ol>
         </div>
@@ -2453,7 +2453,7 @@ JasmineScout.runTestSuite(context);</code></pre>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-          <td class="content"> If the command takes very long and prints a lot of errors, you may have to ignore the <code>dist</code> folder, see <a href="#eslint-ignore">Section 12.5.2</a>. </td>
+          <td class="content"> If the command takes very long and prints a lot of errors, you may have to ignore the <code>target/dist</code> folder, see <a href="#eslint-ignore">Section 12.5.2</a>. </td>
          </tr>
         </tbody>
        </table>
@@ -2538,7 +2538,7 @@ JasmineScout.runTestSuite(context);</code></pre>
       <div class="sect3">
        <h4 id="eslint-ignore"><a class="anchor" href="#eslint-ignore"></a>12.5.2. ESLint Ignore</h4>
        <div class="paragraph">
-        <p>Similar to <code>.gitignore</code>, you can create a file called <code>.eslintignore</code> to exclude specific files or directories from the analysis. Because analyzing the build output probably does not make any sense, we recommend to at least ignore the <code>dist</code> folder. The only thing you need to do is to create that file and add a line with the word <code>dist</code>.</p>
+        <p>Similar to <code>.gitignore</code>, you can create a file called <code>.eslintignore</code> to exclude specific files or directories from the analysis. Because analyzing the build output probably does not make any sense, we recommend to at least ignore the <code>target</code> folder. The only thing you need to do is to create that file and add a line with the word <code>target</code>.</p>
        </div>
        <div class="paragraph">
         <p>For more details please see the official ESLint documentation at <a href="https://eslint.org/docs/user-guide/configuring#eslintignore" class="bare">https://eslint.org/docs/user-guide/configuring#eslintignore</a>.</p>
@@ -3388,7 +3388,7 @@ chart.on('valueClick', clickHandler);</code></pre>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/blob/releases/11.0/docs/{_footer-link-path}">sources</a> on GitHub. </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/{_footer-link-path}">sources</a> on GitHub. </td>
          </tr>
         </tbody>
        </table>
@@ -3400,7 +3400,7 @@ chart.on('valueClick', clickHandler);</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-01-31 18:37:01 +0100
+    <br> Last updated 2021-02-01 18:37:23 +0100
    </div>
   </div>
  </body>
