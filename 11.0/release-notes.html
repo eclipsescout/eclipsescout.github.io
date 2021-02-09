@@ -484,10 +484,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#widget">Widget</a></li>
        <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
       </ul> </li>
+     <li><a href="#maven-master">Maven master</a></li>
     </ul>
    </div>
   </div>
   <div id="content">
+   <div id="preamble">
+    <div class="sectionbody">
+     <div class="admonitionblock note">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
    <div class="sect1">
     <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
     <div class="sectionbody">
@@ -574,7 +589,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <div class="sect2">
       <h3 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h3>
       <div class="paragraph">
-       <p>The demo applications for this version can be found on the <a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
+       <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
       </div>
       <div class="paragraph">
        <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
@@ -858,16 +873,63 @@ module.exports = (env, args) =&gt; {
       <div class="paragraph">
        <p>Setting the property <code>labelVisible</code> to false will now hide the tab area. Until now, the property had no effect for tab boxes.</p>
       </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="maven-master"><a class="anchor" href="#maven-master"></a>Maven master</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Some maven profiles have been removed from the maven master (e.g. <code>org.eclipse.scout:maven_rt_plugin_config-master</code>) (since 3.13.5). These profiles have been used for release management. No Scout build jobs do still use git commands through maven. Instead, any git command is issued directly (usually from a jenkins pipeline). Therefore, we cannot support these profiles anymore. If any of these profiles or configurations are still in use in your project, you may copy them from an older maven master version into your own parent maven pom.</p>
+     </div>
+     <div class="ulist">
+      <div class="title">
+       Removed profiles
       </div>
+      <ul>
+       <li> <p><code>release.setversion</code></p> </li>
+       <li> <p><code>release.checkin</code></p> </li>
+       <li> <p><code>release.tag</code></p> </li>
+      </ul>
+     </div>
+     <div class="ulist">
+      <div class="title">
+       Removed related properties
+      </div>
+      <ul>
+       <li> <p><code>master_release_pushChanges</code></p> </li>
+       <li> <p><code>master_release_tagName</code></p> </li>
+       <li> <p><code>master_release_checkinMessage</code></p> </li>
+      </ul>
+     </div>
+     <div class="paragraph">
+      <p>Also, the default plugin configuration of <code>org.apache.maven.plugins:maven-release-plugin</code> was removed.</p>
+     </div>
+     <div class="paragraph">
+      <p>The following script is a template which can be used to change the project versions for a new release build without the removed profiles and direct git commands.</p>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 1. Shell script to set project version to a new version for release builds
+      </div>
+      <div class="content">
+       <pre class="highlight"><code class="language-Shell" data-lang="Shell"># set version of maven project modules
+mvn -f ${mavenParentPom} org.codehaus.mojo:versions-maven-plugin:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false
+# set version of npm project packages
+mvn -f ${mavenParentPom} process-sources -N -P npm-install-node,npm-install-workspace,npm-deploy -Dmaster_node_dir=\${NODE_BIN} -Dmaster_npm_release_build=true -Dmaster_release_newVersion=${newVersion}
+# add changed files to git changes
+git add "**/pom.xml" "**/package.json"</code></pre>
+      </div>
+     </div>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
     </div>
    </div>
@@ -875,7 +937,7 @@ module.exports = (env, args) =&gt; {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-02-08 18:37:22 +0100
+    <br> Last updated 2021-02-09 18:37:26 +0100
    </div>
   </div>
  </body>
