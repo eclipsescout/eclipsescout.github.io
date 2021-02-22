@@ -550,41 +550,57 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
      </div>
      <div class="paragraph">
-      <p>Because the JavaScript build needs a Node.js installation, the launching will fail if Node.js is not installed, see <a href="#img-start_missing_node">Figure 6</a></p>
+      <p>Because the JavaScript build needs a Node.js installation, the launching will fail if Node.js or pnpm is not installed, see <a href="#img-start_missing_node">Figure 6</a> and <a href="#img-start_missing_pnpm">Figure 7</a></p>
      </div>
      <div id="img-start_missing_node" class="imageblock">
       <div class="content">
-       <img src="images/sdk_start_missing_node.png" alt="sdk start missing node">
+       <img src="images/sdk_missing_node.png" alt="sdk missing node">
       </div>
       <div class="title">
        Figure 6. Launching fails due to missing Node.js
       </div>
      </div>
+     <div id="img-start_missing_pnpm" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_missing_pnpm.png" alt="sdk missing pnpm">
+      </div>
+      <div class="title">
+       Figure 7. Launching fails due to missing pnpm
+      </div>
+     </div>
      <div class="paragraph">
       <p>If that is the case, we need to install a recent Node.js version. To do this, we visit the official download page <a href="https://nodejs.org/en/" class="bare">https://nodejs.org/en/</a>, download the LTS version for our platform and install it.</p>
+     </div>
+     <div class="paragraph">
+      <p>Scout uses the package manager pnpm (<a href="https://pnpm.js.org/en/" class="bare">https://pnpm.js.org/en/</a>) Install it by using your command line.</p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre>npm install -g pnpm</pre>
+      </div>
      </div>
      <div class="admonitionblock important">
       <table>
        <tbody>
         <tr>
          <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
-         <td class="content"> The installation process could also fail if the installed Node.js is too old. Scout requires at least Node.js 12.1.0. </td>
+         <td class="content"> The installation process could also fail if the installed Node.js is too old. Scout requires at least Node.js 12.1.0 and pnpm 5. </td>
         </tr>
        </tbody>
       </table>
      </div>
      <div class="paragraph">
-      <p>After Node.js has been installed, we can try to launch the application again using the <em class="menu">Run as</em> menu we used before. This time you should see console output providing information about the JS build process. Once the JS build has been completed successfully, the frontend and backend servers will be started automatically. The servers are ready as soon as the console shows <em>Server ready</em>. We can now access the Hello World application by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in our favorite web browser.</p>
+      <p>After Node.js and pnpm has been installed, we can try to launch the application again using the <em class="menu">Run as</em> menu we used before. This time you should see console output providing information about the JS build process. Once the JS build has been completed successfully, the frontend and backend servers will be started automatically. The servers are ready as soon as the console shows <em>Server ready</em>. We can now access the Hello World application by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in our favorite web browser.</p>
      </div>
      <div class="paragraph">
-      <p>The running Hello World application should then be started in your browser as shown in <a href="#img-start_browser">Figure 7</a>.</p>
+      <p>The running Hello World application should then be started in your browser as shown in <a href="#img-start_browser">Figure 8</a>.</p>
      </div>
      <div id="img-start_browser" class="imageblock">
       <div class="content">
        <img src="images/run_helloworld_in_browser.png" alt="run helloworld in browser">
       </div>
       <div class="title">
-       Figure 7. The Hello World application in the browser.
+       Figure 8. The Hello World application in the browser.
       </div>
      </div>
     </div>
@@ -629,7 +645,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-02-21 18:36:54 +0100
+    <br> Last updated 2021-02-22 18:37:12 +0100
    </div>
   </div>
  </body>

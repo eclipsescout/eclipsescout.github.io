@@ -684,41 +684,57 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        </div>
       </div>
       <div class="paragraph">
-       <p>Because the JavaScript build needs a Node.js installation, the launching will fail if Node.js is not installed, see <a href="#img-start_missing_node">Figure 7</a></p>
+       <p>Because the JavaScript build needs a Node.js installation, the launching will fail if Node.js or pnpm is not installed, see <a href="#img-start_missing_node">Figure 7</a> and <a href="#img-start_missing_pnpm">Figure 8</a></p>
       </div>
       <div id="img-start_missing_node" class="imageblock">
        <div class="content">
-        <img src="images/sdk_start_missing_node.png" alt="sdk start missing node">
+        <img src="images/sdk_missing_node.png" alt="sdk missing node">
        </div>
        <div class="title">
         Figure 7. Launching fails due to missing Node.js
        </div>
       </div>
+      <div id="img-start_missing_pnpm" class="imageblock">
+       <div class="content">
+        <img src="images/sdk_missing_pnpm.png" alt="sdk missing pnpm">
+       </div>
+       <div class="title">
+        Figure 8. Launching fails due to missing pnpm
+       </div>
+      </div>
       <div class="paragraph">
        <p>If that is the case, we need to install a recent Node.js version. To do this, we visit the official download page <a href="https://nodejs.org/en/" class="bare">https://nodejs.org/en/</a>, download the LTS version for our platform and install it.</p>
+      </div>
+      <div class="paragraph">
+       <p>Scout uses the package manager pnpm (<a href="https://pnpm.js.org/en/" class="bare">https://pnpm.js.org/en/</a>) Install it by using your command line.</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre>npm install -g pnpm</pre>
+       </div>
       </div>
       <div class="admonitionblock important">
        <table>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
-          <td class="content"> The installation process could also fail if the installed Node.js is too old. Scout requires at least Node.js 12.1.0. </td>
+          <td class="content"> The installation process could also fail if the installed Node.js is too old. Scout requires at least Node.js 12.1.0 and pnpm 5. </td>
          </tr>
         </tbody>
        </table>
       </div>
       <div class="paragraph">
-       <p>After Node.js has been installed, we can try to launch the application again using the <em class="menu">Run as</em> menu we used before. This time you should see console output providing information about the JS build process. Once the JS build has been completed successfully, the frontend and backend servers will be started automatically. The servers are ready as soon as the console shows <em>Server ready</em>. We can now access the Hello World application by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in our favorite web browser.</p>
+       <p>After Node.js and pnpm has been installed, we can try to launch the application again using the <em class="menu">Run as</em> menu we used before. This time you should see console output providing information about the JS build process. Once the JS build has been completed successfully, the frontend and backend servers will be started automatically. The servers are ready as soon as the console shows <em>Server ready</em>. We can now access the Hello World application by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in our favorite web browser.</p>
       </div>
       <div class="paragraph">
-       <p>The running Hello World application should then be started in your browser as shown in <a href="#img-start_browser">Figure 8</a>.</p>
+       <p>The running Hello World application should then be started in your browser as shown in <a href="#img-start_browser">Figure 9</a>.</p>
       </div>
       <div id="img-start_browser" class="imageblock">
        <div class="content">
         <img src="images/run_helloworld_in_browser.png" alt="run helloworld in browser">
        </div>
        <div class="title">
-        Figure 8. The Hello World application in the browser.
+        Figure 9. The Hello World application in the browser.
        </div>
       </div>
      </div>
@@ -844,14 +860,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <p>The first WAR file contains the Scout backend server with all business logic. The second WAR file contains the Scout frontend server that is responsible for communicating with the web browser part of the Scout application.</p>
        </div>
        <div class="paragraph">
-        <p>To start the build right click on the project <code>helloworld</code> and select the context menu <b class="menuref">Run As &#x2192; Maven build&#x2026;&#x200b;</b> as shown in <a href="#img-sdk_export_war">Figure 9</a>. In the dialog that appears enter <code>clean verify</code> into the <code>Goals</code> field and press <b class="button">Run</b>.</p>
+        <p>To start the build right click on the project <code>helloworld</code> and select the context menu <b class="menuref">Run As &#x2192; Maven build&#x2026;&#x200b;</b> as shown in <a href="#img-sdk_export_war">Figure 10</a>. In the dialog that appears enter <code>clean verify</code> into the <code>Goals</code> field and press <b class="button">Run</b>.</p>
        </div>
        <div id="img-sdk_export_war" class="imageblock">
         <div class="content">
          <img src="images/sdk_export_war_menu.png" alt="sdk export war menu">
         </div>
         <div class="title">
-         Figure 9. Starting the Maven build.
+         Figure 10. Starting the Maven build.
         </div>
        </div>
        <div class="paragraph">
@@ -871,29 +887,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <div class="sect2">
       <h3 id="sec-helloworld_deploy"><a class="anchor" href="#sec-helloworld_deploy"></a>2.5. Deploy to Tomcat</h3>
       <div class="paragraph">
-       <p>As the final step of this tutorial, we deploy the two WAR files representing our &#x201c;Hello World&#x201d; application to a Tomcat web server. For this, we first need a working Tomcat installation. If you do not yet have such an installation you may want to read and follow the instructions provided in <a href="#apx-install_tomcat">Appendix C</a>. To verify a running Tomcat instance, type <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> into the address bar of the web browser of your choice. You should then see the page shown in <a href="#img-deploy_tomcat_1">Figure 10</a>.</p>
+       <p>As the final step of this tutorial, we deploy the two WAR files representing our &#x201c;Hello World&#x201d; application to a Tomcat web server. For this, we first need a working Tomcat installation. If you do not yet have such an installation you may want to read and follow the instructions provided in <a href="#apx-install_tomcat">Appendix C</a>. To verify a running Tomcat instance, type <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> into the address bar of the web browser of your choice. You should then see the page shown in <a href="#img-deploy_tomcat_1">Figure 11</a>.</p>
       </div>
       <div id="img-deploy_tomcat_1" class="imageblock">
        <div class="content">
         <img src="images/tomcat_managerapp_login.png" alt="tomcat managerapp login">
        </div>
        <div class="title">
-        Figure 10. The Tomcat shown after a successful installation. After clicking on the &#x201c;Manager App&#x201d; button (highlighted in red) the login box is shown in front. A successful login shows the &#x201c;Tomcat Web Application Manager&#x201d;.
+        Figure 11. The Tomcat shown after a successful installation. After clicking on the &#x201c;Manager App&#x201d; button (highlighted in red) the login box is shown in front. A successful login shows the &#x201c;Tomcat Web Application Manager&#x201d;.
        </div>
       </div>
       <div class="paragraph">
-       <p>Once the web browser displays the successful running of your Tomcat instance, switch to its &#x201c;Manager App&#x201d; by clicking on the button highlighted in <a href="#img-deploy_tomcat_1">Figure 10</a>. After entering user name and password the browser will display the &#x201c;Tomcat Web Application Manager&#x201d; as shown in <a href="#img-deploy_tomcat_2">Figure 11</a>. If you don&#x2019;t know the correct username or password you may look it up in the file <span class="filename">tomcat-users.xml</span> as described in <a href="#apx-tomcat_dirs_and_files">Section C.2</a>.</p>
+       <p>Once the web browser displays the successful running of your Tomcat instance, switch to its &#x201c;Manager App&#x201d; by clicking on the button highlighted in <a href="#img-deploy_tomcat_1">Figure 11</a>. After entering user name and password the browser will display the &#x201c;Tomcat Web Application Manager&#x201d; as shown in <a href="#img-deploy_tomcat_2">Figure 12</a>. If you don&#x2019;t know the correct username or password you may look it up in the file <span class="filename">tomcat-users.xml</span> as described in <a href="#apx-tomcat_dirs_and_files">Section C.2</a>.</p>
       </div>
       <div id="img-deploy_tomcat_2" class="imageblock">
        <div class="content">
         <img src="images/tomcat_managerapp_selectwar.png" alt="tomcat managerapp selectwar">
        </div>
        <div class="title">
-        Figure 11. The &#x201c;Tomcat Web Application Manager&#x201d;. The WAR files to be deployed can then be selected using button &#x201c;Choose File&#x201d; highlighted in red.
+        Figure 12. The &#x201c;Tomcat Web Application Manager&#x201d;. The WAR files to be deployed can then be selected using button &#x201c;Choose File&#x201d; highlighted in red.
        </div>
       </div>
       <div class="paragraph">
-       <p>After logging into Tomcat&#x2019;s manager application, you can select the WAR files to be deployed using button &#x201c;Choose File&#x201d; according to the right hand side of <a href="#img-deploy_tomcat_2">Figure 11</a>. After picking your just built <span class="filename">org.eclipse.scout.apps.helloworld.server.war</span> and closing the file chooser, click on button &#x201c;Deploy&#x201d; (located below button &#x201c;Choose File&#x201d;) to deploy the application to the Tomcat web server. Then we repeat this step with the second WAR file <span class="filename">org.eclipse.scout.apps.helloworld.ui.html.war</span>.</p>
+       <p>After logging into Tomcat&#x2019;s manager application, you can select the WAR files to be deployed using button &#x201c;Choose File&#x201d; according to the right hand side of <a href="#img-deploy_tomcat_2">Figure 12</a>. After picking your just built <span class="filename">org.eclipse.scout.apps.helloworld.server.war</span> and closing the file chooser, click on button &#x201c;Deploy&#x201d; (located below button &#x201c;Choose File&#x201d;) to deploy the application to the Tomcat web server. Then we repeat this step with the second WAR file <span class="filename">org.eclipse.scout.apps.helloworld.ui.html.war</span>.</p>
       </div>
       <div class="paragraph">
        <p>This will copy the selected WAR files into Tomcats <span class="filename">webapps</span> directory and unpack its contents into subdirectories with the same name. You can now connect to the application using the browser of your choice and enter the following address:</p>
@@ -908,11 +924,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <img src="images/tomcat_helloworld_download.png" alt="tomcat helloworld download">
        </div>
        <div class="title">
-        Figure 12. The &#x201c;Hello World&#x201d; login page.
+        Figure 13. The &#x201c;Hello World&#x201d; login page.
        </div>
       </div>
       <div class="paragraph">
-       <p>Then you will see the login page as shown in <a href="#img-helloworld_running_download">Figure 12</a>. Two users have been pre defined: &#x201c;admin&#x201d; with password &#x201c;admin&#x201d; and &#x201c;scott&#x201d; with password &#x201c;tiger&#x201d;. You can find this configuration in the <span class="filename">config.properties</span> file of the application.</p>
+       <p>Then you will see the login page as shown in <a href="#img-helloworld_running_download">Figure 13</a>. Two users have been pre defined: &#x201c;admin&#x201d; with password &#x201c;admin&#x201d; and &#x201c;scott&#x201d; with password &#x201c;tiger&#x201d;. You can find this configuration in the <span class="filename">config.properties</span> file of the application.</p>
       </div>
       <div class="paragraph">
        <p>Please note: In a productive environment it is recommended to deploy the server and the user interface into two different servlet containers running on dedicated machines. This is because these two tiers have different requirements on resources, load balancing and access protection. Furthermore, it is strongly recommended to use an encrypted connection (e.g. TLS 1.2 <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>) between client browsers and the Scout frontend server AND between the Scout frontend and backend server!</p>
@@ -952,14 +968,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <div class="sect3">
        <h4 id="start-the-new-wizard"><a class="anchor" href="#start-the-new-wizard"></a>3.2.1. Start the New Wizard</h4>
        <div class="paragraph">
-        <p>To start the <strong>New Wizard</strong> wizard press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use menu <span class="menuseq"><b class="menu">File</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#x2026;&#x200b;</b></span>. In the first wizard step type the name of the object you want to create into the <strong>Wizards</strong> field as shown in <a href="#img-eclipse_new_wizard">Figure 13</a>.</p>
+        <p>To start the <strong>New Wizard</strong> wizard press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use menu <span class="menuseq"><b class="menu">File</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#x2026;&#x200b;</b></span>. In the first wizard step type the name of the object you want to create into the <strong>Wizards</strong> field as shown in <a href="#img-eclipse_new_wizard">Figure 14</a>.</p>
        </div>
        <div id="img-eclipse_new_wizard" class="imageblock">
         <div class="content">
          <img src="images/eclipse_new_wizard.png" alt="eclipse new wizard">
         </div>
         <div class="title">
-         Figure 13. "New" Wizard
+         Figure 14. "New" Wizard
         </div>
        </div>
       </div>
@@ -973,7 +989,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          <img src="images/eclipse_new_class.png" alt="eclipse new class">
         </div>
         <div class="title">
-         Figure 14. "New Java Class" Wizard
+         Figure 15. "New Java Class" Wizard
         </div>
        </div>
        <div class="paragraph">
@@ -1120,14 +1136,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <p>The Scout SDK provides a set of wizards to create new Scout projects and various components for your Scout applications.</p>
       </div>
       <div class="paragraph">
-       <p>To start any of these wizards press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use menu <span class="menuseq"><b class="menu">File</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#x2026;&#x200b;</b></span>. In the first wizard step type "<em>Scout</em>" into the <strong>Wizards</strong> field as shown in <a href="#img-sdk_wizard_new">Figure 15</a>.</p>
+       <p>To start any of these wizards press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use menu <span class="menuseq"><b class="menu">File</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#x2026;&#x200b;</b></span>. In the first wizard step type "<em>Scout</em>" into the <strong>Wizards</strong> field as shown in <a href="#img-sdk_wizard_new">Figure 16</a>.</p>
       </div>
       <div id="img-sdk_wizard_new" class="imageblock">
        <div class="content">
         <img src="images/sdk_new_wizard.png" alt="sdk new wizard">
        </div>
        <div class="title">
-        Figure 15. Selecting Scout Wizards in the Eclipse wizard dialog
+        Figure 16. Selecting Scout Wizards in the Eclipse wizard dialog
        </div>
       </div>
       <div class="paragraph">
@@ -1149,18 +1165,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <p>The <em>New Scout Project</em> wizard can be used to create a new Scout project from scratch.</p>
        </div>
        <div class="paragraph">
-        <p>To open the wizard press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use <span class="menuseq"><b class="menu">File</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#x2026;&#x200b;</b></span> and type "<em>Scout</em>" into the <strong>Wizards</strong> search field. Then, select the entry "<em>Scout Project</em>" and click on <b class="button">Next</b>. This leads to the initial dialog of the <em>New Scout Project</em> wizard as shown in <a href="#img-sdk_wizard_project">Figure 16</a>.</p>
+        <p>To open the wizard press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use <span class="menuseq"><b class="menu">File</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#x2026;&#x200b;</b></span> and type "<em>Scout</em>" into the <strong>Wizards</strong> search field. Then, select the entry "<em>Scout Project</em>" and click on <b class="button">Next</b>. This leads to the initial dialog of the <em>New Scout Project</em> wizard as shown in <a href="#img-sdk_wizard_project">Figure 17</a>.</p>
        </div>
        <div id="img-sdk_wizard_project" class="imageblock">
         <div class="content">
          <img src="images/sdk_new_project.png" alt="sdk new project">
         </div>
         <div class="title">
-         Figure 16. The new Project Wizard
+         Figure 17. The new Project Wizard
         </div>
        </div>
        <div class="paragraph">
-        <p>A detailed description of the indiviudal wizard fields of <a href="#img-sdk_wizard_project">Figure 16</a> is provided in the next section.</p>
+        <p>A detailed description of the indiviudal wizard fields of <a href="#img-sdk_wizard_project">Figure 17</a> is provided in the next section.</p>
        </div>
        <div class="paragraph">
         <p>By clicking on the <b class="button">Finish</b> button the wizard is started and a new Scout client server application is created in the form of a Maven multi-module project.</p>
@@ -1168,7 +1184,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <div class="sect4">
         <h5 id="wizard-fields-and-default-values"><a class="anchor" href="#wizard-fields-and-default-values"></a>Wizard Fields and Default Values</h5>
         <div class="paragraph">
-         <p>All fields of the <a href="#img-sdk_wizard_project">Figure 16</a> are initially filled with default values.</p>
+         <p>All fields of the <a href="#img-sdk_wizard_project">Figure 17</a> are initially filled with default values.</p>
         </div>
         <div class="dlist">
          <dl>
@@ -1199,7 +1215,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <div class="sect4">
         <h5 id="created-components"><a class="anchor" href="#created-components"></a>Created Components</h5>
         <div class="paragraph">
-         <p>With the <a href="#img-sdk_wizard_project">Figure 16</a> wizard a complete Maven multi-module project is created. Using the default artifact Id <strong>helloworld</strong> the following Maven modules are created.</p>
+         <p>With the <a href="#img-sdk_wizard_project">Figure 17</a> wizard a complete Maven multi-module project is created. Using the default artifact Id <strong>helloworld</strong> the following Maven modules are created.</p>
         </div>
         <div class="ulist">
          <ul>
@@ -1292,11 +1308,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          <img src="images/sdk_new_page.png" alt="sdk new page">
         </div>
         <div class="title">
-         Figure 17. The new Page Wizard
+         Figure 18. The new Page Wizard
         </div>
        </div>
        <div class="paragraph">
-        <p>In the case of <a href="#img-sdk_wizard_page">Figure 17</a> the package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> has been selected in the Package Explorer. The only wizard field that then needs to be filled in manually is the <strong>Name</strong> field.</p>
+        <p>In the case of <a href="#img-sdk_wizard_page">Figure 18</a> the package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> has been selected in the Package Explorer. The only wizard field that then needs to be filled in manually is the <strong>Name</strong> field.</p>
        </div>
        <div class="paragraph">
         <p>By clicking on the <b class="button">Finish</b> button the wizard is started and the specified components are created.</p>
@@ -1304,7 +1320,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <div class="sect4">
         <h5 id="wizard-fields-and-default-values-2"><a class="anchor" href="#wizard-fields-and-default-values-2"></a>Wizard Fields and Default Values</h5>
         <div class="paragraph">
-         <p>Most of the fields of the <a href="#img-sdk_wizard_page">Figure 17</a> will be filled with default values depending on the current context of the IDE. The context can be derived from a package selected in the Package Explorer or from the class in the active Java Editor.</p>
+         <p>Most of the fields of the <a href="#img-sdk_wizard_page">Figure 18</a> will be filled with default values depending on the current context of the IDE. The context can be derived from a package selected in the Package Explorer or from the class in the active Java Editor.</p>
         </div>
         <div class="dlist">
          <dl>
@@ -1350,7 +1366,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <div class="sect4">
         <h5 id="created-components-2"><a class="anchor" href="#created-components-2"></a>Created Components</h5>
         <div class="paragraph">
-         <p>In the <a href="#img-sdk_wizard_page">Figure 17</a> example shown above the Scout SDK will create the following components.</p>
+         <p>In the <a href="#img-sdk_wizard_page">Figure 18</a> example shown above the Scout SDK will create the following components.</p>
         </div>
         <div class="ulist">
          <ul>
@@ -1390,11 +1406,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          <img src="images/sdk_new_form.png" alt="sdk new form">
         </div>
         <div class="title">
-         Figure 18. The new Form Wizard
+         Figure 19. The new Form Wizard
         </div>
        </div>
        <div class="paragraph">
-        <p>In the case of <a href="#img-sdk_wizard_form">Figure 18</a> the package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> has been selected in the Package Explorer. The only wizard field that then needs to be filled in manually is the <strong>Name</strong> field.</p>
+        <p>In the case of <a href="#img-sdk_wizard_form">Figure 19</a> the package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> has been selected in the Package Explorer. The only wizard field that then needs to be filled in manually is the <strong>Name</strong> field.</p>
        </div>
        <div class="paragraph">
         <p>By clicking on the <b class="button">Finish</b> button the wizard is started and the specified components are created.</p>
@@ -1402,7 +1418,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <div class="sect4">
         <h5 id="wizard-fields-and-default-values-3"><a class="anchor" href="#wizard-fields-and-default-values-3"></a>Wizard Fields and Default Values</h5>
         <div class="paragraph">
-         <p>Most of the fields of the <a href="#img-sdk_wizard_form">Figure 18</a> will be filled with default values depending on the current context of the IDE. The context can be derived from a package selected in the Package Explorer or from the class in the active Java Editor.</p>
+         <p>Most of the fields of the <a href="#img-sdk_wizard_form">Figure 19</a> will be filled with default values depending on the current context of the IDE. The context can be derived from a package selected in the Package Explorer or from the class in the active Java Editor.</p>
         </div>
         <div class="dlist">
          <dl>
@@ -1466,7 +1482,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <div class="sect4">
         <h5 id="created-components-3"><a class="anchor" href="#created-components-3"></a>Created Components</h5>
         <div class="paragraph">
-         <p>In the <a href="#img-sdk_wizard_form">Figure 18</a> example shown above the Scout SDK will create the following components.</p>
+         <p>In the <a href="#img-sdk_wizard_form">Figure 19</a> example shown above the Scout SDK will create the following components.</p>
         </div>
         <div class="ulist">
          <ul>
@@ -1515,14 +1531,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <p></p>
        </div>
        <div class="paragraph">
-        <p>To add additional form fields to a form the current edit position needs to be inside of a Scout group box. Typing <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> then provides access to the most frequently used Scout widgets as shown in <a href="#img-java_proposals_groupbox">Figure 19</a>.</p>
+        <p>To add additional form fields to a form the current edit position needs to be inside of a Scout group box. Typing <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> then provides access to the most frequently used Scout widgets as shown in <a href="#img-java_proposals_groupbox">Figure 20</a>.</p>
        </div>
        <div id="img-java_proposals_groupbox" class="imageblock">
         <div class="content">
          <img src="images/java_proposals_groupbox2.png" alt="java proposals groupbox2">
         </div>
         <div class="title">
-         Figure 19. Proposals to create new form fields in a GroupBox
+         Figure 20. Proposals to create new form fields in a GroupBox
         </div>
        </div>
        <div class="paragraph">
@@ -1535,31 +1551,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <p></p>
        </div>
        <div class="paragraph">
-        <p>For adding new columns in a table set the current edit position inside a Scout table. The Scout table itself may be located inside of a TableField as shown in <a href="#img-java_proposals_table">Figure 20</a> or can also be located inside of a Scout TablePage.</p>
+        <p>For adding new columns in a table set the current edit position inside a Scout table. The Scout table itself may be located inside of a TableField as shown in <a href="#img-java_proposals_table">Figure 21</a> or can also be located inside of a Scout TablePage.</p>
        </div>
        <div id="img-java_proposals_table" class="imageblock">
         <div class="content">
          <img src="images/java_proposals_table2.png" alt="java proposals table2">
         </div>
         <div class="title">
-         Figure 20. Proposals to create new columns in a Table
+         Figure 21. Proposals to create new columns in a Table
         </div>
        </div>
        <div class="paragraph">
-        <p>Next to adding columns the content assist shown in <a href="#img-java_proposals_table">Figure 20</a> can also be used to add key stroke actions and menus to tables.</p>
+        <p>Next to adding columns the content assist shown in <a href="#img-java_proposals_table">Figure 21</a> can also be used to add key stroke actions and menus to tables.</p>
        </div>
       </div>
       <div class="sect3">
        <h4 id="create-new-codes"><a class="anchor" href="#create-new-codes"></a>3.5.3. Create new Codes</h4>
        <div class="paragraph">
-        <p>Adding new Codes to an existing CodeType is supported by the content assist as shown in <a href="#img-java_proposals_code">Figure 21</a>.</p>
+        <p>Adding new Codes to an existing CodeType is supported by the content assist as shown in <a href="#img-java_proposals_code">Figure 22</a>.</p>
        </div>
        <div id="img-java_proposals_code" class="imageblock">
         <div class="content">
          <img src="images/java_proposals_code.png" alt="java proposals code">
         </div>
         <div class="title">
-         Figure 21. Proposals to create new codes in a CodeType
+         Figure 22. Proposals to create new codes in a CodeType
         </div>
        </div>
       </div>
@@ -1575,28 +1591,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         <p>Translated text entries are most frequently added when working in the Java editor view.</p>
        </div>
        <div class="paragraph">
-        <p>When the the current edit position is inside the String parameter of the <code>TEXTS.get()</code> code, the content assist (opened with <kbd>Ctrl</kbd> + <kbd>Space</kbd>) provides support for the NLS entries as shown in <a href="#img-java_proposals_texts">Figure 22</a>.</p>
+        <p>When the the current edit position is inside the String parameter of the <code>TEXTS.get()</code> code, the content assist (opened with <kbd>Ctrl</kbd> + <kbd>Space</kbd>) provides support for the NLS entries as shown in <a href="#img-java_proposals_texts">Figure 23</a>.</p>
        </div>
        <div id="img-java_proposals_texts" class="imageblock">
         <div class="content">
          <img src="images/java_proposals_texts.png" alt="java proposals texts">
         </div>
         <div class="title">
-         Figure 22. Proposals corresponding to NLS Support.
+         Figure 23. Proposals corresponding to NLS Support.
         </div>
        </div>
        <div class="paragraph">
         <p>Selecting one of proposal entries (like "DateOfBirth" in the example) shows the available translations on the right hand side. To select a specific proposal entry you may double click on the entry or hit the <kbd>Enter</kbd> key. To create a new text entry select <strong>New text&#x2026;&#x200b;</strong> at the end of the proposal list.</p>
        </div>
        <div class="paragraph">
-        <p>Adding a translated text can then be done in the <em class="wizard">New Entry</em> wizard provided by the Scout SDK as shown in <a href="#img-new_text_entry_wizard">Figure 23</a>.</p>
+        <p>Adding a translated text can then be done in the <em class="wizard">New Entry</em> wizard provided by the Scout SDK as shown in <a href="#img-new_text_entry_wizard">Figure 24</a>.</p>
        </div>
        <div id="img-new_text_entry_wizard" class="imageblock">
         <div class="content">
          <img src="images/sdk_wizard_nls_entry.png" alt="sdk wizard nls entry">
         </div>
         <div class="title">
-         Figure 23. Adding a new text with the New Entry wizard.
+         Figure 24. Adding a new text with the New Entry wizard.
         </div>
        </div>
        <div class="dlist">
@@ -1779,14 +1795,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <p>The application is kept small enough to complete this tutorial within less than a day. An extended version of &#x201c;Contacts&#x201d; is available as a Scout sample application on <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/releases/11.0/code/contacts">Github</a>.</p>
      </div>
      <div class="paragraph">
-      <p>As a prerequisite to this tutorial we assume that the reader has successfully completed the chapters "Hello World Tutorial" and "Import the Scout Demo Applications" as described in the Eclipse Scout user guide. To access the Scout user guide help hit <kbd>F1</kbd> in the Eclipse IDE. This opens the Eclipse help view that includes the Eclipse Scout User Guide as shown in <a href="#img-sdk_f1">Figure 24</a>.</p>
+      <p>As a prerequisite to this tutorial we assume that the reader has successfully completed the chapters "Hello World Tutorial" and "Import the Scout Demo Applications" as described in the Eclipse Scout user guide. To access the Scout user guide help hit <kbd>F1</kbd> in the Eclipse IDE. This opens the Eclipse help view that includes the Eclipse Scout User Guide as shown in <a href="#img-sdk_f1">Figure 25</a>.</p>
      </div>
      <div id="img-sdk_f1" class="imageblock">
       <div class="content">
        <img src="images/sdk_f1.png" alt="sdk f1">
       </div>
       <div class="title">
-       Figure 24. The Eclipse help view including the Eclipse Scout User Guide.
+       Figure 25. The Eclipse help view including the Eclipse Scout User Guide.
       </div>
      </div>
      <div class="paragraph">
@@ -1801,14 +1817,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <p>It is recommended that you first import the full &#x201c;Contacts&#x201d; demo application as described in the Eclipse Scout User Guide into a separate workspace. This gives you the possibility to check your source code against the full implementation during the various steps of the tutorial. Alternatively, you can also view the source code of the &#x201c;Contacts&#x201d; demo application on Github.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.</p>
       </div>
       <div class="paragraph">
-       <p><a href="#img-app_contacts_personpage">Figure 25</a> below shows the &#x201c;Contacts&#x201d; application after connecting to the Scout UI application.</p>
+       <p><a href="#img-app_contacts_personpage">Figure 26</a> below shows the &#x201c;Contacts&#x201d; application after connecting to the Scout UI application.</p>
       </div>
       <div id="img-app_contacts_personpage" class="imageblock">
        <div class="content">
         <img src="images/app_contacts_personpage.png" alt="app contacts personpage">
        </div>
        <div class="title">
-        Figure 25. The &#x201c;Contacts&#x201d; application with the person page.
+        Figure 26. The &#x201c;Contacts&#x201d; application with the person page.
        </div>
       </div>
       <div class="paragraph">
@@ -1820,7 +1836,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          Outline Button
         </dt>
         <dd>
-         <p>In <a href="#img-app_contacts_personpage">Figure 25</a> the top left area shows a folder icon that represents the "Contacts" outline. The small down arrow at the folder icon indicates that additional outlines are available when clicking on this view button. On the right of the button with the folder icon is a second outline button that activates a search outline (not implemented yet).</p>
+         <p>In <a href="#img-app_contacts_personpage">Figure 26</a> the top left area shows a folder icon that represents the "Contacts" outline. The small down arrow at the folder icon indicates that additional outlines are available when clicking on this view button. On the right of the button with the folder icon is a second outline button that activates a search outline (not implemented yet).</p>
         </dd>
         <dt class="hdlist1">
          Navigation Tree
@@ -1838,19 +1854,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          Bench
         </dt>
         <dd>
-         <p>The bench represents the main display area of a Scout application. When selecting the "Persons" page, a table provides access to all available persons as shown in <a href="#img-app_contacts_personpage">Figure 25</a>. Selecting a specific person provides access to all actions that are available for the selected person. The selected person can then be opened with the <em class="menu">Edit</em> menu which opens the person in a view that is displayed in the bench area again as shown in <a href="#img-app_contacts_personform">Figure 26</a>.</p>
+         <p>The bench represents the main display area of a Scout application. When selecting the "Persons" page, a table provides access to all available persons as shown in <a href="#img-app_contacts_personpage">Figure 26</a>. Selecting a specific person provides access to all actions that are available for the selected person. The selected person can then be opened with the <em class="menu">Edit</em> menu which opens the person in a view that is displayed in the bench area again as shown in <a href="#img-app_contacts_personform">Figure 27</a>.</p>
         </dd>
        </dl>
       </div>
       <div class="paragraph">
-       <p>For entering and editing of data in Scout applications views are used in most cases. Views are displayed in the bench area of a Scout application. Several views can also be opened simultaneously. To show a specific view the user has to click on the view button associated with the desired view. An example of an opened view is shown for person "Alice" in <a href="#img-app_contacts_personform">Figure 26</a>.</p>
+       <p>For entering and editing of data in Scout applications views are used in most cases. Views are displayed in the bench area of a Scout application. Several views can also be opened simultaneously. To show a specific view the user has to click on the view button associated with the desired view. An example of an opened view is shown for person "Alice" in <a href="#img-app_contacts_personform">Figure 27</a>.</p>
       </div>
       <div id="img-app_contacts_personform" class="imageblock">
        <div class="content">
         <img src="images/app_contacts_personform.png" alt="app contacts personform">
        </div>
        <div class="title">
-        Figure 26. The &#x201c;Contacts&#x201d; application with a person opened in a form.
+        Figure 27. The &#x201c;Contacts&#x201d; application with a person opened in a form.
        </div>
       </div>
      </div>
@@ -1876,7 +1892,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          <a href="#sec-contacts_pages">Section 4.4</a>)
         </dt>
         <dd>
-         <p>The second step adds the user interface components to display persons and organizations. For this a "Persons" page and an "Organizations" page are created and added to the "Contacts" outline as shown in <a href="#img-app_contacts_personpage">Figure 25</a>.</p>
+         <p>The second step adds the user interface components to display persons and organizations. For this a "Persons" page and an "Organizations" page are created and added to the "Contacts" outline as shown in <a href="#img-app_contacts_personpage">Figure 26</a>.</p>
         </dd>
         <dt class="hdlist1">
          Step 3: Creating and Accessing the Database (
@@ -1942,7 +1958,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <div class="sect3">
        <h4 id="sec-contacts_initial_codebase"><a class="anchor" href="#sec-contacts_initial_codebase"></a>4.3.1. Creating the initial Codebase</h4>
        <div class="paragraph">
-        <p>In case your workspace contains modules from the &#x201c;Hello World&#x201d; tutorial, you may want to multi-select them and to either close them by invoking the context menu &#x201c;Close Projects&#x201d; or to delete them by invoking the context menu &#x201c;Delete&#x201d;. The initial code for the &#x201c;Contacts&#x201d; application is then generated using the <em class="wizard">New Scout Project</em> wizard. For the wizard fields you may use the values below and as shown in <a href="#img-sdk_new_project_tutorial">Figure 27</a></p>
+        <p>In case your workspace contains modules from the &#x201c;Hello World&#x201d; tutorial, you may want to multi-select them and to either close them by invoking the context menu &#x201c;Close Projects&#x201d; or to delete them by invoking the context menu &#x201c;Delete&#x201d;. The initial code for the &#x201c;Contacts&#x201d; application is then generated using the <em class="wizard">New Scout Project</em> wizard. For the wizard fields you may use the values below and as shown in <a href="#img-sdk_new_project_tutorial">Figure 28</a></p>
        </div>
        <div class="ulist">
         <ul>
@@ -1956,25 +1972,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
          <img src="images/sdk_new_project_tutorial.png" alt="sdk new project tutorial">
         </div>
         <div class="title">
-         Figure 27. The creation of the initial "Contacts" application.
+         Figure 28. The creation of the initial "Contacts" application.
         </div>
        </div>
        <div class="paragraph">
-        <p>To create this initial application click on <b class="button">Finish</b>. The project wizard then creates a number of Maven modules as shown in <a href="#img-contacts_package_explorer">Figure 28</a>.</p>
+        <p>To create this initial application click on <b class="button">Finish</b>. The project wizard then creates a number of Maven modules as shown in <a href="#img-contacts_package_explorer">Figure 29</a>.</p>
        </div>
        <div id="img-contacts_package_explorer" class="imageblock">
         <div class="content">
          <img src="images/app_contacts_package_explorer_initial.png" alt="app contacts package explorer initial">
         </div>
         <div class="title">
-         Figure 28. The package explorer with the initial Maven modules created for the "Contacts" application.
+         Figure 29. The package explorer with the initial Maven modules created for the "Contacts" application.
         </div>
        </div>
       </div>
       <div class="sect3">
        <h4 id="sec-contacts_remove_stuff"><a class="anchor" href="#sec-contacts_remove_stuff"></a>4.3.2. Removing unnecessary Components</h4>
        <div class="paragraph">
-        <p>We start with removing the <code>*.helloworld</code> and <code>\*.settings</code> packages in all Maven modules of the "Contacts" application. To delete packages, first select an individual package or packages in the Eclipse package explorer as shown in <a href="#img-contacts_package_explorer">Figure 28</a> and then hit the <kbd>Delete</kbd> key.</p>
+        <p>We start with removing the <code>*.helloworld</code> and <code>\*.settings</code> packages in all Maven modules of the "Contacts" application. To delete packages, first select an individual package or packages in the Eclipse package explorer as shown in <a href="#img-contacts_package_explorer">Figure 29</a> and then hit the <kbd>Delete</kbd> key.</p>
        </div>
        <div class="paragraph">
         <p>The packages to delete is provided per Maven module in the list below.</p>
@@ -2068,50 +2084,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         </ul>
        </div>
        <div class="paragraph">
-        <p>To quickly find class <code>WorkOutline</code> we first open the <em class="wizard">Open Type</em> dialog from the Eclipse IDE by hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> and enter "workoutline" into the search field as shown in <a href="#img-eclipse_open_type">Figure 29</a>. In the result list, we select the desired class and click the <b class="button">OK</b> button to open the file <code>WorkOutline.java</code> in the Java editor of the Eclipse IDE.</p>
+        <p>To quickly find class <code>WorkOutline</code> we first open the <em class="wizard">Open Type</em> dialog from the Eclipse IDE by hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> and enter "workoutline" into the search field as shown in <a href="#img-eclipse_open_type">Figure 30</a>. In the result list, we select the desired class and click the <b class="button">OK</b> button to open the file <code>WorkOutline.java</code> in the Java editor of the Eclipse IDE.</p>
        </div>
        <div id="img-eclipse_open_type" class="imageblock">
         <div class="content">
          <img src="images/eclipse_open_type.png" alt="eclipse open type">
         </div>
         <div class="title">
-         Figure 29. Use the Open Type dialog to quickly find java types in the Eclipse IDE.
+         Figure 30. Use the Open Type dialog to quickly find java types in the Eclipse IDE.
         </div>
        </div>
        <div class="paragraph">
-        <p>We start with the package rename. To rename the package <code>org.eclipse.scout.contacts.client.work</code> to <code>org.eclipse.scout.contacts.client.contact</code> click into the word "work" of the package name and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>. This opens the package rename dialog as shown in <a href="#img-sdk_rename_package">Figure 30</a> where we replace "work" by "contact" in the <em class="element">New name</em> field. After pressing the <b class="button">Ok</b> button Eclipse informs the programmer that the code modification may not be accurate as the resource has compile errors. This warning can be acknowledged by clicking <b class="button">Continue</b>.</p>
+        <p>We start with the package rename. To rename the package <code>org.eclipse.scout.contacts.client.work</code> to <code>org.eclipse.scout.contacts.client.contact</code> click into the word "work" of the package name and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>. This opens the package rename dialog as shown in <a href="#img-sdk_rename_package">Figure 31</a> where we replace "work" by "contact" in the <em class="element">New name</em> field. After pressing the <b class="button">Ok</b> button Eclipse informs the programmer that the code modification may not be accurate as the resource has compile errors. This warning can be acknowledged by clicking <b class="button">Continue</b>.</p>
        </div>
        <div id="img-sdk_rename_package" class="imageblock">
         <div class="content">
          <img src="images/sdk_rename_package.png" alt="sdk rename package">
         </div>
         <div class="title">
-         Figure 30. Use the Eclipse Rename Package dialog to rename a Java package.
+         Figure 31. Use the Eclipse Rename Package dialog to rename a Java package.
         </div>
        </div>
        <div class="paragraph">
         <p>In next step we rename class <code>WorkOutline</code> to <code>ContactOutline</code>. In the Java editor we can rename the class by clicking into the class identifier <code>WorkOutline</code> and hitting <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>. Inside the edit box we can then change the class name to <code>ContactOutline</code> and hit the <b class="button">Enter</b> key to execute the change. If Eclipse shows a Rename Type dialog just hit button <b class="button">Continue</b> to let Eclipse complete the rename operation. To get rid of the compile error in method <code>execCreateChildPages</code> we simply delete the content in the method body.</p>
        </div>
        <div class="paragraph">
-        <p>Next, we change the outline title in method <code>getConfiguredTitle</code> by replacing the string "Work" with "Contacts", setting the cursor at the end of the word "Contacts" and hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> to open the Scout content assist as shown in <a href="#img-sdk_new_text_entry_contact">Figure 31</a>.</p>
+        <p>Next, we change the outline title in method <code>getConfiguredTitle</code> by replacing the string "Work" with "Contacts", setting the cursor at the end of the word "Contacts" and hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> to open the Scout content assist as shown in <a href="#img-sdk_new_text_entry_contact">Figure 32</a>.</p>
        </div>
        <div id="img-sdk_new_text_entry_contact" class="imageblock">
         <div class="content">
          <img src="images/sdk_new_text_entry_contact.png" alt="sdk new text entry contact">
         </div>
         <div class="title">
-         Figure 31. Use the Scout content assist to add new translations.
+         Figure 32. Use the Scout content assist to add new translations.
         </div>
        </div>
        <div class="paragraph">
-        <p>To enter a new translated text we double click on the proposal <em class="element">New text&#x2026;&#x200b;</em> to open the Scout new entry wizard as shown in <a href="#img-sdk_new_text_entry_contact_wizard">Figure 32</a>.</p>
+        <p>To enter a new translated text we double click on the proposal <em class="element">New text&#x2026;&#x200b;</em> to open the Scout new entry wizard as shown in <a href="#img-sdk_new_text_entry_contact_wizard">Figure 33</a>.</p>
        </div>
        <div id="img-sdk_new_text_entry_contact_wizard" class="imageblock">
         <div class="content">
          <img src="images/sdk_new_text_entry_contact_wizard.png" alt="sdk new text entry contact wizard">
         </div>
         <div class="title">
-         Figure 32. Use the Scout new entry wizard to add translated texts to the application.
+         Figure 33. Use the Scout new entry wizard to add translated texts to the application.
         </div>
        </div>
        <div class="paragraph">
@@ -2266,7 +2282,7 @@ public class Desktop extends AbstractDesktop {
         <p>In the first step of the "Contacts" tutorial we have created the initial project setup that will serve as the basis for all the following tutorial steps.</p>
        </div>
        <div class="paragraph">
-        <p>As the "Contacts" application is in a clean state you can now test the application using the following steps. The user interface of the application will now look as shown in <a href="#img-contacts_tutorial_result_step_1">Figure 33</a>.</p>
+        <p>As the "Contacts" application is in a clean state you can now test the application using the following steps. The user interface of the application will now look as shown in <a href="#img-contacts_tutorial_result_step_1">Figure 34</a>.</p>
        </div>
        <div class="ulist">
         <ul>
@@ -2279,7 +2295,7 @@ public class Desktop extends AbstractDesktop {
          <img src="images/contacts_tutorial_result_step_1.png" alt="contacts tutorial result step 1">
         </div>
         <div class="title">
-         Figure 33. The "Contacts" application at the end of tutorial step 1.
+         Figure 34. The "Contacts" application at the end of tutorial step 1.
         </div>
        </div>
        <div class="paragraph">
@@ -2321,7 +2337,7 @@ public class Desktop extends AbstractDesktop {
          <li> <p>Select the Java package <code>org.eclipse.scout.contacts.client</code> in folder <code>src/main/java</code></p> </li>
          <li> <p>Press <kbd>Ctrl</kbd>+<kbd>N</kbd>, enter "package" into the search field</p> </li>
          <li> <p>Select the <em class="wizard">Package</em> wizard in the proposal box and click <em class="button">Next</em></p> </li>
-         <li> <p>Enter <code>org.eclipse.scout.contacts.client.person</code> and click <em class="button">Finish</em> as shown in <a href="#img-contacts_person_package">Figure 34</a></p> </li>
+         <li> <p>Enter <code>org.eclipse.scout.contacts.client.person</code> and click <em class="button">Finish</em> as shown in <a href="#img-contacts_person_package">Figure 35</a></p> </li>
          <li> <p>Make sure the newly created person package is selected in the Eclipse Package Explorer</p> </li>
         </ul>
        </div>
@@ -2330,7 +2346,7 @@ public class Desktop extends AbstractDesktop {
          <img src="images/sdk_new_package_wizard.png" alt="sdk new package wizard">
         </div>
         <div class="title">
-         Figure 34. Add the person package to the "Contacts" application.
+         Figure 35. Add the person package to the "Contacts" application.
         </div>
        </div>
        <div class="paragraph">
@@ -2404,7 +2420,7 @@ public class CountryLookupCall extends LocalLookupCall&lt;String&gt; { <i class=
          <li> <p>Press <kbd>Ctrl</kbd>+<kbd>N</kbd>, enter "scout page" into the search field</p> </li>
          <li> <p>Select the <em class="wizard">Scout Page</em> wizard in the proposal box and click <em class="button">Next</em></p> </li>
          <li> <p>Un-check the <em>Create an Abstract Super Page</em> option, as we don&#x2019;t need an additional abstract super class for our new page</p> </li>
-         <li> <p>Enter <code>PersonTablePage</code> as the class name and click <em class="button">Finish</em> as shown in <a href="#img-contacts_new_person_page">Figure 35</a></p> </li>
+         <li> <p>Enter <code>PersonTablePage</code> as the class name and click <em class="button">Finish</em> as shown in <a href="#img-contacts_new_person_page">Figure 36</a></p> </li>
         </ul>
        </div>
        <div id="img-contacts_new_person_page" class="imageblock">
@@ -2412,7 +2428,7 @@ public class CountryLookupCall extends LocalLookupCall&lt;String&gt; { <i class=
          <img src="images/sdk_new_personpage_wizard.png" alt="sdk new personpage wizard">
         </div>
         <div class="title">
-         Figure 35. Add the person page to the "Contacts" application.
+         Figure 36. Add the person page to the "Contacts" application.
         </div>
        </div>
        <div class="paragraph">
@@ -2528,25 +2544,25 @@ public class PersonTablePage extends AbstractPageWithTable&lt;Table&gt; {
         </table>
        </div>
        <div class="paragraph">
-        <p>To add the first column <code>PersonIdColumn</code> we open class <code>PersonTablePage</code> in the Java editor and place the cursor inside of the body of the inner <code>Table</code> class. We then open the Scout content assist with <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and select the <em class="element">Column</em> proposal as shown in <a href="#img-sdk_new_page_column_contacts">Figure 36</a>.</p>
+        <p>To add the first column <code>PersonIdColumn</code> we open class <code>PersonTablePage</code> in the Java editor and place the cursor inside of the body of the inner <code>Table</code> class. We then open the Scout content assist with <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and select the <em class="element">Column</em> proposal as shown in <a href="#img-sdk_new_page_column_contacts">Figure 37</a>.</p>
        </div>
        <div id="img-sdk_new_page_column_contacts" class="imageblock">
         <div class="content">
          <img src="images/sdk_new_page_column_contacts.png" alt="sdk new page column contacts">
         </div>
         <div class="title">
-         Figure 36. Adding a column to the person page table.
+         Figure 37. Adding a column to the person page table.
         </div>
        </div>
        <div class="paragraph">
-        <p>In the first edit box we type "PersonId" as shown in <a href="#img-sdk_new_page_column_personid">Figure 37</a> and press <kbd>Enter</kbd>.</p>
+        <p>In the first edit box we type "PersonId" as shown in <a href="#img-sdk_new_page_column_personid">Figure 38</a> and press <kbd>Enter</kbd>.</p>
        </div>
        <div id="img-sdk_new_page_column_personid" class="imageblock">
         <div class="content">
          <img src="images/sdk_new_page_column_personid.png" alt="sdk new page column personid">
         </div>
         <div class="title">
-         Figure 37. Adding a column to the person page table.
+         Figure 38. Adding a column to the person page table.
         </div>
        </div>
        <div class="paragraph">
@@ -2824,18 +2840,18 @@ public class OrganizationTablePage extends AbstractPageWithTable&lt;Table&gt; {
         <p>In the second step of the "Contacts" tutorial we have created a person page and an organization page to display data of persons and organizations.</p>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the user interface in your browser. The user interface should look like the screenshot provided in <a href="#img-contacts_tutorial_result_step_2">Figure 38</a>.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the user interface in your browser. The user interface should look like the screenshot provided in <a href="#img-contacts_tutorial_result_step_2">Figure 39</a>.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_2" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_2.png" alt="contacts tutorial result step 2">
         </div>
         <div class="title">
-         Figure 38. The "Contacts" application with the person and organization pages at the end of tutorial step 2.
+         Figure 39. The "Contacts" application with the person and organization pages at the end of tutorial step 2.
         </div>
        </div>
        <div class="paragraph">
-        <p>When comparing the state of the "Contacts" tutorial application with the Scout demo application in <a href="#img-app_contacts_personpage">Figure 25</a> the main difference is the missing person data. Adding access to a database is the focus of the next tutorial step.</p>
+        <p>When comparing the state of the "Contacts" tutorial application with the Scout demo application in <a href="#img-app_contacts_personpage">Figure 26</a> the main difference is the missing person data. Adding access to a database is the focus of the next tutorial step.</p>
        </div>
       </div>
      </div>
@@ -2918,14 +2934,14 @@ public class OrganizationTablePage extends AbstractPageWithTable&lt;Table&gt; {
         </table>
        </div>
        <div class="paragraph">
-        <p>After adding the database dependencies to the server&#x2019;s pom.xml file we need to update all Maven server modules for the "Contacts" app. To do this, select the three modules <code>org.eclipse.scout.contacts.server.*</code> and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>F5</kbd></span> as shown in <a href="#img-contacts_tutorial_update_server_modules">Figure 39</a>. Start the update with <b class="button">OK</b>.</p>
+        <p>After adding the database dependencies to the server&#x2019;s pom.xml file we need to update all Maven server modules for the "Contacts" app. To do this, select the three modules <code>org.eclipse.scout.contacts.server.*</code> and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>F5</kbd></span> as shown in <a href="#img-contacts_tutorial_update_server_modules">Figure 40</a>. Start the update with <b class="button">OK</b>.</p>
        </div>
        <div id="img-contacts_tutorial_update_server_modules" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_update_server_modules.png" alt="contacts tutorial update server modules">
         </div>
         <div class="title">
-         Figure 39. Update the Maven server modules for the "Contacts" application.
+         Figure 40. Update the Maven server modules for the "Contacts" application.
         </div>
        </div>
        <div class="paragraph">
@@ -2947,14 +2963,14 @@ public class OrganizationTablePage extends AbstractPageWithTable&lt;Table&gt; {
         <p>The simplest way to do this is to open a second Eclipse IDE with the workspace where you have imported the Scout demo applications. If you have not done this yet go to the beginning of this tutorial <a href="#cha-large_example">Chapter 4</a> and catch up now.</p>
        </div>
        <div class="paragraph">
-        <p>In the demo application workspace navigate to the same package <code>org.eclipse.scout.contacts.server.sql</code> and copy over all its classes. After copying these classes make sure that the structure of your server Maven module looks as shown in <a href="#img-contacts_tutorial_copied_db_classes">Figure 40</a>.</p>
+        <p>In the demo application workspace navigate to the same package <code>org.eclipse.scout.contacts.server.sql</code> and copy over all its classes. After copying these classes make sure that the structure of your server Maven module looks as shown in <a href="#img-contacts_tutorial_copied_db_classes">Figure 41</a>.</p>
        </div>
        <div id="img-contacts_tutorial_copied_db_classes" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_copied_db_classes.png" alt="contacts tutorial copied db classes">
         </div>
         <div class="title">
-         Figure 40. The copied database classes in the tutorial workspace.
+         Figure 41. The copied database classes in the tutorial workspace.
         </div>
        </div>
        <div class="paragraph">
@@ -3466,14 +3482,14 @@ public class DatabaseSetupService implements IDataStoreService {
         <p>In the third step of the "Contacts" tutorial we have added the infrastructure to work with a Derby database. The infrastructure is used to create and populate the initial database. In addition person and organization data is now fetched from the database on the "Contacts" backend server and handed to the "Contacts" frontend server via a page data object.</p>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. Person and company data is now visible in the user interface as shown in <a href="#img-contacts_tutorial_result_step_3">Figure 41</a>.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. Person and company data is now visible in the user interface as shown in <a href="#img-contacts_tutorial_result_step_3">Figure 42</a>.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_3" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_3.png" alt="contacts tutorial result step 3">
         </div>
         <div class="title">
-         Figure 41. The "Contacts" application displaying person data at the end of tutorial step 3.
+         Figure 42. The "Contacts" application displaying person data at the end of tutorial step 3.
         </div>
        </div>
       </div>
@@ -3500,14 +3516,14 @@ public class DatabaseSetupService implements IDataStoreService {
       <div class="sect3">
        <h4 id="sec-contacts_form_design"><a class="anchor" href="#sec-contacts_form_design"></a>4.6.1. Designing the Person Form</h4>
        <div class="paragraph">
-        <p>We start with the sketch of the form layout as shown in <a href="#img-contacts_tutorial_person_form_1">Figure 42</a>.</p>
+        <p>We start with the sketch of the form layout as shown in <a href="#img-contacts_tutorial_person_form_1">Figure 43</a>.</p>
        </div>
        <div id="img-contacts_tutorial_person_form_1" class="imageblock">
         <div class="content">
          <img src="images/contacts_person_form.png" alt="contacts person form">
         </div>
         <div class="title">
-         Figure 42. A sketch of the target layout for the person form.
+         Figure 43. A sketch of the target layout for the person form.
         </div>
        </div>
        <div class="paragraph">
@@ -3517,28 +3533,28 @@ public class DatabaseSetupService implements IDataStoreService {
         <p>The lower half of the form contains tab boxes. A "Contact Info" tab provides contact details of the person and adding notes for the person in the form of free text is possible in the "Notes" tab.</p>
        </div>
        <div class="paragraph">
-        <p><a href="#img-contacts_person_form_grid">Figure 43</a> below shows how the sketched form can fit with the logical grid layout of the Scout framework. Scout containers have two columns (indicated in red) per default and as many rows (indicated in yellow) as needed.</p>
+        <p><a href="#img-contacts_person_form_grid">Figure 44</a> below shows how the sketched form can fit with the logical grid layout of the Scout framework. Scout containers have two columns (indicated in red) per default and as many rows (indicated in yellow) as needed.</p>
        </div>
        <div id="img-contacts_person_form_grid" class="imageblock">
         <div class="content">
          <img src="images/contacts_person_form_grid.png" alt="contacts person form grid">
         </div>
         <div class="title">
-         Figure 43. Logical columns and rows of the Scout form layout. Scout containers have two columns per default.
+         Figure 44. Logical columns and rows of the Scout form layout. Scout containers have two columns per default.
         </div>
        </div>
        <div class="paragraph">
         <p>Individual form fields consist of a label part and a field part and occupy a single cell in the logical grid. Examples for fields using the default configuration are the first name field or the email field. When needed, fields can be configured to occupy several columns or rows. An example for this case is the image field that will hold the picture of the person. This field is configured to occupy 5 logical rows.</p>
        </div>
        <div class="paragraph">
-        <p>With Scout&#x2019;s container widgets such as group boxes, tab boxes and sequence boxes complex layouts can be achieved. Containers provide a lot of flexibility as these widgets can be nested hierarchically as shown in <a href="#img-contacts_person_form_groups">Figure 44</a></p>
+        <p>With Scout&#x2019;s container widgets such as group boxes, tab boxes and sequence boxes complex layouts can be achieved. Containers provide a lot of flexibility as these widgets can be nested hierarchically as shown in <a href="#img-contacts_person_form_groups">Figure 45</a></p>
        </div>
        <div id="img-contacts_person_form_groups" class="imageblock">
         <div class="content">
          <img src="images/contacts_person_form_groups.png" alt="contacts person form groups">
         </div>
         <div class="title">
-         Figure 44. The hierarchical organization of the form including Scout group boxes, tab boxes and a sequence box.
+         Figure 45. The hierarchical organization of the form including Scout group boxes, tab boxes and a sequence box.
         </div>
        </div>
        <div class="paragraph">
@@ -3565,7 +3581,7 @@ public class DatabaseSetupService implements IDataStoreService {
          <li> <p>Select package <code>org.eclipse.scout.contacts.client.person</code> in folder <code>src/main/java</code></p> </li>
          <li> <p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> and enter "form" into the search field of the wizard selection dialog</p> </li>
          <li> <p>Select the <em class="element">Scout Form</em> proposal and click the <b class="button">Next</b> button</p> </li>
-         <li> <p>Enter "Person" into the <em class="field">Name</em> and verify that the field contents match <a href="#img-contacts_create_new_person_form">Figure 45</a></p> </li>
+         <li> <p>Enter "Person" into the <em class="field">Name</em> and verify that the field contents match <a href="#img-contacts_create_new_person_form">Figure 46</a></p> </li>
          <li> <p>Click <b class="button">Finish</b> to start the creation of the form and its related components</p> </li>
         </ol>
        </div>
@@ -3574,7 +3590,7 @@ public class DatabaseSetupService implements IDataStoreService {
          <img src="images/contacts_create_new_person_form.png" alt="contacts create new person form">
         </div>
         <div class="title">
-         Figure 45. Use the
+         Figure 46. Use the
          <em class="wizard">New Scout Form</em> to create the person form.
         </div>
        </div>
@@ -3838,14 +3854,14 @@ public class Desktop extends AbstractDesktop {
         </div>
        </div>
        <div class="paragraph">
-        <p>We have now created the initial implementation of the person form including context menus to open the form from the person page and the "Quick Access" top level menu of the "Contacts" application. At this point it is already possible to verify that the person form can be opened on the user interface via the context menus. A screenshot of the current state is shown in <a href="#img-contacts_tutorial_result_step_4_intermediate">Figure 46</a>.</p>
+        <p>We have now created the initial implementation of the person form including context menus to open the form from the person page and the "Quick Access" top level menu of the "Contacts" application. At this point it is already possible to verify that the person form can be opened on the user interface via the context menus. A screenshot of the current state is shown in <a href="#img-contacts_tutorial_result_step_4_intermediate">Figure 47</a>.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_4_intermediate" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_4_intermediate.png" alt="contacts tutorial result step 4 intermediate">
         </div>
         <div class="title">
-         Figure 46. The initial person form and the top level menu "Create new person".
+         Figure 47. The initial person form and the top level menu "Create new person".
         </div>
        </div>
        <div class="paragraph">
@@ -3869,7 +3885,7 @@ public class Desktop extends AbstractDesktop {
          <li> <p>Select package <code>org.eclipse.scout.contacts.shared.person</code> in folder <code>src/main/java</code></p> </li>
          <li> <p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> and enter "code" into the search field of the wizard selection dialog</p> </li>
          <li> <p>Select the <em class="element">Scout CodeType</em> proposal and click the <b class="button">Next</b> button</p> </li>
-         <li> <p>Enter "Gender" into the <em class="field">Name</em> field and use the type <code>String</code> for the first and second type argument according to <a href="#img-contacts_tutorial_new_gender_codetype">Figure 47</a></p> </li>
+         <li> <p>Enter "Gender" into the <em class="field">Name</em> field and use the type <code>String</code> for the first and second type argument according to <a href="#img-contacts_tutorial_new_gender_codetype">Figure 48</a></p> </li>
         </ol>
        </div>
        <div id="img-contacts_tutorial_new_gender_codetype" class="imageblock">
@@ -3877,7 +3893,7 @@ public class Desktop extends AbstractDesktop {
          <img src="images/contacts_tutorial_new_gender_codetype.png" alt="contacts tutorial new gender codetype">
         </div>
         <div class="title">
-         Figure 47. Create the gender code using the Scout new code wizard.
+         Figure 48. Create the gender code using the Scout new code wizard.
         </div>
        </div>
        <div class="paragraph">
@@ -4448,14 +4464,14 @@ public class GenderCodeType extends AbstractCodeType&lt;String, String&gt; {
         <p>We have also seen how we can use context menus to integrate the forms in the user interface of the application and have implemented the interaction of the frontend with the backend application including the persistance of person data in the database.</p>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. We can now verify the creation of new person entries and the modification of existing person data in the current state of the "Contacts" application. The created person form is shown in <a href="#img-contacts_tutorial_result_step_4">Figure 48</a>. In case you copied some code snippets from the tutorial, you may see the text "undefined text {&#x2026;&#x200b;}" in some labels in the person field. You may want to define these texts using the Scout content assist for defining new texts as was already presented earlier in this tutorial.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. We can now verify the creation of new person entries and the modification of existing person data in the current state of the "Contacts" application. The created person form is shown in <a href="#img-contacts_tutorial_result_step_4">Figure 49</a>. In case you copied some code snippets from the tutorial, you may see the text "undefined text {&#x2026;&#x200b;}" in some labels in the person field. You may want to define these texts using the Scout content assist for defining new texts as was already presented earlier in this tutorial.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_4" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_4.png" alt="contacts tutorial result step 4">
         </div>
         <div class="title">
-         Figure 48. The "Contacts" application with the person form at the end of tutorial step 4.
+         Figure 49. The "Contacts" application with the person form at the end of tutorial step 4.
         </div>
        </div>
       </div>
@@ -4671,14 +4687,14 @@ public class GenderCodeType extends AbstractCodeType&lt;String, String&gt; {
         </table>
        </div>
        <div class="paragraph">
-        <p>As we have now implemented a number of form field validations we are now ready to test the result in the running application. Re-start the "Contacts" application and try to trigger the different validation rules. <a href="#img-contacts_tutorial_result_step_5a">Figure 49</a> shows the response of the user interface when trying to save invalid person data.</p>
+        <p>As we have now implemented a number of form field validations we are now ready to test the result in the running application. Re-start the "Contacts" application and try to trigger the different validation rules. <a href="#img-contacts_tutorial_result_step_5a">Figure 50</a> shows the response of the user interface when trying to save invalid person data.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_5a" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_5a.png" alt="contacts tutorial result step 5a">
         </div>
         <div class="title">
-         Figure 49. The form field validation implemented for the person form.
+         Figure 50. The form field validation implemented for the person form.
         </div>
        </div>
       </div>
@@ -4840,7 +4856,7 @@ public abstract class AbstractUrlImageField extends AbstractImageField {
       <div class="sect3">
        <h4 id="sec-contacts_form_urleditform"><a class="anchor" href="#sec-contacts_form_urleditform"></a>4.7.4. Adding a simple URL Input Form to the Picture Field</h4>
        <div class="paragraph">
-        <p>Using the refactored picture template field we want the user to be able to enter and update the URL of the shown picture. For this we add a simple form with a single field and a context menu to the picture template field using the Scout new form wizard as shown in <a href="#img-sdk_new_form_pictureurl">Figure 50</a>.</p>
+        <p>Using the refactored picture template field we want the user to be able to enter and update the URL of the shown picture. For this we add a simple form with a single field and a context menu to the picture template field using the Scout new form wizard as shown in <a href="#img-sdk_new_form_pictureurl">Figure 51</a>.</p>
        </div>
        <div class="ulist">
         <ul>
@@ -4855,7 +4871,7 @@ public abstract class AbstractUrlImageField extends AbstractImageField {
          <img src="images/sdk_new_form_pictureurl.png" alt="sdk new form pictureurl">
         </div>
         <div class="title">
-         Figure 50. Creating the picture URL form with the new form wizard.
+         Figure 51. Creating the picture URL form with the new form wizard.
         </div>
        </div>
        <div class="paragraph">
@@ -5071,14 +5087,14 @@ public class PictureUrlForm extends AbstractForm {
         </ul>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. Using the created picture template field we can now update the image in the picture form as shown in <a href="#img-contacts_tutorial_result_step_5b">Figure 51</a>.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. Using the created picture template field we can now update the image in the picture form as shown in <a href="#img-contacts_tutorial_result_step_5b">Figure 52</a>.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_5b" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_5b.png" alt="contacts tutorial result step 5b">
         </div>
         <div class="title">
-         Figure 51. The person form with the refactored picture template field including a menu (red square) and a URL edit form.
+         Figure 52. The person form with the refactored picture template field including a menu (red square) and a URL edit form.
         </div>
        </div>
        <div class="paragraph">
@@ -5096,11 +5112,11 @@ public class PictureUrlForm extends AbstractForm {
         <img src="images/contacts_organization_form.png" alt="contacts organization form">
        </div>
        <div class="title">
-        Figure 52. The sketch of the organization form layout.
+        Figure 53. The sketch of the organization form layout.
        </div>
       </div>
       <div class="paragraph">
-       <p>Considering the layout sketch for the organization form shown in <a href="#img-contacts_organization_form">Figure 52</a> we can already see how we can reuse the following fields / templates.</p>
+       <p>Considering the layout sketch for the organization form shown in <a href="#img-contacts_organization_form">Figure 53</a> we can already see how we can reuse the following fields / templates.</p>
       </div>
       <div class="ulist">
        <ul>
@@ -5334,14 +5350,14 @@ public class PictureUrlForm extends AbstractForm {
         <p>In the sixth step of the "Contacts" tutorial we have added the Scout form to edit and create organizations. The focus of this part of the tutorial was on re-using previous work and applying the concepts that have been introduced in previous tutorial steps.</p>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. As shown in <a href="#img-contacts_tutorial_result_step_6">Figure 53</a> company data can now be viewed and entered in the user interface.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. As shown in <a href="#img-contacts_tutorial_result_step_6">Figure 54</a> company data can now be viewed and entered in the user interface.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_6" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_6.png" alt="contacts tutorial result step 6">
         </div>
         <div class="title">
-         Figure 53. The "Contacts" application with the newly created organization form.
+         Figure 54. The "Contacts" application with the newly created organization form.
         </div>
        </div>
       </div>
@@ -5388,7 +5404,7 @@ public class PictureUrlForm extends AbstractForm {
          <li> <p>Enter "lookup" into the search field of the wizard selection and double click on proposal <em class="element">Scout LookupCall</em></p> </li>
          <li> <p>Use "OrganizationLookupCall" as class name</p> </li>
          <li> <p>Enter "String" as the key class and use service super class "AbstractSqlLookupService" in the wizard</p> </li>
-         <li> <p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_lookupcall_organization">Figure 54</a></p> </li>
+         <li> <p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_lookupcall_organization">Figure 55</a></p> </li>
          <li> <p>Click <b class="button">Finish</b> to start the Scout lookup call wizard.</p> </li>
         </ol>
        </div>
@@ -5397,7 +5413,7 @@ public class PictureUrlForm extends AbstractForm {
          <img src="images/sdk_new_lookupcall_organization.png" alt="sdk new lookupcall organization">
         </div>
         <div class="title">
-         Figure 54. Using the Scout lookup call wizard for creating class OrganizationLookupCall.
+         Figure 55. Using the Scout lookup call wizard for creating class OrganizationLookupCall.
         </div>
        </div>
        <div class="paragraph">
@@ -5563,14 +5579,14 @@ public class OrganizationLookupCall extends LookupCall&lt;String&gt; {
         <p>In this section we will implement a drill-down functionality on the organization page. The goal is to let the user of the application expand a row in the organization page to provide access to the persons of the organization.</p>
        </div>
        <div class="paragraph">
-        <p>Scout node pages are useful when we want to display different entities that are related to a specific entry in a parent page. In the "Contacts" demo application this mechanism is used to link both persons and events to an organization as shown in <a href="#img-contacts_demo_organization_nodepage">Figure 55</a>. Note that this is a screenshot of the "Contacts" demo application, not the tutorial application that we are building here.</p>
+        <p>Scout node pages are useful when we want to display different entities that are related to a specific entry in a parent page. In the "Contacts" demo application this mechanism is used to link both persons and events to an organization as shown in <a href="#img-contacts_demo_organization_nodepage">Figure 56</a>. Note that this is a screenshot of the "Contacts" demo application, not the tutorial application that we are building here.</p>
        </div>
        <div id="img-contacts_demo_organization_nodepage" class="imageblock">
         <div class="content">
          <img src="images/contacts_demo_organization_nodepage.png" alt="contacts demo organization nodepage">
         </div>
         <div class="title">
-         Figure 55. A drill-down on an organization in the "Contacts" demo application provides access to related persons and events.
+         Figure 56. A drill-down on an organization in the "Contacts" demo application provides access to related persons and events.
         </div>
        </div>
        <div class="paragraph">
@@ -5724,7 +5740,7 @@ public class PersonTablePage extends AbstractPageWithTable&lt;Table&gt; {
          <li> <p>Enter "scout page" into the search field of the wizard selection and double click on proposal <em class="element">Scout Page</em></p> </li>
          <li> <p>Add "Organization" to the class name field</p> </li>
          <li> <p>Switch the super class field to "AbstractPageWithNodes"</p> </li>
-         <li> <p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_organization_nodepage">Figure 56</a></p> </li>
+         <li> <p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_organization_nodepage">Figure 57</a></p> </li>
          <li> <p>Click <b class="button">Finish</b> to start the Scout page wizard</p> </li>
         </ol>
        </div>
@@ -5733,7 +5749,7 @@ public class PersonTablePage extends AbstractPageWithTable&lt;Table&gt; {
          <img src="images/sdk_new_organization_nodepage.png" alt="sdk new organization nodepage">
         </div>
         <div class="title">
-         Figure 56. Creating the organization node page.
+         Figure 57. Creating the organization node page.
         </div>
        </div>
        <div class="paragraph">
@@ -5814,14 +5830,14 @@ public class OrganizationTablePage extends AbstractPageWithTable&lt;Table&gt; {
         <p>To implement a drill-down functionality for the organization table we have created a page hierarchy using the existing organization page and person page. To link the two table pages we have also created and integrated a Scout node page.</p>
        </div>
        <div class="paragraph">
-        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. As shown in <a href="#img-contacts_tutorial_result_step_7">Figure 57</a> the organization specific person data is now presented in a hierarchical form in the navigation area of the application.</p>
+        <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser. As shown in <a href="#img-contacts_tutorial_result_step_7">Figure 58</a> the organization specific person data is now presented in a hierarchical form in the navigation area of the application.</p>
        </div>
        <div id="img-contacts_tutorial_result_step_7" class="imageblock">
         <div class="content">
          <img src="images/contacts_tutorial_result_step_7.png" alt="contacts tutorial result step 7">
         </div>
         <div class="title">
-         Figure 57. The linked person page only shows persons related to the parent organization page.
+         Figure 58. The linked person page only shows persons related to the parent organization page.
         </div>
        </div>
       </div>
@@ -5845,7 +5861,7 @@ public class OrganizationTablePage extends AbstractPageWithTable&lt;Table&gt; {
        <h4 id="sec-contacts_theming_styling"><a class="anchor" href="#sec-contacts_theming_styling"></a>4.10.1. Theming and Styling</h4>
        <div class="ulist">
         <ul>
-         <li> <p>theme switching form for top level options menu <a href="#img-contacts_theming_styling">Figure 58</a></p> </li>
+         <li> <p>theme switching form for top level options menu <a href="#img-contacts_theming_styling">Figure 59</a></p> </li>
          <li> <p>project specific theme "dark"</p> </li>
         </ul>
        </div>
@@ -5854,7 +5870,7 @@ public class OrganizationTablePage extends AbstractPageWithTable&lt;Table&gt; {
          <img src="images/contacts_theming_styling.png" alt="contacts theming styling">
         </div>
         <div class="title">
-         Figure 58. Scout application can change between different themes at runtime.
+         Figure 59. Scout application can change between different themes at runtime.
         </div>
        </div>
       </div>
@@ -6056,47 +6072,47 @@ OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)</pre>
        <p>The download page lists all available Eclipse packages. Scroll to the package "Eclipse IDE for Scout Developers" and select the download for your preferred platform.</p>
       </div>
       <div class="paragraph">
-       <p>After the package selection, confirm the suggested download mirror as shown in <a href="#img-scout_download_mirror">Figure 59</a>.</p>
+       <p>After the package selection, confirm the suggested download mirror as shown in <a href="#img-scout_download_mirror">Figure 60</a>.</p>
       </div>
       <div id="img-scout_download_mirror" class="imageblock">
        <div class="content">
         <img src="images/scout_download_mirror.png" alt="scout download mirror">
        </div>
        <div class="title">
-        Figure 59. Downloading the Scout package from a mirror.
+        Figure 60. Downloading the Scout package from a mirror.
        </div>
       </div>
       <div class="paragraph">
-       <p>As the Scout package is a simple ZIP (or tar.gz) file, you may unpack its content to a folder of your choice. Inside the eclipse sub-folder, you will then find the Eclipse executable file, such as the <code>eclipse.exe</code> file on a Windows plattform. Starting the Eclipse executable brings up the workspace launcher as shown in <a href="#img-scout_start">Figure 60</a>.</p>
+       <p>As the Scout package is a simple ZIP (or tar.gz) file, you may unpack its content to a folder of your choice. Inside the eclipse sub-folder, you will then find the Eclipse executable file, such as the <code>eclipse.exe</code> file on a Windows plattform. Starting the Eclipse executable brings up the workspace launcher as shown in <a href="#img-scout_start">Figure 61</a>.</p>
       </div>
       <div id="img-scout_start" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_select_workspace.png" alt="scout startup select workspace">
        </div>
        <div class="title">
-        Figure 60. Starting the Eclipse Scout package and selecting an empty workspace.
+        Figure 61. Starting the Eclipse Scout package and selecting an empty workspace.
        </div>
       </div>
       <div class="paragraph">
-       <p>Into the <em class="field">Workspace</em> field you enter an empty target directory for your first Scout project. After clicking the <b class="button">Ok</b> button, the Eclipse IDE creates any directories that do not yet exist and opens the specified workspace. When opening a new workspace for the first time, Eclipse then displays the welcome screen shown in <a href="#img-scout_welcome">Figure 61</a>.</p>
+       <p>Into the <em class="field">Workspace</em> field you enter an empty target directory for your first Scout project. After clicking the <b class="button">Ok</b> button, the Eclipse IDE creates any directories that do not yet exist and opens the specified workspace. When opening a new workspace for the first time, Eclipse then displays the welcome screen shown in <a href="#img-scout_welcome">Figure 62</a>.</p>
       </div>
       <div id="img-scout_welcome" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_welcome.png" alt="scout startup welcome">
        </div>
        <div class="title">
-        Figure 61. Eclipse Scout welcome screen.
+        Figure 62. Eclipse Scout welcome screen.
        </div>
       </div>
       <div class="paragraph">
-       <p>To close the welcome page and open the Scout perspective in the Eclipse IDE click on the <em class="icon">Workbench</em> icon. As a result the empty Java perspective is displayed according to <a href="#img-scout_perspective">Figure 62</a>.</p>
+       <p>To close the welcome page and open the Scout perspective in the Eclipse IDE click on the <em class="icon">Workbench</em> icon. As a result the empty Java perspective is displayed according to <a href="#img-scout_perspective">Figure 63</a>.</p>
       </div>
       <div id="img-scout_perspective" class="imageblock">
        <div class="content">
         <img src="images/scout_startup_scout_explorer.png" alt="scout startup scout explorer">
        </div>
        <div class="title">
-        Figure 62. Eclipse Scout started in the Scout SDK perspective.
+        Figure 63. Eclipse Scout started in the Scout SDK perspective.
        </div>
       </div>
       <div class="paragraph">
@@ -6143,33 +6159,33 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <img src="images/eclipse_install_new_software.png" alt="eclipse install new software">
        </div>
        <div class="title">
-        Figure 63. Eclipse menu to install additional software
+        Figure 64. Eclipse menu to install additional software
        </div>
       </div>
       <div class="paragraph">
-       <p>To add Scout to your existing Eclipse installation, you need to start Eclipse. Then select the <span class="menuseq"><b class="menu">Help</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#x2026;&#x200b;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 63</a> to open the install dialog.</p>
+       <p>To add Scout to your existing Eclipse installation, you need to start Eclipse. Then select the <span class="menuseq"><b class="menu">Help</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#x2026;&#x200b;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 64</a> to open the install dialog.</p>
       </div>
       <div id="img-eclipse_add_repository" class="imageblock">
        <div class="content">
         <img src="images/eclipse_add_repository.png" alt="eclipse add repository">
        </div>
        <div class="title">
-        Figure 64. Add the current Scout repository
+        Figure 65. Add the current Scout repository
        </div>
       </div>
       <div class="paragraph">
-       <p>In the install dialog, click on the <b class="button">Add&#x2026;&#x200b;</b> button to enter the link to the Scout repository. This opens the popup dialog <em>Add Repository</em> As shown in <a href="#img-eclipse_add_repository">Figure 64</a>, you may use &#x201c;Scout Oxygen&#x201d; for the <em class="field">Name</em> field. For the <em class="field">Location</em> field enter the Scout release repository as specified below. <a href="http://download.eclipse.org/scout/releases/11.0" class="bare">http://download.eclipse.org/scout/releases/11.0</a>.</p>
+       <p>In the install dialog, click on the <b class="button">Add&#x2026;&#x200b;</b> button to enter the link to the Scout repository. This opens the popup dialog <em>Add Repository</em> As shown in <a href="#img-eclipse_add_repository">Figure 65</a>, you may use &#x201c;Scout Oxygen&#x201d; for the <em class="field">Name</em> field. For the <em class="field">Location</em> field enter the Scout release repository as specified below. <a href="http://download.eclipse.org/scout/releases/11.0" class="bare">http://download.eclipse.org/scout/releases/11.0</a>.</p>
       </div>
       <div id="img-eclipse_select_scout_features" class="imageblock">
        <div class="content">
         <img src="images/eclipse_select_scout_features.png" alt="eclipse select scout features">
        </div>
        <div class="title">
-        Figure 65. Select the Scout features to add to the Eclipse installation
+        Figure 66. Select the Scout features to add to the Eclipse installation
        </div>
       </div>
       <div class="paragraph">
-       <p>After the Eclipse IDE has connected to the Scout repository, select the Scout feature <em>Scout Application Development</em> as shown in <a href="#img-eclipse_select_scout_features">Figure 65</a>. Then, move through the installation with the <b class="button">Next</b> button. On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button. To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse. After the restart of the Eclipse IDE, you may add the Scout perspective using the <span class="menuseq"><b class="menu">Window</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">Open Perspective</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other &#x2026;&#x200b;</b></span> menu and selecting the Scout perspective from the presented list. Clicking on the Scout perspective button should then result in a state very similar to <a href="#img-scout_perspective">Figure 62</a>.</p>
+       <p>After the Eclipse IDE has connected to the Scout repository, select the Scout feature <em>Scout Application Development</em> as shown in <a href="#img-eclipse_select_scout_features">Figure 66</a>. Then, move through the installation with the <b class="button">Next</b> button. On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button. To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse. After the restart of the Eclipse IDE, you may add the Scout perspective using the <span class="menuseq"><b class="menu">Window</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="submenu">Open Perspective</b>&nbsp;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other &#x2026;&#x200b;</b></span> menu and selecting the Scout perspective from the presented list. Clicking on the Scout perspective button should then result in a state very similar to <a href="#img-scout_perspective">Figure 63</a>.</p>
       </div>
      </div>
      <div class="sect2">
@@ -6194,11 +6210,11 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <img src="images/tomcat_install.png" alt="tomcat install">
       </div>
       <div class="title">
-       Figure 66. A successful Tomcat 7 installation.
+       Figure 67. A successful Tomcat 7 installation.
       </div>
      </div>
      <div class="paragraph">
-      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 66</a>.</p>
+      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 67</a>.</p>
      </div>
      <div class="sect2">
       <h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>C.1. Platform Specific Instructions</h3>
@@ -6222,12 +6238,12 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
         <img src="images/tomcat_install_dir.png" alt="tomcat install dir">
        </div>
        <div class="title">
-        Figure 67. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
+        Figure 68. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
         <code>webapps</code>.
        </div>
       </div>
       <div class="paragraph">
-       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 67</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
+       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 68</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
       </div>
       <div class="paragraph">
        <p>The <span class="filename">conf</span> folder contains a set of XML and property configuration files. The file <span class="filename">server.xml</span> represents Tomcat&#x2019;s main configuration file. It is used to configure general web server aspects such as the port number of its connectors for the client server communication. For the default setup, port number 8080 is used for the communication between clients applications and the web server. The file <span class="filename">tomcat-users.xml</span> contains a database of users, passwords and associated roles.</p>
@@ -6236,7 +6252,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <p>Folder <span class="filename">logs</span> contains various logfiles of Tomcat itself as well as host and web application log files. TODO [7.0] jbr: need to provide more on what is where (especially application logs and exact setup to generate log entries from scout apps).</p>
       </div>
       <div class="paragraph">
-       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 67</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
+       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 68</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
       </div>
       <div class="paragraph">
        <p>Finally, folder <span class="filename">work</span> contains Tomcat&#x2019;s runtime &#x201c;cache&#x201d; for the deployed web applications. It is organized according to the hierarchy of the engine (Catalina), the host (localhost), and the web application (<span class="filename">helloworld_server</span>).</p>
@@ -6248,7 +6264,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
        <p>Tomcat comes with the pre installed &#x201c;Manager App&#x201d;. This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications. A comprehensive documentation for the &#x201c;Manager App&#x201d; can be found under the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>. Here we only show how to start this application from the hompage of a running Tomcat installation.</p>
       </div>
       <div class="paragraph">
-       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 66</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
+       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 67</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
       </div>
       <div id="lst-tomcat.users" class="listingblock">
        <div class="title">
@@ -6354,7 +6370,7 @@ sun.java.command=... vm C:\java\jdk1.8.0_77_x64\jre\bin\server\jvm.dll -vmargs .
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-02-21 18:36:54 +0100
+    <br> Last updated 2021-02-22 18:37:12 +0100
    </div>
   </div>
  </body>
