@@ -453,11 +453,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      Table of Contents
     </div>
     <ul class="sectlevel1">
-     <li><a href="#about-this-document">About This Document</a>
+     <li><a href="#about-this-document">About This Document</a></li>
+     <li><a href="#obtaining-the-latest-version">Obtaining the Latest Version</a>
       <ul class="sectlevel2">
-       <li><a href="#service-releases">Service Releases</a></li>
+       <li><a href="#scout-runtime-for-java">Scout Runtime for Java</a></li>
+       <li><a href="#scout-runtime-for-javascript">Scout Runtime for JavaScript</a></li>
+       <li><a href="#ide-tooling-scout-sdk">IDE Tooling (Scout SDK)</a></li>
       </ul> </li>
-     <li><a href="#updated-3rd-party-dependencies">Updated 3rd party dependencies</a></li>
+     <li><a href="#update-the-scout-version-of-an-existing-application">Update the Scout version of an existing application</a></li>
+     <li><a href="#3rd-party-dependency-upgrade-migration">3rd party dependency upgrade migration</a></li>
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#removal-of-module-eclipse-scouttesting">Removal of module <code>@eclipse-scout/testing</code></a></li>
      <li><a href="#automatic-script-chunks">Automatic Script Chunks</a>
@@ -472,6 +476,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#new-property-event-row">New property event.row</a></li>
       </ul> </li>
      <li><a href="#messagebox-new-behavior-of-doclose">MessageBox: New Behavior of doClose()</a></li>
+     <li><a href="#maven-master-release-profiles">Maven master release profiles</a></li>
     </ul>
    </div>
   </div>
@@ -496,25 +501,150 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <div class="paragraph">
       <p>This document describes all relevant changes <strong>from Eclipse Scout 10.0 to Eclipse Scout 11.0</strong>. If existing code has to be migrated, instructions are provided here.</p>
      </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h2>
+    <div class="sectionbody">
      <div class="sect2">
-      <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
+      <h3 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h3>
       <div class="paragraph">
-       <p>Scout 11.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bugfixes, these service releases may even contain some minor features.</p>
+       <p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.scout.rt%22%20AND%20v%3A%2211.0-SNAPSHOT%22">11.0-SNAPSHOT</a> on <em>Maven Central</em></p> </li>
+        <li> <p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/11.0-SNAPSHOT">11.0-SNAPSHOT</a> on <em>mvnrepository.com</em></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>Usage example in the parent POM of your Scout application:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
+    &lt;version&gt;11.0-SNAPSHOT&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h3>
+      <div class="paragraph">
+       <p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
+      </div>
+      <div class="ulist">
+       <ul>
+        <li> <p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p> </li>
+        <li> <p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p> </li>
+       </ul>
+      </div>
+      <div class="paragraph">
+       <p>Usage example in your package.json:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre class="highlight"><code class="language-json" data-lang="json">{
+  "name": "my-module",
+  "version": "1.0.0",
+  "dependencies": {
+    "@eclipse-scout/core": "11.0.0-snapshot",
+    "jquery": "3.5.1"
+  }
+}</code></pre>
+       </div>
+      </div>
+      <div class="paragraph">
+       <p>The pre-built Scout JavaScript assets are also available using a CDN (e.g. to be directly included in a html document): <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
+      <div class="paragraph">
+       <p>Starting with Scout 11 the IDE Tooling requires at least Java 11 to run. With the help of the SDK plugins you can still develop applications running with Java 8, but the IDE itself requires Java 11 or newer.</p>
+      </div>
+      <div class="paragraph">
+       <p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2021-03/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+      </div>
+      <div class="sect3">
+       <h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
+       <div class="paragraph">
+        <p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA. Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+       <div class="paragraph">
+        <p>You can download the complete Eclipse IDE with Scout SDK included here:<br> <a href="https://www.eclipse.org/downloads/packages/release/2021-03/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+       </div>
+       <div class="paragraph">
+        <p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br> <a href="http://download.eclipse.org/scout/releases/11.0/" class="bare">http://download.eclipse.org/scout/releases/11.0/</a></p>
+       </div>
       </div>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="updated-3rd-party-dependencies"><a class="anchor" href="#updated-3rd-party-dependencies"></a>Updated 3rd party dependencies</h2>
+    <h2 id="update-the-scout-version-of-an-existing-application"><a class="anchor" href="#update-the-scout-version-of-an-existing-application"></a>Update the Scout version of an existing application</h2>
+    <div class="sectionbody">
+     <div class="olist arabic">
+      <ol class="arabic">
+       <li> <p>Scout uses <a href="https://nodejs.org/dist/v12.18.4/">Node 12.18.4</a> and <a href="https://github.com/pnpm/pnpm/releases/tag/v5.7.0">pnpm 5.7.0</a>. Update your development tools accordingly.</p> </li>
+       <li> <p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to <code>3.14.1</code>.</p> </li>
+       <li> <p>Update the Scout version (usually in the <code>org.eclipse.scout.rt_version</code> property of the parent pom) to <code>11.0-SNAPSHOT</code>.</p> </li>
+       <li> <p>Update all Node modules having the <code>@eclipse-scout</code> namespace in your package.json files to <code>11.0.0-snapshot</code>. There is one exception: The module <code>@eclipse-scout/releng</code> stays at the version <code>^10.0.0</code>.</p> </li>
+       <li> <p>Optional switch from npm to <a href="https://pnpm.js.org/">pnpm</a> (recommended)</p>
+        <div class="olist loweralpha">
+         <ol class="loweralpha" type="a">
+          <li> <p>Overwrite your <code>js build.sh</code> (or <code>js build.cmd</code> on Windows) with the following content and replace the <code>${rootArtifactId}</code> with your module name:</p>
+           <div class="olist lowerroman">
+            <ol class="lowerroman" type="i">
+             <li> <p>js build.sh: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/__rootArtifactId__.ui.html/js%20build.sh?h=releases/11.0">sample content</a></p> </li>
+             <li> <p>js build.cmd: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/__rootArtifactId__.ui.html/win%20js%20build.cmd?h=releases/11.0">sample content</a></p> </li>
+            </ol>
+           </div> </li>
+          <li> <p>Remove all file dependencies in your <code>package.json</code> files. So dependency versions like <code>file:../helloworld.ui/</code> are replaced with the version of the module previously referenced (e.g. <code>1.0.0-SNAPSHOT</code>).</p> </li>
+          <li> <p>In the root directory of your project (next to the root <code>pom.xml</code>) create a new file <code>pnpm-workspace.yaml</code> with the following example content:</p>
+           <div class="listingblock">
+            <div class="content">
+             <pre class="highlight"><code class="language-yaml" data-lang="yaml">packages:
+- 'helloworld.ui'
+- 'helloworld.app'</code></pre>
+            </div>
+           </div>
+           <div class="paragraph">
+            <p>Instead of the sample modules above: list all your modules having a <code>package.json</code> file.</p>
+           </div> </li>
+         </ol>
+        </div> </li>
+       <li> <p>Update 3rd party JavaScript dependencies in all your <code>package.json</code> files:</p>
+        <div class="olist loweralpha">
+         <ol class="loweralpha" type="a">
+          <li> <p><code>eslint</code> to <code>7.9.0</code></p> </li>
+          <li> <p><code>babel-eslint</code> to <code>10.1.0</code></p> </li>
+          <li> <p><code>eslint-plugin-babel</code> to <code>5.3.1</code></p> </li>
+          <li> <p><code>jquery</code> to <code>3.5.1</code></p> </li>
+         </ol>
+        </div> </li>
+      </ol>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="3rd-party-dependency-upgrade-migration"><a class="anchor" href="#3rd-party-dependency-upgrade-migration"></a>3rd party dependency upgrade migration</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>All 3rd party build- and runtime-dependencies have been updated to the latest versions. This requires the following modifications:</p>
+      <p>All 3rd party build- and runtime-dependencies have been updated to newer versions. This requires the following modifications:</p>
      </div>
      <div class="paragraph">
-      <p>If you are using the <code>jaxws-maven-plugin</code>, please change the groupId in your pom.xml files from <code>com.helger.maven</code> to <code>com.sun.xml.ws</code>.</p>
+      <p>If you are using the <code>jaxws-maven-plugin</code>, please change the groupId in your <code>pom.xml</code> files from <code>com.helger.maven</code> to <code>com.sun.xml.ws</code>.</p>
      </div>
      <div class="paragraph">
-      <p>In all your <code>web.xml</code> files update the <code>web-app</code> xml document element to:</p>
+      <p>In all your <code>web.xml</code> files update the <code>web-app</code> xml document root element to:</p>
      </div>
      <div class="listingblock">
       <div class="content">
@@ -727,6 +857,53 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <div class="paragraph">
       <p>The priorities of the answer of <code>MessageBox.doClose()</code> will now be <code>CANCEL_OPTION</code>, <code>NO_OPTION</code>, <code>YES_OPTION</code>. The old behavior is still available in the form of the method <code>MessageBox.doOk()</code>.</p>
      </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="maven-master-release-profiles"><a class="anchor" href="#maven-master-release-profiles"></a>Maven master release profiles</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Some maven profiles have been removed from the maven master (e.g. <code>org.eclipse.scout:maven_rt_plugin_config-master</code>) (since 3.14.1). These profiles have been used for release management. No Scout build jobs do still use git commands through maven. Instead, any git command is issued directly (usually from a jenkins pipeline). Therefore, we cannot support these profiles anymore. If any of these profiles or configurations are still in use in your project, you may copy them from an older maven master version into your own parent maven pom.</p>
+     </div>
+     <div class="ulist">
+      <div class="title">
+       Removed profiles
+      </div>
+      <ul>
+       <li> <p><code>release.setversion</code></p> </li>
+       <li> <p><code>release.checkin</code></p> </li>
+       <li> <p><code>release.tag</code></p> </li>
+      </ul>
+     </div>
+     <div class="ulist">
+      <div class="title">
+       Removed related properties
+      </div>
+      <ul>
+       <li> <p><code>master_release_pushChanges</code></p> </li>
+       <li> <p><code>master_release_tagName</code></p> </li>
+       <li> <p><code>master_release_checkinMessage</code></p> </li>
+      </ul>
+     </div>
+     <div class="paragraph">
+      <p>Also, the default plugin configuration of <code>org.apache.maven.plugins:maven-release-plugin</code> was removed.</p>
+     </div>
+     <div class="paragraph">
+      <p>The following script is a template which can be used to change the project versions for a new release build without the removed profiles and direct git commands.</p>
+     </div>
+     <div class="listingblock">
+      <div class="title">
+       Listing 1. Shell script to set project version to a new version for release builds
+      </div>
+      <div class="content">
+       <pre class="highlight"><code class="language-Shell" data-lang="Shell"># set version of maven project modules
+mvn -f ${mavenParentPom} org.codehaus.mojo:versions-maven-plugin:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false
+# set version of npm project packages
+mvn -f ${mavenParentPom} process-sources -N -P npm-install-node,npm-install-workspace,npm-deploy -Dmaster_node_dir=\${NODE_BIN} -Dmaster_npm_release_build=true -Dmaster_release_newVersion=${newVersion}
+# add changed files to git changes
+git add "**/pom.xml" "**/package.json"</code></pre>
+      </div>
+     </div>
      <div class="admonitionblock tip">
       <table>
        <tbody>
@@ -743,7 +920,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-02-28 18:37:06 +0100
+    <br> Last updated 2021-03-01 18:38:10 +0100
    </div>
   </div>
  </body>

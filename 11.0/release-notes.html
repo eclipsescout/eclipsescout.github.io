@@ -456,9 +456,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#about-this-release">About This Release</a>
       <ul class="sectlevel2">
        <li><a href="#service-releases">Service Releases</a></li>
-       <li><a href="#obtaining-the-latest-version">Obtaining the Latest Version</a></li>
-       <li><a href="#demo-applications">Demo Applications</a></li>
       </ul> </li>
+     <li><a href="#demo-applications">Demo Applications</a></li>
      <li><a href="#mobile-improvements">Mobile Improvements</a>
       <ul class="sectlevel2">
        <li><a href="#default-detail-form-and-tile-overview">Default Detail Form and Tile Overview</a></li>
@@ -485,7 +484,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#widget">Widget</a></li>
        <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
       </ul> </li>
-     <li><a href="#maven-master">Maven master</a></li>
     </ul>
    </div>
   </div>
@@ -514,7 +512,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/10.0%2E%2E%2Ereleases/11.0">detailed change log</a> on GitHub.</p>
      </div>
      <div class="paragraph">
-      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/11.0/migration-guide.html">Migration Guide</a>!</p>
+      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/11.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
      </div>
      <div class="sect2">
       <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
@@ -522,86 +520,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <p>Scout 11.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
       </div>
      </div>
-     <div class="sect2">
-      <h3 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h3>
-      <div class="sect3">
-       <h4 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h4>
-       <div class="paragraph">
-        <p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
-       </div>
-       <div class="ulist">
-        <ul>
-         <li> <p><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.scout.rt%22%20AND%20v%3A%2211.0-SNAPSHOT%22">11.0-SNAPSHOT</a> on <em>Maven Central</em></p> </li>
-         <li> <p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/11.0-SNAPSHOT">11.0-SNAPSHOT</a> on <em>mvnrepository.com</em></p> </li>
-        </ul>
-       </div>
-       <div class="paragraph">
-        <p>Usage example in the parent POM of your Scout application:</p>
-       </div>
-       <div class="listingblock">
-        <div class="content">
-         <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
-    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
-    &lt;version&gt;11.0-SNAPSHOT&lt;/version&gt;
-    &lt;type&gt;pom&lt;/type&gt;
-    &lt;scope&gt;import&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
-        </div>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h4>
-       <div class="paragraph">
-        <p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
-       </div>
-       <div class="ulist">
-        <ul>
-         <li> <p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p> </li>
-         <li> <p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p> </li>
-        </ul>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h4>
-       <div class="paragraph">
-        <p>Starting with Scout 11 the IDE Tooling requires at least Java 11 to run. With the help of the SDK plugins you can still develop applications running with Java 8, but the IDE itself requires Java 11 or newer.</p>
-       </div>
-       <div class="paragraph">
-        <p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2020-09/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
-       </div>
-       <div class="sect4">
-        <h5 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h5>
-        <div class="paragraph">
-         <p>You can download the complete Eclipse IDE with Scout SDK included (EPP) here:<br> <a href="https://www.eclipse.org/downloads/packages/release/2020-09/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
-        </div>
-        <div class="paragraph">
-         <p>To install the Scout SDK into your existing Eclipse IDE, use this update site:<br> <a href="http://download.eclipse.org/scout/releases/11.0/" class="bare">http://download.eclipse.org/scout/releases/11.0/</a></p>
-        </div>
-       </div>
-       <div class="sect4">
-        <h5 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h5>
-        <div class="paragraph">
-         <p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA. Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
-        </div>
-       </div>
-      </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
      </div>
-     <div class="sect2">
-      <h3 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h3>
-      <div class="paragraph">
-       <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
-      </div>
-      <div class="ulist">
-       <ul>
-        <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
-        <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
-        <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
-       </ul>
-      </div>
+     <div class="paragraph">
+      <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
+       <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
+       <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
+      </ul>
      </div>
     </div>
    </div>
@@ -888,63 +823,16 @@ module.exports = (env, args) =&gt; {
       <div class="paragraph">
        <p>Setting the property <code>labelVisible</code> to false will now hide the tab area. Until now, the property had no effect for tab boxes.</p>
       </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="maven-master"><a class="anchor" href="#maven-master"></a>Maven master</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Some maven profiles have been removed from the maven master (e.g. <code>org.eclipse.scout:maven_rt_plugin_config-master</code>) (since 3.14.1). These profiles have been used for release management. No Scout build jobs do still use git commands through maven. Instead, any git command is issued directly (usually from a jenkins pipeline). Therefore, we cannot support these profiles anymore. If any of these profiles or configurations are still in use in your project, you may copy them from an older maven master version into your own parent maven pom.</p>
-     </div>
-     <div class="ulist">
-      <div class="title">
-       Removed profiles
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
       </div>
-      <ul>
-       <li> <p><code>release.setversion</code></p> </li>
-       <li> <p><code>release.checkin</code></p> </li>
-       <li> <p><code>release.tag</code></p> </li>
-      </ul>
-     </div>
-     <div class="ulist">
-      <div class="title">
-       Removed related properties
-      </div>
-      <ul>
-       <li> <p><code>master_release_pushChanges</code></p> </li>
-       <li> <p><code>master_release_tagName</code></p> </li>
-       <li> <p><code>master_release_checkinMessage</code></p> </li>
-      </ul>
-     </div>
-     <div class="paragraph">
-      <p>Also, the default plugin configuration of <code>org.apache.maven.plugins:maven-release-plugin</code> was removed.</p>
-     </div>
-     <div class="paragraph">
-      <p>The following script is a template which can be used to change the project versions for a new release build without the removed profiles and direct git commands.</p>
-     </div>
-     <div class="listingblock">
-      <div class="title">
-       Listing 1. Shell script to set project version to a new version for release builds
-      </div>
-      <div class="content">
-       <pre class="highlight"><code class="language-Shell" data-lang="Shell"># set version of maven project modules
-mvn -f ${mavenParentPom} org.codehaus.mojo:versions-maven-plugin:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false
-# set version of npm project packages
-mvn -f ${mavenParentPom} process-sources -N -P npm-install-node,npm-install-workspace,npm-deploy -Dmaster_node_dir=\${NODE_BIN} -Dmaster_npm_release_build=true -Dmaster_release_newVersion=${newVersion}
-# add changed files to git changes
-git add "**/pom.xml" "**/package.json"</code></pre>
-      </div>
-     </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
      </div>
     </div>
    </div>
@@ -952,7 +840,7 @@ git add "**/pom.xml" "**/package.json"</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-02-28 18:37:06 +0100
+    <br> Last updated 2021-03-01 18:38:10 +0100
    </div>
   </div>
  </body>
