@@ -1308,7 +1308,7 @@ BeanClass beanOrNull = BEANS.opt(BeanClass.class);</code></pre>
         <p>Supported formats are simple key-value pairs, list values and map values. For more details about the format please refer to the JavaDoc of the <code>org.eclipse.scout.rt.platform.config.PropertiesHelper</code> class.</p>
        </div>
        <div class="paragraph">
-        <p>Since the environment variable names are more restrictive in many shells and systems than the property names in Java, overriding a property containing a dot/period (<code>.</code>) with an environment variable would not be possible. To still allow overriding of such properties, the folllowing lookup rules are applied in-order to find a matching environment variable:</p>
+        <p>Since the environment variable names are more restrictive in many shells and systems than the property names in Java, overriding a property containing a dot/period (<code>.</code>) with an environment variable would not be possible. To still allow overriding of such properties, the following lookup rules are applied in-order to find a matching environment variable:</p>
        </div>
        <div class="olist arabic">
         <ol class="arabic">
@@ -1317,6 +1317,20 @@ BeanClass beanOrNull = BEANS.opt(BeanClass.class);</code></pre>
          <li> <p>An uppercase match of your property key (<code>MY.PROPERTY</code>)</p> </li>
          <li> <p>An uppercase match where periods are replaced by underscores (<code>MY_PROPERTY</code>)</p> </li>
         </ol>
+       </div>
+       <div class="paragraph">
+        <p>When it comes to working with mapped config properties (subclasses of <code>org.eclipse.scout.rt.platform.config.AbstractMapConfigProperty</code>), there&#x2019;s also some special mechanic to consider in terms of providing or overriding property map values using environment variables. Since it is not possible to reliably retrieve the original map key from an environment variable (again, due to the restrictions mentioned above), property map values may be supplied using environment variables whose value is a JSON object string:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre class="CodeRay highlight"><code>my_map_property={"map-key-01": "value-01", "map-key-02": "value-02", "map-key-03": null}</code></pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>The following rules apply, when such environment variables are read: * property map key/value pairs are added from the JSON object to the property map, overriding keys already being defined by sources of lower precedence (e.g. config.properties file) * a JSON object attribute value of "null" will remove a key potentially being defined by sources of lower precedence</p>
+       </div>
+       <div class="paragraph">
+        <p>The parsing of JSON object strings is abstracted away using the new <code>org.eclipse.scout.rt.platform.config.IJsonPropertyReader</code> interface as parsing JSON strings is not implemented in the platform itself. However, there is a default implementation of this interface available in org.eclipse.scout.rt.dataobject which uses the <code>org.eclipse.scout.rt.platform.dataobject.IDataObjectMapper</code> feature to deserialize the JSON string into a Java Map. In order to use this, an implementation of the <code>IDataObjectMapper</code> interface is also required (e.g. <code>org.eclipse.scout.rt.jackson.dataobject.JacksonDataObjectMapper</code>). So in case you want to use this feature, you have to define * org.eclipse.scout.rt:org.eclipse.scout.rt.dataobject * org.eclipse.scout.rt:org.eclipse.scout.rt.jackson as new dependencies of your application aggregator module (if they are not already present).</p>
        </div>
        <div class="paragraph">
         <p>A properties file may import other config files from the classpath or any other absolute URL. This is done using the special key <code>import</code>. It can be a single value or a list or map (e.g. <code>import[anyKey or number]</code>:</p>
@@ -9772,7 +9786,7 @@ BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code><
   <div id="footer">
    <div id="footer-text">
      Version 10.0
-    <br> Last updated 2021-02-28 18:26:13 +0100
+    <br> Last updated 2021-03-01 18:25:40 +0100
    </div>
   </div>
  </body>
