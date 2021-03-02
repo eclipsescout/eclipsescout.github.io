@@ -471,6 +471,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </ul> </li>
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#custom-webpack-config">Custom Webpack Config</a></li>
+     <li><a href="#automatic-script-chunks">Automatic Script Chunks</a></li>
      <li><a href="#new-widgets">New Widgets</a>
       <ul class="sectlevel2">
        <li><a href="#breadcrumb-bar-field">Breadcrumb Bar Field</a></li>
@@ -729,6 +730,20 @@ module.exports = (env, args) =&gt; {
     </div>
    </div>
    <div class="sect1">
+    <h2 id="automatic-script-chunks"><a class="anchor" href="#automatic-script-chunks"></a>Automatic Script Chunks</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Before Scout 11 script (JavaScript and CSS) chunks have been declared explicitly. While you have full control on the output using this explicit definition, it is often not optimal concerning performance and might require modifications when a new module or library is added to the project. Therefore starting with version 11 Scout additionally supports automatic chunk creation for your script assets.</p>
+     </div>
+     <div class="paragraph">
+      <p>When using this new feature (which is the default configuration now), chunks are automatically created based on size and code usage (imports). Therefore, it is no longer necessary to list every chunk manually in the html file. Instead, Scout automatically inserts the necessary script tags according to the chunks created.</p>
+     </div>
+     <div class="paragraph">
+      <p>Have a look at the <a href="https://eclipsescout.github.io/22.0/migration-guide.html#automatic-script-chunks">Migration Guide</a> to learn how to use automatic script chunks.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
     <h2 id="new-widgets"><a class="anchor" href="#new-widgets"></a>New Widgets</h2>
     <div class="sectionbody">
      <div class="sect2">
@@ -937,7 +952,7 @@ git add "**/pom.xml" "**/package.json"</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 22.0
-    <br> Last updated 2021-02-28 18:53:34 +0100
+    <br> Last updated 2021-03-02 08:31:18 +0100
    </div>
   </div>
  </body>
