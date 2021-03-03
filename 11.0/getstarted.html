@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Asciidoctor 2.0.10">
   <meta name="author" content="Scout Team">
-  <title>Eclipse Scout: Release Notes</title>
+  <title>Get Started</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
   <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,11 +440,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  </head>
  <body class="book toc2 toc-left">
   <div id="header">
-   <h1>Eclipse Scout: Release Notes</h1>
+   <h1>Get Started</h1>
    <div class="details">
     <span id="author" class="author">Scout Team</span>
     <br>
-    <span id="email" class="email"><a href="mailto:scout-dev@eclipse.org">scout-dev@eclipse.org</a></span>
+    <span id="email" class="email"><a href="mailto:scout@bsi-software.com">scout@bsi-software.com</a></span>
     <br>
     <span id="revnumber">version 11.0</span>
    </div>
@@ -453,36 +453,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      Table of Contents
     </div>
     <ul class="sectlevel1">
-     <li><a href="#about-this-release">About This Release</a>
+     <li><a href="#choose-wisely">Choose Wisely</a></li>
+     <li><a href="#installation">Installation</a></li>
+     <li><a href="#ide">IDE</a></li>
+     <li><a href="#artifacts">Artifacts</a>
       <ul class="sectlevel2">
-       <li><a href="#service-releases">Service Releases</a></li>
-      </ul> </li>
-     <li><a href="#demo-applications">Demo Applications</a></li>
-     <li><a href="#mobile-improvements">Mobile Improvements</a>
-      <ul class="sectlevel2">
-       <li><a href="#default-detail-form-and-tile-overview">Default Detail Form and Tile Overview</a></li>
-       <li><a href="#more-information-in-outline">More Information in Outline</a></li>
-       <li><a href="#new-style-for-views">New Style for Views</a></li>
-       <li><a href="#fullscreen-dialogs">Fullscreen Dialogs</a></li>
-       <li><a href="#wizard-improved-progress-field">Wizard: Improved Progress Field</a></li>
-       <li><a href="#new-mobilepopup">New MobilePopup</a></li>
-       <li><a href="#new-tablet-transformation-auto-hide-navigation">New Tablet Transformation: Auto Hide Navigation</a></li>
-      </ul> </li>
-     <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
-     <li><a href="#custom-webpack-config">Custom Webpack Config</a></li>
-     <li><a href="#automatic-script-chunks">Automatic Script Chunks</a></li>
-     <li><a href="#new-widgets">New Widgets</a>
-      <ul class="sectlevel2">
-       <li><a href="#breadcrumb-bar-field">Breadcrumb Bar Field</a></li>
-       <li><a href="#chart">Chart</a></li>
-      </ul> </li>
-     <li><a href="#widget-enhancements">Widget Enhancements</a>
-      <ul class="sectlevel2">
-       <li><a href="#table-new-property-compact">Table: New Property 'compact'</a></li>
-       <li><a href="#menu-new-property-textposition">Menu: New Property 'textPosition'</a></li>
-       <li><a href="#form">Form</a></li>
-       <li><a href="#widget">Widget</a></li>
-       <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
+       <li><a href="#cdn">CDN</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -490,345 +466,97 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="content">
    <div id="preamble">
     <div class="sectionbody">
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
-        </tr>
-       </tbody>
-      </table>
+     <div class="paragraph">
+      <p>Eclipse Scout is a framework that can be used in several ways. Before you can start, you should decide which way you want to take.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+    <h2 id="choose-wisely"><a class="anchor" href="#choose-wisely"></a>Choose Wisely</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The latest version of this release is: 11.0-SNAPSHOT.</p>
+      <p>First of all you need to decide what programming language you want to use for the user interface. Do you prefer Java or JavaScript?</p>
      </div>
      <div class="paragraph">
-      <p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/10.0%2E%2E%2Ereleases/11.0">detailed change log</a> on GitHub.</p>
+      <p>If you choose Java, your user interface code runs on a Java server. Scout takes care of sending your UI to the browser and displaying it. It also automatically directs the user interactions to the Java server and lets you process them. This approach is called <em>Scout Classic</em>.</p>
      </div>
      <div class="paragraph">
-      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/11.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+      <p>If you choose JavaScript, your user interface code runs in the browser. You still don&#x2019;t work with HTML elements directly. Instead, you use the same widget model as a Scout Java developer without needing a Java server. This approach is called <em>Scout JS</em>.</p>
      </div>
-     <div class="sect2">
-      <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
-      <div class="paragraph">
-       <p>Scout 11.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
-      </div>
+     <div class="paragraph">
+      <p>No matter what you choose, you can always adjust the existing widgets or write completely new widgets using HTML, CSS and JavaScript.</p>
+     </div>
+     <div class="paragraph">
+      <p>In addition to the programming language, you should think about whether you want to go full stack (front end, back end) or just focus on one tier. For example, you could use Scout JS on the front end, Scout on the back end and a REST api for the communication. Or maybe you prefer to use an existing REST api and just want to use the powerful Scout widgets for the front end. Or maybe you don&#x2019;t need a back end at all because you plan to implement an offline app.</p>
+     </div>
+     <div class="paragraph">
+      <p>Have you made your decision? Great! Then it&#x2019;s now time to really get started.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+    <h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
+      <p>Depending on your decision regarding the programming language, we recommend that you start with one of the following tutorials. Both tutorials guide you through the installation process, and you will learn how to setup your first Scout Classic or Scout JS project.</p>
      </div>
      <div class="paragraph">
-      <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+      <p><a href="http://eclipsescout.github.io/{scout-short-version}/helloscout.html">Hello Scout Classic</a><br></p>
      </div>
-     <div class="ulist">
-      <ul>
-       <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
-       <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
-       <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
-      </ul>
+     <div class="paragraph">
+      <p><a href="http://eclipsescout.github.io/{scout-short-version}/helloscout-js.html">Hello Scout JS</a></p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="mobile-improvements"><a class="anchor" href="#mobile-improvements"></a>Mobile Improvements</h2>
+    <h2 id="ide"><a class="anchor" href="#ide"></a>IDE</h2>
     <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="default-detail-form-and-tile-overview"><a class="anchor" href="#default-detail-form-and-tile-overview"></a>Default Detail Form and Tile Overview</h3>
-      <div class="paragraph">
-       <p>When no page is selected, the desktop client shows the default detail form, or if not available, the tile outline overview. This feature was disabled on mobile, until now. So if you startup your mobile Scout Classic app you will probably notice the new look. If you don&#x2019;t like it you can always disable it by not creating a default detail form (<code>Outline#createDefaultDetailForm</code>) or by setting <code>Outline#getConfiguredOutlineOverviewVisible</code> to false.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/outline_overview.png" alt="outline overview">
-       </div>
-      </div>
+     <div class="paragraph">
+      <p>Even though an IDE is not required to work with Scout it is recommended to use one because it makes your developer life easier.</p>
      </div>
-     <div class="sect2">
-      <h3 id="more-information-in-outline"><a class="anchor" href="#more-information-in-outline"></a>More Information in Outline</h3>
-      <div class="paragraph">
-       <p>Until now, the outline in mobile mode displayed the same summary cell as in desktop mode. Even though you could already create a custom summary cell for mobile, doing so is time-consuming. This is why we decided to implement a different strategy for mobile to compute a better summary cell. It is enabled by default so that every table page will benefit right away.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/mobile_summary_cell.png" alt="mobile summary cell">
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>Since this new strategy is based on the new feature introduced for tables (<a href="#table-new-property-compact">Table: New Property 'compact'</a>), it can be easily customized in the same way. If you don&#x2019;t like it you can return to the previous strategy by overriding <code>AbstractTable#createSummaryCellBuilder</code>, but why should you ;-) ?</p>
-      </div>
+     <div class="paragraph">
+      <p>There are Scout plugins available for IntelliJ and Eclipse. For Scout Classic either one is fine. For Scout JS we recommend IntelliJ because the JavaScript support of Eclipse is very poor. Unfortunately, the IntelliJ Community Edition does not contain JavaScript support, so you would need IntelliJ Ultimate. There is a trial if you want to try it.</p>
      </div>
-     <div class="sect2">
-      <h3 id="new-style-for-views"><a class="anchor" href="#new-style-for-views"></a>New Style for Views</h3>
-      <div class="paragraph">
-       <p>The device transformer now adjusts the style of a view so that it matches the style of a dialog. Also, the view tabs won&#x2019;t be visible anymore. This should give a more consistent look and should make it easier to use.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/mobile_view.png" alt="mobile view">
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>If you don&#x2019;t like that behavior, you can disable it in general or for specific forms:</p>
-      </div>
-      <div class="listingblock">
-       <div class="content">
-        <pre class="highlight"><code class="language-Java" data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(this, MobileDeviceTransformation.USE_DIALOG_STYLE_FOR_VIEW);</code></pre>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="fullscreen-dialogs"><a class="anchor" href="#fullscreen-dialogs"></a>Fullscreen Dialogs</h3>
-      <div class="paragraph">
-       <p>The device transformer now sets the property <code>maximized</code> of dialogs to true so that every dialog will be displayed in full screen. See also <a href="#support-maximized">Support Maximized</a>.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you don&#x2019;t like that behavior, you can disable it in general or for specific forms:</p>
-      </div>
-      <div class="listingblock">
-       <div class="content">
-        <pre class="highlight"><code class="language-Java" data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(this, MobileDeviceTransformation.MAXIMIZE_DIALOG);</code></pre>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="wizard-improved-progress-field"><a class="anchor" href="#wizard-improved-progress-field"></a>Wizard: Improved Progress Field</h3>
-      <div class="paragraph">
-       <p>The progress visualization and step activation has been improved for smaller screens.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="new-mobilepopup"><a class="anchor" href="#new-mobilepopup"></a>New MobilePopup</h3>
-      <div class="paragraph">
-       <p>MobilePopup was only available on Scout JS but is now available for Scout Classic as well. A mobile popup slides in from the bottom. This is it, not more. It has already been used for search or tool forms on mobile.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="new-tablet-transformation-auto-hide-navigation"><a class="anchor" href="#new-tablet-transformation-auto-hide-navigation"></a>New Tablet Transformation: Auto Hide Navigation</h3>
-      <div class="paragraph">
-       <p>The navigation is now automatically hidden when a view is opened and shown again when the last view is closed. This was introduced because the space is very limited and the navigation mostly not needed when a view is open.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you don&#x2019;t like the change you can simply disable it by disabling the transformation <code>TabletDeviceTransformation#AUTO_HIDE_NAVIGATION</code>. Check out the mobile chapter in the <a href="https://eclipsescout.github.io/11.0/technical-guide.html#disable-transformations">Tech Doc</a> on how to do it.</p>
-      </div>
+     <div class="paragraph">
+      <p>You can also use Visual Studio code or any other IDE or editor but there are no official Scout plugins for these editors.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-eslint-settings"><a class="anchor" href="#new-eslint-settings"></a>New ESLint Settings</h2>
+    <h2 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The eslint rules used by Scout have been adjusted to encourage the use of some great ES6 features. The following rules have been turned on: <code>no-var</code>, <code>prefer-arrow-callback</code>,<code>prefer-rest-params</code>, <code>prefer-spread</code>.</p>
+      <p>All Scout artifacts are published on public repositories.</p>
      </div>
      <div class="paragraph">
-      <p>If you have a dependency to <code>@eclipse-scout/eslint-config</code> and you update to the latest version, your project will use the new settings, too. This also means your JavaScript code may report some new warnings. Have a look at the <a href="https://eclipsescout.github.io/11.0/migration-guide.html#new-eslint-settings">Migration Guide</a> to learn how to handle them (e.g. migrating code or disabling the rules).</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="custom-webpack-config"><a class="anchor" href="#custom-webpack-config"></a>Custom Webpack Config</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>If you have a lot of themes, working on a less file can be frustrating since every theme will be built. To save time, it is now possible to control which themes should be built. To do so, create a <code>webpack.config.custom.js file</code> (which can be added to .gitignore because not every developer has the same preferences). Add the following content:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">const baseConfig = require('./webpack.config');
-module.exports = (env, args) =&gt; {
-&nbsp; args.themes = args.themes || ['default'];
-&nbsp; return baseConfig(env, args);
-};</code></pre>
-      </div>
+      <p>The Scout Java packages are Maven modules and available on <a href="https://search.maven.org/search?q=g:org.eclipse.scout.rt">Maven Central</a>.</p>
      </div>
      <div class="paragraph">
-      <p>To make this work your base webpack config needs to register the themes using the function baseConfig.addThemes:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">baseConfig.addThemes(config.entry, {
-  themes: args.themes,
-  availableThemes: ['default', 'dark'],
-  generator: name =&gt; [`yourapp-theme${name}`, `./src/main/js/yourapp-theme${name}.less`]
-});</code></pre>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="automatic-script-chunks"><a class="anchor" href="#automatic-script-chunks"></a>Automatic Script Chunks</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Before Scout 11 script (JavaScript and CSS) chunks have been declared explicitly. While you have full control on the output using this explicit definition, it is often not optimal concerning performance and might require modifications when a new module or library is added to the project. Therefore starting with version 11 Scout additionally supports automatic chunk creation for your script assets.</p>
+      <p>The Scout JavaScript packages are npm modules and available on <a href="https://www.npmjs.com/package/@eclipse-scout/core">npmjs</a>.</p>
      </div>
      <div class="paragraph">
-      <p>When using this new feature (which is the default configuration now), chunks are automatically created based on size and code usage (imports). Therefore, it is no longer necessary to list every chunk manually in the html file. Instead, Scout automatically inserts the necessary script tags according to the chunks created.</p>
-     </div>
-     <div class="paragraph">
-      <p>Have a look at the <a href="https://eclipsescout.github.io/11.0/migration-guide.html#automatic-script-chunks">Migration Guide</a> to learn how to use automatic script chunks.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-widgets"><a class="anchor" href="#new-widgets"></a>New Widgets</h2>
-    <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="breadcrumb-bar-field"><a class="anchor" href="#breadcrumb-bar-field"></a>Breadcrumb Bar Field</h3>
-      <div class="paragraph">
-       <p>The new breadcrumb bar widget allows to display a hierarchical structure in a horizontal style. Each breadcrumb item is clickable. The breadcrumb can automatically shrink if there is not enough place available.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/new_widget_breadcrumb_bar_field.png" alt="new widget breadcrumb bar field">
-       </div>
-      </div>
+      <p>Just include these dependencies in your project and import the required Java or JavaScript classes.</p>
      </div>
      <div class="sect2">
-      <h3 id="chart"><a class="anchor" href="#chart"></a>Chart</h3>
+      <h3 id="cdn"><a class="anchor" href="#cdn"></a>CDN</h3>
       <div class="paragraph">
-       <p>The new chart widget allows visualizing data in several ways. It can be used inside a chart field, a chart tile or as a plain chart. The supported chart types include bar (vertical and horizontal), line, bar and line combined, pie, doughnut, bubble, polar area, radar, fulfillment, salesfunnel, speedo and venn. All charts support different color schemes and themes.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/pieTileDefault.png" alt="pieTileDefault">
-       </div>
-       <div class="title">
-        Figure 1. Pie chart in a tile using the default color scheme.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/comboBarLineTileAlternativeInverted.png" alt="comboBarLineTileAlternativeInverted">
-       </div>
-       <div class="title">
-        Figure 2. Combined bar line chart in a tile using the alternative inverted color scheme.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/bubbleRainbowDarkTheme.png" alt="bubbleRainbowDarkTheme">
-       </div>
-       <div class="title">
-        Figure 3. Bubble chart using the rainbow color scheme and the dark theme.
-       </div>
+       <p>The Scout npm modules contain prebuilt scripts, stylesheets and other necessary resources in the dist folder. There are several CDNs out there that serve the content of all npm modules. A popular one is <a href="https://www.jsdelivr.com/">jsDelivr</a>. Thanks to such CDNs you can easily download the prebuilt Scout assets or directly include them in your HTML files.</p>
       </div>
       <div class="paragraph">
-       <p>There are numerous styling options, e.g. tension and fill for line and radar charts, stacked bar charts or a transparent and a checkable mode.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/lineDefaultTensionFill.png" alt="lineDefaultTensionFill">
-       </div>
-       <div class="title">
-        Figure 4. Tension and fill for line charts.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/barHorizontalRainbowStacked.png" alt="barHorizontalRainbowStacked">
-       </div>
-       <div class="title">
-        Figure 5. Stacked horizontal bar chart.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/bubbleTileDefaultCheckable.png" alt="bubbleTileDefaultCheckable">
-       </div>
-       <div class="title">
-        Figure 6. Checkable bubble chart.
-       </div>
+       <p><a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
       </div>
       <div class="paragraph">
-       <p>For more information about the chart widget see <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html#chart">Technical Guide for Scout JS</a>.</p>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="widget-enhancements"><a class="anchor" href="#widget-enhancements"></a>Widget Enhancements</h2>
-    <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="table-new-property-compact"><a class="anchor" href="#table-new-property-compact"></a>Table: New Property 'compact'</h3>
-      <div class="paragraph">
-       <p>It is now possible to set a table into compact mode. This will hide all columns and insert a new one containing the content of every other column. The content will be displayed vertically which means the cells of a row will be put below each other. This new style is perfect if the width of the table is limited (e.g. on a mobile phone).</p>
+       <p>Even though this is a convenient way to get the Scout assets, we still recommend getting the artifacts via npm because it gives you more control and flexibility to work with.</p>
       </div>
       <div class="paragraph">
-       <p>The table uses a so called <code>ITableCompactHandler</code> which does the conversion. If you don&#x2019;t like how the content is arranged you can easily control the conversion by adjusting the compact handler or by writing your own one.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/table_compact.png" alt="table compact">
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="menu-new-property-textposition"><a class="anchor" href="#menu-new-property-textposition"></a>Menu: New Property 'textPosition'</h3>
-      <div class="paragraph">
-       <p>With this new property, the text can be positioned on the bottom of the icon</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/menu_text_bottom.png" alt="menu text bottom">
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
-      <div class="sect3">
-       <h4 id="support-maximized"><a class="anchor" href="#support-maximized"></a>Support Maximized</h4>
-       <div class="paragraph">
-        <p>The property <code>maximized</code> is an old property but had no effect with the current UI. With Scout 11 the property will finally be interpreted. Setting it to true on a dialog will make it use the whole screen.</p>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="new-property-headervisible"><a class="anchor" href="#new-property-headervisible"></a>New Property 'headerVisible'</h4>
-       <div class="paragraph">
-        <p>With this new property you can manually control whether the header should be visible. Until now it depended on the display hint property. This could be useful when embedding the form in a popup or another widget.</p>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="widget"><a class="anchor" href="#widget"></a>Widget</h3>
-      <div class="sect3">
-       <h4 id="execfocusin-execfocusout"><a class="anchor" href="#execfocusin-execfocusout"></a>ExecFocusIn, ExecFocusOut</h4>
-       <div class="paragraph">
-        <p>Every widget now supports focus events. You can either use a <code>WidgetListener</code> or implement <code>execFocusIn</code> and <code>execFocusOut</code>. The currently focused element is available using <code>IDesktop#getFocusedElement()</code>.</p>
-       </div>
-       <div class="paragraph">
-        <p>Important: the focus tracking needs to be explicitly activated before it can be used. Just call <code>IDesktop#setTrackFocus(true)</code> to do so. And remember to deactivate it again once you don&#x2019;t need it anymore to not produce unnecessary requests.</p>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="new-method-reveal"><a class="anchor" href="#new-method-reveal"></a>New Method 'reveal'</h4>
-       <div class="paragraph">
-        <p>If a widget in a scrollable container is out of view you can bring it back by using the new reveal method.</p>
-       </div>
-       <div class="paragraph">
-        <p>On JS side this method was already available, now it is available for Scout Classic apps as well.</p>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="tabbox-support-for-labelvisible"><a class="anchor" href="#tabbox-support-for-labelvisible"></a>TabBox: Support for LabelVisible</h3>
-      <div class="paragraph">
-       <p>Setting the property <code>labelVisible</code> to false will now hide the tab area. Until now, the property had no effect for tab boxes.</p>
+       <p>If you want to learn more about using a CDN, please see <a href="http://eclipsescout.github.io/{scout-short-version}/helloscout-cdn.html">Hello Scout for CDN</a>.</p>
       </div>
       <div class="admonitionblock tip">
        <table>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/getstarted/src/docs/getstarted.adoc">sources</a> on GitHub. </td>
          </tr>
         </tbody>
        </table>

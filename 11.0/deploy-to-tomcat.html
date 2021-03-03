@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Asciidoctor 2.0.10">
   <meta name="author" content="Scout Team">
-  <title>Eclipse Scout: Release Notes</title>
+  <title>Build Application and Deploy to Tomcat</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
   <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,7 +440,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  </head>
  <body class="book toc2 toc-left">
   <div id="header">
-   <h1>Eclipse Scout: Release Notes</h1>
+   <h1>Build Application and Deploy to Tomcat</h1>
    <div class="details">
     <span id="author" class="author">Scout Team</span>
     <br>
@@ -453,36 +453,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      Table of Contents
     </div>
     <ul class="sectlevel1">
-     <li><a href="#about-this-release">About This Release</a>
+     <li><a href="#verify-the-container-security-settings">Verify the Container Security Settings</a></li>
+     <li><a href="#create-and-install-a-self-signed-certificate">Create and Install a Self-Signed Certificate</a></li>
+     <li><a href="#update-the-scout-application-to-work-with-http">Update the Scout Application to work with HTTP</a></li>
+     <li><a href="#create-war-files">Create WAR Files</a></li>
+     <li><a href="#sec-helloworld_deploy">Deploy to Tomcat</a></li>
+     <li><a href="#apx-install_tomcat">Appendix A: Apache Tomcat Installation</a>
       <ul class="sectlevel2">
-       <li><a href="#service-releases">Service Releases</a></li>
-      </ul> </li>
-     <li><a href="#demo-applications">Demo Applications</a></li>
-     <li><a href="#mobile-improvements">Mobile Improvements</a>
-      <ul class="sectlevel2">
-       <li><a href="#default-detail-form-and-tile-overview">Default Detail Form and Tile Overview</a></li>
-       <li><a href="#more-information-in-outline">More Information in Outline</a></li>
-       <li><a href="#new-style-for-views">New Style for Views</a></li>
-       <li><a href="#fullscreen-dialogs">Fullscreen Dialogs</a></li>
-       <li><a href="#wizard-improved-progress-field">Wizard: Improved Progress Field</a></li>
-       <li><a href="#new-mobilepopup">New MobilePopup</a></li>
-       <li><a href="#new-tablet-transformation-auto-hide-navigation">New Tablet Transformation: Auto Hide Navigation</a></li>
-      </ul> </li>
-     <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
-     <li><a href="#custom-webpack-config">Custom Webpack Config</a></li>
-     <li><a href="#automatic-script-chunks">Automatic Script Chunks</a></li>
-     <li><a href="#new-widgets">New Widgets</a>
-      <ul class="sectlevel2">
-       <li><a href="#breadcrumb-bar-field">Breadcrumb Bar Field</a></li>
-       <li><a href="#chart">Chart</a></li>
-      </ul> </li>
-     <li><a href="#widget-enhancements">Widget Enhancements</a>
-      <ul class="sectlevel2">
-       <li><a href="#table-new-property-compact">Table: New Property 'compact'</a></li>
-       <li><a href="#menu-new-property-textposition">Menu: New Property 'textPosition'</a></li>
-       <li><a href="#form">Form</a></li>
-       <li><a href="#widget">Widget</a></li>
-       <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
+       <li><a href="#platform-specific-instructions">Platform Specific Instructions</a></li>
+       <li><a href="#apx-tomcat_dirs_and_files">Directories and Files</a></li>
+       <li><a href="#apx-tomcat_manager_app">The Tomcat Manager Application</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -500,341 +480,361 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        </tbody>
       </table>
      </div>
+     <div class="paragraph">
+      <p>At some point during the application development you will want to install your software on a machine that is intended for productive use. This is the moment where you need to be able to build and package your Scout application in a way that can be deployed to an application server.</p>
+     </div>
+     <div class="paragraph">
+      <p>As Scout applications just need a servlet container to run, Scout applications can be deployed to almost any Java application server. For the purpose of this tutorial we will use <a href="http://tomcat.apache.org/tomcat-9.0-doc/index.html">Apache Tomcat</a>.</p>
+     </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+    <h2 id="verify-the-container-security-settings"><a class="anchor" href="#verify-the-container-security-settings"></a>Verify the Container Security Settings</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The latest version of this release is: 11.0-SNAPSHOT.</p>
+      <p>First you need to decide if the users of your application should communicate via HTTPS with the Scout frontend server. We strongly recommended this setup for any productive environment. This is why even the Scout &#x201c;Hello World&#x201d; example is configured to use HTTPS.</p>
      </div>
      <div class="paragraph">
-      <p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/10.0%2E%2E%2Ereleases/11.0">detailed change log</a> on GitHub.</p>
+      <p>As a default Tomcat installation is configured to use HTTP only, we need to first verify if the installtion is properly configured for HTTPS too. In case HTTPS support is already enabled for your Tomcat installation, you may skip this section.</p>
      </div>
      <div class="paragraph">
-      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/11.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+      <p>Otherwise, check out the configuration process described in the <a href="http://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html">Tomcat Documentation</a> to enable SSL/TLS.</p>
      </div>
-     <div class="sect2">
-      <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
-      <div class="paragraph">
-       <p>Scout 11.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="create-and-install-a-self-signed-certificate"><a class="anchor" href="#create-and-install-a-self-signed-certificate"></a>Create and Install a Self-Signed Certificate</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>This section describes the creation and usage of a self-signed certificat in a localhost setting.</p>
+     </div>
+     <div class="olist arabic">
+      <ol class="arabic">
+       <li> <p>Create a keystore file with a self-signed certificate</p> </li>
+       <li> <p>Uncomment/adapt the HTTPS connector port in Tomcat&#x2019;s server.xml configuration</p> </li>
+       <li> <p>Export the self-signed certificate from the keystore</p> </li>
+       <li> <p>Import the self-signed certificate into the Java certificate store</p> </li>
+      </ol>
+     </div>
+     <div class="paragraph">
+      <p>The first step is to create a self-signed certificate using the keytool provided with the Java runtime. The example command line below will create such a certificate using the alias <code>tomcat_localhost</code> and place it into the keystore file <code>tomcat_localhost.jks</code></p>
+     </div>
+     <div class="literalblock">
+      <div class="content">
+       <pre>keytool.exe -genkey -keyalg RSA -dname CN=localhost -alias tomcat_localhost -keystore tomcat_localhost.jks -keypass changeit -storepass changeit</pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>The second step is to uncomment the HTTPS connector element in the Tomcat&#x2019;s <code>server.xml</code> configuration file. Make sure that parameter <code>keystoreFile</code> points to your newly created keystore file (if you are using a windows box, make sure not to use the backslash characters in the path to the keystore). After a restart of Tomcat you should then be able to access Tomcat on <a href="https://localhost:8443/manager/html">https://localhost:8443/manager/html</a></p>
+     </div>
+     <div class="listingblock">
+      <div class="content">
+       <pre class="highlight"><code class="language-xml" data-lang="xml">    &lt;Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true" scheme="https" secure="true"&gt;
+        &lt;SSLHostConfig&gt;
+            &lt;Certificate certificateKeystoreFile="/keystore/tomcat_localhost.jks"
+                         type="RSA" /&gt;
+        &lt;/SSLHostConfig&gt;
+    &lt;/Connector&gt;</code></pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>The third step is to export the newly created self-signed certificate from the <code>tomcat_localhost.jks</code> keystore file into the <code>tomcat_localhost.der</code> certificate file.</p>
+     </div>
+     <div class="literalblock">
+      <div class="content">
+       <pre>keytool.exe -exportcert -alias tomcat_localhost -storepass changeit -keystore tomcat_localhost.jks -file tomcat_localhost.der</pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>In the fourth and last step we add the self-signed certificate to the known certificates of the Java runtime. Make sure that you modify the <code>cacerts</code> file of the Java runtime that is used in your Tomcat installation and modify the path to the <code>cacerts</code> file accordingly.</p>
+     </div>
+     <div class="literalblock">
+      <div class="content">
+       <pre>keytool.exe -import -alias tomcat_localhost -trustcacerts -storepass changeit -keystore C:\java\jre8\lib\security\cacerts -file tomcat_localhost.der</pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Your Scout application should now properly communicate over HTTPS in your Tomcat installation and after having installed the "Hello World" application to Tomcat it should become available on <a href="https://localhost:8443/org.eclipse.scout.apps.helloworld.ui.html">https://localhost:8443/org.eclipse.scout.apps.helloworld.ui.html/</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>In case the Scout frontend server cannot access the Scout backend server your self-signed certificate might be missing in the Java installation. To verify that the certificate has been included in file <code>cacerts</code> file use the following command.</p>
+     </div>
+     <div class="literalblock">
+      <div class="content">
+       <pre>keytool.exe -list -storepass changeit -keystore C:\java\jre8\lib\security\cacerts | find "localhost"</pre>
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Once you no longer need the self-signed certificate file in your Java installation make sure to remove the certificate again.</p>
+     </div>
+     <div class="literalblock">
+      <div class="content">
+       <pre>keytool.exe -delete -alias tomcat_localhost -storepass changeit -keystore C:\java\jre8\lib\security\cacerts</pre>
       </div>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+    <h2 id="update-the-scout-application-to-work-with-http"><a class="anchor" href="#update-the-scout-application-to-work-with-http"></a>Update the Scout Application to work with HTTP</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+      <p>If you should prefer to work with HTTP only, you need to modify the security settings of your Scout application. This can be done with the steps described below.</p>
      </div>
      <div class="ulist">
       <ul>
-       <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
-       <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
-       <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
+       <li> <p>In file <code>config.properties</code> (in folder <code>helloworld.ui.html.app.war/src/main/resources</code>):</p>
+        <div class="ulist">
+         <ul>
+          <li> <p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p> </li>
+          <li> <p>Change the <code>scout.backendUrl</code> property to use HTTP instead of HTTPS and change the port according to your Tomcat setup, typically 8080.</p> </li>
+         </ul>
+        </div> </li>
+       <li> <p>In file <code>web.xml</code> (in folder <code>helloworld.ui.html.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
+       <li> <p>In file <code>web.xml</code> (in folder <code>helloworld.server.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
       </ul>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="mobile-improvements"><a class="anchor" href="#mobile-improvements"></a>Mobile Improvements</h2>
-    <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="default-detail-form-and-tile-overview"><a class="anchor" href="#default-detail-form-and-tile-overview"></a>Default Detail Form and Tile Overview</h3>
-      <div class="paragraph">
-       <p>When no page is selected, the desktop client shows the default detail form, or if not available, the tile outline overview. This feature was disabled on mobile, until now. So if you startup your mobile Scout Classic app you will probably notice the new look. If you don&#x2019;t like it you can always disable it by not creating a default detail form (<code>Outline#createDefaultDetailForm</code>) or by setting <code>Outline#getConfiguredOutlineOverviewVisible</code> to false.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/outline_overview.png" alt="outline overview">
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="more-information-in-outline"><a class="anchor" href="#more-information-in-outline"></a>More Information in Outline</h3>
-      <div class="paragraph">
-       <p>Until now, the outline in mobile mode displayed the same summary cell as in desktop mode. Even though you could already create a custom summary cell for mobile, doing so is time-consuming. This is why we decided to implement a different strategy for mobile to compute a better summary cell. It is enabled by default so that every table page will benefit right away.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/mobile_summary_cell.png" alt="mobile summary cell">
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>Since this new strategy is based on the new feature introduced for tables (<a href="#table-new-property-compact">Table: New Property 'compact'</a>), it can be easily customized in the same way. If you don&#x2019;t like it you can return to the previous strategy by overriding <code>AbstractTable#createSummaryCellBuilder</code>, but why should you ;-) ?</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="new-style-for-views"><a class="anchor" href="#new-style-for-views"></a>New Style for Views</h3>
-      <div class="paragraph">
-       <p>The device transformer now adjusts the style of a view so that it matches the style of a dialog. Also, the view tabs won&#x2019;t be visible anymore. This should give a more consistent look and should make it easier to use.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/mobile_view.png" alt="mobile view">
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>If you don&#x2019;t like that behavior, you can disable it in general or for specific forms:</p>
-      </div>
-      <div class="listingblock">
-       <div class="content">
-        <pre class="highlight"><code class="language-Java" data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(this, MobileDeviceTransformation.USE_DIALOG_STYLE_FOR_VIEW);</code></pre>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="fullscreen-dialogs"><a class="anchor" href="#fullscreen-dialogs"></a>Fullscreen Dialogs</h3>
-      <div class="paragraph">
-       <p>The device transformer now sets the property <code>maximized</code> of dialogs to true so that every dialog will be displayed in full screen. See also <a href="#support-maximized">Support Maximized</a>.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you don&#x2019;t like that behavior, you can disable it in general or for specific forms:</p>
-      </div>
-      <div class="listingblock">
-       <div class="content">
-        <pre class="highlight"><code class="language-Java" data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(this, MobileDeviceTransformation.MAXIMIZE_DIALOG);</code></pre>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="wizard-improved-progress-field"><a class="anchor" href="#wizard-improved-progress-field"></a>Wizard: Improved Progress Field</h3>
-      <div class="paragraph">
-       <p>The progress visualization and step activation has been improved for smaller screens.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="new-mobilepopup"><a class="anchor" href="#new-mobilepopup"></a>New MobilePopup</h3>
-      <div class="paragraph">
-       <p>MobilePopup was only available on Scout JS but is now available for Scout Classic as well. A mobile popup slides in from the bottom. This is it, not more. It has already been used for search or tool forms on mobile.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="new-tablet-transformation-auto-hide-navigation"><a class="anchor" href="#new-tablet-transformation-auto-hide-navigation"></a>New Tablet Transformation: Auto Hide Navigation</h3>
-      <div class="paragraph">
-       <p>The navigation is now automatically hidden when a view is opened and shown again when the last view is closed. This was introduced because the space is very limited and the navigation mostly not needed when a view is open.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you don&#x2019;t like the change you can simply disable it by disabling the transformation <code>TabletDeviceTransformation#AUTO_HIDE_NAVIGATION</code>. Check out the mobile chapter in the <a href="https://eclipsescout.github.io/11.0/technical-guide.html#disable-transformations">Tech Doc</a> on how to do it.</p>
-      </div>
+     <div class="paragraph">
+      <p>More on this topic can be found in the Scout Architecture Documentation.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="new-eslint-settings"><a class="anchor" href="#new-eslint-settings"></a>New ESLint Settings</h2>
+    <h2 id="create-war-files"><a class="anchor" href="#create-war-files"></a>Create WAR Files</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The eslint rules used by Scout have been adjusted to encourage the use of some great ES6 features. The following rules have been turned on: <code>no-var</code>, <code>prefer-arrow-callback</code>,<code>prefer-rest-params</code>, <code>prefer-spread</code>.</p>
+      <p>We are now ready to move the <code>Hello World</code> application from our development environment to a productive setup. The simplest option to move our application into the 'wild' is to build it using Maven. This produces two WAR files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
      </div>
      <div class="paragraph">
-      <p>If you have a dependency to <code>@eclipse-scout/eslint-config</code> and you update to the latest version, your project will use the new settings, too. This also means your JavaScript code may report some new warnings. Have a look at the <a href="https://eclipsescout.github.io/11.0/migration-guide.html#new-eslint-settings">Migration Guide</a> to learn how to handle them (e.g. migrating code or disabling the rules).</p>
+      <p>The first WAR file contains the Scout backend server with all business logic. The second WAR file contains the Scout frontend server that is responsible for communicating with the web browser part of the Scout application.</p>
+     </div>
+     <div class="paragraph">
+      <p>To start the build right click on the project <code>helloworld</code> and select the context menu <b class="menuref">Run As &#x2192; Maven build&#x2026;&#x200b;</b> as shown in <a href="#img-sdk_export_war">Figure 1</a>. In the dialog that appears enter <code>clean verify</code> into the <code>Goals</code> field and press <b class="button">Run</b>.</p>
+     </div>
+     <div id="img-sdk_export_war" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_export_war_menu.png" alt="sdk export war menu">
+      </div>
+      <div class="title">
+       Figure 1. Starting the Maven build.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Afterwards the compilation starts, executes all test cases and bundles the result into two WAR files. The output of the build is shown in the Console view within Eclipse. As soon as the build is reporting success you can find the built WAR files:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p>The Scout backend WAR file <code>org.eclipse.scout.apps.helloworld.server.war</code> in folder <code>workspace_root/helloworld.server.app.war/target</code></p> </li>
+       <li> <p>The Scout frontend WAR file <code>org.eclipse.scout.apps.helloworld.ui.html.war</code> in folder <code>workspace_root/helloworld.ui.html.app.war/target</code></p> </li>
+      </ul>
+     </div>
+     <div class="paragraph">
+      <p>To see the new files within Eclipse you may need to refresh the <code>target</code> folder below each project using the F5 keystroke.</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="custom-webpack-config"><a class="anchor" href="#custom-webpack-config"></a>Custom Webpack Config</h2>
+    <h2 id="sec-helloworld_deploy"><a class="anchor" href="#sec-helloworld_deploy"></a>Deploy to Tomcat</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>If you have a lot of themes, working on a less file can be frustrating since every theme will be built. To save time, it is now possible to control which themes should be built. To do so, create a <code>webpack.config.custom.js file</code> (which can be added to .gitignore because not every developer has the same preferences). Add the following content:</p>
+      <p>As the final step of this tutorial, we deploy the two WAR files representing our &#x201c;Hello World&#x201d; application to a Tomcat web server. For this, we first need a working Tomcat installation. If you do not yet have such an installation you may want to read and follow the instructions provided in <a href="#apx-install_tomcat">Appendix A</a>. To verify a running Tomcat instance, type <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> into the address bar of the web browser of your choice. You should then see the page shown in <a href="#img-deploy_tomcat_1">Figure 2</a>.</p>
+     </div>
+     <div id="img-deploy_tomcat_1" class="imageblock">
+      <div class="content">
+       <img src="images/tomcat_managerapp_login.png" alt="tomcat managerapp login">
+      </div>
+      <div class="title">
+       Figure 2. The Tomcat shown after a successful installation. After clicking on the &#x201c;Manager App&#x201d; button (highlighted in red) the login box is shown in front. A successful login shows the &#x201c;Tomcat Web Application Manager&#x201d;.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Once the web browser displays the successful running of your Tomcat instance, switch to its &#x201c;Manager App&#x201d; by clicking on the button highlighted in <a href="#img-deploy_tomcat_1">Figure 2</a>. After entering user name and password the browser will display the &#x201c;Tomcat Web Application Manager&#x201d; as shown in <a href="#img-deploy_tomcat_2">Figure 3</a>. If you don&#x2019;t know the correct username or password you may look it up in the file <span class="filename">tomcat-users.xml</span> as described in <a href="#apx-tomcat_dirs_and_files">Directories and Files</a>.</p>
+     </div>
+     <div id="img-deploy_tomcat_2" class="imageblock">
+      <div class="content">
+       <img src="images/tomcat_managerapp_selectwar.png" alt="tomcat managerapp selectwar">
+      </div>
+      <div class="title">
+       Figure 3. The &#x201c;Tomcat Web Application Manager&#x201d;. The WAR files to be deployed can then be selected using button &#x201c;Choose File&#x201d; highlighted in red.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>After logging into Tomcat&#x2019;s manager application, you can select the WAR files to be deployed using button &#x201c;Choose File&#x201d; according to the right hand side of <a href="#img-deploy_tomcat_2">Figure 3</a>. After picking your just built <span class="filename">org.eclipse.scout.apps.helloworld.server.war</span> and closing the file chooser, click on button &#x201c;Deploy&#x201d; (located below button &#x201c;Choose File&#x201d;) to deploy the application to the Tomcat web server. Then we repeat this step with the second WAR file <span class="filename">org.eclipse.scout.apps.helloworld.ui.html.war</span>.</p>
+     </div>
+     <div class="paragraph">
+      <p>This will copy the selected WAR files into Tomcats <span class="filename">webapps</span> directory and unpack its contents into subdirectories with the same name. You can now connect to the application using the browser of your choice and enter the following address:</p>
      </div>
      <div class="listingblock">
       <div class="content">
-       <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">const baseConfig = require('./webpack.config');
-module.exports = (env, args) =&gt; {
-&nbsp; args.themes = args.themes || ['default'];
-&nbsp; return baseConfig(env, args);
-};</code></pre>
+       <pre>  http://localhost:8080/org.eclipse.scout.apps.helloworld.ui.html/</pre>
       </div>
      </div>
-     <div class="paragraph">
-      <p>To make this work your base webpack config needs to register the themes using the function baseConfig.addThemes:</p>
-     </div>
-     <div class="listingblock">
+     <div id="img-helloworld_running_download" class="imageblock">
       <div class="content">
-       <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">baseConfig.addThemes(config.entry, {
-  themes: args.themes,
-  availableThemes: ['default', 'dark'],
-  generator: name =&gt; [`yourapp-theme${name}`, `./src/main/js/yourapp-theme${name}.less`]
-});</code></pre>
+       <img src="images/tomcat_helloworld_download.png" alt="tomcat helloworld download">
       </div>
+      <div class="title">
+       Figure 4. The &#x201c;Hello World&#x201d; login page.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Then you will see the login page as shown in <a href="#img-helloworld_running_download">Figure 4</a>. Two users have been pre defined: &#x201c;admin&#x201d; with password &#x201c;admin&#x201d; and &#x201c;scott&#x201d; with password &#x201c;tiger&#x201d;. You can find this configuration in the <span class="filename">config.properties</span> file of the application.</p>
+     </div>
+     <div class="paragraph">
+      <p>Please note: In a productive environment it is recommended to deploy the server and the user interface into two different servlet containers running on dedicated machines. This is because these two tiers have different requirements on resources, load balancing and access protection. Furthermore, it is strongly recommended to use an encrypted connection (e.g. TLS 1.2 <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>) between client browsers and the Scout frontend server AND between the Scout frontend and backend server!</p>
      </div>
     </div>
    </div>
    <div class="sect1">
-    <h2 id="automatic-script-chunks"><a class="anchor" href="#automatic-script-chunks"></a>Automatic Script Chunks</h2>
+    <h2 id="apx-install_tomcat"><a class="anchor" href="#apx-install_tomcat"></a>Appendix A: Apache Tomcat Installation</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>Before Scout 11 script (JavaScript and CSS) chunks have been declared explicitly. While you have full control on the output using this explicit definition, it is often not optimal concerning performance and might require modifications when a new module or library is added to the project. Therefore starting with version 11 Scout additionally supports automatic chunk creation for your script assets.</p>
+      <p>Apache Tomcat is an open source web server that is a widely used implementation of the Java Servlet Specification. Specifically, Tomcat works very well to run Scout applications. In case you are interested in getting some general context around Tomcat you could start with the Wikipedia article.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>. Then get introduced to its core component &#x201c;Tomcat Catalina&#x201d;.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> before you switch to the official Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
      </div>
      <div class="paragraph">
-      <p>When using this new feature (which is the default configuration now), chunks are automatically created based on size and code usage (imports). Therefore, it is no longer necessary to list every chunk manually in the html file. Instead, Scout automatically inserts the necessary script tags according to the chunks created.</p>
+      <p>This section is not really a step by step download and installation guide. Rather, it points you to the proper places for downloading and installing Tomcat. We recommend to work with Tomcat version 9.0. Start your download from the official download site.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>.</p>
+     </div>
+     <div id="img-tomcat_install" class="imageblock">
+      <div class="content">
+       <img src="images/tomcat_install.png" alt="tomcat install">
+      </div>
+      <div class="title">
+       Figure 5. A successful Tomcat installation.
+      </div>
      </div>
      <div class="paragraph">
-      <p>Have a look at the <a href="https://eclipsescout.github.io/11.0/migration-guide.html#automatic-script-chunks">Migration Guide</a> to learn how to use automatic script chunks.</p>
+      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or deamon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 5</a>.</p>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="new-widgets"><a class="anchor" href="#new-widgets"></a>New Widgets</h2>
-    <div class="sectionbody">
      <div class="sect2">
-      <h3 id="breadcrumb-bar-field"><a class="anchor" href="#breadcrumb-bar-field"></a>Breadcrumb Bar Field</h3>
+      <h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>Platform Specific Instructions</h3>
       <div class="paragraph">
-       <p>The new breadcrumb bar widget allows to display a hierarchical structure in a horizontal style. Each breadcrumb item is clickable. The breadcrumb can automatically shrink if there is not enough place available.</p>
+       <p>According to the Tomcat setup installation for Windows.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup> download the package &#x201c;32-bit/64-bit Windows Service Installer&#x201d; from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, start the installer and accept the proposed default settings.</p>
       </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/new_widget_breadcrumb_bar_field.png" alt="new widget breadcrumb bar field">
-       </div>
+      <div class="paragraph">
+       <p>For installing Tomcat on OS X systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the installation guide.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> provided by Wolf Paulus.</p>
+      </div>
+      <div class="paragraph">
+       <p>For Linux systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the description of the Unix setup.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> to run Tomcat as a deamon. If you use Ubuntu, you may want to follow the tutorial.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup> for downloading and installing Tomcat provided by Lars Vogel.</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="chart"><a class="anchor" href="#chart"></a>Chart</h3>
+      <h3 id="apx-tomcat_dirs_and_files"><a class="anchor" href="#apx-tomcat_dirs_and_files"></a>Directories and Files</h3>
       <div class="paragraph">
-       <p>The new chart widget allows visualizing data in several ways. It can be used inside a chart field, a chart tile or as a plain chart. The supported chart types include bar (vertical and horizontal), line, bar and line combined, pie, doughnut, bubble, polar area, radar, fulfillment, salesfunnel, speedo and venn. All charts support different color schemes and themes.</p>
+       <p>Tomcat&#x2019;s installation directory follows the same organisation on all platforms. Here, we will only introduce the most important aspects of the Tomcat installation for the purpose of this book.</p>
       </div>
-      <div class="imageblock">
+      <div id="img-tomcat_install_dir" class="imageblock">
        <div class="content">
-        <img src="images/pieTileDefault.png" alt="pieTileDefault">
+        <img src="images/tomcat_install_dir.png" alt="tomcat install dir">
        </div>
        <div class="title">
-        Figure 1. Pie chart in a tile using the default color scheme.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/comboBarLineTileAlternativeInverted.png" alt="comboBarLineTileAlternativeInverted">
-       </div>
-       <div class="title">
-        Figure 2. Combined bar line chart in a tile using the alternative inverted color scheme.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/bubbleRainbowDarkTheme.png" alt="bubbleRainbowDarkTheme">
-       </div>
-       <div class="title">
-        Figure 3. Bubble chart using the rainbow color scheme and the dark theme.
+        Figure 6. The organisation of a Tomcat installation including specific files of interest. As an example, the &#x201c;Hello World&#x201d; server application is contained in subdirectory
+        <code>webapps</code>.
        </div>
       </div>
       <div class="paragraph">
-       <p>There are numerous styling options, e.g. tension and fill for line and radar charts, stacked bar charts or a transparent and a checkable mode.</p>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/lineDefaultTensionFill.png" alt="lineDefaultTensionFill">
-       </div>
-       <div class="title">
-        Figure 4. Tension and fill for line charts.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/barHorizontalRainbowStacked.png" alt="barHorizontalRainbowStacked">
-       </div>
-       <div class="title">
-        Figure 5. Stacked horizontal bar chart.
-       </div>
-      </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/bubbleTileDefaultCheckable.png" alt="bubbleTileDefaultCheckable">
-       </div>
-       <div class="title">
-        Figure 6. Checkable bubble chart.
-       </div>
+       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 6</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this book. In the <span class="filename">bin</span> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
       </div>
       <div class="paragraph">
-       <p>For more information about the chart widget see <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html#chart">Technical Guide for Scout JS</a>.</p>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="widget-enhancements"><a class="anchor" href="#widget-enhancements"></a>Widget Enhancements</h2>
-    <div class="sectionbody">
-     <div class="sect2">
-      <h3 id="table-new-property-compact"><a class="anchor" href="#table-new-property-compact"></a>Table: New Property 'compact'</h3>
-      <div class="paragraph">
-       <p>It is now possible to set a table into compact mode. This will hide all columns and insert a new one containing the content of every other column. The content will be displayed vertically which means the cells of a row will be put below each other. This new style is perfect if the width of the table is limited (e.g. on a mobile phone).</p>
+       <p>The <span class="filename">conf</span> folder contains a set of XML and property configuration files. The file <span class="filename">server.xml</span> represents Tomcat&#x2019;s main configuration file. It is used to configure general web server aspects such as the port number of its connectors for the client server communication. For the default setup, port number 8080 is used for the communication between clients applications and the web server. The file <span class="filename">tomcat-users.xml</span> contains a database of users, passwords and associated roles.</p>
       </div>
       <div class="paragraph">
-       <p>The table uses a so called <code>ITableCompactHandler</code> which does the conversion. If you don&#x2019;t like how the content is arranged you can easily control the conversion by adjusting the compact handler or by writing your own one.</p>
+       <p>Folder <span class="filename">logs</span> contains various logfiles of Tomcat itself as well as host and web application log files. TODO [7.0] jbr: need to provide more on what is where (especially application logs and exact setup to generate log entries from scout apps).</p>
       </div>
-      <div class="imageblock">
-       <div class="content">
-        <img src="images/table_compact.png" alt="table compact">
-       </div>
+      <div class="paragraph">
+       <p>The folder needed for deploying web applications into a Tomcat instance is called <span class="filename">webapps</span>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 6</a> in the case of the file <span class="filename">helloworld_server.war</span>.</p>
+      </div>
+      <div class="paragraph">
+       <p>Finally, folder <span class="filename">work</span> contains Tomcat&#x2019;s runtime &#x201c;cache&#x201d; for the deployed web applications. It is organized according to the hierarchy of the engine (Catalina), the host (localhost), and the web application (<span class="filename">helloworld_server</span>).</p>
       </div>
      </div>
      <div class="sect2">
-      <h3 id="menu-new-property-textposition"><a class="anchor" href="#menu-new-property-textposition"></a>Menu: New Property 'textPosition'</h3>
+      <h3 id="apx-tomcat_manager_app"><a class="anchor" href="#apx-tomcat_manager_app"></a>The Tomcat Manager Application</h3>
       <div class="paragraph">
-       <p>With this new property, the text can be positioned on the bottom of the icon</p>
+       <p>Tomcat comes with the pre installed &#x201c;Manager App&#x201d;. This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications. A comprehensive documentation for the &#x201c;Manager App&#x201d; can be found under the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>. Here we only show how to start this application from the hompage of a running Tomcat installation.</p>
       </div>
-      <div class="imageblock">
+      <div class="paragraph">
+       <p>To access this application you can switch to the &#x201c;Manager App&#x201d; with a click on the corresponding button on the right hand side. The button can be found on the right hand side of <a href="#img-tomcat_install">Figure 5</a>. Before you are allowed to start this application, you need to provide username and password credentials of a user associated with Tomcats&#x2019;s <span class="java">manager-gui</span> role.</p>
+      </div>
+      <div id="lst-tomcat.users" class="listingblock">
+       <div class="title">
+        Listing 1. Tomcat Users configuration file.
+       </div>
        <div class="content">
-        <img src="images/menu_text_bottom.png" alt="menu text bottom">
+        <pre class="highlight"><code class="language-xml" data-lang="xml">  &lt;tomcat-users&gt;
+    &lt;!--
+    NOTE: By default, no user is included in the "manager-gui" role required
+    to operate the "/manager/html" web application. If you wish to use it
+    you must define such a user - the username and password are arbitrary.
+    --&gt;
+    &lt;user name="admin" password="s3cret" roles="manager-gui"/&gt;
+  &lt;/tomcat-users&gt;</code></pre>
        </div>
       </div>
-     </div>
-     <div class="sect2">
-      <h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
-      <div class="sect3">
-       <h4 id="support-maximized"><a class="anchor" href="#support-maximized"></a>Support Maximized</h4>
-       <div class="paragraph">
-        <p>The property <code>maximized</code> is an old property but had no effect with the current UI. With Scout 11 the property will finally be interpreted. Setting it to true on a dialog will make it use the whole screen.</p>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="new-property-headervisible"><a class="anchor" href="#new-property-headervisible"></a>New Property 'headerVisible'</h4>
-       <div class="paragraph">
-        <p>With this new property you can manually control whether the header should be visible. Until now it depended on the display hint property. This could be useful when embedding the form in a popup or another widget.</p>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="widget"><a class="anchor" href="#widget"></a>Widget</h3>
-      <div class="sect3">
-       <h4 id="execfocusin-execfocusout"><a class="anchor" href="#execfocusin-execfocusout"></a>ExecFocusIn, ExecFocusOut</h4>
-       <div class="paragraph">
-        <p>Every widget now supports focus events. You can either use a <code>WidgetListener</code> or implement <code>execFocusIn</code> and <code>execFocusOut</code>. The currently focused element is available using <code>IDesktop#getFocusedElement()</code>.</p>
-       </div>
-       <div class="paragraph">
-        <p>Important: the focus tracking needs to be explicitly activated before it can be used. Just call <code>IDesktop#setTrackFocus(true)</code> to do so. And remember to deactivate it again once you don&#x2019;t need it anymore to not produce unnecessary requests.</p>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="new-method-reveal"><a class="anchor" href="#new-method-reveal"></a>New Method 'reveal'</h4>
-       <div class="paragraph">
-        <p>If a widget in a scrollable container is out of view you can bring it back by using the new reveal method.</p>
-       </div>
-       <div class="paragraph">
-        <p>On JS side this method was already available, now it is available for Scout Classic apps as well.</p>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="tabbox-support-for-labelvisible"><a class="anchor" href="#tabbox-support-for-labelvisible"></a>TabBox: Support for LabelVisible</h3>
       <div class="paragraph">
-       <p>Setting the property <code>labelVisible</code> to false will now hide the tab area. Until now, the property had no effect for tab boxes.</p>
+       <p>To get at user names and passwords you can open file <span class="filename">tomcat-users.xml</span> located in Tomcat&#x2019;s <span class="filename">conf</span> directory. In this file the active users with their passwords and associated roles are stored. See Listing <a href="#lst-tomcat.users">Listing 1</a> for an example. From the content of this file, we see that user <span class="java">admin</span> has password <span class="java">s3cret</span> and also posesses the necessary role <span class="java">manager-gui</span> to access the &#x201c;Manager App&#x201d;. If file <span class="filename">tomcat-users.xml</span> does not contain any user with this role, you can simply add new user with this role to the existing users. Alternatively, you also can add the necessary role to an existing user. Just append a comma to the existing right(s) followed by the string <span class="java">manager-gui</span>. Note that you will need to restart your Tomcat application after adapting the content of file <span class="filename">tomcat-users.xml</span>.</p>
+      </div>
+      <div class="paragraph">
+       <p>With working credentials you can now start the &#x201c;Manager App&#x201d; as described the &#x201c;Hello World&#x201d; tutorial in <a href="#sec-helloworld_deploy"><em>Deploy to Tomcat</em></a>.</p>
       </div>
       <div class="admonitionblock tip">
        <table>
         <tbody>
          <tr>
           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/deploy_to_tomcat/src/docs/deploy-to-tomcat.adoc">sources</a> on GitHub. </td>
          </tr>
         </tbody>
        </table>
       </div>
      </div>
     </div>
+   </div>
+  </div>
+  <div id="footnotes">
+   <hr>
+   <div class="footnote" id="_footnotedef_1">
+    <a href="#_footnoteref_1">1</a>. Web application Archive (WAR):
+    <a href="http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29" class="bare">http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29</a>
+   </div>
+   <div class="footnote" id="_footnotedef_2">
+    <a href="#_footnoteref_2">2</a>. TLS:
+    <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" class="bare">https://en.wikipedia.org/wiki/Transport_Layer_Security</a>
+   </div>
+   <div class="footnote" id="_footnotedef_3">
+    <a href="#_footnoteref_3">3</a>. Apache Tomcat Wikipedia:
+    <a href="http://en.wikipedia.org/wiki/Apache_Tomcat" class="bare">http://en.wikipedia.org/wiki/Apache_Tomcat</a>.
+   </div>
+   <div class="footnote" id="_footnotedef_4">
+    <a href="#_footnoteref_4">4</a>. Mulesoft&#x2019;s introduction to Tomcat Catalina:
+    <a href="http://www.mulesoft.com/tomcat-catalina" class="bare">http://www.mulesoft.com/tomcat-catalina</a>.
+   </div>
+   <div class="footnote" id="_footnotedef_5">
+    <a href="#_footnoteref_5">5</a>. Apache Tomcat Homepage:
+    <a href="http://tomcat.apache.org/" class="bare">http://tomcat.apache.org/</a>
+   </div>
+   <div class="footnote" id="_footnotedef_6">
+    <a href="#_footnoteref_6">6</a>. Tomcat 9 Downloads:
+    <a href="http://tomcat.apache.org/download-90.cgi" class="bare">http://tomcat.apache.org/download-90.cgi</a>
+   </div>
+   <div class="footnote" id="_footnotedef_7">
+    <a href="#_footnoteref_7">7</a>. Tomcat Windows setup:
+    <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows</a>
+   </div>
+   <div class="footnote" id="_footnotedef_8">
+    <a href="#_footnoteref_8">8</a>. Installing Tomcat on OS X:
+    <a href="http://wolfpaulus.com/journal/mac/tomcat8" class="bare">http://wolfpaulus.com/journal/mac/tomcat8</a>
+   </div>
+   <div class="footnote" id="_footnotedef_9">
+    <a href="#_footnoteref_9">9</a>. Tomcat Linux setup:
+    <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon</a>
+   </div>
+   <div class="footnote" id="_footnotedef_10">
+    <a href="#_footnoteref_10">10</a>. Apache Tomcat Tutorial:
+    <a href="http://www.vogella.com/articles/ApacheTomcat/article.html" class="bare">http://www.vogella.com/articles/ApacheTomcat/article.html</a>
+   </div>
+   <div class="footnote" id="_footnotedef_11">
+    <a href="#_footnoteref_11">11</a>. The Tomcat Manager Application:
+    <a href="http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html</a>.
    </div>
   </div>
   <div id="footer">

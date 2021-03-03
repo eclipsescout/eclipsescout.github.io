@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Asciidoctor 2.0.10">
   <meta name="author" content="Scout Team">
-  <title>The Scout JS Full Stack Tutorial</title>
+  <title>"Hello Scout JS Full Stack" Tutorial</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
   <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,7 +440,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  </head>
  <body class="article">
   <div id="header">
-   <h1>The Scout JS Full Stack Tutorial</h1>
+   <h1>"Hello Scout JS Full Stack" Tutorial</h1>
    <div class="details">
     <span id="author" class="author">Scout Team</span>
     <br>
@@ -450,21 +450,170 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
    </div>
   </div>
   <div id="content">
-   <div class="admonitionblock tip">
-    <table>
-     <tbody>
-      <tr>
-       <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-       <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/helloscout_js_fullstack/src/docs/helloscout-js-full-stack.adoc">sources</a> on GitHub. </td>
-      </tr>
-     </tbody>
-    </table>
+   <div class="sect1">
+    <h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>This section guides you through the installation of the tools required to start the <code>Hello Scout JS Full Stack</code> application.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="node-js"><a class="anchor" href="#node-js"></a>Node.js</h3>
+      <div class="paragraph">
+       <p>First Node.js needs to be installed as Scout uses it to built web assets. So if you don&#x2019;t have it yet, visit the <a href="https://nodejs.org/dist/latest-v12.x/">Node.js download site</a>, choose the package for your platform and install it on your local machine.</p>
+      </div>
+      <div class="paragraph">
+       <p>Make sure the Node.js installation is on the PATH. You can verify it by using your command line:</p>
+      </div>
+      <div class="listingblock">
+       <div class="content">
+        <pre>c:\&gt; node --version
+v12.21.0</pre>
+       </div>
+      </div>
+      <div class="sect3">
+       <h4 id="add-pnpm"><a class="anchor" href="#add-pnpm"></a>Add pnpm</h4>
+       <div class="paragraph">
+        <p>Scout uses <a href="https://pnpm.js.org/">pnpm 5</a> as package manager. Therefore install it into your Node installation by using your command line:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre>npm install -g pnpm</pre>
+        </div>
+       </div>
+       <div class="paragraph">
+        <p>and verify that it was installed successfully with:</p>
+       </div>
+       <div class="listingblock">
+        <div class="content">
+         <pre>c:\&gt; pnpm -v
+5.18.2</pre>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="intellij"><a class="anchor" href="#intellij"></a>IntelliJ</h3>
+      <div class="paragraph">
+       <p>If you have no IntelliJ yet, you can download it from the <a href="https://www.jetbrains.com/idea/download">JetBrains download site</a>. We recommend selecting the Ultimate edition to have the JavaScript support included in the IDE. There is a 30-day trial if you have no licence.</p>
+      </div>
+      <div class="paragraph">
+       <p>Install or extract the package and run it using <code>bin/idea64.exe</code> in the installation folder. Follow the instructions until the <code>Welcome to IntelliJ IDEA</code> screen is shown.</p>
+      </div>
+      <div class="paragraph">
+       <p>On the left-hand-side switch to <code>Plugins</code>, search for <code>Eclipse Scout</code> and press the green <code>Install</code> button. In case a <code>Third-Party Plugins Privacy Notice</code> is shown, press <code>Accept</code>. The Scout plugin does not collect or process any personal data. Afterwards the plugin is being downloaded from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout">JetBrains Marketplace</a> and installed locally. As soon as this is completed press the <code>Restart IDE</code> button.</p>
+      </div>
+      <div class="paragraph">
+       <p>The same can also be achieved by navigating to <code>File | Settings | Plugins</code> in case you already have an existing IntelliJ project running.</p>
+      </div>
+      <div class="paragraph">
+       <p>Congratulations! You have successfully set up IntelliJ IDEA for Scout development.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="create-the-hello-scout-js-full-stack-project"><a class="anchor" href="#create-the-hello-scout-js-full-stack-project"></a>Create the Hello Scout JS Full Stack Project</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Start your IntelliJ (if not already running) and in the <code>Welcome to IntelliJ IDEA</code> screen click on <code>New Project</code>. The <code>New Project</code> wizard starts. The same can also be achieved from the menu <code>File | New | Project&#x2026;&#x200b;</code> if an existing project is open already.</p>
+     </div>
+     <div class="paragraph">
+      <p>On the left hand side select the <code>Scout</code> type. You have to enter a <code>Group Id</code>, <code>Artifact Id</code> and a <code>Display Name</code> for your Scout project as shown in <a href="#img-sdk_new_projectjs_wizard_ij">Figure 1</a>. As the created project will make use of <a href="https://maven.apache.org/">Apache Maven</a> please refer to the <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">Maven naming conventions</a> to choose <code>Group Id</code> and <code>Artifact Id</code> for your project. The <code>Display Name</code> is used as the application name presented to the user (e.g. in the browser title bar).</p>
+     </div>
+     <div id="img-sdk_new_projectjs_wizard_ij" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_new_projectjs_ij.png" alt="sdk new projectjs ij">
+      </div>
+      <div class="title">
+       Figure 1. The new Scout project wizard.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>For the <code>Hello Scout JS Full Stack</code> application use <code>helloscoutjs</code> as the artifact id and ensure the user interface programming language is set to <code>JavaScript</code> as sown in <a href="#img-sdk_new_projectjs_wizard_ij">Figure 1</a>. You can keep the other default values. Then click the <b class="button">Next</b> button.</p>
+     </div>
+     <div id="img-sdk_new_projectjs_location_ij" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_new_projectjs_location_ij.png" alt="sdk new projectjs location ij">
+      </div>
+      <div class="title">
+       Figure 2. Specify name and location of the new project.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>On the second page please specify project name and location and press <b class="button">Finish</b>. The Scout plugin then creates the initial project content for you (you will see some Maven build output). Wait until all tasks have completed.</p>
+     </div>
+     <div class="paragraph">
+      <p>Afterwards you will find the created Scout modules in the Project view as shown in <a href="#img-sdk_new_projectjs_initial_helloworld_ij">Figure 3</a>.</p>
+     </div>
+     <div id="img-sdk_new_projectjs_initial_helloworld_ij" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_new_projectjs_initial_helloworld_ij.png" alt="sdk new projectjs initial helloworld ij">
+      </div>
+      <div class="title">
+       Figure 3. The initial set of Maven modules created for the Hello Scout application.
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>The <code>Hello Scout JS Full Stack</code> application&#x2019;s backend accesses a local <a href="https://db.apache.org/derby/">Derby</a> database using <a href="https://www.jooq.org/">jooq</a>. For this to work you first have to setup the local database. This is done be executing the database setup application.</p>
+     </div>
+     <div class="paragraph">
+      <p>For this click the <em class="menu">Add Configuration&#x2026;&#x200b;</em> menu on the top as shown in <a href="#img-start_dbsetup_ij">Figure 4</a>. In the dialog expand the <code>Application</code> type on the left-hand-side, select the prepared run configuration <code>Setup local dev database</code> and confirm with <b class="button">Ok</b>. Then click on the green triangle symbol directly right of the <em class="menu">Add Configuration&#x2026;&#x200b;</em> menu. This will launch the db setup application which creates a new Derby database in the <code>helloscoutjs.app.dev/db</code> folder.</p>
+     </div>
+     <div id="img-start_dbsetup_ij" class="imageblock">
+      <div class="content">
+       <img src="images/sdk_dbsetup_ij.png" alt="sdk dbsetup ij">
+      </div>
+      <div class="title">
+       Figure 4. Selecting the db setup run configuration
+      </div>
+     </div>
+     <div class="paragraph">
+      <p>Now you are ready to start the Scout JS application. This includes downloading the necessary JavaScript dependencies, executing the Java and JavaScript builds and launching the Scout development server. It serves the JavaScript assets to the browser and acts as backend for the REST calls coming from the user interface. You could start each step separately, but for the sake of convenience there is a compound run configuration available which performs all these tasks.</p>
+     </div>
+     <div class="paragraph">
+      <p>To use it switch the run configuration by clicking the run configuration menu on the top again. Now there is no need to open the dialog as the available run configurations are shown in a dropdown menu. Select the <code>launch all</code> compound and run it using the green triangle button.</p>
+     </div>
+     <div class="admonitionblock important">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-important" title="Important"></i> </td>
+         <td class="content"> The JavaScript build could fail in case the installed Node.js could not be found or is too old. In that case follow the instructions in the section <a href="#prerequisites">Prerequisites</a> and check the IntelliJ settings in <code>File | Settings | Languages &amp; Frameworks | Node.js and NPM</code>. </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="paragraph">
+      <p>Once the JS build has been completed (this may take a while for the first time as some dependencies need to be downloaded) and the server has been started, the <code>Hello Scout JS Full Stack</code> application can be accessed by navigating to <a href="http://localhost:8084/" class="bare">http://localhost:8084/</a> in your favorite web browser.</p>
+     </div>
+     <div class="paragraph">
+      <p>The <code>Hello Scout JS Full Stack</code> application is then presented as shown in <a href="#img-start_browser_hellojs_ij">Figure 5</a>.</p>
+     </div>
+     <div id="img-start_browser_hellojs_ij" class="imageblock">
+      <div class="content">
+       <img src="images/run_helloscoutjs_full_stack_in_browser.png" alt="run helloscoutjs full stack in browser">
+      </div>
+      <div class="title">
+       Figure 5. The Hello Scout JS Full Stack application in the browser.
+      </div>
+     </div>
+     <div class="admonitionblock tip">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/helloscout_js_fullstack/src/docs/helloscout-js-fullstack.adoc">sources</a> on GitHub. </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
    </div>
   </div>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-02 18:40:26 +0100
+    <br> Last updated 2021-03-03 18:37:18 +0100
    </div>
   </div>
  </body>
