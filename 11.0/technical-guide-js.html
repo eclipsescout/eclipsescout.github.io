@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Asciidoctor 2.0.10">
-  <meta name="author" content="Scout Team">
   <title>Eclipse Scout JS: Technical Guide</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
   <style>
@@ -442,10 +441,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="header">
    <h1>Eclipse Scout JS: Technical Guide</h1>
    <div class="details">
-    <span id="author" class="author">Scout Team</span>
-    <br>
-    <span id="email" class="email"><a href="mailto:scout-dev@eclipse.org">scout-dev@eclipse.org</a></span>
-    <br>
     <span id="revnumber">version 11.0</span>
    </div>
    <div id="toc" class="toc2">
@@ -521,6 +516,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
    </div>
   </div>
   <div id="content">
+   <div id="preamble">
+    <div class="sectionbody">
+     <div class="admonitionblock note">
+      <table>
+       <tbody>
+        <tr>
+         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.] </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
    <div class="sect1">
     <h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
     <div class="sectionbody">
@@ -532,23 +541,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <tbody>
         <tr>
          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> This is the guide to Scout JS, the JavaScript part of Eclipse Scout.<br> If you are looking for the Java part please see the <a href="https://eclipsescout.github.io/10.0/technical-guide.html">technical guide for Scout Classic</a>.<br> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
+         <td class="content"> This is the guide to Scout JS, the JavaScript part of Eclipse Scout.<br> If you are looking for the Java part please see the <a href="https://eclipsescout.github.io/11.0/technical-guide.html">technical guide for Scout Classic</a>.<br> </td>
         </tr>
        </tbody>
       </table>
-     </div>
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> This document is not complete. Contributions are welcome!<br> If you like to help, please create a pull request. Thanks!<br> </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <div class="paragraph">
-      <p>+ Repository:<br> <a href="https://github.com/bsi-software/org.eclipse.scout.docs" class="bare">https://github.com/bsi-software/org.eclipse.scout.docs</a></p>
      </div>
     </div>
    </div>
@@ -616,10 +612,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         Listing 1. Creating a string field
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">var field = scout.create('StringField', {
-  parent: groupBox,
-  label: 'hello',
-  value: 'world'
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: groupBox,
+  <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+  <span class="key">value</span>: <span class="string"><span class="delimiter">'</span><span class="content">world</span><span class="delimiter">'</span></span>
 });</code></pre>
        </div>
       </div>
@@ -631,7 +627,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         Listing 2. Creating a field considering the name space
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">scout.create('mynamespace.StringField', {})</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript">scout.create(<span class="string"><span class="delimiter">'</span><span class="content">mynamespace.StringField</span><span class="delimiter">'</span></span>, {})</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -654,17 +650,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         Listing 3. A form model defined declaratively
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">export default {
-  title: 'My first form!',
-  rootGroupBox: {
-    id: 'MainBox',
-    objectType: 'GroupBox',
-    fields: [
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">My first form!</span><span class="delimiter">'</span></span>,
+  <span class="key">rootGroupBox</span>: {
+    <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MainBox</span><span class="delimiter">'</span></span>,
+    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>,
+    <span class="key">fields</span>: [
       {
-        id: 'MyStringField',
-        objectType: 'StringField',
-        label: 'hello',
-        value: 'world'
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MyStringField</span><span class="delimiter">'</span></span>,
+        <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+        <span class="key">value</span>: <span class="string"><span class="delimiter">'</span><span class="content">world</span><span class="delimiter">'</span></span>
       }
     ]
   }
@@ -676,8 +672,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">import model from './MyFormModel';
-var form = scout.create('Form', $.extend({parent: desktop}, model));</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> model from <span class="string"><span class="delimiter">'</span><span class="content">./MyFormModel</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> form = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>, <span class="predefined">$</span>.extend({<span class="key">parent</span>: desktop}, model));</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -696,11 +692,11 @@ var form = scout.create('Form', $.extend({parent: desktop}, model));</code></pre
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {Form} from '@eclipse-scout/core';
-import model from './MyFormModel';
-export default class MyForm extends Form {
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Form} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> model from <span class="string"><span class="delimiter">'</span><span class="content">./MyFormModel</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyForm <span class="reserved">extends</span> Form {
   _jsonModel() {
-    return model;
+    <span class="keyword">return</span> model;
   }
 }</code></pre>
        </div>
@@ -710,7 +706,7 @@ export default class MyForm extends Form {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">var form = scout.create('example.MyForm', {parent: desktop});</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> form = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">example.MyForm</span><span class="delimiter">'</span></span>, {<span class="key">parent</span>: desktop});</code></pre>
        </div>
       </div>
       <div class="sect3">
@@ -720,8 +716,8 @@ export default class MyForm extends Form {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {FormField} from '@eclipse-scout/core';
-export default {
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {FormField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> {
   ...
   labelPosition: FormField.LabelPosition.TOP
 }</code></pre>
@@ -732,7 +728,7 @@ export default {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-json" data-lang="json">{ "labelPosition": 2 }</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="json">{ <span class="key"><span class="delimiter">"</span><span class="content">labelPosition</span><span class="delimiter">"</span></span>: <span class="integer">2</span> }</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -740,7 +736,7 @@ export default {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-json" data-lang="json">{ "labelPosition": "${const:ON_FIELD}" }</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="json">{ <span class="key"><span class="delimiter">"</span><span class="content">labelPosition</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">${const:ON_FIELD}</span><span class="delimiter">"</span></span> }</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -758,17 +754,17 @@ export default {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">export default {
-  title: 'My first form!',
-  rootGroupBox: {
-    id: 'MainBox',
-    objectType: 'GroupBox',
-    fields: [
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">My first form!</span><span class="delimiter">'</span></span>,
+  <span class="key">rootGroupBox</span>: {
+    <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MainBox</span><span class="delimiter">'</span></span>,
+    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>,
+    <span class="key">fields</span>: [
       {
-        id: 'MyStringField',
-        objectType: 'StringField',
-        label: 'hello',
-        value: 'world'
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">MyStringField</span><span class="delimiter">'</span></span>,
+        <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+        <span class="key">value</span>: <span class="string"><span class="delimiter">'</span><span class="content">world</span><span class="delimiter">'</span></span>
       }
     ]
   }
@@ -795,13 +791,13 @@ export default {
         Listing 4. Accessing and modifying a property
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">var field = scout.create('StringField', {
-  parent: parent,
-  labelVisible: false
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> field = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
+  <span class="key">labelVisible</span>: <span class="predefined-constant">false</span>
 });
-console.log(field.labelVisible); // prints false
-field.setLabelVisible(true);
-console.log(field.labelVisible); // prints true</code></pre>
+console.log(field.labelVisible); <span class="comment">// prints false</span>
+field.setLabelVisible(<span class="predefined-constant">true</span>);
+console.log(field.labelVisible); <span class="comment">// prints true</span></code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -831,17 +827,17 @@ console.log(field.labelVisible); // prints true</code></pre>
         Listing 5. Creating the string field automatically using a widget property
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {StringField} from '@eclipse-scout/core';
-var groupBox = scout.create('GroupBox', {
-  parent: parent,
-  label: 'My Group Box',
-  fields: [{
-    objectType: 'StringField',
-    label: 'My String Field'
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {StringField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> groupBox = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
+  <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">My Group Box</span><span class="delimiter">'</span></span>,
+  <span class="key">fields</span>: [{
+    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
+    <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">My String Field</span><span class="delimiter">'</span></span>
   }]
 });
-// check if the string field was created as well
-console.log(groupBox.fields[0] instanceof StringField);</code></pre>
+<span class="comment">// check if the string field was created as well</span>
+console.log(groupBox.fields[<span class="integer">0</span>] <span class="keyword">instanceof</span> StringField);</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -892,14 +888,14 @@ console.log(groupBox.fields[0] instanceof StringField);</code></pre>
         Listing 6. Handling an event
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">var button = scout.create('Button', {
-  parent: parent,
-  label: 'click me!'
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
+  <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>
 });
 button.render();
-button.on('click', function(event) {
-  // print 'Button "click me!" has been clicked'
-  console.log('Button "' + event.source.label + '" has been clicked');
+button.on(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
+  <span class="comment">// print 'Button "click me!" has been clicked'</span>
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Button "</span><span class="delimiter">'</span></span> + event.source.label + <span class="string"><span class="delimiter">'</span><span class="content">" has been clicked</span><span class="delimiter">'</span></span>);
 });</code></pre>
        </div>
       </div>
@@ -911,18 +907,18 @@ button.on('click', function(event) {
         Listing 7. Stop listening for an event
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">var button = scout.create('Button', {
-  parent: parent,
-  label: 'click me!'
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
+  <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>
 });
 button.render();
-var callback = function(event) {
-  // print 'Button "click me!" has been clicked'
-  console.log('Button "' + event.source.label + '" has been clicked');
-  // stop listening, a second click won't print anything
-  button.off('click', callback);
+<span class="keyword">var</span> <span class="function">callback</span> = <span class="keyword">function</span>(event) {
+  <span class="comment">// print 'Button "click me!" has been clicked'</span>
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Button "</span><span class="delimiter">'</span></span> + event.source.label + <span class="string"><span class="delimiter">'</span><span class="content">" has been clicked</span><span class="delimiter">'</span></span>);
+  <span class="comment">// stop listening, a second click won't print anything</span>
+  button.off(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, callback);
 };
-button.on('click', callback);</code></pre>
+button.on(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, callback);</code></pre>
        </div>
       </div>
       <div class="admonitionblock note">
@@ -943,12 +939,12 @@ button.on('click', callback);</code></pre>
         Listing 8. Triggering an event with custom event data
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">trigger('click', {
-  foo: 'bar'
+        <pre class="CodeRay highlight"><code data-lang="javascript">trigger(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, {
+  <span class="key">foo</span>: <span class="string"><span class="delimiter">'</span><span class="content">bar</span><span class="delimiter">'</span></span>
 });
-// callback
-function(event) {
-  console.log(event.foo); // prints bar
+<span class="comment">// callback</span>
+<span class="keyword">function</span>(event) {
+  console.log(event.foo); <span class="comment">// prints bar</span>
 }</code></pre>
        </div>
       </div>
@@ -977,20 +973,20 @@ function(event) {
          Listing 9. Example of a property change event
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {Button} from '@eclipse-scout/core';
-var button = scout.create('Button', {
-  parent: parent,
-  label: 'click me!',
-  displayStyle: Button.DisplayStyle.TOGGLE
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Button} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> button = scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: parent,
+  <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">click me!</span><span class="delimiter">'</span></span>,
+  <span class="key">displayStyle</span>: Button.DisplayStyle.TOGGLE
 });
 button.render();
-button.on('propertyChange', function(event) {
-  if (event.propertyName === 'selected') {
-    // prints 'Property selected changed from false to true'
-    console.log('Property ' + event.propertyName + ' changed from ' + event.oldValue + ' to ' + event.newValue);
+button.on(<span class="string"><span class="delimiter">'</span><span class="content">propertyChange</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
+  <span class="keyword">if</span> (event.propertyName === <span class="string"><span class="delimiter">'</span><span class="content">selected</span><span class="delimiter">'</span></span>) {
+    <span class="comment">// prints 'Property selected changed from false to true'</span>
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">Property </span><span class="delimiter">'</span></span> + event.propertyName + <span class="string"><span class="delimiter">'</span><span class="content"> changed from </span><span class="delimiter">'</span></span> + event.oldValue + <span class="string"><span class="delimiter">'</span><span class="content"> to </span><span class="delimiter">'</span></span> + event.newValue);
   }
 });
-button.setSelected(true);</code></pre>
+button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
         </div>
        </div>
        <div class="admonitionblock note">
@@ -1008,11 +1004,11 @@ button.setSelected(true);</code></pre>
          Listing 10. Listen for specific property changes
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">button.on('propertyChange:selected', function(event) {
-  // This listener is only executed when the 'selected' property changes
-  console.log('Property ' + event.propertyName + ' changed from ' + event.oldValue + ' to ' + event.newValue);
+         <pre class="CodeRay highlight"><code data-lang="javascript">button.on(<span class="string"><span class="delimiter">'</span><span class="content">propertyChange:selected</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(event) {
+  <span class="comment">// This listener is only executed when the 'selected' property changes</span>
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Property </span><span class="delimiter">'</span></span> + event.propertyName + <span class="string"><span class="delimiter">'</span><span class="content"> changed from </span><span class="delimiter">'</span></span> + event.oldValue + <span class="string"><span class="delimiter">'</span><span class="content"> to </span><span class="delimiter">'</span></span> + event.newValue);
 });
-button.setSelected(true);</code></pre>
+button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
         </div>
        </div>
       </div>
@@ -1090,8 +1086,8 @@ button.setSelected(true);</code></pre>
        Listing 11. Creating an object without the ObjectFactory
       </div>
       <div class="content">
-       <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {Table} from '@eclipse-scout/core';
-var table = new Table();
+       <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Table} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">var</span> table = <span class="keyword">new</span> Table();
 table.init(model);</code></pre>
       </div>
      </div>
@@ -1106,10 +1102,10 @@ table.init(model);</code></pre>
        Listing 12. Adding a new object factory registration
       </div>
       <div class="content">
-       <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {CustomTable} from './index';
-import {scout} from '@eclipse-scout/core';
+       <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {CustomTable} from <span class="string"><span class="delimiter">'</span><span class="content">./index</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> {scout} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 scout.addObjectFactories({
-  'Table': () =&gt; new CustomTable()
+  <span class="key"><span class="delimiter">'</span><span class="content">Table</span><span class="delimiter">'</span></span>: () =&gt; <span class="keyword">new</span> CustomTable()
 });</code></pre>
       </div>
      </div>
@@ -1233,12 +1229,12 @@ scout.addObjectFactories({
          Listing 13. Example of a formatter
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">function formatter(value, defaultFormatter) {
-  var displayText = defaultFormatter(value);
-  if (!displayText) {
-    return displayText;
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">formatter</span>(value, defaultFormatter) {
+  <span class="keyword">var</span> displayText = defaultFormatter(value);
+  <span class="keyword">if</span> (!displayText) {
+    <span class="keyword">return</span> displayText;
   }
-  return displayText.match(/.{4}/g).join('-');
+  <span class="keyword">return</span> displayText.match(<span class="regexp"><span class="delimiter">/</span><span class="content">.{4}</span><span class="delimiter">/</span><span class="modifier">g</span></span>).join(<span class="string"><span class="delimiter">'</span><span class="content">-</span><span class="delimiter">'</span></span>);
 };</code></pre>
         </div>
        </div>
@@ -1253,7 +1249,7 @@ scout.addObjectFactories({
          Listing 14. Setting the formatter
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">field.setFormatter(formatter);</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="javascript">field.setFormatter(formatter);</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -1264,11 +1260,11 @@ scout.addObjectFactories({
          Listing 15. Example of a parser
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">function parser(displayText, defaultParser) {
-  if (displayText) {
-    return displayText.replace(/-/g, '');
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">parser</span>(displayText, defaultParser) {
+  <span class="keyword">if</span> (displayText) {
+    <span class="keyword">return</span> displayText.replace(<span class="regexp"><span class="delimiter">/</span><span class="content">-</span><span class="delimiter">/</span><span class="modifier">g</span></span>, <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
   }
-  return defaultParser(displayText);
+  <span class="keyword">return</span> defaultParser(displayText);
 };</code></pre>
         </div>
        </div>
@@ -1280,7 +1276,7 @@ scout.addObjectFactories({
          Listing 16. Setting the parser
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">field.setParser(parser);</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="javascript">field.setParser(parser);</code></pre>
         </div>
        </div>
       </div>
@@ -1297,12 +1293,12 @@ scout.addObjectFactories({
          Listing 17. Example of a validator
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {dates} from '@eclipse-scout/core';
-function(value) {
-  if (dates.isSameDay(value, new Date())) {
-    throw 'You are not allowed to select the current date';
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {dates} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="keyword">function</span>(value) {
+  <span class="keyword">if</span> (dates.isSameDay(value, <span class="keyword">new</span> Date())) {
+    <span class="keyword">throw</span> <span class="string"><span class="delimiter">'</span><span class="content">You are not allowed to select the current date</span><span class="delimiter">'</span></span>;
   }
-  return value;
+  <span class="keyword">return</span> value;
 };</code></pre>
         </div>
        </div>
@@ -1328,7 +1324,7 @@ function(value) {
          Listing 18. Adding a validator
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">field.addValidator(validator);</code></pre>
+         <pre class="CodeRay highlight"><code data-lang="javascript">field.addValidator(validator);</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -1392,7 +1388,7 @@ function(value) {
        Listing 19. Include a LESS file
       </div>
       <div class="content">
-       <pre class="highlight"><code class="language-css" data-lang="css">@import "style/colors";</code></pre>
+       <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">style/colors</span><span class="delimiter">"</span></span>;</code></pre>
       </div>
      </div>
      <div class="paragraph">
@@ -1406,7 +1402,7 @@ function(value) {
        Listing 20. Changing the background color of the navigation
       </div>
       <div class="content">
-       <pre class="highlight"><code class="language-css" data-lang="css">@navigation-background-color: @palette-red-4;</code></pre>
+       <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@navigation-background-color</span>: <span class="directive">@palette-red-4</span>;</code></pre>
       </div>
      </div>
      <div class="paragraph">
@@ -1474,8 +1470,8 @@ function(value) {
         Listing 21. myapp-theme.less
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-css" data-lang="css">@import "~@eclipse-scout/core/src/index";
-@import "./src/main/js/index";</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">~@eclipse-scout/core/src/index</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">./src/main/js/index</span><span class="delimiter">"</span></span>;</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1489,13 +1485,13 @@ function(value) {
         Listing 22. Excerpt from Scout core index.less
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-css" data-lang="css">...
-@import "desktop/Desktop";
-@import "desktop/DesktopLogo";
-@import "desktop/DesktopDense";
-@import "desktop/bench/DesktopBench";
-@import "desktop/bench/BenchColumn";
-@import "style/colors";
+        <pre class="CodeRay highlight"><code data-lang="css">...
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/Desktop</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/DesktopLogo</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/DesktopDense</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/bench/DesktopBench</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/bench/BenchColumn</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">style/colors</span><span class="delimiter">"</span></span>;
 ...</code></pre>
        </div>
       </div>
@@ -1507,8 +1503,8 @@ function(value) {
         Listing 23. myapp-theme-dark.less
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-css" data-lang="css">@import "~@eclipse-scout/core/src/index-dark";
-@import "./src/main/js/index-dark";</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">~@eclipse-scout/core/src/index-dark</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">./src/main/js/index-dark</span><span class="delimiter">"</span></span>;</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1519,9 +1515,9 @@ function(value) {
         Listing 24. index-dark.less
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-css" data-lang="css">@import "index";
-@import "style/colors-dark";
-@import "desktop/outline/Outline-dark";</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">index</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">style/colors-dark</span><span class="delimiter">"</span></span>;
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">desktop/outline/Outline-dark</span><span class="delimiter">"</span></span>;</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -1532,13 +1528,13 @@ function(value) {
         Listing 25. Excerpt from Scout core index-dark.less
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-css" data-lang="css">...
-@palette-gray-1: #e4e4e6;
-@palette-gray-2: #999999;
-@palette-gray-2-1: #79818d;
-@palette-gray-3: #495465;
-@palette-gray-4: #394051;
-@palette-gray-5: #2d3748;
+        <pre class="CodeRay highlight"><code data-lang="css">...
+<span class="directive">@palette-gray-1</span>: <span class="color">#e4e4e6</span>;
+<span class="directive">@palette-gray-2</span>: <span class="color">#999999</span>;
+<span class="directive">@palette-gray-2-1</span>: <span class="color">#79818d</span>;
+<span class="directive">@palette-gray-3</span>: <span class="color">#495465</span>;
+<span class="directive">@palette-gray-4</span>: <span class="color">#394051</span>;
+<span class="directive">@palette-gray-5</span>: <span class="color">#2d3748</span>;
 ...</code></pre>
        </div>
       </div>
@@ -1555,13 +1551,13 @@ function(value) {
          Listing 26. Excerpt from webpack.config.js
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">config.entry = {
-  'bsicrm': './src/main/js/myapp.js',
-  'login': './src/main/js/login.js',
-  'logout': './src/main/js/logout.js',
-  'myapp-theme': './src/main/js/myapp-theme.less',
-  'myapp-theme-dark': './src/main/js/myapp-theme-dark.less',
-  'myapp-theme-rainbow': './src/main/js/myapp-theme-rainbow.less'
+         <pre class="CodeRay highlight"><code data-lang="js">config.entry = {
+  <span class="key"><span class="delimiter">'</span><span class="content">bsicrm</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp.js</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">login</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/login.js</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">logout</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/logout.js</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">myapp-theme</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp-theme.less</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">myapp-theme-dark</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp-theme-dark.less</span><span class="delimiter">'</span></span>,
+  <span class="key"><span class="delimiter">'</span><span class="content">myapp-theme-rainbow</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/myapp-theme-rainbow.less</span><span class="delimiter">'</span></span>
 };</code></pre>
         </div>
        </div>
@@ -1585,10 +1581,10 @@ function(value) {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {Extension, StringField} from '@eclipse-scout/core';
-export default class MyExtension extends Extension {
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {Extension, StringField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyExtension <span class="reserved">extends</span> Extension {
   init() {
-    this.extend(StringField.prototype, '_init');
+    <span class="local-variable">this</span>.extend(StringField.prototype, <span class="string"><span class="delimiter">'</span><span class="content">_init</span><span class="delimiter">'</span></span>);
   }
 }</code></pre>
        </div>
@@ -1598,12 +1594,12 @@ export default class MyExtension extends Extension {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">_init(model) {
-  // Call the original _init() method of the StringField class
-  this.next(model);
-  // Extend the instance with a new property called bar with the value foo
-  // -&gt; EVERY string field now has this new property
-  this.extended.setProperty('bar', 'foo');
+        <pre class="CodeRay highlight"><code data-lang="javascript">_init(model) {
+  <span class="comment">// Call the original _init() method of the StringField class</span>
+  <span class="local-variable">this</span>.next(model);
+  <span class="comment">// Extend the instance with a new property called bar with the value foo</span>
+  <span class="comment">// -&gt; EVERY string field now has this new property</span>
+  <span class="local-variable">this</span>.extended.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">bar</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>);
 }</code></pre>
        </div>
       </div>
@@ -1631,11 +1627,11 @@ export default class MyExtension extends Extension {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {App, Extension} from '@eclipse-scout/core';
-export default class MyApp extends App {
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {App, Extension} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyApp <span class="reserved">extends</span> App {
   _installExtensions() {
     Extension.install([
-      'custom.MyExtension'
+      <span class="string"><span class="delimiter">'</span><span class="content">custom.MyExtension</span><span class="delimiter">'</span></span>
     ]);
   }
 }</code></pre>
@@ -1721,7 +1717,7 @@ export default class MyApp extends App {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-text" data-lang="text">{
+        <pre class="CodeRay highlight"><code data-lang="text">{
   "queryBy": "ALL|TEXT|KEY|REC", # lookup type, as requested by the client
   "text": "foo", # [optional] only set when queryBy=TEXT, contains the requested search text
   "key": "123",  # [optional] only set when queryBy=KEY, contains the key of the requested lookup row
@@ -1757,7 +1753,7 @@ export default class MyApp extends App {
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-text" data-lang="text">{
+        <pre class="CodeRay highlight"><code data-lang="text">{
   "type": "lookupByAll|Text|Key|Rec", # lookup type
   "text": "foo", # [optional] only set when type=lookupByText, contains the requested search text
   "key": "123",  # [optional] only set when type=lookupByKey, contains the key of the requested lookup row
@@ -2065,11 +2061,11 @@ export default class MyApp extends App {
          Listing 27. Importing ES6 modules
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">import PersonFormModel from './PersonFormModel';
-import {Form, models} from '@eclipse-scout/core';
-export default class PersonForm extends Form {
+         <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> PersonFormModel from <span class="string"><span class="delimiter">'</span><span class="content">./PersonFormModel</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> {Form, models} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> PersonForm <span class="reserved">extends</span> Form {
   _jsonModel() {
-    return models.get(PersonFormModel);
+    <span class="keyword">return</span> models.get(PersonFormModel);
   }
 }</code></pre>
         </div>
@@ -2089,9 +2085,9 @@ export default class PersonForm extends Form {
         Listing 28. Using Scout&#x2019;s default Webpack config
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+        <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 module.exports = (env, args) =&gt; {
-  return baseConfig(env, args);
+  <span class="keyword">return</span> baseConfig(env, args);
 };</code></pre>
        </div>
       </div>
@@ -2117,15 +2113,15 @@ module.exports = (env, args) =&gt; {
          Listing 29. Using Scout&#x2019;s default Webpack config
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+         <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 module.exports = (env, args) =&gt; {
   const config = baseConfig(env, args);
   config.entry = {
-    'helloworld': './src/main/js/index.js',
-    'helloworld-theme': './src/main/js/theme.less',
-    'helloworld-theme-dark': './src/main/js/theme-dark.less'
+    <span class="key"><span class="delimiter">'</span><span class="content">helloworld</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/index.js</span><span class="delimiter">'</span></span>,
+    <span class="key"><span class="delimiter">'</span><span class="content">helloworld-theme</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/theme.less</span><span class="delimiter">'</span></span>,
+    <span class="key"><span class="delimiter">'</span><span class="content">helloworld-theme-dark</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/main/js/theme-dark.less</span><span class="delimiter">'</span></span>
   };
-  return config;
+  <span class="keyword">return</span> config;
 };</code></pre>
         </div>
        </div>
@@ -2146,10 +2142,10 @@ module.exports = (env, args) =&gt; {
          Listing 30. Specifying res folders
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-javascript" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+         <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 module.exports = (env, args) =&gt; {
-  args.resDirArray = ['src/main/resources/WebContent', 'node_modules/@eclipse-scout/core/res'];
-  return baseConfig(env, args);
+  args.resDirArray = [<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/WebContent</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">node_modules/@eclipse-scout/core/res</span><span class="delimiter">'</span></span>];
+  <span class="keyword">return</span> baseConfig(env, args);
 };</code></pre>
         </div>
        </div>
@@ -2186,8 +2182,8 @@ module.exports = (env, args) =&gt; {
         Listing 31. karma.conf.js
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/karma-defaults');
-module.exports = config =&gt; baseConfig(config, './src/test/js/test-index.js');</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/karma-defaults</span><span class="delimiter">'</span></span>);
+module.exports = config =&gt; baseConfig(config, <span class="string"><span class="delimiter">'</span><span class="content">./src/test/js/test-index.js</span><span class="delimiter">'</span></span>);</code></pre>
        </div>
       </div>
       <div class="paragraph">
@@ -2201,8 +2197,8 @@ module.exports = config =&gt; baseConfig(config, './src/test/js/test-index.js');
         Listing 32. karma.conf.js
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-javascript" data-lang="javascript">import {JasmineScout} from '@eclipse-scout/core/src/testing/index';
-let context = require.context('./', true, /[sS]pec\.js$/);
+        <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {JasmineScout} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core/src/testing/index</span><span class="delimiter">'</span></span>;
+let context = require.context(<span class="string"><span class="delimiter">'</span><span class="content">./</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>, <span class="regexp"><span class="delimiter">/</span><span class="content">[sS]pec</span><span class="content">\.</span><span class="content">js$</span><span class="delimiter">/</span></span>);
 JasmineScout.runTestSuite(context);</code></pre>
        </div>
       </div>
@@ -2226,17 +2222,17 @@ JasmineScout.runTestSuite(context);</code></pre>
         Listing 33. CLI dependency and scripts in package.json
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-JSON" data-lang="JSON">"scripts": {
-  "testserver:start": "scout-scripts test-server:start",
-  "testserver:stop": "scout-scripts test-server:stop",
-  "test:ci": "scout-scripts test:ci",
-  "build:dev": "scout-scripts build:dev",
-  "build:prod": "scout-scripts build:prod",
-  "build:all": "scout-scripts build:dev &amp;&amp; scout-scripts build:prod",
-  "build:dev:watch": "scout-scripts build:dev:watch"
+        <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">"</span><span class="content">scripts</span><span class="delimiter">"</span></span>: {
+  <span class="key"><span class="delimiter">"</span><span class="content">testserver:start</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts test-server:start</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">testserver:stop</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts test-server:stop</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">test:ci</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts test:ci</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">build:dev</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts build:dev</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">build:prod</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts build:prod</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">build:all</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts build:dev &amp;&amp; scout-scripts build:prod</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">build:dev:watch</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts build:dev:watch</span><span class="delimiter">"</span></span>
 },
-"devDependencies": {
-  "@eclipse-scout/cli": "10.0.0"
+<span class="key"><span class="delimiter">"</span><span class="content">devDependencies</span><span class="delimiter">"</span></span>: {
+  <span class="key"><span class="delimiter">"</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">10.0.0</span><span class="delimiter">"</span></span>
 }</code></pre>
        </div>
       </div>
@@ -2420,9 +2416,9 @@ JasmineScout.runTestSuite(context);</code></pre>
         Listing 34. ESLint Dependencies
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-JSON" data-lang="JSON">"devDependencies": {
-  "@eclipse-scout/eslint-config": "10.0.0",
-  "eslint": "6.8.0"
+        <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">"</span><span class="content">devDependencies</span><span class="delimiter">"</span></span>: {
+  <span class="key"><span class="delimiter">"</span><span class="content">@eclipse-scout/eslint-config</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">10.0.0</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">eslint</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">6.8.0</span><span class="delimiter">"</span></span>
 }</code></pre>
        </div>
       </div>
@@ -2434,7 +2430,7 @@ JasmineScout.runTestSuite(context);</code></pre>
         Listing 35. .eslintrc.js
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">module.exports = {
+        <pre class="CodeRay highlight"><code data-lang="JavaScript">module.exports = {
   extends: '@eclipse-scout'
 };</code></pre>
        </div>
@@ -2463,7 +2459,7 @@ JasmineScout.runTestSuite(context);</code></pre>
         Listing 36. Disabling the linebreak rule
        </div>
        <div class="content">
-        <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">  rules: {
+        <pre class="CodeRay highlight"><code data-lang="JavaScript">  rules: {
     'linebreak-style': 'off'
   }</code></pre>
        </div>
@@ -2494,7 +2490,7 @@ JasmineScout.runTestSuite(context);</code></pre>
          Listing 37. Class properties
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">class Example {
+         <pre class="CodeRay highlight"><code data-lang="JavaScript">class Example {
   static anObject = {};
 }</code></pre>
         </div>
@@ -2507,9 +2503,9 @@ JasmineScout.runTestSuite(context);</code></pre>
          Listing 38. Babel-eslint dependencies
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-JSON" data-lang="JSON">"devDependencies": {
-  "babel-eslint": "10.0.3",
-  "eslint-plugin-babel": "5.3.0"
+         <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">"</span><span class="content">devDependencies</span><span class="delimiter">"</span></span>: {
+  <span class="key"><span class="delimiter">"</span><span class="content">babel-eslint</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">10.0.3</span><span class="delimiter">"</span></span>,
+  <span class="key"><span class="delimiter">"</span><span class="content">eslint-plugin-babel</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">5.3.0</span><span class="delimiter">"</span></span>
 }</code></pre>
         </div>
        </div>
@@ -2521,7 +2517,7 @@ JasmineScout.runTestSuite(context);</code></pre>
          Listing 39. Babel-eslint configuration
         </div>
         <div class="content">
-         <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">  plugins: ['babel'],
+         <pre class="CodeRay highlight"><code data-lang="JavaScript">  plugins: ['babel'],
   parser: 'babel-eslint'</code></pre>
         </div>
        </div>
@@ -2654,8 +2650,8 @@ JasmineScout.runTestSuite(context);</code></pre>
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="highlight"><code class="language-js" data-lang="js">...
-export {default as FlipCardField} from './flipcard/FlipCardField';
+          <pre class="CodeRay highlight"><code data-lang="js">...
+<span class="reserved">export</span> {<span class="keyword">default</span> as FlipCardField} from <span class="string"><span class="delimiter">'</span><span class="content">./flipcard/FlipCardField</span><span class="delimiter">'</span></span>;
 ...</code></pre>
          </div>
         </div>
@@ -2667,8 +2663,8 @@ export {default as FlipCardField} from './flipcard/FlipCardField';
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="highlight"><code class="language-css" data-lang="css">...
-@import "flipcard/FlipCardField";
+          <pre class="CodeRay highlight"><code data-lang="css">...
+<span class="directive">@import</span> <span class="string"><span class="delimiter">"</span><span class="content">flipcard/FlipCardField</span><span class="delimiter">"</span></span>;
 ...</code></pre>
          </div>
         </div>
@@ -2686,20 +2682,20 @@ export {default as FlipCardField} from './flipcard/FlipCardField';
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="highlight"><code class="language-js" data-lang="js">import {FormField} from '@eclipse-scout/core';
-export default class FlipCardField extends FormField {
+          <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {FormField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> FlipCardField <span class="reserved">extends</span> FormField {
   _render() {
-    // Create the container
-    this.addContainer(this.$parent, 'flip-card-field');
-    // Add a label
-    this.addLabel();
-    // Create the actual field. This will be your flip card.
-    var $field = this.$parent.appendDiv('content');
-    // add the field to the form field.
-    this.addField($field);
-    // Add other required form field elements
-    this.addMandatoryIndicator();
-    this.addStatus();
+    <span class="comment">// Create the container</span>
+    <span class="local-variable">this</span>.addContainer(<span class="local-variable">this</span>.<span class="predefined">$parent</span>, <span class="string"><span class="delimiter">'</span><span class="content">flip-card-field</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Add a label</span>
+    <span class="local-variable">this</span>.addLabel();
+    <span class="comment">// Create the actual field. This will be your flip card.</span>
+    <span class="keyword">var</span> <span class="predefined">$field</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
+    <span class="comment">// add the field to the form field.</span>
+    <span class="local-variable">this</span>.addField(<span class="predefined">$field</span>);
+    <span class="comment">// Add other required form field elements</span>
+    <span class="local-variable">this</span>.addMandatoryIndicator();
+    <span class="local-variable">this</span>.addStatus();
   };
 }</code></pre>
          </div>
@@ -2712,32 +2708,32 @@ export default class FlipCardField extends FormField {
         </div>
         <div class="listingblock">
          <div class="content">
-          <pre class="highlight"><code class="language-js" data-lang="js">{
-  id: "hellojs.HelloForm",
+          <pre class="CodeRay highlight"><code data-lang="js">{
+  <span class="key">id</span>: <span class="string"><span class="delimiter">"</span><span class="content">hellojs.HelloForm</span><span class="delimiter">"</span></span>,
   ...
   rootGroupBox: {
     ...
     fields: [
       {
-        id: 'DetailBox',
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">DetailBox</span><span class="delimiter">'</span></span>,
         ...
         fields: [
           {
-            id: 'NameField',
+            <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">NameField</span><span class="delimiter">'</span></span>,
             ...
           },
           <i class="conum" data-value="1"></i><b>(1)</b>
           {
-            id: 'FlipCardField',
-            objectType: 'hellojs.FlipCardField',
-            label: 'Flip the card',
-            gridDataHints: {
-              h: 5,
-              weightY: 0
+            <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">FlipCardField</span><span class="delimiter">'</span></span>,
+            <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">hellojs.FlipCardField</span><span class="delimiter">'</span></span>,
+            <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Flip the card</span><span class="delimiter">'</span></span>,
+            <span class="key">gridDataHints</span>: {
+              <span class="key">h</span>: <span class="integer">5</span>,
+              <span class="key">weightY</span>: <span class="integer">0</span>
             }
           },
           {
-            id: 'GreetButton',
+            <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">GreetButton</span><span class="delimiter">'</span></span>,
             ...
           }
         ]
@@ -2781,65 +2777,65 @@ export default class FlipCardField extends FormField {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">import {FormField} from '@eclipse-scout/core';
-export default class FlipCardField extends FormField {
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {FormField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> FlipCardField <span class="reserved">extends</span> FormField {
     constructor() {
-    super();
-      this.$card = null;
-      this.$front = null;
-      this.$back = null;
-      this.flipped = false;
-      this.frontImage = null;
-      this.backImage = null;
+    <span class="reserved">super</span>();
+      <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.flipped = <span class="predefined-constant">false</span>;
+      <span class="local-variable">this</span>.frontImage = <span class="predefined-constant">null</span>;
+      <span class="local-variable">this</span>.backImage = <span class="predefined-constant">null</span>;
   }
   _render() {
-    // Create the container
-    this.addContainer(this.$parent, 'flip-card-field');
-    // Add a label
-    this.addLabel();
-    // Create the actual field <i class="conum" data-value="1"></i><b>(1)</b>
-    var $field = this.$parent.appendDiv('content');
-    // Create the card inside the field
-    this.$card = $field.appendDiv('card')
-      .on('mousedown', this._onCardMouseDown.bind(this)); //(2)
-    this.$front = this.$card.appendDiv('front');
-    this.$back = this.$card.appendDiv('back');
-    // Add the field to the form field. It will be available as this.$field.
-    this.addField($field);
-    // Add other required form field elements
-    this.addMandatoryIndicator();
-    this.addStatus();
+    <span class="comment">// Create the container</span>
+    <span class="local-variable">this</span>.addContainer(<span class="local-variable">this</span>.<span class="predefined">$parent</span>, <span class="string"><span class="delimiter">'</span><span class="content">flip-card-field</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Add a label</span>
+    <span class="local-variable">this</span>.addLabel();
+    <span class="comment">// Create the actual field </span><i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">var</span> <span class="predefined">$field</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Create the card inside the field</span>
+    <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined">$field</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">card</span><span class="delimiter">'</span></span>)
+      .on(<span class="string"><span class="delimiter">'</span><span class="content">mousedown</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>._onCardMouseDown.bind(<span class="local-variable">this</span>)); <span class="comment">//(2)</span>
+    <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="local-variable">this</span>.<span class="predefined">$card</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">front</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="local-variable">this</span>.<span class="predefined">$card</span>.appendDiv(<span class="string"><span class="delimiter">'</span><span class="content">back</span><span class="delimiter">'</span></span>);
+    <span class="comment">// Add the field to the form field. It will be available as this.$field.</span>
+    <span class="local-variable">this</span>.addField(<span class="predefined">$field</span>);
+    <span class="comment">// Add other required form field elements</span>
+    <span class="local-variable">this</span>.addMandatoryIndicator();
+    <span class="local-variable">this</span>.addStatus();
   }
   _renderProperties() { <i class="conum" data-value="3"></i><b>(3)</b>
-    super._renderProperties();
-    this._renderFrontImage();
-    this._renderBackImage();
-    this._renderFlipped();
+    <span class="reserved">super</span>._renderProperties();
+    <span class="local-variable">this</span>._renderFrontImage();
+    <span class="local-variable">this</span>._renderBackImage();
+    <span class="local-variable">this</span>._renderFlipped();
   }
   _renderFrontImage() {
-    if (this.frontImage) {
-      this.$front.append('&lt;img src=\"' + this.frontImage + '\"&gt;');
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.frontImage) {
+      <span class="local-variable">this</span>.<span class="predefined">$front</span>.append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;img src=</span><span class="content">\"</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.frontImage + <span class="string"><span class="delimiter">'</span><span class="content">\"</span><span class="content">&gt;</span><span class="delimiter">'</span></span>);
     }
   }
   _renderBackImage() {
-    if (this.backImage) {
-      this.$back.append('&lt;img src=\"' + this.backImage + '\"&gt;');
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.backImage) {
+      <span class="local-variable">this</span>.<span class="predefined">$back</span>.append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;img src=</span><span class="content">\"</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.backImage + <span class="string"><span class="delimiter">'</span><span class="content">\"</span><span class="content">&gt;</span><span class="delimiter">'</span></span>);
     }
   }
   _remove() { <i class="conum" data-value="4"></i><b>(4)</b>
-    super._remove();
-    this.$card = null;
-    this.$front = null;
-    this.$back = null;
+    <span class="reserved">super</span>._remove();
+    <span class="local-variable">this</span>.<span class="predefined">$card</span> = <span class="predefined-constant">null</span>;
+    <span class="local-variable">this</span>.<span class="predefined">$front</span> = <span class="predefined-constant">null</span>;
+    <span class="local-variable">this</span>.<span class="predefined">$back</span> = <span class="predefined-constant">null</span>;
   }
   _onCardMouseDown() { <i class="conum" data-value="2"></i><b>(2)</b>
-    this.setFlipped(!this.flipped);
+    <span class="local-variable">this</span>.setFlipped(!<span class="local-variable">this</span>.flipped);
   }
   setFlipped(flipped) {
-    this.setProperty('flipped', flipped);
+    <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">flipped</span><span class="delimiter">'</span></span>, flipped);
   }
   _renderFlipped() {
-    this.$card.toggleClass('flipped', this.flipped);
+    <span class="local-variable">this</span>.<span class="predefined">$card</span>.toggleClass(<span class="string"><span class="delimiter">'</span><span class="content">flipped</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>.flipped);
   }
 }</code></pre>
         </div>
@@ -2871,41 +2867,10 @@ export default class FlipCardField extends FormField {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">export default {
-  id: 'hellojs.HelloForm',
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">hellojs.HelloForm</span><span class="delimiter">'</span></span>,
   ...
-  rootGroupBox': {
-    ...
-    fields: [
-      {
-        id: 'DetailBox',
-        ...
-        fields: [
-          {
-            id: 'NameField',
-            ...
-          },
-          <i class="conum" data-value="1"></i><b>(1)</b>
-          {
-            id: 'FlipCardField',
-            objectType: 'hellojs.FlipCardField',
-            label: 'Flip the card',
-            frontImage: 'img/card-back.jpg',
-            backImage: 'img/card-front.jpg',
-            gridDataHints: {
-              h: 5,
-              weightY: 0
-            }
-          },
-          {
-            id: 'GreetButton',
-            ...
-          }
-        ]
-      }
-    ]
-  }
-}</code></pre>
+  rootGroupBox<span class="string"><span class="delimiter">'</span><span class="content">: { ... fields: [ { id: </span><span class="delimiter">'</span></span>DetailBox<span class="string"><span class="delimiter">'</span><span class="content">, ... fields: [ { id: </span><span class="delimiter">'</span></span>NameField<span class="string"><span class="delimiter">'</span><span class="content">, ... }, <i class="conum" data-value="1"></i><b>(1)</b> { id: </span><span class="delimiter">'</span></span>FlipCardField<span class="string"><span class="delimiter">'</span><span class="content">, objectType: </span><span class="delimiter">'</span></span>hellojs.FlipCardField<span class="string"><span class="delimiter">'</span><span class="content">, label: </span><span class="delimiter">'</span></span>Flip the card<span class="string"><span class="delimiter">'</span><span class="content">, frontImage: </span><span class="delimiter">'</span></span>img/card-back.jpg<span class="string"><span class="delimiter">'</span><span class="content">, backImage: </span><span class="delimiter">'</span></span>img/card-front.jpg<span class="string"><span class="delimiter">'</span><span class="content">, gridDataHints: { h: 5, weightY: 0 } }, { id: </span><span class="delimiter">'</span></span>GreetButton<span class="string"><span class="delimiter">'</span><span class="content">, ... } ] } ] } }</span></span></code></pre>
         </div>
        </div>
        <div class="colist arabic">
@@ -2923,29 +2888,29 @@ export default class FlipCardField extends FormField {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-css" data-lang="css">.flip-card-field {
-  .card {
-    position: absolute;
-    cursor: pointer;
-    height: 100%;
-    width: 152px;
-    transition: transform 1s; <i class="conum" data-value="1"></i><b>(1)</b>
-    transform-style: preserve-3d;
-    &amp;.flipped {
-      transform: rotateY( 180deg );
+         <pre class="CodeRay highlight"><code data-lang="css"><span class="class">.flip-card-field</span> {
+  .<span class="key">card</span> {
+    <span class="key">position</span>: <span class="value">absolute</span>;
+    <span class="key">cursor</span>: <span class="value">pointer</span>;
+    <span class="key">height</span>: <span class="float">100%</span>;
+    <span class="key">width</span>: <span class="float">152px</span>;
+    <span class="key">transition</span>: <span class="value">transform</span> <span class="float">1s</span>; <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="key">transform-style</span>: <span class="value">preserve-3d</span>;
+    <span class="error">&amp;</span>.<span class="key">flipped</span> {
+      <span class="key">transform</span>: <span class="error">r</span><span class="error">o</span><span class="error">t</span><span class="error">a</span><span class="error">t</span><span class="error">e</span><span class="error">Y</span>( <span class="float">180deg</span> );
     }
-    &amp; &gt; div {
-      display: block;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      backface-visibility: hidden; <i class="conum" data-value="2"></i><b>(2)</b>
-      &amp;.back {
-        transform: rotateY( 180deg ); <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="error">&amp;</span> &gt; <span class="key">div</span> {
+      <span class="key">display</span>: <span class="value">block</span>;
+      <span class="key">height</span>: <span class="float">100%</span>;
+      <span class="key">width</span>: <span class="float">100%</span>;
+      <span class="key">position</span>: <span class="value">absolute</span>;
+      <span class="key">backface-visibility</span>: <span class="value">hidden</span>; <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="error">&amp;</span>.<span class="key">back</span> {
+        <span class="key">transform</span>: <span class="error">r</span><span class="error">o</span><span class="error">t</span><span class="error">a</span><span class="error">t</span><span class="error">e</span><span class="error">Y</span>( <span class="float">180deg</span> ); <i class="conum" data-value="3"></i><b>(3)</b>
       }
-      &amp; &gt; img {
-        height: 100%;
-        width: 100%;
+      <span class="error">&amp;</span> &gt; <span class="key">img</span> {
+        <span class="key">height</span>: <span class="float">100%</span>;
+        <span class="key">width</span>: <span class="float">100%</span>;
       }
     }
   }
@@ -2999,8 +2964,8 @@ export default class FlipCardField extends FormField {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">scout.create('Chart', {
-  parent: this
+         <pre class="CodeRay highlight"><code data-lang="js">scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Chart</span><span class="delimiter">'</span></span>, {
+  <span class="key">parent</span>: <span class="local-variable">this</span>
 });</code></pre>
         </div>
        </div>
@@ -3099,22 +3064,22 @@ export default class FlipCardField extends FormField {
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">let data = {
-  axes: [
-    [{label: 'Jan.'}, {label: 'Feb.'}, {label: 'Mar.'}, {label: 'Apr.'}, {label: 'May'}, {label: 'Jun.'}, {label: 'Jul.'}, {label: 'Aug.'}, {label: 'Sept.'}, {label: 'Oct.'}, {label: 'Nov.'}, {label: 'Dec.'}]
+         <pre class="CodeRay highlight"><code data-lang="js">let data = {
+  <span class="key">axes</span>: [
+    [{<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Jan.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Feb.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Mar.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Apr.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">May</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Jun.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Jul.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Aug.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Sept.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Oct.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Nov.</span><span class="delimiter">'</span></span>}, {<span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Dec.</span><span class="delimiter">'</span></span>}]
   ],
-  chartValueGroups: [
+  <span class="key">chartValueGroups</span>: [
     {
-      groupName: 'Vanilla',
-      values: [0, 0, 0, 94, 162, 465, 759, 537, 312, 106, 0, 0]
+      <span class="key">groupName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Vanilla</span><span class="delimiter">'</span></span>,
+      <span class="key">values</span>: [<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">94</span>, <span class="integer">162</span>, <span class="integer">465</span>, <span class="integer">759</span>, <span class="integer">537</span>, <span class="integer">312</span>, <span class="integer">106</span>, <span class="integer">0</span>, <span class="integer">0</span>]
     },
     {
-      groupName: 'Chocolate',
-      values: [0, 0, 0, 81, 132, 243, 498, 615, 445, 217, 0, 0]
+      <span class="key">groupName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Chocolate</span><span class="delimiter">'</span></span>,
+      <span class="key">values</span>: [<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">81</span>, <span class="integer">132</span>, <span class="integer">243</span>, <span class="integer">498</span>, <span class="integer">615</span>, <span class="integer">445</span>, <span class="integer">217</span>, <span class="integer">0</span>, <span class="integer">0</span>]
     },
     {
-      groupName: 'Strawberry',
-      values: [0, 0, 0, 59, 182, 391, 415, 261, 75, 31, 0, 0]
+      <span class="key">groupName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Strawberry</span><span class="delimiter">'</span></span>,
+      <span class="key">values</span>: [<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">59</span>, <span class="integer">182</span>, <span class="integer">391</span>, <span class="integer">415</span>, <span class="integer">261</span>, <span class="integer">75</span>, <span class="integer">31</span>, <span class="integer">0</span>, <span class="integer">0</span>]
     }
   ]
 };
@@ -3140,10 +3105,10 @@ chart.setData(data);</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">let config = {
-  type: Chart.Type.BAR,
-  options: {
-    colorScheme: colorSchemes.ColorSchemeId.RAINBOW
+         <pre class="CodeRay highlight"><code data-lang="js">let config = {
+  <span class="key">type</span>: Chart.Type.BAR,
+  <span class="key">options</span>: {
+    <span class="key">colorScheme</span>: colorSchemes.ColorSchemeId.RAINBOW
   }
 };
 chart.setConfig(config);</code></pre>
@@ -3159,21 +3124,21 @@ chart.setConfig(config);</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">data.chartValueGroups[0].colorHexValue = '#fdf2d1';
-data.chartValueGroups[1].colorHexValue = '#94654c';
-data.chartValueGroups[2].colorHexValue = '#f89fa1';
-config.options.autoColor = false;
+         <pre class="CodeRay highlight"><code data-lang="js">data.chartValueGroups[<span class="integer">0</span>].colorHexValue = <span class="string"><span class="delimiter">'</span><span class="content">#fdf2d1</span><span class="delimiter">'</span></span>;
+data.chartValueGroups[<span class="integer">1</span>].colorHexValue = <span class="string"><span class="delimiter">'</span><span class="content">#94654c</span><span class="delimiter">'</span></span>;
+data.chartValueGroups[<span class="integer">2</span>].colorHexValue = <span class="string"><span class="delimiter">'</span><span class="content">#f89fa1</span><span class="delimiter">'</span></span>;
+config.options.autoColor = <span class="predefined-constant">false</span>;
 config.options.scales = {
-  xAxes: [{
-    scaleLabel: {
-      display: true,
-      labelString: 'Month'
+  <span class="key">xAxes</span>: [{
+    <span class="key">scaleLabel</span>: {
+      <span class="key">display</span>: <span class="predefined-constant">true</span>,
+      <span class="key">labelString</span>: <span class="string"><span class="delimiter">'</span><span class="content">Month</span><span class="delimiter">'</span></span>
     }
   }],
-  yAxes: [{
-    scaleLabel: {
-      display: true,
-      labelString: 'Scoops'
+  <span class="key">yAxes</span>: [{
+    <span class="key">scaleLabel</span>: {
+      <span class="key">display</span>: <span class="predefined-constant">true</span>,
+      <span class="key">labelString</span>: <span class="string"><span class="delimiter">'</span><span class="content">Scoops</span><span class="delimiter">'</span></span>
     }
   }]
 };
@@ -3191,11 +3156,11 @@ chart.setConfig(config);</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">config.options = $.extend(true, {}, config.options, {
-  clickable: true,
-  checkable: true,
-  legend: {
-    clickable: true
+         <pre class="CodeRay highlight"><code data-lang="js">config.options = <span class="predefined">$</span>.extend(<span class="predefined-constant">true</span>, {}, config.options, {
+  <span class="key">clickable</span>: <span class="predefined-constant">true</span>,
+  <span class="key">checkable</span>: <span class="predefined-constant">true</span>,
+  <span class="key">legend</span>: {
+    <span class="key">clickable</span>: <span class="predefined-constant">true</span>
   }
 });
 chart.setConfig(config);</code></pre>
@@ -3220,19 +3185,19 @@ chart.setConfig(config);</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">let clickHandler = event =&gt; {
+         <pre class="CodeRay highlight"><code data-lang="js">let clickHandler = event =&gt; {
   let clickObject = event.data,
     datasetIndex = clickObject.datasetIndex,
     dataIndex = clickObject.dataIndex,
     xIndex = clickObject.xIndex,
     yIndex = clickObject.yIndex;
-  console.log('Segment clicked\n' +
-    ' - datasetIndex: ' + datasetIndex + '\n' +
-    ' - dataIndex: ' + dataIndex + '\n' +
-    ' - xIndex: ' + xIndex + '\n' +
-    ' - yIndex: ' + yIndex);
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">Segment clicked</span><span class="content">\n</span><span class="delimiter">'</span></span> +
+    <span class="string"><span class="delimiter">'</span><span class="content"> - datasetIndex: </span><span class="delimiter">'</span></span> + datasetIndex + <span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span> +
+    <span class="string"><span class="delimiter">'</span><span class="content"> - dataIndex: </span><span class="delimiter">'</span></span> + dataIndex + <span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span> +
+    <span class="string"><span class="delimiter">'</span><span class="content"> - xIndex: </span><span class="delimiter">'</span></span> + xIndex + <span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span> +
+    <span class="string"><span class="delimiter">'</span><span class="content"> - yIndex: </span><span class="delimiter">'</span></span> + yIndex);
 };
-chart.on('valueClick', clickHandler);</code></pre>
+chart.on(<span class="string"><span class="delimiter">'</span><span class="content">valueClick</span><span class="delimiter">'</span></span>, clickHandler);</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -3246,41 +3211,41 @@ chart.on('valueClick', clickHandler);</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-css" data-lang="css">@chart-grey-1: #191919;
-@chart-grey-2: #4C4C4C;
-@chart-grey-3: #737373;
-@chart-grey-4: #999999;
-@chart-grey-5: #BFBFBF;
-@chart-grey-6: #D8D8D8;
-.color-scheme-grey &gt; .bubble-chart {
-  &amp; &gt; .elements {
-    &gt; .label {
-      fill: black;
+         <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@chart-grey-1</span>: <span class="color">#191919</span>;
+<span class="directive">@chart-grey-2</span>: <span class="color">#4C4C4C</span>;
+<span class="directive">@chart-grey-3</span>: <span class="color">#737373</span>;
+<span class="directive">@chart-grey-4</span>: <span class="color">#999999</span>;
+<span class="directive">@chart-grey-5</span>: <span class="color">#BFBFBF</span>;
+<span class="directive">@chart-grey-6</span>: <span class="color">#D8D8D8</span>;
+<span class="class">.color-scheme-grey</span> &gt; <span class="class">.bubble-chart</span> {
+  <span class="error">&amp;</span> &gt; .<span class="key">elements</span> {
+    &gt; .<span class="key">label</span> {
+      <span class="key">fill</span>: <span class="value">black</span>;
     }
-    &gt; .grid {
-      fill: lightslategrey;
+    &gt; .<span class="key">grid</span> {
+      <span class="key">fill</span>: <span class="value">lightslategrey</span>;
     }
-    &gt; .tooltip-background {
-      fill: slategrey;
+    &gt; .<span class="key">tooltip-background</span> {
+      <span class="key">fill</span>: <span class="value">slategrey</span>;
     }
-    &gt; .tooltip-border {
-      fill: black;
+    &gt; .<span class="key">tooltip-border</span> {
+      <span class="key">fill</span>: <span class="value">black</span>;
     }
-    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
-      @opacity: 20);
-    #scout.chart-auto-stroke-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6);
-    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
-      @opacity: 35, @additional-classes: ~".hover");
-    #scout.chart-auto-stroke-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
-      @darken: 10, @additional-classes: ~".hover");
-    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
-      @additional-classes: ~".legend");
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>,
+      <span class="directive">@opacity</span>: <span class="float">20</span>);
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">s</span><span class="error">t</span><span class="error">r</span><span class="error">o</span><span class="error">k</span><span class="error">e</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>);
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>,
+      <span class="directive">@opacity</span>: <span class="float">35</span>, <span class="directive">@additional-classes</span>: ~<span class="string"><span class="delimiter">"</span><span class="content">.hover</span><span class="delimiter">"</span></span>);
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">s</span><span class="error">t</span><span class="error">r</span><span class="error">o</span><span class="error">k</span><span class="error">e</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>,
+      <span class="directive">@darken</span>: <span class="float">10</span>, <span class="directive">@additional-classes</span>: ~<span class="string"><span class="delimiter">"</span><span class="content">.hover</span><span class="delimiter">"</span></span>);
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>,
+      <span class="directive">@additional-classes</span>: ~<span class="string"><span class="delimiter">"</span><span class="content">.legend</span><span class="delimiter">"</span></span>);
   }
-  &amp;.checkable &gt; .elements {
-    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
-      @additional-classes: ~".checked");
-    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
-      @darken: 10, @additional-classes: ~".hover.checked");
+  <span class="error">&amp;</span>.<span class="key">checkable</span> &gt; .<span class="key">elements</span> {
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>,
+      <span class="directive">@additional-classes</span>: ~<span class="string"><span class="delimiter">"</span><span class="content">.checked</span><span class="delimiter">"</span></span>);
+    <span class="error">#</span><span class="key">scout</span>.<span class="error">c</span><span class="error">h</span><span class="error">a</span><span class="error">r</span><span class="error">t</span><span class="error">-</span><span class="error">a</span><span class="error">u</span><span class="error">t</span><span class="error">o</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">l</span><span class="error">o</span><span class="error">r</span><span class="error">s</span>(<span class="directive">@chart-grey-1</span>, <span class="directive">@chart-grey-2</span>, <span class="directive">@chart-grey-3</span>, <span class="directive">@chart-grey-4</span>, <span class="directive">@chart-grey-5</span>, <span class="directive">@chart-grey-6</span>,
+      <span class="directive">@darken</span>: <span class="float">10</span>, <span class="directive">@additional-classes</span>: ~<span class="string"><span class="delimiter">"</span><span class="content">.hover.checked</span><span class="delimiter">"</span></span>);
   }
 }</code></pre>
         </div>
@@ -3290,10 +3255,10 @@ chart.on('valueClick', clickHandler);</code></pre>
        </div>
        <div class="listingblock">
         <div class="content">
-         <pre class="highlight"><code class="language-js" data-lang="js">let config = {
-  type: Chart.Type.BUBBLE,
-  options: {
-    colorScheme: 'color-scheme-grey'
+         <pre class="CodeRay highlight"><code data-lang="js">let config = {
+  <span class="key">type</span>: Chart.Type.BUBBLE,
+  <span class="key">options</span>: {
+    <span class="key">colorScheme</span>: <span class="string"><span class="delimiter">'</span><span class="content">color-scheme-grey</span><span class="delimiter">'</span></span>
   }
 };</code></pre>
         </div>
@@ -3324,8 +3289,97 @@ chart.on('valueClick', clickHandler);</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-03 18:37:18 +0100
+    <br> Last updated 2021-03-04 18:37:02 +0100
    </div>
   </div>
+  <style>
+/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+pre.CodeRay{background:#f7f7f8}
+.CodeRay .line-numbers{border-right:1px solid currentColor;opacity:.35;padding:0 .5em 0 0}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.75em}
+.CodeRay .line-numbers strong{color:#000}
+table.CodeRay{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.CodeRay td{vertical-align:top;line-height:inherit}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.code{padding:0 0 0 .75em}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+</style>
  </body>
 </html>
