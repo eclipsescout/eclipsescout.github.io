@@ -437,9 +437,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head>
- <body class="article">
+ <body class="book toc2 toc-left">
   <div id="header">
    <h1>Eclipse Scout Migration Guide</h1>
+   <div class="details">
+    <span id="revnumber">version 11.0</span>
+   </div>
+   <div id="toc" class="toc2">
+    <div id="toctitle">
+     Table of Contents
+    </div>
+    <ul class="sectlevel1">
+     <li><a href="#about-this-document">About This Document</a></li>
+     <li><a href="#obtaining-the-latest-version">Obtaining the Latest Version</a>
+      <ul class="sectlevel2">
+       <li><a href="#scout-runtime-for-java">Scout Runtime for Java</a></li>
+       <li><a href="#scout-runtime-for-javascript">Scout Runtime for JavaScript</a></li>
+       <li><a href="#ide-tooling-scout-sdk">IDE Tooling (Scout SDK)</a></li>
+      </ul> </li>
+     <li><a href="#update-the-scout-version-of-an-existing-application">Update the Scout version of an existing application</a></li>
+     <li><a href="#3rd-party-dependency-upgrade-migration">3rd party dependency upgrade migration</a></li>
+     <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
+     <li><a href="#removal-of-module-eclipse-scouttesting">Removal of module <code>@eclipse-scout/testing</code></a></li>
+     <li><a href="#automatic-script-chunks">Automatic Script Chunks</a>
+      <ul class="sectlevel2">
+       <li><a href="#migration-if-you-want-to-use-automatic-chunk-creation-recommended">Migration if you want to use automatic chunk creation (recommended)</a></li>
+       <li><a href="#migration-if-you-dont-want-to-use-automatic-chunks-not-recommended">Migration if you don&#x2019;t want to use automatic chunks (not recommended)</a></li>
+      </ul> </li>
+     <li><a href="#web-resource-resolver">Web Resource Resolver</a></li>
+     <li><a href="#tabbox-new-behavior-of-labelvisible">TabBox: New Behavior of LabelVisible</a></li>
+     <li><a href="#smartcolumns-new-behavior-of-preparelookupcall-events">SmartColumns: New Behavior of PrepareLookupCall Events</a>
+      <ul class="sectlevel2">
+       <li><a href="#new-property-event-row">New property event.row</a></li>
+      </ul> </li>
+     <li><a href="#messagebox-new-behavior-of-doclose">MessageBox: New Behavior of doClose()</a></li>
+     <li><a href="#maven-master-release-profiles">Maven master release profiles</a></li>
+    </ul>
+   </div>
   </div>
   <div id="content">
    <div id="preamble">
@@ -880,7 +914,7 @@ git add "**/pom.xml" "**/package.json"</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-07 18:37:10 +0100
+    <br> Last updated 2021-03-08 18:37:12 +0100
    </div>
   </div>
   <style>

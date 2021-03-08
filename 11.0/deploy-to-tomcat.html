@@ -437,9 +437,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head>
- <body class="article">
+ <body class="book toc2 toc-left">
   <div id="header">
    <h1>Build Scout App and Deploy to Tomcat</h1>
+   <div class="details">
+    <span id="revnumber">version 11.0</span>
+   </div>
+   <div id="toc" class="toc2">
+    <div id="toctitle">
+     Table of Contents
+    </div>
+    <ul class="sectlevel1">
+     <li><a href="#verify-the-container-security-settings">Verify the Container Security Settings</a></li>
+     <li><a href="#create-and-install-a-self-signed-certificate">Create and Install a Self-Signed Certificate</a></li>
+     <li><a href="#update-the-scout-application-to-work-with-http">Update the Scout Application to work with HTTP</a></li>
+     <li><a href="#create-war-files">Create WAR Files</a></li>
+     <li><a href="#sec-helloworld_deploy">Deploy to Tomcat</a></li>
+     <li><a href="#apx-install_tomcat">Appendix A: Apache Tomcat Installation</a>
+      <ul class="sectlevel2">
+       <li><a href="#platform-specific-instructions">Platform Specific Instructions</a></li>
+       <li><a href="#apx-tomcat_dirs_and_files">Directories and Files</a></li>
+       <li><a href="#apx-tomcat_manager_app">The Tomcat Manager Application</a></li>
+      </ul> </li>
+    </ul>
+   </div>
   </div>
   <div id="content">
    <div id="preamble">
@@ -472,7 +493,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <p>Second you need to decide if the users of your application should communicate with the Scout frontend server using HTTPS. We strongly recommend to use HTTPS for any productive environment. This is why the <code>Hello Scout</code> applications are configured to use HTTPS for production by default.</p>
      </div>
      <div class="paragraph">
-      <p>In case you don&#x2019;t want to use HTTPS the application must be slightly modified. Then you can skip the next section and instead follow the instructions in section <a href="#update-the-scout-application-to-work-with-http">Update the Scout Application to work with HTTP</a>.</p>
+      <p>In case you don&#x2019;t want to use HTTPS the application must be slightly modified. Then you can skip the next section and instead follow the instructions in section <a href="#update-the-scout-application-to-work-with-http"><em>Update the Scout Application to work with HTTP</em></a>.</p>
      </div>
      <div class="paragraph">
       <p>As a default Tomcat installation is configured to use HTTP only, you need to verify if the installation is properly configured for HTTPS too. In case HTTPS support is already enabled for your Tomcat installation, you may skip the next section.</p>
@@ -838,7 +859,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-07 18:37:10 +0100
+    <br> Last updated 2021-03-08 18:37:12 +0100
    </div>
   </div>
   <style>

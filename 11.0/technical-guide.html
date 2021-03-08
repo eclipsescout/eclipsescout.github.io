@@ -437,9 +437,182 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head>
- <body class="article">
+ <body class="book toc2 toc-left">
   <div id="header">
    <h1>Eclipse Scout Technical Guide</h1>
+   <div class="details">
+    <span id="revnumber">version 11.0</span>
+   </div>
+   <div id="toc" class="toc2">
+    <div id="toctitle">
+     Table of Contents
+    </div>
+    <ul class="sectlevel1">
+     <li><a href="#introduction">Introduction</a></li>
+     <li><a href="#overview">1. Overview</a></li>
+     <li><a href="#scout-platform">2. Scout Platform</a>
+      <ul class="sectlevel2">
+       <li><a href="#sec-app.lifecycle">2.1. Application Lifecycle</a></li>
+       <li><a href="#sec-class.inventory">2.2. Class Inventory</a></li>
+       <li><a href="#sec-bean.manager">2.3. Bean Manager</a></li>
+       <li><a href="#sec-config.management">2.4. Configuration Management</a></li>
+       <li><a href="#sec-app.configProperties">2.5. Scout Config Properties</a></li>
+      </ul> </li>
+     <li><a href="#client-model">3. Client Model</a>
+      <ul class="sectlevel2">
+       <li><a href="#desktop">3.1. Desktop</a></li>
+       <li><a href="#multiple-dimensions-support">3.2. Multiple Dimensions Support</a></li>
+      </ul> </li>
+     <li><a href="#texts">4. Texts</a>
+      <ul class="sectlevel2">
+       <li><a href="#text-properties-files">4.1. Text properties files</a></li>
+       <li><a href="#text-provider-service">4.2. Text Provider Service</a></li>
+      </ul> </li>
+     <li><a href="#icons">5. Icons</a>
+      <ul class="sectlevel2">
+       <li><a href="#using-a-custom-icon-font">5.1. Using a custom icon font</a></li>
+       <li><a href="#how-to-create-a-custom-icon-font">5.2. How to create a custom icon font</a></li>
+      </ul> </li>
+     <li><a href="#lookup-call">6. Lookup Call</a>
+      <ul class="sectlevel2">
+       <li><a href="#description">6.1. Description</a></li>
+       <li><a href="#input">6.2. Input</a></li>
+       <li><a href="#members">6.3. Members</a></li>
+       <li><a href="#type-of-lookup-calls">6.4. Type of lookup calls</a></li>
+      </ul> </li>
+     <li><a href="#code-type">7. Code Type</a>
+      <ul class="sectlevel2">
+       <li><a href="#description-2">7.1. Description</a></li>
+       <li><a href="#using-a-codetype">7.2. Using a CodeType</a></li>
+       <li><a href="#static-codetype">7.3. Static CodeType</a></li>
+       <li><a href="#dynamic-codetype">7.4. Dynamic CodeType</a></li>
+      </ul> </li>
+     <li><a href="#working-with-exceptions">8. Working with exceptions</a>
+      <ul class="sectlevel2">
+       <li><a href="#scout-throwables">8.1. Scout Throwables</a></li>
+       <li><a href="#exception-handling">8.2. Exception handling</a></li>
+       <li><a href="#exception-translation">8.3. Exception translation</a></li>
+       <li><a href="#exception-logging">8.4. Exception Logging</a></li>
+      </ul> </li>
+     <li><a href="#jobmanager">9. JobManager</a>
+      <ul class="sectlevel2">
+       <li><a href="#functionality">9.1. Functionality</a></li>
+       <li><a href="#job">9.2. Job</a></li>
+       <li><a href="#scheduling-a-job">9.3. Scheduling a Job</a></li>
+       <li><a href="#jobinput">9.4. JobInput</a></li>
+       <li><a href="#ifuture">9.5. IFuture</a></li>
+       <li><a href="#job-states">9.6. Job states</a></li>
+       <li><a href="#future-filter">9.7. Future filter</a></li>
+       <li><a href="#event-filter">9.8. Event filter</a></li>
+       <li><a href="#job-cancellation">9.9. Job cancellation</a></li>
+       <li><a href="#subscribe-for-job-lifecycle-events">9.10. Subscribe for job lifecycle events</a></li>
+       <li><a href="#awaiting-job-completion">9.11. Awaiting job completion</a></li>
+       <li><a href="#uncaught-job-exceptions">9.12. Uncaught job exceptions</a></li>
+       <li><a href="#blocking-condition">9.13. Blocking condition</a></li>
+       <li><a href="#executionsemaphore">9.14. ExecutionSemaphore</a></li>
+       <li><a href="#executiontrigger">9.15. ExecutionTrigger</a></li>
+       <li><a href="#stopping-the-platform">9.16. Stopping the platform</a></li>
+       <li><a href="#modeljobs">9.17. ModelJobs</a></li>
+       <li><a href="#configuration">9.18. Configuration</a></li>
+       <li><a href="#extending-job-manager">9.19. Extending job manager</a></li>
+       <li><a href="#scheduling-examples">9.20. Scheduling examples</a></li>
+      </ul> </li>
+     <li><a href="#runcontext">10. RunContext</a>
+      <ul class="sectlevel2">
+       <li><a href="#factory-methods-to-create-a-runcontext">10.1. Factory methods to create a RunContext</a></li>
+       <li><a href="#properties-of-a-runcontext">10.2. Properties of a RunContext</a></li>
+       <li><a href="#properties-of-a-serverruncontext">10.3. Properties of a ServerRunContext</a></li>
+       <li><a href="#properties-of-a-clientruncontext">10.4. Properties of a ClientRunContext</a></li>
+      </ul> </li>
+     <li><a href="#runmonitor">11. RunMonitor</a></li>
+     <li><a href="#client-notifications">12. Client Notifications</a>
+      <ul class="sectlevel2">
+       <li><a href="#examples-2">12.1. Examples</a></li>
+       <li><a href="#data-flow">12.2. Data Flow</a></li>
+       <li><a href="#push-technology">12.3. Push Technology</a></li>
+       <li><a href="#components">12.4. Components</a></li>
+       <li><a href="#publishing">12.5. Publishing</a></li>
+       <li><a href="#handling">12.6. Handling</a></li>
+      </ul> </li>
+     <li><a href="#extensibility">13. Extensibility</a>
+      <ul class="sectlevel2">
+       <li><a href="#overview-3">13.1. Overview</a></li>
+       <li><a href="#extensions">13.2. Extensions</a></li>
+       <li><a href="#contributions">13.3. Contributions</a></li>
+       <li><a href="#move-elements">13.4. Move elements</a></li>
+       <li><a href="#migration">13.5. Migration</a></li>
+      </ul> </li>
+     <li><a href="#mobile-support">14. Mobile Support</a>
+      <ul class="sectlevel2">
+       <li><a href="#responsive-and-touch-capable-widgets">14.1. Responsive and Touch Capable Widgets</a></li>
+       <li><a href="#device-transformation">14.2. Device Transformation</a></li>
+       <li><a href="#adapt-specific-components">14.3. Adapt Specific Components</a></li>
+       <li><a href="#user-agent">14.4. User Agent</a></li>
+       <li><a href="#best-practices">14.5. Best Practices</a></li>
+      </ul> </li>
+     <li><a href="#security">15. Security</a>
+      <ul class="sectlevel2">
+       <li><a href="#default-http-response-headers">15.1. Default HTTP Response Headers</a></li>
+       <li><a href="#session-cookie-jsessionid-cookie-configuration-validation">15.2. Session Cookie (JSESSIONID Cookie) Configuration Validation</a></li>
+       <li><a href="#secure-output">15.3. Secure Output</a></li>
+       <li><a href="#authorization-granting">15.4. Authorization (Granting)</a></li>
+      </ul> </li>
+     <li><a href="#cha-data-objects">16. Data Objects</a>
+      <ul class="sectlevel2">
+       <li><a href="#data-object-definition">16.1. Data Object Definition</a></li>
+       <li><a href="#marshalling">16.2. Marshalling</a></li>
+       <li><a href="#ignoring-an-attribute">16.3. Ignoring an Attribute</a></li>
+       <li><a href="#handling-of-doentity-attributes">16.4. Handling of DoEntity Attributes</a></li>
+       <li><a href="#abstract-data-objects-polymorphism">16.5. Abstract Data Objects &amp; Polymorphism</a></li>
+       <li><a href="#rename-an-attribute-of-a-data-object-in-a-subclass">16.6. Rename an attribute of a data object in a subclass</a></li>
+       <li><a href="#interfaces-to-data-objects">16.7. Interfaces to Data Objects</a></li>
+       <li><a href="#equals-and-hashcode">16.8. Equals and Hashcode</a></li>
+       <li><a href="#generic-doentity">16.9. Generic DoEntity</a></li>
+       <li><a href="#map-of-objects">16.10. Map of objects</a></li>
+       <li><a href="#idataobject-interface-data-objects-with-unknown-structure">16.11. IDataObject Interface - Data Objects with unknown structure</a></li>
+       <li><a href="#ad-hoc-data-objects">16.12. Ad-Hoc Data Objects</a></li>
+       <li><a href="#maven-dependencies">16.13. Maven Dependencies</a></li>
+       <li><a href="#data-object-inventory">16.14. Data Object Inventory</a></li>
+       <li><a href="#extending-with-custom-serializer-and-deserializer">16.15. Extending with custom serializer and deserializer</a></li>
+       <li><a href="#enumerations-within-data-objects">16.16. Enumerations within Data Objects</a></li>
+       <li><a href="#typed-ids-within-data-objects">16.17. Typed IDs within Data Objects</a></li>
+       <li><a href="#sec-unit-testing">16.18. Unit Testing</a></li>
+      </ul> </li>
+     <li><a href="#cha-rest">17. REST</a>
+      <ul class="sectlevel2">
+       <li><a href="#rest-resource-conventions">17.1. REST Resource Conventions</a></li>
+       <li><a href="#rest-resource-provider">17.2. REST Resource Provider</a></li>
+       <li><a href="#dependency-management">17.3. Dependency Management</a></li>
+       <li><a href="#rest-client">17.4. REST Client</a></li>
+       <li><a href="#rest-cancellation-support">17.5. REST Cancellation Support</a></li>
+      </ul> </li>
+     <li><a href="#webservices-with-jax-ws">18. Webservices with JAX-WS</a>
+      <ul class="sectlevel2">
+       <li><a href="#functionality-2">18.1. Functionality</a></li>
+       <li><a href="#jax-ws-implementor-and-deployment">18.2. JAX-WS implementor and deployment</a></li>
+       <li><a href="#jaxws.modularization">18.3. Modularization</a></li>
+       <li><a href="#build-webservice-stubs-and-artifacts">18.4. Build webservice stubs and artifacts</a></li>
+       <li><a href="#provide-a-webservice">18.5. Provide a webservice</a></li>
+       <li><a href="#consume-a-webservice">18.6. Consume a webservice</a></li>
+       <li><a href="#jaxws.xmladapters">18.7. XML adapters to work with java.util.Date and java.util.Calendar</a></li>
+       <li><a href="#jax-ws-appendix">18.8. JAX-WS Appendix</a></li>
+      </ul> </li>
+     <li><a href="#smtphelper">19. SmtpHelper</a>
+      <ul class="sectlevel2">
+       <li><a href="#smtpserverconfig">19.1. SmtpServerConfig</a></li>
+       <li><a href="#sending-messages">19.2. Sending messages</a></li>
+       <li><a href="#smtphelper-configuration">19.3. SmtpHelper Configuration</a></li>
+       <li><a href="#connection-pooling-chapter">19.4. Connection Pooling</a></li>
+       <li><a href="#smtpconnectionpool-configuration">19.5. SmtpConnectionPool Configuration</a></li>
+      </ul> </li>
+     <li><a href="#scout-js">20. Scout JS</a></li>
+     <li><a href="#how-tos">21. How-Tos</a>
+      <ul class="sectlevel2">
+       <li><a href="#smartfield-how-to-apply-colors-and-styles-from-a-lookup-row">21.1. SmartField: how to apply colors and styles from a lookup-row</a></li>
+       <li><a href="#how-to-create-a-chart">21.2. How to Create a Chart</a></li>
+      </ul> </li>
+    </ul>
+   </div>
   </div>
   <div id="content">
    <div id="preamble">
@@ -6778,7 +6951,7 @@ ACCESS.checkAnyAndThrow(<span class="keyword">new</span> ReadCompanyPermission()
       <div class="sect3">
        <h4 id="data-objects"><a class="anchor" href="#data-objects"></a>17.2.3. Data Objects</h4>
        <div class="paragraph">
-        <p>Scout data objects may be used as request and response objects for REST APIs. See <a href="#cha-data-objects">Section 16</a> for details and examples.</p>
+        <p>Scout data objects may be used as request and response objects for REST APIs. See <a href="#cha-data-objects">Chapter 16</a> for details and examples.</p>
        </div>
       </div>
       <div class="sect3">
@@ -9940,7 +10113,7 @@ chart.setConfig(config);</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-07 18:37:10 +0100
+    <br> Last updated 2021-03-08 18:37:12 +0100
    </div>
   </div>
   <style>
