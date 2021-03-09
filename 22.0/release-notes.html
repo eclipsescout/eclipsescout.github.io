@@ -5,8 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Asciidoctor 2.0.10">
-  <meta name="author" content="Scout Team">
-  <title>Eclipse Scout: Release Notes</title>
+  <title>Eclipse Scout Release Notes</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
   <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,12 +439,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  </head>
  <body class="book toc2 toc-left">
   <div id="header">
-   <h1>Eclipse Scout: Release Notes</h1>
+   <h1>Eclipse Scout Release Notes</h1>
    <div class="details">
-    <span id="author" class="author">Scout Team</span>
-    <br>
-    <span id="email" class="email"><a href="mailto:scout-dev@eclipse.org">scout-dev@eclipse.org</a></span>
-    <br>
     <span id="revnumber">version 22.0</span>
    </div>
    <div id="toc" class="toc2">
@@ -456,9 +451,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#about-this-release">About This Release</a>
       <ul class="sectlevel2">
        <li><a href="#service-releases">Service Releases</a></li>
-       <li><a href="#obtaining-the-latest-version">Obtaining the Latest Version</a></li>
-       <li><a href="#demo-applications">Demo Applications</a></li>
       </ul> </li>
+     <li><a href="#demo-applications">Demo Applications</a></li>
      <li><a href="#mobile-improvements">Mobile Improvements</a>
       <ul class="sectlevel2">
        <li><a href="#default-detail-form-and-tile-overview">Default Detail Form and Tile Overview</a></li>
@@ -472,6 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#custom-webpack-config">Custom Webpack Config</a></li>
      <li><a href="#automatic-script-chunks">Automatic Script Chunks</a></li>
+     <li><a href="#code-pen-support">Code Pen Support</a></li>
      <li><a href="#new-widgets">New Widgets</a>
       <ul class="sectlevel2">
        <li><a href="#breadcrumb-bar-field">Breadcrumb Bar Field</a></li>
@@ -481,11 +476,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <ul class="sectlevel2">
        <li><a href="#table-new-property-compact">Table: New Property 'compact'</a></li>
        <li><a href="#menu-new-property-textposition">Menu: New Property 'textPosition'</a></li>
-       <li><a href="#form">Form</a></li>
-       <li><a href="#widget">Widget</a></li>
+       <li><a href="#form">Form</a>
+        <ul class="sectlevel3">
+         <li><a href="#support-maximized">Support Maximized</a></li>
+         <li><a href="#new-property-headervisible">New Property 'headerVisible'</a></li>
+        </ul> </li>
+       <li><a href="#widget">Widget</a>
+        <ul class="sectlevel3">
+         <li><a href="#execfocusin-execfocusout">ExecFocusIn, ExecFocusOut</a></li>
+         <li><a href="#new-method-reveal">New Method 'reveal'</a></li>
+        </ul> </li>
        <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
+       <li><a href="#file-drop-support-js">File Drop Support (JS)</a></li>
       </ul> </li>
-     <li><a href="#maven-master">Maven master</a></li>
     </ul>
    </div>
   </div>
@@ -508,100 +511,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>The latest version of this release is: 11.0-SNAPSHOT.</p>
+      <p>The latest version of this release is: 22.0-SNAPSHOT.</p>
      </div>
      <div class="paragraph">
-      <p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/10.0%2E%2E%2Ereleases/11.0">detailed change log</a> on GitHub.</p>
+      <p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/11.0%2E%2E%2Ereleases/22.0">detailed change log</a> on GitHub.</p>
      </div>
      <div class="paragraph">
-      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/22.0/migration-guide.html">Migration Guide</a>!</p>
+      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/22.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
      </div>
      <div class="sect2">
       <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
       <div class="paragraph">
-       <p>Scout 11.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
+       <p>Scout 22.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
       </div>
      </div>
-     <div class="sect2">
-      <h3 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h3>
-      <div class="sect3">
-       <h4 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h4>
-       <div class="paragraph">
-        <p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
-       </div>
-       <div class="ulist">
-        <ul>
-         <li> <p><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.scout.rt%22%20AND%20v%3A%2211.0-SNAPSHOT%22">11.0-SNAPSHOT</a> on <em>Maven Central</em></p> </li>
-         <li> <p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/11.0-SNAPSHOT">11.0-SNAPSHOT</a> on <em>mvnrepository.com</em></p> </li>
-        </ul>
-       </div>
-       <div class="paragraph">
-        <p>Usage example in the parent POM of your Scout application:</p>
-       </div>
-       <div class="listingblock">
-        <div class="content">
-         <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
-    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
-    &lt;version&gt;11.0-SNAPSHOT&lt;/version&gt;
-    &lt;type&gt;pom&lt;/type&gt;
-    &lt;scope&gt;import&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
-        </div>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h4>
-       <div class="paragraph">
-        <p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
-       </div>
-       <div class="ulist">
-        <ul>
-         <li> <p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p> </li>
-         <li> <p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p> </li>
-        </ul>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h4>
-       <div class="paragraph">
-        <p>Starting with Scout 11 the IDE Tooling requires at least Java 11 to run. With the help of the SDK plugins you can still develop applications running with Java 8, but the IDE itself requires Java 11 or newer.</p>
-       </div>
-       <div class="paragraph">
-        <p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2020-09/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
-       </div>
-       <div class="sect4">
-        <h5 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h5>
-        <div class="paragraph">
-         <p>You can download the complete Eclipse IDE with Scout SDK included (EPP) here:<br> <a href="https://www.eclipse.org/downloads/packages/release/2020-09/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
-        </div>
-        <div class="paragraph">
-         <p>To install the Scout SDK into your existing Eclipse IDE, use this update site:<br> <a href="http://download.eclipse.org/scout/releases/11.0/" class="bare">http://download.eclipse.org/scout/releases/11.0/</a></p>
-        </div>
-       </div>
-       <div class="sect4">
-        <h5 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h5>
-        <div class="paragraph">
-         <p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA. Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
-        </div>
-       </div>
-      </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/22.0-SNAPSHOT">features/version/22.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
      </div>
-     <div class="sect2">
-      <h3 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h3>
-      <div class="paragraph">
-       <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/11.0-SNAPSHOT">features/version/11.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
-      </div>
-      <div class="ulist">
-       <ul>
-        <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
-        <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
-        <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
-       </ul>
-      </div>
+     <div class="paragraph">
+      <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+     </div>
+     <div class="ulist">
+      <ul>
+       <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
+       <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
+       <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
+      </ul>
      </div>
     </div>
    </div>
@@ -648,7 +588,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-Java" data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(this, MobileDeviceTransformation.USE_DIALOG_STYLE_FOR_VIEW);</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(<span class="local-variable">this</span>, MobileDeviceTransformation.USE_DIALOG_STYLE_FOR_VIEW);</code></pre>
        </div>
       </div>
      </div>
@@ -662,7 +602,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </div>
       <div class="listingblock">
        <div class="content">
-        <pre class="highlight"><code class="language-Java" data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(this, MobileDeviceTransformation.MAXIMIZE_DIALOG);</code></pre>
+        <pre class="CodeRay highlight"><code data-lang="Java">BEANS.get(IDeviceTransformationService.class).excludeFormTransformation(<span class="local-variable">this</span>, MobileDeviceTransformation.MAXIMIZE_DIALOG);</code></pre>
        </div>
       </div>
      </div>
@@ -708,7 +648,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      </div>
      <div class="listingblock">
       <div class="content">
-       <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">const baseConfig = require('./webpack.config');
+       <pre class="CodeRay highlight"><code data-lang="JavaScript">const baseConfig = require('./webpack.config');
 module.exports = (env, args) =&gt; {
 &nbsp; args.themes = args.themes || ['default'];
 &nbsp; return baseConfig(env, args);
@@ -720,7 +660,7 @@ module.exports = (env, args) =&gt; {
      </div>
      <div class="listingblock">
       <div class="content">
-       <pre class="highlight"><code class="language-JavaScript" data-lang="JavaScript">baseConfig.addThemes(config.entry, {
+       <pre class="CodeRay highlight"><code data-lang="JavaScript">baseConfig.addThemes(config.entry, {
   themes: args.themes,
   availableThemes: ['default', 'dark'],
   generator: name =&gt; [`yourapp-theme${name}`, `./src/main/js/yourapp-theme${name}.less`]
@@ -740,6 +680,23 @@ module.exports = (env, args) =&gt; {
      </div>
      <div class="paragraph">
       <p>Have a look at the <a href="https://eclipsescout.github.io/22.0/migration-guide.html#automatic-script-chunks">Migration Guide</a> to learn how to use automatic script chunks.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="code-pen-support"><a class="anchor" href="#code-pen-support"></a>Code Pen Support</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Scout JS can now be used on <a href="https://codepen.io/" class="bare">https://codepen.io/</a> to share code snippets with the world.</p>
+     </div>
+     <div class="paragraph">
+      <p>To make this possible, some changes in the distribution of Scout assets were necessary. You will find all necessary assets (script, theme, fonts, texts, locales) in the <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist">dist</a> folder of the scout modules. The modules itself are automatically published to various CDNs, like <a href="https://www.jsdelivr.com/" class="bare">https://www.jsdelivr.com/</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>You can either import the npm modules in your Code Pen and even activate Babel like it is done <a href="https://codepen.io/eclipse-scout/pen/BaQPjom">here</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>Or you can work with the pre built assets. Learn how to do so with this <a href="http://eclipsescout.github.io/22.0/helloscout-cdn.html">tutorial</a>.</p>
      </div>
     </div>
    </div>
@@ -889,62 +846,24 @@ module.exports = (env, args) =&gt; {
        <p>Setting the property <code>labelVisible</code> to false will now hide the tab area. Until now, the property had no effect for tab boxes.</p>
       </div>
      </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="maven-master"><a class="anchor" href="#maven-master"></a>Maven master</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Some maven profiles have been removed from the maven master (e.g. <code>org.eclipse.scout:maven_rt_plugin_config-master</code>) (since 3.14.1). These profiles have been used for release management. No Scout build jobs do still use git commands through maven. Instead, any git command is issued directly (usually from a jenkins pipeline). Therefore, we cannot support these profiles anymore. If any of these profiles or configurations are still in use in your project, you may copy them from an older maven master version into your own parent maven pom.</p>
-     </div>
-     <div class="ulist">
-      <div class="title">
-       Removed profiles
+     <div class="sect2">
+      <h3 id="file-drop-support-js"><a class="anchor" href="#file-drop-support-js"></a>File Drop Support (JS)</h3>
+      <div class="paragraph">
+       <p>Dragging a file and dropping it on a widget now works for Scout JS apps as well. This feature can be activated for every form field, and Table and Tree.</p>
       </div>
-      <ul>
-       <li> <p><code>release.setversion</code></p> </li>
-       <li> <p><code>release.checkin</code></p> </li>
-       <li> <p><code>release.tag</code></p> </li>
-      </ul>
-     </div>
-     <div class="ulist">
-      <div class="title">
-       Removed related properties
+      <div class="paragraph">
+       <p>To do so, you need to set the <code>dropType</code> property to <code>dragAndDrop.SCOUT_TYPES.FILE_TRANSFER</code>. You can then listen to the 'drop' event and handle it accordingly. You may also want to adjust the <code>dropMaximumSize</code> to decrease or increase the allowed file size.</p>
       </div>
-      <ul>
-       <li> <p><code>master_release_pushChanges</code></p> </li>
-       <li> <p><code>master_release_tagName</code></p> </li>
-       <li> <p><code>master_release_checkinMessage</code></p> </li>
-      </ul>
-     </div>
-     <div class="paragraph">
-      <p>Also, the default plugin configuration of <code>org.apache.maven.plugins:maven-release-plugin</code> was removed.</p>
-     </div>
-     <div class="paragraph">
-      <p>The following script is a template which can be used to change the project versions for a new release build without the removed profiles and direct git commands.</p>
-     </div>
-     <div class="listingblock">
-      <div class="title">
-       Listing 1. Shell script to set project version to a new version for release builds
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/22.0/docs/build/releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
+         </tr>
+        </tbody>
+       </table>
       </div>
-      <div class="content">
-       <pre class="highlight"><code class="language-Shell" data-lang="Shell"># set version of maven project modules
-mvn -f ${mavenParentPom} org.codehaus.mojo:versions-maven-plugin:set -DnewVersion=${newVersion} -DgenerateBackupPoms=false
-# set version of npm project packages
-mvn -f ${mavenParentPom} process-sources -N -P npm-install-node,npm-install-workspace,npm-deploy -Dmaster_node_dir=\${NODE_BIN} -Dmaster_npm_release_build=true -Dmaster_release_newVersion=${newVersion}
-# add changed files to git changes
-git add "**/pom.xml" "**/package.json"</code></pre>
-      </div>
-     </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/22.0/docs/build/scout_releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
      </div>
     </div>
    </div>
@@ -952,8 +871,97 @@ git add "**/pom.xml" "**/package.json"</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 22.0
-    <br> Last updated 2021-03-08 18:53:27 +0100
+    <br> Last updated 2021-03-09 18:53:20 +0100
    </div>
   </div>
+  <style>
+/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+pre.CodeRay{background:#f7f7f8}
+.CodeRay .line-numbers{border-right:1px solid currentColor;opacity:.35;padding:0 .5em 0 0}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.75em}
+.CodeRay .line-numbers strong{color:#000}
+table.CodeRay{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.CodeRay td{vertical-align:top;line-height:inherit}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.code{padding:0 0 0 .75em}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+</style>
  </body>
 </html>
