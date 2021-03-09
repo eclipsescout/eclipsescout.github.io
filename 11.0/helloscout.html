@@ -525,7 +525,7 @@ v12.21.0</pre>
      <div class="sect2">
       <h3 id="intellij"><a class="anchor" href="#intellij"></a>IntelliJ</h3>
       <div class="paragraph">
-       <p>If you have no IntelliJ yet, you can download it from the <a href="https://www.jetbrains.com/idea/download">JetBrains download site</a>. We recommend selecting the Ultimate edition to have the JavaScript support included in the IDE. There is a 30-day trial if you have no licence.</p>
+       <p>If you have no IntelliJ yet, you can download it from the <a href="https://www.jetbrains.com/idea/download">JetBrains download site</a>. We recommend selecting the Ultimate edition to have the JavaScript support included in the IDE. There is a 30-day trial if you have no licence. For this tutorial you can also use the free Community Edition but it requires some extra steps indicated.</p>
       </div>
       <div class="paragraph">
        <p>Install or extract the package and run it using <code>bin/idea64.exe</code> in the installation folder. Follow the instructions until the <code>Welcome to IntelliJ IDEA</code> screen is shown.</p>
@@ -612,11 +612,30 @@ OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.9.1+1, mixed mode)</pre>
         Figure 3. The initial set of Maven modules created for the Hello Scout application.
        </div>
       </div>
+      <div class="admonitionblock tip">
+       <table>
+        <tbody>
+         <tr>
+          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
+          <td class="content"> If the modules are not automatically created as indicated in <a href="#img-sdk_new_project_initial_helloworld_ij">Figure 3</a>, right click on the root <code>pom.xml</code> and click <code>Add as Maven Project</code>. </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
       <div class="paragraph">
        <p>Then you can start the Scout application for the first time. Since the <code>Hello Scout</code> app consists of a backend and a frontend, two servers need to be started. Before the frontend server can deliver any JavaScript code to the browser the JavaScript build needs to be executed as well. You could start each run configuration separately, but for the sake of convenience there is a compound run configuration available which starts all at once.</p>
       </div>
       <div class="paragraph">
-       <p>To start the launch configuration use the <em class="menu">Add Configuration&#x2026;&#x200b;</em> menu on the top as shown in <a href="#img-start_all_ij">Figure 4</a>. In the dialog expand the <code>Compound</code> type on the left-hand-side, select the prepared run configuration and confirm with <b class="button">Ok</b>. Finally click on the green triangle symbol directly right of the <em class="menu">Add Configuration&#x2026;&#x200b;</em> menu. This will download all necessary JavaScript dependencies and execute the Java and JavaScript build.</p>
+       <p>To start the launch configuration use the <em class="menu">Add Configuration&#x2026;&#x200b;</em> menu on the top as shown in <a href="#img-start_all_ij">Figure 4</a>. In the dialog expand the <code>Compound</code> type on the left-hand-side, select the prepared run configuration <code>[webapp] all</code> and confirm with <b class="button">Ok</b>. Finally click on the green triangle symbol directly right of the <em class="menu">Add Configuration&#x2026;&#x200b;</em> menu. This will execute the Java build and start the Java frontend server and backend server afterwards. On IntelliJ Ultimate this will furthermore download all necessary JavaScript dependencies and execute the JavaScript build.</p>
+      </div>
+      <div class="paragraph">
+       <p>If using the Community Edition, additionally execute the following commands on the command line manually:</p>
+      </div>
+      <div class="olist arabic">
+       <ol class="arabic">
+        <li> <p><code>npm run pnpm-install</code> in the root of your project (next to the <code>pnpm-workspace.yaml</code>) to install all JavaScript dependencies.</p> </li>
+        <li> <p><code>npm run build:dev:watch</code> in the <code>helloscout.ui.html</code> module to start the JavaScript build and watcher. The watcher keeps on running and will continuously update the JavaScript assets as you change your JavaScript source files (hot-code-replace).</p> </li>
+       </ol>
       </div>
       <div id="img-start_all_ij" class="imageblock">
        <div class="content">
@@ -772,7 +791,7 @@ OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.9.1+1, mixed mode)</pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-08 18:37:12 +0100
+    <br> Last updated 2021-03-09 18:37:00 +0100
    </div>
   </div>
  </body>

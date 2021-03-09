@@ -466,6 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <li><a href="#new-eslint-settings">New ESLint Settings</a></li>
      <li><a href="#custom-webpack-config">Custom Webpack Config</a></li>
      <li><a href="#automatic-script-chunks">Automatic Script Chunks</a></li>
+     <li><a href="#code-pen-support">Code Pen Support</a></li>
      <li><a href="#new-widgets">New Widgets</a>
       <ul class="sectlevel2">
        <li><a href="#breadcrumb-bar-field">Breadcrumb Bar Field</a></li>
@@ -475,9 +476,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       <ul class="sectlevel2">
        <li><a href="#table-new-property-compact">Table: New Property 'compact'</a></li>
        <li><a href="#menu-new-property-textposition">Menu: New Property 'textPosition'</a></li>
-       <li><a href="#form">Form</a></li>
-       <li><a href="#widget">Widget</a></li>
+       <li><a href="#form">Form</a>
+        <ul class="sectlevel3">
+         <li><a href="#support-maximized">Support Maximized</a></li>
+         <li><a href="#new-property-headervisible">New Property 'headerVisible'</a></li>
+        </ul> </li>
+       <li><a href="#widget">Widget</a>
+        <ul class="sectlevel3">
+         <li><a href="#execfocusin-execfocusout">ExecFocusIn, ExecFocusOut</a></li>
+         <li><a href="#new-method-reveal">New Method 'reveal'</a></li>
+        </ul> </li>
        <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
+       <li><a href="#file-drop-support-js">File Drop Support (JS)</a></li>
       </ul> </li>
     </ul>
    </div>
@@ -674,6 +684,23 @@ module.exports = (env, args) =&gt; {
     </div>
    </div>
    <div class="sect1">
+    <h2 id="code-pen-support"><a class="anchor" href="#code-pen-support"></a>Code Pen Support</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Scout JS can now be used on <a href="https://codepen.io/" class="bare">https://codepen.io/</a> to share code snippets with the world.</p>
+     </div>
+     <div class="paragraph">
+      <p>To make this possible, some changes in the distribution of Scout assets were necessary. You will find all necessary assets (script, theme, fonts, texts, locales) in the <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist">dist</a> folder of the scout modules. The modules itself are automatically published to various CDNs, like <a href="https://www.jsdelivr.com/" class="bare">https://www.jsdelivr.com/</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>You can either import the npm modules in your Code Pen and even activate Babel like it is done <a href="https://codepen.io/eclipse-scout/pen/BaQPjom">here</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>Or you can work with the pre built assets. Learn how to do so with this <a href="http://eclipsescout.github.io/11.0/helloscout-cdn.html">tutorial</a>.</p>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
     <h2 id="new-widgets"><a class="anchor" href="#new-widgets"></a>New Widgets</h2>
     <div class="sectionbody">
      <div class="sect2">
@@ -818,6 +845,15 @@ module.exports = (env, args) =&gt; {
       <div class="paragraph">
        <p>Setting the property <code>labelVisible</code> to false will now hide the tab area. Until now, the property had no effect for tab boxes.</p>
       </div>
+     </div>
+     <div class="sect2">
+      <h3 id="file-drop-support-js"><a class="anchor" href="#file-drop-support-js"></a>File Drop Support (JS)</h3>
+      <div class="paragraph">
+       <p>Dragging a file and dropping it on a widget now works for Scout JS apps as well. This feature can be activated for every form field, and Table and Tree.</p>
+      </div>
+      <div class="paragraph">
+       <p>To do so, you need to set the <code>dropType</code> property to <code>dragAndDrop.SCOUT_TYPES.FILE_TRANSFER</code>. You can then listen to the 'drop' event and handle it accordingly. You may also want to adjust the <code>dropMaximumSize</code> to decrease or increase the allowed file size.</p>
+      </div>
       <div class="admonitionblock tip">
        <table>
         <tbody>
@@ -835,7 +871,7 @@ module.exports = (env, args) =&gt; {
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-08 18:37:12 +0100
+    <br> Last updated 2021-03-09 18:37:00 +0100
    </div>
   </div>
   <style>
