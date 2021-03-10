@@ -1,74 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Eclipse Scout 5.2 Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Styles -->
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/prettify.css" rel="stylesheet">
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="../assets/js/html5shiv.min.js"></script>
-  <![endif]-->
+    <meta charset="UTF-8">
+    <title>Eclipse Scout Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/css/styles.css" rel="stylesheet">
 </head>
-<body onload="prettyPrint()">
-  <div id="wrap">
-  <!-- Navbar -->
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../index.html">Home</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="https://www.eclipse.org/scout/">project homepage</a></li>
-          <li><a href="https://www.eclipse.org/forums/eclipse.scout">forum</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="http://twitter.com/EclipseScout">@EclipseScout</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
+<body>
+
+<div class="header">
+    <div class="navigation-bar">
+        <div class="navigation-item home">
+            <a href="..">Docs Home</a>
+        </div>
+        <div class="navigation-item right">
+            <a id="eclipse-scout-logo" href="https://www.eclipse.org/scout">
+                <img src="../assets/img/eclipse-scout-logo.svg" class="logo-small" alt="logo">
+                <img src="../assets/img/eclipse-scout-logo-large.svg" class="logo-large" alt="logo">
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="container">
+</div>
 
-  <div class="page-header">
-      <h1>Eclipse Scout Documentation</h1>
-  </div>
-  <h2>Version: 5.2</h2>
-  
-  <ul>
-    <li>The Scout "Hello World!" (<a href="latest/article_helloworld/scout_helloworld/scout_helloworld.html">html</a>, <a href="latest/article_helloworld/scout_helloworld.pdf">pdf</a>, <a href="latest/article_helloworld/scout_helloworld.zip">zip</a>)</li>
-    <li>Download and Install Eclipse Scout (<a href="latest/article_install/scout_install/scout_install.html">html</a>, <a href="latest/article_install/scout_install.pdf">pdf</a>, <a href="latest/article_install/scout_install.zip">zip</a>)</li>
-    <li>Eclipse Scout: Architecture (<a href="latest/book_scout_architecture/scout_architecture/scout_architecture.html">html</a>, <a href="latest/book_scout_architecture/scout_architecture.pdf">pdf</a>, <a href="latest/book_scout_architecture/scout_architecture.zip">zip</a>)</li>
-    <li>Eclipse Scout: Frontend (<a href="latest/book_scout_frontend/scout_frontend/scout_frontend.html">html</a>, <a href="latest/book_scout_frontend/scout_frontend.pdf">pdf</a>, <a href="latest/book_scout_frontend/scout_frontend.zip">zip</a>)</li>
-    <li>Eclipse Scout: an Introduction (<a href="latest/book_scout_intro/scout_intro/scout_intro.html">html</a>, <a href="latest/book_scout_intro/scout_intro.pdf">pdf</a>, <a href="latest/book_scout_intro/scout_intro.zip">zip</a>)</li>
-    <li>Eclipse Scout: Migration Guide (<a href="latest/scout_migration/scout_migration/scout_migration_guide.html">html</a>, <a href="latest/scout_migration/scout_migration_guide.pdf">pdf</a>, <a href="latest/scout_migration/scout_migration.zip">zip</a>)</li>
-    <li>Eclipse Scout: Release Notes (<a href="latest/scout_releasenotes/scout_releasenotes/scout_releasenotes.html">html</a>, <a href="latest/scout_releasenotes/scout_releasenotes.pdf">pdf</a>, <a href="latest/scout_releasenotes/scout_releasenotes.zip">zip</a>)</li>
-  </ul>
+<div class="wrapper">
+    <div class="panel">
 
-  <hr>
-  </div>
-  <div id="push"></div>
-  </div>
+        <h1>Version 5.2</h1>
+        Here you'll find all Scout 5.2 related documentation, from getting started to architecture details to release
+        upgrades.
 
-  <div id="footer">
-    <div class="container">
-      <p class="muted credit">Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a></p>
+        <h2>Get Started</h2>
+        <p>Learn how to get started with Scout.</p>
+        <div class="two-column-panel">
+            <table class="content-table">
+                <tbody>
+                <tr>
+                    <td><a href="latest/article_install/scout_install/scout_install.html">Install Guide</a></td>
+                    <td class="small-cell"><a href="latest/article_helloworld/scout_helloworld.pdf">pdf</a></td>
+                </tr>
+                <tr>
+                    <td><a href="latest/article_helloworld/scout_helloworld/scout_helloworld.html">Hello World</a></td>
+                    <td class="small-cell"><a href="latest/article_helloworld/scout_helloworld.pdf">pdf</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Deepen Your Knowledge</h2>
+        <p>If you want to get serious about Scout you should definitely have a look at the following documents.
+        You will learn about common concepts and architecture details and even find How Tos for some specific topics.</p>
+        <div class="two-column-panel">
+        <table class="content-table">
+            <tbody>
+            <tr>
+                <td><a href="latest/book_scout_architecture/scout_architecture/scout_architecture.html">Architecture</a></td>
+                <td class="small-cell"><a href="latest/book_scout_architecture/scout_architecture.pdf">pdf</a></td>
+            </tr>
+            <tr>
+                <td><a href="latest/book_scout_frontend/scout_frontend/scout_frontend.html">Frontend</a></td>
+                <td class="small-cell"><a href="latest/book_scout_frontend/scout_frontend.pdf">pdf</a></td>
+            </tr>
+            <tr>
+                <td><a href="latest/book_scout_intro/scout_intro/scout_intro.html">An Introduction</a></td>
+                <td class="small-cell"><a href="latest/book_scout_frontend/scout_frontend.pdf">pdf</a></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2>Upgrade Your Release</h2>
+        <p>When upgrading from one Scout release to the next one the following documents are helpful.
+        The release notes describe what's new in this release.
+        The migration guide explains how you need to migrate your code for a proper upgrade.</p>
+        <table class="content-table">
+            <tbody>
+            <tr>
+                <td><a href="latest/scout_releasenotes/scout_releasenotes/scout_releasenotes.html">Release Notes</a></td>
+                <td class="small-cell"><a href="latest/scout_releasenotes/scout_releasenotes.pdf">pdf</a></td>
+            </tr>
+            <tr>
+                <td><a href="latest/scout_migration/scout_migration/scout_migration_guide.html">Migration Guide</a></td>
+                <td class="small-cell"><a href="latest/scout_migration/scout_migration_guide.pdf">pdf</a></td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
-  </div>
+</div>
 
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="../assets/js/jquery-1.11.1.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/prettify.js"></script>  
 </body>
 </html>

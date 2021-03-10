@@ -1,66 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Eclipse Scout 11.0 Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Styles -->
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/prettify.css" rel="stylesheet">
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="../assets/js/html5shiv.min.js"></script>
-  <![endif]-->
+    <meta charset="UTF-8">
+    <title>Eclipse Scout Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/css/styles.css" rel="stylesheet">
 </head>
-<body onload="prettyPrint()">
-  <div id="wrap">
-  <!-- Navbar -->
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../index.html">Home</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="https://www.eclipse.org/scout/">Project Homepage</a></li>
-          <li><a href="https://www.eclipse.org/forums/eclipse.scout">Forum</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="http://twitter.com/EclipseScout">@EclipseScout</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
+<body>
+
+<div class="header">
+    <div class="navigation-bar">
+        <div class="navigation-item home">
+            <a href="..">Docs Home</a>
+        </div>
+        <div class="navigation-item right">
+            <a id="eclipse-scout-logo" href="https://www.eclipse.org/scout">
+                <img src="../assets/img/eclipse-scout-logo.svg" class="logo-small" alt="logo">
+                <img src="../assets/img/eclipse-scout-logo-large.svg" class="logo-large" alt="logo">
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="container">
+</div>
 
-  <div class="page-header">
-      <h1>Eclipse Scout Documentation</h1>
-  </div>
-  <h2>Version: 11.0</h2>
+<div class="wrapper">
+    <div class="panel">
 
-  <ul>
-    <li><a href="beginners-guide.html">Beginner's Guide</a> (<a href="beginners-guide.pdf">pdf</a>, <a href="beginners-guide.zip">zip</a>)</li>
-    <li><a href="technical-guide.html">Technical Guide</a> (<a href="technical-guide.pdf">pdf</a>, <a href="technical-guide.zip">zip</a>)</li>
-	<li><a href="technical-guide-js.html">Technical Guide for Scout JS</a> (<a href="technical-guide-js.pdf">pdf</a>, <a href="technical-guide-js.zip">zip</a>)</li>
-    <li><a href="release-notes.html">Release Notes</a> (<a href="release-notes.pdf">pdf</a>, <a href="release-notes.zip">zip</a>)</li>
-    <li><a href="migration-guide.html">Migration Guide</a> (<a href="migration-guide.pdf">pdf</a>, <a href="migration-guide.zip">zip</a>)</li>
-  </ul>
+        <h1>Version 11</h1>
+        Here you'll find all Scout 11 related documentation, from getting started to architecture details to release
+        upgrades.
 
-  <hr>
-  </div>
-  <div id="push"></div>
-  </div>
+        <h2>Get Started</h2>
+        <p>Learn how to get started with Scout.</p>
+        <h3>First Steps</h3>
+        <p>Before you do any of the tutorials, please read our <a href="getstarted.html">Get Started Guide</a>.</p>
 
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="../assets/js/jquery-1.11.1.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/prettify.js"></script>
+        <h3>Next Steps</h3>
+        <div class="two-column-panel">
+            <table class="content-table">
+                <caption>Scout Classic</caption>
+                <tbody>
+                <tr>
+                    <td><a href="helloscout.html">Hello Scout Classic</a></td>
+                    <td class="small-cell"><a href="helloscout.pdf">pdf</a></td>
+                </tr>
+                <tr>
+                    <td><a href="deploy-to-tomcat.html">Deploy to Tomcat</a></td>
+                    <td class="small-cell"><a href="deploy-to-tomcat.pdf">pdf</a></td>
+                </tr>
+                <tr>
+                    <td><a href="one-day-tutorial.html">One Day Tutorial</a></td>
+                    <td class="small-cell"><a href="one-day-tutorial.pdf">pdf</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="content-table">
+                <caption>Scout JS</caption>
+                <tbody>
+                <tr>
+                    <td><a href="helloscout-js.html">Hello Scout JS</a><br></td>
+                    <td class="small-cell"><a href="helloscout-js.pdf">pdf</a></td>
+                </tr>
+                <tr>
+                    <td><a href="helloscout-js-fullstack.html">Hello Scout JS Full Stack</a></td>
+                    <td class="small-cell"><a href="helloscout-js-fullstack.pdf">pdf</a></td>
+                </tr>
+                <tr>
+                    <td><a href="helloscout-cdn.html">Hello Scout JS with CDN</a></td>
+                    <td class="small-cell"><a href="helloscout-cdn.pdf">pdf</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Deepen Your Knowledge</h2>
+        <p>If you want to get serious about Scout you should definitely have a look at the following documents.
+        You will learn about common concepts and architecture details and even find How Tos for some specific topics.</p>
+        <div class="two-column-panel">
+        <table class="content-table">
+            <caption>Scout Classic</caption>
+            <tbody>
+            <tr>
+                <td><a href="technical-guide.html">Technical Guide</a></td>
+                <td class="small-cell"><a href="technical-guide.pdf">pdf</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="content-table">
+            <caption>Scout JS</caption>
+            <tbody>
+            <tr>
+                <td><a href="technical-guide-js.html">Technical Guide</a></td>
+                <td class="small-cell"><a href="technical-guide-js.pdf">pdf</a></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p>To learn more about the Scout SDK plugins for various IDEs have a look at the following documents.</p>
+
+        <table class="content-table">
+            <caption>Scout SDK</caption>
+            <tbody>
+            <tr>
+                <td><a href="sdk-eclipse.html">Eclipse</a></td>
+                <td class="small-cell"><a href="sdk-eclipse.pdf">pdf</a></td>
+            </tr>
+            <!--<tr>
+                <td><a href="scout-sdk-intellij.html">IntelliJ</a></td>
+                <td class="small-cell"><a href="scout-sdk-intellij.pdf">pdf</a></td>
+            </tr>-->
+            </tbody>
+        </table>
+
+
+        <h2>Upgrade Your Release</h2>
+        <p>When upgrading from one Scout release to the next one the following documents are helpful.
+        The release notes describe what's new in this release.
+        The migration guide explains how you need to migrate your code for a proper upgrade.</p>
+        <table class="content-table">
+            <tbody>
+            <tr>
+                <td><a href="release-notes.html">Release Notes</a></td>
+                <td class="small-cell"><a href="release-notes.pdf">pdf</a></td>
+            </tr>
+            <tr>
+                <td><a href="migration-guide.html">Migration Guide</a></td>
+                <td class="small-cell"><a href="migration-guide.pdf">pdf</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 </body>
 </html>
