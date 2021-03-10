@@ -1,134 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Eclipse Scout Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Styles -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/base.css" rel="stylesheet">
-  <link href="assets/css/prettify.css" rel="stylesheet">
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.min.js"></script>
-  <![endif]-->
+    <meta charset="UTF-8">
+    <title>Eclipse Scout Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/styles.css" rel="stylesheet">
 </head>
-<body onload="prettyPrint()">
-  <div id="wrap">
-  <!-- Navbar -->
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">Home</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="https://www.eclipse.org/scout/">Project Homepage</a></li>
-          <li><a href="https://www.eclipse.org/forums/eclipse.scout">Forum</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="https://twitter.com/EclipseScout">@EclipseScout</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
+<body>
+
+<div class="header">
+    <div class="navigation-bar">
+        <div class="navigation-item right">
+            <a id="eclipse-scout-logo" href="https://www.eclipse.org/scout">
+                <img src="assets/img/eclipse-scout-logo.svg" class="logo-small" alt="logo">
+                <img src="assets/img/eclipse-scout-logo-large.svg" class="logo-large" alt="logo">
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="container">
+</div>
 
-  <div class="page-header">
-      <h1>Eclipse Scout Documentation</h1>
-  </div>
+<div class="wrapper">
+    <div class="panel" id="intro-panel">
+        <div class="intro-column first">
+            <img src="assets/img/books.jpg">
+        </div>
+        <div class="intro-column last">
+            <h1>Eclipse Scout Documentation</h1>
+            <p>Welcome to the Eclipse Scout <b>documentation platform</b>.
+                Whether you are just getting started or are already an expert: you have come to the right place to learn more about Scout.
+            </p>
+        </div>
+    </div>
+    <div class="panel">
 
-  <p><img src="assets/img/scout_logo.gif" alt="Eclipse Scout logo"/></p>
-  <p><strong>Eclipse Scout</strong> - Future Proof Business Applications</p>
+        <h2>Before You Start</h2>
+        <p>
+            If you are completely new and wondering what Eclipse Scout is, please visit our <a
+                href="https://www.eclipse.org/scout">website</a>.
+        </p>
 
-  <p class="scout-devices"><img src="assets/img/scout_neon_business_application_800px.png" alt="Business Application with Eclipse Scout"/></p>
+        <h2>Choose Your Version</h2>
+        <p>
+            Scout is a mature framework and since we release a major version once a year, there are quite a few versions
+            out there.
+        </p>
+        <p>
+            The link for the current stable version provides the most recent and accurate documentation.
+            If you use an older Scout version, you should consult the documentation for that specific version.
+        </p>
 
-  <h3>Get Started</h3>
-  <table border="0" cellspacing="0" style="width:100%; margin-top: 15px;">
-    <tbody>
-      <tr valign="top">
-        <th style="width:50%; padding-right: 15px;" >Latest Stable Release (10.0)</th>
-        <th>Next Release (11.0)</th>
-      </tr>
-      <tr valign="top">
-        <td>
-          <ul>
-            <li><a href="10.0/beginners-guide.html#installation-and-setup">Install</a> Scout</li>
-            <li>Do the <a href="10.0/beginners-guide.html#cha-helloworld">Hello World</a></li>
-            <li>Read the <a href="10.0/">Documentation</a></li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <li><a href="11.0/beginners-guide.html#installation-and-setup">Install</a> Scout</li>
-            <li>Do the <a href="11.0/beginners-guide.html#cha-helloworld">Hello World</a></li>
-            <li>Read the <a href="11.0/">Documentation</a></li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <hr/>
-  <table border="0" cellspacing="0" style="width:100%; margin-top: 15px;">
-    <tbody>
-      <tr valign="top">
-        <td style="width:50%; padding-right: 15px; padding-bottom: 15px;">
-          <h3><span id="Get_in_Touch">Get in Touch</span></h3>
-          <ul>
-            <li> <strong><a href="https://www.eclipse.org/scout">Scout Home</a></strong> - the Scout website </li>
-            <li> <strong><a href="https://www.eclipse.org/forums/eclipse.scout">Scout Forum</a></strong> - community discussions</li>
-            <li> <strong><a href="https://bugs.eclipse.org/bugs/buglist.cgi?query_format=advanced;bug_status=UNCONFIRMED;bug_status=NEW;bug_status=ASSIGNED;bug_status=REOPENED;bug_status=RESOLVED;bug_status=VERIFIED;product=Scout&amp;columnlist=bug_id%2Cbug_severity%2Cpriority%2Ctarget_milestone%2Cbug_status%2Cresolution%2Ccomponent%2Cassigned_to%2Cshort_desc">Scout Bugs</a></strong> - all open bugs</li>
-            <li> <strong><a href="https://dev.eclipse.org/mailman/listinfo/scout-dev">Scout Newsgroup</a></strong> - scout-dev@eclipse.org</li>
-			<li> <strong><a href="https://www.openhub.net/p/eclipsescout">Scout on Open Hub</a></strong> - code metrics and more</li>
-			<li> <strong><a href="https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/">Scout Source Code</a></strong> - GIT Repository Scout Runtime</li>
-			<li> <strong><a href="https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.docs">Docs Source Code</a></strong> - GIT Repository of the documentation and demo applications</li>
-			<li> <strong><a href="https://wiki.eclipse.org/Scout/Contribution">Contribution Guide</a></strong> - learn how to contribute</li>
-            <li> <strong><a href="https://www.bsi-software.com/">BSI Business Systems Integration AG</a></strong> - the currently contributing organization</li>
-           </ul>
-        </td>
-        <td>
-          <h3><span id="Scout_Project_News">Scout Project News</span></h3>
-          <ul>
-            <li> <strong><a href="https://twitter.com/EclipseScout">Twitter</a></strong> - follow us on Twitter</li>
-            <li> <strong><a href="https://www.bsi-software.com/en/scout-blog">Blog</a></strong> - News about Scout</li>
-            <li> <strong><a href="https://wiki.eclipse.org/images/9/90/EclipseScout_Factsheet_2018.pdf" class="internal" title="Factsheet Neon 2015 16.pdf">Scout Factsheet</a></strong> - the 2018 edition</li>
-            <li> <strong><a href="https://wiki.eclipse.org/Scout/Overview/Slides" title="Scout/Overview/Slides">Scout Presentations</a></strong> - slides and related materials</li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <hr/>
-  <h3>All Releases</h3>
-  <ul>
-  	<li><a href="10.0/">10.0</a> (stable release)</li>
-    <li><a href="9.0/">9.0</a></li>
-    <li><a href="8.0/">8.0</a></li>
-    <li><a href="7.0/">7.0</a></li>
-    <li><a href="6.1/">6.1</a></li>
-    <li><a href="6.0/">6.0</a></li>
-    <li><a href="5.2/">5.2</a></li>
-    <li><a href="5.0/">5.0</a></li>
-    <li><a href="4.0/">4.0</a></li>
-    <li><a href="3.9/">3.9</a></li>
-  </ul>
-
-  <hr>
-      </div>
-      <div id="push"></div>
-  </div>
-
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="assets/js/jquery-1.11.1.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/prettify.js"></script>
+        <table class="content-table version-table">
+            <tbody>
+            <tr>
+                <td class="first version-marker next">next</td>
+                <td>Version 22</td>
+                <td><a href="22.0">Browse</a></td>
+            </tr>
+            <tr class="stable-version-row">
+                <td class="first version-marker stable">stable</td>
+                <td>Version 11</td>
+                <td><a href="11.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 10</td>
+                <td><a href="10.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 9</td>
+                <td><a href="9.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 8</td>
+                <td><a href="8.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 7</td>
+                <td><a href="7.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 6</td>
+                <td><a href="6.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 5.2</td>
+                <td><a href="5.2">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 5</td>
+                <td><a href="5.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 4</td>
+                <td><a href="4.0">Browse</a></td>
+            </tr>
+            <tr>
+                <td class="first"></td>
+                <td>Version 3.9</td>
+                <td><a href="3.9">Browse</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
