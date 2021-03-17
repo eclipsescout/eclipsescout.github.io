@@ -2391,6 +2391,16 @@ JasmineScout.runTestSuite(context);</code></pre>
          <li> <p>Check your index.html in the browser. Each referenced script or CSS file should have a fingerprint, example: <code>yourapp-2c6053b2fdf5b816fae5.min.js</code>.</p> </li>
         </ul>
        </div>
+       <div class="admonitionblock note">
+        <table>
+         <tbody>
+          <tr>
+           <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
+           <td class="content"> If you set the config property <code>scout.devMode</code> to false instead of using the URL parameter, the resources will be loaded from the Java classpath. In that case you need to additionally copy the content of the dist folder to target/classes before starting the UI server. Or you can also set <code>scout.loadWebResourcesFromFilesystem</code> to true to disable classpath loading (see also <code>LoadWebResourcesFromFilesystemConfigProperty</code>). </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
       </div>
      </div>
      <div class="sect2">
@@ -3289,7 +3299,7 @@ chart.on(<span class="string"><span class="delimiter">'</span><span class="conte
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-15 18:37:26 +0100
+    <br> Last updated 2021-03-17 13:52:35 +0100
    </div>
   </div>
   <style>
