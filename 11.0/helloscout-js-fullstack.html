@@ -437,9 +437,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head>
- <body class="article">
+ <body class="book toc2 toc-left">
   <div id="header">
    <h1>Hello Scout JS Full Stack</h1>
+   <div class="details">
+    <span id="revnumber">version 11.0</span>
+   </div>
+   <div id="toc" class="toc2">
+    <div id="toctitle">
+     Table of Contents
+    </div>
+    <ul class="sectlevel1">
+     <li><a href="#introduction">Introduction</a></li>
+     <li><a href="#prerequisites">Prerequisites</a>
+      <ul class="sectlevel2">
+       <li><a href="#node-js">Node.js</a></li>
+       <li><a href="#intellij">IntelliJ</a></li>
+      </ul> </li>
+     <li><a href="#create-the-project">Create the Project</a></li>
+     <li><a href="#whats-next">What&#x2019;s Next?</a></li>
+    </ul>
+   </div>
   </div>
   <div id="content">
    <div id="preamble">
@@ -467,7 +485,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <tbody>
         <tr>
          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> If you don&#x2019;t know what Scout JS is yet, please read the <a href="https://eclipsescout.github.io/11.0/get-started.html">Get Started Guide</a> first. </td>
+         <td class="content"> If you don&#x2019;t know what Scout JS is yet, please read the <a href="https://eclipsescout.github.io/11.0/getstarted.html">Get Started Guide</a> first. </td>
         </tr>
        </tbody>
       </table>
@@ -615,7 +633,7 @@ v12.21.0</pre>
        <tbody>
         <tr>
          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> The JavaScript build fails in case the installed Node.js was not found or is too old. In that case, follow the instructions in the section <a href="#prerequisites">Prerequisites</a> and check the IntelliJ settings in <code>File | Settings | Languages &amp; Frameworks | Node.js and NPM</code>. </td>
+         <td class="content"> The JavaScript build fails in case the installed Node.js was not found or is too old. In that case, follow the instructions in the section <a href="#prerequisites"><em>Prerequisites</em></a> and check the IntelliJ settings in <code>File | Settings | Languages &amp; Frameworks | Node.js and NPM</code>. </td>
         </tr>
        </tbody>
       </table>
@@ -674,7 +692,7 @@ v12.21.0</pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-17 13:52:35 +0100
+    <br> Last updated 2021-03-17 16:43:22 +0100
    </div>
   </div>
  </body>
