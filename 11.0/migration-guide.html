@@ -598,8 +598,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
           <li> <p>Overwrite your <code>js build.sh</code> (or <code>js build.cmd</code> on Windows) with the following content and replace the <code>${rootArtifactId}</code> with your module name:</p>
            <div class="olist lowerroman">
             <ol class="lowerroman" type="i">
-             <li> <p>js build.sh: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/__rootArtifactId__.ui.html/js%20build.sh?h=releases/11.0">sample content</a></p> </li>
-             <li> <p>js build.cmd: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/__rootArtifactId__.ui.html/win%20js%20build.cmd?h=releases/11.0">sample content</a></p> </li>
+             <li> <p>js build.sh: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/__rootArtifactId__/run-configs/js%20build.sh?h=releases/11.0">sample content</a></p> </li>
+             <li> <p>js build.cmd: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.sdk.git/plain/scout-helloworld-app/src/main/resources/archetype-resources/__rootArtifactId__/run-configs/win%20js%20build.cmd?h=releases/11.0">sample content</a></p> </li>
             </ol>
            </div> </li>
           <li> <p>Remove all file dependencies in your <code>package.json</code> files. So dependency versions like <code>file:../helloworld.ui/</code> are replaced with the version of the module previously referenced (e.g. <code>1.0.0-SNAPSHOT</code>).</p> </li>
@@ -914,7 +914,7 @@ git add "**/pom.xml" "**/package.json"</code></pre>
   <div id="footer">
    <div id="footer-text">
      Version 11.0
-    <br> Last updated 2021-03-19 18:37:28 +0100
+    <br> Last updated 2021-03-20 12:25:48 +0100
    </div>
   </div>
   <style>
