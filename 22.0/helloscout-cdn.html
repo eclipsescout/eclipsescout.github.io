@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Asciidoctor 2.0.10">
-  <title>Hello Scout with a CDN</title>
+  <title>Hello Scout JS with a CDN</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
   <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,7 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  </head>
  <body class="book toc2 toc-left">
   <div id="header">
-   <h1>Hello Scout with a CDN</h1>
+   <h1>Hello Scout JS with a CDN</h1>
    <div class="details">
     <span id="revnumber">version 22.0</span>
    </div>
@@ -512,13 +512,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span class="tag">&lt;head&gt;</span>
   <span class="tag">&lt;title&gt;</span>Hello Scout CDN<span class="tag">&lt;/title&gt;</span>
   <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">viewport</span><span class="delimiter">"</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">"</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
-  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">"</span><span class="content">stylesheet</span><span class="delimiter">"</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.10/dist/eclipse-scout-core-theme.css</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">"</span><span class="content">stylesheet</span><span class="delimiter">"</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@22.0.0-snapshot/dist/eclipse-scout-core-theme.css</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tag">&lt;/head&gt;</span>
 <span class="tag">&lt;body&gt;</span>
   <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">scout</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><i class="conum" data-value="3"></i><b>(3)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://code.jquery.com/jquery-3.5.1.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://code.jquery.com/jquery-3.5.1.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/sourcemapped-stacktrace@1.1.11/dist/sourcemapped-stacktrace.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.10/dist/eclipse-scout-core.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@22.0.0-snapshot/dist/eclipse-scout-core.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">hello.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="4"></i><b>(4)</b>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
@@ -533,7 +533,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         </tr>
         <tr>
          <td><i class="conum" data-value="2"></i><b>2</b></td>
-         <td>Additionally, we need to include all dependencies, which are <code>jquery</code> and <code>sourcemapped-stacktrace.js</code>. These are the dependencies listed in the <a href="https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.10/package.json">package.json of @eclipse-scout/core</a>.</td>
+         <td>Additionally, we need to include all dependencies, which are <code>jquery</code> and <code>sourcemapped-stacktrace.js</code>. These are the dependencies listed in the <a href="https://cdn.jsdelivr.net/npm/@eclipse-scout/core@22.0.0-snapshot/package.json">package.json of @eclipse-scout/core</a>.</td>
         </tr>
         <tr>
          <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -606,7 +606,7 @@ scout.addObjectFactories({
 });
 <span class="keyword">new</span> scout.App().init({
   <span class="key">bootstrap</span>: {
-    <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.10/dist/texts.json</span><span class="delimiter">'</span></span>
+    <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://unpkg.com/@eclipse-scout/core@22.0.0-snapshot/dist/texts.json</span><span class="delimiter">'</span></span>
   }
 });</code></pre>
       </div>
@@ -659,7 +659,7 @@ scout.addObjectFactories({
   <div id="footer">
    <div id="footer-text">
      Version 22.0
-    <br> Last updated 2021-03-20 18:53:59 +0100
+    <br> Last updated 2021-03-21 18:53:41 +0100
    </div>
   </div>
   <style>

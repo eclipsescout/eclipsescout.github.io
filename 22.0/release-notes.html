@@ -448,10 +448,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      Table of Contents
     </div>
     <ul class="sectlevel1">
-     <li><a href="#about-this-release">About This Release</a>
-      <ul class="sectlevel2">
-       <li><a href="#service-releases">Service Releases</a></li>
-      </ul> </li>
+     <li><a href="#about-this-release">About This Release</a></li>
      <li><a href="#demo-applications">Demo Applications</a></li>
      <li><a href="#mobile-improvements">Mobile Improvements</a>
       <ul class="sectlevel2">
@@ -489,6 +486,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
        <li><a href="#tabbox-support-for-labelvisible">TabBox: Support for LabelVisible</a></li>
        <li><a href="#file-drop-support-js">File Drop Support (JS)</a></li>
       </ul> </li>
+     <li><a href="#scout-sdk-enhancements-for-intellij">Scout SDK Enhancements for IntelliJ</a>
+      <ul class="sectlevel2">
+       <li><a href="#code-completion-for-scout-classic">Code Completion for Scout Classic</a></li>
+       <li><a href="#code-completion-for-scout-js">Code Completion for Scout JS</a></li>
+       <li><a href="#national-language-support">National Language Support</a></li>
+       <li><a href="#wizard-to-create-a-new-scout-project">Wizard to Create a New Scout Project</a></li>
+      </ul> </li>
     </ul>
    </div>
   </div>
@@ -518,12 +522,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      </div>
      <div class="paragraph">
       <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/22.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
-     </div>
-     <div class="sect2">
-      <h3 id="service-releases"><a class="anchor" href="#service-releases"></a>Service Releases</h3>
-      <div class="paragraph">
-       <p>Scout 22.0 will continue to be maintained for a while and new builds may be released from time to time. Beside bug fixes, these releases may even contain some minor features.</p>
-      </div>
      </div>
     </div>
    </div>
@@ -854,6 +852,52 @@ module.exports = (env, args) =&gt; {
       <div class="paragraph">
        <p>To do so, you need to set the <code>dropType</code> property to <code>dragAndDrop.SCOUT_TYPES.FILE_TRANSFER</code>. You can then listen to the 'drop' event and handle it accordingly. You may also want to adjust the <code>dropMaximumSize</code> to decrease or increase the allowed file size.</p>
       </div>
+     </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="scout-sdk-enhancements-for-intellij"><a class="anchor" href="#scout-sdk-enhancements-for-intellij"></a>Scout SDK Enhancements for IntelliJ</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>Beside new Scout runtime features, the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">Scout SDK for IntelliJ</a> got some new features as well.</p>
+     </div>
+     <div class="sect2">
+      <h3 id="code-completion-for-scout-classic"><a class="anchor" href="#code-completion-for-scout-classic"></a>Code Completion for Scout Classic</h3>
+      <div class="paragraph">
+       <p>This enables you to easily create new Scout elements like form fields, menus, codes etc. directly from the editor. Just press <code>Ctrl + Space</code> to see the available elements for the current location in the code, or simply start writing (e.g. Menu).</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="code-completion-for-scout-js"><a class="anchor" href="#code-completion-for-scout-js"></a>Code Completion for Scout JS</h3>
+      <div class="paragraph">
+       <p>Similar to the code completion for Scout Classic, you can now easily add new elements in your Scout JS models. This is not limited to adding new widgets, you get code completion for all properties (like enabled, visible etc.).</p>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="national-language-support"><a class="anchor" href="#national-language-support"></a>National Language Support</h3>
+      <div class="paragraph">
+       <p>Even though IntelliJ has a built-in NLS editor, the editor has some limitations. With the new Scout NLS editor you will get the features you know well and love from the Scout NLS editor for Eclipse. This includes being able to show inherited texts or sorting the texts alphabetically. Just open the <code>translation.nls</code> file to open the Scout editor.</p>
+      </div>
+      <div class="paragraph">
+       <p>In addition to the editor, you also get:</p>
+      </div>
+      <div class="olist arabic">
+       <ol class="arabic">
+        <li> <p>Inspections for missing and unused translations.</p> </li>
+        <li> <p>Code completion for Scout translation keys in Java, JavaScript and HTML.<br> This allows you to easily select or even add new texts directly from the code.</p> </li>
+        <li> <p>Tooltip documentation for Scout translation keys.</p> </li>
+        <li> <p>Code folding support for Scout translations with configurable display language.</p> </li>
+       </ol>
+      </div>
+     </div>
+     <div class="sect2">
+      <h3 id="wizard-to-create-a-new-scout-project"><a class="anchor" href="#wizard-to-create-a-new-scout-project"></a>Wizard to Create a New Scout Project</h3>
+      <div class="paragraph">
+       <p>With the new wizard you can easily create a new Scout Classic or Scout JS project with just a few clicks.</p>
+      </div>
+      <div class="paragraph">
+       <p>If you want to try it out we recommend to either do the <a href="https://eclipsescout.github.io/11.0/helloscout.html">Hello Scout Classic</a> or the <a href="https://eclipsescout.github.io/11.0/helloscout-js.html">Hello Scout JS</a> tutorial.</p>
+      </div>
       <div class="admonitionblock tip">
        <table>
         <tbody>
@@ -871,7 +915,7 @@ module.exports = (env, args) =&gt; {
   <div id="footer">
    <div id="footer-text">
      Version 22.0
-    <br> Last updated 2021-03-20 18:53:59 +0100
+    <br> Last updated 2021-03-21 18:53:41 +0100
    </div>
   </div>
   <style>
