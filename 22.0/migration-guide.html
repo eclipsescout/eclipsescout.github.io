@@ -457,6 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       </ul> </li>
      <li><a href="#typeversion-annotation-type-change">TypeVersion Annotation Type Change</a></li>
      <li><a href="#annotation-enumversion-removed">Annotation EnumVersion removed</a></li>
+     <li><a href="#native-notification-support">Native Notification Support</a></li>
     </ul>
    </div>
   </div>
@@ -600,6 +601,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
      <div class="paragraph">
       <p>Remove <code>EnumVersion</code> annotation on <code>IEnum</code> implementors.</p>
      </div>
+    </div>
+   </div>
+   <div class="sect1">
+    <h2 id="native-notification-support"><a class="anchor" href="#native-notification-support"></a>Native Notification Support</h2>
+    <div class="sectionbody">
+     <div class="paragraph">
+      <p>The notification uses the application logo configured in <code>AbstractDesktop#getConfiguredLogoId()</code>.</p>
+     </div>
+     <div class="paragraph">
+      <p><strong>Migration</strong> Provide an application logo with a resolution of at least 150x150 px.</p>
+     </div>
      <div class="admonitionblock tip">
       <table>
        <tbody>
@@ -616,7 +628,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <div id="footer">
    <div id="footer-text">
      Version 22.0
-    <br> Last updated 2021-03-31 18:54:10 +0200
+    <br> Last updated 2021-04-06 18:54:11 +0200
    </div>
   </div>
   <style>
