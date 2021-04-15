@@ -518,7 +518,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     <h2 id="get-the-code"><a class="anchor" href="#get-the-code"></a>Get the Code</h2>
     <div class="sectionbody">
      <div class="paragraph">
-      <p>For now, you have to manually recreate the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/releases/22.0/code/helloscoutjs">helloworld</a> folder with all its files or clone the whole <a href="https://github.com/bsi-software/org.eclipse.scout.docs.git">docs</a> repository, checkout branch <code>releases/22.0</code> and use or copy that folder from your working tree.</p>
+      <p>Clone the <a href="https://github.com/bsi-software/helloscoutjs.git">helloscoutjs</a> repository and checkout the branch <code>releases/22.0</code>. Alternatively, you can also download and extract a <a href="https://github.com/bsi-software/helloscoutjs/archive/refs/heads/releases/22.0.zip">ZIP file of the repository</a>.</p>
+     </div>
+     <div class="paragraph">
+      <p>After that, the file and folder structure of your local copy should look like this (apart from a few more files):</p>
      </div>
      <div class="listingblock">
       <div class="title">
@@ -723,9 +726,9 @@ module.exports = (env, args) =&gt; {
          Listing 5. src/helloworld.js
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {scout, App as ScoutApp} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
-<span class="reserved">import</span> {Desktop} from <span class="string"><span class="delimiter">'</span><span class="content">./desktop/Desktop</span><span class="delimiter">'</span></span>;
-<span class="reserved">import</span> {HelloForm} from <span class="string"><span class="delimiter">'</span><span class="content">./greeting/HelloForm</span><span class="delimiter">'</span></span>;
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { scout, App as ScoutApp } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Desktop } from <span class="string"><span class="delimiter">'</span><span class="content">./desktop/Desktop</span><span class="delimiter">'</span></span>
+<span class="reserved">import</span> { HelloForm } from <span class="string"><span class="delimiter">'</span><span class="content">./greeting/HelloForm</span><span class="delimiter">'</span></span>
 scout.addObjectFactories({
   <span class="key"><span class="delimiter">'</span><span class="content">Desktop</span><span class="delimiter">'</span></span>: () =&gt; <span class="keyword">new</span> Desktop()
 });
@@ -813,7 +816,7 @@ window.helloworld = Object.assign(window.helloworld || {}, {
          Listing 8. src/greeting/Desktop.js
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Desktop as ScoutDesktop, models} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { Desktop as ScoutDesktop, models } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> DesktopModel from <span class="string"><span class="delimiter">'</span><span class="content">./DesktopModel</span><span class="delimiter">'</span></span>;
 <span class="reserved">export</span> <span class="reserved">class</span> Desktop <span class="reserved">extends</span> ScoutDesktop {
   constructor() {
@@ -833,7 +836,7 @@ window.helloworld = Object.assign(window.helloworld || {}, {
          Listing 9. src/greeting/HelloFormModel.js
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {GroupBox} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { GroupBox } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
   <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>,
   <span class="key">displayHint</span>: <span class="string"><span class="delimiter">'</span><span class="content">view</span><span class="delimiter">'</span></span>,
@@ -856,7 +859,7 @@ window.helloworld = Object.assign(window.helloworld || {}, {
       }
     ]
   }
-});</code></pre>
+})</code></pre>
         </div>
        </div>
        <div class="paragraph">
@@ -870,14 +873,14 @@ window.helloworld = Object.assign(window.helloworld || {}, {
          Listing 10. src/greeting/HelloForm.js
         </div>
         <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Form, models, MessageBoxes} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { Form, models, MessageBoxes } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> HelloFormModel from <span class="string"><span class="delimiter">'</span><span class="content">./HelloFormModel</span><span class="delimiter">'</span></span>;
 <span class="reserved">export</span> <span class="reserved">class</span> HelloForm <span class="reserved">extends</span> Form {
   constructor() {
     <span class="reserved">super</span>();
   }
   _jsonModel() {
-    <span class="keyword">return</span> models.get(HelloFormModel);
+    <span class="keyword">return</span> models.get(HelloFormModel)
   }
   _init(model) {
     <span class="reserved">super</span>._init(model);
@@ -903,20 +906,20 @@ window.helloworld = Object.assign(window.helloworld || {}, {
        <p>If you want to add the created application to a Git repository, it is recommended to exclude some files from the SCM.</p>
       </div>
       <div class="paragraph">
-       <p>As a starting point, put a file named <code>.gitignore</code> with the following content in the main folder of the application.</p>
+       <p>As a starting point, use the file you cloned/downloaded from the helloscoutjs repository.</p>
       </div>
       <div class="listingblock">
        <div class="title">
         Listing 11. .gitignore
        </div>
        <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="properties"># Git
+        <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Git</span>
 *.orig
-# Node.js
+<span class="comment"># Node</span>
 node_modules/
 dist/
 test-results/
-# Do not check in any log files
+<span class="comment"># Do not check in any log files</span>
 *.log</code></pre>
        </div>
       </div>
@@ -963,7 +966,7 @@ test-results/
   <div id="footer">
    <div id="footer-text">
      Version 22.0
-    <br> Last updated 2021-04-11 18:53:48 +0200
+    <br> Last updated 2021-04-15 18:14:41 +0200
    </div>
   </div>
   <style>
