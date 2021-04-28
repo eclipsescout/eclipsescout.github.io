@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Asciidoctor 2.0.10">
-  <title>Build Scout App and Deploy to Tomcat</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
-  <style>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Build Scout App and Deploy to Tomcat</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -435,434 +435,504 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head>
- <body class="book toc2 toc-left">
-  <div id="header">
-   <h1>Build Scout App and Deploy to Tomcat</h1>
-   <div class="details">
-    <span id="revnumber">version 22.0</span>
-   </div>
-   <div id="toc" class="toc2">
-    <div id="toctitle">
-     Table of Contents
-    </div>
-    <ul class="sectlevel1">
-     <li><a href="#verify-the-container-security-settings">Verify the Container Security Settings</a></li>
-     <li><a href="#create-and-install-a-self-signed-certificate">Create and Install a Self-Signed Certificate</a></li>
-     <li><a href="#update-the-scout-application-to-work-with-http">Update the Scout Application to work with HTTP</a></li>
-     <li><a href="#create-war-files">Create WAR Files</a></li>
-     <li><a href="#sec-helloworld_deploy">Deploy to Tomcat</a></li>
-     <li><a href="#apx-install_tomcat">Appendix A: Apache Tomcat Installation</a>
-      <ul class="sectlevel2">
-       <li><a href="#platform-specific-instructions">Platform Specific Instructions</a></li>
-       <li><a href="#apx-tomcat_dirs_and_files">Directories and Files</a></li>
-       <li><a href="#apx-tomcat_manager_app">The Tomcat Manager Application</a></li>
-      </ul> </li>
-    </ul>
-   </div>
-  </div>
-  <div id="content">
-   <div id="preamble">
-    <div class="sectionbody">
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <div class="paragraph">
-      <p>At some point during the application development you will want to install your software on a machine that is intended for productive use. This is the moment where you need to be able to build and package your Scout application in a way that can be deployed to an application server.</p>
-     </div>
-     <div class="paragraph">
-      <p>As Scout applications just need a servlet container to run, Scout applications can be deployed to almost any Java application server. For the purpose of this tutorial we will use <a href="http://tomcat.apache.org/tomcat-9.0-doc/index.html">Apache Tomcat</a>.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="verify-the-container-security-settings"><a class="anchor" href="#verify-the-container-security-settings"></a>Verify the Container Security Settings</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>First you need a Tomcat installation. If you do not yet have such an installation, you may want to read and follow the instructions provided in <a href="#apx-install_tomcat">Appendix A</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>Second you need to decide if the users of your application should communicate with the Scout frontend server using HTTPS. We strongly recommend to use HTTPS for any productive environment. This is why the <code>Hello Scout</code> applications are configured to use HTTPS for production by default.</p>
-     </div>
-     <div class="paragraph">
-      <p>In case you don&#x2019;t want to use HTTPS the application must be slightly modified. Then you can skip the next section and instead follow the instructions in section <a href="#update-the-scout-application-to-work-with-http"><em>Update the Scout Application to work with HTTP</em></a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>As a default Tomcat installation is configured to use HTTP only, you need to verify if the installation is properly configured for HTTPS too. In case HTTPS support is already enabled for your Tomcat installation, you may skip the next section.</p>
-     </div>
-     <div class="paragraph">
-      <p>More details on the SSL configuration can be found in the <a href="http://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html">Tomcat Documentation</a> to enable SSL/TLS.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="create-and-install-a-self-signed-certificate"><a class="anchor" href="#create-and-install-a-self-signed-certificate"></a>Create and Install a Self-Signed Certificate</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>This section describes the creation and usage of a self-signed certificate in a localhost setting.</p>
-     </div>
-     <div class="olist arabic">
-      <ol class="arabic">
-       <li> <p>Create a keystore file with a self-signed certificate.</p> </li>
-       <li> <p>Adapt the HTTPS connector port in Tomcat&#x2019;s server.xml configuration.</p> </li>
-       <li> <p>Export the self-signed certificate from the keystore.</p> </li>
-       <li> <p>Import the self-signed certificate into the Java certificate store.</p> </li>
-      </ol>
-     </div>
-     <div class="paragraph">
-      <p>The first step is to create a self-signed certificate using the keytool provided with the Java runtime. The example command line below will create such a certificate using the alias <code>tomcat_localhost</code> and place it into the keystore file <code>tomcat_localhost.jks</code></p>
-     </div>
-     <div class="literalblock">
-      <div class="content">
-       <pre>keytool.exe -genkey -keyalg RSA -dname CN=localhost -alias tomcat_localhost -keystore tomcat_localhost.jks -keypass changeit -storepass changeit</pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>The second step is to uncomment the HTTPS connector element in the Tomcat&#x2019;s <code>server.xml</code> configuration file. Make sure parameter <code>keystoreFile</code> points to your newly created keystore file (if you are using a Windows box, make sure not to use the backslash characters in the path to the keystore). After a restart of Tomcat you should then be able to access Tomcat on <a href="https://localhost:8443/manager/html">https://localhost:8443/manager/html</a>.</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Connector</span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">"</span><span class="content">8443</span><span class="delimiter">"</span></span> <span class="attribute-name">protocol</span>=<span class="string"><span class="delimiter">"</span><span class="content">org.apache.coyote.http11.Http11NioProtocol</span><span class="delimiter">"</span></span>
-           <span class="attribute-name">maxThreads</span>=<span class="string"><span class="delimiter">"</span><span class="content">150</span><span class="delimiter">"</span></span> <span class="attribute-name">SSLEnabled</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span> <span class="attribute-name">scheme</span>=<span class="string"><span class="delimiter">"</span><span class="content">https</span><span class="delimiter">"</span></span> <span class="attribute-name">secure</span>=<span class="string"><span class="delimiter">"</span><span class="content">true</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Build Scout App and Deploy to Tomcat</h1>
+<div class="details">
+<span id="revnumber">version 22.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#verify-the-container-security-settings">Verify the Container Security Settings</a></li>
+<li><a href="#create-and-install-a-self-signed-certificate">Create and Install a Self-Signed Certificate</a></li>
+<li><a href="#update-the-scout-application-to-work-with-http">Update the Scout Application to work with HTTP</a></li>
+<li><a href="#create-war-files">Create WAR Files</a></li>
+<li><a href="#sec-helloworld_deploy">Deploy to Tomcat</a></li>
+<li><a href="#apx-install_tomcat">Appendix A: Apache Tomcat Installation</a>
+<ul class="sectlevel2">
+<li><a href="#platform-specific-instructions">Platform Specific Instructions</a></li>
+<li><a href="#apx-tomcat_dirs_and_files">Directories and Files</a></li>
+<li><a href="#apx-tomcat_manager_app">The Tomcat Manager Application</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>At some point during the application development you will want to install your software on a machine that is intended for productive use.
+This is the moment where you need to be able to build and package your Scout application in a way that can be deployed to an application server.</p>
+</div>
+<div class="paragraph">
+<p>As Scout applications just need a servlet container to run, Scout applications can be deployed to almost any Java application server.
+For the purpose of this tutorial we will use <a href="http://tomcat.apache.org/tomcat-9.0-doc/index.html">Apache Tomcat</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="verify-the-container-security-settings"><a class="anchor" href="#verify-the-container-security-settings"></a>Verify the Container Security Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First you need a Tomcat installation.
+If you do not yet have such an installation, you may want to read and follow the instructions provided in <a href="#apx-install_tomcat">Appendix A</a>.</p>
+</div>
+<div class="paragraph">
+<p>Second you need to decide if the users of your application should communicate with the Scout frontend server using HTTPS.
+We strongly recommend to use HTTPS for any productive environment.
+This is why the <code>Hello Scout</code> applications are configured to use HTTPS for production by default.</p>
+</div>
+<div class="paragraph">
+<p>In case you don&#8217;t want to use HTTPS the application must be slightly modified.
+Then you can skip the next section and instead follow the instructions in section <a href="#update-the-scout-application-to-work-with-http"><em>Update the Scout Application to work with HTTP</em></a>.</p>
+</div>
+<div class="paragraph">
+<p>As a default Tomcat installation is configured to use HTTP only, you need to verify if the installation is properly configured for HTTPS too.
+In case HTTPS support is already enabled for your Tomcat installation, you may skip the next section.</p>
+</div>
+<div class="paragraph">
+<p>More details on the SSL configuration can be found in the <a href="http://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html">Tomcat Documentation</a> to enable SSL/TLS.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-and-install-a-self-signed-certificate"><a class="anchor" href="#create-and-install-a-self-signed-certificate"></a>Create and Install a Self-Signed Certificate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes the creation and usage of a self-signed certificate in a localhost setting.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a keystore file with a self-signed certificate.</p>
+</li>
+<li>
+<p>Adapt the HTTPS connector port in Tomcat&#8217;s server.xml configuration.</p>
+</li>
+<li>
+<p>Export the self-signed certificate from the keystore.</p>
+</li>
+<li>
+<p>Import the self-signed certificate into the Java certificate store.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The first step is to create a self-signed certificate using the keytool provided with the Java runtime.
+The example command line below will create such a certificate using the alias <code>tomcat_localhost</code> and place it into the keystore file <code>tomcat_localhost.jks</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -genkey -keyalg RSA -dname CN=localhost -alias tomcat_localhost -keystore tomcat_localhost.jks -keypass changeit -storepass changeit</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second step is to uncomment the HTTPS connector element in the Tomcat&#8217;s <code>server.xml</code> configuration file.
+Make sure parameter <code>keystoreFile</code> points to your newly created keystore file (if you are using a Windows box, make sure not to use the backslash characters in the path to the keystore).
+After a restart of Tomcat you should then be able to access Tomcat on <a href="https://localhost:8443/manager/html">https://localhost:8443/manager/html</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Connector</span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8443</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">protocol</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.coyote.http11.Http11NioProtocol</span><span class="delimiter">&quot;</span></span>
+           <span class="attribute-name">maxThreads</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">150</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">SSLEnabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">scheme</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">secure</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;SSLHostConfig&gt;</span>
-        <span class="tag">&lt;Certificate</span> <span class="attribute-name">certificateKeystoreFile</span>=<span class="string"><span class="delimiter">"</span><span class="content">/keystore/tomcat_localhost.jks</span><span class="delimiter">"</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">RSA</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;Certificate</span> <span class="attribute-name">certificateKeystoreFile</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/keystore/tomcat_localhost.jks</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">RSA</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;/SSLHostConfig&gt;</span>
 <span class="tag">&lt;/Connector&gt;</span></code></pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>The third step is to export the newly created self-signed certificate from the <code>tomcat_localhost.jks</code> keystore file into the <code>tomcat_localhost.der</code> certificate file.</p>
-     </div>
-     <div class="literalblock">
-      <div class="content">
-       <pre>keytool.exe -exportcert -alias tomcat_localhost -storepass changeit -keystore tomcat_localhost.jks -file tomcat_localhost.der</pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>In the last step add the self-signed certificate to the known certificates of the Java runtime. Make sure you modify the <code>cacerts</code> file of the Java runtime that is used in your Tomcat installation and modify the path to the <code>cacerts</code> file accordingly.</p>
-     </div>
-     <div class="literalblock">
-      <div class="content">
-       <pre>keytool.exe -import -alias tomcat_localhost -trustcacerts -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts -file tomcat_localhost.der</pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>Your Tomcat installation is now properly configured for HTTPS.</p>
-     </div>
-     <div class="paragraph">
-      <p>In case the Scout frontend server cannot access the Scout backend server, your self-signed certificate might be missing in the Java installation used by Tomcat. To verify that the certificate has been included in the file <code>cacerts</code> file use the following command.</p>
-     </div>
-     <div class="literalblock">
-      <div class="content">
-       <pre>keytool.exe -list -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts | find "localhost"</pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>Once you no longer need the self-signed certificate file in your Java installation make sure to remove the certificate again:</p>
-     </div>
-     <div class="literalblock">
-      <div class="content">
-       <pre>keytool.exe -delete -alias tomcat_localhost -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts</pre>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="update-the-scout-application-to-work-with-http"><a class="anchor" href="#update-the-scout-application-to-work-with-http"></a>Update the Scout Application to work with HTTP</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>If you prefer to work with HTTP only, you need to modify the security settings of your Scout application. This can be done with the steps described below.</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>In file <code>config.properties</code> (in the folder <code>helloscout.ui.html.app.war/src/main/resources</code>):</p>
-        <div class="ulist">
-         <ul>
-          <li> <p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p> </li>
-          <li> <p>Change the <code>scout.backendUrl</code> property to use HTTP instead of HTTPS and change the port according to your Tomcat setup, typically 8080.</p> </li>
-         </ul>
-        </div> </li>
-       <li> <p>In file <code>web.xml</code> (in the folder <code>helloscout.ui.html.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
-       <li> <p>In file <code>web.xml</code> (in the folder <code>helloscout.server.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p> </li>
-      </ul>
-     </div>
-     <div class="paragraph">
-      <p>More on this topic can be found in the Scout Architecture Documentation.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="create-war-files"><a class="anchor" href="#create-war-files"></a>Create WAR Files</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>You are now ready to move the <code>Hello Scout</code> application from our development environment to a productive setup. The simplest option to move our application into the 'wild' is to build it using Maven. This produces two WAR files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
-     </div>
-     <div class="paragraph">
-      <p>The first WAR file contains the Scout backend server with all business logic. The second WAR file contains the Scout frontend server that is responsible for communicating with the web browser of the user.</p>
-     </div>
-     <div class="paragraph">
-      <p>To start the build open the directory containing the module <code>helloscout</code> in the command line and execute the Maven command <code>mvn clean verify</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>This starts the compilation, executes all test cases and bundles the result into two WAR files. As soon as the build is reporting success (this may take a few minutes) you can find the built WAR files:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p>The Scout backend WAR file <code>org.eclipse.scout.apps.helloscout.server.war</code> in folder <code>helloscout/helloscout.server.app.war/target</code></p> </li>
-       <li> <p>The Scout frontend WAR file <code>org.eclipse.scout.apps.helloscout.ui.html.war</code> in folder <code>helloscout/helloscout.ui.html.app.war/target</code></p> </li>
-      </ul>
-     </div>
-     <div class="paragraph">
-      <p>To see the new files within Eclipse you may need to refresh the <code>target</code> folder below each project using the F5 keystroke.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="sec-helloworld_deploy"><a class="anchor" href="#sec-helloworld_deploy"></a>Deploy to Tomcat</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>As the final step of this tutorial, you have to deploy the two WAR files representing your <code>Hello Scout</code> application to a Tomcat web server. To verify a running Tomcat instance, type <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> into the address bar of the web browser of your choice. You should then see the page shown in <a href="#img-deploy_tomcat_1">Figure 1</a>.</p>
-     </div>
-     <div id="img-deploy_tomcat_1" class="imageblock">
-      <div class="content">
-       <img src="images/tomcat_managerapp_login.png" alt="tomcat managerapp login">
-      </div>
-      <div class="title">
-       Figure 1. The Tomcat shown after a successful installation. After clicking on the
-       <code>Manager App</code> button (highlighted in red) the login box is shown in front. A successful login shows the "Tomcat Web Application Manager".
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>Once the web browser displays the successful running of your Tomcat instance, switch to its <code>Manager App</code> by clicking on the button highlighted in <a href="#img-deploy_tomcat_1">Figure 1</a>. After entering user name and password the browser will display the <code>Tomcat Web Application Manager</code> as shown in <a href="#img-deploy_tomcat_2">Figure 2</a>. If you don&#x2019;t know the credentials, you may look it up in the file <code>tomcat-users.xml</code> as described in <a href="#apx-tomcat_dirs_and_files">Directories and Files</a>.</p>
-     </div>
-     <div id="img-deploy_tomcat_2" class="imageblock">
-      <div class="content">
-       <img src="images/tomcat_managerapp_selectwar.png" alt="tomcat managerapp selectwar">
-      </div>
-      <div class="title">
-       Figure 2. The &#x201c;Tomcat Web Application Manager&#x201d;. The WAR files to be deployed can then be selected using button &#x201c;Choose File&#x201d; highlighted in red.
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>After logging into Tomcat&#x2019;s manager application, you can select the WAR files to be deployed using the button <code>Choose File</code> as shown in <a href="#img-deploy_tomcat_2">Figure 2</a>. Then pick your just built <code>org.eclipse.scout.apps.helloscout.server.war</code>, close the file chooser and click on the button <code>Deploy</code> (the one located directly below button <code>Choose File</code>) to deploy the application to the Tomcat web server. Then repeat this step with the second WAR file <code>org.eclipse.scout.apps.helloscout.ui.html.war</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>This will copy the selected WAR files into Tomcat&#x2019;s <code>webapps</code> directory and unpack its contents into subdirectories with the same name as the WAR file. You can now connect to the application using the browser of your choice by navigating to:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre>  http://localhost:8080/org.eclipse.scout.apps.helloscout.ui.html/</pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>or</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre>https://localhost:8443/org.eclipse.scout.apps.helloscout.ui.html/</pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>if you have chosen to configure HTTPS for the Tomcat installation. In this case you might need to accept your self-signed certificate as the browser does not yet trust it.</p>
-     </div>
-     <div id="img-helloworld_running_download" class="imageblock">
-      <div class="content">
-       <img src="images/tomcat_helloworld_download.png" alt="tomcat helloworld download">
-      </div>
-      <div class="title">
-       Figure 3. The "Hello Scout" login page.
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>Then you will see the login page as shown in <a href="#img-helloworld_running_download">Figure 3</a>. Two users have been predefined: <code>admin</code> with password <code>admin</code> and <code>scott</code> with password <code>tiger</code>. You can find this configuration in the <code>config.properties</code> file of the application.</p>
-     </div>
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> In a productive environment it is recommended to deploy the server and the user interface into two different servlet containers running on dedicated machines. This is because these two tiers have different requirements on resources, load balancing and access protection. Furthermore, it is strongly recommended using an encrypted connection (e.g. TLS 1.3 <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>) between client browsers and the Scout frontend server AND between the Scout frontend and backend server! </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="apx-install_tomcat"><a class="anchor" href="#apx-install_tomcat"></a>Appendix A: Apache Tomcat Installation</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Apache Tomcat is an open source servlet container that is a widely used. In case you are interested in getting some general context around Tomcat you could start with the Wikipedia article.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>. Then get introduced to its core component &#x201c;Tomcat Catalina&#x201d;.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>. before you switch to the official Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
-     </div>
-     <div class="paragraph">
-      <p>This section is not really a step by step download and installation guide. Rather, it points you to the proper places for downloading and installing Tomcat. We recommend to work with Tomcat version 9.0. Start your download from the official download site.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>.</p>
-     </div>
-     <div id="img-tomcat_install" class="imageblock">
-      <div class="content">
-       <img src="images/tomcat_install.png" alt="tomcat install">
-      </div>
-      <div class="title">
-       Figure 4. A successful Tomcat installation.
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or daemon. To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar. You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 4</a>.</p>
-     </div>
-     <div class="sect2">
-      <h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>Platform Specific Instructions</h3>
-      <div class="paragraph">
-       <p>According to the Tomcat setup installation for Windows.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup> download the package &#x201c;32-bit/64-bit Windows Service Installer&#x201d; from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, start the installer and accept the proposed default settings.</p>
-      </div>
-      <div class="paragraph">
-       <p>For installing Tomcat on OS X systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the installation guide.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> provided by Wolf Paulus.</p>
-      </div>
-      <div class="paragraph">
-       <p>For Linux systems download the &#x201c;tar.gz&#x201d; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>. Then, follow the description of the Unix setup.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> to run Tomcat as a daemon. If you use Ubuntu, you may want to follow the tutorial.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup> for downloading and installing Tomcat provided by Lars Vogel.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="apx-tomcat_dirs_and_files"><a class="anchor" href="#apx-tomcat_dirs_and_files"></a>Directories and Files</h3>
-      <div class="paragraph">
-       <p>Tomcat&#x2019;s installation directory follows the same organisation on all platforms. Here, we will only introduce the most important aspects of the Tomcat installation for the purpose of this tutorial.</p>
-      </div>
-      <div id="img-tomcat_install_dir" class="imageblock">
-       <div class="content">
-        <img src="images/tomcat_install_dir.png" alt="tomcat install dir">
-       </div>
-       <div class="title">
-        Figure 5. The organisation of a Tomcat installation including specific files of interest. As an example, a web app called "helloworld_server" is contained in subdirectory "webapps".
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 5</a>. We just want to provide a basic understanding of the most important parts to operate the web server in the context of this tutorial. In the <code>bin</code> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
-      </div>
-      <div class="paragraph">
-       <p>The <code>conf</code> folder contains a set of XML and property configuration files. The file <code>server.xml</code> represents Tomcat&#x2019;s main configuration file. It is used to configure general web server aspects such as the port number of its connectors for the client server communication. For the default setup, port number 8080 is used for the communication between client applications and the web server. The file <code>tomcat-users.xml</code> contains a database of users, passwords and associated roles.</p>
-      </div>
-      <div class="paragraph">
-       <p>Folder <code>logs</code> contains various logfiles of Tomcat itself as well as host and web application log files.</p>
-      </div>
-      <div class="paragraph">
-       <p>The folder needed for deploying web applications into a Tomcat instance is called <code>webapps</code>. It can be used as the target for copying WAR files into the web server. The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 5</a>.</p>
-      </div>
-      <div class="paragraph">
-       <p>Finally, the folder <code>work</code> contains Tomcat&#x2019;s runtime cache for the deployed web applications.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="apx-tomcat_manager_app"><a class="anchor" href="#apx-tomcat_manager_app"></a>The Tomcat Manager Application</h3>
-      <div class="paragraph">
-       <p>Tomcat comes with the pre installed <code>Manager App</code>. This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications. A comprehensive documentation for the <code>Manager App</code> can be found on the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>. Here we only show how to start this application from the homepage of a running Tomcat installation.</p>
-      </div>
-      <div class="paragraph">
-       <p>To access this application you can switch to the <code>Manager App</code> with a click on the corresponding button on the right side as shown in <a href="#img-tomcat_install">Figure 4</a>. Before you are allowed to access this application, you need to provide credentials of a user associated with Tomcats&#x2019;s <code>manager-gui</code> role.</p>
-      </div>
-      <div id="lst-tomcat.users" class="listingblock">
-       <div class="title">
-        Listing 1. Tomcat Users configuration file "tomcat-users.xml".
-       </div>
-       <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;tomcat-users&gt;</span>
-    <span class="comment">&lt;!-- NOTE: By default, no user is included in the "manager-gui" role required to operate the "/manager/html" web application. If you wish to use it you must define such a user - the username and password are arbitrary. --&gt;</span>
-    <span class="tag">&lt;user</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">admin</span><span class="delimiter">"</span></span> <span class="attribute-name">password</span>=<span class="string"><span class="delimiter">"</span><span class="content">s3cret</span><span class="delimiter">"</span></span> <span class="attribute-name">roles</span>=<span class="string"><span class="delimiter">"</span><span class="content">manager-gui</span><span class="delimiter">"</span></span><span class="tag">/&gt;</span>
+</div>
+</div>
+<div class="paragraph">
+<p>The third step is to export the newly created self-signed certificate from the <code>tomcat_localhost.jks</code> keystore file into the <code>tomcat_localhost.der</code> certificate file.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -exportcert -alias tomcat_localhost -storepass changeit -keystore tomcat_localhost.jks -file tomcat_localhost.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the last step add the self-signed certificate to the known certificates of the Java runtime.
+Make sure you modify the <code>cacerts</code> file of the Java runtime that is used in your Tomcat installation and modify the path to the <code>cacerts</code> file accordingly.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -import -alias tomcat_localhost -trustcacerts -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts -file tomcat_localhost.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your Tomcat installation is now properly configured for HTTPS.</p>
+</div>
+<div class="paragraph">
+<p>In case the Scout frontend server cannot access the Scout backend server, your self-signed certificate might be missing in the Java installation used by Tomcat.
+To verify that the certificate has been included in the file <code>cacerts</code> file use the following command.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -list -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts | find "localhost"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you no longer need the self-signed certificate file in your Java installation make sure to remove the certificate again:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -delete -alias tomcat_localhost -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-the-scout-application-to-work-with-http"><a class="anchor" href="#update-the-scout-application-to-work-with-http"></a>Update the Scout Application to work with HTTP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer to work with HTTP only, you need to modify the security settings of your Scout application.
+This can be done with the steps described below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In file <code>config.properties</code> (in the folder <code>helloscout.ui.html.app.war/src/main/resources</code>):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p>
+</li>
+<li>
+<p>Change the <code>scout.backendUrl</code> property to use HTTP instead of HTTPS and change the port according to your Tomcat setup, typically 8080.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In file <code>web.xml</code> (in the folder <code>helloscout.ui.html.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p>
+</li>
+<li>
+<p>In file <code>web.xml</code> (in the folder <code>helloscout.server.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More on this topic can be found in the Scout Architecture Documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-war-files"><a class="anchor" href="#create-war-files"></a>Create WAR Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You are now ready to move the <code>Hello Scout</code> application from our development environment to a productive setup.
+The simplest option to move our application into the 'wild' is to build it using Maven.
+This produces two WAR files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>The first WAR file contains the Scout backend server with all business logic.
+The second WAR file contains the Scout frontend server that is responsible for communicating with the web browser of the user.</p>
+</div>
+<div class="paragraph">
+<p>To start the build open the directory containing the module <code>helloscout</code> in the command line and execute the Maven command <code>mvn clean verify</code>.</p>
+</div>
+<div class="paragraph">
+<p>This starts the compilation, executes all test cases and bundles the result into two WAR files.
+As soon as the build is reporting success (this may take a few minutes) you can find the built WAR files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Scout backend WAR file <code>org.eclipse.scout.apps.helloscout.server.war</code> in folder <code>helloscout/helloscout.server.app.war/target</code></p>
+</li>
+<li>
+<p>The Scout frontend WAR file <code>org.eclipse.scout.apps.helloscout.ui.html.war</code> in folder <code>helloscout/helloscout.ui.html.app.war/target</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To see the new files within Eclipse you may need to refresh the <code>target</code> folder below each project using the F5 keystroke.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-helloworld_deploy"><a class="anchor" href="#sec-helloworld_deploy"></a>Deploy to Tomcat</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the final step of this tutorial, you have to deploy the two WAR files representing your <code>Hello Scout</code> application to a Tomcat web server.
+To verify a running Tomcat instance, type <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> into the address bar of the web browser of your choice.
+You should then see the page shown in <a href="#img-deploy_tomcat_1">Figure 1</a>.</p>
+</div>
+<div id="img-deploy_tomcat_1" class="imageblock">
+<div class="content">
+<img src="images/tomcat_managerapp_login.png" alt="tomcat managerapp login">
+</div>
+<div class="title">Figure 1. The Tomcat shown after a successful installation. After clicking on the <code>Manager App</code> button (highlighted in red) the login box is shown in front. A successful login shows the "Tomcat Web Application Manager".</div>
+</div>
+<div class="paragraph">
+<p>Once the web browser displays the successful running of your Tomcat instance, switch to its <code>Manager App</code> by clicking on the button highlighted in <a href="#img-deploy_tomcat_1">Figure 1</a>.
+After entering user name and password the browser will display the <code>Tomcat Web Application Manager</code> as shown in <a href="#img-deploy_tomcat_2">Figure 2</a>.
+If you don&#8217;t know the credentials, you may look it up in the file <code>tomcat-users.xml</code> as described in <a href="#apx-tomcat_dirs_and_files">Directories and Files</a>.</p>
+</div>
+<div id="img-deploy_tomcat_2" class="imageblock">
+<div class="content">
+<img src="images/tomcat_managerapp_selectwar.png" alt="tomcat managerapp selectwar">
+</div>
+<div class="title">Figure 2. The &#8220;Tomcat Web Application Manager&#8221;. The WAR files to be deployed can then be selected using button &#8220;Choose File&#8221; highlighted in red.</div>
+</div>
+<div class="paragraph">
+<p>After logging into Tomcat&#8217;s manager application, you can select the WAR files to be deployed using the button <code>Choose File</code> as shown in <a href="#img-deploy_tomcat_2">Figure 2</a>.
+Then pick your just built <code>org.eclipse.scout.apps.helloscout.server.war</code>, close the file chooser and click on the button <code>Deploy</code> (the one located directly below button <code>Choose File</code>) to deploy the application to the Tomcat web server.
+Then repeat this step with the second WAR file <code>org.eclipse.scout.apps.helloscout.ui.html.war</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will copy the selected WAR files into Tomcat&#8217;s <code>webapps</code> directory and unpack its contents into subdirectories with the same name as the WAR file.
+You can now connect to the application using the browser of your choice by navigating to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>  http://localhost:8080/org.eclipse.scout.apps.helloscout.ui.html/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>https://localhost:8443/org.eclipse.scout.apps.helloscout.ui.html/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>if you have chosen to configure HTTPS for the Tomcat installation.
+In this case you might need to accept your self-signed certificate as the browser does not yet trust it.</p>
+</div>
+<div id="img-helloworld_running_download" class="imageblock">
+<div class="content">
+<img src="images/tomcat_helloworld_download.png" alt="tomcat helloworld download">
+</div>
+<div class="title">Figure 3. The "Hello Scout" login page.</div>
+</div>
+<div class="paragraph">
+<p>Then you will see the login page as shown in <a href="#img-helloworld_running_download">Figure 3</a>. Two users have been predefined: <code>admin</code> with password <code>admin</code> and <code>scott</code> with password <code>tiger</code>.
+You can find this configuration in the <code>config.properties</code> file of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In a productive environment it is recommended to deploy the server and the user interface into two different servlet containers running on dedicated machines.
+This is because these two tiers have different requirements on resources, load balancing and access protection.
+Furthermore, it is strongly recommended using an encrypted connection (e.g. TLS 1.3 <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>)
+between client browsers and the Scout frontend server AND between the Scout frontend and backend server!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="apx-install_tomcat"><a class="anchor" href="#apx-install_tomcat"></a>Appendix A: Apache Tomcat Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache Tomcat is an open source servlet container that is a widely used.
+In case you are interested in getting some general context around Tomcat you could start with the Wikipedia article.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.
+Then get introduced to its core component &#8220;Tomcat Catalina&#8221;.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.
+before you switch to the official Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>This section is not really a step by step download and installation guide.
+Rather, it points you to the proper places for downloading and installing Tomcat.
+We recommend to work with Tomcat version 9.0.
+Start your download from the official download site.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>.</p>
+</div>
+<div id="img-tomcat_install" class="imageblock">
+<div class="content">
+<img src="images/tomcat_install.png" alt="tomcat install">
+</div>
+<div class="title">Figure 4. A successful Tomcat installation.</div>
+</div>
+<div class="paragraph">
+<p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or daemon.
+To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar.
+You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 4</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>Platform Specific Instructions</h3>
+<div class="paragraph">
+<p>According to the Tomcat setup installation for Windows.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>
+download the package &#8220;32-bit/64-bit Windows Service Installer&#8221; from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>.
+Then, start the installer and accept the proposed default settings.</p>
+</div>
+<div class="paragraph">
+<p>For installing Tomcat on OS X systems download the &#8220;tar.gz&#8221; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>.
+Then, follow the installation guide.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> provided by Wolf Paulus.</p>
+</div>
+<div class="paragraph">
+<p>For Linux systems download the &#8220;tar.gz&#8221; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>.
+Then, follow the description of the Unix setup.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup>
+to run Tomcat as a daemon.
+If you use Ubuntu, you may want to follow the tutorial.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>
+for downloading and installing Tomcat provided by Lars Vogel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="apx-tomcat_dirs_and_files"><a class="anchor" href="#apx-tomcat_dirs_and_files"></a>Directories and Files</h3>
+<div class="paragraph">
+<p>Tomcat&#8217;s installation directory follows the same organisation on all platforms.
+Here, we will only introduce the most important aspects of the Tomcat installation for the purpose of this tutorial.</p>
+</div>
+<div id="img-tomcat_install_dir" class="imageblock">
+<div class="content">
+<img src="images/tomcat_install_dir.png" alt="tomcat install dir">
+</div>
+<div class="title">Figure 5. The organisation of a Tomcat installation including specific files of interest. As an example, a web app called "helloworld_server" is contained in subdirectory "webapps".</div>
+</div>
+<div class="paragraph">
+<p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 5</a>.
+We just want to provide a basic understanding of the most important parts to operate the web server in the context of this tutorial.
+In the <code>bin</code> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
+</div>
+<div class="paragraph">
+<p>The <code>conf</code> folder contains a set of XML and property configuration files.
+The file <code>server.xml</code> represents Tomcat&#8217;s main configuration file.
+It is used to configure general web server aspects such as the port number of its connectors for the client server communication.
+For the default setup, port number 8080 is used for the communication between client applications and the web server.
+The file <code>tomcat-users.xml</code> contains a database of users, passwords and associated roles.</p>
+</div>
+<div class="paragraph">
+<p>Folder <code>logs</code> contains various logfiles of Tomcat itself as well as host and web application log files.</p>
+</div>
+<div class="paragraph">
+<p>The folder needed for deploying web applications into a Tomcat instance is called <code>webapps</code>.
+It can be used as the target for copying WAR files into the web server.
+The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 5</a>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the folder <code>work</code> contains Tomcat&#8217;s runtime cache for the deployed web applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="apx-tomcat_manager_app"><a class="anchor" href="#apx-tomcat_manager_app"></a>The Tomcat Manager Application</h3>
+<div class="paragraph">
+<p>Tomcat comes with the pre installed <code>Manager App</code>.
+This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications.
+A comprehensive documentation for the <code>Manager App</code> can be found on the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>.
+Here we only show how to start this application from the homepage of a running Tomcat installation.</p>
+</div>
+<div class="paragraph">
+<p>To access this application you can switch to the <code>Manager App</code> with a click on the corresponding button on the right side as shown in <a href="#img-tomcat_install">Figure 4</a>.
+Before you are allowed to access this application, you need to provide credentials of a user associated with Tomcats&#8217;s <code>manager-gui</code> role.</p>
+</div>
+<div id="lst-tomcat.users" class="listingblock">
+<div class="title">Listing 1. Tomcat Users configuration file "tomcat-users.xml".</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;tomcat-users&gt;</span>
+    <span class="comment">&lt;!--
+    NOTE: By default, no user is included in the &quot;manager-gui&quot; role required
+    to operate the &quot;/manager/html&quot; web application. If you wish to use it
+    you must define such a user - the username and password are arbitrary.
+    --&gt;</span>
+    <span class="tag">&lt;user</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">admin</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">password</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">s3cret</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">roles</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">manager-gui</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
   <span class="tag">&lt;/tomcat-users&gt;</span></code></pre>
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>To get at user names and passwords you can open file <code>tomcat-users.xml</code> located in Tomcat&#x2019;s <code>conf</code> directory. In this file the active users with their passwords and associated roles are stored. See <a href="#lst-tomcat.users">Listing 1</a> for an example.</p>
-      </div>
-      <div class="paragraph">
-       <p>From the content of this file, you see that user <code>admin</code> has password <code>s3cret</code> and possesses the necessary role <code>manager-gui</code> to access the <code>Manager App</code>. If file <code>tomcat-users.xml</code> does not contain any user with this role, you can simply add new user with this role to the existing users.</p>
-      </div>
-      <div class="paragraph">
-       <p>Alternatively, you also can add the necessary role to an existing user. Just append a comma to the existing roles followed by the string <code>manager-gui</code>.</p>
-      </div>
-      <div class="admonitionblock note">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-          <td class="content"> You will need to restart your Tomcat application after adapting the content of file <code>tomcat-users.xml</code>. </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/22.0/docs/build/deploy_to_tomcat/src/docs/deploy-to-tomcat.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div id="footnotes">
-   <hr>
-   <div class="footnote" id="_footnotedef_1">
-    <a href="#_footnoteref_1">1</a>. Web application Archive (WAR):
-    <a href="http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29" class="bare">http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29</a>
-   </div>
-   <div class="footnote" id="_footnotedef_2">
-    <a href="#_footnoteref_2">2</a>. TLS:
-    <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" class="bare">https://en.wikipedia.org/wiki/Transport_Layer_Security</a>
-   </div>
-   <div class="footnote" id="_footnotedef_3">
-    <a href="#_footnoteref_3">3</a>. Apache Tomcat Wikipedia:
-    <a href="http://en.wikipedia.org/wiki/Apache_Tomcat" class="bare">http://en.wikipedia.org/wiki/Apache_Tomcat</a>.
-   </div>
-   <div class="footnote" id="_footnotedef_4">
-    <a href="#_footnoteref_4">4</a>. Mulesoft&#x2019;s introduction to Tomcat Catalina:
-    <a href="http://www.mulesoft.com/tomcat-catalina" class="bare">http://www.mulesoft.com/tomcat-catalina</a>.
-   </div>
-   <div class="footnote" id="_footnotedef_5">
-    <a href="#_footnoteref_5">5</a>. Apache Tomcat Homepage:
-    <a href="http://tomcat.apache.org/" class="bare">http://tomcat.apache.org/</a>
-   </div>
-   <div class="footnote" id="_footnotedef_6">
-    <a href="#_footnoteref_6">6</a>. Tomcat 9 Downloads:
-    <a href="http://tomcat.apache.org/download-90.cgi" class="bare">http://tomcat.apache.org/download-90.cgi</a>
-   </div>
-   <div class="footnote" id="_footnotedef_7">
-    <a href="#_footnoteref_7">7</a>. Tomcat Windows setup:
-    <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows</a>
-   </div>
-   <div class="footnote" id="_footnotedef_8">
-    <a href="#_footnoteref_8">8</a>. Installing Tomcat on macOS:
-    <a href="https://wolfpaulus.com/?s=tomcat" class="bare">https://wolfpaulus.com/?s=tomcat</a>
-   </div>
-   <div class="footnote" id="_footnotedef_9">
-    <a href="#_footnoteref_9">9</a>. Tomcat Linux setup:
-    <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon</a>
-   </div>
-   <div class="footnote" id="_footnotedef_10">
-    <a href="#_footnoteref_10">10</a>. Apache Tomcat Tutorial:
-    <a href="http://www.vogella.com/articles/ApacheTomcat/article.html" class="bare">http://www.vogella.com/articles/ApacheTomcat/article.html</a>
-   </div>
-   <div class="footnote" id="_footnotedef_11">
-    <a href="#_footnoteref_11">11</a>. The Tomcat Manager Application:
-    <a href="http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html</a>.
-   </div>
-  </div>
-  <div id="footer">
-   <div id="footer-text">
-     Version 22.0
-    <br> Last updated 2021-04-21 18:53:20 +0200
-   </div>
-  </div>
-  <style>
+</div>
+</div>
+<div class="paragraph">
+<p>To get at user names and passwords you can open file <code>tomcat-users.xml</code> located in Tomcat&#8217;s <code>conf</code> directory.
+In this file the active users with their passwords and associated roles are stored.
+See <a href="#lst-tomcat.users">Listing 1</a> for an example.</p>
+</div>
+<div class="paragraph">
+<p>From the content of this file, you see that user <code>admin</code> has password <code>s3cret</code> and possesses the necessary role <code>manager-gui</code> to access the <code>Manager App</code>.
+If file <code>tomcat-users.xml</code> does not contain any user with this role, you can simply add new user with this role to the existing users.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you also can add the necessary role to an existing user.
+Just append a comma to the existing roles followed by the string <code>manager-gui</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will need to restart your Tomcat application after adapting the content of file <code>tomcat-users.xml</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/22.0/docs/build/deploy_to_tomcat/src/docs/deploy-to-tomcat.adoc" target="_blank" rel="noopener">sources</a> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Web application Archive (WAR): <a href="http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29" class="bare">http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. TLS: <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" class="bare">https://en.wikipedia.org/wiki/Transport_Layer_Security</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. Apache Tomcat Wikipedia: <a href="http://en.wikipedia.org/wiki/Apache_Tomcat" class="bare">http://en.wikipedia.org/wiki/Apache_Tomcat</a>.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. Mulesoft&#8217;s introduction to Tomcat Catalina: <a href="http://www.mulesoft.com/tomcat-catalina" class="bare">http://www.mulesoft.com/tomcat-catalina</a>.
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. Apache Tomcat Homepage: <a href="http://tomcat.apache.org/" class="bare">http://tomcat.apache.org/</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. Tomcat 9 Downloads: <a href="http://tomcat.apache.org/download-90.cgi" class="bare">http://tomcat.apache.org/download-90.cgi</a>
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. Tomcat Windows setup: <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows</a>
+</div>
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. Installing Tomcat on macOS: <a href="https://wolfpaulus.com/?s=tomcat" class="bare">https://wolfpaulus.com/?s=tomcat</a>
+</div>
+<div class="footnote" id="_footnotedef_9">
+<a href="#_footnoteref_9">9</a>. Tomcat Linux setup: <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon</a>
+</div>
+<div class="footnote" id="_footnotedef_10">
+<a href="#_footnoteref_10">10</a>. Apache Tomcat Tutorial: <a href="http://www.vogella.com/articles/ApacheTomcat/article.html" class="bare">http://www.vogella.com/articles/ApacheTomcat/article.html</a>
+</div>
+<div class="footnote" id="_footnotedef_11">
+<a href="#_footnoteref_11">11</a>. The Tomcat Manager Application: <a href="http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html</a>.
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 22.0<br>
+Last updated 2021-04-28 18:53:01 +0200
+</div>
+</div>
+<style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 pre.CodeRay{background:#f7f7f8}
 .CodeRay .line-numbers{border-right:1px solid currentColor;opacity:.35;padding:0 .5em 0 0}
@@ -951,5 +1021,5 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 .CodeRay .change .change{color:#66f}
 .CodeRay .head .head{color:#f4f}
 </style>
- </body>
+</body>
 </html>

@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Asciidoctor 2.0.10">
-  <title>Eclipse Scout Release Notes</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
-  <style>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Eclipse Scout Release Notes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -435,108 +435,117 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head>
- <body class="book toc2 toc-left">
-  <div id="header">
-   <h1>Eclipse Scout Release Notes</h1>
-   <div class="details">
-    <span id="revnumber">version 22.0</span>
-   </div>
-   <div id="toc" class="toc2">
-    <div id="toctitle">
-     Table of Contents
-    </div>
-    <ul class="sectlevel1">
-     <li><a href="#about-this-release">About This Release</a></li>
-     <li><a href="#demo-applications">Demo Applications</a></li>
-     <li><a href="#native-notification-support">Native Notification Support</a></li>
-     <li><a href="#text-post-processors">Text Post-Processors</a></li>
-    </ul>
-   </div>
-  </div>
-  <div id="content">
-   <div id="preamble">
-    <div class="sectionbody">
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The latest version of this release is: 22.0-SNAPSHOT.</p>
-     </div>
-     <div class="paragraph">
-      <p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/11.0%2E%2E%2Ereleases/22.0">detailed change log</a> on GitHub.</p>
-     </div>
-     <div class="paragraph">
-      <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/22.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/22.0-SNAPSHOT">features/version/22.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
-     </div>
-     <div class="ulist">
-      <ul>
-       <li> <p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p> </li>
-       <li> <p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p> </li>
-       <li> <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p> </li>
-      </ul>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="native-notification-support"><a class="anchor" href="#native-notification-support"></a>Native Notification Support</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>It&#x2019;s now possible to send notifications via the Notification API. The DesktopNotification has two new properties to control the behavior: nativeOnly and nativeNotificationVisibility.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="text-post-processors"><a class="anchor" href="#text-post-processors"></a>Text Post-Processors</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>A new Bean <code>org.eclipse.scout.rt.platform.nls.ITextPostProcessor</code> has been introduced which allows to modify all texts returned by a TextProviderService.</p>
-     </div>
-     <div class="paragraph">
-      <p>This allows applying application wide logic on all translated texts including the ones provided by Scout itself.</p>
-     </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/22.0/docs/build/releasenotes/src/docs/release-notes.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div id="footer">
-   <div id="footer-text">
-     Version 22.0
-    <br> Last updated 2021-04-21 18:53:21 +0200
-   </div>
-  </div>
- </body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Eclipse Scout Release Notes</h1>
+<div class="details">
+<span id="revnumber">version 22.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#about-this-release">About This Release</a></li>
+<li><a href="#demo-applications">Demo Applications</a></li>
+<li><a href="#native-notification-support">Native Notification Support</a></li>
+<li><a href="#text-post-processors">Text Post-Processors</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest version of this release is: 22.0-SNAPSHOT.</p>
+</div>
+<div class="paragraph">
+<p>You can see the <a href="https://github.com/eclipse/scout.rt/compare/releases/11.0%2E%2E%2Ereleases/22.0">detailed change log</a> on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/22.0/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/22.0-SNAPSHOT">features/version/22.0-SNAPSHOT</a> branch of our docs repository on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="native-notification-support"><a class="anchor" href="#native-notification-support"></a>Native Notification Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s now possible to send notifications via the Notification API. The DesktopNotification has two new properties to control
+the behavior: nativeOnly and nativeNotificationVisibility.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="text-post-processors"><a class="anchor" href="#text-post-processors"></a>Text Post-Processors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A new Bean <code>org.eclipse.scout.rt.platform.nls.ITextPostProcessor</code> has been introduced which allows to modify all texts returned by a TextProviderService.</p>
+</div>
+<div class="paragraph">
+<p>This allows applying application wide logic on all translated texts including the ones provided by Scout itself.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/22.0/docs/build/releasenotes/src/docs/release-notes.adoc" target="_blank" rel="noopener">sources</a> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 22.0<br>
+Last updated 2021-04-28 18:53:01 +0200
+</div>
+</div>
+</body>
 </html>
