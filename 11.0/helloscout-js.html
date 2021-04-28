@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Asciidoctor 2.0.10">
-  <title>Hello Scout JS</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
-  <style>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Hello Scout JS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -435,231 +435,259 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head>
- <body class="book toc2 toc-left">
-  <div id="header">
-   <h1>Hello Scout JS</h1>
-   <div class="details">
-    <span id="revnumber">version 11.0</span>
-   </div>
-   <div id="toc" class="toc2">
-    <div id="toctitle">
-     Table of Contents
-    </div>
-    <ul class="sectlevel1">
-     <li><a href="#introduction">Introduction</a></li>
-     <li><a href="#prerequisites">Prerequisites</a></li>
-     <li><a href="#get-the-code">Get the Code</a></li>
-     <li><a href="#build-the-application">Build the Application</a></li>
-     <li><a href="#run-the-application">Run the Application</a></li>
-     <li><a href="#understand-the-code">Understand the Code</a>
-      <ul class="sectlevel2">
-       <li><a href="#build-information">Build Information</a></li>
-       <li><a href="#static-resources">Static Resources</a></li>
-       <li><a href="#source-files">Source Files</a></li>
-       <li><a href="#git-configuration">Git configuration</a></li>
-      </ul> </li>
-     <li><a href="#whats-next">What&#x2019;s Next?</a></li>
-    </ul>
-   </div>
-  </div>
-  <div id="content">
-   <div id="preamble">
-    <div class="sectionbody">
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>In this tutorial we will create your first Scout JS application.</p>
-     </div>
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> If you don&#x2019;t know what Scout JS is yet, please read the <a href="https://eclipsescout.github.io/11.0/getstarted.html">Get Started Guide</a> first. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <div class="paragraph">
-      <p>The application will simply show a text field and a button. Once the user enters some text and presses the button, the application displays a message box including that text.</p>
-     </div>
-     <div class="paragraph">
-      <p>The application does not require Maven or Java, only Node.js. Also, the tutorial does not require any specific IDE.</p>
-     </div>
-     <div class="paragraph">
-      <p>The goal of this tutorial is to provide a first impression of the Scout JS framework. We will start by getting the application running and then take a look at the code.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Make sure you have <a href="https://nodejs.org/dist/latest-v12.x/">Node.js</a> 12 installed.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="get-the-code"><a class="anchor" href="#get-the-code"></a>Get the Code</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Clone the <a href="https://github.com/bsi-software/helloscoutjs.git">helloscoutjs</a> repository and checkout the branch <code>releases/11.0</code>. Alternatively, you can also download and extract a <a href="https://github.com/bsi-software/helloscoutjs/archive/refs/heads/releases/11.0.zip">ZIP file of the repository</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>After that, the file and folder structure of your local copy should look like this (apart from a few more files):</p>
-     </div>
-     <div class="listingblock">
-      <div class="title">
-       Listing 1. Files and folders of the application
-      </div>
-      <div class="content">
-       <pre>.
-&#x2502;   package.json
-&#x2502;   webpack.config.js
-&#x2502;
-&#x251c;&#x2500;&#x2500;&#x2500;res
-&#x2502;       index.html
-&#x2502;       texts.json
-&#x2502;
-&#x2514;&#x2500;&#x2500;&#x2500;src
-    &#x2502;   helloworld.js
-    &#x2502;   helloworld.less
-    &#x2502;
-    &#x251c;&#x2500;&#x2500;&#x2500;desktop
-    &#x2502;       Desktop.js
-    &#x2502;       DesktopModel.js
-    &#x2502;
-    &#x2514;&#x2500;&#x2500;&#x2500;greeting
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Hello Scout JS</h1>
+<div class="details">
+<span id="revnumber">version 11.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#get-the-code">Get the Code</a></li>
+<li><a href="#build-the-application">Build the Application</a></li>
+<li><a href="#run-the-application">Run the Application</a></li>
+<li><a href="#understand-the-code">Understand the Code</a>
+<ul class="sectlevel2">
+<li><a href="#build-information">Build Information</a></li>
+<li><a href="#static-resources">Static Resources</a></li>
+<li><a href="#source-files">Source Files</a></li>
+<li><a href="#git-configuration">Git configuration</a></li>
+</ul>
+</li>
+<li><a href="#whats-next">What&#8217;s Next?</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial we will create your first Scout JS application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you don&#8217;t know what Scout JS is yet, please read the
+        <a href="https://eclipsescout.github.io/11.0/getstarted.html">Get Started Guide</a> first.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The application will simply show a text field and a button.
+Once the user enters some text and presses the button, the application displays a message box including that text.</p>
+</div>
+<div class="paragraph">
+<p>The application does not require Maven or Java, only Node.js.
+Also, the tutorial does not require any specific IDE.</p>
+</div>
+<div class="paragraph">
+<p>The goal of this tutorial is to provide a first impression of the Scout JS framework.
+We will start by getting the application running and then take a look at the code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Make sure you have <a href="https://nodejs.org/dist/latest-v12.x/">Node.js</a> 12 installed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="get-the-code"><a class="anchor" href="#get-the-code"></a>Get the Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clone the <a href="https://github.com/bsi-software/helloscoutjs.git">helloscoutjs</a> repository
+and checkout the branch <code>releases/11.0</code>.
+Alternatively, you can also download and extract a
+<a href="https://github.com/bsi-software/helloscoutjs/archive/refs/heads/releases/11.0.zip">ZIP file of the repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>After that, the file and folder structure of your local copy should look like this (apart from a few more files):</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Files and folders of the application</div>
+<div class="content">
+<pre>.
+│   package.json
+│   webpack.config.js
+│
+├───res
+│       index.html
+│       texts.json
+│
+└───src
+    │   helloworld.js
+    │   helloworld.less
+    │
+    ├───desktop
+    │       Desktop.js
+    │       DesktopModel.js
+    │
+    └───greeting
             HelloForm.js
             HelloFormModel.js</pre>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="build-the-application"><a class="anchor" href="#build-the-application"></a>Build the Application</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>In the main folder, where the file <code>package.json</code> is located, open a terminal and execute <code><strong>npm install</strong></code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>This creates a folder <code>node_modules</code>, containing all (direct and transitive) dependencies, as well as a file <code>package-lock.json</code>, listing all the specific versions of these dependencies.</p>
-     </div>
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> If the dependencies defined in <code>package.json</code> change, run <code>npm install</code> again to update the <code>node_modules</code> folder. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <div class="paragraph">
-      <p>Now execute <code><strong>npm run build:dev</strong></code>. This creates a <code>dist</code> folder that contains the transpiled and bundled files to be served to the browser.</p>
-     </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Use <code>npm run build:dev:watch</code> to have these files automatically updated when the corresponding source files change. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="run-the-application"><a class="anchor" href="#run-the-application"></a>Run the Application</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Use the same or start a new terminal in the main folder and execute <code><strong>npm run serve:dev:watch</strong></code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>This starts a little development server and opens the URL <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code> in your default browser. The server has live reload capability, that is, as soon as files in the <code>dist</code> folder change, the browser tab will reload automatically.</p>
-     </div>
-     <div class="paragraph">
-      <p>Type some text in the field and press the button to test the application. Also check out how the layout changes when you narrow the browser window (or e.g. use Google Chrome&#x2019;s DevTools to emulate a smaller device).</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="understand-the-code"><a class="anchor" href="#understand-the-code"></a>Understand the Code</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Let&#x2019;s now have a closer look at the files that were needed to build this application.</p>
-     </div>
-     <div class="paragraph">
-      <p>In the main folder there are files containing information for the build, e.g. dependencies and entry points. In the subfolder <code>res/</code> there are static resources that are just copied to <code>dist/res/</code> in the build. And in the subfolder <code>src/</code> you find the source files that are transformed and bundled by webpack.</p>
-     </div>
-     <div class="sect2">
-      <h3 id="build-information"><a class="anchor" href="#build-information"></a>Build Information</h3>
-      <div class="sect3">
-       <h4 id="npm"><a class="anchor" href="#npm"></a>npm</h4>
-       <div class="paragraph">
-        <p>For <code>npm</code> commands like <code>npm install</code> or <code>npm run &lt;script&gt;</code>, the file <code>package.json</code> provides the necessary information.</p>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 2. package.json
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">"</span><span class="content">scripts</span><span class="delimiter">"</span></span>: {
-    <span class="key"><span class="delimiter">"</span><span class="content">build:dev</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts build:dev</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">build:dev:watch</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">scout-scripts build:dev:watch</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">serve:dev:watch</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">live-server --mount=/:dist/res --mount=/:dist/dev</span><span class="delimiter">"</span></span>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-the-application"><a class="anchor" href="#build-the-application"></a>Build the Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the main folder, where the file <code>package.json</code> is located, open a terminal and execute <code><strong>npm install</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>This creates a folder <code>node_modules</code>, containing all (direct and transitive) dependencies,
+as well as a file <code>package-lock.json</code>, listing all the specific versions of these dependencies.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the dependencies defined in <code>package.json</code> change, run <code>npm install</code> again to update the <code>node_modules</code> folder.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now execute <code><strong>npm run build:dev</strong></code>.
+This creates a <code>dist</code> folder that contains the transpiled and bundled files to be served to the browser.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Use <code>npm run build:dev:watch</code> to have these files automatically updated when the corresponding source files change.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-the-application"><a class="anchor" href="#run-the-application"></a>Run the Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the same or start a new terminal in the main folder and execute <code><strong>npm run serve:dev:watch</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>This starts a little development server and opens the URL <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code> in your default browser.
+The server has live reload capability, that is, as soon as files in the <code>dist</code> folder change,
+the browser tab will reload automatically.</p>
+</div>
+<div class="paragraph">
+<p>Type some text in the field and press the button to test the application.
+Also check out how the layout changes when you narrow the browser window
+(or e.g. use Google Chrome&#8217;s DevTools to emulate a smaller device).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="understand-the-code"><a class="anchor" href="#understand-the-code"></a>Understand the Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s now have a closer look at the files that were needed to build this application.</p>
+</div>
+<div class="paragraph">
+<p>In the main folder there are files containing information for the build, e.g. dependencies and entry points.
+In the subfolder <code>res/</code> there are static resources that are just copied to <code>dist/res/</code> in the build.
+And in the subfolder <code>src/</code> you find the source files that are transformed and bundled by webpack.</p>
+</div>
+<div class="sect2">
+<h3 id="build-information"><a class="anchor" href="#build-information"></a>Build Information</h3>
+<div class="sect3">
+<h4 id="npm"><a class="anchor" href="#npm"></a>npm</h4>
+<div class="paragraph">
+<p>For <code>npm</code> commands like <code>npm install</code> or <code>npm run &lt;script&gt;</code>, the file <code>package.json</code> provides the necessary information.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. package.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">scripts</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">build:dev</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">scout-scripts build:dev</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">build:dev:watch</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">scout-scripts build:dev:watch</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">serve:dev:watch</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">live-server --mount=/:dist/res --mount=/:dist/dev</span><span class="delimiter">&quot;</span></span>
   },
-  <span class="key"><span class="delimiter">"</span><span class="content">devDependencies</span><span class="delimiter">"</span></span>: {
-    <span class="key"><span class="delimiter">"</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">^11.0.9</span><span class="delimiter">"</span></span>,
-    <span class="key"><span class="delimiter">"</span><span class="content">live-server</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">^1.2.1</span><span class="delimiter">"</span></span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^11.0.9</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">live-server</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^1.2.1</span><span class="delimiter">&quot;</span></span>
   },
-  <span class="key"><span class="delimiter">"</span><span class="content">dependencies</span><span class="delimiter">"</span></span>: {
-    <span class="key"><span class="delimiter">"</span><span class="content">@eclipse-scout/core</span><span class="delimiter">"</span></span>: <span class="string"><span class="delimiter">"</span><span class="content">^11.0.9</span><span class="delimiter">"</span></span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^11.0.9</span><span class="delimiter">&quot;</span></span>
   }
 }</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>The <code>scripts</code> define what <code>npm run</code> should execute. They work a bit like aliases in Bash. To have all needed files available at <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code>, we need to mount the folders <code>dist/res</code> and <code>dist/dev</code> to the root path <code>/</code> when starting the development server.</p>
-       </div>
-       <div class="paragraph">
-        <p>Modules defined in <code>devDependencies</code> and <code>dependencies</code> are downloaded to the <code>node_modules</code> folder on <code>npm install</code>. The dependency versions are prefixed with a <code>^</code> (caret), which means <em>compatible version</em>. That is, when running <code>npm install</code>, the newest version with the same major-level will be downloaded, unless another compatible version already exists in the <code>node_modules</code> folder or is already defined in the <code>package-lock.json</code> file.</p>
-       </div>
-       <div class="paragraph">
-        <p>For more detailed and general information about <code>package.json</code> and <code>package-lock.json</code>, see the official documentation on Node.js: <a href="https://nodejs.dev/learn/the-package-json-guide">The package.json guide</a> and <a href="https://nodejs.dev/learn/the-package-lock-json-file">The package-lock.json file</a>.</p>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="webpack"><a class="anchor" href="#webpack"></a>webpack</h4>
-       <div class="paragraph">
-        <p>As defined in <code>package.json</code>, the script <code>build:dev</code> executes <code>scout-scripts build:dev</code>. <code>scout-scripts</code> is a command provided by the <code>@eclipse-scout/cli</code> module. With the <code>build:dev</code> argument, this command uses webpack to transform and bundle the source files and write the results to the <code>dist/dev</code> folder.</p>
-       </div>
-       <div class="paragraph">
-        <p>Scout provides a default webpack configuration which we use and adjust as follows.</p>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 3. webpack.config.js
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>scripts</code> define what <code>npm run</code> should execute.
+They work a bit like aliases in Bash.
+To have all needed files available at <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code>,
+we need to mount the folders <code>dist/res</code> and <code>dist/dev</code> to the root path <code>/</code> when starting the development server.</p>
+</div>
+<div class="paragraph">
+<p>Modules defined in <code>devDependencies</code> and <code>dependencies</code> are downloaded to the <code>node_modules</code> folder on <code>npm install</code>.
+The dependency versions are prefixed with a <code>^</code> (caret), which means <em>compatible version</em>.
+That is, when running <code>npm install</code>, the newest version with the same major-level will be downloaded,
+unless another compatible version already exists in the <code>node_modules</code> folder
+or is already defined in the <code>package-lock.json</code> file.</p>
+</div>
+<div class="paragraph">
+<p>For more detailed and general information about <code>package.json</code> and <code>package-lock.json</code>,
+see the official documentation on Node.js:
+<a href="https://nodejs.dev/learn/the-package-json-guide">The package.json guide</a> and <a href="https://nodejs.dev/learn/the-package-lock-json-file">The package-lock.json file</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="webpack"><a class="anchor" href="#webpack"></a>webpack</h4>
+<div class="paragraph">
+<p>As defined in <code>package.json</code>, the script <code>build:dev</code> executes <code>scout-scripts build:dev</code>.
+<code>scout-scripts</code> is a command provided by the <code>@eclipse-scout/cli</code> module.
+With the <code>build:dev</code> argument, this command uses webpack to transform and bundle the source files
+and write the results to the <code>dist/dev</code> folder.</p>
+</div>
+<div class="paragraph">
+<p>Scout provides a default webpack configuration which we use and adjust as follows.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. webpack.config.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 module.exports = (env, args) =&gt; {
   args.resDirArray = [<span class="string"><span class="delimiter">'</span><span class="content">./res</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">./node_modules/@eclipse-scout/core/res</span><span class="delimiter">'</span></span>];
   const config = baseConfig(env, args);
@@ -669,130 +697,155 @@ module.exports = (env, args) =&gt; {
   };
   <span class="keyword">return</span> config;
 };</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>The <code><strong>args.resDirArray</strong></code> defines the folders with static resources to be copied to <code>dist/res</code>. In addition to the static resources of our application, we also need Scout&#x2019;s static resources in <code>node_modules/@eclipse-scout/core/res</code>, mainly for the icon font <code>scoutIcons.woff</code>.</p>
-       </div>
-       <div class="paragraph">
-        <p>In <code><strong>config.entry</strong></code>, the entry points for bundling JavaScript and CSS files are defined. For our application, the target files <code>helloworld.js</code> and <code>helloworld-theme.css</code> (defined without the file extension) are generated from the source files <code>src/helloworld.js</code> and <code>src/helloworld.less</code>, respectively.</p>
-       </div>
-       <div class="paragraph">
-        <p>The <code><strong>-theme</strong></code> <strong>suffix</strong> of the target CSS file is important for Scout&#x2019;s post-processing to work properly. Also, make sure that you don&#x2019;t use exactly the same name as for the target <em>JS</em> file. Other than that, you can name the target files whatever you want, just make sure you also adjust the <strong>references in</strong> <code><strong>index.html</strong></code> accordingly (see next section).</p>
-       </div>
-       <div class="paragraph">
-        <p>For more details on the build, see the <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html#build-stack"><em>Build Stack</em> chapter in the technical guide</a>.</p>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="static-resources"><a class="anchor" href="#static-resources"></a>Static Resources</h3>
-      <div class="paragraph">
-       <p>For an HTML file to be valid (see <a href="https://validator.w3.org/">The W3C Markup Validation Service</a>), it has to define a <code>DOCTYPE</code>, a default language and a title. Furthermore, to allow for responsive web design, we include the <code>&lt;meta&gt;</code> viewport element.</p>
-      </div>
-      <div class="listingblock">
-       <div class="title">
-        Listing 4. res/index.html
-       </div>
-       <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">"</span><span class="content">en</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>args.resDirArray</strong></code> defines the folders with static resources to be copied to <code>dist/res</code>.
+In addition to the static resources of our application, we also need Scout&#8217;s static resources in
+<code>node_modules/@eclipse-scout/core/res</code>, mainly for the icon font <code>scoutIcons.woff</code>.</p>
+</div>
+<div class="paragraph">
+<p>In <code><strong>config.entry</strong></code>, the entry points for bundling JavaScript and CSS files are defined.
+For our application, the target files <code>helloworld.js</code> and <code>helloworld-theme.css</code> (defined without the file extension)
+are generated from the source files <code>src/helloworld.js</code> and <code>src/helloworld.less</code>, respectively.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>-theme</strong></code> <strong>suffix</strong> of the target CSS file is important for Scout&#8217;s post-processing to work properly.
+Also, make sure that you don&#8217;t use exactly the same name as for the target <em>JS</em> file.
+Other than that, you can name the target files whatever you want,
+just make sure you also adjust the <strong>references in</strong> <code><strong>index.html</strong></code> accordingly (see next section).</p>
+</div>
+<div class="paragraph">
+<p>For more details on the build, see the <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html#build-stack"><em>Build Stack</em> chapter in the technical guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="static-resources"><a class="anchor" href="#static-resources"></a>Static Resources</h3>
+<div class="paragraph">
+<p>For an HTML file to be valid (see <a href="https://validator.w3.org/">The W3C Markup Validation Service</a>),
+it has to define a <code>DOCTYPE</code>, a default language and a title.
+Furthermore, to allow for responsive web design, we include the <code>&lt;meta&gt;</code> viewport element.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. res/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;head&gt;</span>
     <span class="tag">&lt;title&gt;</span>Hello World<span class="tag">&lt;/title&gt;</span>
-    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">viewport</span><span class="delimiter">"</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">"</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
-    <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">"</span><span class="content">stylesheet</span><span class="delimiter">"</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">helloworld-theme.css</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">helloworld-theme.css</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
   <span class="tag">&lt;/head&gt;</span>
   <span class="tag">&lt;body&gt;</span>
-    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">scout</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">vendors~helloworld.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">helloworld.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vendors~helloworld.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">helloworld.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>The <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> elements include the CSS and JavaScript files generated by the build. The order of these elements is important. In particular, the <code>&lt;div&gt;</code> element with the class "scout" has to be placed before the inclusion of the scripts, since it is used to build the final DOM for our application.</p>
-      </div>
-      <div class="paragraph">
-       <p>The other file in our <code>res/</code> folder, <code><strong>texts.json</strong></code>, contains all texts used in the Scout core module. In the future, this file should be part of <code>@eclipse-scout/core</code> and contain texts for multiple languages, but for now we have to place it next to our own static resources. You can get this file e.g. using Google Chrome&#x2019;s DevTools when loading the <a href="https://scout.bsi-software.com/jswidgets_11_0/">Scout JS Widgets</a> application.</p>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="source-files"><a class="anchor" href="#source-files"></a>Source Files</h3>
-      <div class="sect3">
-       <h4 id="entry-points"><a class="anchor" href="#entry-points"></a>Entry Points</h4>
-       <div class="listingblock">
-        <div class="title">
-         Listing 5. src/helloworld.js
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { scout, App as ScoutApp } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>&lt;link&gt;</code> and <code>&lt;script&gt;</code> elements include the CSS and JavaScript files generated by the build.
+The order of these elements is important.
+In particular, the <code>&lt;div&gt;</code> element with the class "scout" has to be placed before the inclusion of the scripts,
+since it is used to build the final DOM for our application.</p>
+</div>
+<div class="paragraph">
+<p>The other file in our <code>res/</code> folder, <code><strong>texts.json</strong></code>, contains all texts used in the Scout core module.
+In the future, this file should be part of <code>@eclipse-scout/core</code> and contain texts for multiple languages,
+but for now we have to place it next to our own static resources.
+You can get this file e.g. using Google Chrome&#8217;s DevTools when loading the <a href="https://scout.bsi-software.com/jswidgets_11_0/">Scout JS Widgets</a> application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="source-files"><a class="anchor" href="#source-files"></a>Source Files</h3>
+<div class="sect3">
+<h4 id="entry-points"><a class="anchor" href="#entry-points"></a>Entry Points</h4>
+<div class="listingblock">
+<div class="title">Listing 5. src/helloworld.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { scout, App as ScoutApp } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> { Desktop } from <span class="string"><span class="delimiter">'</span><span class="content">./desktop/Desktop</span><span class="delimiter">'</span></span>
 <span class="reserved">import</span> { HelloForm } from <span class="string"><span class="delimiter">'</span><span class="content">./greeting/HelloForm</span><span class="delimiter">'</span></span>
+
 scout.addObjectFactories({
   <span class="key"><span class="delimiter">'</span><span class="content">Desktop</span><span class="delimiter">'</span></span>: () =&gt; <span class="keyword">new</span> Desktop()
 });
+
 window.helloworld = Object.assign(window.helloworld || {}, {
   HelloForm
 });
+
 <span class="keyword">new</span> ScoutApp().init({
   <span class="key">bootstrap</span>: {
     <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">texts.json</span><span class="delimiter">'</span></span>
   }
 });</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>In our main JavaScript file, we import the <code>scout</code> namespace object as well as the class <code>App</code>. We import <code>App as ScoutApp</code> here to make it easier to distinguish it from our own classes, e.g. <code>Desktop</code>.</p>
-       </div>
-       <div class="paragraph">
-        <p>Before we initialize an instance of the Scout application, providing the location of the texts file, we do two other things:</p>
-       </div>
-       <div class="olist arabic">
-        <ol class="arabic">
-         <li> <p>Use <code>scout.addObjectFactories</code> to register a function (identified by 'Desktop') that provides an instance of our <code>Desktop</code> class. The desktop is the main widget of a Scout application and the root of every other widget. On application initialization, Scout is using that factory to create the desktop of our application.</p> </li>
-         <li> <p>Define our own namespace object, <code>helloworld</code>, and put our <code>HelloForm</code> class in it, so Scout can use it to build modular widgets at runtime (see <code>DesktopModel.js</code>).</p> </li>
-        </ol>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 6. src/helloworld.less
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="less">@import "~@eclipse-scout/core/src/index";</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>Since we don&#x2019;t need any custom styling for our application, we just import Scout&#x2019;s LESS module as is in our LESS file.</p>
-       </div>
-       <div class="admonitionblock tip">
-        <table>
-         <tbody>
-          <tr>
-           <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-           <td class="content"> To try out Scout&#x2019;s dark theme, just import <code>index-dark</code> instead of <code>index</code>. </td>
-          </tr>
-         </tbody>
-        </table>
-       </div>
-      </div>
-      <div class="sect3">
-       <h4 id="widgets"><a class="anchor" href="#widgets"></a>Widgets</h4>
-       <div class="paragraph">
-        <p>We follow the best practice of separating model (layout, structure) and behavior code. This also makes it easier to e.g. reuse a form that should look similar elsewhere but behave differently.</p>
-       </div>
-       <div class="paragraph">
-        <p>A typical model definition for a Scout widget defines an <code>objectType</code>. This is specified as a string containing the corresponding class, prefixed with the namespace in which it is accessible. Without a namespace prefix, the namespace <code>scout</code> is used as default.</p>
-       </div>
-       <div class="paragraph">
-        <p>Other object properties are used to configure the widget based on the specified <code>objectType</code>.</p>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 7. src/greeting/DesktopModel.js
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
+</div>
+</div>
+<div class="paragraph">
+<p>In our main JavaScript file, we import the <code>scout</code> namespace object as well as the class <code>App</code>.
+We import <code>App as ScoutApp</code> here to make it easier to distinguish it from our own classes, e.g. <code>Desktop</code>.</p>
+</div>
+<div class="paragraph">
+<p>Before we initialize an instance of the Scout application, providing the location of the texts file,
+we do two other things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use <code>scout.addObjectFactories</code> to register a function (identified by 'Desktop')
+that provides an instance of our <code>Desktop</code> class.
+The desktop is the main widget of a Scout application and the root of every other widget.
+On application initialization, Scout is using that factory to create the desktop of our application.</p>
+</li>
+<li>
+<p>Define our own namespace object, <code>helloworld</code>, and put our <code>HelloForm</code> class in it,
+so Scout can use it to build modular widgets at runtime (see <code>DesktopModel.js</code>).</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. src/helloworld.less</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="less">@import &quot;~@eclipse-scout/core/src/index&quot;;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since we don&#8217;t need any custom styling for our application, we just import Scout&#8217;s LESS module as is in our LESS file.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To try out Scout&#8217;s dark theme, just import <code>index-dark</code> instead of <code>index</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="widgets"><a class="anchor" href="#widgets"></a>Widgets</h4>
+<div class="paragraph">
+<p>We follow the best practice of separating model (layout, structure) and behavior code.
+This also makes it easier to e.g. reuse a form that should look similar elsewhere but behave differently.</p>
+</div>
+<div class="paragraph">
+<p>A typical model definition for a Scout widget defines an <code>objectType</code>.
+This is specified as a string containing the corresponding class, prefixed with the namespace in which it is accessible.
+Without a namespace prefix, the namespace <code>scout</code> is used as default.</p>
+</div>
+<div class="paragraph">
+<p>Other object properties are used to configure the widget based on the specified <code>objectType</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. src/greeting/DesktopModel.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
   <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Desktop</span><span class="delimiter">'</span></span>,
   <span class="key">navigationHandleVisible</span>: <span class="predefined-constant">false</span>,
   <span class="key">navigationVisible</span>: <span class="predefined-constant">false</span>,
@@ -803,40 +856,42 @@ window.helloworld = Object.assign(window.helloworld || {}, {
     }
   ]
 });</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>The default desktop consists of a navigation, a header and a bench. We only need the bench for our application, so we hide the other parts, including the handle to toggle the navigation.</p>
-       </div>
-       <div class="paragraph">
-        <p>A desktop can contain outlines and/or views. We provide an instance of our HelloForm as a view on our desktop.</p>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 8. src/greeting/Desktop.js
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { Desktop as ScoutDesktop, models } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+</div>
+</div>
+<div class="paragraph">
+<p>The default desktop consists of a navigation, a header and a bench.
+We only need the bench for our application, so we hide the other parts, including the handle to toggle the navigation.</p>
+</div>
+<div class="paragraph">
+<p>A desktop can contain outlines and/or views.
+We provide an instance of our HelloForm as a view on our desktop.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. src/greeting/Desktop.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { Desktop as ScoutDesktop, models } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> DesktopModel from <span class="string"><span class="delimiter">'</span><span class="content">./DesktopModel</span><span class="delimiter">'</span></span>;
+
 <span class="reserved">export</span> <span class="reserved">class</span> Desktop <span class="reserved">extends</span> ScoutDesktop {
+
   constructor() {
     <span class="reserved">super</span>();
   }
+
   _jsonModel() {
     <span class="keyword">return</span> models.get(DesktopModel);
   }
 }</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>Our desktop doesn&#x2019;t have any custom behavior, so we only import the <code>DesktopModel</code> here, in the <code>_jsonModel()</code> function.</p>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 9. src/greeting/HelloFormModel.js
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { GroupBox } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+</div>
+</div>
+<div class="paragraph">
+<p>Our desktop doesn&#8217;t have any custom behavior, so we only import the <code>DesktopModel</code> here, in the <code>_jsonModel()</code> function.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. src/greeting/HelloFormModel.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { GroupBox } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+
 <span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
   <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>,
   <span class="key">displayHint</span>: <span class="string"><span class="delimiter">'</span><span class="content">view</span><span class="delimiter">'</span></span>,
@@ -860,28 +915,34 @@ window.helloworld = Object.assign(window.helloworld || {}, {
     ]
   }
 })</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>Our form is defined to be non-modal and displayed as a view (rather than a dialog). It consists of a string field and a button. These are in a group box inside the form. We define an empty border decoration around this group box to have a little padding.</p>
-       </div>
-       <div class="paragraph">
-        <p>The <em>Enter</em> key is defined as the keyboard shortcut for our button and we set <code>processButton: false</code> to place the button next to our field instead of above it.</p>
-       </div>
-       <div class="listingblock">
-        <div class="title">
-         Listing 10. src/greeting/HelloForm.js
-        </div>
-        <div class="content">
-         <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { Form, models, MessageBoxes } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+</div>
+</div>
+<div class="paragraph">
+<p>Our form is defined to be non-modal and displayed as a view (rather than a dialog).
+It consists of a string field and a button.
+These are in a group box inside the form.
+We define an empty border decoration around this group box to have a little padding.</p>
+</div>
+<div class="paragraph">
+<p>The <em>Enter</em> key is defined as the keyboard shortcut for our button
+and we set <code>processButton: false</code> to place the button next to our field instead of above it.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. src/greeting/HelloForm.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { Form, models, MessageBoxes } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> HelloFormModel from <span class="string"><span class="delimiter">'</span><span class="content">./HelloFormModel</span><span class="delimiter">'</span></span>;
+
 <span class="reserved">export</span> <span class="reserved">class</span> HelloForm <span class="reserved">extends</span> Form {
+
   constructor() {
     <span class="reserved">super</span>();
   }
+
   _jsonModel() {
     <span class="keyword">return</span> models.get(HelloFormModel)
   }
+
   _init(model) {
     <span class="reserved">super</span>._init(model);
     <span class="local-variable">this</span>.widget(<span class="string"><span class="delimiter">'</span><span class="content">GreetButton</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, event =&gt; {
@@ -890,86 +951,96 @@ window.helloworld = Object.assign(window.helloworld || {}, {
     });
   }
 }</code></pre>
-        </div>
-       </div>
-       <div class="paragraph">
-        <p>As in <code>Desktop.js</code>, we import the model but additionally add an event handler in the <code>_init(model)</code> function to implement the desired behavior when the button is clicked.</p>
-       </div>
-       <div class="paragraph">
-        <p>To accomplish this, we can access our button and field by their respective <code>id</code> (see <code>HelloFormModel.js</code>). An OK message box with the desired text is displayed using the convenience class <code>MessageBoxes</code> from Scout.</p>
-       </div>
-      </div>
-     </div>
-     <div class="sect2">
-      <h3 id="git-configuration"><a class="anchor" href="#git-configuration"></a>Git configuration</h3>
-      <div class="paragraph">
-       <p>If you want to add the created application to a Git repository, it is recommended to exclude some files from the SCM.</p>
-      </div>
-      <div class="paragraph">
-       <p>As a starting point, use the file you cloned/downloaded from the helloscoutjs repository.</p>
-      </div>
-      <div class="listingblock">
-       <div class="title">
-        Listing 11. .gitignore
-       </div>
-       <div class="content">
-        <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Git</span>
+</div>
+</div>
+<div class="paragraph">
+<p>As in <code>Desktop.js</code>, we import the model but additionally add an event handler in the <code>_init(model)</code> function
+to implement the desired behavior when the button is clicked.</p>
+</div>
+<div class="paragraph">
+<p>To accomplish this, we can access our button and field by their respective <code>id</code> (see <code>HelloFormModel.js</code>).
+An OK message box with the desired text is displayed using the convenience class <code>MessageBoxes</code> from Scout.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="git-configuration"><a class="anchor" href="#git-configuration"></a>Git configuration</h3>
+<div class="paragraph">
+<p>If you want to add the created application to a Git repository, it is recommended to exclude some files from the SCM.</p>
+</div>
+<div class="paragraph">
+<p>As a starting point, use the file you cloned/downloaded from the helloscoutjs repository.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. .gitignore</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Git</span>
 *.orig
+
 <span class="comment"># Node</span>
 node_modules/
 dist/
 test-results/
+
 <span class="comment"># Do not check in any log files</span>
 *.log</code></pre>
-       </div>
-      </div>
-      <div class="paragraph">
-       <p>See the <a href="https://git-scm.com/docs/gitignore">gitignore Documentation</a> for details.</p>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#x2019;s Next?</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Now that you have successfully created your first Scout JS application, you might want to learn more about Scout JS.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you are interested in adding a REST backend you should have a look at <a href="https://eclipsescout.github.io/11.0/helloscout-js-fullstack.html">Hello Scout JS Full Stack Tutorial</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>To see more example code of Scout JS, we recommend looking at the <a href="https://scout.bsi-software.com/jswidgets_11_0/">Scout JS Widgets</a> application and its <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/releases/11.0/code/widgets">source code</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you are interested in Scout&#x2019;s concepts, architecture and features you probably want to have a look at the <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html">Scout JS Technical Guide</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>In case you should get stuck somewhere and need help, contact us on the <a href="http://www.eclipse.org/forums/eclipse.scout">Scout Forum</a> or on <a href="https://stackoverflow.com/tags/eclipse-scout">Stack Overflow</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>We wish you all the best on your journey with Scout.</p>
-     </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/helloscout_js/src/docs/helloscout-js.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div id="footer">
-   <div id="footer-text">
-     Version 11.0
-    <br> Last updated 2021-04-21 18:37:45 +0200
-   </div>
-  </div>
-  <style>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://git-scm.com/docs/gitignore">gitignore Documentation</a> for details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s Next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have successfully created your first Scout JS application,
+you might want to learn more about Scout JS.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested in adding a REST backend you should have a look at
+<a href="https://eclipsescout.github.io/11.0/helloscout-js-fullstack.html">Hello Scout JS Full Stack Tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>To see more example code of Scout JS, we recommend looking at the <a href="https://scout.bsi-software.com/jswidgets_11_0/">Scout JS Widgets</a> application
+and its <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/releases/11.0/code/widgets">source code</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested in Scout&#8217;s concepts, architecture and features you probably want to have
+a look at the <a href="https://eclipsescout.github.io/11.0/technical-guide-js.html">Scout JS Technical Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>In case you should get stuck somewhere and need help,
+contact us on the <a href="http://www.eclipse.org/forums/eclipse.scout">Scout Forum</a>
+or on <a href="https://stackoverflow.com/tags/eclipse-scout">Stack Overflow</a>.</p>
+</div>
+<div class="paragraph">
+<p>We wish you all the best on your journey with Scout.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/helloscout_js/src/docs/helloscout-js.adoc" target="_blank" rel="noopener">sources</a> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 11.0<br>
+Last updated 2021-04-28 14:35:42 +0200
+</div>
+</div>
+<style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 pre.CodeRay{background:#f7f7f8}
 .CodeRay .line-numbers{border-right:1px solid currentColor;opacity:.35;padding:0 .5em 0 0}
@@ -1058,5 +1129,5 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 .CodeRay .change .change{color:#66f}
 .CodeRay .head .head{color:#f4f}
 </style>
- </body>
+</body>
 </html>

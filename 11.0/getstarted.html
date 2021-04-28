@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Asciidoctor 2.0.10">
-  <title>Get Started with Eclipse Scout</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
-  <style>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Get Started with Eclipse Scout</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -435,146 +435,170 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head>
- <body class="book toc2 toc-left">
-  <div id="header">
-   <h1>Get Started with Eclipse Scout</h1>
-   <div class="details">
-    <span id="revnumber">version 11.0</span>
-   </div>
-   <div id="toc" class="toc2">
-    <div id="toctitle">
-     Table of Contents
-    </div>
-    <ul class="sectlevel1">
-     <li><a href="#choose-wisely">Choose Wisely</a></li>
-     <li><a href="#installation">Installation</a></li>
-     <li><a href="#ide">IDE</a></li>
-     <li><a href="#artifacts">Artifacts</a>
-      <ul class="sectlevel2">
-       <li><a href="#cdn">CDN</a></li>
-      </ul> </li>
-    </ul>
-   </div>
-  </div>
-  <div id="content">
-   <div id="preamble">
-    <div class="sectionbody">
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <div class="paragraph">
-      <p>Eclipse Scout is a framework that can be used in several ways. Before you can start, you should decide which way you want to take.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="choose-wisely"><a class="anchor" href="#choose-wisely"></a>Choose Wisely</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>First of all, you need to decide which programming language you want to use for the user interface. Do you prefer Java or JavaScript?</p>
-     </div>
-     <div class="paragraph">
-      <p>If you choose Java, your user interface code runs on a Java server. Scout takes care of sending your UI to the browser and displaying it. It also automatically directs the user interactions to the Java server and lets you process them. This approach is called <em>Scout Classic</em>.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you choose JavaScript, your user interface code runs in the browser. You still don&#x2019;t work with HTML elements directly. Instead, you use the same widget model as a Scout Java developer without needing a Java server. This approach is called <em>Scout JS</em>.</p>
-     </div>
-     <div class="paragraph">
-      <p>No matter what you choose, you can always adjust the existing widgets or write completely new widgets using HTML, CSS and JavaScript.</p>
-     </div>
-     <div class="paragraph">
-      <p>In addition to the programming language, you should think about whether you want to go full stack (frontend, backend) or just focus on one tier. For example, you could use Scout JS on the frontend, Scout on the backend and a REST api for the communication. Or maybe you prefer to use an existing REST api and just want to use the powerful Scout widgets for the frontend. Or maybe you don&#x2019;t need a backend at all because you plan to implement an offline app.</p>
-     </div>
-     <div class="paragraph">
-      <p>Have you made your decision? Great! Then it&#x2019;s now time to really get started.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Depending on your decision regarding the programming language, we recommend that you start with one of the following tutorials. Both tutorials guide you through the installation process, and you will learn how to setup your first Scout Classic or Scout JS project.</p>
-     </div>
-     <div class="paragraph">
-      <p><a href="http://eclipsescout.github.io/11.0/helloscout.html">Hello Scout Classic</a><br></p>
-     </div>
-     <div class="paragraph">
-      <p><a href="http://eclipsescout.github.io/11.0/helloscout-js.html">Hello Scout JS</a></p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="ide"><a class="anchor" href="#ide"></a>IDE</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Even though an IDE is not required to work with Scout it is recommended to use one because it makes your developer life easier.</p>
-     </div>
-     <div class="paragraph">
-      <p>There are Scout plugins available for IntelliJ and Eclipse. For Scout Classic either one is fine. For Scout JS we recommend IntelliJ because the JavaScript support of Eclipse is very poor. Unfortunately, the IntelliJ Community Edition does not contain JavaScript support, so you would need IntelliJ Ultimate. There is a trial if you want to try it.</p>
-     </div>
-     <div class="paragraph">
-      <p>You can also use Visual Studio code or any other IDE or editor but there are no official Scout plugins for these editors.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>All Scout artifacts are published on public repositories.</p>
-     </div>
-     <div class="paragraph">
-      <p>The Scout Java packages are Maven modules and available on <a href="https://search.maven.org/search?q=g:org.eclipse.scout.rt">Maven Central</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>The Scout JavaScript packages are npm modules and available on <a href="https://www.npmjs.com/package/@eclipse-scout/core">npmjs</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>Just include these dependencies in your project and import the required Java or JavaScript classes.</p>
-     </div>
-     <div class="sect2">
-      <h3 id="cdn"><a class="anchor" href="#cdn"></a>CDN</h3>
-      <div class="paragraph">
-       <p>The Scout npm modules contain prebuilt scripts, stylesheets and other necessary resources in the dist folder. There are several CDNs out there that serve the content of all npm modules. A popular one is <a href="https://www.jsdelivr.com/">jsDelivr</a>. Thanks to such CDNs you can easily download the prebuilt Scout assets or directly include them in your HTML files.</p>
-      </div>
-      <div class="paragraph">
-       <p><a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
-      </div>
-      <div class="paragraph">
-       <p>Even though this is a convenient way to get the Scout assets, we still recommend getting the artifacts via npm, because it gives you more control and flexibility to work with.</p>
-      </div>
-      <div class="paragraph">
-       <p>If you want to learn more about using a CDN, please see <a href="http://eclipsescout.github.io/11.0/helloscout-cdn.html">Hello Scout for CDN</a>.</p>
-      </div>
-      <div class="admonitionblock tip">
-       <table>
-        <tbody>
-         <tr>
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-          <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/getstarted/src/docs/getstarted.adoc">sources</a> on GitHub. </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div id="footer">
-   <div id="footer-text">
-     Version 11.0
-    <br> Last updated 2021-04-21 18:37:45 +0200
-   </div>
-  </div>
- </body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Get Started with Eclipse Scout</h1>
+<div class="details">
+<span id="revnumber">version 11.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#choose-wisely">Choose Wisely</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#ide">IDE</a></li>
+<li><a href="#artifacts">Artifacts</a>
+<ul class="sectlevel2">
+<li><a href="#cdn">CDN</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Eclipse Scout is a framework that can be used in several ways.
+Before you can start, you should decide which way you want to take.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="choose-wisely"><a class="anchor" href="#choose-wisely"></a>Choose Wisely</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First of all, you need to decide which programming language you want to use for the user interface.
+Do you prefer Java or JavaScript?</p>
+</div>
+<div class="paragraph">
+<p>If you choose Java, your user interface code runs on a Java server.
+Scout takes care of sending your UI to the browser and displaying it.
+It also automatically directs the user interactions to the Java server and lets you process them.
+This approach is called <em>Scout Classic</em>.</p>
+</div>
+<div class="paragraph">
+<p>If you choose JavaScript, your user interface code runs in the browser.
+You still don&#8217;t work with HTML elements directly.
+Instead, you use the same widget model as a Scout Java developer without needing a Java server.
+This approach is called <em>Scout JS</em>.</p>
+</div>
+<div class="paragraph">
+<p>No matter what you choose, you can always adjust the existing widgets or write completely new widgets using HTML, CSS and JavaScript.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the programming language, you should think about whether you want to go full stack (frontend, backend) or just focus on one tier.
+For example, you could use Scout JS on the frontend, Scout on the backend and a REST api for the communication.
+Or maybe you prefer to use an existing REST api and just want to use the powerful Scout widgets for the frontend.
+Or maybe you don&#8217;t need a backend at all because you plan to implement an offline app.</p>
+</div>
+<div class="paragraph">
+<p>Have you made your decision? Great! Then it&#8217;s now time to really get started.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depending on your decision regarding the programming language,
+we recommend that you start with one of the following tutorials.
+Both tutorials guide you through the installation process,
+and you will learn how to setup your first Scout Classic or Scout JS project.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://eclipsescout.github.io/11.0/helloscout.html">Hello Scout Classic</a><br></p>
+</div>
+<div class="paragraph">
+<p><a href="http://eclipsescout.github.io/11.0/helloscout-js.html">Hello Scout JS</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ide"><a class="anchor" href="#ide"></a>IDE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Even though an IDE is not required to work with Scout it is recommended to use one because it makes your developer life easier.</p>
+</div>
+<div class="paragraph">
+<p>There are Scout plugins available for IntelliJ and Eclipse.
+For Scout Classic either one is fine.
+For Scout JS we recommend IntelliJ because the JavaScript support of Eclipse is very poor.
+Unfortunately, the IntelliJ Community Edition does not contain JavaScript support, so you would need IntelliJ Ultimate.
+There is a trial if you want to try it.</p>
+</div>
+<div class="paragraph">
+<p>You can also use Visual Studio code or any other IDE or editor but there are no official Scout plugins for these editors.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All Scout artifacts are published on public repositories.</p>
+</div>
+<div class="paragraph">
+<p>The Scout Java packages are Maven modules and available on <a href="https://search.maven.org/search?q=g:org.eclipse.scout.rt">Maven Central</a>.</p>
+</div>
+<div class="paragraph">
+<p>The Scout JavaScript packages are npm modules and available on <a href="https://www.npmjs.com/package/@eclipse-scout/core">npmjs</a>.</p>
+</div>
+<div class="paragraph">
+<p>Just include these dependencies in your project and import the required Java or JavaScript classes.</p>
+</div>
+<div class="sect2">
+<h3 id="cdn"><a class="anchor" href="#cdn"></a>CDN</h3>
+<div class="paragraph">
+<p>The Scout npm modules contain prebuilt scripts, stylesheets and other necessary resources in the dist folder.
+There are several CDNs out there that serve the content of all npm modules.
+A popular one is <a href="https://www.jsdelivr.com/">jsDelivr</a>.
+Thanks to such CDNs you can easily download the prebuilt Scout assets or directly include them in your HTML files.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+</div>
+<div class="paragraph">
+<p>Even though this is a convenient way to get the Scout assets, we still recommend getting the artifacts via npm, because it gives you more control and flexibility to work with.</p>
+</div>
+<div class="paragraph">
+<p>If you want to learn more about using a CDN, please see <a href="http://eclipsescout.github.io/11.0/helloscout-cdn.html">Hello Scout for CDN</a>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/getstarted/src/docs/getstarted.adoc" target="_blank" rel="noopener">sources</a> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 11.0<br>
+Last updated 2021-04-28 14:35:42 +0200
+</div>
+</div>
+</body>
 </html>

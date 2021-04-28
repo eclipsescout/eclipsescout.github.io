@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Asciidoctor 2.0.10">
-  <title>Hello Scout JS with a CDN</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
-  <style>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Hello Scout JS with a CDN</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -435,131 +435,143 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head>
- <body class="book toc2 toc-left">
-  <div id="header">
-   <h1>Hello Scout JS with a CDN</h1>
-   <div class="details">
-    <span id="revnumber">version 11.0</span>
-   </div>
-   <div id="toc" class="toc2">
-    <div id="toctitle">
-     Table of Contents
-    </div>
-    <ul class="sectlevel1">
-     <li><a href="#introduction">Introduction</a></li>
-     <li><a href="#preparation">Preparation</a></li>
-     <li><a href="#include-assets">Include Assets</a></li>
-     <li><a href="#add-your-code">Add your Code</a></li>
-     <li><a href="#summary">Summary</a></li>
-    </ul>
-   </div>
-  </div>
-  <div id="content">
-   <div id="preamble">
-    <div class="sectionbody">
-     <div class="admonitionblock note">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td>
-         <td class="content"> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>A typical approach to work with Scout JS is to use a package manager (e.g. pnpm) to download the modules and a bundler (e.g. webpack) to build them. Thanks to the <a href="http://eclipsescout.github.io/11.0/technical-guide-js.html#command-line-interface-cli">Scout CLI</a> this task is straightforward.</p>
-     </div>
-     <div class="paragraph">
-      <p>The main advantage is the simplified development process. You can use Less variables from Scout (e.g. the color palette). Individual source files can be imported directly which facilitates code completion. It also enables you to use modern code but still target older browsers by the usage of Babel.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you don&#x2019;t need all that and just want to include Scout as a script in your html page (as in the early days), you can do so, too! This article shows how to achieve this. A live demo of the app we&#x2019;ll create is published on <a href="https://codepen.io/cguglielmo/pen/jOVxpMZ">CodePen</a>.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="preparation"><a class="anchor" href="#preparation"></a>Preparation</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>First, you need to get the prebuilt Scout assets like scripts, stylesheets, fonts etc. These assets are part of the Scout npm modules and located in the <code>dist</code> folder.</p>
-     </div>
-     <div class="paragraph">
-      <p>To get them you can either install the Scout modules using a package manager and take the necessary resources from the dist folder. Or you could use a CDN and download them manually from there or even link to that CDN in your html files. In this example we are going to use a CDN directly.</p>
-     </div>
-     <div class="paragraph">
-      <p>There are several CDNs out there that serve the content of all npm modules. A popular one is <a href="https://www.jsdelivr.com/">jsDelivr</a>. Using this CDN you can easily access all Scout assets: <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist">@eclipse-scout/core/dist</a>.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="include-assets"><a class="anchor" href="#include-assets"></a>Include Assets</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Now let&#x2019;s create a new html file called <code>index.html</code> and paste the following content:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">"</span><span class="content">en</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Hello Scout JS with a CDN</h1>
+<div class="details">
+<span id="revnumber">version 11.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#preparation">Preparation</a></li>
+<li><a href="#include-assets">Include Assets</a></li>
+<li><a href="#add-your-code">Add your Code</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A typical approach to work with Scout JS is to use a package manager (e.g. pnpm) to download the modules and a bundler (e.g. webpack) to build them.
+Thanks to the <a href="http://eclipsescout.github.io/11.0/technical-guide-js.html#command-line-interface-cli">Scout CLI</a> this task is straightforward.</p>
+</div>
+<div class="paragraph">
+<p>The main advantage is the simplified development process.
+You can use Less variables from Scout (e.g. the color palette).
+Individual source files can be imported directly which facilitates code completion.
+It also enables you to use modern code but still target older browsers by the usage of Babel.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t need all that and just want to include Scout as a script in your html page (as in the early days), you can do so, too!
+This article shows how to achieve this.
+A live demo of the app we&#8217;ll create is published on <a href="https://codepen.io/cguglielmo/pen/jOVxpMZ">CodePen</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preparation"><a class="anchor" href="#preparation"></a>Preparation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, you need to get the prebuilt Scout assets like scripts, stylesheets, fonts etc.
+These assets are part of the Scout npm modules and located in the <code>dist</code> folder.</p>
+</div>
+<div class="paragraph">
+<p>To get them you can either install the Scout modules using a package manager and take the necessary resources from the dist folder.
+Or you could use a CDN and download them manually from there or even link to that CDN in your html files.
+In this example we are going to use a CDN directly.</p>
+</div>
+<div class="paragraph">
+<p>There are several CDNs out there that serve the content of all npm modules.
+A popular one is <a href="https://www.jsdelivr.com/">jsDelivr</a>.
+Using this CDN you can easily access all Scout assets: <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist">@eclipse-scout/core/dist</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="include-assets"><a class="anchor" href="#include-assets"></a>Include Assets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now let&#8217;s create a new html file called <code>index.html</code> and paste the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="tag">&lt;head&gt;</span>
   <span class="tag">&lt;title&gt;</span>Hello Scout CDN<span class="tag">&lt;/title&gt;</span>
-  <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">"</span><span class="content">viewport</span><span class="delimiter">"</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">"</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span>
-  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">"</span><span class="content">stylesheet</span><span class="delimiter">"</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.14/dist/eclipse-scout-core-theme.css</span><span class="delimiter">"</span></span> <span class="tag">/&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.14/dist/eclipse-scout-core-theme.css</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tag">&lt;/head&gt;</span>
 <span class="tag">&lt;body&gt;</span>
-  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">scout</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><i class="conum" data-value="3"></i><b>(3)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://code.jquery.com/jquery-3.5.1.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/sourcemapped-stacktrace@1.1.11/dist/sourcemapped-stacktrace.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.14/dist/eclipse-scout-core.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">"</span><span class="content">hello.js</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="4"></i><b>(4)</b>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><i class="conum" data-value="3"></i><b>(3)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://code.jquery.com/jquery-3.5.1.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.jsdelivr.net/npm/sourcemapped-stacktrace@1.1.11/dist/sourcemapped-stacktrace.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.14/dist/eclipse-scout-core.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="4"></i><b>(4)</b>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></code></pre>
-      </div>
-     </div>
-     <div class="colist arabic">
-      <table>
-       <tbody>
-        <tr>
-         <td><i class="conum" data-value="1"></i><b>1</b></td>
-         <td>As you can see, we include the Scout assets, namely <code>eclipse-scout-core-theme.css</code> and <code>eclipse-scout-core.js</code>.</td>
-        </tr>
-        <tr>
-         <td><i class="conum" data-value="2"></i><b>2</b></td>
-         <td>Additionally, we need to include all dependencies, which are <code>jquery</code> and <code>sourcemapped-stacktrace.js</code>. These are the dependencies listed in the <a href="https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.14/package.json">package.json of @eclipse-scout/core</a>.</td>
-        </tr>
-        <tr>
-         <td><i class="conum" data-value="3"></i><b>3</b></td>
-         <td>Finally, we need to add an empty scout <code>&lt;div&gt;</code> where the html content generated by Scout will be placed.</td>
-        </tr>
-        <tr>
-         <td><i class="conum" data-value="4"></i><b>4</b></td>
-         <td>The script <code>hello.js</code> contains the code of our application.</td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="add-your-code"><a class="anchor" href="#add-your-code"></a>Add your Code</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>Now create a file called <code>hello.js</code> and paste the following code:</p>
-     </div>
-     <div class="listingblock">
-      <div class="content">
-       <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Desktop <span class="reserved">extends</span> scout.Desktop {
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>As you can see, we include the Scout assets, namely <code>eclipse-scout-core-theme.css</code> and <code>eclipse-scout-core.js</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Additionally, we need to include all dependencies, which are <code>jquery</code> and <code>sourcemapped-stacktrace.js</code>.
+These are the dependencies listed in the <a href="https://cdn.jsdelivr.net/npm/@eclipse-scout/core@11.0.14/package.json">package.json of @eclipse-scout/core</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Finally, we need to add an empty scout <code>&lt;div&gt;</code> where the html content generated by Scout will be placed.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The script <code>hello.js</code> contains the code of our application.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-your-code"><a class="anchor" href="#add-your-code"></a>Add your Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now create a file called <code>hello.js</code> and paste the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Desktop <span class="reserved">extends</span> scout.Desktop {
+
   constructor() {
     <span class="reserved">super</span>();
   }
+
   _jsonModel() {
     <span class="keyword">return</span> {
       <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Desktop</span><span class="delimiter">'</span></span>,
@@ -593,6 +605,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       ]
     };
   }
+
   _init(model) {
     <span class="reserved">super</span>._init(model);
     <span class="local-variable">this</span>.widget(<span class="string"><span class="delimiter">'</span><span class="content">GreetButton</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, event =&gt; {
@@ -601,68 +614,77 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     });
   }
 }
+
 scout.addObjectFactories({
   <span class="key"><span class="delimiter">'</span><span class="content">Desktop</span><span class="delimiter">'</span></span>: () =&gt; <span class="keyword">new</span> Desktop()
 });
+
 <span class="keyword">new</span> scout.App().init({
   <span class="key">bootstrap</span>: {
     <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://unpkg.com/@eclipse-scout/core@11.0.14/dist/texts.json</span><span class="delimiter">'</span></span>
   }
 });</code></pre>
-      </div>
-     </div>
-     <div class="paragraph">
-      <p>As you can see, there are no imports at the top. Instead, we are using the global variable <code>scout</code>, that is automatically put on the <code>window</code> object, to reference Scout classes.</p>
-     </div>
-     <div class="paragraph">
-      <p>Furthermore, we have to include the <code>texts.json</code>. This file needs to be included to make sure the texts used by Scout can be resolved for the language the user is using. In this case it is necessary for the text <code>Ok</code> which is visible on the message box when you click the button.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you like to present dates and numbers using the format the user is used to, you could also include the <code>locales.json</code>. We do not need it for now so it is not included.</p>
-     </div>
-     <div class="paragraph">
-      <p>The rest of the code looks pretty similar to regular Scout JS code but be aware that some newer JS features are used like <code>class</code> or the template syntax that may not be supported by every browser.</p>
-     </div>
-    </div>
-   </div>
-   <div class="sect1">
-    <h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2>
-    <div class="sectionbody">
-     <div class="paragraph">
-      <p>That&#x2019;s it. This is all you need to do to use Scout in a plain html site without the need of build tools.</p>
-     </div>
-     <div class="paragraph">
-      <p>If you like you could adjust the example to use the dark theme by using <code>eclipse-scout-core-theme-dark.css</code> instead of <code>eclipse-scout-core-theme.css</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>Or you could try to add a Chart by including the <code>@eclipse-scout/chart</code> module. The procedure is the same: link to the <code>@eclipse-scout/chart</code> assets (script, stylesheet, texts) and include its dependencies, that are referenced by its <code>package.json</code>.</p>
-     </div>
-     <div class="paragraph">
-      <p>The result could look like this: <a href="https://codepen.io/cguglielmo/pen/qBqYMvp">Eclipse Scout Chart on CodePen</a>.</p>
-     </div>
-     <div class="paragraph">
-      <p>Have fun!</p>
-     </div>
-     <div class="admonitionblock tip">
-      <table>
-       <tbody>
-        <tr>
-         <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td>
-         <td class="content"> Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/helloscout_cdn/src/docs/helloscout-cdn.adoc">sources</a> on GitHub. </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div id="footer">
-   <div id="footer-text">
-     Version 11.0
-    <br> Last updated 2021-04-21 18:37:45 +0200
-   </div>
-  </div>
-  <style>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, there are no imports at the top.
+Instead, we are using the global variable <code>scout</code>, that is automatically put on the <code>window</code> object, to reference Scout classes.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, we have to include the <code>texts.json</code>.
+This file needs to be included to make sure the texts used by Scout can be resolved for the language the user is using.
+In this case it is necessary for the text <code>Ok</code> which is visible on the message box when you click the button.</p>
+</div>
+<div class="paragraph">
+<p>If you like to present dates and numbers using the format the user is used to, you could also include the <code>locales.json</code>.
+We do not need it for now so it is not included.</p>
+</div>
+<div class="paragraph">
+<p>The rest of the code looks pretty similar to regular Scout JS code but be aware that some newer JS features are used like <code>class</code> or the template syntax that may not be supported by every browser.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>That&#8217;s it. This is all you need to do to use Scout in a plain html site without the need of build tools.</p>
+</div>
+<div class="paragraph">
+<p>If you like you could adjust the example to use the dark theme by using <code>eclipse-scout-core-theme-dark.css</code> instead of <code>eclipse-scout-core-theme.css</code>.</p>
+</div>
+<div class="paragraph">
+<p>Or you could try to add a Chart by including the <code>@eclipse-scout/chart</code> module.
+The procedure is the same: link to the <code>@eclipse-scout/chart</code> assets (script, stylesheet, texts) and include its dependencies, that are referenced by its <code>package.json</code>.</p>
+</div>
+<div class="paragraph">
+<p>The result could look like this: <a href="https://codepen.io/cguglielmo/pen/qBqYMvp">Eclipse Scout Chart on CodePen</a>.</p>
+</div>
+<div class="paragraph">
+<p>Have fun!</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/11.0/docs/build/helloscout_cdn/src/docs/helloscout-cdn.adoc" target="_blank" rel="noopener">sources</a> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 11.0<br>
+Last updated 2021-04-28 14:35:42 +0200
+</div>
+</div>
+<style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 pre.CodeRay{background:#f7f7f8}
 .CodeRay .line-numbers{border-right:1px solid currentColor;opacity:.35;padding:0 .5em 0 0}
@@ -751,5 +773,5 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 .CodeRay .change .change{color:#66f}
 .CodeRay .head .head{color:#f4f}
 </style>
- </body>
+</body>
 </html>
