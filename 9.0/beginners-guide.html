@@ -3498,16 +3498,20 @@ The only project specific method is <code>getConfiguredJdbcMappingName</code> as
 <div class="title">Listing 16. The Derby SQL service to connect to the database</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DerbySqlService</span> <span class="directive">extends</span> AbstractDerbySqlService {
+
   <span class="annotation">@Override</span>
   <span class="directive">protected</span> <span class="predefined-type">String</span> getConfiguredJdbcMappingName() {
+    <span class="keyword">return</span> CONFIG.getPropertyValue(JdbcMappingNameProperty.class);
+  }
+
+  <span class="directive">public</span> <span class="type">void</span> createDB() {
     <span class="predefined-type">String</span> mappingName = CONFIG.getPropertyValue(JdbcMappingNameProperty.class);
-
-    <span class="comment">// add create attribute if we need to autocreate the db</span>
-    <span class="keyword">if</span> (CONFIG.getPropertyValue(DatabaseAutoCreateProperty.class)) {
-      <span class="keyword">return</span> mappingName + <span class="string"><span class="delimiter">&quot;</span><span class="content">;create=true</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">try</span> {
+      runDerbyCommand(mappingName + <span class="string"><span class="delimiter">&quot;</span><span class="content">;create=true</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
     }
-
-    <span class="keyword">return</span> mappingName;
+    <span class="keyword">catch</span> (<span class="exception">SQLException</span> e) {
+      <span class="keyword">throw</span> BEANS.get(PlatformExceptionTranslator.class).translate(e);
+    }
   }
 }</code></pre>
 </div>
@@ -3656,6 +3660,7 @@ The context is then used to execute the runnable that creates the organization a
   <span class="directive">public</span> <span class="type">void</span> autoCreateDatabase() {
     <span class="keyword">if</span> (CONFIG.getPropertyValue(DatabaseAutoCreateProperty.class)) {
       <span class="keyword">try</span> {
+        BEANS.get(DerbySqlService.class).createDB();
         RunContext context = BEANS.get(SuperUserRunContextProducer.class).produce();
         IRunnable runnable = () -&gt; {
           createOrganizationTable();
@@ -7254,7 +7259,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 9.0<br>
-Last updated 2021-04-28 14:45:27 +0200
+Last updated 2021-04-29 18:46:28 +0200
 </div>
 </div>
 <style>
