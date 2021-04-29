@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-  <meta name="generator" content="Asciidoctor 1.5.4" /> 
-  <meta name="author" content="Judith Gull, Matthias Villiger" /> 
-  <title>Eclipse Scout: Release Notes</title> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700" /> 
-  <style>
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="author" content="Judith Gull, Matthias Villiger">
+<title>Eclipse Scout: Release Notes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove comment around @import statement below when using as a custom stylesheet */
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
@@ -416,9 +416,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .print-only{display:block!important}
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
-</style> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" /> 
-  <style>
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
 .CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
@@ -508,312 +508,409 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .delete .delete{color:#800}
 .CodeRay .change .change{color:#66f}
 .CodeRay .head .head{color:#f4f}
-</style> 
- </head> 
- <body class="article toc2 toc-left"> 
-  <div id="header"> 
-   <h1>Eclipse Scout: Release Notes</h1> 
-   <div class="details"> 
-    <span id="author" class="author">Judith Gull, Matthias Villiger</span>
-    <br /> 
-    <span id="email" class="email"><a href="mailto:scout-dev@eclipse.org">scout-dev@eclipse.org</a></span>
-    <br /> 
-    <span id="revnumber">version 5.2.0-SNAPSHOT</span> 
-   </div> 
-   <div id="toc" class="toc2"> 
-    <div id="toctitle">
-     Table of Contents
-    </div> 
-    <ul class="sectlevel0"> 
-     <li><a href="#release-notes-for-scout-6-0">Release Notes for Scout 6.0</a> 
-      <ul class="sectlevel1"> 
-       <li><a href="#what-s-new">What&#x2019;s New</a> 
-        <ul class="sectlevel2"> 
-         <li><a href="#html">HTML</a></li> 
-         <li><a href="#api-changes">API Changes</a></li> 
-        </ul> </li> 
-       <li><a href="#known-bugs-and-limitations">Known Bugs and Limitations</a> 
-        <ul class="sectlevel2"> 
-         <li><a href="#selection-in-disabled-text-fields">Selection in disabled text fields</a></li> 
-         <li><a href="#drag-and-drop-support">Drag and drop support</a></li> 
-         <li><a href="#input-placeholders">Input placeholders</a></li> 
-         <li><a href="#security-malwarescanner-new">Security: MalwareScanner [New]</a></li> 
-         <li><a href="#imimetypedetector-new">IMimeTypeDetector [New]</a></li> 
-         <li><a href="#uploadrequesthandler-added-features">UploadRequestHandler [Added features]</a></li> 
-         <li><a href="#session-cookie-jsessionid-cookie-configuration-validation">Session Cookie (JSESSIONID Cookie) configuration validation</a></li> 
-         <li><a href="#useridaccesscontrolservice-removed">UserIdAccessControlService [Removed]</a></li> 
-        </ul> </li> 
-      </ul> </li> 
-    </ul> 
-   </div> 
-  </div> 
-  <div id="content"> 
-   <div id="preamble"> 
-    <div class="sectionbody"> 
-     <div class="admonitionblock warning"> 
-      <table> 
-       <tbody>
-        <tr> 
-         <td class="icon"> <i class="fa icon-warning" title="Warning"></i> </td> 
-         <td class="content"> This document is referring to a past Scout release. Please click <a href="https://eclipsescout.github.io/stable/release-notes.html">here</a> for the recent version.<br /> Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation. </td> 
-        </tr> 
-       </tbody>
-      </table> 
-     </div> 
-     <div class="paragraph"> 
-      <p>!!! WORK IN PROGRESS !!!</p> 
-     </div> 
-    </div> 
-   </div> 
-   <h1 id="release-notes-for-scout-6-0" class="sect0"><a class="anchor" href="#release-notes-for-scout-6-0"></a>Release Notes for Scout 6.0</h1> 
-   <div class="paragraph"> 
-    <p>Here are the release notes for the Scout Release 6.0</p> 
-   </div> 
-   <div class="paragraph"> 
-    <p><strong>TODO: a lot is still missing!</strong></p> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="what-s-new"><a class="anchor" href="#what-s-new"></a>What&#x2019;s New</h2> 
-    <div class="sectionbody"> 
-     <div class="sect2"> 
-      <h3 id="html"><a class="anchor" href="#html"></a>HTML</h3> 
-      <div class="paragraph"> 
-       <p>Use the class <code>org.eclipse.scout.rt.platform.html.HTML</code> to build HTML content instead of concatenate the strings manually.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API Changes</h3> 
-      <div class="sect3"> 
-       <h4 id="table"><a class="anchor" href="#table"></a>Table</h4> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p>Behavior change of <code>Table</code> in <code>AbstractTableField</code>: Do not execute <code>AbstractTable.execContentChanged()</code> when <code>valueChangeTriggers</code> flag on <code>IFormField</code> is <code>false</code>.</p> </li> 
-         <li> <p>Returned collection of <code>ITableColumnFilterManager.getFilters()</code> is now unmodifiable.</p> </li> 
-         <li> <p>New method <code>ITableColumnFilterManager.removeFilter(IColumn col)</code>.</p> </li> 
-        </ul> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="tree"><a class="anchor" href="#tree"></a>Tree</h4> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p><code>ITree.getConfiguredDefaultIconId()</code> in addition to <code>ITree.getConfiguredIconId</code>. The difference is as follows: <em>DefaultIconId</em> is used as default for all tree nodes that don&#x2019;t have an icon on their own. <em>IconId</em> may be used in the same way as the title, e.g as outline icon.</p> </li> 
-         <li> <p>Nodes may now be expanded in a lazy way. This means only those child nodes are visible which are expanded as well and the parent gets a '+' symbol. If the user clicks on this symbol all child nodes gets visible. The model can define whether child pages of a page should be added immediately to the outline tree or lazily. If nodes are added lazily, a dummy &quot;show all&quot; node is shown instead.</p> 
-          <div class="paragraph"> 
-           <p>Node pages never add child pages lazily. Table pages add child nodes lazily when they have more than a specific number of child pages (default 1).</p> 
-          </div> 
-          <div class="paragraph"> 
-           <p>The behavior may be controlled using:</p> 
-          </div> 
-          <div class="ulist"> 
-           <ul> 
-            <li> <p><code>boolean getConfiguredLazyAddChildPagesToOutline()</code> -&#x2192; default <code>false</code>, for <code>AbstractPageWithTable</code> the default is <code>true</code>.</p> </li> 
-            <li> <p><code>int getConfiguredLazyAddChildPagesToOutlineThreshold()</code> -&#x2192; setting for <code>AbstractPageWithTable</code>, after how many child pages the lazy setting should be active (default 1)</p> </li> 
-           </ul> 
-          </div> </li> 
-        </ul> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="chart-box"><a class="anchor" href="#chart-box"></a>Chart Box</h4> 
-       <div class="paragraph"> 
-        <p>Removed chart box because it has not been used and there is no UI implementation.</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="file-chooser-file-upload"><a class="anchor" href="#file-chooser-file-upload"></a>File Chooser (File Upload)</h4> 
-       <div class="paragraph"> 
-        <p>File upload size is always limited now (otherwise server might run out of memory if too large files are sent). Default size is 50 MB, but every field might specify lower/higher sizes:</p> 
-       </div> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p><code>org.eclipse.scout.rt.client.ui.IDNDSupport.setDropMaximumSize(long)</code></p> </li> 
-         <li> <p><code>org.eclipse.scout.rt.client.ui.IDNDSupport.getDropMaximumSize()</code></p> </li> 
-         <li> <p><code>org.eclipse.scout.rt.client.ui.basic.filechooser.IFileChooser.setMaximumUploadSize(long)</code></p> </li> 
-         <li> <p><code>org.eclipse.scout.rt.client.ui.basic.filechooser.IFileChooser.getMaximumUploadSize()</code></p> </li> 
-         <li> <p><code>org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.IFileChooserField.setMaximumUploadSize(long)</code></p> </li> 
-         <li> <p><code>org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.IFileChooserField.getMaximumUploadSize()</code></p> </li> 
-         <li> <p>Also added <code>getConfigured&#x2026;&#x200b;()</code> methods were applicable for properties above.</p> </li> 
-        </ul> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="group-box"><a class="anchor" href="#group-box"></a>Group Box</h4> 
-       <div class="paragraph"> 
-        <p><code>AbstractGroupBox.setBorderVisible(false)</code> does not change visibility of label anymore. Label of group-box must be made invisible by calling <code>setLabelVisible(false)</code>.</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="smart-field"><a class="anchor" href="#smart-field"></a>Smart Field</h4> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p><code>AbstractContentAssistField</code> and <code>IProposalChooser</code> implementations now have the ability to provide an inner class which extend <code>AbstractTree</code> or <code>AbstractTable</code> to provide a custom implementation used in the proposal chooser.</p> </li> 
-         <li> <p>Added <code>cssClass</code> property to formField, column and cell for custom css styling. See also interface <code>IStyleable</code> and class <code>CssClasses</code>.</p> </li> 
-        </ul> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="date-field"><a class="anchor" href="#date-field"></a>Date Field</h4> 
-       <div class="paragraph"> 
-        <p>The date field no longer inherits from <em>BasicField</em>. Instead it inherits directly from <em>ValueField</em>. This means that the <code>PROP_UPDATE_DISPLAY_TEXT_ON_MODIFY</code> is no longer supported on date fields. The reason for this change was the separation of UI (Browser) and UI-Server (Java). To get a good performance, fast date predictions and offline capability, the parsing must be done in the UI and not on the server. Because the &quot;update on modify&quot; flag had no effect anyway, it was completely removed from the UI. (More details in the Migration Guide).</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="split-box"><a class="anchor" href="#split-box"></a>Split Box</h4> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p><code>AbstractSplitBox</code> now returns <code>IFormField.FULL_SIZE</code> in <code>getConfiguredGridW()</code> by default. Reason: The split box widget does not really have a representation of its own, but is more like a container for other fields. It can never have label, mandatory indicator etc. Its layout should behave like a group box or a tab box, therefore the default gridW value was adjusted accordingly.</p> </li> 
-         <li> <p>Split boxes now support absolute splitter positions. The old relative position is the default, which uses a value between 0 and 1 for the <code>splitterPosition</code>. By changing the property <code>splitterPositionType</code>, the interpretation of the <code>splitterPosition</code> value can be changed to pixels (either fixed for the first or the second inner box).</p> </li> 
-        </ul> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="desktop-outline"><a class="anchor" href="#desktop-outline"></a>Desktop / Outline</h4> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p>Menus of a page are now added to the detail form. This was necessary because the outline tree does not show any menus anymore. See also method <code>AbstractPageWithNodes.enhanceDetailFormWithPageMenus</code>.</p> </li> 
-         <li> <p>Added <code>AbstractDesktop.getConfiguredAutoTabKeyStrokesEnabled</code>: It should be possible to change view Tabs with modifier+number. The number should be generated by the ui. 9 is reserved to jump to the last tab, 0 to jump to the first tab. If this property is set to false there is no Keystroke for tab change on the ui.</p> 
-          <div class="ulist"> 
-           <ul> 
-            <li> <p><code>getConfiguredAutoTabKeyStrokeModifier</code>: if the property is set to <code>true</code> the modifier specified by this property is used in combination with a number to change to the specific tab.</p> </li> 
-           </ul> 
-          </div> </li> 
-         <li> <p>Added <code>ISearchOutline</code>: The intention of the search outline is to provide a search over several table pages. The <code>AbstractSearchOutline</code> provides a frame, the search itself has to be implemented by the project. In order to use it add the <code>SearchOutline</code> to the desktop using <code>getConfiguredOutlines</code> (don&#x2019;t create an outlineViewButton).</p> </li> 
-         <li> <p>Added default detail form on outline: It is now possible to configure a default detail form for outlines. The default detail form gets shown when no page is selected. API added <code>getConfiguredDefaultDetailForm</code>, <code>execInitDefaultDetailForm</code>, <code>createDefaultDetailForm</code>, <code>startDefaultDetailForm</code>.</p> </li> 
-         <li> <p>Added <code>getConfiguredTableStatusVisible</code> on <code>IPageWithTable</code>: It is now possible to configure whether the table status should be visible for a table page. Until now table status was set visible by the <code>OutlineTableForm</code>.</p> </li> 
-         <li> <p>API added to <code>AbstractTable</code> and <code>ITable</code>:</p> 
-          <div class="ulist"> 
-           <ul> 
-            <li> <p><code>List&lt;ITableControl&gt; getTableControls()</code></p> </li> 
-            <li> <p><code>&lt;T extends ITableControl&gt; T getTableControl(Class&lt;T&gt; controlClass)</code></p> </li> 
-            <li> <p><code>boolean isTableStatusVisible()</code></p> </li> 
-            <li> <p><code>void setTableStatusVisible(boolean visible)</code></p> </li> 
-            <li> <p><code>String getMenuBarPosition()</code></p> </li> 
-            <li> <p><code>void setMenuBarPosition(String position)</code></p> </li> 
-           </ul> 
-          </div> </li> 
-         <li> <p>API added to ITableUIFacade</p> 
-          <div class="ulist"> 
-           <ul> 
-            <li> <p><code>void fireTableReloadFromUI()</code></p> </li> 
-            <li> <p>`void fireSortColumnRemovedFromUI(IColumn&lt;?&gt; column)</p> </li> 
-           </ul> 
-          </div> </li> 
-         <li> <p>Improved page search form disposal: Search form is now closed when the page gets disposed.</p> </li> 
-         <li> <p><code>AbstractDesktop.isOutlineChanging</code> added.</p> </li> 
-         <li> <p>The methods <code>traverseFocusNext()</code> and <code>traverseFocusPrevious</code> were removed from <em>IDesktop</em> because traversing is not supported by the HTML UI. (Neither was it supported by the former RAP UI). The corresponding <em>DesktopEvent</em> types (<code>TYPE_TRAVERSE_FOCUS_NEXT</code>, <code>TYPE_TRAVERSE_FOCUS_PREVIOUS</code>) were removed as well.</p> </li> 
-        </ul> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="form"><a class="anchor" href="#form"></a>Form</h4> 
-       <div class="paragraph"> 
-        <p>Added <code>IForm.start()</code>: Mainly useful for forms with just one handler. (detail forms, tool forms etc.). May be implemented by the concrete form. The default implementation at AbstractForm uses getHandler() to start the form.</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="bean-field-bean-column-new"><a class="anchor" href="#bean-field-bean-column-new"></a>Bean Field / Bean Column [New]</h4> 
-       <div class="paragraph"> 
-        <p>Added bean field and bean column. See <code>AbstractBeanField</code>, <code>AbstractBeanColumn</code> for details.</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="wizard-progress-field-new"><a class="anchor" href="#wizard-progress-field-new"></a>Wizard Progress Field [New]</h4> 
-       <div class="paragraph"> 
-        <p>A new widget has been added: <code>WizardProgressField</code>. It is normally visualized as a list of steps with some indication which step is the current step etc. It replaces the old &quot;HTML status&quot; field on the default wizard container form.</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="htmlutility"><a class="anchor" href="#htmlutility"></a>HTMLUtility</h4> 
-       <div class="paragraph"> 
-        <p><code>org.eclipse.scout.rt.platform.html.HTMLUtility</code> and <code>org.eclipse.scout.rt.platform.html.CSSPatch</code> were deprecated because they contained only legacy code of doubtful quality. Do not use them anymore&#x2009;&#x2014;&#x2009;they will be removed in the next Scout release. The support for most of the contained methods was dropped, because they are not required anymore with the new UI. A slightly improved version of the <code>getPlainText()</code> method is available on the new bean <code>org.eclipse.scout.rt.platform.html.HtmlHelper</code>.</p> 
-       </div> 
-      </div> 
-      <div class="sect3"> 
-       <h4 id="various-changes"><a class="anchor" href="#various-changes"></a>Various Changes</h4> 
-       <div class="ulist"> 
-        <ul> 
-         <li> <p><code>ILabelField</code>, <code>IHtmlField</code> and <code>IStringField</code> are now <code>IHtmlCapable</code>.</p> </li> 
-         <li> <p><code>UiLayer</code>: Removed values <code>JSP</code>, <code>JSF</code>, <code>RAP</code>, <code>SWING</code> and added value <code>HTML</code>.</p> </li> 
-         <li> <p><code>UserAgentUtility</code>: API removed <code>isRapUi()</code>, <code>isSwingUi()</code></p> </li> 
-         <li> <p><code>AbstractFormField.set/isStatusVisible</code> added.</p> </li> 
-         <li> <p><code>org.eclipse.scout.commons</code> reorganized, classes moved to <code>org.eclipse.scout.rt.platform</code> and other projects</p> </li> 
-         <li> <p>The unused, obsolete classes <code>org.eclipse.scout.rt.client.ui.form.fields.ValueFieldEvent</code> and <code>org.eclipse.scout.rt.client.ui.form.fields.ValueFieldListener</code> were removed.</p> </li> 
-        </ul> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="known-bugs-and-limitations"><a class="anchor" href="#known-bugs-and-limitations"></a>Known Bugs and Limitations</h2> 
-    <div class="sectionbody"> 
-     <div class="sect2"> 
-      <h3 id="selection-in-disabled-text-fields"><a class="anchor" href="#selection-in-disabled-text-fields"></a>Selection in disabled text fields</h3> 
-      <div class="paragraph"> 
-       <p>Firefox (tested with v 35.0.1): it&#x2019;s not possible to select text in a disabled text field. There is no workaround. An often suggested workaround is to use the readonly attribute instead of disabled, but this leads to a completely different behavior when it comes to event handling. When a field is disabled it doesn&#x2019;t fire any events (for instance: click), but when it&#x2019;s set to readonly event handling is still enabled. In other words: we&#x2019;d have to implement browser/widget default behavior to work around this problem&#x2009;&#x2014;&#x2009;additionally the workaround should only affect Firefox but none of the other browsers (where this is not an issue at all).</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="drag-and-drop-support"><a class="anchor" href="#drag-and-drop-support"></a>Drag and drop support</h3> 
-      <div class="paragraph"> 
-       <p>IE9 does not support dropping files. Therefore, drag and drop in file chooser is not supported for that browser.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="input-placeholders"><a class="anchor" href="#input-placeholders"></a>Input placeholders</h3> 
-      <div class="paragraph"> 
-       <p>On-field labels are not visible in IE9 because it lacks support for the &quot;placeholder&quot; attribute.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="security-malwarescanner-new"><a class="anchor" href="#security-malwarescanner-new"></a>Security: MalwareScanner [New]</h3> 
-      <div class="paragraph"> 
-       <p>Facility used to scan files and resources for malware. The new @Bean MalwareScanner assumes that an appropriate malware scanner is in place on the webapp deployment machine and is configured to scan the TEMP folder (as used by File#createTempFile) using a realtime filesystem scan strategy. Malware should therefore immediately be removed or blocked by the malware implementation when placed in that folder. The new MalwareScanner is used in the ui.html file upload handler and thus checks every uploaded file.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="imimetypedetector-new"><a class="anchor" href="#imimetypedetector-new"></a>IMimeTypeDetector [New]</h3> 
-      <div class="paragraph"> 
-       <p>The new interface IMimeTypeDetector provides multiple ordered implementations that can detect mime types PrimaryMimeTypeDetector with order 0 defines important webapp mime types ServletContextMimeTypeDetector with order 10 uses ServletContext.getMimeType JavaNioMimeTypeDetector uses java.nio Files.probeContentType</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="uploadrequesthandler-added-features"><a class="anchor" href="#uploadrequesthandler-added-features"></a>UploadRequestHandler [Added features]</h3> 
-      <div class="paragraph"> 
-       <p>The UploadRequestHandler checks for malware and limits the file types that can be uploaded.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="session-cookie-jsessionid-cookie-configuration-validation"><a class="anchor" href="#session-cookie-jsessionid-cookie-configuration-validation"></a>Session Cookie (JSESSIONID Cookie) configuration validation</h3> 
-      <div class="paragraph"> 
-       <p>The HTML UI checks if the application is configured safe by validating some flags set on the session cookie. For more details on how to configure your session cookie please refer to the Scout Documentation chapter &quot;Session Cookie (JSESSIONID Cookie) Configuration&quot;.</p> 
-      </div> 
-     </div> 
-     <div class="sect2"> 
-      <h3 id="useridaccesscontrolservice-removed"><a class="anchor" href="#useridaccesscontrolservice-removed"></a>UserIdAccessControlService [Removed]</h3> 
-      <div class="paragraph"> 
-       <p><code>org.eclipse.scout.rt.shared.services.common.security.UserIdAccessControlService</code> was removed in M7. When creating a new Scout project via SDK, an own implementation of AbstractAccessControlService is now explicitly created in shared, named <code>AccessControlService</code> (as replacement for the removed <code>UserIdAccessControlService</code>). The class generated at the server side now replaces (@Replace) the new one generated in shared (class name of server side changed from <code>AccessControlService</code> to <code>ServerAccessControlService</code>).</p> 
-      </div> 
-      <div class="admonitionblock tip"> 
-       <table> 
-        <tbody>
-         <tr> 
-          <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
-          <td class="content"> Do you want to improve this document? Please <a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/5.2.x/docs/build/scout_releasenotes/src/docs/scout_releasenotes.adoc">edit this page</a> on GitHub. </td> 
-         </tr> 
-        </tbody>
-       </table> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  </div> 
-  <div id="footer"> 
-   <div id="footer-text">
-     Version 5.2.0-SNAPSHOT
-    <br /> Last updated 2021-02-04 16:35:17 CET 
-   </div> 
-  </div>  
- </body>
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Eclipse Scout: Release Notes</h1>
+<div class="details">
+<span id="author" class="author">Judith Gull, Matthias Villiger</span><br>
+<span id="email" class="email"><a href="mailto:scout-dev@eclipse.org">scout-dev@eclipse.org</a></span><br>
+<span id="revnumber">version 5.2.0-SNAPSHOT</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#release-notes-for-scout-6-0">Release Notes for Scout 6.0</a>
+<ul class="sectlevel1">
+<li><a href="#what-s-new">What&#8217;s New</a>
+<ul class="sectlevel2">
+<li><a href="#html">HTML</a></li>
+<li><a href="#api-changes">API Changes</a></li>
+</ul>
+</li>
+<li><a href="#known-bugs-and-limitations">Known Bugs and Limitations</a>
+<ul class="sectlevel2">
+<li><a href="#selection-in-disabled-text-fields">Selection in disabled text fields</a></li>
+<li><a href="#drag-and-drop-support">Drag and drop support</a></li>
+<li><a href="#input-placeholders">Input placeholders</a></li>
+<li><a href="#security-malwarescanner-new">Security: MalwareScanner [New]</a></li>
+<li><a href="#imimetypedetector-new">IMimeTypeDetector [New]</a></li>
+<li><a href="#uploadrequesthandler-added-features">UploadRequestHandler [Added features]</a></li>
+<li><a href="#session-cookie-jsessionid-cookie-configuration-validation">Session Cookie (JSESSIONID Cookie) configuration validation</a></li>
+<li><a href="#useridaccesscontrolservice-removed">UserIdAccessControlService [Removed]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to a past Scout release. Please click <a href="https://eclipsescout.github.io/stable/release-notes.html">here</a> for the recent version.<br>
+Looking for something else? Visit <a href="https://eclipsescout.github.io" class="bare">https://eclipsescout.github.io</a> for all Scout related documentation.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>!!! WORK IN PROGRESS !!!</p>
+</div>
+</div>
+</div>
+<h1 id="release-notes-for-scout-6-0" class="sect0"><a class="anchor" href="#release-notes-for-scout-6-0"></a>Release Notes for Scout 6.0</h1>
+<div class="paragraph">
+<p>Here are the release notes for the Scout Release 6.0</p>
+</div>
+<div class="paragraph">
+<p><strong>TODO: a lot is still missing!</strong></p>
+</div>
+<div class="sect1">
+<h2 id="what-s-new"><a class="anchor" href="#what-s-new"></a>What&#8217;s New</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="html"><a class="anchor" href="#html"></a>HTML</h3>
+<div class="paragraph">
+<p>Use the class <code>org.eclipse.scout.rt.platform.html.HTML</code> to build HTML content instead of concatenate the strings manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API Changes</h3>
+<div class="sect3">
+<h4 id="table"><a class="anchor" href="#table"></a>Table</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Behavior change of <code>Table</code> in <code>AbstractTableField</code>: Do not execute <code>AbstractTable.execContentChanged()</code> when <code>valueChangeTriggers</code> flag on <code>IFormField</code> is <code>false</code>.</p>
+</li>
+<li>
+<p>Returned collection of <code>ITableColumnFilterManager.getFilters()</code> is now unmodifiable.</p>
+</li>
+<li>
+<p>New method <code>ITableColumnFilterManager.removeFilter(IColumn col)</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tree"><a class="anchor" href="#tree"></a>Tree</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ITree.getConfiguredDefaultIconId()</code> in addition to <code>ITree.getConfiguredIconId</code>. The difference is as follows: <em>DefaultIconId</em> is used as default for all tree nodes that don&#8217;t have an icon on their own. <em>IconId</em> may be used in the same way as the title, e.g as outline icon.</p>
+</li>
+<li>
+<p>Nodes may now be expanded in a lazy way. This means only those child nodes are visible which are expanded as well and the parent gets a '+' symbol. If the user clicks on this symbol all child nodes gets visible. The model can define whether child pages of a page should be added immediately to the outline tree or lazily. If nodes are added lazily, a dummy "show all" node is shown instead.</p>
+<div class="paragraph">
+<p>Node pages never add child pages lazily. Table pages add child nodes lazily when they have more than a specific number of child pages (default 1).</p>
+</div>
+<div class="paragraph">
+<p>The behavior may be controlled using:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>boolean getConfiguredLazyAddChildPagesToOutline()</code> -&#8594; default <code>false</code>, for <code>AbstractPageWithTable</code> the default is <code>true</code>.</p>
+</li>
+<li>
+<p><code>int getConfiguredLazyAddChildPagesToOutlineThreshold()</code> -&#8594; setting for <code>AbstractPageWithTable</code>, after how many child pages the lazy setting should be active (default 1)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="chart-box"><a class="anchor" href="#chart-box"></a>Chart Box</h4>
+<div class="paragraph">
+<p>Removed chart box because it has not been used and there is no UI implementation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="file-chooser-file-upload"><a class="anchor" href="#file-chooser-file-upload"></a>File Chooser (File Upload)</h4>
+<div class="paragraph">
+<p>File upload size is always limited now (otherwise server might run out of memory if too large files are sent). Default size is 50 MB, but every field might specify lower/higher sizes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.IDNDSupport.setDropMaximumSize(long)</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.IDNDSupport.getDropMaximumSize()</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.basic.filechooser.IFileChooser.setMaximumUploadSize(long)</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.basic.filechooser.IFileChooser.getMaximumUploadSize()</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.IFileChooserField.setMaximumUploadSize(long)</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.IFileChooserField.getMaximumUploadSize()</code></p>
+</li>
+<li>
+<p>Also added <code>getConfigured&#8230;&#8203;()</code> methods were applicable for properties above.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="group-box"><a class="anchor" href="#group-box"></a>Group Box</h4>
+<div class="paragraph">
+<p><code>AbstractGroupBox.setBorderVisible(false)</code> does not change visibility of label anymore. Label of group-box must be made invisible by calling <code>setLabelVisible(false)</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="smart-field"><a class="anchor" href="#smart-field"></a>Smart Field</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AbstractContentAssistField</code> and <code>IProposalChooser</code> implementations now have the ability to provide an inner class which extend <code>AbstractTree</code> or <code>AbstractTable</code> to provide a custom implementation used in the proposal chooser.</p>
+</li>
+<li>
+<p>Added <code>cssClass</code> property to formField, column and cell for custom css styling. See also interface <code>IStyleable</code> and class <code>CssClasses</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="date-field"><a class="anchor" href="#date-field"></a>Date Field</h4>
+<div class="paragraph">
+<p>The date field no longer inherits from <em>BasicField</em>. Instead it inherits directly from <em>ValueField</em>. This means that the <code>PROP_UPDATE_DISPLAY_TEXT_ON_MODIFY</code> is no longer supported on date fields. The reason for this change was the separation of UI (Browser) and UI-Server (Java). To get a good performance, fast date predictions and offline capability, the parsing must be done in the UI and not on the server. Because the "update on modify" flag had no effect anyway, it was completely removed from the UI. (More details in the Migration Guide).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="split-box"><a class="anchor" href="#split-box"></a>Split Box</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AbstractSplitBox</code> now returns <code>IFormField.FULL_SIZE</code> in <code>getConfiguredGridW()</code> by default. Reason: The split box widget does not really have a representation of its own, but is more like a container for other fields. It can never have label, mandatory indicator etc. Its layout should behave like a group box or a tab box, therefore the default gridW value was adjusted accordingly.</p>
+</li>
+<li>
+<p>Split boxes now support absolute splitter positions. The old relative position is the default, which uses a value between 0 and 1 for the <code>splitterPosition</code>. By changing the property <code>splitterPositionType</code>, the interpretation of the <code>splitterPosition</code> value can be changed to pixels (either fixed for the first or the second inner box).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="desktop-outline"><a class="anchor" href="#desktop-outline"></a>Desktop / Outline</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Menus of a page are now added to the detail form. This was necessary because the outline tree does not show any menus anymore. See also method <code>AbstractPageWithNodes.enhanceDetailFormWithPageMenus</code>.</p>
+</li>
+<li>
+<p>Added <code>AbstractDesktop.getConfiguredAutoTabKeyStrokesEnabled</code>: It should be possible to change view Tabs with modifier+number. The number should be generated by the ui. 9 is reserved to jump to the last tab, 0 to jump to the first tab. If this property is set to false there is no Keystroke for tab change on the ui.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>getConfiguredAutoTabKeyStrokeModifier</code>: if the property is set to <code>true</code> the modifier specified by this property is used in combination with a number to change to the specific tab.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Added <code>ISearchOutline</code>: The intention of the search outline is to provide a search over several table pages. The <code>AbstractSearchOutline</code> provides a frame, the search itself has to be implemented by the project. In order to use it add the <code>SearchOutline</code> to the desktop using <code>getConfiguredOutlines</code> (don&#8217;t create an outlineViewButton).</p>
+</li>
+<li>
+<p>Added default detail form on outline: It is now possible to configure a default detail form for outlines. The default detail form gets shown when no page is selected. API added <code>getConfiguredDefaultDetailForm</code>, <code>execInitDefaultDetailForm</code>, <code>createDefaultDetailForm</code>, <code>startDefaultDetailForm</code>.</p>
+</li>
+<li>
+<p>Added <code>getConfiguredTableStatusVisible</code> on <code>IPageWithTable</code>: It is now possible to configure whether the table status should be visible for a table page. Until now table status was set visible by the <code>OutlineTableForm</code>.</p>
+</li>
+<li>
+<p>API added to <code>AbstractTable</code> and <code>ITable</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>List&lt;ITableControl&gt; getTableControls()</code></p>
+</li>
+<li>
+<p><code>&lt;T extends ITableControl&gt; T getTableControl(Class&lt;T&gt; controlClass)</code></p>
+</li>
+<li>
+<p><code>boolean isTableStatusVisible()</code></p>
+</li>
+<li>
+<p><code>void setTableStatusVisible(boolean visible)</code></p>
+</li>
+<li>
+<p><code>String getMenuBarPosition()</code></p>
+</li>
+<li>
+<p><code>void setMenuBarPosition(String position)</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>API added to ITableUIFacade</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>void fireTableReloadFromUI()</code></p>
+</li>
+<li>
+<p>`void fireSortColumnRemovedFromUI(IColumn&lt;?&gt; column)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Improved page search form disposal: Search form is now closed when the page gets disposed.</p>
+</li>
+<li>
+<p><code>AbstractDesktop.isOutlineChanging</code> added.</p>
+</li>
+<li>
+<p>The methods <code>traverseFocusNext()</code> and <code>traverseFocusPrevious</code> were removed from <em>IDesktop</em> because traversing is not supported by the HTML UI. (Neither was it supported by the former RAP UI). The corresponding <em>DesktopEvent</em> types (<code>TYPE_TRAVERSE_FOCUS_NEXT</code>, <code>TYPE_TRAVERSE_FOCUS_PREVIOUS</code>) were removed as well.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="form"><a class="anchor" href="#form"></a>Form</h4>
+<div class="paragraph">
+<p>Added <code>IForm.start()</code>: Mainly useful for forms with just one handler. (detail forms, tool forms etc.). May be implemented by the concrete form. The default implementation at AbstractForm uses getHandler() to start the form.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="bean-field-bean-column-new"><a class="anchor" href="#bean-field-bean-column-new"></a>Bean Field / Bean Column [New]</h4>
+<div class="paragraph">
+<p>Added bean field and bean column. See <code>AbstractBeanField</code>, <code>AbstractBeanColumn</code> for details.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="wizard-progress-field-new"><a class="anchor" href="#wizard-progress-field-new"></a>Wizard Progress Field [New]</h4>
+<div class="paragraph">
+<p>A new widget has been added: <code>WizardProgressField</code>. It is normally visualized as a list of steps with some indication which step is the current step etc. It replaces the old "HTML status" field on the default wizard container form.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="htmlutility"><a class="anchor" href="#htmlutility"></a>HTMLUtility</h4>
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.platform.html.HTMLUtility</code> and <code>org.eclipse.scout.rt.platform.html.CSSPatch</code> were deprecated because they contained only legacy code of doubtful quality. Do not use them anymore&#8201;&#8212;&#8201;they will be removed in the next Scout release. The support for most of the contained methods was dropped, because they are not required anymore with the new UI. A slightly improved version of the <code>getPlainText()</code> method is available on the new bean <code>org.eclipse.scout.rt.platform.html.HtmlHelper</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="various-changes"><a class="anchor" href="#various-changes"></a>Various Changes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ILabelField</code>, <code>IHtmlField</code> and <code>IStringField</code> are now <code>IHtmlCapable</code>.</p>
+</li>
+<li>
+<p><code>UiLayer</code>: Removed values <code>JSP</code>, <code>JSF</code>, <code>RAP</code>, <code>SWING</code> and added value <code>HTML</code>.</p>
+</li>
+<li>
+<p><code>UserAgentUtility</code>: API removed <code>isRapUi()</code>, <code>isSwingUi()</code></p>
+</li>
+<li>
+<p><code>AbstractFormField.set/isStatusVisible</code> added.</p>
+</li>
+<li>
+<p><code>org.eclipse.scout.commons</code> reorganized, classes moved to <code>org.eclipse.scout.rt.platform</code> and other projects</p>
+</li>
+<li>
+<p>The unused, obsolete classes <code>org.eclipse.scout.rt.client.ui.form.fields.ValueFieldEvent</code> and <code>org.eclipse.scout.rt.client.ui.form.fields.ValueFieldListener</code> were removed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="known-bugs-and-limitations"><a class="anchor" href="#known-bugs-and-limitations"></a>Known Bugs and Limitations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="selection-in-disabled-text-fields"><a class="anchor" href="#selection-in-disabled-text-fields"></a>Selection in disabled text fields</h3>
+<div class="paragraph">
+<p>Firefox (tested with v 35.0.1): it&#8217;s not possible to select text in a disabled text field. There is no workaround. An often suggested workaround is to use the readonly attribute instead of disabled, but this leads to a completely different behavior when it comes to event handling. When a field is disabled it doesn&#8217;t fire any events (for instance: click), but when it&#8217;s set to readonly event handling is still enabled. In other words: we&#8217;d have to implement browser/widget default behavior to work around this problem&#8201;&#8212;&#8201;additionally the workaround should only affect Firefox but none of the other browsers (where this is not an issue at all).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="drag-and-drop-support"><a class="anchor" href="#drag-and-drop-support"></a>Drag and drop support</h3>
+<div class="paragraph">
+<p>IE9 does not support dropping files. Therefore, drag and drop in file chooser is not supported for that browser.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="input-placeholders"><a class="anchor" href="#input-placeholders"></a>Input placeholders</h3>
+<div class="paragraph">
+<p>On-field labels are not visible in IE9 because it lacks support for the "placeholder" attribute.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="security-malwarescanner-new"><a class="anchor" href="#security-malwarescanner-new"></a>Security: MalwareScanner [New]</h3>
+<div class="paragraph">
+<p>Facility used to scan files and resources for malware.
+The new @Bean MalwareScanner assumes that an appropriate malware scanner is in place on the webapp deployment machine
+and is configured to scan the TEMP folder (as used by File#createTempFile) using a realtime filesystem scan strategy.
+Malware should therefore immediately be removed or blocked by the malware implementation when placed in that folder.
+The new MalwareScanner is used in the ui.html file upload handler and thus checks every uploaded file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="imimetypedetector-new"><a class="anchor" href="#imimetypedetector-new"></a>IMimeTypeDetector [New]</h3>
+<div class="paragraph">
+<p>The new interface IMimeTypeDetector provides multiple ordered implementations that can detect mime types
+PrimaryMimeTypeDetector with order 0 defines important webapp mime types
+ServletContextMimeTypeDetector with order 10 uses ServletContext.getMimeType
+JavaNioMimeTypeDetector uses java.nio Files.probeContentType</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="uploadrequesthandler-added-features"><a class="anchor" href="#uploadrequesthandler-added-features"></a>UploadRequestHandler [Added features]</h3>
+<div class="paragraph">
+<p>The UploadRequestHandler checks for malware and limits the file types that can be uploaded.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="session-cookie-jsessionid-cookie-configuration-validation"><a class="anchor" href="#session-cookie-jsessionid-cookie-configuration-validation"></a>Session Cookie (JSESSIONID Cookie) configuration validation</h3>
+<div class="paragraph">
+<p>The HTML UI checks if the application is configured safe by validating some flags set on the session cookie. For more details on how to configure your session cookie please refer to the Scout Documentation chapter "Session Cookie (JSESSIONID Cookie) Configuration".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="useridaccesscontrolservice-removed"><a class="anchor" href="#useridaccesscontrolservice-removed"></a>UserIdAccessControlService [Removed]</h3>
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.shared.services.common.security.UserIdAccessControlService</code> was removed in M7. When creating a new Scout project via SDK, an own implementation of AbstractAccessControlService is now explicitly created in shared, named <code>AccessControlService</code> (as replacement for the removed <code>UserIdAccessControlService</code>). The class generated at the server side now replaces (@Replace) the new one generated in shared (class name of server side changed from <code>AccessControlService</code> to <code>ServerAccessControlService</code>).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Do you want to improve this document? Have a look at the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/blob/releases/5.2.x/docs/build/scout_releasenotes/src/docs/scout_releasenotes.adoc">sources</a> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 5.2.0-SNAPSHOT<br>
+Last updated 2021-04-29 09:28:49 CEST
+</div>
+</div>
+</body>
 </html>
