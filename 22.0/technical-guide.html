@@ -6718,6 +6718,9 @@ The default constructor extracts the namespace and version based on the class na
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">LoremTypeVersions</span> {
 
+  <span class="directive">private</span> LoremTypeVersions() {
+  }
+
   <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">Lorem_1_0_0</span> <span class="directive">extends</span> AbstractTypeVersion {
   }
 
@@ -6746,8 +6749,8 @@ Each module containing data objects with type version annotation should implemen
   }
 
   <span class="annotation">@Override</span>
-  <span class="directive">protected</span> <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; getPackageNamePrefixes() {
-    <span class="keyword">return</span> CollectionUtility.hashSet(<span class="string"><span class="delimiter">&quot;</span><span class="content">org.eclipse.scout.docs.snippets</span><span class="delimiter">&quot;</span></span>);
+  <span class="directive">protected</span> <span class="predefined-type">String</span> getPackageNamePrefix() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">org.eclipse.scout.docs.snippets</span><span class="delimiter">&quot;</span></span>;
   }
 }</code></pre>
 </div>
@@ -11024,7 +11027,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-04-28 18:53:01 +0200
+Last updated 2021-04-29 18:53:25 +0200
 </div>
 </div>
 <style>
