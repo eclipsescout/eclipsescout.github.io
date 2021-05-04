@@ -1479,16 +1479,16 @@ The following display hints are available by default:</p>
 <p>In addition to this <code>index</code> file you normally also have a <code>theme</code> file which will be used as entry point in your <code>webpack.config.js</code> and included in the <code>index.html</code>. The intention of the <code>theme</code> file is to group individual <code>index</code> files and make one file in order to load all rules at once within one request.</p>
 </div>
 <div class="paragraph">
-<p>Now that we have all the infrastructure set up, we can start adding some rules. As already said, you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#8217;s say you want to change the background color of the navigation, you can redefine the variable <code>@navigation-background-color</code>.</p>
+<p>Now that we have all the infrastructure set up, we can start adding some rules. As already said, you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#8217;s say you want to change the background color of the header, you can redefine the variable <code>@desktop-header-background-color</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 20. Changing the background color of the navigation</div>
+<div class="title">Listing 20. Changing the background color of the header</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@navigation-background-color</span>: <span class="directive">@palette-red-4</span>;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@desktop-header-background-color</span>: <span class="directive">@palette-red-4</span>;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>That&#8217;s it! As you can see, changing this variable not only changes the background color of the navigation, it also changes the background colors of the view-buttons on the top left and the navigation-handle on the bottom, because they are supposed to have the same color. You could do the same by using CSS rules, but you would have to write several selectors to achieve the same.</p>
+<p>That&#8217;s it! As you can see, changing this variable not only changes the background color of the header, it also changes the background color of the view-buttons on the top left, because they are supposed to have the same color. You could do the same by using CSS rules, but you would have to write several selectors to achieve the same.</p>
 </div>
 <div id="img-navigation-background" class="imageblock">
 <div class="content">
@@ -3588,7 +3588,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-04-28 18:53:01 +0200
+Last updated 2021-05-04 18:53:19 +0200
 </div>
 </div>
 <style>

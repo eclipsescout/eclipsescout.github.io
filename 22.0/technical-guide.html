@@ -2553,9 +2553,9 @@ By default, the file watcher is enabled in development mode.</p>
 <h2 id="icons"><a class="anchor" href="#icons"></a>5. Icons</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A lot of Scout widgts support icons. For instance a menu item can show an icon
+<p>A lot of Scout widgets support icons. For instance a menu item can show an icon
 next to the menu text. Icons in Scout can be either a bitmap image (GIF, PNG,
-JPEG, etc.) or a character from an icon-font. An example for an icon-font is
+JPEG, etc.), an SVG or a character from an icon-font. An example for an icon-font is
 the <em>scoutIcons.ttf</em> which comes shipped with Scout.</p>
 </div>
 <div class="paragraph">
@@ -2575,7 +2575,7 @@ the file extension. Place all your icon files in the resource folder of your
 <pre>org.scout.hello.client/              # Client project directory
   src/main/resources/                # Resources directory
     org/scout/hello/client/icons/    # Path to icons
-      application_logo_large.png
+      application_logo.png
       person.png
       ...</pre>
 </div>
@@ -2583,8 +2583,8 @@ the file extension. Place all your icon files in the resource folder of your
 <div class="listingblock">
 <div class="title">Listing 17. Icons.java</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Bitmap image (references icons/application_logo_large.png)</span>
-<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ApplicationLogo = <span class="string"><span class="delimiter">&quot;</span><span class="content">application_logo_large</span><span class="delimiter">&quot;</span></span>;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Bitmap image (references icons/application_logo.png)</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ApplicationLogo = <span class="string"><span class="delimiter">&quot;</span><span class="content">application_logo</span><span class="delimiter">&quot;</span></span>;
 
 <span class="comment">// Character from icon-font scoutIcons.woff (default)</span>
 <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> <span class="predefined-type">Calendar</span> =<span class="string"><span class="delimiter">&quot;</span><span class="content">font:</span><span class="char">\uE003</span><span class="delimiter">&quot;</span></span>;
@@ -11027,7 +11027,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-04-29 18:53:25 +0200
+Last updated 2021-05-04 18:53:19 +0200
 </div>
 </div>
 <style>

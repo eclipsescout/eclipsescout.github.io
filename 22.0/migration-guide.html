@@ -457,6 +457,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#typeversion-annotation-type-change">TypeVersion Annotation Type Change</a></li>
 <li><a href="#annotation-enumversion-removed">Annotation EnumVersion removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
+<li><a href="#application-logo-info-form">Application Logo / Info Form</a></li>
+<li><a href="#less-variables">Less Variables</a></li>
 </ul>
 </div>
 </div>
@@ -629,11 +631,59 @@ Support for <code>EnumVersion</code> is removed.</p>
 <h2 id="native-notification-support"><a class="anchor" href="#native-notification-support"></a>Native Notification Support</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The new notifications displayed by the browser use the application logo configured in <code>AbstractDesktop#getConfiguredLogoId()</code>.</p>
+<p>The new notifications displayed by the browser use the application logo configured in <code>AbstractDesktop#getConfiguredLogoId()</code> by default.</p>
 </div>
 <div class="paragraph">
-<p><strong>Migration</strong>
-If you use native notifications, provide an application logo with a resolution of at least 150x150 px.</p>
+<p>If you use native notifications, you should provide a logo with a resolution of at least 150x150 px.
+If your application logo already has such a resolution, it should be fine.
+If your application logo has a lower resolution or is an SVG, you should use a different image for the notifications (SVGs are not supported by Chrome notifications).
+To do so, just configure the native notification defaults on your desktop.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">protected</span> NativeNotificationDefaults getConfiguredNativeNotificationDefaults() {
+  <span class="keyword">return</span> <span class="local-variable">super</span>.getConfiguredNativeNotificationDefaults()
+    .withIconId(<span class="string"><span class="delimiter">&quot;</span><span class="content">notification_logo.png</span><span class="delimiter">&quot;</span></span>);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="application-logo-info-form"><a class="anchor" href="#application-logo-info-form"></a>Application Logo / Info Form</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The image <code>application_logo_large</code> and the constant <code>AbstractIcons.ApplicationLogo</code> have been removed.
+The name was confusing and it was only used for the <code>ScoutInfoForm</code>.
+The info form now uses the logo of the desktop (<code>IDesktop#getLogoId())</code> by default.
+So if you prefer to use a different logo for the info form, just extend the info form, override the method <code>getProductLogo()</code> and return the name of your preferred image.</p>
+</div>
+<div class="paragraph">
+<p>In case you don&#8217;t use SVG logos yet, you should consider doing so to prevent blurry logos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="less-variables"><a class="anchor" href="#less-variables"></a>Less Variables</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>@navigation-background-color &#8594; @desktop-navigation-background-color</p>
+</li>
+<li>
+<p>@navigation-color &#8594; @desktop-navigation-color</p>
+</li>
+<li>
+<p>@outline-title-margin-left/right &#8594; @outline-title-padding-left/right</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:
+@desktop-navigation-background-color now points to @desktop-header-background-color;
+Instead of customizing the navigation background color it is suggested to now customize the header background color.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -653,7 +703,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-04-28 18:53:01 +0200
+Last updated 2021-05-04 18:53:19 +0200
 </div>
 </div>
 <style>
