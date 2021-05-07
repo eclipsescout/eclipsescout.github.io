@@ -458,7 +458,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#annotation-enumversion-removed">Annotation EnumVersion removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
 <li><a href="#application-logo-info-form">Application Logo / Info Form</a></li>
-<li><a href="#less-variables">Less Variables</a></li>
+<li><a href="#less-variables">LESS Variables</a></li>
+<li><a href="#browser-field">Browser Field</a></li>
 </ul>
 </div>
 </div>
@@ -665,7 +666,7 @@ So if you prefer to use a different logo for the info form, just extend the info
 </div>
 </div>
 <div class="sect1">
-<h2 id="less-variables"><a class="anchor" href="#less-variables"></a>Less Variables</h2>
+<h2 id="less-variables"><a class="anchor" href="#less-variables"></a>LESS Variables</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -685,6 +686,60 @@ So if you prefer to use a different logo for the info form, just extend the info
 @desktop-navigation-background-color now points to @desktop-header-background-color;
 Instead of customizing the navigation background color it is suggested to now customize the header background color.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="browser-field"><a class="anchor" href="#browser-field"></a>Browser Field</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The type of the <code>data</code> argument for the callback <code>execPostMessage</code> was changed from <em>String</em> to <em>Object</em>.
+This allows for the widest variety of data that can be sent from an embedded page to your application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>Boolean</p>
+</li>
+<li>
+<p>IDataObject (objects or arrays)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In previous Scout versions, all messages were always converted to text.
+Now, the data type is preserved as accurately as possible.
+JSON objects or arrays are converted to IDoEntity or DoList with the help of the IObjectMapper bean.
+To use this feature, an implementation of IDataObjectMapper needs to be present at runtime.
+If no implementation is available, the data will be converted to text automatically.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="paragraph">
+<p>Adjust the signature of all implementations of <code>AbstractBrowserField#postMessage</code> in your code.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>execPostMessage(String data, String origin)</code> to <code>execPostMessage(Object data, String origin)</code>.</p>
+</li>
+<li>
+<p>If the message sent by the embedded web page is not a text, the appropriate data type is now passed.
+Check the expected type using <code>instanceof</code> or convert it to String manually.</p>
+</li>
+<li>
+<p>If you want objects and arrays to be converted to IDataObjects automatically, make sure there is an
+implementation of IObjectMapper present at runtime, e.g. by adding a dependency to the module
+<em>org.eclipse.scout.rt.jackson</em> in pom.xml.</p>
+</li>
+</ul>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -703,7 +758,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-05-04 18:53:19 +0200
+Last updated 2021-05-07 18:53:20 +0200
 </div>
 </div>
 <style>

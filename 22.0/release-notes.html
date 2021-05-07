@@ -450,6 +450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#demo-applications">Demo Applications</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
 <li><a href="#text-post-processors">Text Post-Processors</a></li>
+<li><a href="#browser-field-support-for-posting-messages">Browser Field: Support for Posting Messages</a></li>
 </ul>
 </div>
 </div>
@@ -512,8 +513,8 @@ Looking for something else? Visit <a href="https://eclipsescout.github.io" class
 <h2 id="native-notification-support"><a class="anchor" href="#native-notification-support"></a>Native Notification Support</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It&#8217;s now possible to send notifications via the Notification API. The DesktopNotification has two new properties to control
-the behavior: nativeOnly and nativeNotificationVisibility.</p>
+<p>It&#8217;s now possible to send notifications via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API">Notification API</a>.
+The <code>DesktopNotification</code> has two new properties to control the behavior: <strong>nativeOnly</strong> and <strong>nativeNotificationVisibility</strong>.</p>
 </div>
 </div>
 </div>
@@ -521,10 +522,23 @@ the behavior: nativeOnly and nativeNotificationVisibility.</p>
 <h2 id="text-post-processors"><a class="anchor" href="#text-post-processors"></a>Text Post-Processors</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A new Bean <code>org.eclipse.scout.rt.platform.nls.ITextPostProcessor</code> has been introduced which allows to modify all texts returned by a TextProviderService.</p>
+<p>A new bean <strong>org.eclipse.scout.rt.platform.nls.ITextPostProcessor</strong> has been introduced which allows to modify all texts returned by a TextProviderService.</p>
 </div>
 <div class="paragraph">
 <p>This allows applying application wide logic on all translated texts including the ones provided by Scout itself.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="browser-field-support-for-posting-messages"><a class="anchor" href="#browser-field-support-for-posting-messages"></a>Browser Field: Support for Posting Messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Browser fields provide a new method <strong>postMessage(data, targetOrigin)</strong> to send arbitrary data to the embedded web page.</p>
+</div>
+<div class="paragraph">
+<p>To prevent malicious data from being sent to your application, the origin of the message should always be validated in the callback handler
+(<code>execPostMessage</code> in Java, <code>message</code> event listener in Scout JS).
+Scout will now do this check automatically for you if you configure the valid origins in the new property <strong>trustedMessageOrigins</strong>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -544,7 +558,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-04-28 18:53:01 +0200
+Last updated 2021-05-07 18:53:20 +0200
 </div>
 </div>
 </body>
