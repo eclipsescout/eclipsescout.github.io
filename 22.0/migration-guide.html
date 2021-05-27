@@ -460,6 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#application-logo-info-form">Application Logo / Info Form</a></li>
 <li><a href="#less-variables">LESS Variables</a></li>
 <li><a href="#browser-field">Browser Field</a></li>
+<li><a href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages">Lazy creation of detailTable and detailForm in Scout JS Pages</a></li>
 </ul>
 </div>
 </div>
@@ -740,6 +741,50 @@ implementation of IObjectMapper present at runtime, e.g. by adding a dependency 
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"><a class="anchor" href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"></a>Lazy creation of detailTable and detailForm in Scout JS Pages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the past when a page was created the embedded detail forms and tables have been created together with the page.
+This may lead to a bad performance when an outline containing lots of complex pages is created.</p>
+</div>
+<div class="paragraph">
+<p>Therefore the containing tables and forms are now only created when the page is activated (e.g. selected by the user).
+This is the same behavior as already implemented in Scout Classic since several years.
+As a consequence accessing <code>Page.detailForm</code> or <code>Page.detailTable</code> may now return <code>null</code> if the page has not been activated yet.</p>
+</div>
+<div class="paragraph">
+<p>Check all usages of the <code>detailForm</code> and <code>detailTable</code> properties of pages in your code and ensure it is guarded with a null check or is only executed when the page has already been activated.</p>
+</div>
+<div class="paragraph">
+<p>Typically these properties are accessed in the <code>_init()</code> function of a page e.g. to attach listeners.
+This is no longer possible as these properties are no longer available at that moment.</p>
+</div>
+<div class="paragraph">
+<p>As an alternative override the <code>_initDetailForm(form)</code> or <code>_initDetailTable(table)</code> methods if your code exists on a Page (don&#8217;t forget to add a super call).
+If outside a Page listen for the <code>propertyChange</code> events for <code>detailForm</code> or <code>detailTable</code> to execute your detailForm or detailTable dependant code.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore if you use the following methods on pages, please rename them as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>from <code>createDetailForm</code> to <code>_createDetailForm</code></p>
+</li>
+<li>
+<p>from <code>_createTable</code> to <code>_createDetailTable</code></p>
+</li>
+<li>
+<p>from <code>_initTable</code> to <code>_initDetailTable</code></p>
+</li>
+<li>
+<p>from <code>_ensureDetailForm</code> to <code>ensureDetailForm</code></p>
+</li>
+</ul>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -758,7 +803,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-05-07 18:53:20 +0200
+Last updated 2021-05-27 18:53:05 +0200
 </div>
 </div>
 <style>
