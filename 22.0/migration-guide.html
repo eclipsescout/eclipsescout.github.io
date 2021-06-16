@@ -458,7 +458,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#annotation-enumversion-removed">Annotation EnumVersion removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
 <li><a href="#application-logo-info-form">Application Logo / Info Form</a></li>
+<li><a href="#style">Style</a>
+<ul class="sectlevel2">
 <li><a href="#less-variables">LESS Variables</a></li>
+<li><a href="#rules">Rules</a></li>
+</ul>
+</li>
 <li><a href="#browser-field">Browser Field</a></li>
 <li><a href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages">Lazy creation of detailTable and detailForm in Scout JS Pages</a></li>
 </ul>
@@ -667,8 +672,10 @@ So if you prefer to use a different logo for the info form, just extend the info
 </div>
 </div>
 <div class="sect1">
-<h2 id="less-variables"><a class="anchor" href="#less-variables"></a>LESS Variables</h2>
+<h2 id="style"><a class="anchor" href="#style"></a>Style</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="less-variables"><a class="anchor" href="#less-variables"></a>LESS Variables</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -686,12 +693,38 @@ So if you prefer to use a different logo for the info form, just extend the info
 <li>
 <p>@outline-title-margin-left/right &#8594; @outline-title-padding-left/right</p>
 </li>
+<li>
+<p>@group-box-title-margin-top &#8594; @group-box-header-margin-top</p>
+</li>
+<li>
+<p>@group-box-title-border-width &#8594; @group-box-header-border-width</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Notes:
 @desktop-navigation-background-color now points to @desktop-header-background-color;
 Instead of customizing the navigation background color it is suggested to now customize the header background color.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rules"><a class="anchor" href="#rules"></a>Rules</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>.menubox &#8594; .menubar-box</p>
+</li>
+<li>
+<p>.group-box-title &#8594; .group-box-header &gt; .title</p>
+</li>
+<li>
+<p>border-bottom of group-box-title &#8594; .group-box-header &gt; .bottom-border</p>
+</li>
+<li>
+<p>.tab-box-bottom-border &#8594; .bottom-border</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -809,7 +842,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-06-14 18:52:56 +0200
+Last updated 2021-06-16 18:52:39 +0200
 </div>
 </div>
 <style>
