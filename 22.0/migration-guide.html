@@ -462,6 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#less-variables">LESS Variables</a></li>
 <li><a href="#rules">Rules</a></li>
+<li><a href="#icons">Icons</a></li>
 </ul>
 </li>
 <li><a href="#browser-field">Browser Field</a></li>
@@ -726,6 +727,116 @@ Instead of customizing the navigation background color it is suggested to now cu
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="icons"><a class="anchor" href="#icons"></a>Icons</h3>
+<div class="sect3">
+<h4 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h4>
+<div class="paragraph">
+<p>Some icons have been removed because they are not used by Scout itself anymore.
+If you need these icons, please add them to your own icon library.
+If you don&#8217;t already have a custom icon library, please see our guide on how to create one:
+<a href="https://eclipsescout.github.io/11.0/technical-guide.html#icons" class="bare">https://eclipsescout.github.io/11.0/technical-guide.html#icons</a>
+The icons from Scout can be found here: <a href="https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/tree/org.eclipse.scout.rt.ui.html/src/icons?h=releases/11.0" class="bare">https://git.eclipse.org/c/scout/org.eclipse.scout.rt.git/tree/org.eclipse.scout.rt.ui.html/src/icons?h=releases/11.0</a>
+There you also find a <code>selection.json</code> that can be used to import the icons to <a href="https://icomoon.io/app">IcoMoon</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MENU_BOLD (uF0C9)</p>
+</li>
+<li>
+<p>LIST_UL_BOLD (uF0CA)</p>
+</li>
+<li>
+<p>LIST_OL_BOLD (uF0CB)</p>
+</li>
+<li>
+<p>GRAPH_BOLD (uE023)</p>
+</li>
+<li>
+<p>CATEGORY (uE059)</p>
+</li>
+<li>
+<p>CATEGORY_BOLD (uE024)</p>
+</li>
+<li>
+<p>ELLIPSIS-V-BOLD / VERTICAL_DOTS (uE040)</p>
+</li>
+<li>
+<p>SPINNER (uE044)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-LEFT-BOLD (uF100)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-RIGHT-BOLD (uF101)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-UP-BOLD (uF102)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-DOWN-BOLD (uF103)</p>
+</li>
+<li>
+<p>BOLD (uE051)</p>
+</li>
+<li>
+<p>ITALIC (uE052)</p>
+</li>
+<li>
+<p>UNDERLINE (uE053)</p>
+</li>
+<li>
+<p>STRIKETHROUGH (uE054)</p>
+</li>
+<li>
+<p>LIST-UL (uE055)</p>
+</li>
+<li>
+<p>LIST-OL (uE056)</p>
+</li>
+<li>
+<p>LIGHTBULB_OFF (uE057)</p>
+</li>
+<li>
+<p>LIGHTBULB_ON (uE058)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following icons have been renamed
+- EXCLAMATION_MARK &#8594; EXCLAMATION_MARK_BOLD</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="line-width-adjustments"><a class="anchor" href="#line-width-adjustments"></a>Line Width Adjustments</h4>
+<div class="paragraph">
+<p>The line width of the Scout icons has been increased a little because they are now displayed a little smaller.
+If you use custom icons in combination with the Scout icons, you may want to consider adjusting the line widths of your icons as well.
+This should only be relevant if you explicitly used the Scout icons in your code.</p>
+</div>
+<div class="paragraph">
+<p>Also, the Scout icons now come with a regular and a light font.
+The regular font should be used if the icon is displayed at about 16px.
+This is the case for most widgets (menu, button etc.)
+If the icon is displayed larger, the light font can be used.
+To activate it for your custom widget, set the font-weight to @icon-font-weight-light.</p>
+</div>
+<div class="paragraph">
+<p>If you want to align your custom icons with the Scout icons, use the following dimensions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Regular: 1.5px line width and 24px artboard height</p>
+</li>
+<li>
+<p>Light: 1px line width and 24px artboard height</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -842,7 +953,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-06-16 18:52:39 +0200
+Last updated 2021-07-21 18:52:35 +0200
 </div>
 </div>
 <style>
