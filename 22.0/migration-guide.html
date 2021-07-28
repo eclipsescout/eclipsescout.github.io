@@ -454,8 +454,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ide-tooling-scout-sdk">IDE Tooling (Scout SDK)</a></li>
 </ul>
 </li>
-<li><a href="#typeversion-annotation-type-change">TypeVersion Annotation Type Change</a></li>
-<li><a href="#annotation-enumversion-removed">Annotation EnumVersion removed</a></li>
+<li><a href="#typeversion-annotation-type-change">@TypeVersion Annotation Type Change</a></li>
+<li><a href="#annotation-enumversion-removed">Annotation @EnumVersion Removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
 <li><a href="#application-logo-info-form">Application Logo / Info Form</a></li>
 <li><a href="#style">Style</a>
@@ -466,7 +466,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#browser-field">Browser Field</a></li>
-<li><a href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages">Lazy creation of detailTable and detailForm in Scout JS Pages</a></li>
+<li><a href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages">Lazy Creation of detailTable and detailForm in Scout JS Pages</a></li>
+<li><a href="#deprecated-functions-in-strings-js-utility">Deprecated Functions in strings.js Utility</a></li>
 </ul>
 </div>
 </div>
@@ -594,7 +595,7 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 </div>
 </div>
 <div class="sect1">
-<h2 id="typeversion-annotation-type-change"><a class="anchor" href="#typeversion-annotation-type-change"></a>TypeVersion Annotation Type Change</h2>
+<h2 id="typeversion-annotation-type-change"><a class="anchor" href="#typeversion-annotation-type-change"></a>@TypeVersion Annotation Type Change</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The type version of a data object is used to identify a certain structure version of the stored data object.
@@ -603,35 +604,35 @@ Such a data object may evolve over time and undergo structural changes.
 Some structural changes make it necessary to apply migrations to existing serialized data objects to comply with the new structure.</p>
 </div>
 <div class="paragraph">
-<p>In order to prepare for migration support, the type version annotation so far containing a String value changes to a value of Class&lt;? extends ITypeVersion&gt;.
-A ITypeVersion represents a namespace/version and it&#8217;s dependencies.</p>
+<p>In order to prepare for migration support, the value type of the <code>@TypeVersion</code> annotation was changed from <code>String</code> to <code>Class&lt;? extends ITypeVersion&gt;</code>.
+A <em>ITypeVersion</em> represents a namespace/version and its dependencies.</p>
 </div>
 <div class="paragraph">
-<p><strong>Migration</strong></p>
+<p><strong>Migration:</strong></p>
 </div>
 <div class="paragraph">
 <p>For each different String value used in type version annotation, create an implementation of <code>ITypeVersion</code> as described
-in <em>Data Objects</em>/<em>Namespace and ITypeVersion</em> in the technical documentation.</p>
+in <a href="../technicalGuide/DataObject.html#cha-namespace-and-itypeversion">Data Objects: Namespace and ITypeVersion</a> in the technical documentation.</p>
 </div>
 <div class="paragraph">
-<p><code>DataObjectInventory#getTypeVersion</code> returns <code>NamespaceVersion</code> instead of <code>String</code>.
-Use <code>NamespaceVersion::unwrap</code> to access text representation.</p>
+<p><code>DataObjectInventory#getTypeVersion</code> now returns <code>NamespaceVersion</code> instead of <code>String</code>.
+Use <code>NamespaceVersion#unwrap</code> to access the text representation.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="annotation-enumversion-removed"><a class="anchor" href="#annotation-enumversion-removed"></a>Annotation EnumVersion removed</h2>
+<h2 id="annotation-enumversion-removed"><a class="anchor" href="#annotation-enumversion-removed"></a>Annotation @EnumVersion Removed</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>EnumVersion</code> was designed for migration support similar as the TypeVersion but was never part of any serialization output of a data object,
+<p><code>@EnumVersion</code> was designed for migration support similar as the TypeVersion but was never part of any serialization output of a data object,
 therefore couldn&#8217;t be used as indicator for migrations.
-Support for <code>EnumVersion</code> is removed.</p>
+Support for <code>@EnumVersion</code> was removed.</p>
 </div>
 <div class="paragraph">
-<p><strong>Migration</strong></p>
+<p><strong>Migration:</strong></p>
 </div>
 <div class="paragraph">
-<p>Remove <code>EnumVersion</code> annotation on <code>IEnum</code> implementors.</p>
+<p>Remove <code>@EnumVersion</code> annotations on <code>IEnum</code> implementors.</p>
 </div>
 </div>
 </div>
@@ -844,7 +845,7 @@ To activate it for your custom widget, set the font-weight to @icon-font-weight-
 <div class="sectionbody">
 <div class="paragraph">
 <p>The type of the <code>data</code> argument for the callback <code>execPostMessage</code> was changed from <em>String</em> to <em>Object</em>.
-This allows for the widest variety of data that can be sent from an embedded page to your application:</p>
+This allows for the widest variety of data that can be sent from an embedded page to the application:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -894,7 +895,7 @@ implementation of IObjectMapper present at runtime, e.g. by adding a dependency 
 </div>
 </div>
 <div class="sect1">
-<h2 id="lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"><a class="anchor" href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"></a>Lazy creation of detailTable and detailForm in Scout JS Pages</h2>
+<h2 id="lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"><a class="anchor" href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"></a>Lazy Creation of detailTable and detailForm in Scout JS Pages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In the past when a page was created the embedded detail forms and tables have been created together with the page.
@@ -935,6 +936,44 @@ If outside a Page listen for the <code>propertyChange</code> events for <code>de
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deprecated-functions-in-strings-js-utility"><a class="anchor" href="#deprecated-functions-in-strings-js-utility"></a>Deprecated Functions in strings.js Utility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The static <code>strings</code> utility provides various string-related functions.
+The obsolete functions <code>uppercaseFirstLetter</code> and <code>lowercaseFirstLetter</code> were deprecated in favor of more robust and consistent alternatives, and should no longer be used.
+They will be removed eventually.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>strings.uppercaseFirstLetter(s)</code> to <code>strings.toUpperCaseFirstLetter(s)</code>.</p>
+</li>
+<li>
+<p>Change <code>strings.lowercaseFirstLetter(s)</code> to <code>strings.toLowerCaseFirstLetter(s)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note the uppercase "C" in the new function names!</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+At the same time, some new null-safe variants of <code>String</code> prototype methods were added: <code>toUpperCase(s)</code>, <code>toLowerCase(s)</code>, <code>length(s)</code>, <code>trim(s)</code> .
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -953,7 +992,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-07-21 18:52:35 +0200
+Last updated 2021-07-28 09:00:07 +0200
 </div>
 </div>
 <style>
