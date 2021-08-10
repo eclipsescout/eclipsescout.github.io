@@ -469,6 +469,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages">Lazy Creation of detailTable and detailForm in Scout JS Pages</a></li>
 <li><a href="#jackson-doentity-deserializer">Jackson DoEntity Deserializer</a></li>
 <li><a href="#deprecated-functions-in-strings-js-utility">Deprecated Functions in strings.js Utility</a></li>
+<li><a href="#new-style-for-tooltips">New Style for Tooltips</a></li>
 </ul>
 </div>
 </div>
@@ -996,6 +997,24 @@ At the same time, some new null-safe variants of <code>String</code> prototype m
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-style-for-tooltips"><a class="anchor" href="#new-style-for-tooltips"></a>New Style for Tooltips</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The style and colors for tooltips has been changed which may require the following migration:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The colors for tooltips have changed: severity <code>OK</code> is showing in green, <code>INFO</code> in black and <code>WARNING</code> in orange. Severity <code>ERROR</code> is still red and therefore remains unchanged. If you use a <code>Status</code> that is displayed as tooltip and uses one of the changed severities, verify if the color matches the meaning of the tooltip and adapt the severity if necessary.</p>
+</li>
+<li>
+<p>Scout JS only: The tooltips are now displayed in inverse style (white text, dark background). If you used custom styling for your tooltips (using property <code>htmlEnabled</code>), you might require to adapt your styles to look nice again with the inverse style.</p>
+</li>
+</ol>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1014,7 +1033,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-07-28 18:52:40 +0200
+Last updated 2021-08-10 18:53:13 +0200
 </div>
 </div>
 <style>
