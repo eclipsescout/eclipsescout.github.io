@@ -470,6 +470,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#jackson-doentity-deserializer">Jackson DoEntity Deserializer</a></li>
 <li><a href="#deprecated-functions-in-strings-js-utility">Deprecated Functions in strings.js Utility</a></li>
 <li><a href="#new-style-for-tooltips">New Style for Tooltips</a></li>
+<li><a href="#logging-the-http-session-id">Logging the HTTP Session ID</a></li>
 </ul>
 </div>
 </div>
@@ -1015,6 +1016,56 @@ At the same time, some new null-safe variants of <code>String</code> prototype m
 </li>
 </ol>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logging-the-http-session-id"><a class="anchor" href="#logging-the-http-session-id"></a>Logging the HTTP Session ID</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The HTTP Session ID is a crucial factor of a web application&#8217;s security.
+Knowledge of the session ID can enable attackers to hijack the session of an active user.
+It must therefore not be made available to a malicious third party under any circumstances!
+Writing the ID to a log files <em>might</em> therefore pose a security risk, depending on who has access to the file.</p>
+</div>
+<div class="paragraph">
+<p>Scout does not directly output the HTTP Session ID by default, but it provides a corresponding "diagnostics context value" (<a href="http://www.slf4j.org/apidocs/org/slf4j/MDC.html">MDC</a>).
+If the logger implementation is configured accordingly, the context value <code>http.session.id</code> is written to the log file.</p>
+</div>
+<div class="paragraph">
+<p>In accordance with the <em>security by default</em> principle, the diagnostics context value no longer contains the full session ID.
+Instead, an obfuscated and truncated identifier is provided.
+It cannot be converted back to the original session ID but is still sufficiently unique to relate log entries for the same session for debugging purposes.
+See the class <code>HttpSessionIdLogHelper</code> for details.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No migration is required.</p>
+</li>
+<li>
+<p>Logger configurations that don&#8217;t use the MDC value <code>http.session.id</code> are not affected by this change.</p>
+</li>
+<li>
+<p>The content of the MDC value <code>http.session.id</code> can be configured via the system property <em>scout.diagnostics.httpSessionIdLogMode</em>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SHORT</code>: Provides a safe, truncated session identifier. This is the default value (no configuration required).</p>
+</li>
+<li>
+<p><code>OFF</code>: Never provides a value (always empty).</p>
+</li>
+<li>
+<p><code>FULL</code>: Provides the full HTTP Session ID. This restores the previous, less safe behavior. <strong>Using this value is NOT recommended!</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1033,7 +1084,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-08-17 18:52:50 +0200
+Last updated 2021-09-08 18:52:41 +0200
 </div>
 </div>
 <style>
