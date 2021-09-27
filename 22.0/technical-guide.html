@@ -7792,7 +7792,7 @@ The interface is annotated by <code>@Bean</code> allowing the Scout platform to 
 <h4 id="extend-rest-application"><a class="anchor" href="#extend-rest-application"></a>17.2.2. Extend REST Application</h4>
 <div class="paragraph">
 <p>The JAX-RS application API (<code>javax.ws.rs.core.Application</code>) allows a REST application implementation to specify a set of classes, a set of singleton instances and a map of custom properties to be registered.
-The Scout implementation of the REST application class <code>org.eclipse.scout.rt.rest.RestApplication</code> allows to contribute classes, singletons and properties without needing to extend the <code>RestApplication</code> class.</p>
+The Scout implementation of the REST application class <code>org.eclipse.scout.rt.rest.RestApplication</code> allows contributing classes, singletons and properties without needing to extend the <code>RestApplication</code> class.</p>
 </div>
 <div class="paragraph">
 <p>Three different contributor interfaces are available for contributions:</p>
@@ -7834,7 +7834,7 @@ See <a href="#cha-data-objects">Chapter 16</a> for details and examples.</p>
 <div class="paragraph">
 <p>A REST API may be used by non-Java consumers. In order to communicate using a platform-independent format, usually REST services use JSON as transport format.
 The marshaller between Java data objects and JSON is abstracted in the JAX-RS specification.
-Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produces data format.</p>
+Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produced data format.</p>
 </div>
 <div class="paragraph">
 <p>The Scout REST integration uses the popular Jackson library as default marshaller.</p>
@@ -7849,7 +7849,7 @@ The <code>HttpServerRunContextFilter</code> or <code>HttpRunContextFilter</code>
 The <code>HttpRunContextFilter</code> on the other hand does not provide session support and is always stateless.</p>
 </div>
 <div class="paragraph">
-<p>Therefore a REST resource implementation is not required to deal with setting up a RunContext to wrap the request within each method.
+<p>Therefore, a REST resource implementation is not required to deal with setting up a RunContext to wrap the request within each method.
 The filter must be added in the <code>web.xml</code> configuration file and should be configured to be called after the authentication filter.
 The filter expects that the authentication has been performed and that a <code>subject</code> is available (JAAS context).
 All following filters and servlets and thus also the REST resources run automatically in the correct context.</p>
@@ -7881,13 +7881,13 @@ Both values are read from the incoming request header, the caller must ensure th
 <div class="sect2">
 <h3 id="dependency-management"><a class="anchor" href="#dependency-management"></a>17.3. Dependency Management</h3>
 <div class="paragraph">
-<p>Scout REST services based on JAX-RS using the Jersey library and the Jackson JSON marshaller need a maven dependency to <code>jersey-media-json-jackson</code> in your application pom.xml.
-This enables to use Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation.
-Additionally a dependency to the Scout module <code>org.eclipse.scout.rt.rest.jackson</code> is necessary.
+<p>Scout REST services based on JAX-RS using the Jersey library and the Jackson JSON marshaller need a maven dependency to <code>jersey-media-json-jackson</code> in the application pom.xml.
+This enables the use of Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation.
+Additionally, a dependency to the Scout module <code>org.eclipse.scout.rt.rest.jackson</code> is necessary.
 This module adds a set of Jackson additions in order to use the Jackson library together with Scout data objects.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 105. Depencency section of pom.xml to use Scout REST services with Jackson &amp; Jersey</div>
+<div class="title">Listing 105. Dependency section of pom.xml to use Scout REST services with Jackson &amp; Jersey</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- JAX-RS Jersey --&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
@@ -8186,7 +8186,7 @@ currently active <code>RunMonitor</code>. Therefore, a cancel request would not 
 </table>
 </div>
 <div class="paragraph">
-<p>And finally, declare the servlet filter in your <code>web.xml</code>:</p>
+<p>Finally, declare the servlet filter in your <code>web.xml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 112. web.xml registration example for RestRequestCancellationFilter.</div>
@@ -11119,7 +11119,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-09-25 18:52:24 +0200
+Last updated 2021-09-27 18:52:56 +0200
 </div>
 </div>
 </body>
