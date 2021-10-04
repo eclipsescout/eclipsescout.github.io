@@ -560,6 +560,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#jackson-doentity-deserializer">Jackson DoEntity Deserializer</a></li>
 <li><a href="#json-raw-deserialization-of-floating-point-numbers">Json raw deserialization of floating point numbers</a></li>
 <li><a href="#deprecated-functions-in-strings-js-utility">Deprecated Functions in strings.js Utility</a></li>
+<li><a href="#removed-functions-in-streamutility-java">Removed functions in StreamUtility.java</a></li>
 <li><a href="#new-style-for-tooltips">New Style for Tooltips</a></li>
 <li><a href="#logging-the-http-session-id">Logging the HTTP Session ID</a></li>
 </ul>
@@ -1167,6 +1168,34 @@ At the same time, some new null-safe variants of <code>String</code> prototype m
 </div>
 </div>
 <div class="sect1">
+<h2 id="removed-functions-in-streamutility-java"><a class="anchor" href="#removed-functions-in-streamutility-java"></a>Removed functions in StreamUtility.java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>StreamUtility</code> utility provided some methods that were functionally identical to Java 9 methods of the same name.
+The methods <code>not</code>, <code>takeWhile</code>, and <code>iterate</code> were removed; the equivalent Java 11 core library methods may now be used directly.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>StreamUtility.not(p)</code> to <code>java.util.function.Predicate.not(p)</code>.</p>
+</li>
+<li>
+<p>Change <code>StreamUtility.takeWhile(stream, predicate)</code> to <code>stream.takeWhile(predicate)</code>.</p>
+</li>
+<li>
+<p>Change <code>StreamUtility.iterate(initialElement, hasNext, next)</code> to <code>java.util.stream.Stream.iterate(initialElement, hasNext, next)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that <code>takeWhile</code> now operates on the <code>java.util.Stream</code> object itself and no longer is a static method.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="new-style-for-tooltips"><a class="anchor" href="#new-style-for-tooltips"></a>New Style for Tooltips</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1250,7 +1279,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-09-27 18:52:56 +0200
+Last updated 2021-10-04 18:52:34 +0200
 </div>
 </div>
 </body>
