@@ -557,6 +557,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#form">Form</a></li>
 <li><a href="#browser-field">Browser Field</a></li>
 <li><a href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages">Lazy Creation of detailTable and detailForm in Scout JS Pages</a></li>
+<li><a href="#tagfield-scout-js">TagField (Scout JS)</a></li>
 <li><a href="#jackson-doentity-deserializer">Jackson DoEntity Deserializer</a></li>
 <li><a href="#json-raw-deserialization-of-floating-point-numbers">Json raw deserialization of floating point numbers</a></li>
 <li><a href="#deprecated-functions-in-strings-js-utility">Deprecated Functions in strings.js Utility</a></li>
@@ -1103,6 +1104,16 @@ If outside a Page listen for the <code>propertyChange</code> events for <code>de
 </div>
 </div>
 <div class="sect1">
+<h2 id="tagfield-scout-js"><a class="anchor" href="#tagfield-scout-js"></a>TagField (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The tag field is not clickable by default anymore.
+If you need the tags to be clickable (and triggering a tagClick event), you have to activate it manually by setting <code>clickable</code> to true in the given tag field model.
+Or by using the dedicated setter: <code>tagField.tagBar.setClickable(true)</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="jackson-doentity-deserializer"><a class="anchor" href="#jackson-doentity-deserializer"></a>Jackson DoEntity Deserializer</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1289,7 +1300,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-10-08 18:52:28 +0200
+Last updated 2021-10-13 18:52:39 +0200
 </div>
 </div>
 </body>
