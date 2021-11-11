@@ -494,7 +494,7 @@ Looking for something else? Visit <a href="https://eclipsescout.github.io" class
 </td>
 <td class="content">
 If you don&#8217;t know what Scout JS is yet, please read the
-        <a href="https://eclipsescout.github.io/11.0/getstarted.html">Get Started Guide</a> first.
+<a href="https://eclipsescout.github.io/11.0/getstarted.html">Get Started Guide</a> first.
 </td>
 </tr>
 </table>
@@ -603,7 +603,7 @@ Use <code>npm run build:dev:watch</code> to have these files automatically updat
 <h2 id="run-the-application"><a class="anchor" href="#run-the-application"></a>Run the Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Use the same or start a new terminal in the main folder and execute <code><strong>npm run serve:dev:watch</strong></code>.</p>
+<p>Use the same or start a new terminal in the main folder and execute <code><strong>npm run serve</strong></code>.</p>
 </div>
 <div class="paragraph">
 <p>This starts a little development server and opens the URL <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code> in your default browser.
@@ -625,7 +625,7 @@ Also check out how the layout changes when you narrow the browser window
 </div>
 <div class="paragraph">
 <p>In the main folder there are files containing information for the build, e.g. dependencies and entry points.
-In the subfolder <code>res/</code> there are static resources that are just copied to <code>dist/res/</code> in the build.
+In the subfolder <code>res/</code> there are static resources that are just copied to <code>dist/</code> in the build.
 And in the subfolder <code>src/</code> you find the source files that are transformed and bundled by webpack.</p>
 </div>
 <div class="sect2">
@@ -642,7 +642,7 @@ And in the subfolder <code>src/</code> you find the source files that are transf
   <span class="key"><span class="delimiter">&quot;</span><span class="content">scripts</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">build:dev</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">scout-scripts build:dev</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">build:dev:watch</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">scout-scripts build:dev:watch</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">serve:dev:watch</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">live-server --mount=/:dist/res --mount=/:dist/dev</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">serve</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">live-server --mount=/:dist</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^11.0.9</span><span class="delimiter">&quot;</span></span>,
@@ -658,7 +658,7 @@ And in the subfolder <code>src/</code> you find the source files that are transf
 <p>The <code>scripts</code> define what <code>npm run</code> should execute.
 They work a bit like aliases in Bash.
 To have all needed files available at <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code>,
-we need to mount the folders <code>dist/res</code> and <code>dist/dev</code> to the root path <code>/</code> when starting the development server.</p>
+we need to mount the folder <code>dist</code> to the root path <code>/</code> when starting the development server.</p>
 </div>
 <div class="paragraph">
 <p>Modules defined in <code>devDependencies</code> and <code>dependencies</code> are downloaded to the <code>node_modules</code> folder on <code>npm install</code>.
@@ -679,7 +679,7 @@ see the official documentation on Node.js:
 <p>As defined in <code>package.json</code>, the script <code>build:dev</code> executes <code>scout-scripts build:dev</code>.
 <code>scout-scripts</code> is a command provided by the <code>@eclipse-scout/cli</code> module.
 With the <code>build:dev</code> argument, this command uses webpack to transform and bundle the source files
-and write the results to the <code>dist/dev</code> folder.</p>
+and write the results to the <code>dist</code> folder.</p>
 </div>
 <div class="paragraph">
 <p>Scout provides a default webpack configuration which we use and adjust as follows.</p>
@@ -700,7 +700,7 @@ module.exports = (env, args) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><strong>args.resDirArray</strong></code> defines the folders with static resources to be copied to <code>dist/res</code>.
+<p>The <code><strong>args.resDirArray</strong></code> defines the folders with static resources to be copied to <code>dist</code>.
 In addition to the static resources of our application, we also need Scout&#8217;s static resources in
 <code>node_modules/@eclipse-scout/core/res</code>, mainly for the icon font <code>scoutIcons.woff</code>.</p>
 </div>
@@ -1037,7 +1037,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 11.0<br>
-Last updated 2021-04-28 14:35:42 +0200
+Last updated 2021-11-11 18:36:38 +0100
 </div>
 </div>
 <style>
