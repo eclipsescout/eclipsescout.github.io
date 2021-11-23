@@ -536,7 +536,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <ul class="sectlevel1">
 <li><a href="#about-this-release">About This Release</a></li>
 <li><a href="#demo-applications">Demo Applications</a></li>
-<li><a href="#new-3rd-party-requirements">New 3rd Party requirements</a></li>
+<li><a href="#new-3rd-party-requirements">New 3rd Party requirements</a>
+<ul class="sectlevel2">
+<li><a href="#java">Java</a></li>
+<li><a href="#browsers">Browsers</a></li>
+</ul>
+</li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
 <li><a href="#text-post-processors">Text Post-Processors</a></li>
 <li><a href="#browser-field-support-for-posting-messages">Browser Field: Support for Posting Messages</a></li>
@@ -604,22 +609,48 @@ Looking for something else? Visit <a href="https://eclipsescout.github.io" class
 <div class="sect1">
 <h2 id="new-3rd-party-requirements"><a class="anchor" href="#new-3rd-party-requirements"></a>New 3rd Party requirements</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="java"><a class="anchor" href="#java"></a>Java</h3>
 <div class="paragraph">
 <p>The Java 8 support has been dropped in Scout 22.
 Therefore, only Java 11 is supported at the moment.
 Support for Java 17 is planned for a future release.</p>
 </div>
 <div class="paragraph">
-<p>Furthermore the minimal Maven version has been raised to 3.6.3.</p>
+<p>Furthermore, the minimal Maven version has been raised to 3.6.3.</p>
 </div>
 <div class="paragraph">
 <p>See the migration guide for instructions on how to update.</p>
 </div>
 <div class="paragraph">
-<p>Please note that Scout 22 makes use of the <code>Jakarta EE 8</code> artifacts.
+<p>Please note that Scout 22 makes use of <code>Jakarta EE 8</code> artifacts.
 These artifacts already use the new <code>jakarta.*</code> Maven coordinates but still contain the old <code>javax.*</code> Java packages.
 This ensures backwards compatibility with older <code>Java EE 8</code> containers.
 The transition to <code>Jakarta EE 9.1</code> or newer is planned for a future release.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="browsers"><a class="anchor" href="#browsers"></a>Browsers</h3>
+<div class="paragraph">
+<p>The minimal supported browsers have been updated. Scout 22 has the following requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mozilla Firefox &gt;= 55</p>
+</li>
+<li>
+<p>Chromium (like Google Chrome, Microsoft Edge, Brave or Opera) &gt;= 58</p>
+</li>
+<li>
+<p>Apple Safari &gt;= 13</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please note that Microsoft Internet Explorer and Microsoft Edge Legacy are no longer supported by Scout.
+If you are still using Internet Explorer or Edge Legacy, we strongly recommend updating to a newer browser.</p>
+</div>
 </div>
 </div>
 </div>
@@ -721,7 +752,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-10-28 18:52:42 +0200
+Last updated 2021-11-23 18:53:31 +0100
 </div>
 </div>
 </body>

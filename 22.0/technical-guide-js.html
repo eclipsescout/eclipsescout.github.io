@@ -1975,40 +1975,40 @@ In addition to the chart.js-properties we added custom properties, some of them 
 <div class="ulist">
 <ul>
 <li>
-<p><code>autoColor</code> Whether the colors should be computed automatically.</p>
+<p><code>options.autoColor</code> Whether the colors should be computed automatically.</p>
 </li>
 <li>
-<p><code>colorScheme</code> A specific color scheme for the colors, also inverted ones are possible for dark backgrounds.</p>
+<p><code>options.colorScheme</code> A specific color scheme for the colors, also inverted ones are possible for dark backgrounds.</p>
 </li>
 <li>
-<p><code>transparent</code> Whether the chart should be transparent or opaque.</p>
+<p><code>options.transparent</code> Whether the chart should be transparent or opaque.</p>
 </li>
 <li>
-<p><code>maxSegments</code> Max. number of segments for radial charts like pie, doughnut, radar, polar area.</p>
+<p><code>options.maxSegments</code> Max. number of segments for radial charts like pie, doughnut, radar, polar area.</p>
 </li>
 <li>
-<p><code>clickable</code> Whether a chart is clickable.</p>
+<p><code>options.clickable</code> Whether a chart is clickable.</p>
 </li>
 <li>
-<p><code>checkable</code> Whether a chart is checkable.</p>
+<p><code>options.checkable</code> Whether a chart is checkable.</p>
 </li>
 <li>
-<p><code>otherSegmentClickable</code> Whether the consolidated others segment is clickable.</p>
+<p><code>options.otherSegmentClickable</code> Whether the consolidated others segment is clickable.</p>
 </li>
 <li>
-<p><code>legend.clickable</code> Whether the legend is clickable.</p>
+<p><code>options.plugins.legend.clickable</code> Whether the legend is clickable.</p>
 </li>
 <li>
-<p><code>scales.xLabelMap</code> and <code>scales.yLabelMap</code> Label mapping for discrete values.</p>
+<p><code>options.xLabelMap</code> and <code>options.yLabelMap</code> Label mapping for discrete values.</p>
 </li>
 <li>
-<p><code>handleResize</code> Whether the chart should handle resizing itself (not necessary if the containers size is updated).</p>
+<p><code>options.handleResize</code> Whether the chart should handle resizing itself (not necessary if the containers size is updated).</p>
 </li>
 <li>
-<p><code>numberFormatter</code> A custom number formatter, e.g. 1000000 &#8594; 1 Mio. €.</p>
+<p><code>options.numberFormatter</code> A custom number formatter, e.g. 1000000 &#8594; 1 Mio. €.</p>
 </li>
 <li>
-<p><code>reformatLabels</code> Whether the data labels should be reformatted. It is assumed that data labels (incl. numeric labels) are correctly formatted. If one wants to have the data labels formatted using the number formatter, this flag can be used.
+<p><code>options.reformatLabels</code> Whether the data labels should be reformatted. It is assumed that data labels (incl. numeric labels) are correctly formatted. If one wants to have the data labels formatted using the number formatter, this flag can be used.
 Consider a bar chart and the x-axis displays the years 2010-2020, these labels should not be reformatted. However, if the x-axis displays the prices 250, 500, 750 and 1000, these labels should be reformatted to 250 €, 500 €, 750 € and 1.000 €.</p>
 </li>
 </ul>
@@ -2019,10 +2019,10 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 <div class="ulist">
 <ul>
 <li>
-<p><code>bubble.sizeOfLargestBubble</code> The size to which the largest bubble is scaled.</p>
+<p><code>options.bubble.sizeOfLargestBubble</code> The size to which the largest bubble is scaled.</p>
 </li>
 <li>
-<p><code>bubble.minBubbleSize</code> Min. size of a bubble.</p>
+<p><code>options.bubble.minBubbleSize</code> Min. size of a bubble.</p>
 </li>
 </ul>
 </div>
@@ -2032,7 +2032,7 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 <div class="ulist">
 <ul>
 <li>
-<p><code>fulfillment.startValue</code> Where the animation should start.</p>
+<p><code>options.fulfillment.startValue</code> Where the animation should start.</p>
 </li>
 </ul>
 </div>
@@ -2042,10 +2042,10 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 <div class="ulist">
 <ul>
 <li>
-<p><code>salesfunnel.normalized</code> Defines if the bars should be rendered smaller from top to bottom or if they get a size according to their values.</p>
+<p><code>options.salesfunnel.normalized</code> Defines if the bars should be rendered smaller from top to bottom or if they get a size according to their values.</p>
 </li>
 <li>
-<p><code>salesfunnel.calcConversionRate</code> Whether the conversion rate should be rendered.</p>
+<p><code>options.salesfunnel.calcConversionRate</code> Whether the conversion rate should be rendered.</p>
 </li>
 </ul>
 </div>
@@ -2055,7 +2055,7 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 <div class="ulist">
 <ul>
 <li>
-<p><code>speedo.greenAreaPosition</code> Define where the green area is located.</p>
+<p><code>options.speedo.greenAreaPosition</code> Define where the green area is located.</p>
 </li>
 </ul>
 </div>
@@ -2065,7 +2065,7 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 <div class="ulist">
 <ul>
 <li>
-<p><code>venn.numberOfCircles</code> Between 1 and 3.</p>
+<p><code>options.venn.numberOfCircles</code> Between 1 and 3.</p>
 </li>
 </ul>
 </div>
@@ -2841,19 +2841,13 @@ The only thing you need to do is to create that file and add a line with the wor
 <div class="ulist">
 <ul>
 <li>
-<p>Mozilla Firefox &gt;= 35</p>
+<p>Mozilla Firefox &gt;= 55</p>
 </li>
 <li>
-<p>Google Chrome &gt;= 40</p>
+<p>Chromium (like Google Chrome, Microsoft Edge, Brave or Opera) &gt;= 58</p>
 </li>
 <li>
-<p>Microsoft Internet Explorer 11 (see table below for known limitations)</p>
-</li>
-<li>
-<p>Microsoft Edge &gt;= 12 (see table below for known limitations)</p>
-</li>
-<li>
-<p>Apple Safari &gt;= 8</p>
+<p>Apple Safari &gt;= 13</p>
 </li>
 </ul>
 </div>
@@ -2864,42 +2858,16 @@ The only thing you need to do is to create that file and add a line with the wor
 <div class="ulist">
 <ul>
 <li>
-<p>iOS &gt;= 8</p>
+<p>iOS &gt;= 13</p>
 </li>
 <li>
 <p>Android &gt;= 5</p>
-</li>
-<li>
-<p>Windows Mobile &gt;= 10</p>
 </li>
 </ul>
 </div>
 </dd>
 </dl>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Known Limitations</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Affected System</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the browser is configured to enable the so-called <strong>"protected mode"</strong>, the state of a popup window cannot be determined correctly. This is noticeable when a <code>AbstractBrowserField</code> has the property <em>"show in external window"</em> set to <code>true</code>. Even though the popup window is still open, the method <code>execExternalWindowStateChanged()</code> is called immediately, telling you the window was closed (because IE reports so). There is no workaround for this problem, apart from disabling the "protected mode".</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Internet Explorer and Edge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Performance in popup windows</strong> (e.g. opening a form with <code>DISPLAY_HINT_POPUP_WINDOW</code>) is very poor. We have <a href="https://connect.microsoft.com/IE/feedback/details/1778700/edge-manipulating-dom-from-another-window-is-slow-in-ms-edge">filed a bug</a> with the folks at Microsoft in 2015, but unfortunately the issue is still unresolved. To prevent slow forms in IE, they should be using a different display hint. Alternatively, users can use a different browser.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="sect1">
@@ -3353,7 +3321,7 @@ Object.assign({}, chart); <span class="comment">// workaround so that the import
 <p>The ice cream shop has sold the following amount of scoops:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Table Scoops per month and flavor</caption>
+<caption class="title">Table 1. Table Scoops per month and flavor</caption>
 <colgroup>
 <col style="width: 7.6923%;">
 <col style="width: 7.6923%;">
@@ -3507,18 +3475,18 @@ data.chartValueGroups[<span class="integer">2</span>].colorHexValue = <span clas
 
 config.options.autoColor = <span class="predefined-constant">false</span>;
 config.options.scales = {
-  <span class="key">xAxes</span>: [{
-    <span class="key">scaleLabel</span>: {
+  <span class="key">x</span>: {
+    <span class="key">title</span>: {
       <span class="key">display</span>: <span class="predefined-constant">true</span>,
-      <span class="key">labelString</span>: <span class="string"><span class="delimiter">'</span><span class="content">Month</span><span class="delimiter">'</span></span>
+      <span class="key">text</span>: <span class="string"><span class="delimiter">'</span><span class="content">Month</span><span class="delimiter">'</span></span>
     }
-  }],
-  <span class="key">yAxes</span>: [{
-    <span class="key">scaleLabel</span>: {
+  },
+  <span class="key">y</span>: {
+    <span class="key">title</span>: {
       <span class="key">display</span>: <span class="predefined-constant">true</span>,
-      <span class="key">labelString</span>: <span class="string"><span class="delimiter">'</span><span class="content">Scoops</span><span class="delimiter">'</span></span>
+      <span class="key">text</span>: <span class="string"><span class="delimiter">'</span><span class="content">Scoops</span><span class="delimiter">'</span></span>
     }
-  }]
+  }
 };
 
 chart.setData(data);
@@ -3538,8 +3506,10 @@ chart.setConfig(config);</code></pre>
 <pre class="CodeRay highlight"><code data-lang="js">config.options = <span class="predefined">$</span>.extend(<span class="predefined-constant">true</span>, {}, config.options, {
   <span class="key">clickable</span>: <span class="predefined-constant">true</span>,
   <span class="key">checkable</span>: <span class="predefined-constant">true</span>,
-  <span class="key">legend</span>: {
-    <span class="key">clickable</span>: <span class="predefined-constant">true</span>
+  <span class="key">plugins</span>: {
+    <span class="key">legend</span>: {
+      <span class="key">clickable</span>: <span class="predefined-constant">true</span>
+    }
   }
 });
 
@@ -3608,10 +3578,6 @@ To achieve this, we need to add a LESS file with the following content:</p>
       <span class="key">fill</span>: <span class="value">lightslategrey</span>;
     }
 
-    &gt; .<span class="key">tooltip-background</span> {
-      <span class="key">fill</span>: <span class="value">slategrey</span>;
-    }
-
     &gt; .<span class="key">tooltip-border</span> {
       <span class="key">fill</span>: <span class="value">black</span>;
     }
@@ -3676,7 +3642,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-09-25 18:52:24 +0200
+Last updated 2021-11-23 18:53:31 +0100
 </div>
 </div>
 </body>

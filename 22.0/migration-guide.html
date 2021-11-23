@@ -542,7 +542,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#ide-tooling-scout-sdk">IDE Tooling (Scout SDK)</a></li>
 </ul>
 </li>
-<li><a href="#new-3rd-party-requirements">New 3rd Party requirements</a></li>
+<li><a href="#new-3rd-party-requirements">New 3rd Party requirements</a>
+<ul class="sectlevel2">
+<li><a href="#update-of-3rd-party-library-chart-js-to-3-6-0">Update of 3rd Party library <em>chart.js</em> to 3.6.0</a></li>
+<li><a href="#update-of-other-3rd-party-javascript-libraries">Update of other 3rd Party JavaScript libraries</a></li>
+</ul>
+</li>
 <li><a href="#typeversion-annotation-type-change">@TypeVersion Annotation Type Change</a></li>
 <li><a href="#annotation-enumversion-removed">Annotation @EnumVersion Removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
@@ -648,9 +653,13 @@ Looking for something else? Visit <a href="https://eclipsescout.github.io" class
 <pre class="CodeRay highlight"><code data-lang="json">{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-module</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">22.0.0-snapshot</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/releng</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^22.0.0</span><span class="delimiter">&quot;</span></span>
+  },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">22.0.0-snapshot</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">jquery</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3.5.1</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">jquery</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3.6.0</span><span class="delimiter">&quot;</span></span>
   }
 }</code></pre>
 </div>
@@ -691,21 +700,29 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Java 8 support has been dropped in Scout 22. Therefore, only Java 11 is supported at the moment.
-To update your application the following steps might be required:</p>
+You can get a Java 11 runtime from <a href="https://adoptium.net/?variant=openjdk11&amp;jvmVariant=hotspot">the Adoptium download page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ensure you have at least Maven 3.6.3 installed. Older versions are no longer supported.
+You can get a new Maven runtime at <a href="https://maven.apache.org/download.cgi">the Maven download site</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ensure you have at least Node 16.13.0 installed. Older versions will not work.
+A new version can be obtained from <a href="https://nodejs.org/en/download/">the Node download page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Scout now requires at least pnpm 6.22.2. You can install it as described on the <a href="https://pnpm.io/installation#using-npm">pnpm installation page</a>.</p>
+</div>
+<div class="paragraph">
+<p>To update your application the following steps might be required:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the latest <code>3.15.x</code> release. See <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.scout%22%20AND%20a%3A%22maven_rt_plugin_config-master%22">Maven central</a> for a list of versions available.</p>
+<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the latest <code>22.0.x</code> release. See <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.scout%22%20AND%20a%3A%22maven_rt_plugin_config-master%22">Maven central</a> for a list of versions available.</p>
 </li>
 <li>
 <p>Update the Scout versions (<code>package.json</code> and <code>pom.xml</code>) as shown in <a href="#obtaining-the-latest-version"><em>Obtaining the Latest Version</em></a>.</p>
-</li>
-<li>
-<p>Ensure you have at least Maven 3.6.3 installed. Older versions will no longer work.</p>
-</li>
-<li>
-<p>Ensure you have Java 11 installed. Other versions will not work.</p>
 </li>
 <li>
 <p>In case you have set one of the following properties in your <code>pom.xml</code> files, update its value to <code>11</code>:</p>
@@ -735,7 +752,144 @@ To update your application the following steps might be required:</p>
 <li>
 <p>If you are using Eclipse and web-service providers, update the <code>.factorypath</code> files as shown in the <code>JAX-WS Appendix</code> of the Scout documentation.</p>
 </li>
+<li>
+<p>The support for Microsoft Internet Explorer and Microsoft Edge Legacy has been dropped.
+Accordingly, you might want to update the list with supported browsers in your <code>unsupported-browser.html</code> file (if existing). Remove the list item having text <code>ui.BrowserInternetExplorer</code>.
+You can keep the one with Edge, because the new Chromium based Microsoft Edge browser is supported.</p>
+</li>
 </ul>
+</div>
+<div class="sect2">
+<h3 id="update-of-3rd-party-library-chart-js-to-3-6-0"><a class="anchor" href="#update-of-3rd-party-library-chart-js-to-3-6-0"></a>Update of 3rd Party library <em>chart.js</em> to 3.6.0</h3>
+<div class="paragraph">
+<p>If you are using the charts from <code>@eclipse-scout/chart</code> you might need to update the config object of your charts, as most of them are rendered using <em>chart.js</em>.</p>
+</div>
+<div class="paragraph">
+<p>First check this  <a href="https://www.chartjs.org/docs/latest/getting-started/v3-migration.html">migration guide</a>.
+In addition, the following config attributes must also be migrated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>config.options.scales.minSpaceBetweenXTicks</code> &#8594; <code>config.options.scales.x.minSpaceBetweenTicks</code></p>
+</li>
+<li>
+<p><code>config.options.scales.minSpaceBetweenYTicks</code> &#8594; <code>config.options.scales.y.minSpaceBetweenTicks</code></p>
+</li>
+<li>
+<p><code>config.options.scale.minSpaceBetweenTicks</code> &#8594; <code>config.options.scales.r.minSpaceBetweenTicks</code></p>
+</li>
+<li>
+<p><code>config.options.scales.[id].afterCalculateTickRotation</code> &#8594; <code>config.options.scales.[id].afterCalculateLabelRotation</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontColor</code> &#8594; <code>&#8230;&#8203;color</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontFamily</code> &#8594; <code>&#8230;&#8203;font.family</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontSize</code> &#8594; <code>&#8230;&#8203;font.size</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontStyle</code> &#8594; <code>&#8230;&#8203;font.style</code></p>
+</li>
+<li>
+<p><code>config.bubble</code> &#8594; <code>config.options.bubble</code></p>
+</li>
+<li>
+<p><code>config.fulfillment</code> &#8594; <code>config.options.fulfillment</code></p>
+</li>
+<li>
+<p><code>config.salesfunnel</code> &#8594; <code>config.options.salesfunnel</code></p>
+</li>
+<li>
+<p><code>config.speedo</code> &#8594; <code>config.options.speedo</code></p>
+</li>
+<li>
+<p><code>config.venn</code> &#8594; <code>config.options.venn</code></p>
+</li>
+<li>
+<p><code>config.data.datasets[i].pointHoverBackgroundColor</code> only for <code>config.type</code> <em>line</em> and <em>radar</em> or <code>config.data.dataset[i].type</code> <em>line</em></p>
+</li>
+<li>
+<p><code>config.data.datasets[i].pointBorderColor</code> only for <code>config.type</code> <em>line</em> and <em>radar</em> or <code>config.data.dataset[i].type</code> <em>line</em></p>
+</li>
+<li>
+<p><code>config.data.datasets[i].pointHoverBorderColor</code> only for <code>config.type</code> <em>line</em> and <em>radar</em> or <code>config.data.dataset[i].type</code> <em>line</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also, we observed some changes that might be of interest:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove the <code>borderWidth</code> on every <em>dataset</em> when <code>backgroundColor</code> and <code>borderColor</code> are the same. Otherwise, there will be a small white line between the border and the background.</p>
+</li>
+<li>
+<p><code>Scale.longestLabelWidth</code> &#8594; <code>Scale._labelSizes.widest.width</code></p>
+</li>
+<li>
+<p><code>Scale._ticks</code> &#8594; <code>Scale.ticks</code></p>
+</li>
+<li>
+<p><code>Element._datasetIndex</code> &#8594; <code>Element.datasetIndex</code></p>
+</li>
+<li>
+<p><code>Element._index</code> &#8594; <code>Element.index</code></p>
+</li>
+<li>
+<p>Never use <code>data.splice(n)</code>, always use <code>data.splice(n, data.length - n)</code>, as <em>chart.js</em> listens on splice-events and can&#8217;t handle calls without the <code>deleteCount</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <em>chart.js</em> tooltip was replaced by the scout tooltip. Therefore, the css class <code>.tooltip-background</code> ca be removed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-of-other-3rd-party-javascript-libraries"><a class="anchor" href="#update-of-other-3rd-party-javascript-libraries"></a>Update of other 3rd Party JavaScript libraries</h3>
+<div class="paragraph">
+<p>Perform the following migration in all your <code>package.json</code> files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you specify the minimum engines versions please update them as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json lines">&quot;engines&quot;: {
+    &quot;node&quot;: &quot;&gt;=16.13.0&quot;,
+    &quot;npm&quot;: &quot;&gt;=8.1.0&quot;,
+    &quot;pnpm&quot;: &quot;&gt;=6.22.2&quot;
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Update the following dependencies (if existing in your application):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json lines">&quot;jquery&quot;: &quot;3.6.0&quot;
+&quot;jasmine-core&quot;: &quot;3.10.1&quot;
+&quot;karma&quot;: &quot;6.3.9&quot;
+&quot;eslint&quot;: &quot;8.3.0&quot;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Replace dependencies to <code>babel-eslint</code> with these two:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json lines">&quot;@babel/core&quot;: &quot;7.16.0&quot;,
+&quot;@babel/eslint-parser&quot;: &quot;7.16.3&quot;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1306,7 +1460,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-11-03 18:52:42 +0100
+Last updated 2021-11-23 18:53:31 +0100
 </div>
 </div>
 </body>
