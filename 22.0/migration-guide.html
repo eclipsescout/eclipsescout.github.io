@@ -548,6 +548,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#update-of-other-3rd-party-javascript-libraries">Update of other 3rd Party JavaScript libraries</a></li>
 </ul>
 </li>
+<li><a href="#release-engineering-changes">Release engineering changes</a></li>
 <li><a href="#typeversion-annotation-type-change">@TypeVersion Annotation Type Change</a></li>
 <li><a href="#annotation-enumversion-removed">Annotation @EnumVersion Removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
@@ -890,6 +891,98 @@ In addition, the following config attributes must also be migrated:</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-engineering-changes"><a class="anchor" href="#release-engineering-changes"></a>Release engineering changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following changes have been made to the Scout releng. Please apply the necessary migration steps in your files and build scripts (may also affect continuous integration environments):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you have a <code>.npmrc</code> file (locally in your project root and/or your user home or on your build infrastructure), update it to the following content:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="comment"># pnpm settings</span>
+<span class="error">shared-workspace-lockfile=true</span>
+<span class="error">link-workspace-packages=true</span>
+<span class="error">prefer-workspace-packages=true</span>
+
+<span class="comment"># npm settings</span>
+<span class="error">engine-strict=true</span>
+<span class="error">scripts-prepend-node-path=auto</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The property <code>prefer-workspace-packages</code> is new and important if you have multiple npm modules in your project.</p>
+</div>
+</li>
+<li>
+<p>In all your <code>package.json</code> files:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace <code>"snapshot-cleanup": "releng-scripts snapshot-cleanup"</code> with <code>"cleanup:snapshots": "releng-scripts cleanup:snapshots"</code></p>
+</li>
+<li>
+<p>Replace <code>"snapshot-predependency": "releng-scripts snapshot-install-dependency"</code> with <code>"version:snapshot:dependencies": "releng-scripts version:snapshot:dependencies"</code></p>
+</li>
+<li>
+<p>Replace <code>"snapshot-postdependency": "releng-scripts snapshot-publish-dependency"</code> with <code>"version:snapshot": "releng-scripts version:snapshot"</code></p>
+</li>
+<li>
+<p>Replace <code>"release-predependency": "releng-scripts release-install-dependency"</code> with <code>"version:release:dependencies": "releng-scripts version:release:dependencies"</code></p>
+</li>
+<li>
+<p>Replace <code>"release-postdependency": "releng-scripts release-publish-dependency"</code> with <code>"version:release": "releng-scripts version:release"</code></p>
+</li>
+<li>
+<p>If you are executing the npm scripts above during your build, update the names in your build scripts accordingly.</p>
+</li>
+<li>
+<p>If you are using snapshot dependencies of the form <code>"x.y.z-snapshot"</code> replace it with a range version of the form <code>"&gt;=x.y.z-snapshot &lt;x.y.z"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In all your <code>pom.xml</code> files (and probably in your build scripts):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rename Maven property <code>master_skip_snapshot_predependency</code> to <code>master_skip_npm_version_snapshot_dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven property <code>master_skip_snapshot_postdependency</code> to <code>master_skip_npm_version_snapshot</code></p>
+</li>
+<li>
+<p>Rename Maven property <code>master_skip_release_predependency</code> to <code>master_skip_npm_version_release_dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven property <code>master_skip_release_postdependency</code> to <code>master_skip_npm_version_release</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-snapshot-predependency</code> to <code>npm-version-snapshot-dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-snapshot-postdependency</code> to <code>npm-version-snapshot</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-release-predependency</code> to <code>npm-version-release-dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-release-postdependency</code> to <code>npm-version-release</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the past the profile <code>npm-snapshot-postdependency</code> (now called <code>npm-version-snapshot</code> se above) was executed automatically. This profile generates unique snapshot versions having a timestamp for your <code>package.json</code> files so that they may be deployed to a npm repository. This profile is no longer active by default so that your source code is not changed when executing a simple maven build. Therefore, if your <code>package.json</code> files have versions (own version, not dependency version) with a <code>-snapshot</code> suffix and you deploy such snapshots to a npm repository after a build, you have to manually add the profile <code>npm-version-snapshot</code> to that build now.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1460,7 +1553,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-11-23 18:53:31 +0100
+Last updated 2021-12-02 18:54:27 +0100
 </div>
 </div>
 </body>
