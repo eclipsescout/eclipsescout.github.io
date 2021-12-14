@@ -549,6 +549,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </ul>
 </li>
 <li><a href="#release-engineering-changes">Release engineering changes</a></li>
+<li><a href="#log4j-support-removed">Log4j support removed</a></li>
 <li><a href="#typeversion-annotation-type-change">@TypeVersion Annotation Type Change</a></li>
 <li><a href="#annotation-enumversion-removed">Annotation @EnumVersion Removed</a></li>
 <li><a href="#native-notification-support">Native Notification Support</a></li>
@@ -983,6 +984,16 @@ In addition, the following config attributes must also be migrated:</p>
 <p>In the past the profile <code>npm-snapshot-postdependency</code> (now called <code>npm-version-snapshot</code> se above) was executed automatically. This profile generates unique snapshot versions having a timestamp for your <code>package.json</code> files so that they may be deployed to a npm repository. This profile is no longer active by default so that your source code is not changed when executing a simple maven build. Therefore, if your <code>package.json</code> files have versions (own version, not dependency version) with a <code>-snapshot</code> suffix and you deploy such snapshots to a npm repository after a build, you have to manually add the profile <code>npm-version-snapshot</code> to that build now.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="log4j-support-removed"><a class="anchor" href="#log4j-support-removed"></a>Log4j support removed</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Support for <a href="https://logging.apache.org/log4j/1.2/">Log4j</a> logging has been dropped as Log4j 1 is end-of-life.
+If you still rely on Log4j 1 please update to another logger implementation.
+Scout supports java.util.Logging and <a href="http://logback.qos.ch/">Logback</a> (recommended) out of the box but other SLF4j compatible loggers can be configured as well.</p>
 </div>
 </div>
 </div>
@@ -1553,7 +1564,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-12-06 18:53:20 +0100
+Last updated 2021-12-14 18:52:28 +0100
 </div>
 </div>
 </body>

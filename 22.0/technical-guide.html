@@ -3288,7 +3288,7 @@ Note: <strong><a href="#platformerror">PlatformErrors</a> should never be catche
 <p>There is a single constructor which accepts the exception&#8217;s message, and optionally a variable number of arguments. Typically, a potential cause is given as its argument. The message allows further the use of formatting anchors in the form of {} pairs. The respective formatting arguments are provided via the constructor&#8217;s <em>varArg</em> parameter. If the last argument is of the type <code>Throwable</code> and not referenced as formatting anchor in the message, that <code>Throwable</code> is used as the exception&#8217;s cause. Internally, SLF4J <code>MessageFormatter</code> is used to provide substitution functionality. Hence, The format is the very same as if using SLF4j Logger.</p>
 </div>
 <div class="paragraph">
-<p>Further, <code>PlatformException</code> allows to associate context information, which are available in Log4j <em>diagnostic context map</em> (MDC) upon logging the exception.</p>
+<p>Further, <code>PlatformException</code> allows to associate context information, which are available in SLF4J <em>diagnostic context map</em> (MDC) upon logging the exception.</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 20. PlatformException examples</div>
@@ -3448,7 +3448,7 @@ By default, a <a href="#processingexception">ProcessingException</a> is logged a
 <div class="sect2">
 <h3 id="exception-logging"><a class="anchor" href="#exception-logging"></a>8.4. Exception Logging</h3>
 <div class="paragraph">
-<p>Scout framework logs via SLF4J (Simple Logging Facade for Java). It serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging, logback, log4j) allowing the end user to plug in the desired logging framework at deployment time.</p>
+<p>The Scout framework logs via SLF4J (Simple Logging Facade for Java). It serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging or logback) allowing the end user to plug in the desired logging framework at deployment time.</p>
 </div>
 <div class="paragraph">
 <p>SLF4J allows the use of formatting anchors in the form of {} pairs in the message which will be replaced by the respective argument. If the last argument is of the type Throwable and not referenced as formatting anchor in the message, that <code>Throwable</code> is used as the exception.</p>
@@ -11130,7 +11130,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-12-13 18:52:30 +0100
+Last updated 2021-12-14 18:52:28 +0100
 </div>
 </div>
 </body>
