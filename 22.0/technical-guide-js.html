@@ -577,6 +577,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <ul class="sectlevel2">
 <li><a href="#smart-field">10.1. Smart Field</a></li>
 <li><a href="#chart">10.2. Chart</a></li>
+<li><a href="#filter-field">10.3. Filter field</a></li>
 </ul>
 </li>
 <li><a href="#html-document-parser">11. HTML Document Parser</a>
@@ -2076,6 +2077,224 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 <p>For a more detailed example see <a href="#how-to-create-a-chart">How to Create a Chart</a>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="filter-field"><a class="anchor" href="#filter-field"></a>10.3. Filter field</h3>
+<div class="paragraph">
+<p>The widgets <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share a common filter API which includes a filter field.
+This filter field is enabled by default and can be turned off using the property <code>textFilterEnabled</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tree_box_with_filter_field.png" alt="tree box with filter field">
+</div>
+<div class="title">Figure 8. Filter field</div>
+</div>
+<div class="paragraph">
+<p>This filter field will filter the rows, nodes or tiles by their display text.
+This is simple for rows and nodes but quite complicated for tiles due to the large number of different types of tiles.
+Therefore, it is possible to provide a strategy to the <code>TileGrid.js</code> and <code>TileAccordion.js</code> how to create a text filter for the tile type used in this case and how to update the text this filter accepts.</p>
+</div>
+<div class="paragraph">
+<p>Consider a tile <code>CustomTile</code> with a property <code>relevantTextForFilter</code>. A filter for this tile type might look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {objects, strings} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">class</span> CustomTileFilter {
+
+  constructor() {
+    <span class="local-variable">this</span>.acceptedText = <span class="predefined-constant">null</span>;
+  }
+
+  setAcceptedText(acceptedText) {
+    acceptedText = (acceptedText || <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>).trim().toLowerCase();
+    <span class="keyword">if</span> (objects.equals(<span class="local-variable">this</span>.acceptedText, acceptedText)) {
+      <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="local-variable">this</span>.acceptedText = acceptedText;
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+
+  accept(tile) {
+    <span class="keyword">if</span> (strings.empty(<span class="local-variable">this</span>.acceptedText)) {
+      <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+    }
+    let filterText = strings.toLowerCase(tile.relevantTextForFilter);
+    <span class="keyword">if</span> (strings.empty(filterText)) {
+      <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="keyword">return</span> filterText.indexOf(<span class="local-variable">this</span>.acceptedText) &gt; -<span class="integer">1</span>;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>CustomTileFilter</code> is now passed to a TileGrid via</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">tileGrid.createTextFilter = () =&gt; scout.create(<span class="string"><span class="delimiter">'</span><span class="content">CustomTileFilter</span><span class="delimiter">'</span></span>);
+tileGrid.updateTextFilterText = (filter, text) =&gt; filter.setAcceptedText(text);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The common filter API which <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share can also be implemented by all other widgets.</p>
+</div>
+<div class="paragraph">
+<p>A minimal example of a widget implementing the filter API looks like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">class</span> FilterWidget <span class="reserved">extends</span> Widget {
+  constructor() {
+    <span class="reserved">super</span>();
+    <span class="local-variable">this</span>.elements = [];
+
+    <span class="local-variable">this</span>.filters = [];
+    <span class="local-variable">this</span>.textFilterEnabled = <span class="predefined-constant">true</span>;
+    <span class="local-variable">this</span>.filterSupport = <span class="local-variable">this</span>._createFilterSupport();
+
+    <span class="local-variable">this</span>.filteredElementsDirty = <span class="predefined-constant">false</span>;
+  }
+
+  _render() {
+    <span class="local-variable">this</span>.<span class="predefined">$container</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv();
+    <span class="local-variable">this</span>.htmlComp = HtmlComponent.install(<span class="local-variable">this</span>.<span class="predefined">$container</span>, <span class="local-variable">this</span>.session);
+  }
+
+  _renderProperties() {
+    <span class="reserved">super</span>._renderProperties();
+    <span class="local-variable">this</span>._renderTextFilterEnabled();
+  }
+
+  _remove() {
+    <span class="local-variable">this</span>.filterSupport.remove();
+    <span class="reserved">super</span>._remove();
+  }
+
+  _init(model) {
+    <span class="reserved">super</span>._init(model);
+    <span class="local-variable">this</span>.setElements(<span class="local-variable">this</span>.elements);
+    <span class="local-variable">this</span>.setFilters(<span class="local-variable">this</span>.filters);
+  }
+
+  _createKeyStrokeContext() {
+    <span class="keyword">return</span> <span class="keyword">new</span> KeyStrokeContext();
+  }
+
+  setElements(elements) {
+    <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">elements</span><span class="delimiter">'</span></span>, elements);
+    <span class="local-variable">this</span>.filter();
+  }
+
+  addFilter(filter, applyFilter = <span class="predefined-constant">true</span>) {
+    <span class="local-variable">this</span>.filterSupport.addFilter(filter, applyFilter);
+  }
+
+  removeFilter(filter, applyFilter = <span class="predefined-constant">true</span>) {
+    <span class="local-variable">this</span>.filterSupport.removeFilter(filter, applyFilter);
+  }
+
+  setFilters(filters, applyFilter = <span class="predefined-constant">true</span>) {
+    <span class="local-variable">this</span>.filterSupport.setFilters(filters, applyFilter);
+  }
+
+  filter() {
+    <span class="local-variable">this</span>.filterSupport.filter();
+  }
+
+  updateFilteredElements(result, opts) {
+    <span class="local-variable">this</span>.filteredElementsDirty = <span class="predefined-constant">false</span>;
+  }
+
+  <span class="comment">/**
+   * @returns {FilterSupport}
+   */</span>
+  _createFilterSupport() {
+    <span class="keyword">return</span> <span class="keyword">new</span> FilterSupport({
+      <span class="key">widget</span>: <span class="local-variable">this</span>,
+      <span class="predefined">$container</span>: () =&gt; <span class="local-variable">this</span>.<span class="predefined">$container</span>,
+      <span class="key">getElementsForFiltering</span>: () =&gt; <span class="local-variable">this</span>.elements,
+      <span class="key">getElementText</span>: element =&gt; element.text
+    });
+  }
+
+  setTextFilterEnabled(textFilterEnabled) {
+    <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">textFilterEnabled</span><span class="delimiter">'</span></span>, textFilterEnabled);
+  }
+
+  isTextFilterFieldVisible() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.textFilterEnabled;
+  }
+
+  _renderTextFilterEnabled() {
+    <span class="local-variable">this</span>.filterSupport.renderFilterField();
+  }
+}
+
+<span class="reserved">class</span> Element {
+  constructor() {
+    <span class="local-variable">this</span>.text = <span class="predefined-constant">null</span>;
+    <span class="local-variable">this</span>.filterAccepted = <span class="predefined-constant">true</span>;
+  }
+
+  setFilterAccepted(filterAccepted) {
+    <span class="local-variable">this</span>.filterAccepted = filterAccepted;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The widget creates a <code>FilterSupport</code> and passes all filter-related calls to this object. This <code>FilterSupport</code> manages the filters and the filter field.
+It only needs a small amount of information from the widget:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>widget</code> Widget that created the support</p>
+</li>
+<li>
+<p><code>$container</code> jQuery element that will be used for the visualization. It may be a function to resolve the container later. If this property is not set the $container of the widget is used by default.</p>
+</li>
+<li>
+<p><code>getElementsForFiltering</code> Get all elements to which the filters should be applied.</p>
+</li>
+<li>
+<p><code>getElementText</code> Get text of an element.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are several other options that can be passed to the <code>FilterSupport</code>, e.g. a strategy to create a custom text filter. For a complete list of the options please see the JS-Doc of the <code>FilterSupport</code>.</p>
+</div>
+<div class="paragraph">
+<p>The methods <code>addFilter(filter, applyFilter = true)</code>, <code>removeFilter(filter, applyFilter = true)</code> and <code>setFilters(filters, applyFilter = true)</code> of the <code>FilterSupport</code> work with filter objects containing an accept-function and accept-functions directly.
+These methods will check if the list of filters really changed and then apply the new filters if <code>applyFilter</code> is set to <code>true</code>. The filters are stored in the widgets <code>filters</code> property.</p>
+</div>
+<div class="paragraph">
+<p>The widget needs to implement a <code>updateFilteredElements(result, opts)</code> method, which is called after the filters were applied if the list of filtered elements changed.
+Before this method is called the widgets <code>filteredElementsDirty</code> is set to <code>false</code> and the values passed are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>result</code> An object containing the <code>newlyHidden</code> and <code>newlyShown</code> elements.</p>
+</li>
+<li>
+<p><code>opts</code> An object containing additional information, e.g. the text from the text filter.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The elements that are filtered needs to have a <code>setFilterAccepted(filterAccepted)</code>-method which is used by the <code>FilterSupport</code> to indicate whether this element is accepted by the filters or not.</p>
+</div>
+<div class="paragraph">
+<p>In order to use the filter field the widget needs an <code>isTextFilterFieldVisible()</code>-method and a <code>KeyStrokeContext</code>.
+The <code>isTextFilterFieldVisible()</code>-method is used to determine whether the filter field needs to be added to or removed from the <code>$container</code> when <code>filterSupport.renderFilterField()</code> is called.
+The <code>KeyStrokeContext</code> is needed to register KeyStrokes that move the focus towards the filter field while typing.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3523,7 +3742,7 @@ chart.setConfig(config);</code></pre>
 <div class="content">
 <img src="images/barChartCustomInteractive.png" alt="barChartCustomInteractive">
 </div>
-<div class="title">Figure 8. The dataset "Vanilla" is hidden and some segments are checked.</div>
+<div class="title">Figure 9. The dataset "Vanilla" is hidden and some segments are checked.</div>
 </div>
 </div>
 <div class="sect3">
@@ -3620,7 +3839,7 @@ To achieve this, we need to add a LESS file with the following content:</p>
 <div class="content">
 <img src="images/bubbleChartColorSchemeGrey.png" alt="bubbleChartColorSchemeGrey">
 </div>
-<div class="title">Figure 9. A checkable bubble chart using the custom grey color scheme.</div>
+<div class="title">Figure 10. A checkable bubble chart using the custom grey color scheme.</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3642,7 +3861,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-11-30 18:52:26 +0100
+Last updated 2021-12-15 18:52:38 +0100
 </div>
 </div>
 </body>
