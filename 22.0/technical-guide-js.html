@@ -577,7 +577,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <ul class="sectlevel2">
 <li><a href="#smart-field">10.1. Smart Field</a></li>
 <li><a href="#chart">10.2. Chart</a></li>
-<li><a href="#filter-field">10.3. Filter field</a></li>
+<li><a href="#filter-field">10.3. Filter Field</a></li>
 </ul>
 </li>
 <li><a href="#html-document-parser">11. HTML Document Parser</a>
@@ -2012,6 +2012,9 @@ In addition to the chart.js-properties we added custom properties, some of them 
 <p><code>options.reformatLabels</code> Whether the data labels should be reformatted. It is assumed that data labels (incl. numeric labels) are correctly formatted. If one wants to have the data labels formatted using the number formatter, this flag can be used.
 Consider a bar chart and the x-axis displays the years 2010-2020, these labels should not be reformatted. However, if the x-axis displays the prices 250, 500, 750 and 1000, these labels should be reformatted to 250 €, 500 €, 750 € and 1.000 €.</p>
 </li>
+<li>
+<p><code>options.plugins.tooltip.cssClass</code> Custom css class for additional styling of the tooltip</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -2078,7 +2081,7 @@ Consider a bar chart and the x-axis displays the years 2010-2020, these labels s
 </div>
 </div>
 <div class="sect2">
-<h3 id="filter-field"><a class="anchor" href="#filter-field"></a>10.3. Filter field</h3>
+<h3 id="filter-field"><a class="anchor" href="#filter-field"></a>10.3. Filter Field</h3>
 <div class="paragraph">
 <p>The widgets <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share a common filter API which includes a filter field.
 This filter field is enabled by default and can be turned off using the property <code>textFilterEnabled</code>.</p>
@@ -2158,6 +2161,16 @@ tileGrid.updateTextFilterText = (filter, text) =&gt; filter.setAcceptedText(text
     <span class="local-variable">this</span>.filteredElementsDirty = <span class="predefined-constant">false</span>;
   }
 
+  _init(model) {
+    <span class="reserved">super</span>._init(model);
+    <span class="local-variable">this</span>.setElements(<span class="local-variable">this</span>.elements);
+    <span class="local-variable">this</span>.setFilters(<span class="local-variable">this</span>.filters);
+  }
+
+  _createKeyStrokeContext() {
+    <span class="keyword">return</span> <span class="keyword">new</span> KeyStrokeContext();
+  }
+
   _render() {
     <span class="local-variable">this</span>.<span class="predefined">$container</span> = <span class="local-variable">this</span>.<span class="predefined">$parent</span>.appendDiv();
     <span class="local-variable">this</span>.htmlComp = HtmlComponent.install(<span class="local-variable">this</span>.<span class="predefined">$container</span>, <span class="local-variable">this</span>.session);
@@ -2173,19 +2186,33 @@ tileGrid.updateTextFilterText = (filter, text) =&gt; filter.setAcceptedText(text
     <span class="reserved">super</span>._remove();
   }
 
-  _init(model) {
-    <span class="reserved">super</span>._init(model);
-    <span class="local-variable">this</span>.setElements(<span class="local-variable">this</span>.elements);
-    <span class="local-variable">this</span>.setFilters(<span class="local-variable">this</span>.filters);
-  }
-
-  _createKeyStrokeContext() {
-    <span class="keyword">return</span> <span class="keyword">new</span> KeyStrokeContext();
-  }
-
   setElements(elements) {
     <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">elements</span><span class="delimiter">'</span></span>, elements);
     <span class="local-variable">this</span>.filter();
+  }
+
+  setTextFilterEnabled(textFilterEnabled) {
+    <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">textFilterEnabled</span><span class="delimiter">'</span></span>, textFilterEnabled);
+  }
+
+  _renderTextFilterEnabled() {
+    <span class="local-variable">this</span>.filterSupport.renderFilterField();
+  }
+
+  isTextFilterFieldVisible() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.textFilterEnabled;
+  }
+
+  <span class="comment">/**
+   * @returns {FilterSupport}
+   */</span>
+  _createFilterSupport() {
+    <span class="keyword">return</span> <span class="keyword">new</span> FilterSupport({
+      <span class="key">widget</span>: <span class="local-variable">this</span>,
+      <span class="predefined">$container</span>: () =&gt; <span class="local-variable">this</span>.<span class="predefined">$container</span>,
+      <span class="key">getElementsForFiltering</span>: () =&gt; <span class="local-variable">this</span>.elements,
+      <span class="key">getElementText</span>: element =&gt; element.text
+    });
   }
 
   addFilter(filter, applyFilter = <span class="predefined-constant">true</span>) {
@@ -2206,30 +2233,6 @@ tileGrid.updateTextFilterText = (filter, text) =&gt; filter.setAcceptedText(text
 
   updateFilteredElements(result, opts) {
     <span class="local-variable">this</span>.filteredElementsDirty = <span class="predefined-constant">false</span>;
-  }
-
-  <span class="comment">/**
-   * @returns {FilterSupport}
-   */</span>
-  _createFilterSupport() {
-    <span class="keyword">return</span> <span class="keyword">new</span> FilterSupport({
-      <span class="key">widget</span>: <span class="local-variable">this</span>,
-      <span class="predefined">$container</span>: () =&gt; <span class="local-variable">this</span>.<span class="predefined">$container</span>,
-      <span class="key">getElementsForFiltering</span>: () =&gt; <span class="local-variable">this</span>.elements,
-      <span class="key">getElementText</span>: element =&gt; element.text
-    });
-  }
-
-  setTextFilterEnabled(textFilterEnabled) {
-    <span class="local-variable">this</span>.setProperty(<span class="string"><span class="delimiter">'</span><span class="content">textFilterEnabled</span><span class="delimiter">'</span></span>, textFilterEnabled);
-  }
-
-  isTextFilterFieldVisible() {
-    <span class="keyword">return</span> <span class="local-variable">this</span>.textFilterEnabled;
-  }
-
-  _renderTextFilterEnabled() {
-    <span class="local-variable">this</span>.filterSupport.renderFilterField();
   }
 }
 
@@ -3861,7 +3864,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-12-15 18:52:38 +0100
+Last updated 2021-12-17 18:52:39 +0100
 </div>
 </div>
 </body>

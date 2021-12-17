@@ -571,7 +571,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#removed-functions-in-streamutility-java">Removed functions in StreamUtility.java</a></li>
 <li><a href="#new-style-for-tooltips">New Style for Tooltips</a></li>
 <li><a href="#logging-the-http-session-id">Logging the HTTP Session ID</a></li>
-<li><a href="#new-filter-api-for-scoutjs">New filter API for ScoutJS</a></li>
+<li><a href="#new-filter-api-for-scoutjs">New Filter API for ScoutJS</a></li>
 </ul>
 </div>
 </div>
@@ -1550,7 +1550,7 @@ See the class <code>HttpSessionIdLogHelper</code> for details.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="new-filter-api-for-scoutjs"><a class="anchor" href="#new-filter-api-for-scoutjs"></a>New filter API for ScoutJS</h2>
+<h2 id="new-filter-api-for-scoutjs"><a class="anchor" href="#new-filter-api-for-scoutjs"></a>New Filter API for ScoutJS</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The widgets <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share a common filter API since 22.0.
@@ -1584,6 +1584,89 @@ tree.filter();</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Table.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>addFilter(filter);</code> to <code>addFilter(filter, false);</code> and <code>addFilter(filter); filter();</code> to <code>addFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeFilter(filter); filter();</code> to <code>removeFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilterByKey(filter);</code> to <code>removeFilterByKey(filter, false);</code> and <code>removeFilterByKey(filter); filter();</code> to <code>removeFilterByKey(filter);</code></p>
+</li>
+<li>
+<p>Change <code>setFilters(filters);</code> to <code>setFilters(filters, false);</code> and <code>setFilters(filters); filter();</code> to <code>setFilters(filters);</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Tree.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>addFilter(filter, true);</code> to <code>addFilter(filter, false);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeFilter(filter); filter();</code> to <code>removeFilter(filter);</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TileGrid.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>addFilters(&#8230;&#8203;);</code> to <code>addFilter(&#8230;&#8203;);</code></p>
+</li>
+<li>
+<p>Change <code>addFilter(filter);</code> to <code>addFilter(filter, false);</code> and <code>addFilter(filter); filter();</code> to <code>addFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilters(&#8230;&#8203;);</code> to <code>removeFilter(&#8230;&#8203;);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeFilter(filter); filter();</code> to <code>removeFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>setFilters(filters);</code> to <code>setFilters(filters, false);</code> and <code>setFilters(filters); filter();</code> to <code>setFilters(filters);</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TileAccordion.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>tileFilters</code> to <code>filters</code></p>
+</li>
+<li>
+<p>Change <code>addTileFilter(filter);</code> to <code>addFilter(filter, false);</code> and <code>addTileFilter(filter); filterTiles();</code> to <code>addFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeTileFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeTileFilter(filter); filterTiles();</code> to <code>removeFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>setTileFilters(filters);</code> to <code>setFilters(filters, false);</code> and <code>setTileFilters(filters); filterTiles();</code> to <code>setFilters(filters);</code></p>
+</li>
+<li>
+<p>Change <code>filterTiles();</code> to <code>filter();</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>These widgets support a text filter that is shown while typing if the widget is focused. This behaviour is enabled by default and can be turned off using the property <code>textFilterEnabled</code>.
 Fields that provide this functionality may now be obsolete and can be removed.</p>
 </div>
@@ -1608,7 +1691,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-12-15 18:52:38 +0100
+Last updated 2021-12-17 18:52:39 +0100
 </div>
 </div>
 </body>
