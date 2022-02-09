@@ -720,16 +720,16 @@ The support for hierarchical lookup rows using REST lookup calls (e.g. the <code
 <div class="title">Listing 1. Example</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TypeName</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">ExampleLookupRow</span><span class="delimiter">&quot;</span></span>)
-<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleLookupRowDo</span> <span class="directive">extends</span> AbstractHierarchicalLookupRowDo&lt;MyLookupRowDo, ExampleId&gt; {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExampleLookupRowDo</span> <span class="directive">extends</span> AbstractHierarchicalLookupRowDo&lt;ExampleId&gt; {
 
   <span class="annotation">@Override</span>
   <span class="directive">public</span> DoValue&lt;ExampleId&gt; id() {
-    <span class="keyword">return</span> createIdAttribute(<span class="local-variable">this</span>);
+    <span class="keyword">return</span> doValue(ID);
   }
 
   <span class="annotation">@Override</span>
   <span class="directive">public</span> DoValue&lt;ExampleId&gt; parentId() {
-    <span class="keyword">return</span> createParentIdAttribute(<span class="local-variable">this</span>);
+    <span class="keyword">return</span> doValue(PARENT_ID);
   }
 
   <span class="comment">// ...</span>
@@ -788,7 +788,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-02-01 18:52:38 +0100
+Last updated 2022-02-09 18:53:22 +0100
 </div>
 </div>
 </body>
