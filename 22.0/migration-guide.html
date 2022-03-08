@@ -881,16 +881,28 @@ In addition, the following config attributes must also be migrated:</p>
 <pre class="CodeRay highlight"><code data-lang="json lines">&quot;jquery&quot;: &quot;3.6.0&quot;
 &quot;jasmine-core&quot;: &quot;3.10.1&quot;
 &quot;karma&quot;: &quot;6.3.9&quot;
-&quot;eslint&quot;: &quot;8.5.0&quot;</code></pre>
+&quot;eslint&quot;: &quot;8.10.0&quot;</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Replace dependencies to <code>babel-eslint</code> with these two:</p>
+<p>Replace dependencies to <code>babel-eslint</code> and <code>eslint-plugin-babel</code> with these two:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="json lines">&quot;@babel/core&quot;: &quot;7.16.5&quot;,
-&quot;@babel/eslint-parser&quot;: &quot;7.16.5&quot;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="json lines">&quot;@babel/eslint-parser&quot;: &quot;7.16.5&quot;,
+&quot;@babel/eslint-plugin&quot;: &quot;7.16.5&quot;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Adjust your .eslintrc.js in the following way:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json lines">  plugins: ['@babel'],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false
+  }</code></pre>
 </div>
 </div>
 </li>
@@ -1683,7 +1695,8 @@ Fields that provide this functionality may now be obsolete and can be removed.</
 <div class="paragraph">
 <p>All classes that are related to the DataModel have been moved to separate modules.
 This includes <code>IDataModel</code> and the <code>IComposerField</code>. If these classes have been used you need to add the references to the new modules to the corresponding pom.xml.
-The packages for these classes remain unchanged so no further migration is needed besides adding the dependencies to the new modules.</p>
+The packages for these classes remain unchanged so no further migration is needed besides adding the dependencies to the new modules.
+These packages are intended to be deleted in an upcoming release.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1747,7 +1760,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-03-02 18:52:32 +0100
+Last updated 2022-03-08 18:52:31 +0100
 </div>
 </div>
 </body>

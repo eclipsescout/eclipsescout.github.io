@@ -2927,8 +2927,8 @@ When using the Scout archetype to generate your app, the ESLint configuration is
 <div class="title">Listing 34. ESLint Dependencies</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/eslint-config</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">10.0.0</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">eslint</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">6.8.0</span><span class="delimiter">&quot;</span></span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/eslint-config</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">22.0.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">eslint</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">8.10.0</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
@@ -3004,14 +3004,14 @@ If you plan to configure your IDE to use the UNIX linebreak format, we recommend
 </div>
 </div>
 <div class="paragraph">
-<p>If you plan to use such features too, you should enable the babel-eslint plugin. To do that, add the following devDependencies to your <code>package.json</code>:</p>
+<p>If you plan to use such features too, you should enable the babel eslint parser. To do that, add the following devDependencies to your <code>package.json</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 38. Babel-eslint dependencies</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">babel-eslint</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">10.0.3</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">eslint-plugin-babel</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5.3.0</span><span class="delimiter">&quot;</span></span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">@babel/eslint-parser</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">7.16.5</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">@babel/eslint-plugin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">7.16.5</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
@@ -3021,15 +3021,19 @@ If you plan to configure your IDE to use the UNIX linebreak format, we recommend
 <div class="listingblock">
 <div class="title">Listing 39. Babel-eslint configuration</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="JavaScript">  plugins: ['babel'],
-  parser: 'babel-eslint'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="JavaScript">  plugins: ['@babel'],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false
+  }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>That&#8217;s it.</p>
 </div>
 <div class="paragraph">
-<p>Remember: ESLint itself already supports a lot of modern EcmaScript code. You only need to enable the babel-eslint plugin if you want to use the latest features which are not yet supported by ESLint.</p>
+<p>Remember: ESLint itself already supports a lot of modern EcmaScript code.
+You only need to enable the babel eslint parser if you want to use the latest features which are not yet supported by ESLint.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3864,7 +3868,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2021-12-17 18:52:39 +0100
+Last updated 2022-03-08 18:52:31 +0100
 </div>
 </div>
 </body>
