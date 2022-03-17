@@ -548,6 +548,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#update-of-other-3rd-party-javascript-libraries">Update of other 3rd Party JavaScript libraries</a></li>
 </ul>
 </li>
+<li><a href="#eclipse-launch-group">Eclipse Launch Group</a></li>
 <li><a href="#release-engineering-changes">Release engineering changes</a></li>
 <li><a href="#log4j-support-removed">Log4j support removed</a></li>
 <li><a href="#typeversion-annotation-type-change">@TypeVersion Annotation Type Change</a></li>
@@ -908,6 +909,25 @@ In addition, the following config attributes must also be migrated:</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="eclipse-launch-group"><a class="anchor" href="#eclipse-launch-group"></a>Eclipse Launch Group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your launch group contains an action that waits for a specific console output before starting the ui and backend servers, you probably need to adjust the regular expression.
+Otherwise, the launch is likely to get stuck at about 63%.</p>
+</div>
+<div class="paragraph">
+<p>To do so, edit your launch configuration and change the regular expression of the <code>js build</code> program from <code>Built at:</code> to <code>compiled .*successfully</code>.
+Or remove the action completely if you prefer the launchers to be started in parallel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/launch-group.png" alt="launch group">
+</div>
+<div class="title">Figure 1. Adjust Launch Group</div>
 </div>
 </div>
 </div>
@@ -1760,7 +1780,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-03-09 18:53:14 +0100
+Last updated 2022-03-17 10:45:30 +0100
 </div>
 </div>
 </body>
