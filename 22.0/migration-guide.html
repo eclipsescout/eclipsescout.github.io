@@ -544,6 +544,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </li>
 <li><a href="#new-3rd-party-requirements">New 3rd Party requirements</a>
 <ul class="sectlevel2">
+<li><a href="#migrating-to-java-17">Migrating to Java 17</a></li>
 <li><a href="#update-of-3rd-party-library-chart-js-to-3-7-0">Update of 3rd Party library <em>chart.js</em> to 3.7.0</a></li>
 <li><a href="#update-of-other-3rd-party-javascript-libraries">Update of other 3rd Party JavaScript libraries</a></li>
 </ul>
@@ -576,6 +577,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#scoutfieldstatus-deleted">ScoutFieldStatus deleted</a></li>
 <li><a href="#new-filter-api-for-scoutjs">New Filter API for ScoutJS</a></li>
 <li><a href="#new-modules-for-datamodel-related-classes">New Modules for DataModel related classes</a></li>
+<li><a href="#keystroke-adjustments-for-disabled-widgets-since-22-0-3">Keystroke adjustments for disabled widgets (since 22.0.3)</a></li>
 </ul>
 </div>
 </div>
@@ -706,8 +708,10 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <h2 id="new-3rd-party-requirements"><a class="anchor" href="#new-3rd-party-requirements"></a>New 3rd Party requirements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Java 8 support has been dropped in Scout 22. Therefore, only Java 11 is supported at the moment.
-You can get a Java 11 runtime from <a href="https://adoptium.net/?variant=openjdk11&amp;jvmVariant=hotspot">the Adoptium download page</a>.</p>
+<p>The Java 8 support has been dropped in Scout 22.
+Scout 22 older than 22.0.3 only supports Java 11.
+Scout 22.0.3 or newer supports Java 17 too. Check the chapter <a href="#migrating-to-java-17">Migrating to Java 17</a> if you plan to use Java 17.
+You can get a Java 11 or 17 runtime from <a href="https://adoptium.net/">the Adoptium page</a>.</p>
 </div>
 <div class="paragraph">
 <p>Ensure you have at least Maven 3.6.3 installed. Older versions are no longer supported.
@@ -726,13 +730,13 @@ A new version can be obtained from <a href="https://nodejs.org/en/download/">the
 <div class="ulist">
 <ul>
 <li>
-<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the latest <code>22.0.x</code> release. See <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.scout%22%20AND%20a%3A%22maven_rt_plugin_config-master%22">Maven central</a> for a list of versions available.</p>
+<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the newest <code>22.0.x</code> release. See <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.scout%22%20AND%20a%3A%22maven_rt_plugin_config-master%22">Maven central</a> for a list of versions available.</p>
 </li>
 <li>
 <p>Update the Scout versions (<code>package.json</code> and <code>pom.xml</code>) as shown in <a href="#obtaining-the-latest-version"><em>Obtaining the Latest Version</em></a>.</p>
 </li>
 <li>
-<p>In case you have set one of the following properties in your <code>pom.xml</code> files, update its value to <code>11</code>:</p>
+<p>In case you have set one of the following properties in your <code>pom.xml</code> files, update its value to <code>11</code> or <code>17</code> (depending on the Java version you want to use):</p>
 <div class="ulist">
 <ul>
 <li>
@@ -765,6 +769,24 @@ Accordingly, you might want to update the list with supported browsers in your <
 You can keep the one with Edge, because the new Chromium based Microsoft Edge browser is supported.</p>
 </li>
 </ul>
+</div>
+<div class="sect2">
+<h3 id="migrating-to-java-17"><a class="anchor" href="#migrating-to-java-17"></a>Migrating to Java 17</h3>
+<div class="paragraph">
+<p>If you are using Scout 22.0.3 or newer you may upgrade to Java 17.
+In that case it is necessary to regenerate all your private-public-key pairs.
+The values are stored in the config properties <code>scout.auth.privateKey</code> and <code>scout.auth.publicKey</code>.</p>
+</div>
+<div class="paragraph">
+<p>To create a new key pair you can execute the class <code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> on the command line.
+This will print a new, unique, Java 17 compatible key pair.
+Afterwards update the properties with the new values. It is recommended to have different values for each environment!</p>
+</div>
+<div class="paragraph">
+<p>While the new key pair is necessary if using Java 17, it is optional if you stay on Java 11.
+But still you may create new pairs even if you would like stay with Java 11 for now.
+Then the keys are already Java 17 compatible and must not be changed again when actually upgrading to Java 17.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="update-of-3rd-party-library-chart-js-to-3-7-0"><a class="anchor" href="#update-of-3rd-party-library-chart-js-to-3-7-0"></a>Update of 3rd Party library <em>chart.js</em> to 3.7.0</h3>
@@ -1532,7 +1554,7 @@ At the same time, some new null-safe variants of <code>String</code> prototype m
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>StreamUtility</code> utility provided some methods that were functionally identical to Java 9 methods of the same name.
-The methods <code>not</code>, <code>takeWhile</code>, and <code>iterate</code> were removed; the equivalent Java 11 core library methods may now be used directly.</p>
+The methods <code>not</code>, <code>takeWhile</code>, and <code>iterate</code> were removed; the equivalent Java core library methods may now be used directly.</p>
 </div>
 <div class="paragraph">
 <p><strong>Migration:</strong></p>
@@ -1810,6 +1832,18 @@ These packages are intended to be deleted in an upcoming release.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="keystroke-adjustments-for-disabled-widgets-since-22-0-3"><a class="anchor" href="#keystroke-adjustments-for-disabled-widgets-since-22-0-3"></a>Keystroke adjustments for disabled widgets (since 22.0.3)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you created custom JavaScript keystrokes (extending from KeyStroke.js), you might experience a different behavior:
+the keystroke is now only active if the widget and every parent widget is enabled.
+Previously, the state of the parents was ignored, which was inconsistent.
+If your keystroke should be active even if the widget is disabled, you can set <code>inheritAccessibility = false</code> on your keystroke.
+For more details, see <a href="https://github.com/eclipse-scout/scout.rt/commit/91f8465564e718702920a28edbb559041cfeb752" class="bare">https://github.com/eclipse-scout/scout.rt/commit/91f8465564e718702920a28edbb559041cfeb752</a></p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1828,7 +1862,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-04-12 18:52:28 +0200
+Last updated 2022-04-14 18:52:47 +0200
 </div>
 </div>
 </body>
