@@ -592,7 +592,7 @@ If you don&#8217;t know what Scout JS is yet, please read the
 Once the user enters some text and presses the button, the application displays a message box including that text.</p>
 </div>
 <div class="paragraph">
-<p>The application does not require Maven or Java, only Node.js.
+<p>The application does not require Maven or Java, only <a href="https://nodejs.org/en/">Node.js</a>.
 Also, the tutorial does not require any specific IDE.</p>
 </div>
 <div class="paragraph">
@@ -605,7 +605,7 @@ We will start by getting the application running and then take a look at the cod
 <h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Make sure you have <a href="https://nodejs.org/dist/latest-v12.x/">Node.js</a> 12 installed.</p>
+<p>Make sure you have <a href="https://nodejs.org/dist/latest-v16.x/">Node.js</a> 16 installed.</p>
 </div>
 </div>
 </div>
@@ -630,7 +630,7 @@ Alternatively, you can also download and extract a
 │
 ├───res
 │       index.html
-│       texts.json
+│       helloworld-texts.json
 │
 └───src
     │   helloworld.js
@@ -651,7 +651,7 @@ Alternatively, you can also download and extract a
 <h2 id="build-the-application"><a class="anchor" href="#build-the-application"></a>Build the Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the main folder, where the file <code>package.json</code> is located, open a terminal and execute <code><strong>npm install</strong></code>.</p>
+<p>In the main folder, where the file <code>package.json</code> is located, open a terminal and execute <code><strong>npm install --ignore-scripts</strong></code>.</p>
 </div>
 <div class="paragraph">
 <p>This creates a folder <code>node_modules</code>, containing all (direct and transitive) dependencies,
@@ -733,11 +733,11 @@ And in the subfolder <code>src/</code> you find the source files that are transf
     <span class="key"><span class="delimiter">&quot;</span><span class="content">serve</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">live-server --mount=/:dist</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^22.0.1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^22.0.2</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">live-server</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^1.2.1</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^22.0.1</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^22.0.2</span><span class="delimiter">&quot;</span></span>
   }
 }</code></pre>
 </div>
@@ -777,7 +777,12 @@ and write the results to the <code>dist</code> folder.</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 module.exports = (env, args) =&gt; {
-  args.resDirArray = [<span class="string"><span class="delimiter">'</span><span class="content">./res</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">./node_modules/@eclipse-scout/core/res</span><span class="delimiter">'</span></span>];
+  args.resDirArray = [
+    <span class="string"><span class="delimiter">'</span><span class="content">./res</span><span class="delimiter">'</span></span>, 
+    <span class="string"><span class="delimiter">'</span><span class="content">./node_modules/@eclipse-scout/core/res</span><span class="delimiter">'</span></span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">./node_modules/@eclipse-scout/core/dist/locales.json</span><span class="delimiter">'</span></span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">./node_modules/@eclipse-scout/core/dist/texts.json</span><span class="delimiter">'</span></span>
+  ];
   const config = baseConfig(env, args);
   config.entry = {
     <span class="key"><span class="delimiter">'</span><span class="content">helloworld</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./src/helloworld.js</span><span class="delimiter">'</span></span>,
@@ -788,9 +793,8 @@ module.exports = (env, args) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><strong>args.resDirArray</strong></code> defines the folders with static resources to be copied to <code>dist</code>.
-In addition to the static resources of our application, we also need Scout&#8217;s static resources in
-<code>node_modules/@eclipse-scout/core/res</code>, mainly for the icon font <code>scoutIcons.woff</code>.</p>
+<p>The <code><strong>args.resDirArray</strong></code> defines the files or folders with static resources to be copied to <code>dist</code>.
+In addition to the static resources of our application, we also need Scout&#8217;s static resources in <code>node_modules/@eclipse-scout/core/</code>.</p>
 </div>
 <div class="paragraph">
 <p>In <code><strong>config.entry</strong></code>, the entry points for bundling JavaScript and CSS files are defined.
@@ -840,10 +844,7 @@ In particular, the <code>&lt;div&gt;</code> element with the class "scout" has t
 since it is used to build the final DOM for our application.</p>
 </div>
 <div class="paragraph">
-<p>The other file in our <code>res/</code> folder, <code><strong>texts.json</strong></code>, contains all texts used in the Scout core module.
-In the future, this file should be part of <code>@eclipse-scout/core</code> and contain texts for multiple languages,
-but for now we have to place it next to our own static resources.
-You can get this file e.g. using Google Chrome&#8217;s DevTools when loading the <a href="https://scout.bsi-software.com/jswidgets_22_0/">Scout JS Widgets</a> application.</p>
+<p>The other file in our <code>res/</code> folder, <code><strong>helloworld-texts.json</strong></code>, contains your own texts used in the application.</p>
 </div>
 </div>
 <div class="sect2">
@@ -853,7 +854,7 @@ You can get this file e.g. using Google Chrome&#8217;s DevTools when loading the
 <div class="listingblock">
 <div class="title">Listing 5. src/helloworld.js</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { scout, App as ScoutApp } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { scout, App } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> { Desktop } from <span class="string"><span class="delimiter">'</span><span class="content">./desktop/Desktop</span><span class="delimiter">'</span></span>
 <span class="reserved">import</span> { HelloForm } from <span class="string"><span class="delimiter">'</span><span class="content">./greeting/HelloForm</span><span class="delimiter">'</span></span>
 
@@ -865,19 +866,19 @@ window.helloworld = Object.assign(window.helloworld || {}, {
   HelloForm
 });
 
-<span class="keyword">new</span> ScoutApp().init({
+<span class="keyword">new</span> App().init({
   <span class="key">bootstrap</span>: {
-    <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">texts.json</span><span class="delimiter">'</span></span>
+    <span class="key">textsUrl</span>: [<span class="string"><span class="delimiter">'</span><span class="content">texts.json</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">helloworld-texts.json</span><span class="delimiter">'</span></span>],
+        <span class="key">localesUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">locales.json</span><span class="delimiter">'</span></span>
   }
 });</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In our main JavaScript file, we import the <code>scout</code> namespace object as well as the class <code>App</code>.
-We import <code>App as ScoutApp</code> here to make it easier to distinguish it from our own classes, e.g. <code>Desktop</code>.</p>
+<p>In our main JavaScript file, we import the <code>scout</code> namespace object as well as the class <code>App</code>.</p>
 </div>
 <div class="paragraph">
-<p>Before we initialize an instance of the Scout application, providing the location of the texts file,
+<p>Before we initialize an instance of the Scout application (passing the location of the text urls and the locales url)
 we do two other things:</p>
 </div>
 <div class="olist arabic">
@@ -991,12 +992,12 @@ We provide an instance of our HelloForm as a view on our desktop.</p>
       {
         <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">NameField</span><span class="delimiter">'</span></span>,
         <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
-        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Name</span><span class="delimiter">'</span></span>
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">${textKey:helloworld.Name}</span><span class="delimiter">'</span></span>
       },
       {
         <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">GreetButton</span><span class="delimiter">'</span></span>,
         <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>,
-        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Say Hello</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">${textKey:helloworld.SayHello}</span><span class="delimiter">'</span></span>,
         <span class="key">keyStroke</span>: <span class="string"><span class="delimiter">'</span><span class="content">enter</span><span class="delimiter">'</span></span>,
         <span class="key">processButton</span>: <span class="predefined-constant">false</span>
       }
@@ -1125,7 +1126,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-03-16 18:52:50 +0100
+Last updated 2022-04-26 18:52:25 +0200
 </div>
 </div>
 </body>
