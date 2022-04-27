@@ -1491,7 +1491,7 @@ Or by using the dedicated setter: <code>tagField.tagBar.setClickable(true)</code
 <div class="paragraph">
 <p>When raw deserializing json using Jackson (e.g. by using <code>JacksonDataObjectMapper#readValueRaw</code>) the behavior changed for floating point numbers:
 In former releases float numbers fitting into a <code>Double</code> have been mapped to <code>Double</code>. Now always a <code>BigDecimal</code> is used.
-This helps to clarify and stabilize the API (the datatype does not suddenly change if the numbers get bigger) and it helps to map the value from the json to a more precise Java representation (a <code>Double</code> cannot hold all floats exactl enough).</p>
+This helps to clarify and stabilize the API (the datatype does not suddenly change if the numbers get bigger) and it helps to map the value from the json to a more precise Java representation (a <code>Double</code> cannot hold all floats exactly).</p>
 </div>
 <div class="paragraph">
 <p>Nothing changes if you deserialize json to a typed DataObject. Then the target type of the attribute in the DataObject is used.</p>
@@ -1862,7 +1862,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-04-19 18:52:29 +0200
+Last updated 2022-04-27 18:52:35 +0200
 </div>
 </div>
 </body>
