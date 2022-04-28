@@ -575,7 +575,7 @@ It also enables you to use modern code but still target older browsers by the us
 <div class="paragraph">
 <p>If you don&#8217;t need all that and just want to include Scout as a script in your html page (as in the early days), you can do so, too!
 This article shows how to achieve this.
-A live demo of the app we&#8217;ll create is published on <a href="https://codepen.io/cguglielmo/pen/jOVxpMZ">CodePen</a>.</p>
+A live demo of the app we&#8217;ll create is published on <a href="https://codepen.io/eclipse-scout/pen/ZEvgmwv">CodePen</a>.</p>
 </div>
 </div>
 </div>
@@ -593,8 +593,8 @@ In this example we are going to use a CDN directly.</p>
 </div>
 <div class="paragraph">
 <p>There are several CDNs out there that serve the content of all npm modules.
-A popular one is <a href="https://www.jsdelivr.com/">jsDelivr</a>.
-Using this CDN you can easily access all Scout assets: <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist">@eclipse-scout/core/dist</a>.</p>
+Popular are <a href="https://www.jsdelivr.com/">jsDelivr</a> or <a href="https://unpkg.com/">unpkg</a> which we will use here.
+Using such a CDN you can easily access all Scout assets: <a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist">@eclipse-scout/core/dist</a>.</p>
 </div>
 </div>
 </div>
@@ -615,7 +615,7 @@ Using this CDN you can easily access all Scout assets: <a href="https://www.jsde
 <span class="tag">&lt;/head&gt;</span>
 <span class="tag">&lt;body&gt;</span>
   <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><i class="conum" data-value="3"></i><b>(3)</b>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://code.jquery.com/jquery-3.5.1.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://code.jquery.com/jquery-3.6.0.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.jsdelivr.net/npm/sourcemapped-stacktrace@1.1.11/dist/sourcemapped-stacktrace.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.jsdelivr.net/npm/@eclipse-scout/core@22.0.2/dist/eclipse-scout-core.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span><i class="conum" data-value="4"></i><b>(4)</b>
@@ -709,7 +709,8 @@ scout.addObjectFactories({
 
 <span class="keyword">new</span> scout.App().init({
   <span class="key">bootstrap</span>: {
-    <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://unpkg.com/@eclipse-scout/core@22.0.2/dist/texts.json</span><span class="delimiter">'</span></span>
+    <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://unpkg.com/@eclipse-scout/core@22.0.2/dist/texts.json</span><span class="delimiter">'</span></span>,
+    <span class="key">localesUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://unpkg.com/@eclipse-scout/core@22.0.2/dist/locales.json</span><span class="delimiter">'</span></span>
   }
 });</code></pre>
 </div>
@@ -724,11 +725,7 @@ This file needs to be included to make sure the texts used by Scout can be resol
 In this case it is necessary for the text <code>Ok</code> which is visible on the message box when you click the button.</p>
 </div>
 <div class="paragraph">
-<p>If you like to present dates and numbers using the format the user is used to, you could also include the <code>locales.json</code>.
-We do not need it for now so it is not included.</p>
-</div>
-<div class="paragraph">
-<p>The rest of the code looks pretty similar to regular Scout JS code but be aware that some newer JS features are used like <code>class</code> or the template syntax that may not be supported by every browser.</p>
+<p>Optionally the <code>locales.json</code> from Scout can be imported so that the application knows about locale dependent formatting (e.g. for numbers or dates).</p>
 </div>
 </div>
 </div>
@@ -769,7 +766,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-04-12 18:52:28 +0200
+Last updated 2022-04-28 18:52:39 +0200
 </div>
 </div>
 </body>
