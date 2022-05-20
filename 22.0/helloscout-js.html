@@ -868,7 +868,7 @@ window.helloworld = Object.assign(window.helloworld || {}, {
 
 <span class="keyword">new</span> App().init({
   <span class="key">bootstrap</span>: {
-    <span class="key">textsUrl</span>: [<span class="string"><span class="delimiter">'</span><span class="content">texts.json</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">helloworld-texts.json</span><span class="delimiter">'</span></span>],
+    <span class="key">textsUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">texts.json</span><span class="delimiter">'</span></span>,
     <span class="key">localesUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">locales.json</span><span class="delimiter">'</span></span>
   }
 });</code></pre>
@@ -979,11 +979,11 @@ We provide an instance of our HelloForm as a view on our desktop.</p>
 <div class="listingblock">
 <div class="title">Listing 9. src/greeting/HelloFormModel.js</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> { GroupBox } from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Form, GroupBox} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 
 <span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
   <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>,
-  <span class="key">displayHint</span>: <span class="string"><span class="delimiter">'</span><span class="content">view</span><span class="delimiter">'</span></span>,
+  <span class="key">displayHint</span>: Form.DisplayHint.VIEW,
   <span class="key">modal</span>: <span class="predefined-constant">false</span>,
   <span class="key">rootGroupBox</span>: {
     <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>,
@@ -992,12 +992,12 @@ We provide an instance of our HelloForm as a view on our desktop.</p>
       {
         <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">NameField</span><span class="delimiter">'</span></span>,
         <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>,
-        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">${textKey:helloworld.Name}</span><span class="delimiter">'</span></span>
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Name</span><span class="delimiter">'</span></span>
       },
       {
         <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">GreetButton</span><span class="delimiter">'</span></span>,
         <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>,
-        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">${textKey:helloworld.SayHello}</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Say Hello</span><span class="delimiter">'</span></span>,
         <span class="key">keyStroke</span>: <span class="string"><span class="delimiter">'</span><span class="content">enter</span><span class="delimiter">'</span></span>,
         <span class="key">processButton</span>: <span class="predefined-constant">false</span>
       }
@@ -1126,7 +1126,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-04-28 18:52:39 +0200
+Last updated 2022-05-20 18:52:24 +0200
 </div>
 </div>
 </body>
