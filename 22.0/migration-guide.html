@@ -578,6 +578,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#new-filter-api-for-scoutjs">New Filter API for ScoutJS</a></li>
 <li><a href="#new-modules-for-datamodel-related-classes">New Modules for DataModel related classes</a></li>
 <li><a href="#keystroke-adjustments-for-disabled-widgets-since-22-0-3">Keystroke adjustments for disabled widgets (since 22.0.3)</a></li>
+<li><a href="#removal-of-applicationscoped-annotation-to-support-multiple-instances-of-bearerauthaccesscontroller-since-22-0-35">Removal of ApplicationScoped annotation to support multiple instances of BearerAuthAccessController (since 22.0.35)</a></li>
 </ul>
 </div>
 </div>
@@ -1857,6 +1858,16 @@ Previously, the state of the parents was ignored, which was inconsistent.
 If your keystroke should be active even if the widget is disabled, you can set <code>inheritAccessibility = false</code> on your keystroke.
 For more details, see <a href="https://github.com/eclipse-scout/scout.rt/commit/91f8465564e718702920a28edbb559041cfeb752" class="bare">https://github.com/eclipse-scout/scout.rt/commit/91f8465564e718702920a28edbb559041cfeb752</a></p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removal-of-applicationscoped-annotation-to-support-multiple-instances-of-bearerauthaccesscontroller-since-22-0-35"><a class="anchor" href="#removal-of-applicationscoped-annotation-to-support-multiple-instances-of-bearerauthaccesscontroller-since-22-0-35"></a>Removal of ApplicationScoped annotation to support multiple instances of BearerAuthAccessController (since 22.0.35)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are implementing one of the interfaces <code>ITokenVerifier</code> or <code>ITokenPrincipalProducer</code>, you must add either the <code>@ApplicationScope</code> or <code>@Bean</code> annotation to your implementation class.
+Previously, the interfaces itself were annotated with <code>@ApplicationScope</code>, which is too strict.
+This prevents having multiple instances of BearerAuthAccessController with different configurations/states of an <code>ITokenVerifier</code> or <code>ITokenPrincipalProducer</code>.</p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1875,7 +1886,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-10-26 18:52:24 +0200
+Last updated 2022-10-31 18:52:45 +0100
 </div>
 </div>
 </body>
