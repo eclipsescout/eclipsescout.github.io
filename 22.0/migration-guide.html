@@ -788,6 +788,20 @@ For this you have to do the following steps:</p>
 <p>To create a new key pair you can execute the class <code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> on the command line. This will print a new, unique, Java 17 compatible key pair.</p>
 </div>
 <div class="paragraph">
+<p>As an alternative you can also execute the following shell script to create a new key pair using <a href="https://www.openssl.org/">OpenSSL</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="shell">  PRIVATE_KEY=$(openssl ecparam -name prime256v1 -genkey -text)
+  printf &quot;################ Public Private Keypair ################&quot;
+  printf &quot;\nBase64 encoded privateKey: &quot;
+  echo &quot;$PRIVATE_KEY&quot; | openssl ec -outform pem -no_public 2&gt;/dev/null | openssl pkcs8 -topk8 -nocrypt -inform pem -outform der | base64 -w0
+  printf &quot;\nBase64 encoded publicKey: &quot;
+  echo &quot;$PRIVATE_KEY&quot; | openssl ec -outform der -pubout 2&gt;/dev/null | base64 -w0
+  printf &quot;\n&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Afterwards update the properties with the new values. It is recommended to have different values for each environment!</p>
 </div>
 <div class="paragraph">
@@ -1886,7 +1900,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-11-29 18:52:30 +0100
+Last updated 2022-12-12 18:52:48 +0100
 </div>
 </div>
 </body>
