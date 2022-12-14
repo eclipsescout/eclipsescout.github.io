@@ -54,8 +54,8 @@ do
   htmlFilename=${htmlFile##*/}
   filename=${htmlFilename%.*}
 
-  # for each html, check if there are changes except for 'last updated timestamp'
-  if [[ -n "$(diff -q --ignore-matching-lines='Last updated [0-9\-]\+ [0-9:]\+' ${sourceDir}/${htmlFilename} ${targetDir}/${htmlFilename})" ]]; then
+  # for each html, check if the target file exists or if there are changes except for 'last updated timestamp'
+  if [ ! -f ${targetDir}/${htmlFilename} ] || [ -n "$(diff -q --ignore-matching-lines='Last updated [0-9\-]\+ [0-9:]\+' ${sourceDir}/${htmlFilename} ${targetDir}/${htmlFilename})" ]; then
     echo "File ${htmlFilename} changed: copy ${filename}.html, ${filename}.pdf and ${filename}.zip"
 
     cp "${sourceDir}/${filename}.html" "${targetDir}/${filename}.html"
