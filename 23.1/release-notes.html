@@ -536,9 +536,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#about-this-release">About This Release</a></li>
-<li><a href="#demo-applications">Demo Applications</a>
+<li><a href="#demo-applications">Demo Applications</a></li>
+<li><a href="#improved-developer-experience-for-scout-js">Improved Developer Experience for Scout JS</a>
 <ul class="sectlevel2">
-<li><a href="#improved-developer-experience-for-scout-js">Improved Developer Experience for Scout JS</a></li>
 <li><a href="#typescript-support">TypeScript Support</a></li>
 <li><a href="#well-defined-and-typed-widget-models">Well-Defined and Typed Widget Models</a></li>
 <li><a href="#well-defined-and-typed-widget-events">Well-Defined and Typed Widget Events</a></li>
@@ -555,12 +555,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#eslint-for-typescript">ESLint for TypeScript</a></li>
 </ul>
 </li>
-<li><a href="#typed-nodeid-for-node-identifier">Typed NodeId for node identifier</a></li>
-<li><a href="#iid-interface-new-irootid-and-icompositeid">IId interface, new IRootId and ICompositeId</a></li>
+<li><a href="#typed-nodeid-for-node-identifier">Typed NodeId for Node Identifier</a></li>
+<li><a href="#iid-interface-new-irootid-and-icompositeid">IId Interface, new IRootId and ICompositeId</a></li>
 <li><a href="#new-calendar-tooltip">New Calendar Tooltip</a></li>
-<li><a href="#categories-for-health-checkers">Categories for health checkers</a>
+<li><a href="#categories-for-health-checkers">Categories for Health Checkers</a>
 <ul class="sectlevel2">
-<li><a href="#api-changes">API changes:</a></li>
+<li><a href="#api-changes">API Changes</a></li>
 </ul>
 </li>
 </ul>
@@ -631,13 +631,15 @@ The here described functionality has not yet been released and is part of an upc
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="improved-developer-experience-for-scout-js"><a class="anchor" href="#improved-developer-experience-for-scout-js"></a>Improved Developer Experience for Scout JS</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="improved-developer-experience-for-scout-js"><a class="anchor" href="#improved-developer-experience-for-scout-js"></a>Improved Developer Experience for Scout JS</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Scout 23.1 contains many improvements for Scout JS developers.
 The goal was to make the development easier, more efficient and more fun.
 Please read the following chapters to learn how we did it.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="typescript-support"><a class="anchor" href="#typescript-support"></a>TypeScript Support</h3>
@@ -925,7 +927,7 @@ That way you will not be blocked by the type checking, but you will still be inf
 </div>
 </div>
 <div class="sect1">
-<h2 id="typed-nodeid-for-node-identifier"><a class="anchor" href="#typed-nodeid-for-node-identifier"></a>Typed NodeId for node identifier</h2>
+<h2 id="typed-nodeid-for-node-identifier"><a class="anchor" href="#typed-nodeid-for-node-identifier"></a>Typed NodeId for Node Identifier</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In previous versions several ways were used to create/use a node identfier (e.g. to identify a specific client/backend server):</p>
@@ -949,7 +951,7 @@ That way you will not be blocked by the type checking, but you will still be inf
 </div>
 </div>
 <div class="sect1">
-<h2 id="iid-interface-new-irootid-and-icompositeid"><a class="anchor" href="#iid-interface-new-irootid-and-icompositeid"></a>IId interface, new IRootId and ICompositeId</h2>
+<h2 id="iid-interface-new-irootid-and-icompositeid"><a class="anchor" href="#iid-interface-new-irootid-and-icompositeid"></a>IId Interface, new IRootId and ICompositeId</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In previous versions the <code>IId</code> interface was typed with a generic <code>WRAPPED_TYPE extends Comparable&lt;WRAPPED_TYPE&gt;</code>.
@@ -1023,7 +1025,7 @@ Based on the adapted serialization mechanism (see <code>IdFactory</code> and IdC
 </div>
 </div>
 <div class="sect1">
-<h2 id="categories-for-health-checkers"><a class="anchor" href="#categories-for-health-checkers"></a>Categories for health checkers</h2>
+<h2 id="categories-for-health-checkers"><a class="anchor" href="#categories-for-health-checkers"></a>Categories for Health Checkers</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For the health check servlet <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthCheckServlet</code> a new query parameter <em>category</em> has been introduced to create the possibility to check only some specific health checkers for a specific category. If a category is supplied using the parameter, the actual <code>IHealthChecker</code> checkers are filtered using the method <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.acceptCategory(HealthCheckCategoryId)</code>.</p>
@@ -1033,7 +1035,7 @@ Based on the adapted serialization mechanism (see <code>IdFactory</code> and IdC
 If an invalid category is provided an error is logged and the same behavior is executed as no category was provided.</p>
 </div>
 <div class="sect2">
-<h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API changes:</h3>
+<h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1066,7 +1068,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2022-12-14 12:19:26 +0100
+Last updated 2022-12-16 08:54:35 +0100
 </div>
 </div>
 </body>

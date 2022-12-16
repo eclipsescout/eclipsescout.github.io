@@ -554,14 +554,19 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#alternative-way-to-migrate-objecttype">Alternative Way to Migrate ObjectType</a></li>
 </ul>
 </li>
-<li><a href="#options-parameter-for-filter-methods-in-menus-js-scout-js">options-parameter for filter-methods in menus.js (Scout JS)</a></li>
-<li><a href="#rename-widgettooltip-widget-scout-js">Rename WidgetTooltip.widget (Scout JS)</a></li>
+<li><a href="#menutypes-as-constants-scout-js">MenuTypes as Constants (Scout JS)</a></li>
+<li><a href="#scout-js-api-changes">Scout JS API Changes</a>
+<ul class="sectlevel2">
+<li><a href="#rename-widgettooltip-widget">Rename WidgetTooltip.widget</a></li>
 <li><a href="#rename-widgetpopup-widget-scout-js-scout-classic">Rename WidgetPopup.widget (Scout JS &amp; Scout Classic)</a></li>
-<li><a href="#rename-proposalchooser-model-scout-js">Rename ProposalChooser.model (Scout JS)</a></li>
-<li><a href="#jquery-scout-js">JQuery (Scout JS)</a></li>
-<li><a href="#table-scout-js">Table (Scout JS)</a></li>
-<li><a href="#testing-karma-jasmine-scout-scout-js">Testing / karma-jasmine-scout (Scout JS)</a></li>
-<li><a href="#various-widget-adjustments-scout-js">Various Widget Adjustments (Scout JS)</a></li>
+<li><a href="#rename-proposalchooser-model">Rename ProposalChooser.model</a></li>
+<li><a href="#options-parameter-for-filter-methods-in-menus-js">Options-parameter for filter-methods in menus.js</a></li>
+<li><a href="#jquery-scout">JQuery-Scout</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#testing-karma-jasmine-scout">Testing / karma-jasmine-scout</a></li>
+<li><a href="#various-clean-up">Various Clean Up</a></li>
+</ul>
+</li>
 <li><a href="#js-build-improvements">JS Build Improvements</a>
 <ul class="sectlevel2">
 <li><a href="#imports">Imports</a></li>
@@ -833,57 +838,7 @@ Even though the string based style still works and a migration is not necessary,
 Alternatively, you can do it by yourself using your IDE and Find/Replace.</p>
 </div>
 <div class="paragraph">
-<p>To use the migration tool, follow these steps:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Open the <code>package.json</code> of your ui module (e.g. <code>your.project.ui.html</code>).</p>
-</li>
-<li>
-<p>Add a devDependency to <code>@eclipse-scout/migrate</code> with the version <code>~23.1.0</code>.</p>
-</li>
-<li>
-<p>Add a script as described in <a href="#lst-objectTypeMigration">Listing 3</a>.</p>
-</li>
-<li>
-<p>Adjust the <code>moduleMap</code> argument by replacing <code>yourNamespace</code> with the namespace in your <code>index.js</code> file and <code>your.project.ui.html</code> with the name of your module.<br>
-The moduleMap entry is used to add imports to your index.js automatically.</p>
-</li>
-<li>
-<p>If you have dependencies to other Scout based modules, you can add them to the <code>moduleMap</code> to have the imports to these modules created automatically.
-Just add the namespace of the other module and the name of the npm package as follows: <code>--moduleMap.otherNamespace @other/npm-module</code></p>
-</li>
-<li>
-<p>Add a devDependency to <code>@eclipse-scout/tsconfig</code>.</p>
-</li>
-<li>
-<p>Create a <code>tsconfig.json</code> beside your <code>package.json</code> according to the <code>Readme.md</code> of the <code>@eclipse-scout/tsconfig</code> module.</p>
-</li>
-<li>
-<p>Run the <code>migrate</code> script by pressing the play button next to it in IntelliJ or using the command line: <code>npm run migrate</code></p>
-</li>
-<li>
-<p>Review the changes and add the missing imports, if there are any.</p>
-</li>
-<li>
-<p>Remove the script and added dependencies from you <code>package.json</code>.
-Also remove the <code>tsconfig.json</code> unless you want to use TypeScript anyway.</p>
-</li>
-</ol>
-</div>
-<div id="lst-objectTypeMigration" class="listingblock">
-<div class="title">Listing 3. Object Type Migration Script</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">scripts</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">migrate</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">migrate --migrate objectType --sources src/main/js/**/*.js --moduleMap.yourNamespace path:your.project.ui.html/src/main/js/index.js</span><span class="delimiter">&quot;</span></span>
-  },
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/migrate</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">~23.1.0</span><span class="delimiter">&quot;</span></span>
-  }
-}</code></pre>
-</div>
+<p>To use the migration tool, follow the steps described here: <a href="https://www.npmjs.com/package/@eclipse-scout/migrate#objecttype-and-menutype-migration">@eclipse-scout/migrate</a></p>
 </div>
 <div class="sect2">
 <h3 id="alternative-way-to-migrate-objecttype"><a class="anchor" href="#alternative-way-to-migrate-objecttype"></a>Alternative Way to Migrate ObjectType</h3>
@@ -981,13 +936,13 @@ If that is the case, resolving multiple problems is not possible unless you unse
 <p>Finally, you need to verify, whether the imports are correct.
 Please make sure all imports are present for every object type and the classes are imported from a module and not a single file.</p>
 <div class="listingblock">
-<div class="title">Listing 4. Good import</div>
+<div class="title">Listing 3. Good import</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Button, GroupBox} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 5. Bad import</div>
+<div class="title">Listing 4. Bad import</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> Button from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core/src/form/fields/button/Button.js</span><span class="delimiter">'</span></span>;</code></pre>
 </div>
@@ -1002,57 +957,34 @@ Please make sure all imports are present for every object type and the classes a
 </div>
 </div>
 <div class="sect1">
-<h2 id="options-parameter-for-filter-methods-in-menus-js-scout-js"><a class="anchor" href="#options-parameter-for-filter-methods-in-menus-js-scout-js"></a>options-parameter for filter-methods in menus.js (Scout JS)</h2>
+<h2 id="menutypes-as-constants-scout-js"><a class="anchor" href="#menutypes-as-constants-scout-js"></a>MenuTypes as Constants (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The methods <code>filter</code> and <code>filterAccordingToSelection</code> in <code>menus.js</code> now have an options-parameter. This parameter combines the former parameters <code>onlyVisible</code>, <code>enableDisableKeyStrokes</code> and <code>notAllowedTypes</code>.
-The following are two migration examples:</p>
+<p>Since there are now constants for menu types, you can replace the string literals and use these constants.</p>
 </div>
-<div class="listingblock">
-<div class="title">Listing 6. Old</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">let allowedTypes = [<span class="string"><span class="delimiter">'</span><span class="content">Example.MenuType</span><span class="delimiter">'</span></span>],
-  onlyVisible = <span class="predefined-constant">true</span>,
-  enableDisableKeyStrokes = <span class="predefined-constant">false</span>;
-
-<span class="comment">// example 1</span>
-menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, <span class="predefined-constant">true</span>, <span class="predefined-constant">false</span>);
-
-<span class="comment">// example 2</span>
-menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, onlyVisible, enableDisableKeyStrokes);</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Listing 7. New</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">let allowedTypes = [<span class="string"><span class="delimiter">'</span><span class="content">Example.MenuType</span><span class="delimiter">'</span></span>],
-  onlyVisible = <span class="predefined-constant">true</span>,
-  enableDisableKeyStrokes = <span class="predefined-constant">false</span>;
-
-<span class="comment">// example 1</span>
-menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, {
-  <span class="key">onlyVisible</span>: <span class="predefined-constant">true</span>,
-  <span class="key">enableDisableKeyStrokes</span>: <span class="predefined-constant">false</span>
-});
-
-<span class="comment">// example 2</span>
-menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, {onlyVisible, enableDisableKeyStrokes});</code></pre>
-</div>
+<div class="paragraph">
+<p>The migration can be done automatically using the migration tool.
+If you already used it to migrate the object type (<a href="#objecttype-as-class-reference-scout-js"><em>ObjectType as Class Reference (Scout JS)</em></a>), the menu types have probably already been migrated.
+Otherwise, follow the instructions described here: <a href="https://www.npmjs.com/package/@eclipse-scout/migrate#objecttype-and-menutype-migration">@eclipse-scout/migrate</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="rename-widgettooltip-widget-scout-js"><a class="anchor" href="#rename-widgettooltip-widget-scout-js"></a>Rename WidgetTooltip.widget (Scout JS)</h2>
+<h2 id="scout-js-api-changes"><a class="anchor" href="#scout-js-api-changes"></a>Scout JS API Changes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Along with the TypeScript migration, we had to adjust the API a little and removed some obsolete code.
+Please check if your JavaScript uses the mentioned methods and adjust it accordingly.</p>
+</div>
+<div class="sect2">
+<h3 id="rename-widgettooltip-widget"><a class="anchor" href="#rename-widgettooltip-widget"></a>Rename WidgetTooltip.widget</h3>
 <div class="paragraph">
 <p>The <code>widget</code> property of <code>WidgetTooltip</code> has been renamed to <code>content</code>.
 Together with the property itself the corresponding setter has been renamed from <code>setWidget</code> to <code>setContent</code>.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="rename-widgetpopup-widget-scout-js-scout-classic"><a class="anchor" href="#rename-widgetpopup-widget-scout-js-scout-classic"></a>Rename WidgetPopup.widget (Scout JS &amp; Scout Classic)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="rename-widgetpopup-widget-scout-js-scout-classic"><a class="anchor" href="#rename-widgetpopup-widget-scout-js-scout-classic"></a>Rename WidgetPopup.widget (Scout JS &amp; Scout Classic)</h3>
 <div class="paragraph">
 <p>The <code>widget</code> property on <code>WidgetPopup</code> classes (and all its subclasses) has been renamed to <code>content</code>:</p>
 </div>
@@ -1099,12 +1031,10 @@ Together with the property itself the corresponding setter has been renamed from
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="rename-proposalchooser-model-scout-js"><a class="anchor" href="#rename-proposalchooser-model-scout-js"></a>Rename ProposalChooser.model (Scout JS)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="rename-proposalchooser-model"><a class="anchor" href="#rename-proposalchooser-model"></a>Rename ProposalChooser.model</h3>
 <div class="paragraph">
-<p>The <code>model</code> property on <code>ProposalChooser</code> classes (and all its subclasses) has been renamed to <code>content</code>:</p>
+<p>The <code>model</code> property on <code>ProposalChooser</code> class (and all its subclasses) has been renamed to <code>content</code>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1124,10 +1054,46 @@ Together with the property itself the corresponding setter has been renamed from
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="options-parameter-for-filter-methods-in-menus-js"><a class="anchor" href="#options-parameter-for-filter-methods-in-menus-js"></a>Options-parameter for filter-methods in menus.js</h3>
+<div class="paragraph">
+<p>The methods <code>filter</code> and <code>filterAccordingToSelection</code> in <code>menus.js</code> now have an options-parameter. This parameter combines the former parameters <code>onlyVisible</code>, <code>enableDisableKeyStrokes</code> and <code>notAllowedTypes</code>.
+The following are two migration examples:</p>
 </div>
-<div class="sect1">
-<h2 id="jquery-scout-js"><a class="anchor" href="#jquery-scout-js"></a>JQuery (Scout JS)</h2>
-<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Listing 5. Old</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">let allowedTypes = [<span class="string"><span class="delimiter">'</span><span class="content">Example.MenuType</span><span class="delimiter">'</span></span>],
+  onlyVisible = <span class="predefined-constant">true</span>,
+  enableDisableKeyStrokes = <span class="predefined-constant">false</span>;
+
+<span class="comment">// example 1</span>
+menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, <span class="predefined-constant">true</span>, <span class="predefined-constant">false</span>);
+
+<span class="comment">// example 2</span>
+menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, onlyVisible, enableDisableKeyStrokes);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. New</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">let allowedTypes = [<span class="string"><span class="delimiter">'</span><span class="content">Example.MenuType</span><span class="delimiter">'</span></span>],
+  onlyVisible = <span class="predefined-constant">true</span>,
+  enableDisableKeyStrokes = <span class="predefined-constant">false</span>;
+
+<span class="comment">// example 1</span>
+menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, {
+  <span class="key">onlyVisible</span>: <span class="predefined-constant">true</span>,
+  <span class="key">enableDisableKeyStrokes</span>: <span class="predefined-constant">false</span>
+});
+
+<span class="comment">// example 2</span>
+menus.filter(<span class="local-variable">this</span>.menus, allowedTypes, {onlyVisible, enableDisableKeyStrokes});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jquery-scout"><a class="anchor" href="#jquery-scout"></a>JQuery-Scout</h3>
 <div class="paragraph">
 <p>The following functions have been removed because they are not in use anymore.</p>
 </div>
@@ -1167,10 +1133,8 @@ Together with the property itself the corresponding setter has been renamed from
 </ol>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="table-scout-js"><a class="anchor" href="#table-scout-js"></a>Table (Scout JS)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="table"><a class="anchor" href="#table"></a>Table</h3>
 <div class="paragraph">
 <p>TableFilter.js has been removed because it has no benefits.</p>
 </div>
@@ -1179,10 +1143,8 @@ Together with the property itself the corresponding setter has been renamed from
 With JavaScript, <code>extends from TableFilter</code> can be removed.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="testing-karma-jasmine-scout-scout-js"><a class="anchor" href="#testing-karma-jasmine-scout-scout-js"></a>Testing / karma-jasmine-scout (Scout JS)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="testing-karma-jasmine-scout"><a class="anchor" href="#testing-karma-jasmine-scout"></a>Testing / karma-jasmine-scout</h3>
 <div class="paragraph">
 <p>The following functions have been removed because they are not in use anymore.</p>
 </div>
@@ -1223,10 +1185,8 @@ With JavaScript, <code>extends from TableFilter</code> can be removed.</p>
 In the rare case you used these functions for testing, you need to import them now, the JQuery-object does not contain them anymore.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="various-widget-adjustments-scout-js"><a class="anchor" href="#various-widget-adjustments-scout-js"></a>Various Widget Adjustments (Scout JS)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="various-clean-up"><a class="anchor" href="#various-clean-up"></a>Various Clean Up</h3>
 <div class="paragraph">
 <p>The following model properties have been removed because they are not in use.</p>
 </div>
@@ -1242,6 +1202,7 @@ In the rare case you used these functions for testing, you need to import them n
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="js-build-improvements"><a class="anchor" href="#js-build-improvements"></a>JS Build Improvements</h2>
 <div class="sectionbody">
@@ -1253,13 +1214,13 @@ You are probably using the correct import style already, since file based import
 In case there are file based imports, just adjust them as follows:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 8. Old</div>
+<div class="title">Listing 7. Old</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> Table from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core/src/table/Table</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 9. New</div>
+<div class="title">Listing 8. New</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Table} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span></code></pre>
 </div>
@@ -1456,7 +1417,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2022-12-14 12:19:26 +0100
+Last updated 2022-12-16 08:54:35 +0100
 </div>
 </div>
 </body>
