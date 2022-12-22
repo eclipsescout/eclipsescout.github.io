@@ -544,6 +544,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#well-defined-and-typed-widget-events">Well-Defined and Typed Widget Events</a></li>
 <li><a href="#typed-return-values-when-finding-widgets">Typed Return Values When Finding Widgets</a></li>
 <li><a href="#objecttype-as-class-reference">ObjectType as Class Reference</a></li>
+<li><a href="#menutypes">MenuTypes</a>
+<ul class="sectlevel3">
+<li><a href="#constants">Constants</a></li>
+<li><a href="#menu-type-support-for-valuefield-and-imagefield">Menu type support for ValueField and ImageField</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#javascript-code-migration-tool">JavaScript Code Migration Tool</a></li>
@@ -563,6 +569,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#api-changes">API Changes</a></li>
 </ul>
 </li>
+<li><a href="#jsform">JsForm</a></li>
 </ul>
 </div>
 </div>
@@ -845,6 +852,82 @@ scout.create(Button, {<span class="key">parent</span>: <span class="local-variab
 <p>Please see the <a href="https://eclipsescout.github.io/23.1/migration-guide.html#ObjectType%20as%20Class%20Reference%20(Scout%20JS)">Migration Guide</a> for migration assistance.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
+<div class="sect3">
+<h4 id="constants"><a class="anchor" href="#constants"></a>Constants</h4>
+<div class="paragraph">
+<p>Constants have been added for all menu types of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Calendar</p>
+</li>
+<li>
+<p>ImageField</p>
+</li>
+<li>
+<p>Planner</p>
+</li>
+<li>
+<p>TabBox</p>
+</li>
+<li>
+<p>Table</p>
+</li>
+<li>
+<p>Tree</p>
+</li>
+<li>
+<p>ValueField</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Instead of using string literals in e.g. a <code>MenuModel</code> one can use these constants now. Therefore, this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ts">import {Menu} from '@eclipse-scout/core';
+
+{
+  id: 'ExampleMenu',
+  text: 'Example',
+  objectType: Menu,
+  menuTypes: [
+    'Table.SingleSelection'
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>becomes this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ts">import {Menu, Table} from '@eclipse-scout/core';
+
+{
+  id: 'ExampleMenu',
+  text: 'Example',
+  objectType: Menu,
+  menuTypes: [
+    Table.MenuTypes.SingleSelection
+  ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="menu-type-support-for-valuefield-and-imagefield"><a class="anchor" href="#menu-type-support-for-valuefield-and-imagefield"></a>Menu type support for ValueField and ImageField</h4>
+<div class="paragraph">
+<p>Menu type support has been added to the <code>ValueField</code> and the <code>ImageField</code>.
+This means that e.g. the <code>ValueField</code> will display different menus whether a value is set or not.
+For more information about the menuType support of <code>ValueField</code> and <code>ImageField</code> see <a href="https://eclipsescout.github.io/23.1/technical-guide-js.html#menu-types">Technical Guide for Scout JS</a>.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1049,6 +1132,16 @@ If an invalid category is provided an error is logged and the same behavior is e
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jsform"><a class="anchor" href="#jsform"></a>JsForm</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The JsForm is a Java-form that wraps a form implemented in JS. This allows a Scout Classic application to open a Scout JS form.
+For more information about the JsForm see <a href="https://eclipsescout.github.io/23.1/technical-guide.html#how-to-js-form">Technical Guide</a>.</p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1064,11 +1157,10 @@ Do you want to improve this document? Have a look at the <a href="https://github
 </div>
 </div>
 </div>
-</div>
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2022-12-16 08:54:35 +0100
+Last updated 2022-12-22 18:23:32 +0100
 </div>
 </div>
 </body>
