@@ -564,7 +564,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#lookup-call">7. Lookup Call</a></li>
 <li><a href="#styling">8. Styling</a>
 <ul class="sectlevel2">
-<li><a href="#themes">8.1. Themes</a></li>
+<li><a href="#setup-less-files">8.1. Setup Less Files</a></li>
+<li><a href="#basic-customization">8.2. Basic Customization</a></li>
+<li><a href="#advanced-customization">8.3. Advanced Customization</a></li>
+<li><a href="#themes">8.4. Themes</a></li>
 </ul>
 </li>
 <li><a href="#extensibility">9. Extensibility</a>
@@ -1547,16 +1550,32 @@ The following display hints are available by default:</p>
 <h2 id="styling"><a class="anchor" href="#styling"></a>8. Styling</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Beside JavaScript for business logic and for the models, every Scout JS app probably needs some CSS code at some point in time. If you are writing custom widgets, you need it for sure. But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
+<p>Beside JavaScript for business logic and for the models, every Scout JS app probably needs some CSS code at some point in time.
+If you are writing custom widgets, you need it for sure.
+But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
 </div>
 <div class="paragraph">
-<p>Scout uses <a href="https://github.com/less/less.js">LESS</a> as CSS preprocessor. It has a lot of advantages to pure CSS: variables, mixins, functions, imports etc. If you use the default build infrastructure provided by Scout, you cannot only use LESS easily without getting a headache on how to integrate it in your build system, you get access to all the LESS constructs used by Scout itself. This means you can use variables for colors, icons and sizes, mixins for animations and to avoid browser specific prefixes. You can import whole Scout LESS files for your custom themes and you get a lot of sample code in the Scout code base because Scout itself uses the same concepts.</p>
+<p>Scout uses <a href="https://github.com/less/less.js">LESS</a> as CSS preprocessor.
+It has a lot of advantages to pure CSS: variables, mixins, functions, imports etc.
+If you use the default build infrastructure provided by Scout, you cannot only use LESS easily without getting a headache on how to integrate it in your build system, you get access to all the LESS constructs used by Scout itself.
+This means you can use variables for colors, icons and sizes, mixins for animations and to avoid browser specific prefixes.
+You can import whole Scout LESS files for your custom themes, and you get a lot of sample code in the Scout code base because Scout itself uses the same concepts.</p>
+</div>
+<div class="sect2">
+<h3 id="setup-less-files"><a class="anchor" href="#setup-less-files"></a>8.1. Setup Less Files</h3>
+<div class="paragraph">
+<p>In order to get started you need a place to put all your LESS code.
+The recommendation is to create one LESS file for each widget.
+That means if your widget is called <code>MyWidget.js</code> you would create a file called <code>MyWidget.less</code>.
+Even if you adjust the look of an existing widget you can create a file called let&#8217;s say <code>StringField.less</code> and put the rules there.
+If you only have a few rules or non widget specific rules you can create a file called <code>main.less</code> and put them there.
+However, these are only recommendations, you can always do it as you like.</p>
 </div>
 <div class="paragraph">
-<p>In order to get started you need a place to put all your LESS code. The recommendation is to create one LESS file for each widget. That means if your widget is called <code>MyWidget.js</code> you would create a file called <code>MyWidget.less</code>. Even if you adjust the look of an existing widget you can create a file called let&#8217;s say <code>StringField.less</code> and put the rules there. If you only have a few rules or non widget specific rules you can create a file called <code>main.less</code> and put them there. However, these are only recommendations, you can always do it as you like.</p>
-</div>
-<div class="paragraph">
-<p>The creation of these files won&#8217;t make them load automatically. You have to register them in your <code>index</code> file. This file should be put into your <code>src/main/js</code> folder and named <code>index.less</code>. Just include your new files using the LESS <code>@import</code> keyword.</p>
+<p>The creation of these files won&#8217;t make them load automatically.
+You have to register them in your <code>index</code> file.
+This file should be put into your <code>src/main/js</code> folder and named <code>index.less</code>.
+Just include your new files using the LESS <code>@import</code> keyword.</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 19. Include a LESS file</div>
@@ -1565,10 +1584,18 @@ The following display hints are available by default:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In addition to this <code>index</code> file you normally also have a <code>theme</code> file which will be used as entry point in your <code>webpack.config.js</code> and included in the <code>index.html</code>. The intention of the <code>theme</code> file is to group individual <code>index</code> files and make one file in order to load all rules at once within one request.</p>
+<p>In addition to this <code>index</code> file you normally also have a <code>theme</code> file which will be used as entry point in your <code>webpack.config.js</code> and included in the <code>index.html</code>.
+The intention of the <code>theme</code> file is to group individual <code>index</code> files and make one file in order to load all rules at once within one request.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="basic-customization"><a class="anchor" href="#basic-customization"></a>8.2. Basic Customization</h3>
 <div class="paragraph">
-<p>Now that we have all the infrastructure set up, we can start adding some rules. As already said, you can use all the LESS variables from Scout. The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module. If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize. Let&#8217;s say you want to change the background color of the header, you can redefine the variable <code>@desktop-header-background-color</code>.</p>
+<p>Now that we have all the infrastructure set up, we can start adding some rules.
+As already said, you can use all the LESS variables from Scout.
+The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module.
+If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize.
+Let&#8217;s say you want to change the background color of the header, you can redefine the variable <code>@desktop-header-background-color</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 20. Changing the background color of the header</div>
@@ -1577,25 +1604,71 @@ The following display hints are available by default:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>That&#8217;s it! As you can see, changing this variable not only changes the background color of the header, it also changes the background color of the view-buttons on the top left, because they are supposed to have the same color. You could do the same by using CSS rules, but you would have to write several selectors to achieve the same.</p>
+<p>That&#8217;s it! As you can see, changing this variable not only changes the background color of the header, it also changes the background color of the view-buttons on the top left, because they are supposed to have the same color.
+You could do the same by using CSS rules, but you would have to write several selectors to achieve the same.</p>
 </div>
-<div id="img-navigation-background" class="imageblock">
+<div class="imageblock">
 <div class="content">
-<img src="images/custom_navigation_background.png" alt="custom navigation background">
+<img src="images/custom_header_background.png" alt="custom header background">
 </div>
-<div class="title">Figure 4. Helloworld default and with a custom navigation background color</div>
-</div>
-<div class="paragraph">
-<p>In this example a color from the Scout color palette is used. You can also use a custom hex code instead of <code>@palette-red-4</code> or define a custom color palette, if you want to use the same colors for different rules.</p>
+<div class="title">Figure 4. Helloworld default and with a custom header background color</div>
 </div>
 <div class="paragraph">
-<p>Beside colors there are some other files in the style folder of the Scout module: <code>animations.less</code>, <code>fonts.less</code>, <code>icons.less</code>, <code>mixins.less</code> and <code>sizes.less</code>. All these files contain variables or mixins which are used by various Scout widgets and may be used by your project as well.</p>
+<p>In this example a color from the Scout color palette is used.
+You can also use a custom hex code instead of <code>@palette-red-4</code> or define a custom color palette, if you want to use the same colors for different rules.</p>
 </div>
 <div class="paragraph">
-<p>Redefining a variable is the simplest way of customizing. If you need more control you can always write a custom CSS rule. Keep in mind that these rules need to be more specific than the default CSS rules of Scout, otherwise they won&#8217;t be executed (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class="bare">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a> for details). We cannot guarantee that your custom rules will still work when migrating to a newer Scout version, because changing only a small part of the rule might make it more specific so that your rule won&#8217;t work anymore. That only applies to custom rules which are supposed to change existing look or behavior. If you are writing a custom widget without overriding default Scout rules there shouldn&#8217;t be any problems regarding migration.</p>
+<p>Beside colors there are some other files in the style folder of the Scout module: <code>animations.less</code>, <code>fonts.less</code>, <code>icons.less</code>, <code>mixins.less</code> and <code>sizes.less</code>.
+All these files contain variables or mixins which are used by various Scout widgets and may be used by your project as well.</p>
+</div>
+<div class="sect3">
+<h4 id="accent-colors"><a class="anchor" href="#accent-colors"></a>8.2.1. Accent Colors</h4>
+<div class="paragraph">
+<p>In the above example to change the header background color, we adjusted a specific less variable to only change the header.
+As you may have noticed on the screenshot, the pencil on the top left, the title below and the text on the tile are still blue.
+This is expected, because they are not related to the header background color.
+If you want to change these colors as well, you could do it in the same way: Look for the LESS variables and adjust them.
+But you could also try to adjust the accent colors.</p>
+</div>
+<div class="paragraph">
+<p>Scout has a dedicated color palette for accent colors.
+Accent colors are used by many widgets, for titles, for links, for hover states etc.
+The default accent color of Scout is blue.</p>
+</div>
+<div class="paragraph">
+<p>So, instead of changing specific colors, you can try to change the accent color palette.
+For this example we use the slightly adjusted red palette, but you can use your own colors of course:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@accent-color-0</span>: <span class="directive">@palette-red-0</span>;
+<span class="directive">@accent-color-1</span>: <span class="directive">@palette-red-1</span>;
+<span class="directive">@accent-color-2</span>: <span class="directive">@palette-red-2</span>;
+<span class="directive">@accent-color-3</span>: <span class="directive">@palette-red-4</span>;
+<span class="directive">@accent-color-4</span>: <span class="directive">@palette-red-5</span>;
+<span class="directive">@accent-color-5</span>: <span class="error">d</span><span class="error">a</span><span class="error">r</span><span class="error">k</span><span class="error">e</span><span class="error">n</span>(<span class="directive">@palette-red-5</span>, <span class="float">10%</span>);</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/accent-color-change.png" alt="accent color change">
+</div>
+<div class="title">Figure 5. Accent color change</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="themes"><a class="anchor" href="#themes"></a>8.1. Themes</h3>
+<h3 id="advanced-customization"><a class="anchor" href="#advanced-customization"></a>8.3. Advanced Customization</h3>
+<div class="paragraph">
+<p>Redefining a LESS variable is the simplest way of customizing.
+If you need more control you can always write a custom CSS rule.
+Keep in mind that these rules need to be more specific than the default CSS rules of Scout, otherwise they won&#8217;t be executed (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class="bare">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a> for details). We cannot guarantee that your custom rules will still work when migrating to a newer Scout version, because changing only a small part of the rule might make it more specific so that your rule won&#8217;t work anymore.
+That only applies to custom rules which are supposed to change existing look or behavior.
+If you are writing a custom widget without overriding default Scout rules there shouldn&#8217;t be any problems regarding migration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="themes"><a class="anchor" href="#themes"></a>8.4. Themes</h3>
 <div class="paragraph">
 <p>Scout applications support styling via CSS/LESS themes. Scout comes with two themes by default: the <em>default</em> theme with blue colors and the <em>dark</em> theme with gray/black colors. Technically a theme has a name and a set of LESS files.</p>
 </div>
@@ -1680,22 +1753,24 @@ The following display hints are available by default:</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="css"><span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">index</span><span class="delimiter">&quot;</span></span>;
 <span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">style/colors-dark</span><span class="delimiter">&quot;</span></span>;
-<span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">desktop/outline/Outline-dark</span><span class="delimiter">&quot;</span></span>;</code></pre>
+<span class="directive">@import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">style/sizes-dark</span><span class="delimiter">&quot;</span></span>;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As you see, the first thing we do on line 1 is to import the default theme 'index'. This means the <em>dark</em> theme inherits all style definitions from the default theme. The dark theme only extends new additional style and LESS variables or overrides styles or LESS variables from the default theme. This is what happens on line 2: <code>colors-dark.less</code> overrides some variables defined in the <code>colors.less</code> file from the default theme, like the gray colors:</p>
+<p>As you see, the first thing we do on line 1 is to import the default theme 'index'. This means the <em>dark</em> theme inherits all style definitions from the default theme.
+The dark theme only extends new additional style and LESS variables or overrides styles or LESS variables from the default theme.
+This is what happens on line 2: <code>colors-dark.less</code> overrides some variables defined in the <code>colors.less</code> file from the default theme, like the gray colors:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 25. Excerpt from Scout core index-dark.less</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="css">...
-<span class="directive">@palette-gray-1</span>: <span class="color">#e4e4e6</span>;
-<span class="directive">@palette-gray-2</span>: <span class="color">#999999</span>;
-<span class="directive">@palette-gray-2-1</span>: <span class="color">#79818d</span>;
-<span class="directive">@palette-gray-3</span>: <span class="color">#495465</span>;
-<span class="directive">@palette-gray-4</span>: <span class="color">#394051</span>;
-<span class="directive">@palette-gray-5</span>: <span class="color">#2d3748</span>;
+<span class="directive">@palette-gray-0</span>: <span class="directive">@palette-white</span>;
+<span class="directive">@palette-gray-1</span>: <span class="color">#F5F5F5</span>;
+<span class="directive">@palette-gray-2</span>: <span class="color">#E9EBEB</span>;
+<span class="directive">@palette-gray-3</span>: <span class="color">#BFC2C3</span>;
+<span class="directive">@palette-gray-4</span>: <span class="color">#A7ACAD</span>;
+<span class="directive">@palette-gray-5</span>: <span class="color">#7E8588</span>;
 ...</code></pre>
 </div>
 </div>
@@ -1703,9 +1778,13 @@ The following display hints are available by default:</p>
 <p>Note that all variables except <code>@palette-gray-2-1</code> override variables from <code>colors.less</code>. <code>@palette-gray-2-1</code> is a variable which is only defined and used in the <em>dark</em> theme.</p>
 </div>
 <div class="sect3">
-<h4 id="build-and-runtime"><a class="anchor" href="#build-and-runtime"></a>8.1.1. Build and Runtime</h4>
+<h4 id="build-and-runtime"><a class="anchor" href="#build-and-runtime"></a>8.4.1. Build and Runtime</h4>
 <div class="paragraph">
-<p>Scout uses Webpack to run the LESS parser and build the CSS themes. Your application needs at least one default theme. The Scout archetype adds this theme to your <code>webpack.config.js</code>. If your application needs to work with multiple themes you must add them to the list of config entries. In this example we add the two themes <em>dark</em> and <em>rainbow</em>:</p>
+<p>Scout uses Webpack to run the LESS parser and build the CSS themes.
+Your application needs at least one default theme.
+The Scout archetype adds this theme to your <code>webpack.config.js</code>.
+If your application needs to work with multiple themes you must add them to the list of config entries.
+In this example we add the two themes <em>dark</em> and <em>rainbow</em>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 26. Excerpt from webpack.config.js</div>
@@ -1721,7 +1800,9 @@ The following display hints are available by default:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you use a Scout UI server as backend for your Scout JS application the class <code>WebResourceLoader</code> is responsible for supplying the requested CSS theme file to the browser. This class uses the current theme name as provided by the <code>UiThemeHelper</code>, which checks if a theme name is set by a cookie, the HTTP session or by an HTTP request parameter. These are good starting points for debugging, in case something unexpected happens while developing themes.</p>
+<p>When you use a Scout UI server as backend for your Scout JS application the class <code>WebResourceLoader</code> is responsible for supplying the requested CSS theme file to the browser.
+This class uses the current theme name as provided by the <code>UiThemeHelper</code>, which checks if a theme name is set by a cookie, the HTTP session or by an HTTP request parameter.
+These are good starting points for debugging, in case something unexpected happens while developing themes.</p>
 </div>
 </div>
 </div>
@@ -1877,7 +1958,7 @@ that do not belong to the default <em>scout</em> namespace.</p>
 <div class="content">
 <img src="images/smart_field.png" alt="smart field">
 </div>
-<div class="title">Figure 5. Smart Field</div>
+<div class="title">Figure 6. Smart Field</div>
 </div>
 <div class="paragraph">
 <p>If you don&#8217;t need the search as you type feature, you can switch it off by setting the property <code>displayHint</code> to <code>dropdown</code> so that it behaves like a regular drop down list. This means the user cannot filter the values anymore using key board and can choose the values only by mouse / touch.</p>
@@ -1886,7 +1967,7 @@ that do not belong to the default <em>scout</em> namespace.</p>
 <div class="content">
 <img src="images/drop_down_field.png" alt="drop down field">
 </div>
-<div class="title">Figure 6. Smart Field with display style set to 'dropdown'</div>
+<div class="title">Figure 7. Smart Field with display style set to 'dropdown'</div>
 </div>
 <div class="paragraph">
 <p>Another type of Smart Field is the so called <code>Proposal Field</code>. A Proposal Field does not require the user to choose from the available proposals but allows him to enter custom text as well.</p>
@@ -1895,7 +1976,7 @@ that do not belong to the default <em>scout</em> namespace.</p>
 <div class="content">
 <img src="images/proposal_field.png" alt="proposal field">
 </div>
-<div class="title">Figure 7. Proposal Field</div>
+<div class="title">Figure 8. Proposal Field</div>
 </div>
 <div class="paragraph">
 <p>In order to provide the proposals you can either use a <a href="#lookup-call">Chapter 7</a> or a <code>Code Type</code>.</p>
@@ -2090,7 +2171,7 @@ This filter field is enabled by default and can be turned off using the property
 <div class="content">
 <img src="images/tree_box_with_filter_field.png" alt="tree box with filter field">
 </div>
-<div class="title">Figure 8. Filter field</div>
+<div class="title">Figure 9. Filter field</div>
 </div>
 <div class="paragraph">
 <p>This filter field will filter the rows, nodes or tiles by their display text.
@@ -3749,7 +3830,7 @@ chart.setConfig(config);</code></pre>
 <div class="content">
 <img src="images/barChartCustomInteractive.png" alt="barChartCustomInteractive">
 </div>
-<div class="title">Figure 9. The dataset "Vanilla" is hidden and some segments are checked.</div>
+<div class="title">Figure 10. The dataset "Vanilla" is hidden and some segments are checked.</div>
 </div>
 </div>
 <div class="sect3">
@@ -3846,7 +3927,7 @@ To achieve this, we need to add a LESS file with the following content:</p>
 <div class="content">
 <img src="images/bubbleChartColorSchemeGrey.png" alt="bubbleChartColorSchemeGrey">
 </div>
-<div class="title">Figure 10. A checkable bubble chart using the custom grey color scheme.</div>
+<div class="title">Figure 11. A checkable bubble chart using the custom grey color scheme.</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3868,7 +3949,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2022-04-29 18:52:24 +0200
+Last updated 2023-01-04 18:52:27 +0100
 </div>
 </div>
 </body>
