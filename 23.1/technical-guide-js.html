@@ -573,8 +573,8 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </li>
 <li><a href="#extensibility">9. Extensibility</a>
 <ul class="sectlevel2">
-<li><a href="#how-to-extend-scout-objects">9.1. How to extend Scout objects</a></li>
-<li><a href="#export-scout-model-from-a-scout-classic-online-application">9.2. Export Scout model from a Scout classic (online) application</a></li>
+<li><a href="#extension-by-sub-classing">9.1. Extension by Sub-Classing</a></li>
+<li><a href="#extension-by-composition">9.2. Extension by Composition</a></li>
 </ul>
 </li>
 <li><a href="#widget-reference">10. Widget Reference</a>
@@ -2055,10 +2055,172 @@ These are good starting points for debugging, in case something unexpected happe
 <div class="sect1">
 <h2 id="extensibility"><a class="anchor" href="#extensibility"></a>9. Extensibility</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="how-to-extend-scout-objects"><a class="anchor" href="#how-to-extend-scout-objects"></a>9.1. How to extend Scout objects</h3>
 <div class="paragraph">
-<p>The extension feature in Scout JS works by wrapping functions on the prototype of a Scout object
+<p>The extensibility concepts of Scout allow you to extend or even replace methods of Scout widgets or objects.
+You can also use it to extend your own objects or objects from a Scout based third party library.</p>
+</div>
+<div class="paragraph">
+<p>There are mainly two ways to extend an object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Extension by Sub-Classing</p>
+</li>
+<li>
+<p>Extension by Composition</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="extension-by-sub-classing"><a class="anchor" href="#extension-by-sub-classing"></a>9.1. Extension by Sub-Classing</h3>
+<div class="paragraph">
+<p>Extending an object using sub-classing is simple and straight forward.
+It can either be used to create a custom widget and only use it for certain cases.
+And it can even be used to replace a specific widget completely, so your widget will be used every time the original widget is requested.</p>
+</div>
+<div class="paragraph">
+<p>To extend from a widget, just create a new class, extend from the desired widget class and override the methods you want to adjust.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 33. SpecialStringField.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {StringField} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> SpecialStringField <span class="reserved">extends</span> StringField {
+  <span class="comment">// Override desired methods</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, register it in your <code>index</code> file as usual and use it in your code by creating a new instance with <code>scout.create('yournamespace.SpecialStringField')</code> or as part of a model:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 34. index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="comment">// ...</span>
+<span class="reserved">export</span> {<span class="keyword">default</span> as SpecialStringField} from <span class="string"><span class="delimiter">'</span><span class="content">./SpecialStringField</span><span class="delimiter">'</span></span>;
+<span class="comment">// ...</span>
+window.yournamespace = Object.assign(window.yournamespace || {}, self);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 35. ExampleFormModel.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
+  <span class="key">rootGroupBox</span>: {
+    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>,
+    <span class="key">fields</span>: [
+      {
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">SpecialField</span><span class="delimiter">'</span></span>,
+        <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">yournamespace.SpecialStringField</span><span class="delimiter">'</span></span>,
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">Your special field</span><span class="delimiter">'</span></span>
+      }
+    ]
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to replace every <code>StringField</code> in your application with <code>SpecialStringField</code>, you need to register a new object factory for the <code>objectType</code> <code>StringField</code> as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 36. Adding a new object factory registration</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {SpecialStringField} from <span class="string"><span class="delimiter">'</span><span class="content">./index</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> {scout} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+
+scout.addObjectFactories({
+  <span class="key"><span class="delimiter">'</span><span class="content">StringField</span><span class="delimiter">'</span></span>: () =&gt; <span class="keyword">new</span> SpecialStringField()
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More details can be found in the chapter <a href="#object-factory">Chapter 3</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="extending-a-model"><a class="anchor" href="#extending-a-model"></a>9.1.1. Extending a Model</h4>
+<div class="paragraph">
+<p>If you need to extend a widget that uses a model (see <a href="#creating-a-widget-declaratively">Section 2.3</a>), you may have to extend that model as well.
+To do so, extend the widget as described above and either adjust the widgets in the <code>init</code> function directly.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 37. ExtendedForm.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> ExampleForm from <span class="string"><span class="delimiter">'</span><span class="content">./ExampleForm</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> ExtendedForm <span class="reserved">extends</span> ExampleForm {
+  _init(model) {
+    <span class="reserved">super</span>._init(model);
+    <span class="local-variable">this</span>.widget(<span class="string"><span class="delimiter">'</span><span class="content">SpecialField</span><span class="delimiter">'</span></span>).setLabel(<span class="string"><span class="delimiter">'</span><span class="content">New label for the special field</span><span class="delimiter">'</span></span>);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or, for more complex cases, you can put your model adjustments in a separate file and use the declarative approach.
+To do so, override the <code>_jsonModel</code> method and use <code>models.extend</code> to adapt the original model.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 38. ExtendedForm.js with separate model</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {models} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> ExampleForm from <span class="string"><span class="delimiter">'</span><span class="content">./ExampleForm</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> ExtendedFormModel from <span class="string"><span class="delimiter">'</span><span class="content">./ExtendedFormModel</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> ExtendedForm <span class="reserved">extends</span> ExampleForm {
+  _jsonModel() {
+    let baseModel = <span class="reserved">super</span>._jsonModel();
+    <span class="keyword">return</span> models.extend(ExtendedFormModel, baseModel);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, create a new file that will contain your model extensions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>target</code> keyword to specify which widget should be adjusted.</p>
+</li>
+<li>
+<p>With the <code>operation</code> keyword you define, whether properties should be adjusted (<code>appendTo</code>) or new objects should be inserted (<code>insert</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following example contains an extension for the field with the id <code>SpecialField</code> that sets a new value for the label.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 39. ExtendedFormModel.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
+  <span class="key">type</span>: <span class="string"><span class="delimiter">'</span><span class="content">extension</span><span class="delimiter">'</span></span>,
+  <span class="key">extensions</span>: [
+    {
+      <span class="key">operation</span>: <span class="string"><span class="delimiter">'</span><span class="content">appendTo</span><span class="delimiter">'</span></span>,
+      <span class="key">target</span>: {
+        <span class="key">id</span>: <span class="string"><span class="delimiter">'</span><span class="content">SpecialField</span><span class="delimiter">'</span></span>
+      },
+      <span class="key">extension</span>: {
+        <span class="key">label</span>: <span class="string"><span class="delimiter">'</span><span class="content">New label for the special field</span><span class="delimiter">'</span></span>
+      }
+    }
+  ]
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="extension-by-composition"><a class="anchor" href="#extension-by-composition"></a>9.2. Extension by Composition</h3>
+<div class="paragraph">
+<p>Extension by Composition allows to have multiple, independent extensions of a Scout object.
+It also allows the adjustment of super classes of objects from which it is not possible to inherit, e.g. <code>FormField</code> or even <code>Widget</code>.</p>
+</div>
+<div class="paragraph">
+<p>This extension feature works by wrapping functions on the prototype of a Scout object
 with a wrapper function which is provided by an extension. The extension feature doesn&#8217;t rely on
 subclassing, instead we simply register one or more extensions for a single Scout class. When a
 function is called on an extended object, the functions are called on the registered extensions
@@ -2114,75 +2276,36 @@ in case the current extension is the last extension in the extension chain.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>All extensions must be registered in the <code>_installExtensions</code> function of your <code>App</code> (make sure to use the namespace which is defined in your <code>index.js</code> instead of <code>custom</code>).
-Example:</p>
+<p>All extensions must be registered in the <code>_installExtensions</code> function of your <code>App</code> (make sure to use the namespace which is defined in your <code>index.js</code> instead of <code>yournamespace</code>).</p>
+</div>
+<div class="paragraph">
+<p>You can find your app in your entrypoint file that is linked in your <code>webpack.config.js</code>.
+If you already have a custom <code>App</code>, just override <code>_installExtensions</code> and register the extension.
+Otherwise, you need to create a custom <code>App</code> first by extending from the Scout <code>App</code> (or <code>RemoteApp</code> for Scout Classic) and make sure
+this new app is initialized rather than the default one.</p>
 </div>
 <div class="listingblock">
+<div class="title">Listing 40. CustomApp.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {App, Extension} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
 
-<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyApp <span class="reserved">extends</span> App {
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> CustomApp <span class="reserved">extends</span> App {
   _installExtensions() {
     Extension.install([
-      <span class="string"><span class="delimiter">'</span><span class="content">custom.MyExtension</span><span class="delimiter">'</span></span>
+      <span class="string"><span class="delimiter">'</span><span class="content">yournamespace.MyExtension</span><span class="delimiter">'</span></span>
     ]);
   }
 }</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Listing 41. Entry point file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> CustomApp from <span class="string"><span class="delimiter">'</span><span class="content">./CustomApp</span><span class="delimiter">'</span></span>;
+
+let app = <span class="keyword">new</span> CustomApp();
+app.init();</code></pre>
 </div>
-<div class="sect2">
-<h3 id="export-scout-model-from-a-scout-classic-online-application"><a class="anchor" href="#export-scout-model-from-a-scout-classic-online-application"></a>9.2. Export Scout model from a Scout classic (online) application</h3>
-<div class="paragraph">
-<p>With the steps described here you can export model-data (e.g. forms, tables, etc.) from an existing classic, online Scout application into JSON format which
-can be used in a Scout JS application. This is a fast and convenient method to re-use an existing form in a Scout JS application, because you don&#8217;t have to
-build the model manually. Here&#8217;s how to use the export feature:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Activate the <code>TextKeyTextProviderService</code> in your Scout classic application. You can do this either by calling the static <code>register</code> Method at
-runtime (using the Debugger) or by setting the config property <em>scout.texts.showKeys</em>. Once the TextProvider is active, it returns text keys instead
-of localized texts. The format of the returned string is <code>${textKey:[text-key]}</code>. Strings in this format are interpreted browser side by Scout JS and
-are resolved and localized in <em>texts.js</em>.</p>
-</li>
-<li>
-<p>Call the Scout classic web application with the URL parameter <code>?adapterExportEnabled=true</code>. This parameter is checked by Scout JS and the effect of it is that
-Scout JS keeps adapter-data loaded from the server, so we can use it for a later export operation. Usually Scout JS deletes adapter-data right after it has
-been used to create an adapter instance.</p>
-</li>
-<li>
-<p>Start your browsers developer tools (F12) from your running Scout classic app, inspect the form or another adapter you&#8217;d like to export, and search for
-the ID of that adapter by looking at the <code>data-id</code> attribute in the DOM. Then call the following JavaScript function from the console: <code>JSON.stringify(scout.exportAdapter([id]))</code>.
-The console will now output the JSON code for that adapter. Copy/paste that string from the console and tidy it up with a tool of your choice (for instance <a href="http://www.jsoneditoronline.org">jsoneditoronline.org</a> or <a href="https://jsonformatter.org">jsonformatter.org</a>).</p>
-</li>
-<li>
-<p>Now the formatted JSON code is ready to be used in your Scout JS project. Simply store the JSON to a .json File and load it in the <code>_jsonModel</code> function of
-your widget by calling <code>scout.models.getModel('[ID of json model]')</code>. Most likely you must edit the JSON file and apply some changes manually.
-For instance:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Replace numeric adapter IDs by human-readable, semantic string IDs. You will need these IDs to reference a model element from the JSON model in your
-JavaScript code, e.g. to register a listener on a Menu.</p>
-</li>
-<li>
-<p>Maybe you&#8217;ll have to adjust objectType and namespace of some widgets in the JSON. This needs to be done for widgets
-that do not belong to the default <em>scout</em> namespace.</p>
-</li>
-<li>
-<p>Remove form fields and menus which are never used in your Scout JS app</p>
-</li>
-<li>
-<p>Remove unused menu types from the menuTypes property of a <code>Menu</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note: The function exportAdapter can be used not only for forms, but for any other widget/adapter too.</p>
 </div>
 </div>
 </div>
@@ -2983,7 +3106,7 @@ However, if you are a library developer, we recommend migrating to TypeScript to
 <p>In addition to Node module dependencies, a Scout application uses ES6 imports to define dependencies between each JavaScript files. So if you want to use a class or utility from <code>@eclipse-scout/core</code>, you&#8217;ll need to import that class or utility in your own JavaScript file.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 33. Importing ES6 modules</div>
+<div class="title">Listing 42. Importing ES6 modules</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> PersonFormModel from <span class="string"><span class="delimiter">'</span><span class="content">./PersonFormModel</span><span class="delimiter">'</span></span>;
 <span class="reserved">import</span> {Form, models} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
@@ -3007,7 +3130,7 @@ However, if you are a library developer, we recommend migrating to TypeScript to
 <p>Scout provides a default Webpack configuration containing all the necessary settings for Webpack and the plugins needed for a typical Scout application setup. To make your application use the Scout defaults, you need to create a file called <code>webpack.config.js</code> in your Node module and reexport the Scout configuration.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 34. Using Scout&#8217;s default Webpack config</div>
+<div class="title">Listing 43. Using Scout&#8217;s default Webpack config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 module.exports = (env, args) =&gt; {
@@ -3035,7 +3158,7 @@ If you want to customize the bundling please have a look at the <a href="https:/
 <p>To let Webpack know about your entry files you need to specify them in your <code>webpack.config.js</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 35. Using Scout&#8217;s default Webpack config</div>
+<div class="title">Listing 44. Using Scout&#8217;s default Webpack config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 
@@ -3066,7 +3189,7 @@ So you don&#8217;t have to care about these chunks unless you want to customize 
 <p>In addition to JavaScript and CSS resources bundled by webpack, your application will probably also require resources like images or fonts. Such resources should be placed in a resource folder, e.g. <code>src/main/resources/WebContent</code> if you use the Maven module structure, or just <code>res</code> otherwise. Because there are multiple modules that could provide such resources, you need to specify them in your <code>webpack.config.js</code> using the <code>resDir</code> array.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 36. Specifying res folders</div>
+<div class="title">Listing 45. Specifying res folders</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/webpack-defaults</span><span class="delimiter">'</span></span>);
 
@@ -3107,7 +3230,7 @@ module.exports = (env, args) =&gt; {
 <p>All this is configured in the file <code>karma-defaults.js</code>. If you want to use them too, you need to provide your own Karma file called <code>karma.conf.js</code> and import the defaults, similar to the <a href="#webpack-configuration">Section 13.2</a>. You can now adjust or override the defaults or just leave them as they are. To let Karma know about your tests, you need to define the entry point.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 37. karma.conf.js</div>
+<div class="title">Listing 46. karma.conf.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">const baseConfig = require(<span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/cli/scripts/karma-defaults</span><span class="delimiter">'</span></span>);
 module.exports = config =&gt; baseConfig(config, <span class="string"><span class="delimiter">'</span><span class="content">./src/test/js/test-index.js</span><span class="delimiter">'</span></span>);</code></pre>
@@ -3120,7 +3243,7 @@ module.exports = config =&gt; baseConfig(config, <span class="string"><span clas
 <p>The file <code>test-index.js</code> defines where your unit tests are and what the context is for the Webpack build. Because a unit test is called a <code>spec</code> when using <code>Jasmine</code>, a typical <code>test-index.js</code> looks like this:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 38. karma.conf.js</div>
+<div class="title">Listing 47. karma.conf.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> {JasmineScout} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core/testing</span><span class="delimiter">'</span></span>;
 
@@ -3144,7 +3267,7 @@ JasmineScout.runTestSuite(context);</code></pre>
 <p>The Scout CLI is a bunch of npm-scripts that help you building and testing your application. In order to use them you need to add a devDependency to <a href="https://www.npmjs.com/package/@eclipse-scout/cli">@eclipse-scout/cli</a> to the <code>package.json</code> of your module. We also suggest to add some scripts to make the execution easier. If you use the Scout archetype, the following will be created for you.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 39. CLI dependency and scripts in package.json</div>
+<div class="title">Listing 48. CLI dependency and scripts in package.json</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">&quot;</span><span class="content">scripts</span><span class="delimiter">&quot;</span></span>: {
   <span class="key"><span class="delimiter">&quot;</span><span class="content">testserver:start</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">scout-scripts test-server:start</span><span class="delimiter">&quot;</span></span>,
@@ -3395,7 +3518,7 @@ When using the Scout archetype to generate your app, the ESLint configuration is
 <p>In order to use the Scout eslint-config, you need to add devDependencies to the modules <code>@eclipse-scout/eslint-config</code> and <code>eslint</code> in your <code>package.json</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 40. ESLint Dependencies</div>
+<div class="title">Listing 49. ESLint Dependencies</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JSON"><span class="key"><span class="delimiter">&quot;</span><span class="content">devDependencies</span><span class="delimiter">&quot;</span></span>: {
   <span class="key"><span class="delimiter">&quot;</span><span class="content">@eclipse-scout/eslint-config</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">23.1.0</span><span class="delimiter">&quot;</span></span>,
@@ -3407,7 +3530,7 @@ When using the Scout archetype to generate your app, the ESLint configuration is
 <p>Then create a file called <code>.eslintrc.js</code> with the following content:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 41. .eslintrc.js</div>
+<div class="title">Listing 50. .eslintrc.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JavaScript">module.exports = {
   extends: '@eclipse-scout'
@@ -3437,7 +3560,7 @@ If the command takes very long and prints a lot of errors, you may have to ignor
 <p>The command above will analyze your current directory including all sub directories. Depending on your environment, it is likely that you&#8217;ll see some errors regarding linebreaks. This is because the Scout config enforces the UNIX format (LF). You can now either convert the linebreaks of your files to that format and adjust your editor to always use the UNIX format, or you can disable the rule. To do that, just add the following to your <code>.eslintrc.js</code>:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 42. Disabling the linebreak rule</div>
+<div class="title">Listing 51. Disabling the linebreak rule</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JavaScript">  rules: {
     'linebreak-style': 'off'
@@ -3513,7 +3636,7 @@ During development, the <code>publishConfig</code> has no effect.</p>
 </ol>
 </div>
 <div class="listingblock">
-<div class="title">Listing 43. Library Webpack Config</div>
+<div class="title">Listing 52. Library Webpack Config</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="JavaScript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
 module.exports = (env, args) =&gt; {
@@ -3529,7 +3652,7 @@ module.exports = (env, args) =&gt; {
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 44. package.json for a library</div>
+<div class="title">Listing 53. package.json for a library</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json">{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./src/main/js/index.ts</span><span class="delimiter">&quot;</span></span>,
@@ -3609,7 +3732,7 @@ const config = baseConfig(env, args);
 You can do so using the <code>exports</code> attribute.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 45. package.json for a library</div>
+<div class="title">Listing 54. package.json for a library</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json">{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">exports</span><span class="delimiter">&quot;</span></span>: {
@@ -4460,7 +4583,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2023-01-11 18:23:30 +0100
+Last updated 2023-01-17 18:23:31 +0100
 </div>
 </div>
 </body>

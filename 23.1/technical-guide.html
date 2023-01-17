@@ -10221,6 +10221,15 @@ Whenever possible, use <code>UtcDateTimeAdapter</code> or <code>CalendarDateTime
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+<span class="comment">&lt;!--
+  ~ Copyright (c) 2010, 2023 BSI Business Systems Integration AG
+  ~
+  ~ This program and the accompanying materials are made
+  ~ available under the terms of the Eclipse Public License 2.0
+  ~ which is available at https://www.eclipse.org/legal/epl-2.0/
+  ~
+  ~ SPDX-License-Identifier: EPL-2.0
+  --&gt;</span>
 <span class="tag">&lt;wsdl:definitions</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PingWebService</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">targetNamespace</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://scout.eclipse.org/docs/ws/PingWebService/</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">xmlns:tns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://scout.eclipse.org/docs/ws/PingWebService/</span><span class="delimiter">&quot;</span></span>
@@ -10818,7 +10827,7 @@ We assume the ice cream shop already has a running Scout application and a place
 <div class="sect3">
 <h4 id="prerequisites"><a class="anchor" href="#prerequisites"></a>21.2.1. Prerequisites</h4>
 <div class="paragraph">
-<p>Everything related to charts has its own Maven and npm modules and is not part of Scout core. Therefore, the following Maven dependencies need to be added to the <code>client</code>-, <code>shared</code>- or <code>ui.html</code>-module of the ice cream shop app.</p>
+<p>Everything related to charts has its own Maven and npm modules and is not part of Scout core. Therefore, the following Maven dependencies need to be added to the <code>client</code>-, <code>shared</code>- and <code>ui.html</code>-module of the ice cream shop app.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10969,7 +10978,7 @@ Object.assign({}, chart); <span class="comment">// workaround so that the import
 </tbody>
 </table>
 <div class="paragraph">
-<p>We create a data object and pass it to the chart.</p>
+<p>We create a data object and pass it to the chart (e.g. in the <code>execLoad</code> method of our <code>FormHandler</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10999,7 +11008,7 @@ IntStream.of(<span class="integer">0</span>, <span class="integer">0</span>, <sp
     .forEach(value -&gt; strawberry.getValues().add(<span class="keyword">new</span> <span class="predefined-type">BigDecimal</span>(value)));
 data.getChartValueGroups().add(strawberry);
 
-chart.setData(data);</code></pre>
+getFieldByClass(ChartField.class).getChart().setData(data);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11025,7 +11034,7 @@ chart.setData(data);</code></pre>
     .withType(IChartType.BAR)
     .withColorScheme(ColorScheme.RAINBOW);
 
-chart.setConfig(config);</code></pre>
+getFieldByClass(ChartField.class).getChart().setConfig(config);</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -11048,8 +11057,8 @@ config.withAutoColor(<span class="predefined-constant">false</span>)
     .withYAxisLabelDisplay(<span class="predefined-constant">true</span>)
     .withYAxisLabel(<span class="string"><span class="delimiter">&quot;</span><span class="content">Scoops</span><span class="delimiter">&quot;</span></span>);
 
-chart.setData(data);
-chart.setConfig(config);</code></pre>
+getFieldByClass(ChartField.class).getChart().setData(data);
+getFieldByClass(ChartField.class).getChart().setConfig(config);</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -11062,7 +11071,7 @@ chart.setConfig(config);</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">chart.extendConfig(BEANS.get(IChartConfig.class)
+<pre class="CodeRay highlight"><code data-lang="java">getFieldByClass(ChartField.class).getChart().extendConfig(BEANS.get(IChartConfig.class)
     .withClickable(<span class="predefined-constant">true</span>)
     .withCheckable(<span class="predefined-constant">true</span>)
     .withLegendClickable(<span class="predefined-constant">true</span>), <span class="predefined-constant">true</span>);</code></pre>
@@ -11334,7 +11343,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2022-12-22 18:23:32 +0100
+Last updated 2023-01-17 18:23:31 +0100
 </div>
 </div>
 </body>

@@ -537,6 +537,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <ul class="sectlevel1">
 <li><a href="#about-this-release">About This Release</a></li>
 <li><a href="#demo-applications">Demo Applications</a></li>
+<li><a href="#re-license-from-epl-1-0-to-epl-2-0">Re-license from EPL-1.0 to EPL-2.0</a></li>
 <li><a href="#improved-developer-experience-for-scout-js">Improved Developer Experience for Scout JS</a>
 <ul class="sectlevel2">
 <li><a href="#typescript-support">TypeScript Support</a></li>
@@ -570,6 +571,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </ul>
 </li>
 <li><a href="#jsform">JsForm</a></li>
+<li><a href="#numberformatprovider">NumberFormatProvider</a></li>
 </ul>
 </div>
 </div>
@@ -637,6 +639,16 @@ The here described functionality has not yet been released and is part of an upc
 <p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="re-license-from-epl-1-0-to-epl-2-0"><a class="anchor" href="#re-license-from-epl-1-0-to-epl-2-0"></a>Re-license from EPL-1.0 to EPL-2.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout has changed its license from the deprecated EPL-1.0 license to EPL-2.0.
+Usually this has no impact for your project.
+For details please consult the <a href="https://www.eclipse.org/legal/epl-2.0/faq.php">EPL FAQ</a> in particular the section with the <a href="https://www.eclipse.org/legal/epl-2.0/faq.php#h.a0eux401qus">major changes</a>.</p>
 </div>
 </div>
 </div>
@@ -1142,6 +1154,14 @@ If an invalid category is provided an error is logged and the same behavior is e
 <p>The JsForm is a Java-form that wraps a form implemented in JS. This allows a Scout Classic application to open a Scout JS form.
 For more information about the JsForm see <a href="https://eclipsescout.github.io/23.1/technical-guide.html#how-to-js-form">Technical Guide</a>.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="numberformatprovider"><a class="anchor" href="#numberformatprovider"></a>NumberFormatProvider</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The return type of <code>NumberFormatProvider#getIntegerInstance</code> was changed from <code>java.text.NumberFormat</code> to <code>java.text.DecimalFormat</code> to align the return type of all get<em>Xyz</em>Instance() methods.</p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1160,7 +1180,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2023-01-13 18:23:34 +0100
+Last updated 2023-01-17 18:23:31 +0100
 </div>
 </div>
 </body>
