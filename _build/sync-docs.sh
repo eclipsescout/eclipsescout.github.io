@@ -47,7 +47,7 @@ targetDir="${targetRepoDir}/${versionDir}"
 echo "Copy files from $sourceDir to $targetDir ..."
 
 # copy images and track changes (rsync using only checksums)
-rsync -uac --info=name ${sourceDir}/images/* ${targetDir}/images/
+rsync --archive --checksum --info=name ${sourceDir}/images/* ${targetDir}/images/
 
 for htmlFile in ${sourceDir}/*.html
 do
