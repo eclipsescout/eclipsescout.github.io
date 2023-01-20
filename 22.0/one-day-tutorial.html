@@ -600,13 +600,6 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#sec-contacts_link_person_organization_summary">What have we achieved?</a></li>
 </ul>
 </li>
-<li><a href="#sec-contacts_outlook">Additional Concepts and Features</a>
-<ul class="sectlevel2">
-<li><a href="#sec-contacts_theming_styling">Theming and Styling</a></li>
-<li><a href="#sec-contacts_modular_apps">Modular Scout Applications</a></li>
-<li><a href="#sec-contacts_infra">Infrastructure</a></li>
-</ul>
-</li>
 <li><a href="#sec-source_control">Git configuration</a></li>
 </ul>
 </div>
@@ -768,10 +761,6 @@ As we can reuse many of the components developed so far this is the shortest tut
 <dd>
 <p>In this step we modify the user interface to implement a 1:n relationship between organizations and persons.
 This includes the creation of a hierarchical page structure for organization, adding an organization column to the person page and adding an organization field to the person form to manage the association of a person to an organization.</p>
-</dd>
-<dt class="hdlist1">Step 8: Additional Concepts and Features (<a href="#sec-contacts_outlook"><em>Additional Concepts and Features</em></a>)</dt>
-<dd>
-<p>The last tutorial part discusses the gap between the tutorial application and the complete "Contacts" demo application.</p>
 </dd>
 </dl>
 </div>
@@ -5712,105 +5701,6 @@ As shown in <a href="#img-contacts_tutorial_result_step_7">Figure 54</a> the org
 </div>
 </div>
 <div class="sect1">
-<h2 id="sec-contacts_outlook"><a class="anchor" href="#sec-contacts_outlook"></a>Additional Concepts and Features</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This last part of the "Contacts" tutorial discusses the gap between the tutorial application and the complete "Contacts" demo application.
-In a number of aspects the full "Contacts" demo application comes with additional features and improvements over the functionality of its tutorial version.</p>
-</div>
-<div class="paragraph">
-<p>The sections below highlight the following areas.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Theming and Styling (<a href="#sec-contacts_theming_styling">Theming and Styling</a>)</p>
-</li>
-<li>
-<p>Modular Scout Applications (<a href="#sec-contacts_modular_apps">Modular Scout Applications</a>)</p>
-</li>
-<li>
-<p>Infrastructure (<a href="#sec-contacts_infra">Infrastructure</a>)</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="sec-contacts_theming_styling"><a class="anchor" href="#sec-contacts_theming_styling"></a>Theming and Styling</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>theme switching form for top level options menu <a href="#img-contacts_theming_styling">Figure 55</a></p>
-</li>
-<li>
-<p>project specific theme "dark"</p>
-</li>
-</ul>
-</div>
-<div id="img-contacts_theming_styling" class="imageblock">
-<div class="content">
-<img src="images/contacts_theming_styling.png" alt="contacts theming styling">
-</div>
-<div class="title">Figure 55. Scout application can change between different themes at runtime.</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec-contacts_modular_apps"><a class="anchor" href="#sec-contacts_modular_apps"></a>Modular Scout Applications</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>separate entity "event"</p>
-</li>
-<li>
-<p>additional pattern for managing m:n relationships using table fields</p>
-</li>
-<li>
-<p>contributions to core:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>menu to desktop</p>
-</li>
-<li>
-<p>column to person page</p>
-</li>
-<li>
-<p>tab to person form</p>
-</li>
-<li>
-<p>event page as child page of organization page</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec-contacts_infra"><a class="anchor" href="#sec-contacts_infra"></a>Infrastructure</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>maven module that combines frontend and backend into a single war file</p>
-</li>
-<li>
-<p>docker integration</p>
-<div class="ulist">
-<ul>
-<li>
-<p>docker-maven-plugin in pom.xml</p>
-</li>
-<li>
-<p>Dockerfile</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="sec-source_control"><a class="anchor" href="#sec-source_control"></a>Git configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -5856,7 +5746,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 22.0<br>
-Last updated 2023-01-18 18:52:35 +0100
+Last updated 2023-01-20 18:52:29 +0100
 </div>
 </div>
 </body>
