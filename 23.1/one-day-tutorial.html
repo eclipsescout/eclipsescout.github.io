@@ -601,13 +601,6 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#sec-contacts_link_person_organization_summary">What have we achieved?</a></li>
 </ul>
 </li>
-<li><a href="#sec-contacts_outlook">Additional Concepts and Features</a>
-<ul class="sectlevel2">
-<li><a href="#sec-contacts_theming_styling">Theming and Styling</a></li>
-<li><a href="#sec-contacts_modular_apps">Modular Scout Applications</a></li>
-<li><a href="#sec-contacts_infra">Infrastructure</a></li>
-</ul>
-</li>
 <li><a href="#sec-source_control">Git configuration</a></li>
 </ul>
 </div>
@@ -636,7 +629,7 @@ The goal of this application is to learn about the most prominent features of th
 An extended version of &#8220;Contacts&#8221; is available as a Scout sample application on <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/releases/23.1/code/contacts">Github</a>.</p>
 </div>
 <div class="paragraph">
-<p>This tutorial uses the Eclipse IDE and the Scout SDK.
+<p>For this tutorial you can use IntelliJ or Eclipse IDE with installed Scout SDK plugins.
 If you have successfully completed the <a href="http://eclipsescout.github.io/23.1/helloscout.html">Hello Scout Tutorial</a> you should have a running Eclipse Scout installation.
 If not, then you should do the Hello Scout Tutorial now.</p>
 </div>
@@ -657,7 +650,7 @@ The persistence of entered data is achieved via simple JDBC access to a Derby da
 <div class="paragraph">
 <p>It is recommended that you first import the full &#8220;Contacts&#8221; demo application into a separate workspace.
 This gives you the possibility to check your source code against the full implementation during the various steps of the tutorial.
-To do so, just clone the Scout demo repository and import it into a new Eclipse workspace.</p>
+To do so, just clone the Scout demo repository and import it into your IDE.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -711,7 +704,7 @@ The selected person can then be opened with the <em class="menu">Edit</em> menu 
 Views are displayed in the bench area of a Scout application.
 Several views can also be opened simultaneously.
 To show a specific view the user has to click on the view button associated with the desired view.
-An example of an opened view is shown for person "Alice" in <a href="#img-app_contacts_personform">Figure 2</a>.</p>
+An example of an opened view is shown for person "Verónica" in <a href="#img-app_contacts_personform">Figure 2</a>.</p>
 </div>
 <div id="img-app_contacts_personform" class="imageblock">
 <div class="content">
@@ -770,10 +763,6 @@ As we can reuse many of the components developed so far this is the shortest tut
 <p>In this step we modify the user interface to implement a 1:n relationship between organizations and persons.
 This includes the creation of a hierarchical page structure for organization, adding an organization column to the person page and adding an organization field to the person form to manage the association of a person to an organization.</p>
 </dd>
-<dt class="hdlist1">Step 8: Additional Concepts and Features (<a href="#sec-contacts_outlook"><em>Additional Concepts and Features</em></a>)</dt>
-<dd>
-<p>The last tutorial part discusses the gap between the tutorial application and the complete "Contacts" demo application.</p>
-</dd>
 </dl>
 </div>
 </div>
@@ -807,9 +796,9 @@ The creation up of the initial project setup consists of the tasks listed below.
 <div class="sect2">
 <h3 id="sec-contacts_initial_codebase"><a class="anchor" href="#sec-contacts_initial_codebase"></a>Creating the initial Codebase</h3>
 <div class="paragraph">
-<p>In case your workspace contains modules from the &#8220;Hello World&#8221; tutorial, you may want to multi-select them and to either close them by invoking the context menu &#8220;Close Projects&#8221; or to delete them by invoking the context menu &#8220;Delete&#8221;.
+<p>If you are using Eclipse and your workspace contains modules from the &#8220;Hello World&#8221; tutorial, you may want to multi-select them and to either close them by invoking the context menu &#8220;Close Projects&#8221; or to delete them by invoking the context menu &#8220;Delete&#8221;.
 The initial code for the &#8220;Contacts&#8221; application is then generated using the <em class="wizard">New Scout Project</em> wizard.
-For the wizard fields you may use the values below and as shown in <a href="#img-sdk_new_project_tutorial">Figure 3</a></p>
+For the wizard fields you may use the values below and as shown in <a href="#img-sdk_new_project_tutorial_Intellij">Figure 3</a> (IntelliJ) and <a href="#img-sdk_new_project_tutorial">Figure 4</a> (Eclipse).</p>
 </div>
 <div class="ulist">
 <ul>
@@ -824,28 +813,40 @@ For the wizard fields you may use the values below and as shown in <a href="#img
 </li>
 </ul>
 </div>
+<div id="img-sdk_new_project_tutorial_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_project_tutorial_Intellij.png" alt="sdk new project tutorial Intellij">
+</div>
+<div class="title">Figure 3. The creation of the initial "Contacts" application in IntelliJ.</div>
+</div>
 <div id="img-sdk_new_project_tutorial" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_project_tutorial.png" alt="sdk new project tutorial">
 </div>
-<div class="title">Figure 3. The creation of the initial "Contacts" application.</div>
+<div class="title">Figure 4. The creation of the initial "Contacts" application in Eclipse.</div>
 </div>
 <div class="paragraph">
-<p>To create this initial application click on <b class="button">Finish</b>.
-The project wizard then creates a number of Maven modules as shown in <a href="#img-contacts_package_explorer">Figure 4</a>.</p>
+<p>To create this initial application click on <b class="button">Next/Finish</b>.
+The project wizard then creates a number of Maven modules as shown in <a href="#img-contacts_package_explorer_Intellij">Figure 5</a> (IntelliJ) and <a href="#img-contacts_package_explorer">Figure 6</a> (Eclipse).</p>
+</div>
+<div id="img-contacts_package_explorer_Intellij" class="imageblock">
+<div class="content">
+<img src="images/app_contacts_package_explorer_initial_Intellij.png" alt="app contacts package explorer initial Intellij">
+</div>
+<div class="title">Figure 5. The package explorer with the initial Maven modules created for the "Contacts" application in IntelliJ.</div>
 </div>
 <div id="img-contacts_package_explorer" class="imageblock">
 <div class="content">
 <img src="images/app_contacts_package_explorer_initial.png" alt="app contacts package explorer initial">
 </div>
-<div class="title">Figure 4. The package explorer with the initial Maven modules created for the "Contacts" application.</div>
+<div class="title">Figure 6. The package explorer with the initial Maven modules created for the "Contacts" application in Eclipse.</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="sec-contacts_remove_stuff"><a class="anchor" href="#sec-contacts_remove_stuff"></a>Removing unnecessary Components</h3>
 <div class="paragraph">
 <p>We start with removing the <code>*.helloworld</code> and <code>\*.settings</code> packages in all Maven modules of the "Contacts" application.
-To delete packages, first select an individual package or packages in the Eclipse package explorer as shown in <a href="#img-contacts_package_explorer">Figure 4</a> and then hit the <kbd>Delete</kbd> key.</p>
+To delete packages, first select an individual package or packages in the package explorer as shown in <a href="#img-contacts_package_explorer">Figure 6</a> (IntelliJ) and <a href="#img-contacts_package_explorer">Figure 6</a> (Eclipse) and then hit the <kbd>Delete</kbd> key.</p>
 </div>
 <div class="paragraph">
 <p>The packages to delete is provided per Maven module in the list below.</p>
@@ -966,70 +967,106 @@ For this, we perform the following modifications to class <code>WorkOutline</cod
 </ul>
 </div>
 <div class="paragraph">
-<p>To quickly find class <code>WorkOutline</code> we first open the <em class="wizard">Open Type</em> dialog from the Eclipse IDE by hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> and enter "workoutline" into the search field as shown in <a href="#img-eclipse_open_type">Figure 5</a>.
-In the result list, we select the desired class and click the <b class="button">OK</b> button to open the file <code>WorkOutline.java</code> in the Java editor of the Eclipse IDE.</p>
+<p>To quickly find the class <code>WorkOutline</code> we first open the <em class="wizard">Open Type</em> dialog by hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></span> in IntelliJ or <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> in Eclipse and enter "workoutline" into the search field as shown in <a href="#img-eclipse_open_type_Intellij">Figure 7</a> (IntelliJ) and <a href="#img-eclipse_open_type">Figure 8</a> (Eclipse).
+In the result list, we select the desired class and click the <b class="button">OK</b> button to open the file <code>WorkOutline.java</code> in the Java editor of your IDE.</p>
+</div>
+<div id="img-eclipse_open_type_Intellij" class="imageblock">
+<div class="content">
+<img src="images/eclipse_open_type_Intellij.png" alt="eclipse open type Intellij">
+</div>
+<div class="title">Figure 7. Use the Open Type dialog to quickly find java types in IntelliJ.</div>
 </div>
 <div id="img-eclipse_open_type" class="imageblock">
 <div class="content">
 <img src="images/eclipse_open_type.png" alt="eclipse open type">
 </div>
-<div class="title">Figure 5. Use the Open Type dialog to quickly find java types in the Eclipse IDE.</div>
+<div class="title">Figure 8. Use the Open Type dialog to quickly find java types in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>We start with the package rename.
-To rename the package <code>org.eclipse.scout.contacts.client.work</code> to <code>org.eclipse.scout.contacts.client.contact</code> click into the word "work" of the package name and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>.
-This opens the package rename dialog as shown in <a href="#img-sdk_rename_package">Figure 6</a> where we replace "work" by "contact" in the <em class="element">New name</em> field.
-After pressing the <b class="button">Ok</b> button Eclipse informs the programmer that the code modification may not be accurate as the resource has compile errors.
+To rename the package <code>org.eclipse.scout.contacts.client.work</code> to <code>org.eclipse.scout.contacts.client.contact</code> click into the word "work" of the package name and hit <span class="keyseq"><kbd>Shift</kbd>+<kbd>F6</kbd></span> (Eclipse: <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>).
+This opens the package rename dialog as shown in <a href="#img-sdk_rename_package_Intellij">Figure 9</a> (IntelliJ) and <a href="#img-sdk_rename_package">Figure 10</a> (Eclipse), where we replace "work" by "contact" in the <em class="element">New name</em> field.
+After pressing the <b class="button">Ok</b> button your IDE informs the programmer that the code modification may not be accurate as the resource has compile errors.
 This warning can be acknowledged by clicking <b class="button">Continue</b>.</p>
+</div>
+<div id="img-sdk_rename_package_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_rename_package_Intellij.png" alt="sdk rename package Intellij">
+</div>
+<div class="title">Figure 9. Use the IntelliJ Rename Package dialog to rename a Java package in IntelliJ.</div>
 </div>
 <div id="img-sdk_rename_package" class="imageblock">
 <div class="content">
 <img src="images/sdk_rename_package.png" alt="sdk rename package">
 </div>
-<div class="title">Figure 6. Use the Eclipse Rename Package dialog to rename a Java package.</div>
+<div class="title">Figure 10. Use the Eclipse Rename Package dialog to rename a Java package in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>In next step we rename class <code>WorkOutline</code> to <code>ContactOutline</code>.
-In the Java editor we can rename the class by clicking into the class identifier <code>WorkOutline</code> and hitting <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>.
-Inside the edit box we can then change the class name to <code>ContactOutline</code> and hit the <b class="button">Enter</b> key to execute the change.
-If Eclipse shows a Rename Type dialog just hit button <b class="button">Continue</b> to let Eclipse complete the rename operation.
+In the Java editor we can rename the class by clicking into the class identifier <code>WorkOutline</code> and hitting <span class="keyseq"><kbd>Shift</kbd>+<kbd>F6</kbd></span> (Eclipse: <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span>).
+Inside the edit box we can then change the class name to <code>ContactOutline</code> and hit the <kbd>Enter</kbd> key to execute the change.
+If your IDE shows a Rename Type dialog just hit button <b class="button">Continue</b> to complete the rename operation.
 To get rid of the compile error in method <code>execCreateChildPages</code> we simply delete the content in the method body.</p>
 </div>
 <div class="paragraph">
-<p>Next, we change the outline title in method <code>getConfiguredTitle</code> by replacing the string "Work" with "Contacts", setting the cursor at the end of the word "Contacts" and hitting <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> to open the Scout content assist as shown in <a href="#img-sdk_new_text_entry_contact">Figure 7</a>.</p>
+<p>Next, we change the outline title in method <code>getConfiguredTitle</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Replace the string "Work" with "Contacts".</p>
+</li>
+<li>
+<p>Set the cursor at the end of the word "Contacts" and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span>.</p>
+</li>
+<li>
+<p>For Eclipse:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Double-click on the proposal <em class="element">New text&#8230;&#8203;</em> to open the Scout new entry wizard as shown in <a href="#img-sdk_new_text_entry_contact">Figure 12</a> and  <a href="#img-sdk_new_text_entry_contact_wizard">Figure 13</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enter the text "Contacts" as shown in <a href="#img-sdk_new_text_entry_contact_wizard_IntelliJ">Figure 11</a> (IntelliJ) and <a href="#img-sdk_new_text_entry_contact_wizard">Figure 13</a> (Eclipse) and click <b class="button">Ok</b>.</p>
+</li>
+</ol>
+</div>
+<div id="img-sdk_new_text_entry_contact_wizard_IntelliJ" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_text_entry_contact_wizard_IntelliJ.png" alt="sdk new text entry contact wizard IntelliJ">
+</div>
+<div class="title">Figure 11. Use the Scout new entry wizard to add translated texts to the application in IntelliJ.</div>
 </div>
 <div id="img-sdk_new_text_entry_contact" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_text_entry_contact.png" alt="sdk new text entry contact">
 </div>
-<div class="title">Figure 7. Use the Scout content assist to add new translations.</div>
-</div>
-<div class="paragraph">
-<p>To enter a new translated text we double click on the proposal <em class="element">New text&#8230;&#8203;</em> to open the Scout new entry wizard as shown in <a href="#img-sdk_new_text_entry_contact_wizard">Figure 8</a>.</p>
+<div class="title">Figure 12. Use the Scout content assist to add new translations.</div>
 </div>
 <div id="img-sdk_new_text_entry_contact_wizard" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_text_entry_contact_wizard.png" alt="sdk new text entry contact wizard">
 </div>
-<div class="title">Figure 8. Use the Scout new entry wizard to add translated texts to the application.</div>
+<div class="title">Figure 13. Use the Scout new entry wizard to add translated texts to the application in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>As the last modification we change the return value of method <code>getConfiguredIconId</code> to value <code>Icons.Folder</code> and end with the code shown in <a href="#lst-contacts_outline">Listing 1</a>.</p>
 </div>
-<div class="paragraph">
-<p>To conclude the modifications we must get rid of the faulty import statement.
-To do this we could in principle press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span> to organize the imports automatically.
-However, we want to register the organization of imports as a so-called &#8220;Save Action&#8221;.
-This can be done in the Eclipse preferences.</p>
-</div>
-<div class="paragraph">
-<p>Invoke the top-level menu &#8220;Window/Preferences&#8221; and enter &#8220;Save Action&#8221; as a filter text to narrow down the tree on the left side of the preferences window.
-Then, chose the &#8220;Java/Editor/Save Actions&#8221; node and check the boxes "[x] Format Source Code" and "[x] Organize imports".
-As you may have guessed, this formats the source code and organizes the import statements every time the user saves a Java class.</p>
-</div>
-<div class="paragraph">
-<p>After having done so, perform a dummy modification in the class <code>ContactOutline</code> (e.g. add a space somewhere in the class body) and save the file.
-As a consequence, the faulty import statement at the beginning of the class file should have vanished and the class should show no compile errors anymore.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In IntelliJ, the import for the Icons class should be added automatically. If not, check your settings for auto import or use <code>Alt enter</code> to import it manually.<br>
+In Eclipse, you can use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span> to add the imports manually.
+</td>
+</tr>
+</table>
 </div>
 <div id="lst-contacts_outline" class="listingblock">
 <div class="title">Listing 1. Initial implementation of class ContactOutline.</div>
@@ -1065,7 +1102,7 @@ This class is implemented exactly once in each Scout application and holds the a
 The top level menus are then adapted to hold the menus "Quick Access", "Options" and a menu for the logged in user.</p>
 </div>
 <div class="paragraph">
-<p>Start with opening the class in the Java editor using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span> to quickly access the class.
+<p>Start with opening the class in the Java editor using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></span> (Eclipse: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></span>) to quickly access the class.
 In the source code of method <code>getConfiguredOutlines</code> remove <code>SettingsOutline.class</code> from the list of return values as shown in <a href="#lst-contacts_getConfiguredOutlines">Listing 2</a>.</p>
 </div>
 <div id="lst-contacts_getConfiguredOutlines" class="listingblock">
@@ -1211,7 +1248,7 @@ As a consequence, the method <code>getConfiguredForm</code> from <a href="#lst-c
 </div>
 <div class="paragraph">
 <p>As the "Contacts" application is in a clean state you can now test the application using the following steps.
-The user interface of the application will now look as shown in <a href="#img-contacts_tutorial_result_step_1">Figure 9</a>.</p>
+The user interface of the application will now look as shown in <a href="#img-contacts_tutorial_result_step_1">Figure 14</a>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1227,7 +1264,7 @@ The user interface of the application will now look as shown in <a href="#img-co
 <div class="content">
 <img src="images/contacts_tutorial_result_step_1.png" alt="contacts tutorial result step 1">
 </div>
-<div class="title">Figure 9. The "Contacts" application at the end of tutorial step 1.</div>
+<div class="title">Figure 14. The "Contacts" application at the end of tutorial step 1.</div>
 </div>
 <div class="paragraph">
 <p>From the coding perspective we now have all necessary maven Modules for the "Contacts" application including Java package and class names to match with the complete Scout "Contacts" demo application.
@@ -1290,24 +1327,50 @@ This person package can be created with the following steps.</p>
 <p>Select the Java package <code>org.eclipse.scout.contacts.client</code> in folder <code>src/main/java</code></p>
 </li>
 <li>
-<p>Press <kbd>Ctrl</kbd>+<kbd>N</kbd>, enter "package" into the search field</p>
+<p>For IntelliJ:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a package by right-clicking on the Java package and selecting <code>New &#8594; Package</code> as shown in <a href="#img-contacts_person_package_Intellij">Figure 15</a></p>
 </li>
 <li>
-<p>Select the <em class="wizard">Package</em> wizard in the proposal box and click <em class="button">Next</em></p>
-</li>
-<li>
-<p>Enter <code>org.eclipse.scout.contacts.client.person</code> and click <em class="button">Finish</em> as shown in <a href="#img-contacts_person_package">Figure 10</a></p>
-</li>
-<li>
-<p>Make sure the newly created person package is selected in the Eclipse Package Explorer</p>
+<p>Enter <code>org.eclipse.scout.contacts.client.person</code> and press <em class="button">Enter</em> as shown in <a href="#img-contacts_person_package_wizard_Intellij">Figure 16</a>.</p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>For Eclipse:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Press <kbd>Ctrl</kbd>+<kbd>N</kbd>, enter "package" into the search field and select the <em class="wizard">Package</em> wizard in the proposal box and click <em class="button">Next</em></p>
+</li>
+<li>
+<p>Press <em class="button">Finish</em> as shown in <a href="#img-contacts_person_package">Figure 17</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="img-contacts_person_package_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_package_Intellij.png" alt="sdk new package Intellij">
+</div>
+<div class="title">Figure 15. Create the person package in IntelliJ.</div>
+</div>
+<div id="img-contacts_person_package_wizard_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_package_wizard_Intellij.png" alt="sdk new package wizard Intellij">
+</div>
+<div class="title">Figure 16. Add the person package to the "Contacts" application in IntelliJ.</div>
 </div>
 <div id="img-contacts_person_package" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_package_wizard.png" alt="sdk new package wizard">
 </div>
-<div class="title">Figure 10. Add the person package to the "Contacts" application.</div>
+<div class="title">Figure 17. Add the person package to the "Contacts" application in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>We will also need a separate package for organizations and some common elements.</p>
@@ -1388,24 +1451,50 @@ This "Persons" page is then added to the navigation tree below the "Contacts" ou
 <p>Select the newly created package <code>org.eclipse.scout.contacts.client.person</code> in the Package Explorer</p>
 </li>
 <li>
-<p>Press <kbd>Ctrl</kbd>+<kbd>N</kbd>, enter "scout page" into the search field</p>
-</li>
+<p>For IntelliJ</p>
+<div class="ulist">
+<ul>
 <li>
-<p>Select the <em class="wizard">Scout Page</em> wizard in the proposal box and click <em class="button">Next</em></p>
-</li>
-<li>
-<p>Un-check the <em>Create an Abstract Super Page</em> option, as we don&#8217;t need an additional abstract super class for our new page</p>
-</li>
-<li>
-<p>Enter <code>PersonTablePage</code> as the class name and click <em class="button">Finish</em> as shown in <a href="#img-contacts_new_person_page">Figure 11</a></p>
+<p>Create a new Scout page by right-clicking on the package and selecting <code>New &#8594; Scout Element &#8594; Page</code> as shown in <a href="#img-contacts_create_new_person_page_Intellij">Figure 18</a></p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>For Eclipse</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Press <kbd>Ctrl</kbd>+<kbd>N</kbd>, enter "scout page" into the search field and select the <em class="wizard">Scout Page</em> wizard in the proposal box and click [button].</p>
+</li>
+<li>
+<p>Un-check the <em>Create an Abstract Super Page</em> option, as we don&#8217;t need an additional abstract super class for our new page.</p>
+</li>
+<li>
+<p>Enter <code>PersonTablePage</code> as the class name and click <em class="button">Finish</em> as shown in <a href="#img-contacts_new_person_page">Figure 20</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="img-contacts_create_new_person_page_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_create_new_personpage_wizard_Intellij.png" alt="sdk create new personpage wizard Intellij">
+</div>
+<div class="title">Figure 18. Create the person page in IntelliJ.</div>
+</div>
+<div id="img-contacts_new_person_page_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_personpage_wizard_Intellij.png" alt="sdk new personpage wizard Intellij">
+</div>
+<div class="title">Figure 19. Add the person page to the "Contacts" application in IntelliJ.</div>
 </div>
 <div id="img-contacts_new_person_page" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_personpage_wizard.png" alt="sdk new personpage wizard">
 </div>
-<div class="title">Figure 11. Add the person page to the "Contacts" application.</div>
+<div class="title">Figure 20. Add the person page to the "Contacts" application in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>The Scout <em class="wizard">New Page Wizard</em> then creates an initial implementation for the <code>PersonTablePage</code> class very similar to the listing provided in <a href="#lst-contacts_PersonTable">Listing 5</a> below.</p>
@@ -1555,22 +1644,34 @@ Working with different names is possible but requires additional work later in t
 </div>
 <div class="paragraph">
 <p>To add the first column <code>PersonIdColumn</code> we open class <code>PersonTablePage</code> in the Java editor and place the cursor inside of the body of the inner <code>Table</code> class.
-We then open the Scout content assist with <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and select the <em class="element">Column</em> proposal as shown in <a href="#img-sdk_new_page_column_contacts">Figure 12</a>.</p>
+We then open the Scout content assist with <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and select the <em class="element">Column</em> proposal as shown in <a href="#img-sdk_new_page_column_contacts_IntelliJ">Figure 21</a> (IntelliJ) and <a href="#img-sdk_new_page_column_contacts">Figure 22</a> (Eclipse).</p>
+</div>
+<div id="img-sdk_new_page_column_contacts_IntelliJ" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_page_column_contacts_IntelliJ.png" alt="sdk new page column contacts IntelliJ">
+</div>
+<div class="title">Figure 21. Adding a column to the person page table in IntelliJ.</div>
 </div>
 <div id="img-sdk_new_page_column_contacts" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_page_column_contacts.png" alt="sdk new page column contacts">
 </div>
-<div class="title">Figure 12. Adding a column to the person page table.</div>
+<div class="title">Figure 22. Adding a column to the person page table in Eclipse.</div>
 </div>
 <div class="paragraph">
-<p>In the first edit box we type "PersonId" as shown in <a href="#img-sdk_new_page_column_personid">Figure 13</a> and press <kbd>Enter</kbd>.</p>
+<p>In the first edit box we type "PersonId" as shown in <a href="#img-sdk_new_page_column_personid_Intellij">Figure 23</a> (IntelliJ) and <a href="#img-sdk_new_page_column_personid">Figure 24</a> (Eclipse) and press <kbd>Enter</kbd>.</p>
+</div>
+<div id="img-sdk_new_page_column_personid_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_page_column_personid_Intellij.png" alt="sdk new page column personid Intellij">
+</div>
+<div class="title">Figure 23. Adding a column to the person page table in IntelliJ.</div>
 </div>
 <div id="img-sdk_new_page_column_personid" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_page_column_personid.png" alt="sdk new page column personid">
 </div>
-<div class="title">Figure 13. Adding a column to the person page table.</div>
+<div class="title">Figure 24. Adding a column to the person page table in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>To configure this column as an invisible primary key we modify the newly created column class according to <a href="#lst-contacts_PersonIdColumn">Listing 6</a>.</p>
@@ -1717,9 +1818,8 @@ As an example for such a column <a href="#lst-contacts_PhoneColumn">Listing 9</a
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Use the Eclipse content assist to efficiently add method <code>getConfiguredVisible</code>.
-Place the cursor after method <code>getConfiguredHeaderText</code>, type "getConVis" and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span>.
-Then select the proposal <em class="element">getConfiguredVisible</em> with <kbd>Enter</kbd> and the method is inserted for you.
+Use the content assist to efficiently add method <code>getConfiguredVisible</code>.
+Place the cursor after method <code>getConfiguredHeaderText</code>, type "getConVis" and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> and the method is inserted for you.
 </td>
 </tr>
 </table>
@@ -1865,13 +1965,13 @@ For the organization page add the columns according to the specification provide
 </div>
 <div class="paragraph">
 <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the user interface in your browser.
-The user interface should look like the screenshot provided in <a href="#img-contacts_tutorial_result_step_2">Figure 14</a>.</p>
+The user interface should look like the screenshot provided in <a href="#img-contacts_tutorial_result_step_2">Figure 25</a>.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_2" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_2.png" alt="contacts tutorial result step 2">
 </div>
-<div class="title">Figure 14. The "Contacts" application with the person and organization pages at the end of tutorial step 2.</div>
+<div class="title">Figure 25. The "Contacts" application with the person and organization pages at the end of tutorial step 2.</div>
 </div>
 <div class="paragraph">
 <p>When comparing the state of the "Contacts" tutorial application with the Scout demo application in <a href="#img-app_contacts_personpage">Figure 1</a> the main difference is the missing person data.
@@ -1982,14 +2082,35 @@ This can be done using the following steps.</p>
 </div>
 <div class="paragraph">
 <p>After adding the database dependencies to the server&#8217;s pom.xml file we need to update all Maven server modules for the "Contacts" app.
-To do this, select the three modules <code>org.eclipse.scout.contacts.server.*</code> and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>F5</kbd></span> as shown in <a href="#img-contacts_tutorial_update_server_modules">Figure 15</a>.
-Start the update with <b class="button">OK</b>.</p>
+To do this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For IntelliJ, press the Maven button on the right side as shown in <a href="#img-contacts_tutorial_maven_modules_Intellij">Figure 26</a> to open up the Maven modules and then press the refresh button on the left side as shown in <a href="#img-contacts_tutorial_update_server_modules_Intellij">Figure 27</a>.</p>
+</li>
+<li>
+<p>For Eclipse, select the three modules <code>org.eclipse.scout.contacts.server.*</code> and hit <span class="keyseq"><kbd>Alt</kbd>+<kbd>F5</kbd></span> as shown in <a href="#img-contacts_tutorial_update_server_modules">Figure 28</a> and start the update with <b class="button">OK</b>.</p>
+</li>
+</ul>
+</div>
+<div id="img-contacts_tutorial_maven_modules_Intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_tutorial_maven_modules_Intellij.png" alt="contacts tutorial maven modules Intellij">
+</div>
+<div class="title">Figure 26. Locate the Maven server modules in IntelliJ.</div>
+</div>
+<div id="img-contacts_tutorial_update_server_modules_Intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_tutorial_update_server_modules_Intellij.png" alt="contacts tutorial update server modules Intellij">
+</div>
+<div class="title">Figure 27. Update the Maven server modules for the "Contacts" application in IntelliJ.</div>
 </div>
 <div id="img-contacts_tutorial_update_server_modules" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_update_server_modules.png" alt="contacts tutorial update server modules">
 </div>
-<div class="title">Figure 15. Update the Maven server modules for the "Contacts" application.</div>
+<div class="title">Figure 28. Update the Maven server modules for the "Contacts" application in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>The next step is to create the <code>org.eclipse.scout.contacts.server.sql</code> package.</p>
@@ -2000,7 +2121,27 @@ Start the update with <b class="button">OK</b>.</p>
 <p>Expand folder <code>src/main/java</code> of Maven module <code>contacts.server</code></p>
 </li>
 <li>
-<p>Select the existing package <code>org.eclipse.scout.contacts.server</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
+<p>Select the existing package <code>org.eclipse.scout.contacts.server</code></p>
+</li>
+<li>
+<p>For IntelliJ:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Right click on it and select <code>New &#8594; Package</code></p>
+</li>
+<li>
+<p>Enter <code>org.eclipse.scout.contacts.server.sql</code> into the <em class="field">Name</em> field and hit <kbd>Enter</kbd></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Eclipse:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> on it</p>
 </li>
 <li>
 <p>This opens the dialog to select a wizard. Enter "package" into the search field</p>
@@ -2013,6 +2154,9 @@ Start the update with <b class="button">OK</b>.</p>
 </li>
 </ul>
 </div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>We are now ready to copy the classes related to the database infrastructure from the "Contacts" demo application to our tutorial workspace.</p>
 </div>
@@ -2022,13 +2166,19 @@ If you have not done this yet go to the beginning of this tutorial <a href="#cha
 </div>
 <div class="paragraph">
 <p>In the demo application workspace navigate to the same package <code>org.eclipse.scout.contacts.server.sql</code> and copy over all its classes.
-After copying these classes make sure that the structure of your server Maven module looks as shown in <a href="#img-contacts_tutorial_copied_db_classes">Figure 16</a>.</p>
+After copying these classes make sure that the structure of your server Maven module looks as shown in <a href="#img-contacts_tutorial_copied_db_classes_intellij">Figure 29</a> (IntelliJ) and <a href="#img-contacts_tutorial_copied_db_classes">Figure 30</a> (Eclipse).</p>
+</div>
+<div id="img-contacts_tutorial_copied_db_classes_intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_tutorial_copied_db_classes_intellij.png" alt="contacts tutorial copied db classes intellij">
+</div>
+<div class="title">Figure 29. The copied database classes in the tutorial workspace in IntelliJ.</div>
 </div>
 <div id="img-contacts_tutorial_copied_db_classes" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_copied_db_classes.png" alt="contacts tutorial copied db classes">
 </div>
-<div class="title">Figure 16. The copied database classes in the tutorial workspace.</div>
+<div class="title">Figure 30. The copied database classes in the tutorial workspace in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>The imported classes are described in the following sections.
@@ -2610,13 +2760,13 @@ In addition person and organization data is now fetched from the database on the
 </div>
 <div class="paragraph">
 <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser.
-Person and company data is now visible in the user interface as shown in <a href="#img-contacts_tutorial_result_step_3">Figure 17</a>.</p>
+Person and company data is now visible in the user interface as shown in <a href="#img-contacts_tutorial_result_step_3">Figure 31</a>.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_3" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_3.png" alt="contacts tutorial result step 3">
 </div>
-<div class="title">Figure 17. The "Contacts" application displaying person data at the end of tutorial step 3.</div>
+<div class="title">Figure 31. The "Contacts" application displaying person data at the end of tutorial step 3.</div>
 </div>
 </div>
 </div>
@@ -2654,13 +2804,13 @@ Based on this information we design a hierarchical form layout for the person fo
 <div class="sect2">
 <h3 id="sec-contacts_form_design"><a class="anchor" href="#sec-contacts_form_design"></a>Designing the Person Form</h3>
 <div class="paragraph">
-<p>We start with the sketch of the form layout as shown in <a href="#img-contacts_tutorial_person_form_1">Figure 18</a>.</p>
+<p>We start with the sketch of the form layout as shown in <a href="#img-contacts_tutorial_person_form_1">Figure 32</a>.</p>
 </div>
 <div id="img-contacts_tutorial_person_form_1" class="imageblock">
 <div class="content">
 <img src="images/contacts_person_form.png" alt="contacts person form">
 </div>
-<div class="title">Figure 18. A sketch of the target layout for the person form.</div>
+<div class="title">Figure 32. A sketch of the target layout for the person form.</div>
 </div>
 <div class="paragraph">
 <p>The upper half of the form shows a picture of the person and contains some primary attributes such as first name and the gender of the person.</p>
@@ -2670,14 +2820,14 @@ Based on this information we design a hierarchical form layout for the person fo
 A "Contact Info" tab provides contact details of the person and adding notes for the person in the form of free text is possible in the "Notes" tab.</p>
 </div>
 <div class="paragraph">
-<p><a href="#img-contacts_person_form_grid">Figure 19</a> below shows how the sketched form can fit with the logical grid layout of the Scout framework.
+<p><a href="#img-contacts_person_form_grid">Figure 33</a> below shows how the sketched form can fit with the logical grid layout of the Scout framework.
 Scout containers have two columns (indicated in red) per default and as many rows (indicated in yellow) as needed.</p>
 </div>
 <div id="img-contacts_person_form_grid" class="imageblock">
 <div class="content">
 <img src="images/contacts_person_form_grid.png" alt="contacts person form grid">
 </div>
-<div class="title">Figure 19. Logical columns and rows of the Scout form layout. Scout containers have two columns per default.</div>
+<div class="title">Figure 33. Logical columns and rows of the Scout form layout. Scout containers have two columns per default.</div>
 </div>
 <div class="paragraph">
 <p>Individual form fields consist of a label part and a field part and occupy a single cell in the logical grid.
@@ -2688,13 +2838,13 @@ This field is configured to occupy 5 logical rows.</p>
 </div>
 <div class="paragraph">
 <p>With Scout&#8217;s container widgets such as group boxes, tab boxes and sequence boxes complex layouts can be achieved.
-Containers provide a lot of flexibility as these widgets can be nested hierarchically as shown in <a href="#img-contacts_person_form_groups">Figure 20</a></p>
+Containers provide a lot of flexibility as these widgets can be nested hierarchically as shown in <a href="#img-contacts_person_form_groups">Figure 34</a></p>
 </div>
 <div id="img-contacts_person_form_groups" class="imageblock">
 <div class="content">
 <img src="images/contacts_person_form_groups.png" alt="contacts person form groups">
 </div>
-<div class="title">Figure 20. The hierarchical organization of the form including Scout group boxes, tab boxes and a sequence box.</div>
+<div class="title">Figure 34. The hierarchical organization of the form including Scout group boxes, tab boxes and a sequence box.</div>
 </div>
 <div class="paragraph">
 <p>The sketch above details the organization of the container components to match the desired layout for the person form.
@@ -2716,7 +2866,7 @@ Otherwise, the location box would be shown next to the street field.</p>
 <div class="paragraph">
 <p>In this section we implement the person form with its container widgets as described in the previous section.
 To be able to use the form to create and edit persons we will add "New" and "Edit" context menus to the table in the person page.
-Finally we will also add a "Create Person" entry to the the "Quick Access" top level menu of the application.</p>
+Finally, we will also add a "Create Person" entry to the "Quick Access" top level menu of the application.</p>
 </div>
 <div class="paragraph">
 <p>Start the form creation with the Scout new form wizard following the steps listed below.</p>
@@ -2724,11 +2874,28 @@ Finally we will also add a "Create Person" entry to the the "Quick Access" top l
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Expand the Maven module <code>contacts.client</code> in the Eclipse package explorer</p>
+<p>Expand the Maven module <code>contacts.client</code> in the package explorer</p>
 </li>
 <li>
 <p>Select package <code>org.eclipse.scout.contacts.client.person</code> in folder <code>src/main/java</code></p>
 </li>
+<li>
+<p>For IntelliJ:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new Scout form by right-clicking on the package and selecting <code>New &#8594; Scout Element &#8594; Form</code> as shown in <a href="#img-contacts_create_new_form_Intellij">Figure 35</a></p>
+</li>
+<li>
+<p>Enter "Person" into the <em class="field">Name</em> as shown in <a href="#img-contacts_create_new_person_form_Intellij">Figure 36</a> and then hit <kbd>Enter</kbd></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Eclipse:</p>
+<div class="ulist">
+<ul>
 <li>
 <p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> and enter "form" into the search field of the wizard selection dialog</p>
 </li>
@@ -2736,18 +2903,33 @@ Finally we will also add a "Create Person" entry to the the "Quick Access" top l
 <p>Select the <em class="element">Scout Form</em> proposal and click the <b class="button">Next</b> button</p>
 </li>
 <li>
-<p>Enter "Person" into the <em class="field">Name</em> and verify that the field contents match <a href="#img-contacts_create_new_person_form">Figure 21</a></p>
+<p>Enter "Person" into the <em class="field">Name</em> and verify that the field contents match <a href="#img-contacts_create_new_person_form">Figure 37</a></p>
 </li>
 <li>
 <p>Click <b class="button">Finish</b> to start the creation of the form and its related components</p>
 </li>
+</ul>
+</div>
+</li>
 </ol>
+</div>
+<div id="img-contacts_create_new_form_Intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_create_new_form_Intellij.png" alt="contacts create new form Intellij">
+</div>
+<div class="title">Figure 35. Create a New Scout Form in IntelliJ.</div>
+</div>
+<div id="img-contacts_create_new_person_form_Intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_create_new_person_form_Intellij.png" alt="contacts create new person form Intellij">
+</div>
+<div class="title">Figure 36. Use the <em class="wizard">New Scout Form</em> to create the person form in IntelliJ.</div>
 </div>
 <div id="img-contacts_create_new_person_form" class="imageblock">
 <div class="content">
 <img src="images/contacts_create_new_person_form.png" alt="contacts create new person form">
 </div>
-<div class="title">Figure 21. Use the <em class="wizard">New Scout Form</em> to create the person form.</div>
+<div class="title">Figure 37. Use the <em class="wizard">New Scout Form</em> to create the person form in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>Now open the newly created class <code>PersonForm</code> in the Java editor and perform the changes listed below as shown in <a href="#lst-contacts_form_init">Listing 25</a>.</p>
@@ -3043,14 +3225,16 @@ The final implementation for the "Create new person" menu is provided in <a href
 </div>
 <div class="paragraph">
 <p>We have now created the initial implementation of the person form including context menus to open the form from the person page and the "Quick Access" top level menu of the "Contacts" application.
-At this point it is already possible to verify that the person form can be opened on the user interface via the context menus.
-A screenshot of the current state is shown in <a href="#img-contacts_tutorial_result_step_4_intermediate">Figure 22</a>.</p>
+At this point it is already possible to verify that the person form can be opened on the user interface via the context menus.</p>
+</div>
+<div class="paragraph">
+<p>A screenshot of the current state is shown in <a href="#img-contacts_tutorial_result_step_4_intermediate">Figure 38</a>.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_4_intermediate" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_4_intermediate.png" alt="contacts tutorial result step 4 intermediate">
 </div>
-<div class="title">Figure 22. The initial person form and the top level menu "Create new person".</div>
+<div class="title">Figure 38. The initial person form and the top level menu "Create new person".</div>
 </div>
 <div class="paragraph">
 <p>This initial implementation of the person form is also ready to add the individual form fields into the container boxes.
@@ -3076,11 +3260,31 @@ As the gender code type is related to persons we will implement this class in th
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Expand the Maven module <code>contacts.shared</code> in the Eclipse package explorer</p>
+<p>Expand the Maven module <code>contacts.shared</code> in the package explorer</p>
 </li>
 <li>
 <p>Select package <code>org.eclipse.scout.contacts.shared.person</code> in folder <code>src/main/java</code></p>
 </li>
+<li>
+<p>For IntelliJ:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new Scout code type by right-clicking on the package and selecting <code>New &#8594; Scout Element &#8594; Code Type</code> as shown in <a href="#img-contacts_tutorial_create_new_gender_codetype_Intellij">Figure 39</a></p>
+</li>
+<li>
+<p>Enter "Gender" into the <em class="field">Name</em> as shown in <a href="#img-contacts_tutorial_new_gender_codetype_Intellij">Figure 40</a> and then hit <kbd>Enter</kbd></p>
+</li>
+<li>
+<p>In the generated code type, change the generics from <code>&lt;Long, Long&gt;</code> to <code>&lt;String, String&gt;</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Eclipse:</p>
+<div class="ulist">
+<ul>
 <li>
 <p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> and enter "code" into the search field of the wizard selection dialog</p>
 </li>
@@ -3088,19 +3292,36 @@ As the gender code type is related to persons we will implement this class in th
 <p>Select the <em class="element">Scout CodeType</em> proposal and click the <b class="button">Next</b> button</p>
 </li>
 <li>
-<p>Enter "Gender" into the <em class="field">Name</em> field and use the type <code>String</code> for the first and second type argument according to <a href="#img-contacts_tutorial_new_gender_codetype">Figure 23</a></p>
+<p>Enter "Gender" into the <em class="field">Name</em> field and use the type <code>String</code> for the first and second type argument according to <a href="#img-contacts_tutorial_new_gender_codetype">Figure 41</a></p>
+</li>
+<li>
+<p>Click <b class="button">Finish</b>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
+</div>
+<div id="img-contacts_tutorial_create_new_gender_codetype_Intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_tutorial_create_new_gender_codetype_Intellij.png" alt="contacts tutorial create new gender codetype Intellij">
+</div>
+<div class="title">Figure 39. Create the gender code in IntelliJ.</div>
+</div>
+<div id="img-contacts_tutorial_new_gender_codetype_Intellij" class="imageblock">
+<div class="content">
+<img src="images/contacts_tutorial_new_gender_codetype_Intellij.png" alt="contacts tutorial new gender codetype Intellij">
+</div>
+<div class="title">Figure 40. Create the gender code using the Scout new code wizard in IntelliJ.</div>
 </div>
 <div id="img-contacts_tutorial_new_gender_codetype" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_new_gender_codetype.png" alt="contacts tutorial new gender codetype">
 </div>
-<div class="title">Figure 23. Create the gender code using the Scout new code wizard.</div>
+<div class="title">Figure 41. Create the gender code using the Scout new code wizard in Eclipse.</div>
 </div>
 <div class="paragraph">
-<p>Now click button <b class="button">Finish</b> to start the wizard.
-Then, open the newly created class <code>GenderCodeType</code> in the Java editor and set the <code>ID</code> constant to "Gender".
+<p>Then, open the newly created class <code>GenderCodeType</code> in the Java editor and set the <code>ID</code> constant to "Gender".
 The created class will then look like <a href="#lst-contacts_gender_code">Listing 29</a> except for the missing inner code classes.
 We will add these inner codes as the next step.</p>
 </div>
@@ -3797,7 +4018,7 @@ Using the person form as an example we have learned how to implement complex for
 <div class="paragraph">
 <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser.
 We can now verify the creation of new person entries and the modification of existing person data in the current state of the "Contacts" application.
-The created person form is shown in <a href="#img-contacts_tutorial_result_step_4">Figure 24</a>.
+The created person form is shown in <a href="#img-contacts_tutorial_result_step_4">Figure 42</a>.
 In case you copied some code snippets from the tutorial, you may see the text "undefined text {&#8230;&#8203;}" in some labels in the person field.
 You may want to define these texts using the Scout content assist for defining new texts as was already presented earlier in this tutorial.</p>
 </div>
@@ -3805,7 +4026,7 @@ You may want to define these texts using the Scout content assist for defining n
 <div class="content">
 <img src="images/contacts_tutorial_result_step_4.png" alt="contacts tutorial result step 4">
 </div>
-<div class="title">Figure 24. The "Contacts" application with the person form at the end of tutorial step 4.</div>
+<div class="title">Figure 42. The "Contacts" application with the person form at the end of tutorial step 4.</div>
 </div>
 </div>
 </div>
@@ -4053,13 +4274,13 @@ As an example we use this mechanism to make sure that a user can only enter pers
 <div class="paragraph">
 <p>As we have now implemented a number of form field validations we are now ready to test the result in the running application.
 Re-start the "Contacts" application and try to trigger the different validation rules.
-<a href="#img-contacts_tutorial_result_step_5a">Figure 25</a> shows the response of the user interface when trying to save invalid person data.</p>
+<a href="#img-contacts_tutorial_result_step_5a">Figure 43</a> shows the response of the user interface when trying to save invalid person data.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_5a" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_5a.png" alt="contacts tutorial result step 5a">
 </div>
-<div class="title">Figure 25. The form field validation implemented for the person form.</div>
+<div class="title">Figure 43. The form field validation implemented for the person form.</div>
 </div>
 </div>
 <div class="sect2">
@@ -4129,10 +4350,7 @@ To create the empty field data class perform the following steps.</p>
 <p>Select package <code>org.eclipse.scout.contacts.client.common</code> in folder <code>src/main/java</code></p>
 </li>
 <li>
-<p>Create class <code>AbstractUrlImageField</code> using <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
-</li>
-<li>
-<p>Update the implementation according to <a href="#lst-contacts_refactor_picture">Listing 42</a></p>
+<p>Create a new Java class called <code>AbstractUrlImageField</code> and update the implementation according to <a href="#lst-contacts_refactor_picture">Listing 42</a></p>
 </li>
 </ol>
 </div>
@@ -4256,9 +4474,15 @@ This process remains the same for refactoring container fields into template fie
 <div class="sect2">
 <h3 id="sec-contacts_form_urleditform"><a class="anchor" href="#sec-contacts_form_urleditform"></a>Adding a simple URL Input Form to the Picture Field</h3>
 <div class="paragraph">
-<p>Using the refactored picture template field we want the user to be able to enter and update the URL of the shown picture.
-For this we add a simple form with a single field and a context menu to the picture template field using the Scout new form wizard as shown in <a href="#img-sdk_new_form_pictureurl">Figure 26</a>.</p>
+<p>Using the refactored picture template field we want the user to be able to enter and update the URL of the shown picture.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>We create a new form called <code>PictureUrl</code> as we&#8217;ve done before as shown in <a href="#img-sdk_new_form_pictureurl_Intellij">Figure 44</a> (IntelliJ) or <a href="#img-sdk_new_form_pictureurl">Figure 45</a> (Eclipse).</p>
+</li>
+<li>
+<p>For Eclipse:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4275,11 +4499,20 @@ For this we add a simple form with a single field and a context menu to the pict
 </li>
 </ul>
 </div>
+</li>
+</ul>
+</div>
+<div id="img-sdk_new_form_pictureurl_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_form_pictureurl_Intellij.png" alt="sdk new form pictureurl Intellij">
+</div>
+<div class="title">Figure 44. Creating the picture URL form with the new form wizard in IntelliJ.</div>
+</div>
 <div id="img-sdk_new_form_pictureurl" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_form_pictureurl.png" alt="sdk new form pictureurl">
 </div>
-<div class="title">Figure 26. Creating the picture URL form with the new form wizard.</div>
+<div class="title">Figure 45. Creating the picture URL form with the new form wizard in Eclipse.</div>
 </div>
 <div class="paragraph">
 <p>Now adapt the content of the URL form according to <a href="#lst-contacts_form_pictureurl">Listing 44</a>.
@@ -4543,13 +4776,13 @@ Therefore make sure to modify the SQL statements in class <code>SQLs</code> acco
 </div>
 <div class="paragraph">
 <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser.
-Using the created picture template field we can now update the image in the picture form as shown in <a href="#img-contacts_tutorial_result_step_5b">Figure 27</a>.</p>
+Using the created picture template field we can now update the image in the picture form as shown in <a href="#img-contacts_tutorial_result_step_5b">Figure 46</a>.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_5b" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_5b.png" alt="contacts tutorial result step 5b">
 </div>
-<div class="title">Figure 27. The person form with the refactored picture template field including a menu (red square) and a URL edit form.</div>
+<div class="title">Figure 46. The person form with the refactored picture template field including a menu (red square) and a URL edit form.</div>
 </div>
 <div class="paragraph">
 <p>In the next tutorial step we are going to implement the company form to enter and edit company information.
@@ -4570,10 +4803,10 @@ As a result, the descriptions of this section can be kept on a much higher level
 <div class="content">
 <img src="images/contacts_organization_form.png" alt="contacts organization form">
 </div>
-<div class="title">Figure 28. The sketch of the organization form layout.</div>
+<div class="title">Figure 47. The sketch of the organization form layout.</div>
 </div>
 <div class="paragraph">
-<p>Considering the layout sketch for the organization form shown in <a href="#img-contacts_organization_form">Figure 28</a> we can already see how we can reuse the following fields / templates.</p>
+<p>Considering the layout sketch for the organization form shown in <a href="#img-contacts_organization_form">Figure 47</a> we can already see how we can reuse the following fields / templates.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4603,16 +4836,10 @@ As a result, the descriptions of this section can be kept on a much higher level
 <p>Expand folder <code>src/main/java</code> in the client module in the package explorer</p>
 </li>
 <li>
-<p>Select package <code>org.eclipse.scout.contacts.client.organization</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
+<p>Select package <code>org.eclipse.scout.contacts.client.organization</code> and create a new form called "OrganizationForm" as we&#8217;ve done before</p>
 </li>
 <li>
-<p>Enter "form" into the search field of the wizard selection and double click on proposal <em class="element">Scout Form</em></p>
-</li>
-<li>
-<p>Use "OrganizationForm" as class name and make sure to select all check boxes in the lower part of the wizard</p>
-</li>
-<li>
-<p>Click <b class="button">Finish</b> to start the Scout form wizard.</p>
+<p>Hit <kbd>Enter</kbd> for IntelliJ or click <b class="button">Finish</b> for Eclipse</p>
 </li>
 </ol>
 </div>
@@ -4850,13 +5077,13 @@ The focus of this part of the tutorial was on re-using previous work and applyin
 </div>
 <div class="paragraph">
 <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser.
-As shown in <a href="#img-contacts_tutorial_result_step_6">Figure 29</a> company data can now be viewed and entered in the user interface.</p>
+As shown in <a href="#img-contacts_tutorial_result_step_6">Figure 48</a> company data can now be viewed and entered in the user interface.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_6" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_6.png" alt="contacts tutorial result step 6">
 </div>
-<div class="title">Figure 29. The "Contacts" application with the newly created organization form.</div>
+<div class="title">Figure 48. The "Contacts" application with the newly created organization form.</div>
 </div>
 </div>
 </div>
@@ -4916,10 +5143,33 @@ The necessary infrastructure can be created using the Scout lookup wizard accord
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Expand folder <code>src/main/java</code> in the client module in the package explorer</p>
+<p>Expand folder <code>src/main/java</code> in the shared module in the package explorer</p>
 </li>
 <li>
-<p>Select package <code>org.eclipse.scout.contacts.shared.organization</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
+<p>Select package <code>org.eclipse.scout.contacts.shared.organization</code></p>
+</li>
+<li>
+<p>For IntelliJ</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new Scout lookup call by right-clicking on the package and selecting <code>New &#8594; Scout Element &#8594; Lookup Call</code> as shown in <a href="#img-sdk_create_new_lookupcall_organization_Intellij">Figure 49</a></p>
+</li>
+<li>
+<p>Enter "Organization" into the name field as shown in <a href="#img-sdk_new_lookupcall_organization_Intellij">Figure 50</a> and press <kbd>Enter</kbd>.</p>
+</li>
+<li>
+<p>In the generated lookup call, change the generic from <code>&lt;Long&gt;</code> to <code>&lt;String&gt;</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Eclipse</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
 </li>
 <li>
 <p>Enter "lookup" into the search field of the wizard selection and double click on proposal <em class="element">Scout LookupCall</em></p>
@@ -4931,24 +5181,39 @@ The necessary infrastructure can be created using the Scout lookup wizard accord
 <p>Enter "String" as the key class and use service super class "AbstractSqlLookupService" in the wizard</p>
 </li>
 <li>
-<p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_lookupcall_organization">Figure 30</a></p>
+<p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_lookupcall_organization">Figure 51</a></p>
 </li>
 <li>
-<p>Click <b class="button">Finish</b> to start the Scout lookup call wizard.</p>
+<p>Click <b class="button">Finish</b></p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
+</div>
+<div id="img-sdk_create_new_lookupcall_organization_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_create_new_lookupcall_organization_Intellij.png" alt="sdk create new lookupcall organization Intellij">
+</div>
+<div class="title">Figure 49. Creating the OrganizationLookupCall in IntelliJ.</div>
+</div>
+<div id="img-sdk_new_lookupcall_organization_Intellij" class="imageblock">
+<div class="content">
+<img src="images/sdk_new_lookupcall_organization_Intellij.png" alt="sdk new lookupcall organization Intellij">
+</div>
+<div class="title">Figure 50. Using the Scout lookup call wizard for creating class OrganizationLookupCall in IntelliJ.</div>
 </div>
 <div id="img-sdk_new_lookupcall_organization" class="imageblock">
 <div class="content">
 <img src="images/sdk_new_lookupcall_organization.png" alt="sdk new lookupcall organization">
 </div>
-<div class="title">Figure 30. Using the Scout lookup call wizard for creating class OrganizationLookupCall.</div>
+<div class="title">Figure 51. Using the Scout lookup call wizard for creating class OrganizationLookupCall in Eclipse.</div>
 </div>
 <div class="paragraph">
-<p>The Scout wizard will then create the lookup class <code>OrganizationLookupCall</code> and the corresponding lookup service with the interface <code>IOrganizationLookupService</code> and its initial implementation <code>OrganizationLookupService</code>.
+<p>The Scout wizard creates the lookup class <code>OrganizationLookupCall</code> and the corresponding lookup service with the interface <code>IOrganizationLookupService</code> and its initial implementation <code>OrganizationLookupService</code>.
+Beside making sure the generic uses the correct data type (<code>String</code>), the service interface and the lookup call class can be used as provided by the Scout wizard.
 We will only need to provide some implementation for the lookup service.
-The service interface and the lookup call class can be used as provided by the Scout wizard.
-<a href="#lst-contacts_lookup_call_organization">Listing 48</a> shows the code generated for the lookup call</p>
+<a href="#lst-contacts_lookup_call_organization">Listing 48</a> shows the generated code for the lookup call.</p>
 </div>
 <div id="lst-contacts_lookup_call_organization" class="listingblock">
 <div class="title">Listing 48. The OrganizationLookupCall implemented by the Scout wizard.</div>
@@ -5115,14 +5380,14 @@ The goal is to let the user of the application expand a row in the organization 
 </div>
 <div class="paragraph">
 <p>Scout node pages are useful when we want to display different entities that are related to a specific entry in a parent page.
-In the "Contacts" demo application this mechanism is used to link both persons and events to an organization as shown in <a href="#img-contacts_demo_organization_nodepage">Figure 31</a>.
+In the "Contacts" demo application this mechanism is used to link both persons and events to an organization as shown in <a href="#img-contacts_demo_organization_nodepage">Figure 52</a>.
 Note that this is a screenshot of the "Contacts" demo application, not the tutorial application that we are building here.</p>
 </div>
 <div id="img-contacts_demo_organization_nodepage" class="imageblock">
 <div class="content">
 <img src="images/contacts_demo_organization_nodepage.png" alt="contacts demo organization nodepage">
 </div>
-<div class="title">Figure 31. A drill-down on an organization in the "Contacts" demo application provides access to related persons and events.</div>
+<div class="title">Figure 52. A drill-down on an organization in the "Contacts" demo application provides access to related persons and events.</div>
 </div>
 <div class="paragraph">
 <p>In the "Contacts" demo application this hierarchical page structure is implemented as follows.</p>
@@ -5215,7 +5480,7 @@ For this change we first update the person service interface as shown in <a href
 <div class="paragraph">
 <p>Having modified the person service we add a organization id property to the person page.
 We can then populate this property when the person page is attached to the organization node page.
-Finally we can use in method <code>execLoadData</code> according to <a href="#lst-contacts_person_page_modification">Listing 55</a>.</p>
+Finally, we can use in method <code>execLoadData</code> according to <a href="#lst-contacts_person_page_modification">Listing 55</a>.</p>
 </div>
 <div id="lst-contacts_person_page_modification" class="listingblock">
 <div class="title">Listing 55. Add the possibility to restrict the list of persons to those assigned to a specific organization.</div>
@@ -5295,10 +5560,30 @@ As mentioned before we will only have the person page as a child page in the "Co
 <p>Expand folder <code>src/main/java</code> in the client module in the package explorer</p>
 </li>
 <li>
-<p>Select package <code>org.eclipse.scout.contacts.client.organization</code> and hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
+<p>Select package <code>org.eclipse.scout.contacts.client.organization</code></p>
 </li>
 <li>
-<p>Enter "scout page" into the search field of the wizard selection and double click on proposal <em class="element">Scout Page</em></p>
+<p>For IntelliJ</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new Scout page by right-clicking on the package and selecting <code>New &#8594; Scout Element &#8594; Page</code> as we&#8217;ve done before</p>
+</li>
+<li>
+<p>Enter "OrganizationNode" into the name field and press <kbd>Enter</kbd></p>
+</li>
+<li>
+<p>Finally, rename "OrganizationNodeTablePage" to "OrganizationNodePage"</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Eclipse</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hit <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> and enter "scout page" into the search field of the wizard selection and double click on proposal <em class="element">Scout Page</em></p>
 </li>
 <li>
 <p>Add "Organization" to the class name field</p>
@@ -5307,10 +5592,13 @@ As mentioned before we will only have the person page as a child page in the "Co
 <p>Switch the super class field to "AbstractPageWithNodes"</p>
 </li>
 <li>
-<p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_organization_nodepage">Figure 32</a></p>
+<p>Verify that the fields in the wizard match the values provided in <a href="#img-sdk_new_organization_nodepage">Figure 53</a></p>
 </li>
 <li>
-<p>Click <b class="button">Finish</b> to start the Scout page wizard</p>
+<p>Click <b class="button">Finish</b></p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
@@ -5318,10 +5606,10 @@ As mentioned before we will only have the person page as a child page in the "Co
 <div class="content">
 <img src="images/sdk_new_organization_nodepage.png" alt="sdk new organization nodepage">
 </div>
-<div class="title">Figure 32. Creating the organization node page.</div>
+<div class="title">Figure 53. Creating the organization node page.</div>
 </div>
 <div class="paragraph">
-<p>After the wizard has created the initial implementation of the node page open class <code>OrganizationNodePage</code> in the Java editor and adapt its implementation according to <a href="#lst-contacts_organization_node_page">Listing 56</a>.</p>
+<p>After the wizard has created the initial implementation of the node page, open class <code>OrganizationNodePage</code> in the Java editor and adapt its implementation according to <a href="#lst-contacts_organization_node_page">Listing 56</a>.</p>
 </div>
 <div id="lst-contacts_organization_node_page" class="listingblock">
 <div class="title">Listing 56. The complete implementation of the class <code>OrganizationNodePage</code>.</div>
@@ -5402,112 +5690,13 @@ To link the two table pages we have also created and integrated a Scout node pag
 </div>
 <div class="paragraph">
 <p>The "Contacts" application is in a clean state again and you can (re)start the backend and the frontend of the application and verify the result in your browser.
-As shown in <a href="#img-contacts_tutorial_result_step_7">Figure 33</a> the organization specific person data is now presented in a hierarchical form in the navigation area of the application.</p>
+As shown in <a href="#img-contacts_tutorial_result_step_7">Figure 54</a> the organization specific person data is now presented in a hierarchical form in the navigation area of the application.</p>
 </div>
 <div id="img-contacts_tutorial_result_step_7" class="imageblock">
 <div class="content">
 <img src="images/contacts_tutorial_result_step_7.png" alt="contacts tutorial result step 7">
 </div>
-<div class="title">Figure 33. The linked person page only shows persons related to the parent organization page.</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="sec-contacts_outlook"><a class="anchor" href="#sec-contacts_outlook"></a>Additional Concepts and Features</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This last part of the "Contacts" tutorial discusses the gap between the tutorial application and the complete "Contacts" demo application.
-In a number of aspects the full "Contacts" demo application comes with additional features and improvements over the functionality of its tutorial version.</p>
-</div>
-<div class="paragraph">
-<p>The sections below highlight the following areas.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Theming and Styling (<a href="#sec-contacts_theming_styling">Theming and Styling</a>)</p>
-</li>
-<li>
-<p>Modular Scout Applications (<a href="#sec-contacts_modular_apps">Modular Scout Applications</a>)</p>
-</li>
-<li>
-<p>Infrastructure (<a href="#sec-contacts_infra">Infrastructure</a>)</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="sec-contacts_theming_styling"><a class="anchor" href="#sec-contacts_theming_styling"></a>Theming and Styling</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>theme switching form for top level options menu <a href="#img-contacts_theming_styling">Figure 34</a></p>
-</li>
-<li>
-<p>project specific theme "dark"</p>
-</li>
-</ul>
-</div>
-<div id="img-contacts_theming_styling" class="imageblock">
-<div class="content">
-<img src="images/contacts_theming_styling.png" alt="contacts theming styling">
-</div>
-<div class="title">Figure 34. Scout application can change between different themes at runtime.</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec-contacts_modular_apps"><a class="anchor" href="#sec-contacts_modular_apps"></a>Modular Scout Applications</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>separate entity "event"</p>
-</li>
-<li>
-<p>additional pattern for managing m:n relationships using table fields</p>
-</li>
-<li>
-<p>contributions to core:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>menu to desktop</p>
-</li>
-<li>
-<p>column to person page</p>
-</li>
-<li>
-<p>tab to person form</p>
-</li>
-<li>
-<p>event page as child page of organization page</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sec-contacts_infra"><a class="anchor" href="#sec-contacts_infra"></a>Infrastructure</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>maven module that combines frontend and backend into a single war file</p>
-</li>
-<li>
-<p>docker integration</p>
-<div class="ulist">
-<ul>
-<li>
-<p>docker-maven-plugin in pom.xml</p>
-</li>
-<li>
-<p>Dockerfile</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="title">Figure 54. The linked person page only shows persons related to the parent organization page.</div>
 </div>
 </div>
 </div>
@@ -5558,7 +5747,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.1<br>
-Last updated 2022-12-20 18:23:31 +0100
+Last updated 2023-01-23 18:23:33 +0100
 </div>
 </div>
 </body>
