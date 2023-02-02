@@ -44,6 +44,8 @@ versionDir="${files[0]##*/}"
 sourceDir="${sourceBaseDir}/eclipsescout.github.io/${versionDir}"
 targetDir="${targetRepoDir}/${versionDir}"
 
+mkdir -p ${targetDir}/images/
+
 echo "Copy files from $sourceDir to $targetDir ..."
 
 # copy images and track changes (rsync using only checksums)
