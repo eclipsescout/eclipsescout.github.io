@@ -436,95 +436,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-/*! Stylesheet for CodeRay to loosely match GitHub themes | MIT License */
-pre.CodeRay{background:#f7f7f8}
-.CodeRay .line-numbers{border-right:1px solid;opacity:.35;padding:0 .5em 0 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
-.CodeRay span.line-numbers{display:inline-block;margin-right:.75em}
-.CodeRay .line-numbers strong{color:#000}
-table.CodeRay{border-collapse:separate;border:0;margin-bottom:0;background:none}
-table.CodeRay td{vertical-align:top;line-height:inherit}
-table.CodeRay td.line-numbers{text-align:right}
-table.CodeRay td.code{padding:0 0 0 .75em}
-.CodeRay .debug{color:#fff!important;background:navy!important}
-.CodeRay .annotation{color:#007}
-.CodeRay .attribute-name{color:navy}
-.CodeRay .attribute-value{color:#700}
-.CodeRay .binary{color:#509}
-.CodeRay .comment{color:#998;font-style:italic}
-.CodeRay .char{color:#04d}
-.CodeRay .char .content{color:#04d}
-.CodeRay .char .delimiter{color:#039}
-.CodeRay .class{color:#458;font-weight:bold}
-.CodeRay .complex{color:#a08}
-.CodeRay .constant,.CodeRay .predefined-constant{color:teal}
-.CodeRay .color{color:#099}
-.CodeRay .class-variable{color:#369}
-.CodeRay .decorator{color:#b0b}
-.CodeRay .definition{color:#099}
-.CodeRay .delimiter{color:#000}
-.CodeRay .doc{color:#970}
-.CodeRay .doctype{color:#34b}
-.CodeRay .doc-string{color:#d42}
-.CodeRay .escape{color:#666}
-.CodeRay .entity{color:#800}
-.CodeRay .error{color:#808}
-.CodeRay .exception{color:inherit}
-.CodeRay .filename{color:#099}
-.CodeRay .function{color:#900;font-weight:bold}
-.CodeRay .global-variable{color:teal}
-.CodeRay .hex{color:#058}
-.CodeRay .integer,.CodeRay .float{color:#099}
-.CodeRay .include{color:#555}
-.CodeRay .inline{color:#000}
-.CodeRay .inline .inline{background:#ccc}
-.CodeRay .inline .inline .inline{background:#bbb}
-.CodeRay .inline .inline-delimiter{color:#d14}
-.CodeRay .inline-delimiter{color:#d14}
-.CodeRay .important{color:#555;font-weight:bold}
-.CodeRay .interpreted{color:#b2b}
-.CodeRay .instance-variable{color:teal}
-.CodeRay .label{color:#970}
-.CodeRay .local-variable{color:#963}
-.CodeRay .octal{color:#40e}
-.CodeRay .predefined{color:#369}
-.CodeRay .preprocessor{color:#579}
-.CodeRay .pseudo-class{color:#555}
-.CodeRay .directive{font-weight:bold}
-.CodeRay .type{font-weight:bold}
-.CodeRay .predefined-type{color:inherit}
-.CodeRay .reserved,.CodeRay .keyword{color:#000;font-weight:bold}
-.CodeRay .key{color:#808}
-.CodeRay .key .delimiter{color:#606}
-.CodeRay .key .char{color:#80f}
-.CodeRay .value{color:#088}
-.CodeRay .regexp .delimiter{color:#808}
-.CodeRay .regexp .content{color:#808}
-.CodeRay .regexp .modifier{color:#808}
-.CodeRay .regexp .char{color:#d14}
-.CodeRay .regexp .function{color:#404;font-weight:bold}
-.CodeRay .string{color:#d20}
-.CodeRay .string .string .string{background:#ffd0d0}
-.CodeRay .string .content{color:#d14}
-.CodeRay .string .char{color:#d14}
-.CodeRay .string .delimiter{color:#d14}
-.CodeRay .shell{color:#d14}
-.CodeRay .shell .delimiter{color:#d14}
-.CodeRay .symbol{color:#990073}
-.CodeRay .symbol .content{color:#a60}
-.CodeRay .symbol .delimiter{color:#630}
-.CodeRay .tag{color:teal}
-.CodeRay .tag-special{color:#d70}
-.CodeRay .variable{color:#036}
-.CodeRay .insert{background:#afa}
-.CodeRay .delete{background:#faa}
-.CodeRay .change{color:#aaf;background:#007}
-.CodeRay .head{color:#f8f;background:#505}
-.CodeRay .insert .insert{color:#080}
-.CodeRay .delete .delete{color:#800}
-.CodeRay .change .change{color:#66f}
-.CodeRay .head .head{color:#f4f}
-</style>
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -537,41 +448,15 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <ul class="sectlevel1">
 <li><a href="#about-this-release">About This Release</a></li>
 <li><a href="#demo-applications">Demo Applications</a></li>
-<li><a href="#re-license-from-epl-1-0-to-epl-2-0">Re-license from EPL-1.0 to EPL-2.0</a></li>
 <li><a href="#improved-developer-experience-for-scout-js">Improved Developer Experience for Scout JS</a>
 <ul class="sectlevel2">
-<li><a href="#typescript-support">TypeScript Support</a></li>
-<li><a href="#well-defined-and-typed-widget-models">Well-Defined and Typed Widget Models</a></li>
-<li><a href="#well-defined-and-typed-widget-events">Well-Defined and Typed Widget Events</a></li>
-<li><a href="#typed-return-values-when-finding-widgets">Typed Return Values When Finding Widgets</a></li>
-<li><a href="#objecttype-as-class-reference">ObjectType as Class Reference</a></li>
 <li><a href="#menutypes">MenuTypes</a>
 <ul class="sectlevel3">
-<li><a href="#constants">Constants</a></li>
-<li><a href="#menu-type-support-for-valuefield-and-imagefield">Menu type support for ValueField and ImageField</a></li>
+<li><a href="#default-menutypes">Default menuTypes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#javascript-code-migration-tool">JavaScript Code Migration Tool</a></li>
-<li><a href="#javascript-build-improvements">JavaScript Build Improvements</a>
-<ul class="sectlevel2">
-<li><a href="#library-build">Library Build</a></li>
-<li><a href="#faster-and-more-efficient-minification">Faster and more Efficient Minification</a></li>
-<li><a href="#typescript-build">TypeScript Build</a></li>
-<li><a href="#eslint-for-typescript">ESLint for TypeScript</a></li>
-</ul>
-</li>
-<li><a href="#typed-nodeid-for-node-identifier">Typed NodeId for Node Identifier</a></li>
-<li><a href="#iid-interface-new-irootid-and-icompositeid">IId Interface, new IRootId and ICompositeId</a></li>
-<li><a href="#new-calendar-tooltip">New Calendar Tooltip</a></li>
-<li><a href="#categories-for-health-checkers">Categories for Health Checkers</a>
-<ul class="sectlevel2">
-<li><a href="#api-changes">API Changes</a></li>
-</ul>
-</li>
-<li><a href="#jsform">JsForm</a></li>
-<li><a href="#numberformatprovider">NumberFormatProvider</a></li>
 </ul>
 </div>
 </div>
@@ -596,10 +481,10 @@ Looking for something else? Visit <a href="https://eclipsescout.github.io" class
 <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The latest version of this release is: 23.1.1.</p>
+<p>The latest version of this release is: 23.2.0.</p>
 </div>
 <div class="paragraph">
-<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/22.0%2E%2E%2Ereleases/23.1">detailed change log</a> on GitHub.</p>
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/23.1%2E%2E%2Ereleases/23.2">detailed change log</a> on GitHub.</p>
 </div>
 <div class="paragraph">
 <p>Coming from an older Scout version? Check out the <a href="https://eclipsescout.github.io/23.2/migration-guide.html">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
@@ -622,7 +507,7 @@ The here described functionality has not yet been released and is part of an upc
 <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/23.1.1">features/version/23.1.1</a> branch of our docs repository on GitHub.</p>
+<p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/23.2.0">features/version/23.2.0</a> branch of our docs repository on GitHub.</p>
 </div>
 <div class="paragraph">
 <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
@@ -643,524 +528,21 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 <div class="sect1">
-<h2 id="re-license-from-epl-1-0-to-epl-2-0"><a class="anchor" href="#re-license-from-epl-1-0-to-epl-2-0"></a>Re-license from EPL-1.0 to EPL-2.0</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Scout has changed its license from the deprecated EPL-1.0 license to EPL-2.0.
-Usually this has no impact for your project.
-For details please consult the <a href="https://www.eclipse.org/legal/epl-2.0/faq.php">EPL FAQ</a> in particular the section with the <a href="https://www.eclipse.org/legal/epl-2.0/faq.php#h.a0eux401qus">major changes</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="improved-developer-experience-for-scout-js"><a class="anchor" href="#improved-developer-experience-for-scout-js"></a>Improved Developer Experience for Scout JS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scout 23.1 contains many improvements for Scout JS developers.
+<p>Scout 23.2 contains many improvements for Scout JS developers.
 The goal was to make the development easier, more efficient and more fun.
 Please read the following chapters to learn how we did it.</p>
 </div>
 <div class="sect2">
-<h3 id="typescript-support"><a class="anchor" href="#typescript-support"></a>TypeScript Support</h3>
-<div class="paragraph">
-<p>One major addition in this release is TypeScript support.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>We migrated the complete Scout JS code base to TypeScript. This means the Scout API is now fully typed.</p>
-</li>
-<li>
-<p>We enhanced the JS build, so you can write TypeScript yourself in your project.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This gives you many benefits:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>More efficient development</strong><br>
-Typing allows your IDE to better assist with code completion during development and to only suggest methods and properties for an object that actually exist.<br></p>
-<div class="imageblock">
-<div class="content">
-<img src="images/code_completion.png" alt="code completion">
-</div>
-<div class="title">Figure 1. Better Code Completion</div>
-</div>
-</li>
-<li>
-<p><strong>Easier entry</strong><br>
-With better code completion and clear method signatures, a not-so-experienced JavaScript developer can more easily get up to speed and understand the relationships in the code.</p>
-</li>
-<li>
-<p><strong>More confidence when updating</strong><br>
-If a used API has changed, the code turns red and the build fails.</p>
-</li>
-<li>
-<p><strong>More confidence during development</strong><br>
-Incorrect use of an API or code in general is detected at an early stage. The developer gets more confidence that his code will work.<br></p>
-<div class="imageblock">
-<div class="content">
-<img src="images/compile_errors.png" alt="compile errors">
-</div>
-<div class="title">Figure 2. Compile Errors</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="well-defined-and-typed-widget-models"><a class="anchor" href="#well-defined-and-typed-widget-models"></a>Well-Defined and Typed Widget Models</h3>
-<div class="paragraph">
-<p>Widgets can be configured in many ways using the available properties.
-Until now, it was not obvious which properties were available and what they do.
-To improve that, every widget now comes with a well-defined model which contains all available properties including a description.
-The model is a TypeScript interface and named after the widget with the suffix <code>Model</code>.
-For example, you will find the model of a <code>Menu</code> under the name <code>MenuModel</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/widget_model.png" alt="widget model">
-</div>
-<div class="title">Figure 3. Widget Model</div>
-</div>
-<div class="paragraph">
-<p>The models can not only be used for documentation purposes, TypeScript and Scout SDK use them as well for code completion and type checks.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/model_completion.png" alt="model completion">
-</div>
-<div class="title">Figure 4. Widget Model Code Completion</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="well-defined-and-typed-widget-events"><a class="anchor" href="#well-defined-and-typed-widget-events"></a>Well-Defined and Typed Widget Events</h3>
-<div class="paragraph">
-<p>Most of the widgets can trigger events that can be used to react to user interactions.
-Until now, it was not obvious which events were available.
-To improve that, every widget now comes with a well-defined event map which contains all available events.
-The event map is a TypeScript interface and named after the widget with the suffix <code>EventMap</code>.
-For example, you will find the event map of a <code>Menu</code> under the name <code>MenuEventMap</code>.</p>
-</div>
-<div class="paragraph">
-<p>These event maps are used by TypeScript to provide code completion for the event name when adding an event handler:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/event_completion.png" alt="event completion">
-</div>
-<div class="title">Figure 5. Event Name Completion</div>
-</div>
-<div class="paragraph">
-<p>You also get the correct type of the event itself including its members in the handler:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/typed_events.png" alt="typed events">
-</div>
-<div class="title">Figure 6. Typed Event</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="typed-return-values-when-finding-widgets"><a class="anchor" href="#typed-return-values-when-finding-widgets"></a>Typed Return Values When Finding Widgets</h3>
-<div class="paragraph">
-<p>Retrieving a widget is typically done by using <code>this.widget('id')</code>.
-The result of that function is a generic <code>Widget</code>, so it is not possible to call a method of a specific widget without casting (at least with TypeScript).
-To do the type casting, you can either specify the return type directly at the time of usage.</p>
-</div>
-<div class="listingblock">
-<div class="title">Listing 1. Using the second parameter</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Menu} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
-
-let menu = <span class="local-variable">this</span>.widget(<span class="string"><span class="delimiter">'</span><span class="content">YourId</span><span class="delimiter">'</span></span>, Menu);</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Listing 2. Cast manually (TypeScript)</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="ts">import {Menu} from '@eclipse-scout/core';
-
-let menu = this.widget('YourId') as Menu;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or you can use widget maps.
-A widget map is an interface that maps the ids of the widgets to their type.
-This allows TypeScript to determine the return type automatically.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/typed_widget.png" alt="typed widget">
-</div>
-<div class="title">Figure 7. Typed <code>widget</code> function</div>
-</div>
-<div class="paragraph">
-<p>Scout SDK takes care of creating the widget maps, so you don&#8217;t have to write them manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="objecttype-as-class-reference"><a class="anchor" href="#objecttype-as-class-reference"></a>ObjectType as Class Reference</h3>
-<div class="paragraph">
-<p>It is now possible to use a class reference as <code>objectType</code>.
-An <code>objectType</code> is typically used when creating a new object using <code>scout.create(objectType)</code> or when defining a model.
-Using a class reference instead of a string will make the development easier because the IDE knows about the actual type and can provide
-code completion and other assistance.</p>
-</div>
-<div class="paragraph">
-<p>It may even improve the tree shaking process of the bundler (webpack).
-Because using a class reference requires an <code>import</code>, the bundler automatically includes the imported module.</p>
-</div>
-<div class="paragraph">
-<p>So,</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">scout.create(<span class="string"><span class="delimiter">'</span><span class="content">Button</span><span class="delimiter">'</span></span>, {<span class="key">parent</span>: <span class="local-variable">this</span>});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>becomes this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Button} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
-
-scout.create(Button, {<span class="key">parent</span>: <span class="local-variable">this</span>});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And this</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
-  <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">Form</span><span class="delimiter">'</span></span>,
-  <span class="key">rootGroupBox</span>: {
-    <span class="key">objectType</span>: <span class="string"><span class="delimiter">'</span><span class="content">GroupBox</span><span class="delimiter">'</span></span>
-  }
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>becomes this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="reserved">import</span> {Form, GroupBox} from <span class="string"><span class="delimiter">'</span><span class="content">@eclipse-scout/core</span><span class="delimiter">'</span></span>;
-
-<span class="reserved">export</span> <span class="keyword">default</span> () =&gt; ({
-  <span class="key">objectType</span>: Form,
-  <span class="key">rootGroupBox</span>: {
-    <span class="key">objectType</span>: GroupBox
-  }
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Please see the <a href="https://eclipsescout.github.io/23.2/migration-guide.html#ObjectType%20as%20Class%20Reference%20(Scout%20JS)">Migration Guide</a> for migration assistance.</p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
 <div class="sect3">
-<h4 id="constants"><a class="anchor" href="#constants"></a>Constants</h4>
+<h4 id="default-menutypes"><a class="anchor" href="#default-menutypes"></a>Default menuTypes</h4>
 <div class="paragraph">
-<p>Constants have been added for all menu types of</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Calendar</p>
-</li>
-<li>
-<p>ImageField</p>
-</li>
-<li>
-<p>Planner</p>
-</li>
-<li>
-<p>TabBox</p>
-</li>
-<li>
-<p>Table</p>
-</li>
-<li>
-<p>Tree</p>
-</li>
-<li>
-<p>ValueField</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Instead of using string literals in e.g. a <code>MenuModel</code> one can use these constants now. Therefore, this</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="ts">import {Menu} from '@eclipse-scout/core';
-
-{
-  id: 'ExampleMenu',
-  text: 'Example',
-  objectType: Menu,
-  menuTypes: [
-    'Table.SingleSelection'
-  ]
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>becomes this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="ts">import {Menu, Table} from '@eclipse-scout/core';
-
-{
-  id: 'ExampleMenu',
-  text: 'Example',
-  objectType: Menu,
-  menuTypes: [
-    Table.MenuTypes.SingleSelection
-  ]
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="menu-type-support-for-valuefield-and-imagefield"><a class="anchor" href="#menu-type-support-for-valuefield-and-imagefield"></a>Menu type support for ValueField and ImageField</h4>
-<div class="paragraph">
-<p>Menu type support has been added to the <code>ValueField</code> and the <code>ImageField</code>.
-This means that e.g. the <code>ValueField</code> will display different menus whether a value is set or not.
-For more information about the menuType support of <code>ValueField</code> and <code>ImageField</code> see <a href="https://eclipsescout.github.io/23.2/technical-guide-js.html#menu-types">Technical Guide for Scout JS</a>.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="javascript-code-migration-tool"><a class="anchor" href="#javascript-code-migration-tool"></a>JavaScript Code Migration Tool</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>It is normal that code changes from time to time even on a larger scale.
-Since code migration is often a tedious task, any automation is welcome.</p>
-</div>
-<div class="paragraph">
-<p>With this release there are several code migration tasks, which are mostly optional, but recommended.
-That is why we tried to automate as much as possible and created a tool you can use as well.</p>
-</div>
-<div class="paragraph">
-<p>The main purpose of the tool is to migrate your JavaScript code to TypeScript, but other migration tasks make use of the tool as well.
-Instructions for these tasks can be found in the <a href="https://eclipsescout.github.io/23.2/migration-guide.html">Migration Guide</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you would like to migrate your existing code to TypeScript, the migration tool will certainly help you.
-But be aware, that the majority of the work, which is adding types, will need to be done manually.</p>
-</div>
-<div class="paragraph">
-<p>Migrating to TypeScript is not required, you can still use JavaScript or write only new code with TypeScript.
-However, if you are a library developer, we recommend migrating to TypeScript to make the usage of the library easier.</p>
-</div>
-<div class="paragraph">
-<p>Detailed instruction for the migration can be found here: <a href="https://www.npmjs.com/package/@eclipse-scout/migrate">@eclipse-scout/migrate</a></p>
-</div>
-<div class="paragraph">
-<p>If you plan to use TypeScript for new code without migrating your existing code base, you just need to add a <code>tsconfig.json</code> like described here: <a href="https://www.npmjs.com/package/@eclipse-scout/tsconfig">@eclipse-scout/tsconfig</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="javascript-build-improvements"><a class="anchor" href="#javascript-build-improvements"></a>JavaScript Build Improvements</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="library-build"><a class="anchor" href="#library-build"></a>Library Build</h3>
-<div class="paragraph">
-<p>If code is written with TypeScript, it needs to be transpiled to JavaScript before it can be used.
-Because this task takes some time, it should not be done by the project using a TypeScript library but by the library itself.
-This is true for Scout as well. Therefore, Scout 23.1 is shipped with prebuilt JavaScript code.</p>
-</div>
-<div class="paragraph">
-<p>To make sure your build uses the prebuilt version, your import statements need to be correct.
-Please have a look at the migration guide for details: <a href="https://eclipsescout.github.io/23.2/migration-guide.html#Imports">Migration Guide</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you are a library developer, you should consider doing the same.
-To do so, you can use the support provided by Scout&#8217;s build tooling as described here: <a href="https://eclipsescout.github.io/23.2/technical-guide-js.html#Authoring%20Libraries">Authoring Libraries</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="faster-and-more-efficient-minification"><a class="anchor" href="#faster-and-more-efficient-minification"></a>Faster and more Efficient Minification</h3>
-<div class="paragraph">
-<p>The Scout build now uses <a href="https://esbuild.github.io/">ESBuild</a> for the minification process.
-This reduces the duration and memory consumption of the production build a lot, which is especially beneficial if your build runs in a cloud environment with limited hardware.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="typescript-build"><a class="anchor" href="#typescript-build"></a>TypeScript Build</h3>
-<div class="paragraph">
-<p>As already mentioned in <a href="#typescript-support">TypeScript Support</a>, you can now use TypeScript for your Scout JS project or when writing custom widgets for Scout Classic.</p>
-</div>
-<div class="paragraph">
-<p>All you have to do is to create a <code>tsconfig.json</code> that extends from the default configuration provided by Scout as explained here: <a href="https://www.npmjs.com/package/@eclipse-scout/tsconfig">@eclipse-scout/tsconfig</a>
-The Scout build will transpile all files ending with <code>*.ts</code> and will start a separate process to check if the types are correct.
-That way you will not be blocked by the type checking, but you will still be informed if some types are wrong.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="eslint-for-typescript"><a class="anchor" href="#eslint-for-typescript"></a>ESLint for TypeScript</h3>
-<div class="paragraph">
-<p>We added linting support for TypeScript files.</p>
-</div>
-<div class="paragraph">
-<p>If you are already using Scout&#8217;s eslint module (<a href="https://www.npmjs.com/package/@eclipse-scout/eslint">@eclipse-scout/eslint</a>), you&#8217;ll get the linting automatically.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="typed-nodeid-for-node-identifier"><a class="anchor" href="#typed-nodeid-for-node-identifier"></a>Typed NodeId for Node Identifier</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In previous versions several ways were used to create/use a node identfier (e.g. to identify a specific client/backend server):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A typed class NodeId existed, the current identifier was accessed using <code>org.eclipse.scout.rt.dataobject.id.NodeId.current()</code></p>
-</li>
-<li>
-<p>Node identifiers could be accessed as String using <code>org.eclipse.scout.rt.platform.context.NodeIdentifier.get()</code></p>
-</li>
-<li>
-<p>And another node identifier (default implementation random UUID) could be accessed using  <code>org.eclipse.scout.rt.shared.INode#ID</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As of version 23.1 the typed <code>org.eclipse.scout.rt.dataobject.id.NodeId</code> is used wherever possible, the application scoped bean <code>org.eclipse.scout.rt.platform.context.NodeIdentifier</code> is still used for the computation of this typed <code>NodeId</code>. The <code>get()</code> method returning a <code>String</code> has been deprecated, the interface <code>org.eclipse.scout.rt.shared.INode</code> has been removed.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="iid-interface-new-irootid-and-icompositeid"><a class="anchor" href="#iid-interface-new-irootid-and-icompositeid"></a>IId Interface, new IRootId and ICompositeId</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In previous versions the <code>IId</code> interface was typed with a generic <code>WRAPPED_TYPE extends Comparable&lt;WRAPPED_TYPE&gt;</code>.
-To be able to use the <code>IId</code> interface as general root for any kind of identifiers without having to deal with a concrete generic type, the generic type definition was removed and moved to the default implementation <code>AbstractRootId</code> and the typed sub-interfaces <code>IUuid</code>, <code>IStringId</code> and <code>ILongId</code>.</p>
-</div>
-<div class="paragraph">
-<p>As new feature IIds may consist of multiple wrapped components (e.g. composite ids). Use <code>ICompositeId</code> and <code>AbstractCompositeId</code> as base to build own composite types.
-Based on the adapted serialization mechanism (see <code>IdFactory</code> and IdCodec` classes) composite ids may also be used in data objects and REST APIs like the existing root ids.</p>
-</div>
-<div class="listingblock">
-<div class="title">Listing 3. Example composite id based on an example string id and an example uuid</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@IdTypeName</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">example.ExampleCompositeId</span><span class="delimiter">&quot;</span></span>)
-<span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">ExampleCompositeId</span> <span class="directive">extends</span> AbstractCompositeId {
-  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">1L</span>;
-
-  <span class="directive">private</span> ExampleCompositeId(ExampleStringId c1, ExampleUuId c2) {
-    <span class="local-variable">super</span>(c1, c2);
-  }
-
-  <span class="annotation">@RawTypes</span>
-  <span class="directive">public</span> <span class="directive">static</span> ExampleCompositeId of(<span class="predefined-type">String</span> c1, <span class="predefined-type">UUID</span> c2) {
-    <span class="keyword">if</span> (StringUtility.isNullOrEmpty(c1) || c2 == <span class="predefined-constant">null</span>) {
-      <span class="keyword">return</span> <span class="predefined-constant">null</span>;
-    }
-    <span class="keyword">return</span> <span class="keyword">new</span> ExampleCompositeId(ExampleStringId.of(c1), ExampleUuId.of(c2));
-  }
-
-  <span class="directive">public</span> <span class="directive">static</span> ExampleCompositeId of(ExampleStringId c1, ExampleUuId c2) {
-    <span class="keyword">if</span> (c1 == <span class="predefined-constant">null</span> || c2 == <span class="predefined-constant">null</span>) {
-      <span class="keyword">return</span> <span class="predefined-constant">null</span>;
-    }
-    <span class="keyword">return</span> <span class="keyword">new</span> ExampleCompositeId(c1, c2);
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="new-calendar-tooltip"><a class="anchor" href="#new-calendar-tooltip"></a>New Calendar Tooltip</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The calendar component item of the calendar widget has new attributes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>subjectIconId - icon is showed in the calendar component in front of the subject</p>
-</li>
-<li>
-<p>subjectLabel - label in tooltip on top of the subject</p>
-</li>
-<li>
-<p>subjectAppLink - appLink in tooltip of calendar component</p>
-</li>
-<li>
-<p>descriptionElements - list of <code>ICalendarItemDescriptionElement</code> which is displayed in the body of the tooltip of the calendar component</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/calendar_tooltip.png" alt="calendar tooltip">
-</div>
-<div class="title">Figure 8. Calendar Component</div>
-</div>
-<div class="paragraph">
-<p>Further the calendar provides now a time range selection in the day, work week and week mode. By default, this feature is disabled, it can be configured with the <code>rangeSelectionAllowed</code> property. The start point and end point of the current selected time range can be accessed with the <code>selectedRange</code> property.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="categories-for-health-checkers"><a class="anchor" href="#categories-for-health-checkers"></a>Categories for Health Checkers</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For the health check servlet <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthCheckServlet</code> a new query parameter <em>category</em> has been introduced to create the possibility to check only some specific health checkers for a specific category. If a category is supplied using the parameter, the actual <code>IHealthChecker</code> checkers are filtered using the method <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.acceptCategory(HealthCheckCategoryId)</code>.</p>
-</div>
-<div class="paragraph">
-<p>If no category is provided there is no change in behavior and all checkers are executed.
-If an invalid category is provided an error is logged and the same behavior is executed as no category was provided.</p>
-</div>
-<div class="sect2">
-<h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API Changes</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>New method <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.acceptCategory(HealthCheckCategoryId)</code> was added, default implementation always returns <code>true</code></p>
-</li>
-<li>
-<p>Parameter <code>HealthCheckCategoryId</code> was added for <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.checkHealth(RunContext, HealthCheckCategoryId)</code>; if health check itself does not rely on a specific category ignore this parameter</p>
-</li>
-<li>
-<p>Parameter <code>HealthCheckCategoryId</code> was added for <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthChecker.execCheckHealth(HealthCheckCategoryId)</code>; if health check itself does not rely on a specific category ignore this parameter</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="jsform"><a class="anchor" href="#jsform"></a>JsForm</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The JsForm is a Java-form that wraps a form implemented in JS. This allows a Scout Classic application to open a Scout JS form.
-For more information about the JsForm see <a href="https://eclipsescout.github.io/23.2/technical-guide.html#how-to-js-form">Technical Guide</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="numberformatprovider"><a class="anchor" href="#numberformatprovider"></a>NumberFormatProvider</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The return type of <code>NumberFormatProvider#getIntegerInstance</code> was changed from <code>java.text.NumberFormat</code> to <code>java.text.DecimalFormat</code> to align the return type of all get<em>Xyz</em>Instance() methods.</p>
+<p>Default menuTypes have been added to several widgets.
+This means that e.g. the <code>Table</code> treats a menu without a menuType as if it had set <code>Table.MenuTypes.EmptySpace</code>.
+For more information about the default menuTypes see <a href="https://eclipsescout.github.io/23.2/technical-guide-js.html#menu-types">Technical Guide for Scout JS</a>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1177,10 +559,12 @@ Do you want to improve this document? Have a look at the <a href="https://github
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
 Version 23.2<br>
-Last updated 2023-02-07 18:29:29 +0100
+Last updated 2023-02-13 18:28:32 +0100
 </div>
 </div>
 </body>

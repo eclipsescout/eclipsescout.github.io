@@ -654,8 +654,8 @@ Looking for something else? Visit <a href="https://eclipsescout.github.io" class
 </td>
 <td class="content">
 This is the guide to Scout JS, the JavaScript part of Eclipse Scout.<br>
-If you are looking for the Java part please see the <a href="https://eclipsescout.github.io/23.1/technical-guide.html">technical guide for Scout Classic</a>.<br>
-If you don&#8217;t know the difference between Scout JS and Scout Classic, please read the <a href="https://eclipsescout.github.io/23.1/getstarted.html">Get Started Guide</a> first.
+If you are looking for the Java part please see the <a href="https://eclipsescout.github.io/23.2/technical-guide.html">technical guide for Scout Classic</a>.<br>
+If you don&#8217;t know the difference between Scout JS and Scout Classic, please read the <a href="https://eclipsescout.github.io/23.2/getstarted.html">Get Started Guide</a> first.
 </td>
 </tr>
 </table>
@@ -786,7 +786,7 @@ In case of the <code>StringField</code> you can specify properties like the labe
 If you don&#8217;t specify them, the defaults are used. The only needed property is the <code>parent</code>.</p>
 </div>
 <div class="paragraph">
-<p>To get a list of all available <code>StringField</code> properties, have a look at the interface <a href="https://github.com/eclipse-scout/scout.rt/blob/releases/23.1/eclipse-scout-core/src/form/fields/stringfield/StringFieldModel.ts">StringFieldModel</a>.
+<p>To get a list of all available <code>StringField</code> properties, have a look at the interface <a href="https://github.com/eclipse-scout/scout.rt/blob/releases/23.2/eclipse-scout-core/src/form/fields/stringfield/StringFieldModel.ts">StringFieldModel</a>.
 Such a model definition is available for every widget.
 Just add the suffix <code>Model</code> to the widget name and you&#8217;ll find it.</p>
 </div>
@@ -1344,7 +1344,7 @@ button.setSelected(<span class="predefined-constant">true</span>);</code></pre>
 <div class="paragraph">
 <p>If you want to know what events are available for a specific widget, you can have a look at its event map.
 The event map is a TypeScript interface and named after the widget with the suffix <code>EventMap</code>.
-For example, you will find the event map of a <code>Menu</code> under the name <a href="https://github.com/eclipse-scout/scout.rt/blob/releases/23.1/eclipse-scout-core/src/menu/MenuEventMap.ts">MenuEventMap</a>.</p>
+For example, you will find the event map of a <code>Menu</code> under the name <a href="https://github.com/eclipse-scout/scout.rt/blob/releases/23.2/eclipse-scout-core/src/menu/MenuEventMap.ts">MenuEventMap</a>.</p>
 </div>
 <div class="paragraph">
 <p>Beside having a complete list of the available events, these event maps are also used by TypeScript to provide code completion for the event name when adding an event handler:</p>
@@ -2755,6 +2755,89 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 </div>
 <div class="paragraph">
 <p>Please refer to the respective container for the available menu types and their functions.</p>
+</div>
+<div class="paragraph">
+<p>Most widgets specify some default menuTypes. Menus without any menuTypes are treated as if these default menuTypes are set. The defaults are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Calendar</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Calendar.MenuTypes.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ImageField</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ImageField.MenuTypes.ImageUrl</code></p>
+</li>
+<li>
+<p><code>ImageField.MenuTypes.Null</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Planner</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Planner.MenuTypes.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Table</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Table.MenuTypes.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TileGrid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TileGrid.MenuTypes.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Tree</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Tree.MenuTypes.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ValueField</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ValueField.MenuTypes.NotNull</code></p>
+</li>
+<li>
+<p><code>ValueField.MenuTypes.Null</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="sect3">
 <h4 id="valuefield"><a class="anchor" href="#valuefield"></a>10.4.1. ValueField</h4>
@@ -4583,7 +4666,7 @@ Do you want to improve this document? Have a look at the <a href="https://github
 <div id="footer">
 <div id="footer-text">
 Version 23.2<br>
-Last updated 2023-02-02 16:38:54 +0100
+Last updated 2023-02-13 18:28:32 +0100
 </div>
 </div>
 </body>
