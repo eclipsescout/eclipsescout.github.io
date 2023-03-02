@@ -38,8 +38,6 @@ unzip -q $sourceZip -d $sourceBaseDir
 sourceDir="${sourceBaseDir}/eclipsescout.github.io/site"
 targetDir="${targetRepoDir}"
 
-mkdir -p ${targetDir}/images/
-
 echo "Copy files from $sourceDir to $targetDir ..."
 
 rsync -q -r --delete ${sourceDir} ${targetDir}/
