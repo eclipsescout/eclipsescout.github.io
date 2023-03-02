@@ -23,6 +23,7 @@ fi
 
 sourceZip=$1
 targetRepoDir=$2
+# Named differently than in sync-docs.sh to avoid clashes on paralell runs
 sourceBaseDir="copyworkdirantora"
 
 # --- SCRIPT ---
@@ -35,7 +36,7 @@ echo "Unzip $sourceZip to $sourceBaseDir"
 unzip -q $sourceZip -d $sourceBaseDir
 
 # define sourceDir / targetDir
-sourceDir="${sourceBaseDir}/eclipsescout.github.io/site"
+sourceDir="${sourceBaseDir}/site"
 targetDir="${targetRepoDir}"
 
 echo "Copy files from $sourceDir to $targetDir ..."
