@@ -36,7 +36,7 @@ echo "Unzip $sourceZip to $sourceBaseDir"
 unzip -q $sourceZip -d $sourceBaseDir
 
 # define sourceDir / targetDir
-sourceDir="${sourceBaseDir}/site"
+sourceDir="${sourceBaseDir}/site/*"
 targetDir="${targetRepoDir}"
 
 echo "Copy files from $sourceDir to $targetDir ..."
