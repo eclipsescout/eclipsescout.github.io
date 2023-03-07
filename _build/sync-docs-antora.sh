@@ -35,7 +35,7 @@ echo "Unzip $sourceZip to $sourceBaseDir"
 
 unzip -q $sourceZip -d $sourceBaseDir
 
-# define sourceDir / targetDir
+# define sourceDir / targetDir. Ensure to keep the /* after site. Otherwise all old documentation will be wiped as well.
 sourceDir="${sourceBaseDir}/site/*"
 targetDir="${targetRepoDir}"
 
