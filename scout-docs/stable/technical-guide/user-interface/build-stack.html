@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Build Stack :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../../next/index.html">23.2</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../../index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>User Interface</li>
+    <li><a href="build-stack.html">Build Stack</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.1</button>
+  <div class="version-menu">
+    <a class="version" href="../../../next/technical-guide/user-interface/build-stack.html">23.2</a>
+    <a class="version is-current" href="build-stack.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/user-interface/build-stack.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.1/docs/modules/technical-guide/pages/user-interface/build-stack.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Build Stack</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>JavaScript and CSS assets of a typical Scout application are built by  <a href="https://webpack.js.org/">Webpack</a> using <a href="https://www.npmjs.com/">npm</a> and <a href="https://nodejs.org/">Node.js</a>. In order to make the building as easy as possible for you, there is a <a href="https://www.npmjs.com/package/@eclipse-scout/cli">CLI</a> module available. That module contains a default webpack and karma configuration and several build scripts you can use. The goal is to reduce the time you need to setup your build to a minimum. If you have created your Scout project using a Scout archetype, it should all be already setup for you. Nevertheless, you will get to a point where it is important to know how the building works in detail and how the several build tools are wired together. If you are there, this chapter should help you out.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dependency-management"><a class="anchor" href="#dependency-management"></a>Dependency Management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In every modern application you will have dependencies to other modules, either modules you created to separate your code, or third party modules like Scout. Such dependencies to other JavaScript modules are managed by the Node Package Manager (<a href="https://www.npmjs.com/">npm</a>). So every module containing JavaScript or Less code needs to be a Node module with a <code>package.json</code> file that defines its dependencies.</p>
+</div>
+<div class="paragraph">
+<p>This setup gives you the possibility to easier integrate and update 3rd party JavaScript frameworks available in the huge <a href="https://www.npmjs.com/">npm registry</a>.</p>
+</div>
+<div class="paragraph">
+<p>Scout itself is also published to that registry and will therefore be downloaded automatically once you execute <code>npm install</code>, as long as your <code>package.json</code> contains a Scout dependency. You will recognize a Scout module based on its name: all official Scout modules are published using the scope <code>@eclipse-scout</code>. The most important one is <a href="https://www.npmjs.com/package/@eclipse-scout/core">@eclipse-scout/core</a> which contains the core runtime functionality. Other modules are <a href="https://www.npmjs.com/package/@eclipse-scout/cli">@eclipse-scout/cli</a> for the building support, <a href="https://www.npmjs.com/package/@eclipse-scout/eslint-config">@eclipse-scout/eslint-config</a> for our ESLint rules, or <a href="https://www.npmjs.com/package/@eclipse-scout/karma-jasmine-scout">@eclipse-scout/karma-jasmine-scout</a> for enhanced testing support.</p>
+</div>
+<div class="sect2">
+<h3 id="es6-modules"><a class="anchor" href="#es6-modules"></a>ES6 Modules</h3>
+<div class="paragraph">
+<p>In addition to Node module dependencies, a Scout application uses ES6 imports to define dependencies between each JavaScript files. So if you want to use a class or utility from <code>@eclipse-scout/core</code>, you&#8217;ll need to import that class or utility in your own JavaScript file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Importing ES6 modules</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import PersonFormModel from './PersonFormModel';
+import {Form, models} from '@eclipse-scout/core';
+
+export default class PersonForm extends Form {
+
+  _jsonModel() {
+    return models.get(PersonFormModel);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the code above there are two imports defined: the first one imports the file <code>PersonFormModel</code> into the variable PersonFormModel. The second one imports the class <code>Form</code> and the utility <code>models</code> from the scout core module. Notice that the first import directly addresses a specific file while the second import addresses the node module itself. This is possible because Scout provides an <code>index</code> file specifying all available exports. That file is linked in the <code>package.json</code>. If your application contains more than one Node modules as well, you can do the same.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="webpack-configuration"><a class="anchor" href="#webpack-configuration"></a>Webpack Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout provides a default Webpack configuration containing all the necessary settings for Webpack and the plugins needed for a typical Scout application setup. To make your application use the Scout defaults, you need to create a file called <code>webpack.config.js</code> in your Node module and reexport the Scout configuration.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Using Scout&#8217;s default Webpack config</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+module.exports = (env, args) =&gt; {
+  return baseConfig(env, args);
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t like the defaults you can easily adjust them by customizing the object returned by the <code>baseConfig(env, args)</code> call.</p>
+</div>
+<div class="paragraph">
+<p>Beside using the default configuration, you&#8217;ll need to configure some small things in order to make your application work. In this chapter we&#8217;ll have a look at these things you have to configure and the things that are provided by default.</p>
+</div>
+<div class="sect2">
+<h3 id="bundling"><a class="anchor" href="#bundling"></a>Bundling</h3>
+<div class="paragraph">
+<p>The main purpose of Webpack is to bundle the many small source files into one or a few larger JavaScript or CSS files which are included in the HTML files as <code>&lt;script&gt;</code> resp. <code>&lt;style&gt;</code> tags and therefore loaded by the browser.</p>
+</div>
+<div class="paragraph">
+<p>Scout does not provide any special bundling rules, but relies on the Webpack default configuration.
+It is optimized for best performance and user experience on modern browsers.
+If you want to customize the bundling please have a look at the <a href="https://webpack.js.org/plugins/split-chunks-plugin/">SplitChunksPlugin</a> of Webpack.</p>
+</div>
+<div class="paragraph">
+<p>To let Webpack know about your entry files you need to specify them in your <code>webpack.config.js</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Using Scout&#8217;s default Webpack config</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+
+module.exports = (env, args) =&gt; {
+  const config = baseConfig(env, args);
+  config.entry = {
+    'helloworld': './src/main/js/index.js',
+    'helloworld-theme': './src/main/js/theme.less',
+    'helloworld-theme-dark': './src/main/js/theme-dark.less'
+  };
+  return config;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example the application is called <code>helloworld</code> and there is a bundle created with the same name.
+In order to create the bundle, Webpack uses the entry file, which is <code>index.js</code> in this case, follows all the ES 6 imports and includes these files.
+It then extracts chunks into separate files based on the predefined Webpack default rules.
+So you don&#8217;t have to care about these chunks unless you want to customize it.</p>
+</div>
+<div class="paragraph">
+<p>Also notice that the same applies to CSS files. The above example defines 2 CSS bundles in addition to the JavaScript bundle: <code>helloworld-theme.css</code> and <code>helloworld-theme-dark.css</code>. There are no predefined chunks for CSS files, we just put all the CSS code in one big file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="static-web-resources"><a class="anchor" href="#static-web-resources"></a>Static Web Resources</h3>
+<div class="paragraph">
+<p>In addition to JavaScript and CSS resources bundled by webpack, your application will probably also require resources like images or fonts. Such resources should be placed in a resource folder, e.g. <code>src/main/resources/WebContent</code> if you use the Maven module structure, or just <code>res</code> otherwise. Because there are multiple modules that could provide such resources, you need to specify them in your <code>webpack.config.js</code> using the <code>resDir</code> array.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Specifying res folders</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+
+module.exports = (env, args) =&gt; {
+
+  args.resDirArray = ['src/main/resources/WebContent', 'node_modules/@eclipse-scout/core/res'];
+
+  return baseConfig(env, args);
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the snippet above the <code>resDir</code> array contains a folder of your module and a folder of Scout itself. The resource folder of Scout mainly contains the <code>scoutIcons.woff</code>, which is the icon font used by some Scout widgets.</p>
+</div>
+<div class="paragraph">
+<p>When the build runs all the folders specified by the <code>resDir</code> array are visited and the resources collected. These resources are then available under <code>/</code> (if you use the Scout backend). If you want to know how to start the build, have a look at the <a href="#command-line-interface-cli">Command Line Interface (CLI)</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ecmascript-transpiler"><a class="anchor" href="#ecmascript-transpiler"></a>EcmaScript Transpiler</h3>
+<div class="paragraph">
+<p>In order to use the latest EcmaScript features like the <a href="#es6-modules">ES6 Modules</a> but still support older browsers, Scout uses <a href="https://babeljs.io/">Babel</a> to transpile ES6+ code into ES5. The transpiler is enabled by default if you use the Webpack configuration provided by Scout, so you don&#8217;t have to configure it by yourself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="css-preprocessor"><a class="anchor" href="#css-preprocessor"></a>CSS Preprocessor</h3>
+<div class="paragraph">
+<p>The CSS preprocessor used by Scout is <a href="http://lesscss.org/">Less</a>, so the default webpack configuration already supports it by using the <code>less-loader</code> plugin. In order to profit from Scout`s less variables (see <a href="styling.html" class="xref page">Styling</a>]) we recommend to use Less as well. Since it is already configured, you won&#8217;t have to do anything but to write your CSS rules.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="karma-configuration"><a class="anchor" href="#karma-configuration"></a>Karma Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout uses <a href="https://karma-runner.github.io/">Karma</a> as test runner for its unit tests. The tests itself are written with the test framework <a href="https://jasmine.github.io/">Jasmine</a>. We also use some plugins like <a href="https://www.npmjs.com/package/karma-jasmine-jquery">karma-jasmine-jquery</a>, <a href="https://www.npmjs.com/package/karma-jasmine-ajax">karma-jasmine-ajax</a> or <a href="https://www.npmjs.com/package/@eclipse-scout/karma-jasmine-scout">karma-jasmine-scout</a> to make writing tests for a Scout application even easier.</p>
+</div>
+<div class="paragraph">
+<p>All this is configured in the file <code>karma-defaults.js</code>. If you want to use them too, you need to provide your own Karma file called <code>karma.conf.js</code> and import the defaults, similar to the <a href="#webpack-configuration">Webpack Configuration</a>. You can now adjust or override the defaults or just leave them as they are. To let Karma know about your tests, you need to define the entry point.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. karma.conf.js</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">const baseConfig = require('@eclipse-scout/cli/scripts/karma-defaults');
+module.exports = config =&gt; baseConfig(config, './src/test/js/test-index.js');</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the snippet above you see two things: The Scout defaults are imported and the entry point <code>test-index.js</code> is defined. This is all you need to do in this file if you are fine with the defaults.</p>
+</div>
+<div class="paragraph">
+<p>The file <code>test-index.js</code> defines where your unit tests are and what the context is for the Webpack build. Because a unit test is called a <code>spec</code> when using <code>Jasmine</code>, a typical <code>test-index.js</code> looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. karma.conf.js</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {JasmineScout} from '@eclipse-scout/core/testing';
+
+let context = require.context('./', true, /[sS]pec\.js$/);
+JasmineScout.runTestSuite(context);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code tells the <a href="https://www.npmjs.com/package/karma-webpack">karma-webpack</a> plugin to require all files ending in <code>Spec.js</code>. This will generate one big test bundle, but since source maps are enabled, you can debug the actual test files easily. The last line installs the given context and also runs a Scout app so that the Scout environment is properly set up.</p>
+</div>
+<div class="sect2">
+<h3 id="reporting"><a class="anchor" href="#reporting"></a>Reporting</h3>
+<div class="paragraph">
+<p>After running the tests, all results are put in a folder called <code>test-results</code>. There is a sub folder for each browser that executed the tests containing a file called <code>test-results.xml</code>. Since the <code>karma-defaults.js</code> uses the <code>junit</code> reporter, the file can be interpreted by any tool supporting the <code>junit</code> format, e.g. Jenkins.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-line-interface-cli"><a class="anchor" href="#command-line-interface-cli"></a>Command Line Interface (CLI)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout CLI is a bunch of npm-scripts that help you building and testing your application. In order to use them you need to add a devDependency to <a href="https://www.npmjs.com/package/@eclipse-scout/cli">@eclipse-scout/cli</a> to the <code>package.json</code> of your module. We also suggest to add some scripts to make the execution easier. If you use the Scout archetype, the following will be created for you.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. CLI dependency and scripts in package.json</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"scripts": {
+  "testserver:start": "scout-scripts test-server:start",
+  "testserver:stop": "scout-scripts test-server:stop",
+  "test:ci": "scout-scripts test:ci",
+  "build:dev": "scout-scripts build:dev",
+  "build:prod": "scout-scripts build:prod",
+  "build:all": "scout-scripts build:dev &amp;&amp; scout-scripts build:prod",
+  "build:dev:watch": "scout-scripts build:dev:watch"
+},
+"devDependencies": {
+  "@eclipse-scout/cli": "10.0.0"
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="building"><a class="anchor" href="#building"></a>Building</h3>
+<div class="paragraph">
+<p>Before you can open your application in the browser, you need to build it. The build takes all your source code and resources and creates the artifacts needed for the browser according to your <a href="#webpack-configuration">Webpack Configuration</a>. Once the build is complete all the produced artifacts are put in the <code>target/dist</code> folder.</p>
+</div>
+<div class="paragraph">
+<p>The <code>target/dist</code> folder contains three sub folders:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>dev: contains not minified versions of the JS and CSS bundles with <a href="https://developer.mozilla.org/de/docs/Tools/Debugger/How_to/Use_a_source_map">Source Maps</a>.
+The source maps are necessary to map the bundles to the actual source files which makes debugging a lot easier.
+The Scout server delivers such bundles if it runs in dev mode (<code>scout.devMode=true</code>).</p>
+</li>
+<li>
+<p>prod: contains minified versions of the JS and CSS bundles with restricted source maps (the maps don&#8217;t contain the actual source code, only the information necessary to create meaningful stack traces, see also the <a href="https://webpack.js.org/configuration/devtool/">devtool</a> property <code>nosources-source-map</code>).
+Content hashes are generated and added to the bundles for optimal cashing.
+The Scout server delivers such bundles if it runs in production mode (<code>scout.devMode=false</code>).</p>
+</li>
+<li>
+<p>res: contains all static resources from the various resource folders specified by the <code>resDir</code> array, see <a href="#static-web-resources">Static Web Resources</a>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If the property <code>scout.urlHints.enabled</code> is set to <code>true</code>, the dev files can be requested on the fly even if the server does not run in <code>devMode</code>. Just add the query parameter <code>?debug=true</code> and the files in the dev folder instead of the ones in the prod folder are delivered. This can be very useful to debug a deployed application.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to start the build, use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run build:dev</code></p>
+</div>
+<div class="paragraph">
+<p>This will fill the dev and res folders with the appropriate files. To make the files available to your browser you need to start a webserver. When using the Scout backend just start the class <code>JettyServer</code>. Once the build is complete and Jetty runs, you can open your application in the browser.</p>
+</div>
+<div class="paragraph">
+<p>If you now make adjustments on your JS or CSS files, you would have to rerun the buid script, which could be time consuming and annoying. To make your developer life easier you can run the following script instead:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run build:dev:watch</code></p>
+</div>
+<div class="paragraph">
+<p>This will also build your application but additionally starts a watcher that watches your source code. As soon as you change your code that watcher will notice and start a build. Since it knows which files changed, only these files need to be rebuilt which makes it a lot faster.</p>
+</div>
+<div class="sect3">
+<h4 id="webpack-arguments"><a class="anchor" href="#webpack-arguments"></a>Arguments</h4>
+<div class="paragraph">
+<p>The build commands accept some arguments you can use to adjust the build without modifying your webpack config file. The following arguments are available:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>mode: <code>development</code> or <code>production</code>. This argument is set automatically when using build:dev or build:prod.</p>
+</li>
+<li>
+<p>clean: true, to clean the <code>target/dist</code> folder before each build. Default is <code>false</code> if watcher is enabled (build:dev:watch), otherwise <code>true</code>.</p>
+</li>
+<li>
+<p>progress: <code>true</code>, to show build progress in percentage. Default is <code>true</code>.</p>
+</li>
+<li>
+<p>profile: <code>true</code>, to show timing information for each build step. Default is <code>false</code>.</p>
+</li>
+<li>
+<p>resDirArray: an array containing directories which should be copied to <code>dist/res</code>.</p>
+</li>
+<li>
+<p>stats: object to control the build output. There are some presets available as shortcuts (e.g. 'detailed' or 'errors-only'), see also: <a href="https://webpack.js.org/configuration/stats/" class="bare">https://webpack.js.org/configuration/stats/</a>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In order to set an argument make sure to separate the arguments using -- from the command. Example:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run build:dev -- --progress false</code></p>
+</div>
+<div class="paragraph">
+<p>All arguments are passed to the webpack config file as parameter <code>args</code> which is the second parameter. The first parameter called <code>env</code> is actually just a convenience accessor to <code>args.env</code> and does not contain system environment variables. If you want to access them just use the regular node syntax <code>process.env</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="testing"><a class="anchor" href="#testing"></a>Testing</h3>
+<div class="paragraph">
+<p>Before you can run your unit tests you need to properly setup the files as described in <a href="#karma-configuration">Karma Configuration</a>.</p>
+</div>
+<div class="paragraph">
+<p>If all is setup correctly, you can run your tests using the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run test:ci</code></p>
+</div>
+<div class="paragraph">
+<p>This will execute all unit tests with the headless browser. The default headless browser is Chrome, so you need to make sure Chrome is installed. This includes your Continuous Integration Environment, if you plan to automatically run the tests on a regular basis (e.g. with Jenkins).</p>
+</div>
+<div class="paragraph">
+<p>The above command will execute the tests once and does not watch for changes. This is typically not desired during development. When you are actively developing a component and want to run your tests while you are developing, you can use the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run testserver:start</code></p>
+</div>
+<div class="paragraph">
+<p>This will start a real browser and enable the watch mode. This means every time you adjust your code and save it, the web pack build is started, the browser reloaded and your tests executed.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you don&#8217;t like the automatic browser reloading, you can press debug on the top right corner of the browser or manually navigate to <a href="http://localhost:9876/debug.html" class="bare">http://localhost:9876/debug.html</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h4>
+<div class="paragraph">
+<p>The test commands accept some arguments you can use to adjust the karma runner without modifying your karma config file.
+All passed arguments are merged with the karma config object, so all karma configuration options are available (see <a href="http://karma-runner.github.io/4.0/config/configuration-file.html" class="bare">http://karma-runner.github.io/4.0/config/configuration-file.html</a>).</p>
+</div>
+<div class="paragraph">
+<p>Example usage:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run test:ci -- --junitReporter.outputDir=custom-out-dir</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please note that no type conversion happens which is especially relevant for boolean arguments.
+If you for example want to disable the watcher, you cannot use <code>--auto-watch false</code>.
+Instead, you would have to use <code>--no-auto-watch</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to the karma configuration options you can also pass the webpack arguments (checkout <a href="#webpack-arguments">Arguments</a> for a list of available arguments).
+To do that, you need to use the argument called <code>webpackArgs</code>.
+Example:</p>
+</div>
+<div class="paragraph">
+<p><code>npm run testserver:start -- --webpackArgs.progress=false</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+test:ci automatically disables the webpack progress because you don&#8217;t want the progress when the tests run on a continuous integration server.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="test-prod-scripts-on-your-local-machine"><a class="anchor" href="#test-prod-scripts-on-your-local-machine"></a>Test prod scripts on your local machine</h3>
+<div class="paragraph">
+<p>In case you need to test the files built by <code>build:prod</code> locally, follow this procedure:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stop the UI server.</p>
+</li>
+<li>
+<p>Run <code>npm run build:prod</code>, this script will copy minified script files to the <em>/dist</em> folder.</p>
+</li>
+<li>
+<p>Start the UI server.
+Stopping and starting the UI server makes sure the server-side script cache is cleared.</p>
+</li>
+<li>
+<p>Start the application with the URL parameter <code>/?debug=false</code>.</p>
+</li>
+<li>
+<p>Check your index.html in the browser.
+Each referenced script or CSS file should have a fingerprint, example: <code>yourapp-2c6053b2fdf5b816fae5.min.js</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you set the config property <code>scout.devMode</code> to false instead of using the URL parameter, the resources will be loaded from the Java classpath.
+In that case you need to additionally copy the content of the dist folder to target/classes before starting the UI server.
+Or you can also set <code>scout.loadWebResourcesFromFilesystem</code> to true to disable classpath loading (see also <code>LoadWebResourcesFromFilesystemConfigProperty</code>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="eslint"><a class="anchor" href="#eslint"></a>ESLint</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the Scout code base we use <a href="https://eslint.org/">ESLint</a> to analyze the JavaScript and TypeScript code.
+The configuration we use is stored in the module <a href="https://www.npmjs.com/package/@eclipse-scout/eslint-config">@eclipse-scout/eslint-config</a>.
+If you like, you can use the same configuration for your application, but you don&#8217;t have to.
+You can use your custom config or even a different linter.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using the Scout archetype to generate your app, the ESLint configuration is already setup for you and you don&#8217;t need to do the following steps.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to use the Scout eslint-config, you need to add devDependencies to the modules <code>@eclipse-scout/eslint-config</code> and <code>eslint</code> in your <code>package.json</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. ESLint Dependencies</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"devDependencies": {
+  "@eclipse-scout/eslint-config": "23.1.0",
+  "eslint": "8.27.0"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then create a file called <code>.eslintrc.js</code> with the following content:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. .eslintrc.js</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript hljs" data-lang="JavaScript">module.exports = {
+  extends: '@eclipse-scout'
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This tells ESLint to inherit the configuration from the Scout module.
+In order to run the analysis, you can either use an IDE that supports it (e.g. IntelliJ), or the command line.</p>
+</div>
+<div class="paragraph">
+<p><code>npx eslint .</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the command takes very long and prints a lot of errors, you may have to ignore the <code>target/dist</code> folder, see <a href="#eslint-ignore">ESLint Ignore</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The command above will analyze your current directory including all sub-directories.
+Depending on your environment, it is likely that you&#8217;ll see some errors regarding linebreaks.
+This is because the Scout config enforces the UNIX format (LF).
+You can now either convert the linebreaks of your files to that format and adjust your editor to always use the UNIX format, or you can disable the rule.
+To do that, just add the following to your <code>.eslintrc.js</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Disabling the linebreak rule</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript hljs" data-lang="JavaScript">  rules: {
+    'linebreak-style': 'off'
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now run the command again to make the linebreak errors disappear.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you plan to configure your IDE to use the UNIX linebreak format, we recommend having a look at <a href="https://editorconfig.org/">Editor Config</a>.
+The file can be interpreted by various IDEs.
+Just add <code>end_of_line=lf</code> to that file and you are done.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="eslint-ignore"><a class="anchor" href="#eslint-ignore"></a>ESLint Ignore</h3>
+<div class="paragraph">
+<p>Similar to <code>.gitignore</code>, you can create a file called <code>.eslintignore</code> to exclude specific files or directories from the analysis.
+Because analyzing the build output probably does not make any sense, we recommend to at least ignore the <code>target</code> folder.
+The only thing you need to do is to create that file and add a line with the word <code>target</code>.</p>
+</div>
+<div class="paragraph">
+<p>For more details please see the official ESLint documentation at
+<a href="https://eslint.org/docs/user-guide/configuring#eslintignore" class="bare">https://eslint.org/docs/user-guide/configuring#eslintignore</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authoring-libraries"><a class="anchor" href="#authoring-libraries"></a>Authoring Libraries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are writing a Scout JS library module, you probably want to prebuild your JavaScript code so the consumer of your library don&#8217;t have to do it.
+This is especially important if you write your module in TypeScript because the Scout build does not transpile TypeScript code of libraries by default.</p>
+</div>
+<div class="paragraph">
+<p>Basically, the following things are necessary to create a library:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit your <code>webpack.config.js</code> or create a new one if you don&#8217;t have one already.</p>
+</li>
+<li>
+<p>Create a new entry point and define a name for your library.</p>
+</li>
+<li>
+<p>Use the <code>libraryConfig</code> function provided by Scout to create a library configuration.<br>
+The library config takes care of defining the externals (the code that won&#8217;t be bundled into your library) based on the dependencies of your <code>package.json</code>.
+This means, if an <code>import</code> points to code from a dependency (or dev-, optional-, bundled- or peer-dependency), the code won&#8217;t be bundled and the import is preserved.
+The library itself will be an ESM module and provide an <code>export</code> so it can be imported by consumers.</p>
+</li>
+<li>
+<p>Link the entry point (<code>main</code>) of your <code>package.json</code> to the entry point of your library.</p>
+</li>
+<li>
+<p>Define where your entry point and your type declarations are in a bundled module using <code>publishConfig</code>.
+The library will be created in the <code>dist</code> folder, as well as the type declarations (see the <code>outDir</code> property of your <code>tsconfig.json</code>).
+The attributes in the <code>publishConfig</code> will replace the regular attributes when the library is published.
+During development, the <code>publishConfig</code> has no effect.</p>
+</li>
+<li>
+<p>Ensure the <code>dist</code> folder will be part of the bundled module by adding it to the list of files in <code>package.json</code>.</p>
+</li>
+<li>
+<p>Consult the <a href="https://webpack.js.org/guides/author-libraries/">Webpack Guide</a> if you want to learn more about authoring libraries in general.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Library Webpack Config</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript hljs" data-lang="JavaScript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+module.exports = (env, args) =&gt; {
+  args.resDirArray = [];
+  const config = baseConfig(env, args);
+  return {
+    entry: {
+      'your-library': './src/main/js/index.ts' <i class="conum" data-value="2"></i><b>(2)</b>
+    },
+    ...baseConfig.libraryConfig(config) <i class="conum" data-value="3"></i><b>(3)</b>
+  };
+};</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 12. package.json for a library</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "main": "./src/main/js/index.ts",
+  "publishConfig": {
+    "main": "./target/dist/dev/your-library.js",
+    "types": "./target/dist/d.ts/index.d.ts"
+  },
+  "files": [
+    "src/main/js",
+    "target/dist"
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multiple-libraries-in-a-single-module"><a class="anchor" href="#multiple-libraries-in-a-single-module"></a>Multiple Libraries in a Single Module</h3>
+<div class="paragraph">
+<p>If you need to build multiple libraries in a single npm module, you can use the <code>run</code> argument of Scout`s webpack build to control which library should be built.
+Scout itself for example uses it to build a testing library (<code>@eclipse-scout/core/testing</code>) with some utilities for writing tests.</p>
+</div>
+<div class="paragraph">
+<p>For each library specified by the <code>run</code> argument a new webpack build is started, so the libraries are built consecutively which is ideal for the memory consumption.</p>
+</div>
+<div class="paragraph">
+<p>To use this feature, just check for the <code>run</code> args in your webpack config and load another config instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript hljs" data-lang="JavaScript">module.exports = (env, args) =&gt; {
+  args.resDirArray = [];
+  if (args.run == 'other') {
+    return require('./webpack.config.other.js')(env, args);
+  }
+  // ... default config
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the <code>webpack.config.other.js</code> define your other library.
+If it should only contain a part of the source code, make sure to specify the externals correctly.
+The function <code>rewriteIndexImports</code> of the base config may help you to externalize all imports to the <code>index</code> file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript hljs" data-lang="JavaScript">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
+module.exports = (env, args) =&gt; {
+const config = baseConfig(env, args);
+  let otherConfig = {
+    entry: {
+      'other-library': './src/main/js/folder-with-other-library/index.ts'
+    },
+    ...baseConfig.libraryConfig(config)
+  };
+  otherConfig.externals = [
+    baseConfig.rewriteIndexImports('@your/core', 'folder-with-other-library'),
+    otherConfig.externals
+  ];
+  return otherConfig;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, make sure every library will be built by specifying the run argument in the <code>package.json</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "scripts": {
+    "build:dev": "scout-scripts build:dev --run default other",
+    "build:prod": "scout-scripts build:prod --run default other"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, you need to define the entry points in your <code>package.json</code>.
+You can do so using the <code>exports</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 13. package.json for a library</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "exports": {
+    ".": "./src/main/js/index.ts",
+    "./other": "./src/main/js/folder-with-other-library/index.ts",
+    "./src/main/js/*": "./src/main/js/*"
+  },
+  "main": "./src/main/js/index.ts",
+  "publishConfig": {
+    "exports": {
+      ".": "./target/dist/dev/your-library.js",
+      "./testing": "./target/dist/dev/other-library.js",
+      "./src/main/js/*": "./src/main/js/*"
+    },
+    "main": "./target/dist/dev/your-library.js"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Important</strong>: As soon as the <code>exports</code> attribute is used, consumers of the module can only import code that is explicitly exported.
+In order to still allow imports to individual source files directly (e.g. for CSS Files), you can export them using wildcard syntax (<code>./src/main/js/*</code>).
+If you don&#8217;t need or want that, just omit this configuration.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

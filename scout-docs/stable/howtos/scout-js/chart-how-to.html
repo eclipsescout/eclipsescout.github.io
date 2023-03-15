@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How to Create a Chart :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../../next/index.html">23.2</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../../index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../how-tos.html">How-Tos</a></li>
+    <li>Scout JS</li>
+    <li><a href="chart-how-to.html">How to Create a Chart</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.1</button>
+  <div class="version-menu">
+    <a class="version" href="../../../next/howtos/scout-js/chart-how-to.html">23.2</a>
+    <a class="version is-current" href="chart-how-to.html">23.1</a>
+    <a class="version" href="../../../22/howtos/scout-js/chart-how-to.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.1/docs/modules/howtos/pages/scout-js/chart-how-to.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">How to Create a Chart</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This cheat sheet shows how to create your own chart for a ScoutJS application. In this example we will visualize the sold scoops of an ice cream shop.
+We assume the ice cream shop already has a running ScoutJS application and a place where it wants to create the chart.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Everything related to charts has its own Maven and npm modules and is not part of Scout core. Therefore, the following Maven dependencies need to be added to the <code>ui.html</code>-module of the ice cream shop app.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+  &lt;artifactId&gt;org.eclipse.scout.rt.chart.ui.html&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A npm dependency to <code>@eclipse-scout/chart</code> needs to be added in the <code>package.json</code> of the ice cream shop app and in addition, an import needs to be added to the entry-files <code>icecream.js</code>,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import * as chart from '@eclipse-scout/chart';
+Object.assign({}, chart); // workaround so that the imports are not unused</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>icecream-theme.less</code> and <code>icecream-theme-dark.less</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "~@eclipse-scout/chart/src/index";</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "~@eclipse-scout/chart/src/index-dark";</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="minimal-code-for-a-new-chart"><a class="anchor" href="#minimal-code-for-a-new-chart"></a>Minimal Code for a New Chart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The chart is created by</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">scout.create('Chart', {
+  parent: this
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-data-to-the-chart"><a class="anchor" href="#add-data-to-the-chart"></a>Add data to the chart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The ice cream shop has sold the following amount of scoops:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Table Scoops per month and flavor</caption>
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6924%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Jan.</th>
+<th class="tableblock halign-left valign-top">Feb.</th>
+<th class="tableblock halign-left valign-top">Mar.</th>
+<th class="tableblock halign-left valign-top">Apr.</th>
+<th class="tableblock halign-left valign-top">May</th>
+<th class="tableblock halign-left valign-top">Jun.</th>
+<th class="tableblock halign-left valign-top">Jul.</th>
+<th class="tableblock halign-left valign-top">Aug.</th>
+<th class="tableblock halign-left valign-top">Sept.</th>
+<th class="tableblock halign-left valign-top">Oct.</th>
+<th class="tableblock halign-left valign-top">Nov.</th>
+<th class="tableblock halign-left valign-top">Dec.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vanilla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">162</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">465</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">759</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">537</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">312</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">106</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chocolate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">132</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">243</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">498</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">615</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">445</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">217</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Strawberry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">182</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">391</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">415</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">261</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We create a data object and pass it to the chart.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">let data = {
+  axes: [
+    [{label: 'Jan.'}, {label: 'Feb.'}, {label: 'Mar.'}, {label: 'Apr.'}, {label: 'May'}, {label: 'Jun.'}, {label: 'Jul.'}, {label: 'Aug.'}, {label: 'Sept.'}, {label: 'Oct.'}, {label: 'Nov.'}, {label: 'Dec.'}]
+  ],
+  chartValueGroups: [
+    {
+      groupName: 'Vanilla',
+      values: [0, 0, 0, 94, 162, 465, 759, 537, 312, 106, 0, 0]
+    },
+    {
+      groupName: 'Chocolate',
+      values: [0, 0, 0, 81, 132, 243, 498, 615, 445, 217, 0, 0]
+    },
+    {
+      groupName: 'Strawberry',
+      values: [0, 0, 0, 59, 182, 391, 415, 261, 75, 31, 0, 0]
+    }
+  ]
+};
+
+chart.setData(data);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The chart will now look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/pieChartDefault.png" alt="pieChartDefault">
+</div>
+</div>
+<div class="paragraph">
+<p>It looks like this, because the default type is <code>pie</code>, the default value of <code>maxSegments</code> is <code>5</code> and the first three segments in each dataset are 0.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chart-configuration"><a class="anchor" href="#chart-configuration"></a>Chart configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s change it to a bar chart and use another color scheme:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">let config = {
+  type: Chart.Type.BAR,
+  options: {
+    colorScheme: colorSchemes.ColorSchemeId.RAINBOW
+  }
+};
+
+chart.setConfig(config);</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/barChartRainbow.png" alt="barChartRainbow">
+</div>
+</div>
+<div class="paragraph">
+<p>Now we add labels to the scales and set some custom colors.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">data.chartValueGroups[0].colorHexValue = '#fdf2d1';
+data.chartValueGroups[1].colorHexValue = '#94654c';
+data.chartValueGroups[2].colorHexValue = '#f89fa1';
+
+config.options.autoColor = false;
+config.options.scales = {
+  x: {
+    title: {
+      display: true,
+      text: 'Month'
+    }
+  },
+  y: {
+    title: {
+      display: true,
+      text: 'Scoops'
+    }
+  }
+};
+
+chart.setData(data);
+chart.setConfig(config);</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/barChartCustom.png" alt="barChartCustom">
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, we want to make the chart interactive.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">config.options = $.extend(true, {}, config.options, {
+  clickable: true,
+  checkable: true,
+  plugins: {
+    legend: {
+      clickable: true
+    }
+  }
+});
+
+chart.setConfig(config);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The chart is now <code>clickable</code> and <code>checkable</code> and datasets can be hidden via the legend.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/barChartCustomInteractive.png" alt="barChartCustomInteractive">
+</div>
+<div class="title">Figure 1. The dataset "Vanilla" is hidden and some segments are checked.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="events"><a class="anchor" href="#events"></a>Events</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each time a segment is clicked an event is triggered. This event can be handled by</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">let clickHandler = event =&gt; {
+  let clickObject = event.data,
+    datasetIndex = clickObject.datasetIndex,
+    dataIndex = clickObject.dataIndex,
+    xIndex = clickObject.xIndex,
+    yIndex = clickObject.yIndex;
+  console.log('Segment clicked\n' +
+    ' - datasetIndex: ' + datasetIndex + '\n' +
+    ' - dataIndex: ' + dataIndex + '\n' +
+    ' - xIndex: ' + xIndex + '\n' +
+    ' - yIndex: ' + yIndex);
+};
+
+chart.on('valueClick', clickHandler);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A list of all checked segments is held in <code>chart.checkedItems</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="change-colors-using-css"><a class="anchor" href="#change-colors-using-css"></a>Change colors using CSS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Even if some charts are rendered on a <code>&lt;canvas&gt;</code>-element the colors can be changed via CSS. We add a custom grey color scheme for the bubble chart, which is rendered on a <code>&lt;canvas&gt;</code>.
+To achieve this, we need to add a LESS file with the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@chart-grey-1: #191919;
+@chart-grey-2: #4C4C4C;
+@chart-grey-3: #737373;
+@chart-grey-4: #999999;
+@chart-grey-5: #BFBFBF;
+@chart-grey-6: #D8D8D8;
+
+.color-scheme-grey &gt; .bubble-chart {
+  &amp; &gt; .elements {
+    &gt; .label {
+      fill: black;
+    }
+
+    &gt; .grid {
+      fill: lightslategrey;
+    }
+
+    &gt; .tooltip-border {
+      fill: black;
+    }
+
+    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
+      @opacity: 20);
+    #scout.chart-auto-stroke-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6);
+    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
+      @opacity: 35, @additional-classes: ~".hover");
+    #scout.chart-auto-stroke-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
+      @darken: 10, @additional-classes: ~".hover");
+
+    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
+      @additional-classes: ~".legend");
+  }
+
+  &amp;.checkable &gt; .elements {
+    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
+      @additional-classes: ~".checked");
+    #scout.chart-auto-colors(@chart-grey-1, @chart-grey-2, @chart-grey-3, @chart-grey-4, @chart-grey-5, @chart-grey-6,
+      @darken: 10, @additional-classes: ~".hover.checked");
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This color scheme can now be used in a config object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">let config = {
+  type: Chart.Type.BUBBLE,
+  options: {
+    colorScheme: 'color-scheme-grey'
+  }
+};</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/bubbleChartColorSchemeGrey.png" alt="bubbleChartColorSchemeGrey">
+</div>
+<div class="title">Figure 2. A checkable bubble chart using the custom grey color scheme.</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

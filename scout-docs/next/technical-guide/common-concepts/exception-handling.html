@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Working with exceptions :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../stable/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="platform.html">Platform</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../stable/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../stable/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../stable/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Common Concepts</li>
+    <li><a href="exception-handling.html">Working with exceptions</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="exception-handling.html">23.2</a>
+    <a class="version" href="../../../stable/technical-guide/common-concepts/exception-handling.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/common-concepts/exception-handling.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.2/docs/modules/technical-guide/pages/common-concepts/exception-handling.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Working with exceptions</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Exceptions can be logged via SLF4J Logger, or given to exception handler for centralized, consistent exception handling, or translated into other exceptions. Scout provides some few exceptions/errors, which are used by the framework.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-throwables"><a class="anchor" href="#scout-throwables"></a>Scout Throwables</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All scout throwables are unchecked and typically implementing the <code>IThrowableWithContextInfo</code> interface, which provides functionality for associating context information with the occurred error.</p>
+</div>
+<div class="paragraph">
+<p>Most scout throwables are runtime exceptions, and typically inherit from <a href="#platformexception">PlatformException</a>. See <a href="#scout-runtime-exceptions">Scout Runtime Exceptions</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>Some scout throwables are instances of <code>java.lang.Error</code> by extending <a href="#platformerror">PlatformError</a>. Those errors usually provide functionality to interrupt Jobs, for example when a user is canceling a long running operation.<br>
+Note: <strong><a href="#platformerror">PlatformErrors</a> should never be catched by business logic!</strong> See <a href="#scout-runtime-errors">Scout Runtime Errors</a> for more information.</p>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-exceptions"><a class="anchor" href="#scout-runtime-exceptions"></a>Scout Runtime Exceptions</h3>
+<div class="sect3">
+<h4 id="platformexception"><a class="anchor" href="#platformexception"></a>PlatformException</h4>
+<div class="paragraph">
+<p>Base runtime exception of the Scout platform, which allows for message formatting anchors and context information to be associated.</p>
+</div>
+<div class="paragraph">
+<p>There is a single constructor which accepts the exception&#8217;s message, and optionally a variable number of arguments. Typically, a potential cause is given as its argument. The message allows further the use of formatting anchors in the form of {} pairs. The respective formatting arguments are provided via the constructor&#8217;s <em>varArg</em> parameter. If the last argument is of the type <code>Throwable</code> and not referenced as formatting anchor in the message, that <code>Throwable</code> is used as the exception&#8217;s cause. Internally, SLF4J <code>MessageFormatter</code> is used to provide substitution functionality. Hence, The format is the very same as if using SLF4j Logger.</p>
+</div>
+<div class="paragraph">
+<p>Further, <code>PlatformException</code> allows to associate context information, which are available in SLF4J <em>diagnostic context map</em> (MDC) upon logging the exception.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. PlatformException examples</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Exception cause = new Exception();
+
+// Create a PlatformException with a message
+new PlatformException("Failed to persist data");
+
+// Create a PlatformException with a message and cause
+new PlatformException("Failed to persist data", cause);
+
+// Create a PlatformException with a message with formatting anchors
+new PlatformException("Failed to persist data [entity={}, id={}]", "person", 123);
+
+// Create a PlatformException with a message containing formatting anchors and a cause
+new PlatformException("Failed to persist data [entity={}, id={}]", "person", 123, cause);
+
+// Create a PlatformException with context information associated
+new PlatformException("Failed to persist data", cause)
+    .withContextInfo("entity", "person")
+    .withContextInfo("id", 123);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="processingexception"><a class="anchor" href="#processingexception"></a>ProcessingException</h4>
+<div class="paragraph">
+<p>Represents a <a href="#platformexception">PlatformException</a> and is thrown in case of a processing failure, and which can be associated with an exception error code and severity.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vetoexception"><a class="anchor" href="#vetoexception"></a>VetoException</h4>
+<div class="paragraph">
+<p>Represents a <a href="#processingexception">ProcessingException</a> with VETO character. If thrown server-side, exceptions of this type are transported to the client and typically visualized in the form of a message box.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assertionexception"><a class="anchor" href="#assertionexception"></a>AssertionException</h4>
+<div class="paragraph">
+<p>Represents a <a href="#platformexception">PlatformException</a> and indicates an assertion error about the application&#8217;s assumptions about expected values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="transactionrequiredexception"><a class="anchor" href="#transactionrequiredexception"></a>TransactionRequiredException</h4>
+<div class="paragraph">
+<p>Represents a <a href="#platformexception">PlatformException</a> and is thrown  if a ServerRunContext requires a transaction to be available.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-errors"><a class="anchor" href="#scout-runtime-errors"></a>Scout Runtime Errors</h3>
+<div class="paragraph">
+<p>Runtime Errors are used to indicate an error, that shouldn&#8217;t be catched/treated by business logic and therefore bubble up to the appropriate <a href="#exception-handling">exception handler</a> in the scout framework. Because those errors are handled by the framework internals, they should never be catched on the server (Services etc.) nor on the client side (Pages, Forms, etc.).</p>
+</div>
+<div class="paragraph">
+<p>All Scout Runtime Errors extend <a href="#platformerror">PlatformError</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="platformerror"><a class="anchor" href="#platformerror"></a>PlatformError</h4>
+<div class="paragraph">
+<p>Like <a href="#platformexception">PlatformException</a>, PlatformErrors implement <code>IThrowableWithContextInfo</code> for associating context information with the occurred error. See <a href="#platformexception">PlatformException</a> for usage and example code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="threadinterruptederror"><a class="anchor" href="#threadinterruptederror"></a>ThreadInterruptedError</h4>
+<div class="paragraph">
+<p>Represents a <a href="#platformerror">PlatformError</a> and indicates that a thread was interrupted while waiting for some condition to become true, e.g. while waiting for a job to complete. Unlike <code>java.lang.InterruptedException</code>, the thread&#8217;s interrupted status is not cleared when catching this exception.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="futurecancellederror"><a class="anchor" href="#futurecancellederror"></a>FutureCancelledError</h4>
+<div class="paragraph">
+<p>Represents a <a href="#platformerror">PlatformError</a> and indicates that the result of a job cannot be retrieved, or the IFuture&#8217;s completion not be awaited because the job was cancelled.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="timedouterror"><a class="anchor" href="#timedouterror"></a>TimedOutError</h4>
+<div class="paragraph">
+<p>Represents a <a href="#platformerror">PlatformError</a> and indicates that the maximal wait time elapsed while waiting for some condition to become true, e.g. while waiting a job to complete.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exception-handling"><a class="anchor" href="#exception-handling"></a>Exception handling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An exception handler is the central point for exception handling. It provides a single method 'handle' which accepts a <code>Throwable</code>, and which never throws an exception. It is implemented as a bean, meaning managed by the bean manager to allow easy replacement, e.g. to use a different handler when running client or server side.
+By default, a <a href="#processingexception">ProcessingException</a> is logged according to its severity, a <a href="#vetoexception">VetoException</a>, <a href="#threadinterruptederror">ThreadInterruptedError</a> or <a href="#futurecancellederror">FutureCancelledError</a> logged in <em>DEBUG</em> level, and any other exception logged as an <em>ERROR</em>. If running client side, exceptions are additionally visualized and showed to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exception-translation"><a class="anchor" href="#exception-translation"></a>Exception translation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Exception translators are used to translate an exception into another exception.</p>
+</div>
+<div class="paragraph">
+<p>Also, they unwrap the cause of wrapper exceptions, like <code>UndeclaredThrowableException</code>, or <code>InvocationTargetException</code>, or <code>ExecutionException</code>. If the exception is of the type <code>Error</code>, it is normally not translated, but re-thrown instead. That is because an <code>Error</code> indicates a serious problem due to an abnormal condition.</p>
+</div>
+<div class="sect2">
+<h3 id="defaultexceptiontranslator"><a class="anchor" href="#defaultexceptiontranslator"></a>DefaultExceptionTranslator</h3>
+<div class="paragraph">
+<p>Use this translator to work with checked exceptions and runtime exceptions, but not with <code>Throwable</code>.</p>
+</div>
+<div class="paragraph">
+<p>If given an <code>Exception</code>, or a <code>RuntimeException</code>, or if being a subclass thereof, that exception is returned as given. Otherwise, a <a href="#platformexception">PlatformException</a> is returned which wraps the given Throwable.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="default-runtime-exception-translator"><a class="anchor" href="#default-runtime-exception-translator"></a>DefaultRuntimeExceptionTranslator</h3>
+<div class="paragraph">
+<p>Use this translator to work with runtime exceptions. When working with <a href="run-context.html" class="xref page">RunContext</a>] or <a href="job-manager.html#ifuture" class="xref page">IFuture</a>, some methods optionally accept a translator. If not specified, this translator is used by default.</p>
+</div>
+<div class="paragraph">
+<p>If given a <code>RuntimeException</code>, it is returned as given. For a checked exception, a <a href="#platformexception">PlatformException</a> is returned which wraps the given checked exception.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="platformexceptiontranslator"><a class="anchor" href="#platformexceptiontranslator"></a>PlatformExceptionTranslator</h3>
+<div class="paragraph">
+<p>Use this translator to work with <a href="#platformexception">PlatformExceptions</a>.</p>
+</div>
+<div class="paragraph">
+<p>If given a <a href="#platformexception">PlatformException</a>, it is returned as given. For all other exceptions (checked or unchecked), a <a href="#platformexception">PlatformException</a> is returned which wraps the given exception.</p>
+</div>
+<div class="paragraph">
+<p>Typically, this translator is used if you require to add some context information via <code>IThrowableWithContextInfo.withContextInfo(String, Object, Object)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. PlatformException examples</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try {
+  // do something
+}
+catch (Exception e) {
+  throw BEANS.get(PlatformExceptionTranslator.class).translate(e)
+      .withContextInfo("cid", "12345")
+      .withContextInfo("user", Subject.getSubject(AccessController.getContext()))
+      .withContextInfo("job", IFuture.CURRENT.get());
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nullexceptiontranslator"><a class="anchor" href="#nullexceptiontranslator"></a>NullExceptionTranslator</h3>
+<div class="paragraph">
+<p>Use this translator to work with <code>Throwable</code> as given.</p>
+</div>
+<div class="paragraph">
+<p>Also, if given a wrapped exception like <code>UndeclaredThrowableException</code>, <code>InvocationTargetException</code> or <code>ExecutionException</code>, that exception is returned as given without unwrapping its cause.</p>
+</div>
+<div class="paragraph">
+<p>For instance, this translator can be used if working with the Job API, e.g. to distinguish between a <a href="#futurecancellederror">FutureCancelledError</a> thrown by the job&#8217;s runnable, or because the job was effectively cancelled.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exception-logging"><a class="anchor" href="#exception-logging"></a>Exception Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout framework logs via SLF4J (Simple Logging Facade for Java). It serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging or logback) allowing the end user to plug in the desired logging framework at deployment time.</p>
+</div>
+<div class="paragraph">
+<p>SLF4J allows the use of formatting anchors in the form of {} pairs in the message which will be replaced by the respective argument. If the last argument is of the type Throwable and not referenced as formatting anchor in the message, that <code>Throwable</code> is used as the exception.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Logging examples</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Exception e = new Exception();
+
+Logger logger = LoggerFactory.getLogger(getClass());
+
+// Log a message
+logger.error("Failed to persist data");
+
+// Log a message with exception
+logger.error("Failed to persist data", e);
+
+// Log a message with formatting anchors
+logger.error("Failed to persist data [entity={}, id={}]", "person", 123);
+
+// Log a message and exception with a message containing formatting anchors
+logger.error("Failed to persist data [entity={}, id={}]", "person", 123, e);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>
