@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Migration Guide :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../stable/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="22">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">22</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../stable/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../next/index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../stable/index.html">23.1</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../stable/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="migration-guide.html">Migration Guide</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">22</button>
+  <div class="version-menu">
+    <a class="version" href="../../next/migration/migration-guide.html">23.2</a>
+    <a class="version" href="../../stable/migration/migration-guide.html">23.1</a>
+    <a class="version is-current" href="migration-guide.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/22.0/docs/modules/migration/pages/migration-guide.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Migration Guide</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to a past Scout release. Please click <a href="../../stable/migration/migration-guide.html" class="xref page">here</a> for the recent version.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-this-document"><a class="anchor" href="#about-this-document"></a>About This Document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes all relevant changes <strong>from Eclipse Scout 11.0 to Eclipse Scout 22.0</strong>. If existing code has to be migrated, instructions are provided here.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.scout.rt%22%20AND%20v%3A%2222.0.41%22">22.0.41</a> on <em>Maven Central</em></p>
+</li>
+<li>
+<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/22.0.41">22.0.41</a> on <em>mvnrepository.com</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in the parent POM of your Scout application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
+    &lt;version&gt;22.0.41&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in your package.json:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "name": "my-module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@eclipse-scout/cli": "22.0.41",
+    "@eclipse-scout/releng": "^22.0.0"
+  },
+  "dependencies": {
+    "@eclipse-scout/core": "22.0.41",
+    "jquery": "3.6.0"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pre-built Scout JavaScript assets are also available using a CDN (e.g. to be directly included in a html document):
+<a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
+<div class="paragraph">
+<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2022-12/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
+<div class="paragraph">
+<p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA.
+Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+<div class="paragraph">
+<p>You can download the complete Eclipse IDE with Scout SDK included here:<br>
+<a href="https://www.eclipse.org/downloads/packages/release/2022-12/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+</div>
+<div class="paragraph">
+<p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
+<a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-3rd-party-requirements"><a class="anchor" href="#new-3rd-party-requirements"></a>New 3rd Party requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Java 8 support has been dropped in Scout 22.
+Scout 22 older than 22.0.11 only supports Java 11.
+Scout 22.0.11 or newer supports Java 17 too. Check the chapter <a href="#migrating-to-java-17">Migrating to Java 17</a> if you plan to use Java 17.
+You can get a Java 11 or 17 runtime from <a href="https://adoptium.net/">the Adoptium page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ensure you have at least Maven 3.6.3 installed. Older versions are no longer supported.
+You can get a new Maven runtime at <a href="https://maven.apache.org/download.cgi">the Maven download site</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ensure you have at least Node 16.13.0 installed. Older versions will not work.
+A new version can be obtained from <a href="https://nodejs.org/en/download/">the Node download page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Scout now requires at least pnpm 6.22.2. You can install it as described on the <a href="https://pnpm.io/installation#using-npm">pnpm installation page</a>.</p>
+</div>
+<div class="paragraph">
+<p>To update your application the following steps might be required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the newest <code>22.0.x</code> release. See <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.scout%22%20AND%20a%3A%22maven_rt_plugin_config-master%22">Maven central</a> for a list of versions available.</p>
+</li>
+<li>
+<p>Update the Scout versions (<code>package.json</code> and <code>pom.xml</code>) as shown in <a href="#obtaining-the-latest-version">Obtaining the Latest Version</a>.</p>
+</li>
+<li>
+<p>In case you have set one of the following properties in your <code>pom.xml</code> files, update its value to <code>11</code> or <code>17</code> (depending on the Java version you want to use):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jdk.source.version</code></p>
+</li>
+<li>
+<p><code>jdk.min.version</code></p>
+</li>
+<li>
+<p><code>maven.compiler.source</code></p>
+</li>
+<li>
+<p><code>maven.compiler.target</code></p>
+</li>
+<li>
+<p><code>maven.compiler.release</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In case you used the <code>cargo-maven2-plugin</code> replace it with the <code>cargo-maven3-plugin</code>.</p>
+</li>
+<li>
+<p>If you are using Eclipse and web-service providers, update the <code>.factorypath</code> files as shown in the <code>JAX-WS Appendix</code> of the Scout documentation.</p>
+</li>
+<li>
+<p>The support for Microsoft Internet Explorer and Microsoft Edge Legacy has been dropped.
+Accordingly, you might want to update the list with supported browsers in your <code>unsupported-browser.html</code> file (if existing). Remove the list item having text <code>ui.BrowserInternetExplorer</code>.
+You can keep the one with Edge, because the new Chromium based Microsoft Edge browser is supported.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="migrating-to-java-17"><a class="anchor" href="#migrating-to-java-17"></a>Migrating to Java 17</h3>
+<div class="paragraph">
+<p>If you are using Scout 22.0.11 or newer you may upgrade to Java 17.
+For this you have to do the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the <code>jdk.source.version</code> property in the <code>pom.xml</code> of your parent module to <code>17</code>.</p>
+</li>
+<li>
+<p>Regenerate all your private-public-key pairs. The values are stored in the config properties <code>scout.auth.privateKey</code> and <code>scout.auth.publicKey</code>.</p>
+<div class="paragraph">
+<p>To create a new key pair you can execute the class <code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> on the command line. This will print a new, unique, Java 17 compatible key pair.</p>
+</div>
+<div class="paragraph">
+<p>As an alternative you can also execute the following shell script to create a new key pair using <a href="https://www.openssl.org/">OpenSSL</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">  PRIVATE_KEY=$(openssl ecparam -name prime256v1 -genkey -text)
+  printf "################ Public Private Keypair ################"
+  printf "\nBase64 encoded privateKey: "
+  echo "$PRIVATE_KEY" | openssl ec -outform pem -no_public 2&gt;/dev/null | openssl pkcs8 -topk8 -nocrypt -inform pem -outform der | base64 -w0
+  printf "\nBase64 encoded publicKey: "
+  echo "$PRIVATE_KEY" | openssl ec -outform der -pubout 2&gt;/dev/null | base64 -w0
+  printf "\n"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Afterwards update the properties with the new values. It is recommended to have different values for each environment!</p>
+</div>
+<div class="paragraph">
+<p>While the new key pair is necessary if using Java 17, it is optional if you stay on Java 11.
+But still you may create new pairs even if you would like stay with Java 11 for now.
+Then the keys are already Java 17 compatible and must not be changed again when actually upgrading to Java 17.</p>
+</div>
+</li>
+<li>
+<p>Furthermore, ensure you have at least version 22.0.2 of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files. See <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.scout%22%20AND%20a%3A%22maven_rt_plugin_config-master%22">Maven central</a> for a list of versions available.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-of-3rd-party-library-chart-js-to-3-7-0"><a class="anchor" href="#update-of-3rd-party-library-chart-js-to-3-7-0"></a>Update of 3rd Party library <em>chart.js</em> to 3.7.0</h3>
+<div class="paragraph">
+<p>If you are using the charts from <code>@eclipse-scout/chart</code> you might need to update the config object of your charts, as most of them are rendered using <em>chart.js</em>.</p>
+</div>
+<div class="paragraph">
+<p>First check this  <a href="https://www.chartjs.org/docs/latest/getting-started/v3-migration.html">migration guide</a>.
+In addition, the following config attributes must also be migrated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>config.options.scales.minSpaceBetweenXTicks</code> &#8594; <code>config.options.scales.x.minSpaceBetweenTicks</code></p>
+</li>
+<li>
+<p><code>config.options.scales.minSpaceBetweenYTicks</code> &#8594; <code>config.options.scales.y.minSpaceBetweenTicks</code></p>
+</li>
+<li>
+<p><code>config.options.scale.minSpaceBetweenTicks</code> &#8594; <code>config.options.scales.r.minSpaceBetweenTicks</code></p>
+</li>
+<li>
+<p><code>config.options.scales.[id].afterCalculateTickRotation</code> &#8594; <code>config.options.scales.[id].afterCalculateLabelRotation</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontColor</code> &#8594; <code>&#8230;&#8203;color</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontFamily</code> &#8594; <code>&#8230;&#8203;font.family</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontSize</code> &#8594; <code>&#8230;&#8203;font.size</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;fontStyle</code> &#8594; <code>&#8230;&#8203;font.style</code></p>
+</li>
+<li>
+<p><code>config.bubble</code> &#8594; <code>config.options.bubble</code></p>
+</li>
+<li>
+<p><code>config.fulfillment</code> &#8594; <code>config.options.fulfillment</code></p>
+</li>
+<li>
+<p><code>config.salesfunnel</code> &#8594; <code>config.options.salesfunnel</code></p>
+</li>
+<li>
+<p><code>config.speedo</code> &#8594; <code>config.options.speedo</code></p>
+</li>
+<li>
+<p><code>config.venn</code> &#8594; <code>config.options.venn</code></p>
+</li>
+<li>
+<p><code>config.data.datasets[i].pointHoverBackgroundColor</code> only for <code>config.type</code> <em>line</em> and <em>radar</em> or <code>config.data.dataset[i].type</code> <em>line</em></p>
+</li>
+<li>
+<p><code>config.data.datasets[i].pointBorderColor</code> only for <code>config.type</code> <em>line</em> and <em>radar</em> or <code>config.data.dataset[i].type</code> <em>line</em></p>
+</li>
+<li>
+<p><code>config.data.datasets[i].pointHoverBorderColor</code> only for <code>config.type</code> <em>line</em> and <em>radar</em> or <code>config.data.dataset[i].type</code> <em>line</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also, we observed some changes that might be of interest:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove the <code>borderWidth</code> on every <em>dataset</em> when <code>backgroundColor</code> and <code>borderColor</code> are the same. Otherwise, there will be a small white line between the border and the background.</p>
+</li>
+<li>
+<p><code>Scale.longestLabelWidth</code> &#8594; <code>Scale._labelSizes.widest.width</code></p>
+</li>
+<li>
+<p><code>Scale._ticks</code> &#8594; <code>Scale.ticks</code></p>
+</li>
+<li>
+<p><code>Element._datasetIndex</code> &#8594; <code>Element.datasetIndex</code></p>
+</li>
+<li>
+<p><code>Element._index</code> &#8594; <code>Element.index</code></p>
+</li>
+<li>
+<p>Never use <code>data.splice(n)</code>, always use <code>data.splice(n, data.length - n)</code>, as <em>chart.js</em> listens on splice-events and can&#8217;t handle calls without the <code>deleteCount</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <em>chart.js</em> tooltip was replaced by the scout tooltip. Therefore, the css class <code>.tooltip-background</code> ca be removed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-of-other-3rd-party-javascript-libraries"><a class="anchor" href="#update-of-other-3rd-party-javascript-libraries"></a>Update of other 3rd Party JavaScript libraries</h3>
+<div class="paragraph">
+<p>Perform the following migration in all your <code>package.json</code> files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you specify the minimum engines versions please update them as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json lines hljs" data-lang="json lines">"engines": {
+    "node": "&gt;=16.13.0",
+    "npm": "&gt;=8.1.0",
+    "pnpm": "&gt;=6.22.2"
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Update the following dependencies (if existing in your application):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json lines hljs" data-lang="json lines">"jquery": "3.6.0"
+"jasmine-core": "3.10.1"
+"karma": "6.3.20"
+"eslint": "8.10.0"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Replace dependencies to <code>babel-eslint</code> and <code>eslint-plugin-babel</code> with these two:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json lines hljs" data-lang="json lines">"@babel/eslint-parser": "7.16.5",
+"@babel/eslint-plugin": "7.16.5"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Adjust your .eslintrc.js in the following way:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json lines hljs" data-lang="json lines">  plugins: ['@babel'],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false
+  }</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="eclipse-launch-group"><a class="anchor" href="#eclipse-launch-group"></a>Eclipse Launch Group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your launch group contains an action that waits for a specific console output before starting the ui and backend servers, you probably need to adjust the regular expression.
+Otherwise, the launch is likely to get stuck at about 63%.</p>
+</div>
+<div class="paragraph">
+<p>To do so, edit your launch configuration and change the regular expression of the <code>js build</code> program from <code>Built at:</code> to <code>compiled .*successfully</code>.
+Or remove the action completely if you prefer the launchers to be started in parallel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/launch-group.png" alt="launch group">
+</div>
+<div class="title">Figure 1. Adjust Launch Group</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-engineering-changes"><a class="anchor" href="#release-engineering-changes"></a>Release engineering changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following changes have been made to the Scout releng. Please apply the necessary migration steps in your files and build scripts (may also affect continuous integration environments):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you have a <code>.npmrc</code> file (locally in your project root and/or your user home or on your build infrastructure), update it to the following content:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml"># pnpm settings
+shared-workspace-lockfile=true
+link-workspace-packages=true
+prefer-workspace-packages=true
+
+# npm settings
+engine-strict=true
+scripts-prepend-node-path=auto</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The property <code>prefer-workspace-packages</code> is new and important if you have multiple npm modules in your project.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In all your <code>package.json</code> files:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace <code>"snapshot-cleanup": "releng-scripts snapshot-cleanup"</code> with <code>"cleanup:snapshots": "releng-scripts cleanup:snapshots"</code></p>
+</li>
+<li>
+<p>Replace <code>"snapshot-predependency": "releng-scripts snapshot-install-dependency"</code> with <code>"version:snapshot:dependencies": "releng-scripts version:snapshot:dependencies"</code></p>
+</li>
+<li>
+<p>Replace <code>"snapshot-postdependency": "releng-scripts snapshot-publish-dependency"</code> with <code>"version:snapshot": "releng-scripts version:snapshot"</code></p>
+</li>
+<li>
+<p>Replace <code>"release-predependency": "releng-scripts release-install-dependency"</code> with <code>"version:release:dependencies": "releng-scripts version:release:dependencies"</code></p>
+</li>
+<li>
+<p>Replace <code>"release-postdependency": "releng-scripts release-publish-dependency"</code> with <code>"version:release": "releng-scripts version:release"</code></p>
+</li>
+<li>
+<p>If you are executing the npm scripts above during your build, update the names in your build scripts accordingly.</p>
+</li>
+<li>
+<p>If you are using snapshot dependencies of the form <code>"x.y.z-snapshot"</code> replace it with a range version of the form <code>"&gt;=x.y.z-snapshot &lt;x.y.z"</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In all your <code>pom.xml</code> files (and probably in your build scripts):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rename Maven property <code>master_skip_snapshot_predependency</code> to <code>master_skip_npm_version_snapshot_dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven property <code>master_skip_snapshot_postdependency</code> to <code>master_skip_npm_version_snapshot</code></p>
+</li>
+<li>
+<p>Rename Maven property <code>master_skip_release_predependency</code> to <code>master_skip_npm_version_release_dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven property <code>master_skip_release_postdependency</code> to <code>master_skip_npm_version_release</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-snapshot-predependency</code> to <code>npm-version-snapshot-dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-snapshot-postdependency</code> to <code>npm-version-snapshot</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-release-predependency</code> to <code>npm-version-release-dependencies</code></p>
+</li>
+<li>
+<p>Rename Maven profile <code>npm-release-postdependency</code> to <code>npm-version-release</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the past the profile <code>npm-snapshot-postdependency</code> (now called <code>npm-version-snapshot</code> se above) was executed automatically. This profile generates unique snapshot versions having a timestamp for your <code>package.json</code> files so that they may be deployed to a npm repository. This profile is no longer active by default so that your source code is not changed when executing a simple maven build. Therefore, if your <code>package.json</code> files have versions (own version, not dependency version) with a <code>-snapshot</code> suffix and you deploy such snapshots to a npm repository after a build, you have to manually add the profile <code>npm-version-snapshot</code> to that build now.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="log4j-support-removed"><a class="anchor" href="#log4j-support-removed"></a>Log4j support removed</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Support for <a href="https://logging.apache.org/log4j/1.2/">Log4j</a> logging has been dropped as Log4j 1 is end-of-life.
+If you still rely on Log4j 1 please update to another logger implementation.
+Scout supports java.util.Logging and <a href="http://logback.qos.ch/">Logback</a> (recommended) out of the box but other SLF4j compatible loggers can be configured as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="typeversion-annotation-type-change"><a class="anchor" href="#typeversion-annotation-type-change"></a>@TypeVersion Annotation Type Change</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The type version of a data object is used to identify a certain structure version of the stored data object.
+A data object may be stored in a database or be available as a container to export certain data for import in a different compatible system.
+Such a data object may evolve over time and undergo structural changes.
+Some structural changes make it necessary to apply migrations to existing serialized data objects to comply with the new structure.</p>
+</div>
+<div class="paragraph">
+<p>In order to prepare for migration support, the value type of the <code>@TypeVersion</code> annotation was changed from <code>String</code> to <code>Class&lt;? extends ITypeVersion&gt;</code>.
+A <em>ITypeVersion</em> represents a namespace/version and its dependencies.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="paragraph">
+<p>For each different String value used in type version annotation, create an implementation of <code>ITypeVersion</code> as described
+in <a href="../technical-guide/working-with-data/data-object.html#cha-namespace-and-itypeversion" class="xref page">Data Objects: Namespace and ITypeVersion</a> in the technical documentation.</p>
+</div>
+<div class="paragraph">
+<p><code>DataObjectInventory#getTypeVersion</code> now returns <code>NamespaceVersion</code> instead of <code>String</code>.
+Use <code>NamespaceVersion#unwrap</code> to access the text representation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="annotation-enumversion-removed"><a class="anchor" href="#annotation-enumversion-removed"></a>Annotation @EnumVersion Removed</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>@EnumVersion</code> was designed for migration support similar as the TypeVersion but was never part of any serialization output of a data object,
+therefore couldn&#8217;t be used as indicator for migrations.
+Support for <code>@EnumVersion</code> was removed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="paragraph">
+<p>Remove <code>@EnumVersion</code> annotations on <code>IEnum</code> implementors.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="native-notification-support"><a class="anchor" href="#native-notification-support"></a>Native Notification Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The new notifications displayed by the browser use the application logo configured in <code>AbstractDesktop#getConfiguredLogoId()</code> by default.</p>
+</div>
+<div class="paragraph">
+<p>If you use native notifications, you should provide a logo with a resolution of at least 150x150 px.
+If your application logo already has such a resolution, it should be fine.
+If your application logo has a lower resolution or is an SVG, you should use a different image for the notifications (SVGs are not supported by Chrome notifications).
+To do so, just configure the native notification defaults on your desktop.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Override
+protected NativeNotificationDefaults getConfiguredNativeNotificationDefaults() {
+  return super.getConfiguredNativeNotificationDefaults()
+    .withIconId("notification_logo.png");
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="application-logo-info-form"><a class="anchor" href="#application-logo-info-form"></a>Application Logo / Info Form</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The image <code>application_logo_large</code> and the constant <code>AbstractIcons.ApplicationLogo</code> have been removed.
+The name was confusing and it was only used for the <code>ScoutInfoForm</code>.
+The info form now uses the logo of the desktop (<code>IDesktop#getLogoId())</code> by default.
+So if you prefer to use a different logo for the info form, just extend the info form, override the method <code>getProductLogo()</code> and return the name of your preferred image.</p>
+</div>
+<div class="paragraph">
+<p>In case you don&#8217;t use SVG logos yet, you should consider doing so to prevent blurry logos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="style"><a class="anchor" href="#style"></a>Style</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="less-variables"><a class="anchor" href="#less-variables"></a>LESS Variables</h3>
+<div class="paragraph">
+<p>Many less variables have been modified, added and removed.
+Also, the name "active" has been replaced with selected where it has been used for a selection state rather than the css "active" state (mouse press).</p>
+</div>
+<div class="paragraph">
+<p>Following renames have been applied (incomplete list):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>@active-inverted-background-color &#8594; @selected-background-color</p>
+</li>
+<li>
+<p>@active-inverted-color &#8594; @selected-color</p>
+</li>
+<li>
+<p>@command-button-active-* &#8594; @command-button-selected-*</p>
+</li>
+<li>
+<p>@default-button-active-background-color &#8594; @default-button-selected-background-color</p>
+</li>
+<li>
+<p>@navigation-background-color &#8594; @desktop-navigation-background-color</p>
+</li>
+<li>
+<p>@navigation-color &#8594; @desktop-navigation-color</p>
+</li>
+<li>
+<p>@outline-title-margin-left/right &#8594; @outline-title-padding-left/right</p>
+</li>
+<li>
+<p>@group-box-title-margin-top &#8594; @group-box-header-margin-top</p>
+</li>
+<li>
+<p>@group-box-title-border-width &#8594; @group-box-header-border-width</p>
+</li>
+<li>
+<p>@simple-tab-active-*background &#8594; @simple-tab-selected-*</p>
+</li>
+<li>
+<p>@wizard-step-active-* &#8594; @wizard-step-selected-*</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:
+@desktop-navigation-background-color now points to @desktop-header-background-color;
+Instead of customizing the navigation background color it is suggested to now customize the header background color.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="css-rules"><a class="anchor" href="#css-rules"></a>CSS Rules</h3>
+<div class="paragraph">
+<p>Many css rules have been adjusted for the new style.
+So if you have customized some Scout components, please check your rules if they are still doing what they are supposed to.</p>
+</div>
+<div class="paragraph">
+<p>The following list shows some of the changes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>.menubox &#8594; .menubar-box</p>
+</li>
+<li>
+<p>.group-box-title &#8594; .group-box-header &gt; .title</p>
+</li>
+<li>
+<p>border-bottom of group-box-title &#8594; .group-box-header &gt; .bottom-border</p>
+</li>
+<li>
+<p>.tab-box-bottom-border &#8594; .bottom-border</p>
+</li>
+<li>
+<p>Tree/Table: Selection style is not applied to the table-row/tree-node anymore but to a separate ::after element</p>
+</li>
+<li>
+<p>Button/Menu: simplified CSS and HTML structure</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For details please see the individual commits.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="icons"><a class="anchor" href="#icons"></a>Icons</h3>
+<div class="sect3">
+<h4 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h4>
+<div class="paragraph">
+<p>Some icons have been removed because they are not used by Scout itself anymore.
+If you need these icons, please add them to your own icon library.
+If you don&#8217;t already have a custom icon library, please see our guide on how to create one:
+<a href="../technical-guide/user-interface/icons.html" class="xref page">Icons</a>
+The icons from Scout can be found here: <a href="https://github.com/eclipse-scout/scout.rt/tree/releases/22.0/org.eclipse.scout.rt.ui.html/src/icons" class="bare">https://github.com/eclipse-scout/scout.rt/tree/releases/22.0/org.eclipse.scout.rt.ui.html/src/icons</a>
+There you also find a <code>selection.json</code> that can be used to import the icons to <a href="https://icomoon.io/app">IcoMoon</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MENU_BOLD (uF0C9)</p>
+</li>
+<li>
+<p>LIST_UL_BOLD (uF0CA)</p>
+</li>
+<li>
+<p>LIST_OL_BOLD (uF0CB)</p>
+</li>
+<li>
+<p>ROTATE_LEFT_BOLD (F0E2)</p>
+</li>
+<li>
+<p>ROTATE_RIGHT_BOLD (F01E)</p>
+</li>
+<li>
+<p>GRAPH_BOLD (uE023)</p>
+</li>
+<li>
+<p>CATEGORY (uE059)</p>
+</li>
+<li>
+<p>CATEGORY_BOLD (uE024)</p>
+</li>
+<li>
+<p>ELLIPSIS-V-BOLD / VERTICAL_DOTS (uE040)</p>
+</li>
+<li>
+<p>SPINNER (uE044)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-LEFT-BOLD (uF100)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-RIGHT-BOLD (uF101)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-UP-BOLD (uF102)</p>
+</li>
+<li>
+<p>ANGLE-DOUBLE-DOWN-BOLD (uF103)</p>
+</li>
+<li>
+<p>BOLD (uE051)</p>
+</li>
+<li>
+<p>ITALIC (uE052)</p>
+</li>
+<li>
+<p>UNDERLINE (uE053)</p>
+</li>
+<li>
+<p>STRIKETHROUGH (uE054)</p>
+</li>
+<li>
+<p>LIST-UL (uE055)</p>
+</li>
+<li>
+<p>LIST-OL (uE056)</p>
+</li>
+<li>
+<p>LIGHTBULB_OFF (uE057)</p>
+</li>
+<li>
+<p>LIGHTBULB_ON (uE058)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following icons have been renamed
+- EXCLAMATION_MARK &#8594; EXCLAMATION_MARK_BOLD</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="line-width-adjustments"><a class="anchor" href="#line-width-adjustments"></a>Line Width Adjustments</h4>
+<div class="paragraph">
+<p>The line width of the Scout icons has been increased a little because they are now displayed a little smaller.
+If you use custom icons in combination with the Scout icons, you may want to consider adjusting the line widths of your icons as well.
+This should only be relevant if you explicitly used the Scout icons in your code.</p>
+</div>
+<div class="paragraph">
+<p>Also, the Scout icons now come with a regular and a light font.
+The regular font should be used if the icon is displayed at about 16px.
+This is the case for most widgets (menu, button etc.)
+If the icon is displayed larger, the light font can be used.
+To activate it for your custom widget, set the font-weight to @icon-font-weight-light.</p>
+</div>
+<div class="paragraph">
+<p>If you want to align your custom icons with the Scout icons, use the following dimensions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Regular: 1.5px line width and 24px artboard height</p>
+</li>
+<li>
+<p>Light: 1px line width and 24px artboard height</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="form"><a class="anchor" href="#form"></a>Form</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Views (forms with display hint = view) are now closable by default.
+Until now, only dialogs containing a close or cancel button showed the close icon in the top right corner.
+If you have views that must not be closable, set closable to false explicitly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="browser-field"><a class="anchor" href="#browser-field"></a>Browser Field</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The type of the <code>data</code> argument for the callback <code>execPostMessage</code> was changed from <em>String</em> to <em>Object</em>.
+This allows for the widest variety of data that can be sent from an embedded page to the application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>Boolean</p>
+</li>
+<li>
+<p>IDataObject (objects or arrays)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In previous Scout versions, all messages were always converted to text.
+Now, the data type is preserved as accurately as possible.
+JSON objects or arrays are converted to IDoEntity or DoList with the help of the IObjectMapper bean.
+To use this feature, an implementation of IDataObjectMapper needs to be present at runtime.
+If no implementation is available, the data will be converted to text automatically.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="paragraph">
+<p>Adjust the signature of all implementations of <code>AbstractBrowserField#postMessage</code> in your code.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>execPostMessage(String data, String origin)</code> to <code>execPostMessage(Object data, String origin)</code>.</p>
+</li>
+<li>
+<p>If the message sent by the embedded web page is not a text, the appropriate data type is now passed.
+Check the expected type using <code>instanceof</code> or convert it to String manually.</p>
+</li>
+<li>
+<p>If you want objects and arrays to be converted to IDataObjects automatically, make sure there is an
+implementation of IObjectMapper present at runtime, e.g. by adding a dependency to the module
+<em>org.eclipse.scout.rt.jackson</em> in pom.xml.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"><a class="anchor" href="#lazy-creation-of-detailtable-and-detailform-in-scout-js-pages"></a>Lazy Creation of detailTable and detailForm in Scout JS Pages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the past when a page was created the embedded detail forms and tables have been created together with the page.
+This may lead to a bad performance when an outline containing lots of complex pages is created.</p>
+</div>
+<div class="paragraph">
+<p>Therefore the containing tables and forms are now only created when the page is activated (e.g. selected by the user).
+This is the same behavior as already implemented in Scout Classic since several years.
+As a consequence accessing <code>Page.detailForm</code> or <code>Page.detailTable</code> may now return <code>null</code> if the page has not been activated yet.</p>
+</div>
+<div class="paragraph">
+<p>Check all usages of the <code>detailForm</code> and <code>detailTable</code> properties of pages in your code and ensure it is guarded with a null check or is only executed when the page has already been activated.</p>
+</div>
+<div class="paragraph">
+<p>Typically these properties are accessed in the <code>_init()</code> function of a page e.g. to attach listeners.
+This is no longer possible as these properties are no longer available at that moment.</p>
+</div>
+<div class="paragraph">
+<p>As an alternative override the <code>_initDetailForm(form)</code> or <code>_initDetailTable(table)</code> methods if your code exists on a Page (don&#8217;t forget to add a super call).
+If outside a Page listen for the <code>propertyChange</code> events for <code>detailForm</code> or <code>detailTable</code> to execute your detailForm or detailTable dependant code.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore if you use the following methods on pages, please rename them as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>from <code>createDetailForm</code> to <code>_createDetailForm</code></p>
+</li>
+<li>
+<p>from <code>_createTable</code> to <code>_createDetailTable</code></p>
+</li>
+<li>
+<p>from <code>_initTable</code> to <code>_initDetailTable</code></p>
+</li>
+<li>
+<p>from <code>_ensureDetailForm</code> to <code>ensureDetailForm</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tagfield-scout-js"><a class="anchor" href="#tagfield-scout-js"></a>TagField (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The tag field is not clickable by default anymore.
+If you need the tags to be clickable (and triggering a tagClick event), you have to activate it manually by setting <code>clickable</code> to true in the given tag field model.
+Or by using the dedicated setter: <code>tagField.tagBar.setClickable(true)</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jackson-doentity-deserializer"><a class="anchor" href="#jackson-doentity-deserializer"></a>Jackson DoEntity Deserializer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following classes were renamed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>IDoEntityDeserializerTypeResolver &#8594; IDoEntityDeserializerTypeStrategy</p>
+</li>
+<li>
+<p>DefaultDoEntityDeserializerTypeResolver &#8594; DefaultDoEntityDeserializerTypeStrategy</p>
+</li>
+<li>
+<p>RawDoEntityDeserializerTypeResolver &#8594; RawDoEntityDeserializerTypeStrategy</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="json-raw-deserialization-of-floating-point-numbers"><a class="anchor" href="#json-raw-deserialization-of-floating-point-numbers"></a>Json raw deserialization of floating point numbers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When raw deserializing json using Jackson (e.g. by using <code>JacksonDataObjectMapper#readValueRaw</code>) the behavior changed for floating point numbers:
+In former releases float numbers fitting into a <code>Double</code> have been mapped to <code>Double</code>. Now always a <code>BigDecimal</code> is used.
+This helps to clarify and stabilize the API (the datatype does not suddenly change if the numbers get bigger) and it helps to map the value from the json to a more precise Java representation (a <code>Double</code> cannot hold all floats exactly).</p>
+</div>
+<div class="paragraph">
+<p>Nothing changes if you deserialize json to a typed DataObject. Then the target type of the attribute in the DataObject is used.</p>
+</div>
+<div class="paragraph">
+<p>If your code relies on a specific float type after raw deserialization, update it accordingly to handle <code>BigDecimal</code> instead.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-objects-without-typename-annotation"><a class="anchor" href="#data-objects-without-typename-annotation"></a>Data Objects without @TypeName Annotation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The behavior of data objects without a <code>@TypeName</code> annotation was changed.
+In former releases such a data object was serialized into JSON including a <code>"_type" : null</code> type name.
+The new implementation does not include the null-TypeName in the serialized JSON document.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deprecated-functions-in-strings-js-utility"><a class="anchor" href="#deprecated-functions-in-strings-js-utility"></a>Deprecated Functions in strings.js Utility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The static <code>strings</code> utility provides various string-related functions.
+The obsolete functions <code>uppercaseFirstLetter</code> and <code>lowercaseFirstLetter</code> were deprecated in favor of more robust and consistent alternatives, and should no longer be used.
+They will be removed eventually.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>strings.uppercaseFirstLetter(s)</code> to <code>strings.toUpperCaseFirstLetter(s)</code>.</p>
+</li>
+<li>
+<p>Change <code>strings.lowercaseFirstLetter(s)</code> to <code>strings.toLowerCaseFirstLetter(s)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note the uppercase "C" in the new function names!</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+At the same time, some new null-safe variants of <code>String</code> prototype methods were added: <code>toUpperCase(s)</code>, <code>toLowerCase(s)</code>, <code>length(s)</code>, <code>trim(s)</code> .
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removed-functions-in-streamutility-java"><a class="anchor" href="#removed-functions-in-streamutility-java"></a>Removed functions in StreamUtility.java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>StreamUtility</code> utility provided some methods that were functionally identical to Java 9 methods of the same name.
+The methods <code>not</code>, <code>takeWhile</code>, and <code>iterate</code> were removed; the equivalent Java core library methods may now be used directly.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>StreamUtility.not(p)</code> to <code>java.util.function.Predicate.not(p)</code>.</p>
+</li>
+<li>
+<p>Change <code>StreamUtility.takeWhile(stream, predicate)</code> to <code>stream.takeWhile(predicate)</code>.</p>
+</li>
+<li>
+<p>Change <code>StreamUtility.iterate(initialElement, hasNext, next)</code> to <code>java.util.stream.Stream.iterate(initialElement, hasNext, next)</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that <code>takeWhile</code> now operates on the <code>java.util.Stream</code> object itself and no longer is a static method.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-style-for-tooltips"><a class="anchor" href="#new-style-for-tooltips"></a>New Style for Tooltips</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The style and colors for tooltips has been changed which may require the following migration:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The colors for tooltips have changed: severity <code>OK</code> is showing in green, <code>INFO</code> in black and <code>WARNING</code> in orange. Severity <code>ERROR</code> is still red and therefore remains unchanged. If you use a <code>Status</code> that is displayed as tooltip and uses one of the changed severities, verify if the color matches the meaning of the tooltip and adapt the severity if necessary.</p>
+</li>
+<li>
+<p>Scout JS only: The tooltips are now displayed in inverse style (white text, dark background). If you used custom styling for your tooltips (using property <code>htmlEnabled</code>), you might require to adapt your styles to look nice again with the inverse style.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logging-the-http-session-id"><a class="anchor" href="#logging-the-http-session-id"></a>Logging the HTTP Session ID</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The HTTP Session ID is a crucial factor of a web application&#8217;s security.
+Knowledge of the session ID can enable attackers to hijack the session of an active user.
+It must therefore not be made available to a malicious third party under any circumstances!
+Writing the ID to a log files <em>might</em> therefore pose a security risk, depending on who has access to the file.</p>
+</div>
+<div class="paragraph">
+<p>Scout does not directly output the HTTP Session ID by default, but it provides a corresponding "diagnostics context value" (<a href="http://www.slf4j.org/apidocs/org/slf4j/MDC.html">MDC</a>).
+If the logger implementation is configured accordingly, the context value <code>http.session.id</code> is written to the log file.</p>
+</div>
+<div class="paragraph">
+<p>In accordance with the <em>security by default</em> principle, the diagnostics context value no longer contains the full session ID.
+Instead, an obfuscated and truncated identifier is provided.
+It cannot be converted back to the original session ID but is still sufficiently unique to relate log entries for the same session for debugging purposes.
+See the class <code>HttpSessionIdLogHelper</code> for details.</p>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No migration is required.</p>
+</li>
+<li>
+<p>Logger configurations that don&#8217;t use the MDC value <code>http.session.id</code> are not affected by this change.</p>
+</li>
+<li>
+<p>The content of the MDC value <code>http.session.id</code> can be configured via the system property <em>scout.diagnostics.httpSessionIdLogMode</em>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SHORT</code>: Provides a safe, truncated session identifier. This is the default value (no configuration required).</p>
+</li>
+<li>
+<p><code>OFF</code>: Never provides a value (always empty).</p>
+</li>
+<li>
+<p><code>FULL</code>: Provides the full HTTP Session ID. This restores the previous, less safe behavior. <strong>Using this value is NOT recommended!</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scoutfieldstatus-deleted"><a class="anchor" href="#scoutfieldstatus-deleted"></a>ScoutFieldStatus deleted</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The class <code>ScoutFieldStatus</code> has been deleted. It can be replaced with <code>org.eclipse.scout.rt.platform.status.Status</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-filter-api-for-scoutjs"><a class="anchor" href="#new-filter-api-for-scoutjs"></a>New Filter API for ScoutJS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The widgets <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share a common filter API since 22.0.
+This API contains the methods <code>addFilter(filter, applyFilter = true)</code>, <code>removeFilter(filter, applyFilter = true)</code> and <code>setFilters(filters, applyFilter = true)</code> and the property <code>filters</code>.</p>
+</div>
+<div class="paragraph">
+<p>The corresponding methods of the <code>TileAccordion.js</code> used to be <code>addTileFilter(filter)</code>, <code>removeTileFilter(filter)</code> and <code>setTileFilters(filters)</code>. These methods were renamed to the ones above.
+The property <code>tileFilters</code> was renamed to <code>filters</code> as well.</p>
+</div>
+<div class="paragraph">
+<p>Some of the above widgets also had <code>addFilters</code> and <code>removeFilters</code> methods to add or remove an array of filters. Those methods were removed as the new ones can handle single filters and arrays of filters.</p>
+</div>
+<div class="paragraph">
+<p>The mentioned widgets used to have a different behavior whether after modifying the filters they were executed or not. All calls need to be checked and adjusted accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. add a filter to <code>tree</code> and do not apply the filters, execute some other logic and then apply the filters</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">tree.addFilter(filter, false);
+// some other logic here
+tree.filter();</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. remove multiple filters from <code>table</code> and apply the filters</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">table.removeFilter(filters);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Table.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>addFilter(filter);</code> to <code>addFilter(filter, false);</code> and <code>addFilter(filter); filter();</code> to <code>addFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeFilter(filter); filter();</code> to <code>removeFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilterByKey(filter);</code> to <code>removeFilterByKey(filter, false);</code> and <code>removeFilterByKey(filter); filter();</code> to <code>removeFilterByKey(filter);</code></p>
+</li>
+<li>
+<p>Change <code>setFilters(filters);</code> to <code>setFilters(filters, false);</code> and <code>setFilters(filters); filter();</code> to <code>setFilters(filters);</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Tree.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>addFilter(filter, true);</code> to <code>addFilter(filter, false);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeFilter(filter); filter();</code> to <code>removeFilter(filter);</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TileGrid.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>addFilters(&#8230;&#8203;);</code> to <code>addFilter(&#8230;&#8203;);</code></p>
+</li>
+<li>
+<p>Change <code>addFilter(filter);</code> to <code>addFilter(filter, false);</code> and <code>addFilter(filter); filter();</code> to <code>addFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilters(&#8230;&#8203;);</code> to <code>removeFilter(&#8230;&#8203;);</code></p>
+</li>
+<li>
+<p>Change <code>removeFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeFilter(filter); filter();</code> to <code>removeFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>setFilters(filters);</code> to <code>setFilters(filters, false);</code> and <code>setFilters(filters); filter();</code> to <code>setFilters(filters);</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TileAccordion.js</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Change <code>tileFilters</code> to <code>filters</code></p>
+</li>
+<li>
+<p>Change <code>addTileFilter(filter);</code> to <code>addFilter(filter, false);</code> and <code>addTileFilter(filter); filterTiles();</code> to <code>addFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>removeTileFilter(filter);</code> to <code>removeFilter(filter, false);</code> and <code>removeTileFilter(filter); filterTiles();</code> to <code>removeFilter(filter);</code></p>
+</li>
+<li>
+<p>Change <code>setTileFilters(filters);</code> to <code>setFilters(filters, false);</code> and <code>setTileFilters(filters); filterTiles();</code> to <code>setFilters(filters);</code></p>
+</li>
+<li>
+<p>Change <code>filterTiles();</code> to <code>filter();</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These widgets support a text filter that is shown while typing if the widget is focused. This behaviour is enabled by default and can be turned off using the property <code>textFilterEnabled</code>.
+Fields that provide this functionality may now be obsolete and can be removed.</p>
+</div>
+<div class="paragraph">
+<p>For more information about the filter API and the filter field see <a href="../technical-guide/user-interface/widget-reference.html#filter-field" class="xref page">Filter Field</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-modules-for-datamodel-related-classes"><a class="anchor" href="#new-modules-for-datamodel-related-classes"></a>New Modules for DataModel related classes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All classes that are related to the DataModel have been moved to separate modules.
+This includes <code>IDataModel</code> and the <code>IComposerField</code>. If these classes have been used you need to add the references to the new modules to the corresponding pom.xml.
+The packages for these classes remain unchanged so no further migration is needed besides adding the dependencies to the new modules.
+These packages are intended to be deleted in an upcoming release.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>org.eclipse.scout.rt.datamodel.client</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Everything related to the <code>IComposerField</code> can be found here</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>org.eclipse.scout.rt.datamodel.server</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FormDataStatementBuilder</code> and <code>EntityContribution</code> and related classes are now located here</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>org.eclipse.scout.rt.datamodel.shared</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Classes related to the <code>IDataModel</code> have been moved to this module</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>org.eclipse.scout.rt.datamodel.ui.html</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Json components of the <code>IComposerField</code> are located here</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="keystroke-adjustments-for-disabled-widgets-since-22-0-3"><a class="anchor" href="#keystroke-adjustments-for-disabled-widgets-since-22-0-3"></a>Keystroke adjustments for disabled widgets (since 22.0.3)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you created custom JavaScript keystrokes (extending from KeyStroke.js), you might experience a different behavior:
+the keystroke is now only active if the widget and every parent widget is enabled.
+Previously, the state of the parents was ignored, which was inconsistent.
+If your keystroke should be active even if the widget is disabled, you can set <code>inheritAccessibility = false</code> on your keystroke.
+For more details, see <a href="https://github.com/eclipse-scout/scout.rt/commit/91f8465564e718702920a28edbb559041cfeb752" class="bare">https://github.com/eclipse-scout/scout.rt/commit/91f8465564e718702920a28edbb559041cfeb752</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removal-of-applicationscoped-annotation-to-support-multiple-instances-of-bearerauthaccesscontroller-since-22-0-35"><a class="anchor" href="#removal-of-applicationscoped-annotation-to-support-multiple-instances-of-bearerauthaccesscontroller-since-22-0-35"></a>Removal of ApplicationScoped annotation to support multiple instances of BearerAuthAccessController (since 22.0.35)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are implementing one of the interfaces <code>ITokenVerifier</code> or <code>ITokenPrincipalProducer</code>, you must add either the <code>@ApplicationScope</code> or <code>@Bean</code> annotation to your implementation class.
+Previously, the interfaces itself were annotated with <code>@ApplicationScope</code>, which is too strict.
+This prevents having multiple instances of BearerAuthAccessController with different configurations/states of an <code>ITokenVerifier</code> or <code>ITokenPrincipalProducer</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="improved-error-message-when-upload-file-size-is-exceeded-since-22-0-46"><a class="anchor" href="#improved-error-message-when-upload-file-size-is-exceeded-since-22-0-46"></a>Improved error message when upload file size is exceeded (since 22.0.46)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Widgets which allow to upload a file inside the browser show an error message if the uploaded file exceeds the configurated maximum upload file size. The error message always refers to MB even if the configured maximum upload file size is much smaller than that (or much larger). The error message looked like this: <em>The maximum file size exceeds the limit allowed (0.000976 MB).</em></p>
+</div>
+<div class="paragraph">
+<p>The same message using KB is much more readable: <em>The maximum file size exceeds the limit allowed (1 KB).</em></p>
+</div>
+<div class="paragraph">
+<p>Hence, depending on the file size, a suitable unit (B, KB, MB, GB) is used for all upload-widgets (file chooser, file chooser button, file chooser field).</p>
+</div>
+<div class="paragraph">
+<p>This change has also changed the translations of the text-key <em>ui.FileSizeLimit</em>. In case this text-key is directly used in your project (which you should not do anyway), the displayed error message is broken now. You have to adapt your code.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

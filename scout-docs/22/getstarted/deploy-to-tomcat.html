@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Build Scout App and Deploy to Tomcat :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../stable/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="22">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">22</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../stable/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../next/index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../stable/index.html">23.1</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../stable/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="getstarted.html">Get Started</a></li>
+    <li>Scout Classic</li>
+    <li><a href="deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">22</button>
+  <div class="version-menu">
+    <a class="version" href="../../next/getstarted/deploy-to-tomcat.html">23.2</a>
+    <a class="version" href="../../stable/getstarted/deploy-to-tomcat.html">23.1</a>
+    <a class="version is-current" href="deploy-to-tomcat.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/22.0/docs/modules/getstarted/pages/deploy-to-tomcat.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Build Scout App and Deploy to Tomcat</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to a past Scout release. Please click <a href="../../stable/getstarted/deploy-to-tomcat.html" class="xref page">here</a> for the recent version.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>At some point during the application development you will want to install your software on a machine that is intended for productive use.
+This is the moment where you need to be able to build and package your Scout application in a way that can be deployed to an application server.</p>
+</div>
+<div class="paragraph">
+<p>As Scout applications just need a servlet container to run, Scout applications can be deployed to almost any Java application server.
+For the purpose of this tutorial we will use <a href="http://tomcat.apache.org/tomcat-9.0-doc/index.html">Apache Tomcat</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="verify-the-container-security-settings"><a class="anchor" href="#verify-the-container-security-settings"></a>Verify the Container Security Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First you need a Tomcat installation.
+If you do not yet have such an installation, you may want to read and follow the instructions provided in <a href="#apx-install_tomcat">Appendix A</a>.</p>
+</div>
+<div class="paragraph">
+<p>Second you need to decide if the users of your application should communicate with the Scout frontend server using HTTPS.
+We strongly recommend to use HTTPS for any productive environment.
+This is why the <code>Hello Scout</code> applications are configured to use HTTPS for production by default.</p>
+</div>
+<div class="paragraph">
+<p>In case you don&#8217;t want to use HTTPS the application must be slightly modified.
+Then you can skip the next section and instead follow the instructions in section <a href="#update-the-scout-application-to-work-with-http">Update the Scout Application to work with HTTP</a>.</p>
+</div>
+<div class="paragraph">
+<p>As a default Tomcat installation is configured to use HTTP only, you need to verify if the installation is properly configured for HTTPS too.
+In case HTTPS support is already enabled for your Tomcat installation, you may skip the next section.</p>
+</div>
+<div class="paragraph">
+<p>More details on the SSL configuration can be found in the <a href="http://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html">Tomcat Documentation</a> to enable SSL/TLS.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-and-install-a-self-signed-certificate"><a class="anchor" href="#create-and-install-a-self-signed-certificate"></a>Create and Install a Self-Signed Certificate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes the creation and usage of a self-signed certificate in a localhost setting.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a keystore file with a self-signed certificate.</p>
+</li>
+<li>
+<p>Adapt the HTTPS connector port in Tomcat&#8217;s server.xml configuration.</p>
+</li>
+<li>
+<p>Export the self-signed certificate from the keystore.</p>
+</li>
+<li>
+<p>Import the self-signed certificate into the Java certificate store.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The first step is to create a self-signed certificate using the keytool provided with the Java runtime.
+The example command line below will create such a certificate using the alias <code>tomcat_localhost</code> and place it into the keystore file <code>tomcat_localhost.jks</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -genkey -keyalg RSA -dname CN=localhost -alias tomcat_localhost -keystore tomcat_localhost.jks -keypass changeit -storepass changeit</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second step is to uncomment the HTTPS connector element in the Tomcat&#8217;s <code>server.xml</code> configuration file.
+Make sure parameter <code>keystoreFile</code> points to your newly created keystore file (if you are using a Windows box, make sure not to use the backslash characters in the path to the keystore).
+After a restart of Tomcat you should then be able to access Tomcat on <a href="https://localhost:8443/manager/html">https://localhost:8443/manager/html</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+           maxThreads="150" SSLEnabled="true" scheme="https" secure="true"&gt;
+    &lt;SSLHostConfig&gt;
+        &lt;Certificate certificateKeystoreFile="/keystore/tomcat_localhost.jks" type="RSA" /&gt;
+    &lt;/SSLHostConfig&gt;
+&lt;/Connector&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The third step is to export the newly created self-signed certificate from the <code>tomcat_localhost.jks</code> keystore file into the <code>tomcat_localhost.der</code> certificate file.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -exportcert -alias tomcat_localhost -storepass changeit -keystore tomcat_localhost.jks -file tomcat_localhost.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the last step add the self-signed certificate to the known certificates of the Java runtime.
+Make sure you modify the <code>cacerts</code> file of the Java runtime that is used in your Tomcat installation and modify the path to the <code>cacerts</code> file accordingly.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -import -alias tomcat_localhost -trustcacerts -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts -file tomcat_localhost.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your Tomcat installation is now properly configured for HTTPS.</p>
+</div>
+<div class="paragraph">
+<p>In case the Scout frontend server cannot access the Scout backend server, your self-signed certificate might be missing in the Java installation used by Tomcat.
+To verify that the certificate has been included in the file <code>cacerts</code> file use the following command.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -list -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts | find "localhost"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you no longer need the self-signed certificate file in your Java installation make sure to remove the certificate again:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool.exe -delete -alias tomcat_localhost -storepass changeit -keystore C:\java\jdk11\lib\security\cacerts</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-the-scout-application-to-work-with-http"><a class="anchor" href="#update-the-scout-application-to-work-with-http"></a>Update the Scout Application to work with HTTP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer to work with HTTP only, you need to modify the security settings of your Scout application.
+This can be done with the steps described below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In file <code>config.properties</code> (in the folder <code>helloscout.ui.html.app.war/src/main/resources</code>):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p>
+</li>
+<li>
+<p>Change the <code>scout.backendUrl</code> property to use HTTP instead of HTTPS and change the port according to your Tomcat setup, typically 8080.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In file <code>web.xml</code> (in the folder <code>helloscout.ui.html.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p>
+</li>
+<li>
+<p>In file <code>web.xml</code> (in the folder <code>helloscout.server.app.war/src/main/webapp/WEB-INF</code>) delete the <code>&lt;secure&gt;true&lt;/secure&gt;</code> flag in the <code>&lt;cookie-config&gt;</code> element.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More on this topic can be found in the Scout Architecture Documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-war-files"><a class="anchor" href="#create-war-files"></a>Create WAR Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You are now ready to move the <code>Hello Scout</code> application from our development environment to a productive setup.
+The simplest option to move our application into the 'wild' is to build it using Maven.
+This produces two WAR files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>The first WAR file contains the Scout backend server with all business logic.
+The second WAR file contains the Scout frontend server that is responsible for communicating with the web browser of the user.</p>
+</div>
+<div class="paragraph">
+<p>To start the build open the directory containing the module <code>helloscout</code> in the command line and execute the Maven command <code>mvn clean verify</code>.</p>
+</div>
+<div class="paragraph">
+<p>This starts the compilation, executes all test cases and bundles the result into two WAR files.
+As soon as the build is reporting success (this may take a few minutes) you can find the built WAR files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Scout backend WAR file <code>org.eclipse.scout.apps.helloscout.server.war</code> in folder <code>helloscout/helloscout.server.app.war/target</code></p>
+</li>
+<li>
+<p>The Scout frontend WAR file <code>org.eclipse.scout.apps.helloscout.ui.html.war</code> in folder <code>helloscout/helloscout.ui.html.app.war/target</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To see the new files within Eclipse you may need to refresh the <code>target</code> folder below each project using the F5 keystroke.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-helloworld_deploy"><a class="anchor" href="#sec-helloworld_deploy"></a>Deploy to Tomcat</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the final step of this tutorial, you have to deploy the two WAR files representing your <code>Hello Scout</code> application to a Tomcat web server.
+To verify a running Tomcat instance, type <a href="http://localhost:8080/" class="bare">http://localhost:8080/</a> into the address bar of the web browser of your choice.
+You should then see the page shown in <a href="#img-deploy_tomcat_1">Figure 1</a>.</p>
+</div>
+<div id="img-deploy_tomcat_1" class="imageblock">
+<div class="content">
+<img src="../common/_images/tomcat_managerapp_login.png" alt="tomcat managerapp login">
+</div>
+<div class="title">Figure 1. The Tomcat shown after a successful installation. After clicking on the <code>Manager App</code> button (highlighted in red) the login box is shown in front. A successful login shows the "Tomcat Web Application Manager".</div>
+</div>
+<div class="paragraph">
+<p>Once the web browser displays the successful running of your Tomcat instance, switch to its <code>Manager App</code> by clicking on the button highlighted in <a href="#img-deploy_tomcat_1">Figure 1</a>.
+After entering user name and password the browser will display the <code>Tomcat Web Application Manager</code> as shown in <a href="#img-deploy_tomcat_2">Figure 2</a>.
+If you don&#8217;t know the credentials, you may look it up in the file <code>tomcat-users.xml</code> as described in <a href="#apx-tomcat_dirs_and_files">Directories and Files</a>.</p>
+</div>
+<div id="img-deploy_tomcat_2" class="imageblock">
+<div class="content">
+<img src="../common/_images/tomcat_managerapp_selectwar.png" alt="tomcat managerapp selectwar">
+</div>
+<div class="title">Figure 2. The &#8220;Tomcat Web Application Manager&#8221;. The WAR files to be deployed can then be selected using button &#8220;Choose File&#8221; highlighted in red.</div>
+</div>
+<div class="paragraph">
+<p>After logging into Tomcat&#8217;s manager application, you can select the WAR files to be deployed using the button <code>Choose File</code> as shown in <a href="#img-deploy_tomcat_2">Figure 2</a>.
+Then pick your just built <code>org.eclipse.scout.apps.helloscout.server.war</code>, close the file chooser and click on the button <code>Deploy</code> (the one located directly below button <code>Choose File</code>) to deploy the application to the Tomcat web server.
+Then repeat this step with the second WAR file <code>org.eclipse.scout.apps.helloscout.ui.html.war</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will copy the selected WAR files into Tomcat&#8217;s <code>webapps</code> directory and unpack its contents into subdirectories with the same name as the WAR file.
+You can now connect to the application using the browser of your choice by navigating to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">  http://localhost:8080/org.eclipse.scout.apps.helloscout.ui.html/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">https://localhost:8443/org.eclipse.scout.apps.helloscout.ui.html/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>if you have chosen to configure HTTPS for the Tomcat installation.
+In this case you might need to accept your self-signed certificate as the browser does not yet trust it.</p>
+</div>
+<div id="img-helloworld_running_download" class="imageblock">
+<div class="content">
+<img src="../common/_images/tomcat_helloworld_download.png" alt="tomcat helloworld download">
+</div>
+<div class="title">Figure 3. The "Hello Scout" login page.</div>
+</div>
+<div class="paragraph">
+<p>Then you will see the login page as shown in <a href="#img-helloworld_running_download">Figure 3</a>. Two users have been predefined: <code>admin</code> with password <code>admin</code> and <code>scott</code> with password <code>tiger</code>.
+You can find this configuration in the <code>config.properties</code> file of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In a productive environment it is recommended to deploy the server and the user interface into two different servlet containers running on dedicated machines.
+This is because these two tiers have different requirements on resources, load balancing and access protection.
+Furthermore, it is strongly recommended using an encrypted connection (e.g. TLS 1.3 <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>)
+between client browsers and the Scout frontend server AND between the Scout frontend and backend server!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="apx-install_tomcat"><a class="anchor" href="#apx-install_tomcat"></a>Appendix A: Apache Tomcat Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache Tomcat is an open source servlet container that is a widely used.
+In case you are interested in getting some general context around Tomcat you could start with the Wikipedia article.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.
+Then get introduced to its core component &#8220;Tomcat Catalina&#8221;.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.
+before you switch to the official Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>This section is not really a step by step download and installation guide.
+Rather, it points you to the proper places for downloading and installing Tomcat.
+We recommend to work with Tomcat version 9.0.
+Start your download from the official download site.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>.</p>
+</div>
+<div id="img-tomcat_install" class="imageblock">
+<div class="content">
+<img src="../common/_images/tomcat_install.png" alt="tomcat install">
+</div>
+<div class="title">Figure 4. A successful Tomcat installation.</div>
+</div>
+<div class="paragraph">
+<p>Once you have downloaded and installed Tomcat 9 (see the sections below for plattform specific guidelines) you can start the corresponding service or daemon.
+To verify that Tomcat is actually running open a web browser of your choice and type <a href="http://localhost:8080" class="bare">http://localhost:8080</a> into the address bar.
+You should then see a confirmation of the successful installation according to <a href="#img-tomcat_install">Figure 4</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="platform-specific-instructions"><a class="anchor" href="#platform-specific-instructions"></a>Platform Specific Instructions</h3>
+<div class="paragraph">
+<p>According to the Tomcat setup installation for Windows.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>
+download the package &#8220;32-bit/64-bit Windows Service Installer&#8221; from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>.
+Then, start the installer and accept the proposed default settings.</p>
+</div>
+<div class="paragraph">
+<p>For installing Tomcat on OS X systems download the &#8220;tar.gz&#8221; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>.
+Then, follow the installation guide.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> provided by Wolf Paulus.</p>
+</div>
+<div class="paragraph">
+<p>For Linux systems download the &#8220;tar.gz&#8221; package from the <a href="http://tomcat.apache.org/download-90.cgi">Tomcat 9 download site</a>.
+Then, follow the description of the Unix setup.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup>
+to run Tomcat as a daemon.
+If you use Ubuntu, you may want to follow the tutorial.<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>
+for downloading and installing Tomcat provided by Lars Vogel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="apx-tomcat_dirs_and_files"><a class="anchor" href="#apx-tomcat_dirs_and_files"></a>Directories and Files</h3>
+<div class="paragraph">
+<p>Tomcat&#8217;s installation directory follows the same organisation on all platforms.
+Here, we will only introduce the most important aspects of the Tomcat installation for the purpose of this tutorial.</p>
+</div>
+<div id="img-tomcat_install_dir" class="imageblock">
+<div class="content">
+<img src="../common/_images/tomcat_install_dir.png" alt="tomcat install dir">
+</div>
+<div class="title">Figure 5. The organisation of a Tomcat installation including specific files of interest. As an example, a web app called "helloworld_server" is contained in subdirectory "webapps".</div>
+</div>
+<div class="paragraph">
+<p>Note that some folders and many files of a Tomcat installation are not represented in <a href="#img-tomcat_install_dir">Figure 5</a>.
+We just want to provide a basic understanding of the most important parts to operate the web server in the context of this tutorial.
+In the <code>bin</code> folder, the executable programs are contained, including scripts to start and stop the Tomcat instance.</p>
+</div>
+<div class="paragraph">
+<p>The <code>conf</code> folder contains a set of XML and property configuration files.
+The file <code>server.xml</code> represents Tomcat&#8217;s main configuration file.
+It is used to configure general web server aspects such as the port number of its connectors for the client server communication.
+For the default setup, port number 8080 is used for the communication between client applications and the web server.
+The file <code>tomcat-users.xml</code> contains a database of users, passwords and associated roles.</p>
+</div>
+<div class="paragraph">
+<p>Folder <code>logs</code> contains various logfiles of Tomcat itself as well as host and web application log files.</p>
+</div>
+<div class="paragraph">
+<p>The folder needed for deploying web applications into a Tomcat instance is called <code>webapps</code>.
+It can be used as the target for copying WAR files into the web server.
+The installation of the WAR file then extracts its content into the corresponding directory structure as shown in <a href="#img-tomcat_install_dir">Figure 5</a>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the folder <code>work</code> contains Tomcat&#8217;s runtime cache for the deployed web applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="apx-tomcat_manager_app"><a class="anchor" href="#apx-tomcat_manager_app"></a>The Tomcat Manager Application</h3>
+<div class="paragraph">
+<p>Tomcat comes with the pre installed <code>Manager App</code>.
+This application is useful to manage web applications and perform tasks such as deploying a web application from a WAR file, or starting and stopping installed web applications.
+A comprehensive documentation for the <code>Manager App</code> can be found on the Tomcat homepage.<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>.
+Here we only show how to start this application from the homepage of a running Tomcat installation.</p>
+</div>
+<div class="paragraph">
+<p>To access this application you can switch to the <code>Manager App</code> with a click on the corresponding button on the right side as shown in <a href="#img-tomcat_install">Figure 4</a>.
+Before you are allowed to access this application, you need to provide credentials of a user associated with Tomcats&#8217;s <code>manager-gui</code> role.</p>
+</div>
+<div id="lst-tomcat.users" class="listingblock">
+<div class="title">Listing 1. Tomcat Users configuration file "tomcat-users.xml".</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">  &lt;tomcat-users&gt;
+    &lt;!--
+    NOTE: By default, no user is included in the "manager-gui" role required
+    to operate the "/manager/html" web application. If you wish to use it
+    you must define such a user - the username and password are arbitrary.
+    --&gt;
+    &lt;user name="admin" password="s3cret" roles="manager-gui"/&gt;
+  &lt;/tomcat-users&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To get at user names and passwords you can open file <code>tomcat-users.xml</code> located in Tomcat&#8217;s <code>conf</code> directory.
+In this file the active users with their passwords and associated roles are stored.
+See <a href="#lst-tomcat.users">Listing 1</a> for an example.</p>
+</div>
+<div class="paragraph">
+<p>From the content of this file, you see that user <code>admin</code> has password <code>s3cret</code> and possesses the necessary role <code>manager-gui</code> to access the <code>Manager App</code>.
+If file <code>tomcat-users.xml</code> does not contain any user with this role, you can simply add new user with this role to the existing users.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you also can add the necessary role to an existing user.
+Just append a comma to the existing roles followed by the string <code>manager-gui</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will need to restart your Tomcat application after adapting the content of file <code>tomcat-users.xml</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Web application Archive (WAR): <a href="http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29" class="bare">http://en.wikipedia.org/wiki/WAR_file_format_%28Sun%29</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. TLS: <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" class="bare">https://en.wikipedia.org/wiki/Transport_Layer_Security</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. Apache Tomcat Wikipedia: <a href="http://en.wikipedia.org/wiki/Apache_Tomcat" class="bare">http://en.wikipedia.org/wiki/Apache_Tomcat</a>.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. Mulesoft&#8217;s introduction to Tomcat Catalina: <a href="http://www.mulesoft.com/tomcat-catalina" class="bare">http://www.mulesoft.com/tomcat-catalina</a>.
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. Apache Tomcat Homepage: <a href="http://tomcat.apache.org/" class="bare">http://tomcat.apache.org/</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. Tomcat 9 Downloads: <a href="http://tomcat.apache.org/download-90.cgi" class="bare">http://tomcat.apache.org/download-90.cgi</a>
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. Tomcat Windows setup: <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Windows</a>
+</div>
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. Installing Tomcat on macOS: <a href="https://wolfpaulus.com/?s=tomcat" class="bare">https://wolfpaulus.com/?s=tomcat</a>
+</div>
+<div class="footnote" id="_footnotedef_9">
+<a href="#_footnoteref_9">9</a>. Tomcat Linux setup: <a href="http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/setup.html#Unix_daemon</a>
+</div>
+<div class="footnote" id="_footnotedef_10">
+<a href="#_footnoteref_10">10</a>. Apache Tomcat Tutorial: <a href="http://www.vogella.com/articles/ApacheTomcat/article.html" class="bare">http://www.vogella.com/articles/ApacheTomcat/article.html</a>
+</div>
+<div class="footnote" id="_footnotedef_11">
+<a href="#_footnoteref_11">11</a>. The Tomcat Manager Application: <a href="http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html" class="bare">http://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html</a>.
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
