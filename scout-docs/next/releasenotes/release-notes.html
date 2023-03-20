@@ -373,10 +373,28 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 <div class="sect1">
-<h2 id="collapsestyle-for-group-customheader"><a class="anchor" href="#collapsestyle-for-group-customheader"></a>CollapseStyle for Group CustomHeader</h2>
+<h2 id="group-collapsestyle-for-customheader"><a class="anchor" href="#group-collapsestyle-for-customheader"></a>Group: CollapseStyle for CustomHeader</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Group.CollapseStyle property is applied on a custom header, that can be used in the group. Without the property set, the default CollapseStyle is CollapseStyle.LEFT.</p>
+<p>The <code>Group.CollapseStyle</code> property is now applied even if a custom header is used.
+This means the collapse icon is rendered and can be used, but it is invisible by default, so it does not show up by accident on existing custom headers.
+Just use CSS to make it visible if you need it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
+<div class="sect3">
+<h4 id="default-menutypes"><a class="anchor" href="#default-menutypes"></a>Default menuTypes</h4>
+<div class="paragraph">
+<p>Default menuTypes have been added to several widgets.
+This means that e.g. the <code>Table</code> treats a menu without a menuType as if it had set <code>Table.MenuTypes.EmptySpace</code>.
+For more information about the default menuTypes see <a href="../technical-guide/user-interface/widget-reference.html#menu-types" class="xref page">MenuTypes</a>.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
