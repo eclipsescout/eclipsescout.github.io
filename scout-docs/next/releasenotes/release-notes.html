@@ -398,6 +398,33 @@ For more information about the default menuTypes see <a href="../technical-guide
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="changes-in-scout-classic"><a class="anchor" href="#changes-in-scout-classic"></a>Changes in Scout Classic</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="health-check-servlet"><a class="anchor" href="#health-check-servlet"></a>Health Check Servlet</h3>
+<div class="paragraph">
+<p>The logic of executing health checks was extracted from <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthCheckServlet</code> and moved to an own <code>org.eclipse.scout.rt.server.commons.healthcheck.HealthCheckService</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AbstractHealthCheckServlet</code> is no longer abstract, was renamed to <code>HealthCheckServlet</code> and may be used without further individualization.</p>
+</div>
+<div class="paragraph">
+<p>To update to the new servlet, the following changes in your <code>web.xml</code> are necessary:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UI Server: Replace <code>org.eclipse.scout.rt.ui.html.admin.healthcheck.UiHealthCheckServlet</code> with <code>org.eclipse.scout.rt.server.commons.healthcheck.HealthCheckServlet</code> in your <code>web.xml</code></p>
+</li>
+<li>
+<p>Backend Server: Replace <code>org.eclipse.scout.rt.server.admin.healthcheck.ServerHealthCheckServlet</code> with <code>org.eclipse.scout.rt.server.commons.healthcheck.HealthCheckServlet</code> in your <code>web.xml</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </article>
   </div>
 </main>
