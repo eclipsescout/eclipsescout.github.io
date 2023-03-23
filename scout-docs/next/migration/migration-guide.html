@@ -451,6 +451,16 @@ Now, both methods, <code>DateUtility#formatDate</code> and <code>DateUtility#for
 To apply the old formatting, use <code>DateUtility#formatDateTimeShort</code>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="new-exceptionutility"><a class="anchor" href="#new-exceptionutility"></a>New ExceptionUtility</h3>
+<div class="paragraph">
+<p>A set of utility methods dealing with <code>Exception</code> and <code>Throwable</code> were moved and added to the new <code>ExceptionUtility</code>.</p>
+</div>
+<div class="paragraph">
+<p>Change invocations of <code>org.eclipse.scout.rt.platform.exception.ExceptionHandler.getRootCause()</code>
+to the new utility method  <code>org.eclipse.scout.rt.platform.util.ExceptionUtility.getRootCause()</code>.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -459,6 +469,42 @@ To apply the old formatting, use <code>DateUtility#formatDateTimeShort</code>.</
 <div class="paragraph">
 <p>The transformation logic for exceptions which occur while invoking a REST client was slightly adapted.
 For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gateway timeout) the adapted <code>ErrorDoRestClientExceptionTransformer</code> returns a <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code> instead of the former generic <code>org.eclipse.scout.rt.platform.exception.ProcessingException</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removed-deprecated-code"><a class="anchor" href="#removed-deprecated-code"></a>Removed Deprecated Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following functions were deprecated in a previous release and are now removed completely.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TabBox.ts: <code>selectTabById</code>, replaced by <code>setSelectedTab</code></p>
+</li>
+<li>
+<p>JQueryMouseWheelEvent: instead of using <code>DOMMouseScroll mousewheel</code> events use <code>wheel</code> and JQueryWheelEvent type</p>
+</li>
+<li>
+<p>Menu.ts: <code>addChildActions</code>, replaced by <code>insertChildActions</code></p>
+</li>
+<li>
+<p>Widget.ts: <code>_isRemovalPending</code>, replaced by <code>isRemovalPending</code></p>
+</li>
+<li>
+<p>CompositeFieldUtility.java: <code>moveFieldTo</code>, third parameter removed</p>
+</li>
+<li>
+<p>AbstractExtensionChain.java: <code>callChain</code>, vararg removed</p>
+</li>
+<li>
+<p>AbstractDataModelOperatorField.java: setAttribute, second parameter is not optional anymore</p>
+</li>
+<li>
+<p>FocusManager.ts: <code>requestFocus</code> does not accept a boolean anymore as third parameter</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
