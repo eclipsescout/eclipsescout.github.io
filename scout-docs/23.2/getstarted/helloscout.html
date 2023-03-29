@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hello Scout Classic :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="getstarted.html">Get Started</a></li>
+    <li>Scout Classic</li>
+    <li><a href="helloscout.html">Hello Scout Classic</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="helloscout.html">23.2</a>
+    <a class="version" href="../../23.1/getstarted/helloscout.html">23.1</a>
+    <a class="version" href="../../22/getstarted/helloscout.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.2/docs/modules/getstarted/pages/helloscout.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Hello Scout Classic</h1>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial we will create your first Scout Classic application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you don&#8217;t know what Scout Classic is yet, please read the <a href="getstarted.html" class="xref page">Get Started Guide</a> first.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We will create the application using Eclipse or IntelliJ.
+The generated application will consist of a client and server part and simply display a text sent from the server.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section guides you through the installation of the tools required to start the <code>Hello Scout</code> application.</p>
+</div>
+<div class="paragraph">
+<p>Currently there is IDE support for Scout application development for IntelliJ IDEA and Eclipse.
+Such an IDE is not required but makes the development much easier.
+This tutorial describes the setup for both IDEs. Please choose the one you prefer.</p>
+</div>
+<div class="sect2">
+<h3 id="node-js"><a class="anchor" href="#node-js"></a>Node.js</h3>
+<div class="paragraph">
+<p>First, Node.js needs to be installed as Scout uses it to build web assets.
+So if you don&#8217;t have it yet, visit the <a href="https://nodejs.org/dist/latest-v18.x/">Node.js download site</a>, choose the package for your platform and install it on your local machine.</p>
+</div>
+<div class="paragraph">
+<p>Make sure the Node.js installation is on the PATH. You can verify it by using your command line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">c:\&gt; node -v
+v18.12.1</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-pnpm"><a class="anchor" href="#add-pnpm"></a>Add pnpm</h4>
+<div class="paragraph">
+<p>Scout uses <a href="https://pnpm.io/">pnpm 7</a> as package manager.
+Therefore, install it into your Node installation by using your command line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">npm install -g pnpm@7.16.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and verify that it was installed successfully with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">c:\&gt; pnpm -v
+7.16.0</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="intellij"><a class="anchor" href="#intellij"></a>IntelliJ</h3>
+<div class="paragraph">
+<p>If you have no IntelliJ yet, you can download it from the <a href="https://www.jetbrains.com/idea/download">JetBrains download site</a>.
+We recommend selecting the Ultimate edition to have the JavaScript support included in the IDE.
+There is a 30-day trial if you have no licence.
+For this tutorial you can also use the free Community Edition, but it requires some extra steps indicated.</p>
+</div>
+<div class="paragraph">
+<p>Install or extract the package and start IntelliJ (see <a href="https://www.jetbrains.com/help/idea/run-for-the-first-time.html">Run IntelliJ IDEA for the first time</a> for instructions).
+Follow the instructions until the <code>Welcome to IntelliJ IDEA</code> screen is shown.</p>
+</div>
+<div class="paragraph">
+<p>On the left side switch to <code>Plugins</code>, search for <code>Eclipse Scout</code> and press the green <code>Install</code> button.
+In case a <code>Third-Party Plugins Privacy Notice</code> is shown, press <code>Accept</code>. The Scout plugin does not collect or process any personal data.
+Afterwards, the plugin is being downloaded from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout">JetBrains Marketplace</a> and installed locally.
+As soon as this is completed, press the <code>Restart IDE</code> button.</p>
+</div>
+<div class="paragraph">
+<p>The same can also be achieved by navigating to <code>File | Settings | Plugins</code> in case you already have an existing IntelliJ project running.</p>
+</div>
+<div class="paragraph">
+<p>Congratulations! You have successfully set up IntelliJ IDEA for Scout development.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h3>
+<div class="paragraph">
+<p>Then download the <code>Eclipse IDE for Scout Developers</code> package for your platform by visiting the <a href="https://www.eclipse.org/downloads/packages">official Eclipse download page</a>.
+After the package selection, confirm the suggested mirror and extract the downloaded archive to your local disk.</p>
+</div>
+<div class="paragraph">
+<p>Congratulations! You have successfully installed Eclipse for Scout development.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-scout-project"><a class="anchor" href="#create-a-scout-project"></a>Create a Scout Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout project creation depends on the IDE chosen.
+Therefore, please follow the instructions in the corresponding section below.</p>
+</div>
+<div class="sect2">
+<h3 id="intellij-2"><a class="anchor" href="#intellij-2"></a>IntelliJ</h3>
+<div class="paragraph">
+<p>Start your IntelliJ (if not already running) and in the <code>Welcome to IntelliJ IDEA</code> screen click on <code>New Project</code>. The <code>New Project</code> wizard starts.
+The same can also be achieved from the menu <code>File | New | Project&#8230;&#8203;</code> if an existing project is open already.</p>
+</div>
+<div class="paragraph">
+<p>On the left side select the <code>Scout</code> type.
+You have to enter a <code>Group Id</code>, <code>Artifact Id</code> and a <code>Display Name</code> for your Scout project as shown in <a href="#img-sdk_new_project_wizard_ij">Figure 1</a>.
+As the created project will make use of <a href="https://maven.apache.org/">Apache Maven</a>, please refer to the <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">Maven naming conventions</a> to choose  <code>Group Id</code> and <code>Artifact Id</code> for your project.
+The <code>Display Name</code> is used as the application name presented to the user (e.g. in the browser title bar).</p>
+</div>
+<div id="img-sdk_new_project_wizard_ij" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project_ij.png" alt="sdk new project ij">
+</div>
+<div class="title">Figure 1. The new Scout project wizard.</div>
+</div>
+<div class="paragraph">
+<p>For the <code>Hello Scout</code> application just use the already pre-filled values and ensure the user interface programming language is set to <code>Java</code> as sown in <a href="#img-sdk_new_project_wizard_ij">Figure 1</a>.
+Then click the <b class="button">Next</b> button.</p>
+</div>
+<div id="img-sdk_new_project_location_ij" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project_location_ij.png" alt="sdk new project location ij">
+</div>
+<div class="title">Figure 2. Specify name and location of the new project.</div>
+</div>
+<div class="paragraph">
+<p>On the second page please specify project name and location and press <b class="button">Finish</b>.
+The Scout plugin then creates the initial project content for you (you will see some Maven build output).
+Wait until all tasks have completed.</p>
+</div>
+<div class="paragraph">
+<p>Afterwards, you will find the created Scout modules in the Project view as shown in <a href="#img-sdk_new_project_initial_helloworld_ij">Figure 3</a>.</p>
+</div>
+<div id="img-sdk_new_project_initial_helloworld_ij" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project_initial_helloworld_ij.png" alt="sdk new project initial helloworld ij">
+</div>
+<div class="title">Figure 3. The initial set of Maven modules created for the Hello Scout application.</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If the modules are not automatically created as indicated in <a href="#img-sdk_new_project_initial_helloworld_ij">Figure 3</a>, right click on the root <code>pom.xml</code> and click <code>Add as Maven Project</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Then you can start the Scout application for the first time.
+Since the <code>Hello Scout</code> app consists of a backend and a frontend, two servers need to be started.
+Before the frontend server can deliver any JavaScript code to the browser, the JavaScript build needs to be executed as well.
+You could start each run configuration separately, but for the sake of convenience there is a compound run configuration available which starts all at once.</p>
+</div>
+<div class="paragraph">
+<p>To start the launch configuration, use the <em class="menu">Add Configuration&#8230;&#8203;</em> menu on the top as shown in <a href="#img-start_all_ij">Figure 4</a>.
+In the dialog, expand the <code>Compound</code> type on the left side, select the prepared run configuration <code>[webapp] all</code> and confirm with <b class="button">Ok</b>.
+Finally, click on the green triangle symbol directly right of the <em class="menu">Add Configuration&#8230;&#8203;</em> menu.
+This will execute the Java build and start the Java frontend server and backend server afterwards.
+On IntelliJ Ultimate this will furthermore download all necessary JavaScript dependencies and execute the JavaScript build.</p>
+</div>
+<div class="paragraph">
+<p>If using the Community Edition, additionally execute the following commands on the command line manually:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>npm run pnpm-install</code> in the root of your project (next to the <code>pnpm-workspace.yaml</code>) to install all JavaScript dependencies.</p>
+</li>
+<li>
+<p><code>npm run build:dev:watch</code> in the <code>helloscout.ui.html</code> module to start the JavaScript build and watcher.
+The watcher keeps on running and will continuously update the JavaScript assets as you change your JavaScript source files (hot-code-replace).</p>
+</li>
+</ol>
+</div>
+<div id="img-start_all_ij" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_start_all_ij.png" alt="sdk start all ij">
+</div>
+<div class="title">Figure 4. Selecting the compound run configuration</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The JavaScript build fails in case the installed Node.js was not found or is too old.
+In that case, follow the instructions in the section <a href="#prerequisites">Prerequisites</a> and check the IntelliJ settings in <code>File | Settings | Languages &amp; Frameworks | Node.js and NPM</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the JS build has been completed (this may take a while for the first time as some dependencies need to be downloaded) and the two servers have been started, the <code>Hello Scout</code> application can be accessed by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in your favorite web browser.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Hello Scout</code> application is then presented as shown in <a href="#img-start_browser_ij">Figure 5</a>.</p>
+</div>
+<div id="img-start_browser_ij" class="imageblock">
+<div class="content">
+<img src="../common/_images/run_helloworld_in_browser.png" alt="run helloworld in browser">
+</div>
+<div class="title">Figure 5. The Hello Scout application in the browser.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="eclipse-2"><a class="anchor" href="#eclipse-2"></a>Eclipse</h3>
+<div class="paragraph">
+<p>Start your Eclipse IDE and select an empty directory for your workspace as shown in <a href="#img-sdk_start_new_workspace">Figure 6</a>.
+This workspace directory will then hold all the project code for the <code>Hello Scout</code> application.
+Once the Eclipse IDE is running, it will show the Java perspective.</p>
+</div>
+<div id="img-sdk_start_new_workspace" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_start_new_workspace.png" alt="sdk start new workspace">
+</div>
+<div class="title">Figure 6. Select a new empty folder to hold your project workspace</div>
+</div>
+<div class="paragraph">
+<p>To create a new Scout project, select the menu <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Project&#8230;&#8203;</b></span> and type <code>Scout Project</code> in the wizard search field.
+Select the Scout Project wizard and press <b class="button">Next</b>.
+The <em class="wizard">New Scout Project</em> wizard is then started as shown in <a href="#img-sdk_new_project_wizard">Figure 7</a>.</p>
+</div>
+<div id="img-sdk_new_project_wizard" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project.png" alt="sdk new project">
+</div>
+<div class="title">Figure 7. The new Scout project wizard.</div>
+</div>
+<div class="paragraph">
+<p>In the <em class="wizard">New Scout Project</em> wizard you have to enter a <code>Group Id</code>, <code>Artifact Id</code> and a <code>Display Name</code> for your Scout project.
+As the created project will make use of <a href="https://maven.apache.org/">Apache Maven</a>, please refer to the <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">Maven naming conventions</a> to choose  <code>Group Id</code> and <code>Artifact Id</code> for your project.
+The <code>Display Name</code> is used as the application name presented to the user (e.g. in the browser title bar).</p>
+</div>
+<div class="paragraph">
+<p>For the <code>Hello Scout</code> application just use the already pre-filled values and ensure the user interface programming language is set to <code>Java</code> as sown in <a href="#img-sdk_new_project_wizard">Figure 7</a>.
+Then click the <b class="button">Finish</b> button to let the Scout SDK create the initial project code for you.</p>
+</div>
+<div class="paragraph">
+<p>Depending on your Eclipse installation, some <code>Maven plugin connectors</code> may initially be missing.
+In that case, a dialog as shown in <a href="#img-sdk_new_project_connector">Figure 8</a> appears.
+In order to resolve the selected connectors and continue, click on <b class="button">Finish</b>.
+Afterwards, confirm the installation, accept the license and the message that some content has not been signed.
+Finally, the installation of the maven plugin connectors requires a restart of the Eclipse IDE.</p>
+</div>
+<div id="img-sdk_new_project_connector" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project_connectors.png" alt="sdk new project connectors">
+</div>
+<div class="title">Figure 8. The Maven plugin connector installation dialog.</div>
+</div>
+<div class="paragraph">
+<p>After the <em class="wizard">New Scout Project</em> wizard has created the Maven modules for the <code>Hello Scout</code> application, the code is compiled by the Eclipse IDE.
+You can see the created Maven modules in the <code>Package Explorer</code> as shown in <a href="#img-sdk_new_project_initial_helloworld">Figure 9</a>.</p>
+</div>
+<div id="img-sdk_new_project_initial_helloworld" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project_initial_helloworld.png" alt="sdk new project initial helloworld">
+</div>
+<div class="title">Figure 9. The initial set of Maven modules created for the Hello Scout application.</div>
+</div>
+<div class="paragraph">
+<p>After the compilation, you can start the Scout application for the first time.
+Since the <code>Hello Scout</code> app consists of a backend and a frontend, two servers need to be started.
+Before the frontend server can deliver any JavaScript code to the browser, the JavaScript build needs to be executed as well.
+You could start each launch configuration separately, but for the sake of convenience there is a launch group available which starts all at once.</p>
+</div>
+<div class="paragraph">
+<p>To start the launch group use the <em class="menu">Run As</em> menu as shown in <a href="#img-start_all">Figure 10</a>.</p>
+</div>
+<div id="img-start_all" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_start_all.png" alt="sdk start all">
+</div>
+<div class="title">Figure 10. Starting the Hello Scout application.</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The JavaScript build fails in case the installed Node.js was not found or is too old.
+In that case, follow the instructions in the section <a href="#prerequisites">Prerequisites</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the JS build has been completed successfully, the frontend and backend servers will be started automatically.
+The servers are ready as soon as the console shows <code>Server ready</code>.
+You can now access the <code>Hello Scout</code> application by navigating to <a href="http://localhost:8082/" class="bare">http://localhost:8082/</a> in your favorite web browser.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Hello Scout</code> application is then presented as shown in <a href="#img-start_browser">Figure 11</a>.</p>
+</div>
+<div id="img-start_browser" class="imageblock">
+<div class="content">
+<img src="../common/_images/run_helloworld_in_browser.png" alt="run helloworld in browser">
+</div>
+<div class="title">Figure 11. The Hello Scout application in the browser.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s Next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Congratulations! You have successfully created your first Scout Classic application.</p>
+</div>
+<div class="paragraph">
+<p>To gain experience working with Scout, we recommend going through the <a href="one-day-tutorial.html" class="xref page">One Day Tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested in Scout&#8217;s concepts, architecture and features you probably want to have a look at the <a href="../technical-guide/technical-guide.html" class="xref page">Technical Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>In case you should get stuck somewhere and need help, contact us on the <a href="http://www.eclipse.org/forums/eclipse.scout">Scout Forum</a> or on <a href="https://stackoverflow.com/tags/eclipse-scout">Stack Overflow</a>.</p>
+</div>
+<div class="paragraph">
+<p>We wish you all the best on your journey with Scout.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

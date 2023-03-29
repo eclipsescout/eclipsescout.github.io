@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SmartField: How to Apply Colors and Styles From a Lookup Row :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../../index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../how-tos.html">How-Tos</a></li>
+    <li>Scout Classic</li>
+    <li><a href="smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.1</button>
+  <div class="version-menu">
+    <a class="version" href="../../../23.2/howtos/scout-classic/smart-field-how-to.html">23.2</a>
+    <a class="version is-current" href="smart-field-how-to.html">23.1</a>
+    <a class="version" href="../../../22/howtos/scout-classic/smart-field-how-to.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.1/docs/modules/howtos/pages/scout-classic/smart-field-how-to.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">SmartField: How to Apply Colors and Styles From a Lookup Row</h1>
+<div class="paragraph">
+<p>When a user selects a lookup-row from the proposal chooser in Scout versions &#8656; 6.0, the properties <code>foregroundColor</code>, <code>backgroundColor</code>, <code>font</code> and <code>tooltipText</code> have been automatically copied from the lookup-row to the field. In some cases this was exactly what a specific application needed, but in other cases it was hard to implement a specific behavior without overriding internal methods from the <code>SmartField</code>. For instance it was not possible to have a lookup-row with background-color red in the proposal-chooser and at the same time avoid the background-color of the field changing to red, when that row was being selected.</p>
+</div>
+<div class="paragraph">
+<p>Since that automatic behavior didn&#8217;t fit every business requirement, we removed it completely. This means a programmer must now implement specific code to read properties from the lookup-row and set them on the field. The following example is from the Scout widgets app. It changes the background-color of the field.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Java example, set the background-color of the lookup-row on the field</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Override
+protected void execChangedValue() {
+  updateFieldBackgroundColor();
+}
+
+/**
+ * Sets the color of the field to the color of the selected lookup row.
+ */
+protected void updateFieldBackgroundColor() {
+  ILookupRow&lt;?&gt; lookupRow = getLookupRow();
+  String bgColor = lookupRow == null ? null : lookupRow.getBackgroundColor();
+  setBackgroundColor(bgColor);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since Scout 8.0 the property <code>cssClass</code> from the lookup-row is automatically applied to the .form-field DIV. This gives the programmer the flexibility to style either both, lookup-row and field, or only the lookup-row in the proposal-chooser via CSS/LESS.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a LESS example from the Scout widget app that sets the background-color of lookup-row and field. It is used for the <code>EventTypeCodeType</code> which defines 3 codes with the CSS classes public, private and external:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. LESS example, style lookup-row and field with the same CSS class</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">.form-field.public &gt; .field, .table-row.public {
+  background-color: @palette-green-0;
+}
+
+.form-field.private &gt; .field, .table-row.private {
+  background-color: @palette-orange-1;
+}
+
+.form-field.external &gt; .field, .table-row.external {
+  background-color: @palette-gray-3;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Conclusion</em>: older Scout apps that rely on the automatic behavior for the properties mentioned above, should use CSS classes instead of the properties back-/foregroundColor or font. If that&#8217;s not possible you should implement logic as shown in the example above where required, possibly moving that code in a class that extends <code>AbstractSmartField</code>, if the same code is required in multiple places.</p>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

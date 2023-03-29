@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Security :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Common Concepts</li>
+    <li><a href="security.html">Security</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="security.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/common-concepts/security.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/common-concepts/security.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.2/docs/modules/technical-guide/pages/common-concepts/security.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Security</h1>
+<div class="sect1">
+<h2 id="default-http-response-headers"><a class="anchor" href="#default-http-response-headers"></a>Default HTTP Response Headers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All Scout HTTP servlets delegate to a central authority to append HTTP response headers. This is the bean <code>HttpServletControl</code>.
+It enables developers to control which headers that should be added to the HTTP response for each servlet and request.</p>
+</div>
+<div class="paragraph">
+<p>The next sections describe the headers that are added to any response by default. Beside these also the following headers may be of interest for an end user application (consider adding them to your application if possible):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning">Public Key Pinning</a></p>
+</li>
+<li>
+<p><a href="https://tools.ietf.org/html/rfc6797">Strict Transport Security (HSTS)</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/gg622941%28v=vs.85%29.aspx?f=255&amp;MSPPError=-2147217396">X-Content-Type-Options</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please note that not all headers are supported in all user agents!
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="x-frame-options"><a class="anchor" href="#x-frame-options"></a>X-Frame-Options</h3>
+<div class="paragraph">
+<p>The X-Frame-Options HTTP response header <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> can be used to indicate whether a user agent should be allowed to render a page in a <code>&lt;frame&gt;</code>, <code>&lt;iframe&gt;</code> or <code>&lt;object&gt;</code>.
+Sites can use this to avoid clickjacking <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> attacks, by ensuring that their content is not embedded into other sites.
+The X-Frame-Options header is described in RFC 7034 <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>In Scout this header is set to <code>SAMEORIGIN</code> which allows the page to be displayed in a frame on the same origin (scheme, host and port) as the page itself only.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="x-xss-protection"><a class="anchor" href="#x-xss-protection"></a>X-XSS-Protection</h3>
+<div class="paragraph">
+<p>This header enables the XSS <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> filter built into most recent user agents.
+It&#8217;s usually enabled by default anyway, so the role of this header is to re-enable the filter for the website if it was disabled by the user.
+The X-XSS-Protection header is described in <a href="https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter/">controlling-the-xss-filter</a>.</p>
+</div>
+<div class="paragraph">
+<p>In Scout this header is configured to enable XSS protections and instructs the user-agent to block a page from loading if reflected XSS is detected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="content-security-policy"><a class="anchor" href="#content-security-policy"></a>Content Security Policy</h3>
+<div class="paragraph">
+<p>Content Security Policy is an HTTP response header that helps you reduce XSS  risks on modern user agents by declaring what dynamic resources are allowed to load <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.
+The CSP header is described in <a href="http://www.w3.org/TR/CSP1/">Level 1</a> and <a href="http://www.w3.org/TR/CSP2/">Level 2</a>. There is also a working draft for a <a href="http://www.w3.org/TR/CSP3/">Level 3</a>.</p>
+</div>
+<div class="paragraph">
+<p>Scout makes use of Level 1 (and one directive from Level 2) and sets by default the following settings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JavaScript <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>: Only accepts JavaScript resources from the same origin (same scheme, host and port). Inline JavaScript is allowed and unsafe dynamic code evaluation (like <code>eval(string)</code>, <code>setTimeout(string)</code>, <code>setInterval(string)</code>, <code>new Function(string)</code>) is allowed as well.</p>
+</li>
+<li>
+<p>Stylesheets (CSS) <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>: Only accepts Stylesheet resources from the same origin (same scheme, host and port). Inline style attributes are allowed.</p>
+</li>
+<li>
+<p>Frames <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>: All sources are allowed because the iframes created by the Scout BrowserField run in the sandbox mode and therefore handle the security policy on their own.</p>
+</li>
+<li>
+<p>All other types (Image, <code>WebSocket</code> <sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup>, <code>EventSource</code> <sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>, AJAX calls <sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>, fonts, <code>&lt;object&gt;</code> <sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup>, <code>&lt;embed&gt;</code> <sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup>, <code>&lt;applet&gt;</code> <sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup>, <code>&lt;audio&gt;</code> <sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup> and <code>&lt;video&gt;</code> <sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>) only allow resources from the same origin (same scheme, host and port).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If a resource is blocked because it violates the CSP a report is created and logged on server side using level <code>warning</code>. This is done in the class <code>ContentSecurityPolicyReportHandler</code>.
+This enables admins to monitor the application and to react if a CSP violation is detected.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="session-cookie-jsessionid-cookie-configuration-validation"><a class="anchor" href="#session-cookie-jsessionid-cookie-configuration-validation"></a>Session Cookie (JSESSIONID Cookie) Configuration Validation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The UiServlet checks if the session cookie is configured safely. The validation is only performed on first access to the <code>UiServlet</code>. There is no automatic validation on the backend server side or on any custom servlets!</p>
+</div>
+<div class="paragraph">
+<p>If the validation fails, a corresponding error message is logged to the server and an exception is thrown making the <code>UiServlet</code> inaccessible. Because of security reasons the exception shown to the user includes no details about the error. These can only be seen on the server side log.</p>
+</div>
+<div class="sect2">
+<h3 id="httponly"><a class="anchor" href="#httponly"></a>HttpOnly</h3>
+<div class="paragraph">
+<p>First the existence of the <code>HttpOnly</code> flag is checked. The servlet container will then add this flag to the <code>Set-Cookie</code> HTTP response header. If the user agent supports this flag, the cookie cannot be accessed through a client side script. As a result even if a cross-site scripting (XSS) flaw exists and a user accidentally accesses a link that exploits this flaw, the user agent will not reveal the cookie to a third party.
+For a list of user agents supporting this feature please refer to <a href="https://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HttpOnly">OWASP</a>.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to always enable this flag.</p>
+</div>
+<div class="paragraph">
+<p>Since Java Servlet 3.0 specification this property can be set in the configuration in the deployment descriptor <code>WEB-INF/web.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee  http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0"
+         metadata-complete="true"&gt;
+  ...
+  &lt;session-config&gt;
+    ...
+    &lt;cookie-config&gt;
+      &lt;http-only&gt;true&lt;/http-only&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+      ...
+    &lt;/cookie-config&gt;
+    ...
+  &lt;/session-config&gt;
+  ...
+&lt;/web-app&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The HttpOnly flag activated</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="secure"><a class="anchor" href="#secure"></a>Secure</h3>
+<div class="paragraph">
+<p>Second the existence of the <code>Secure</code> flag is checked. The servlet container will then add this flag to the <code>Set-Cookie</code> HTTP response header. The purpose of the secure flag is to prevent cookies from being observed by unauthorized parties due to the transmission of a cookie in clear text. Therefore, setting this flag will prevent the user agent from transmitting the session id over an unencrypted channel.</p>
+</div>
+<div class="paragraph">
+<p>Since Java Servlet 3.0 specification this property can be set in the configuration in the deployment descriptor <code>WEB-INF/web.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0"
+         metadata-complete="true"&gt;
+  ...
+  &lt;session-config&gt;
+    ...
+    &lt;cookie-config&gt;
+      &lt;secure&gt;true&lt;/secure&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+      ...
+    &lt;/cookie-config&gt;
+    ...
+  &lt;/session-config&gt;
+  ...
+&lt;/web-app&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The Secure flag activated</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This of course only makes sense if the application is exposed to the end user using an encrypted channel like <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a> (which is strongly recommended).</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately for the UI server it is not possible to detect if an application uses a secured channel. Consider the following example: The servlet container is protected by a reverse proxy. The communication between the user agent and the proxy is encrypted while the channel between the proxy and the servlet container is not. In this scenario the container cannot know that from a user agent point of view the channel is secured.</p>
+</div>
+<div class="paragraph">
+<p>Because of this the validation assumes that the channel from the user agent to the entering node is secured and by default checks for the <code>Secure</code> flag. In case this assumption is not true and an unencrypted channel must be used this validation step can be disabled by setting the following property in the <code>config.propertis</code> file:</p>
+</div>
+<div class="paragraph">
+<p><code>scout.auth.cookieSessionValidateSecure=false</code></p>
+</div>
+<div class="paragraph">
+<p>This skips the <code>Secure</code> flag check completely. In this scenario (not using https) it is also required to remove the secure tag from the cookie config in the <code>WEB-INF/web.xml</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="secure-output"><a class="anchor" href="#secure-output"></a>Secure Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter describes how HTML Output can be handled in a secure way.</p>
+</div>
+<div class="paragraph">
+<p>Scout applications often display potentially dangerous data, e.g. user input or data from other systems.
+Encoding this input in such a way, that it can not be executed, prevents security vulnerabilities like cross-site scripting.</p>
+</div>
+<div class="sect2">
+<h3 id="encoding-by-default"><a class="anchor" href="#encoding-by-default"></a>Encoding by Default</h3>
+<div class="paragraph">
+<p>By default, all input in the Scout model is encoded. Examples are values/labels in value fields, cells in tables, message in message box.
+The reason behind this default choice is that developers do not have to think about output encoding in the standard case
+and are therefore less likely to forget output encoding and introduce a security vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Example: In the following label field, the HTML &lt;b&gt; tag is encoded as <code>&amp;lt;b&amp;gt;bold text&amp;lt;/b&amp;gt;</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/encodedField.png" alt="encodedField">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public class LabelField extends AbstractLabelField {
+  @Override
+  protected void execInitField() {
+    setValue("...&lt;b&gt;Bold text&lt;/b&gt;...");
+  }</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="html-enabled"><a class="anchor" href="#html-enabled"></a>Html Enabled</h3>
+<div class="paragraph">
+<p>Sometimes developers may want to use HTML in the Scout model.</p>
+</div>
+<div class="paragraph">
+<p>Examples are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple styling of dynamic content, such as addresses or texts in message boxes</p>
+</li>
+<li>
+<p>Text containing application-internal or external links</p>
+</li>
+<li>
+<p>Html or XML content received from other systems, such as e-mails or html pages</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Html input should only partially be encoded or not at all.</p>
+</div>
+<div class="paragraph">
+<p>To disable the encoding of the whole value, the property <code>HtmlEnabled</code> can be used:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public class NoEncodingLabelField extends AbstractLabelField {
+  @Override
+  protected boolean getConfiguredHtmlEnabled() {
+    return true;
+  }</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@Override
+protected void execInitField() {
+  setValue("...&lt;b&gt;Bold text&lt;/b&gt;...");
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are several ways to implement the use cases above. Some typical implementations are described in the following sections.</p>
+</div>
+<div class="sect3">
+<h4 id="css-class-and-other-model-properties"><a class="anchor" href="#css-class-and-other-model-properties"></a>CSS Class and Other Model Properties</h4>
+<div class="paragraph">
+<p>Often using HTML in value fields or table cells is not necessary for styling. Very basic styling can be done for example by setting the CSS class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="html-builder"><a class="anchor" href="#html-builder"></a>HTML Builder</h4>
+<div class="paragraph">
+<p>For creating simple HTML files or fragments with encoded user input, the class <code>org.eclipse.scout.rt.platform.html.HTML</code> can be used. It is also easily possible to create application internal and external link with this approach.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="styling-in-the-ui-layer"><a class="anchor" href="#styling-in-the-ui-layer"></a>Styling in the UI-Layer</h4>
+<div class="paragraph">
+<p>For more complex HTML, using <code>IBeanField</code> in the scout model and implementing the styling in the UI-Layer is often the preferred way.
+Links are possible as well.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="manual-encoding"><a class="anchor" href="#manual-encoding"></a>Manual Encoding</h4>
+<div class="paragraph">
+<p>It is also possible to encode any String manually using <code>StringUtility.htmlEncode(String)</code>. <code>org.eclipse.scout.rt.platform.html.HTML</code> uses this method internally for encoding.
+However, using <code>HTML</code> is recommended, where possible, because it is more concise and leads to less errors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-a-white-list-filter"><a class="anchor" href="#using-a-white-list-filter"></a>Using a White-List Filter</h4>
+<div class="paragraph">
+<p>If HTML or XML from external sources or more complex HTML are used in the Scout model, using a white-list filter might be the best way to avoid security bugs.
+Libraries, such as <a href="http://jsoup.org/">JSoup</a> provide such a white-list filter. Scout currently does not include any services or utilities for using white-list filters,
+because the configuration and usage is very use-case-specific and would therefore not add much benefit.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authorization-granting"><a class="anchor" href="#authorization-granting"></a>Authorization (Granting)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout uses the <code>java.security</code> API principles to grant access to a specific resource.</p>
+</div>
+<div class="paragraph">
+<p>Each user has a set of granted <code>java.security.Permission</code> instances.
+This set is a <code>java.security.PermissionCollection</code>.
+A call to <code>PermissionCollection.implies(Permission p)</code> does the access check.
+The argument <code>p</code> in this call is a new permission instance for which we want to do the access check and which is compared against the granted permissions.
+Usually, the permission collection implementation iterates through all granted permissions and calls on each <code>Permission.implies(Permission p)</code> until one call returns <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Scout adds some concepts and helpers to this API:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>IPermission</code></dt>
+<dd>
+<p>Unlike other permissions, a permission implementing this interface can only be implied by another <code>IPermission</code> <strong>with the same name</strong>.
+A permission used together with scouts security API does not have to implement the <code>IPermission</code> interface, but it is recommended.</p>
+</dd>
+<dt class="hdlist1"><code>PermissionLevel</code></dt>
+<dd>
+<p>An <code>IPermission</code>, which is part of an <code>IPermissionCollection</code> has always a granted access level assigned (<code>IPermission.getLevel()</code>).
+If the granted level is <code>PermissionLevel.NONE</code>, any access checks will fail.</p>
+</dd>
+<dt class="hdlist1"><code>IAccessControlService</code></dt>
+<dd>
+<p>This service is responsible to provide and manage a users set of granted permissions.
+A scout application usually extends <code>AbstractAccessControlService</code> and implements <code>#execLoadPermissions</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ACCESS</code></dt>
+<dd>
+<p>Provides a set of convenience methods to check access.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Let us assume you require a permission to allow a user to access companies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ReadCompanyPermission extends AbstractPermission {
+  private static final long serialVersionUID = 1L;
+
+  public ReadCompanyPermission() {
+    super("scoutdoc.ReadCompany");
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To check access one can use <code>ACCESS</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">if (ACCESS.check(new ReadCompanyPermission())) { <i class="conum" data-value="1"></i><b>(1)</b>
+  throw new AccessForbiddenException(TEXTS.get("YouAreNotAllowedToReadThisData"));
+}
+
+ACCESS.checkAndThrow(new ReadCompanyPermission()); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Checks permission against granted permissions of current user.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Checks permission and if this check fails, throw an <code>AccessForbiddenException</code> with a default message.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We can define a default access check failed message for a permission.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class CreateCompanyPermission extends AbstractPermission {
+  private static final long serialVersionUID = 1L;
+
+  public CreateCompanyPermission() {
+    super("scoutdoc.CreateCompany");
+  }
+
+  @Override
+  public String getAccessCheckFailedMessage() {
+    return TEXTS.get("YouAreNotAllowedToRegisterThisData");
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>ACCESS</code> allows to check multiple permissions at once.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ACCESS.checkAllAndThrow(new ReadCompanyPermission(), new CreateCompanyPermission());
+
+ACCESS.checkAnyAndThrow(new ReadCompanyPermission(), new CreateCompanyPermission());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have seen some simple permission checks.
+Now let us assume, that some users may modify a company only if they have registered the company by themselves.
+For this use case we introduce a new permission level <code>ScoutdocPermissionLevels.OWN</code>.
+This is the permission level which is granted for those users.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public final class ScoutdocPermissionLevels {
+
+  private ScoutdocPermissionLevels() {
+  }
+
+  public static final int LEVEL_NONE = PermissionLevel.LEVEL_NONE;
+  public static final int LEVEL_OWN = 10;
+  public static final int LEVEL_ALL = PermissionLevel.LEVEL_ALL;
+
+  public static final PermissionLevel NONE = PermissionLevel.NONE;
+  public static final PermissionLevel OWN =
+      PermissionLevel.register(LEVEL_OWN, "OWN", true, () -&gt; TEXTS.get("Own"));
+  public static final PermissionLevel ALL = PermissionLevel.ALL;
+
+  public static void init() {
+    // ensures all static initializers have been called
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order to check access for this new level we have to override <code>AbstractPermission#evalPermission</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class UpdateCompanyPermission extends AbstractPermission {
+  private static final long serialVersionUID = 1L;
+
+  private final UUID m_companyId;
+
+  public UpdateCompanyPermission() {
+    this(null);
+  }
+
+  public UpdateCompanyPermission(UUID companyId) {
+    super("scoutdoc.UpdateCompany");
+    m_companyId = companyId;
+  }
+
+  public UUID getCompanyId() {
+    return m_companyId;
+  }
+
+  @Override
+  protected boolean evalPermission(IPermission p) {
+    // Precondition: p.getClass() == getClass() &amp;&amp; getName().equals(p.getName()) &amp;&amp;
+    //               getLevel() != PermissionLevel.NONE
+    if (ScoutdocPermissionLevels.OWN == getLevel()) {
+      UUID companyId = ((UpdateCompanyPermission) p).getCompanyId();
+      return BEANS.get(ICompanyService.class).isOwnCompany(companyId);
+    }
+    return true; // ScoutdocPermissionLevels.ALL == getLevel()
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = super.hashCode();
+    result = prime * result + ((m_companyId == null) ? 0 : m_companyId.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!super.equals(obj)) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    UpdateCompanyPermission other = (UpdateCompanyPermission) obj;
+    if (m_companyId == null) {
+      if (other.m_companyId != null) {
+        return false;
+      }
+    }
+    else if (!m_companyId.equals(other.m_companyId)) {
+      return false;
+    }
+    return true;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ACCESS.checkAndThrow(new UpdateCompanyPermission(companyId));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If such a service call would be expensive, one may cache the result of such a permission check.
+You have to implement this by yourself.
+A recommended solution is to create a wrapper around <code>IPermissionCollection</code> and this wrapper caches calls to <code>IPermissionCollection#implies</code> if required.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Clickjacking" class="bare">https://en.wikipedia.org/wiki/Clickjacking</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://tools.ietf.org/html/rfc7034" class="bare">https://tools.ietf.org/html/rfc7034</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" class="bare">https://en.wikipedia.org/wiki/Cross-site_scripting</a>
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. <a href="http://content-security-policy.com/" class="bare">http://content-security-policy.com/</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. <a href="https://en.wikipedia.org/wiki/JavaScript" class="bare">https://en.wikipedia.org/wiki/JavaScript</a>
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets" class="bare">https://en.wikipedia.org/wiki/Cascading_Style_Sheets</a>
+</div>
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. <a href="https://en.wikipedia.org/wiki/Framing_(World_Wide_Web" class="bare">https://en.wikipedia.org/wiki/Framing_(World_Wide_Web</a>)
+</div>
+<div class="footnote" id="_footnotedef_9">
+<a href="#_footnoteref_9">9</a>. <a href="https://en.wikipedia.org/wiki/WebSocket" class="bare">https://en.wikipedia.org/wiki/WebSocket</a>
+</div>
+<div class="footnote" id="_footnotedef_10">
+<a href="#_footnoteref_10">10</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource" class="bare">https://developer.mozilla.org/en-US/docs/Web/API/EventSource</a>
+</div>
+<div class="footnote" id="_footnotedef_11">
+<a href="#_footnoteref_11">11</a>. <a href="https://en.wikipedia.org/wiki/Ajax_%28programming%29" class="bare">https://en.wikipedia.org/wiki/Ajax_%28programming%29</a>
+</div>
+<div class="footnote" id="_footnotedef_12">
+<a href="#_footnoteref_12">12</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object</a>
+</div>
+<div class="footnote" id="_footnotedef_13">
+<a href="#_footnoteref_13">13</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed</a>
+</div>
+<div class="footnote" id="_footnotedef_14">
+<a href="#_footnoteref_14">14</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet</a>
+</div>
+<div class="footnote" id="_footnotedef_15">
+<a href="#_footnoteref_15">15</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio</a>
+</div>
+<div class="footnote" id="_footnotedef_16">
+<a href="#_footnoteref_16">16</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video</a>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

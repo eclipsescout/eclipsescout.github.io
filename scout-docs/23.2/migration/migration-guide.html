@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Migration Guide :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="migration-guide.html">Migration Guide</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="migration-guide.html">23.2</a>
+    <a class="version" href="../../23.1/migration/migration-guide.html">23.1</a>
+    <a class="version" href="../../22/migration/migration-guide.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.2/docs/modules/migration/pages/migration-guide.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Migration Guide</h1>
+<div class="sect1">
+<h2 id="about-this-document"><a class="anchor" href="#about-this-document"></a>About This Document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes all relevant changes <strong>from Eclipse Scout 23.1 to Eclipse Scout 23.2</strong>. If existing code has to be migrated, instructions are provided here.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The here described functionality has not yet been released and is part of an upcoming release.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://central.sonatype.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/23.2.0">23.2.0</a> on <em>Maven Central</em></p>
+</li>
+<li>
+<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/23.2.0">23.2.0</a> on <em>mvnrepository.com</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in the parent POM of your Scout application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
+    &lt;version&gt;23.2.0&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in your package.json:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "name": "my-module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@eclipse-scout/cli": "23.2.0",
+    "@eclipse-scout/releng": "^22.0.0"
+  },
+  "dependencies": {
+    "@eclipse-scout/core": "23.2.0",
+    "jquery": "3.6.0"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pre-built Scout JavaScript assets are also available using a CDN (e.g. to be directly included in a html document):
+<a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
+<div class="paragraph">
+<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2023-03/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
+<div class="paragraph">
+<p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA.
+Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+<div class="paragraph">
+<p>You can download the complete Eclipse IDE with Scout SDK included here:<br>
+<a href="https://www.eclipse.org/downloads/packages/release/2023-03/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+</div>
+<div class="paragraph">
+<p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
+<a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="utilities"><a class="anchor" href="#utilities"></a>Utilities</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="dateutility-new-default-date-time-format"><a class="anchor" href="#dateutility-new-default-date-time-format"></a>DateUtility: New Default Date Time Format</h3>
+<div class="paragraph">
+<p>Since this version, the method <code>DateUtility#formatDateTime</code> returns the date formatted with the <code>DateFormat.DEFAULT</code> and no longer with the <code>DateFormat.SHORT</code>.
+Now, both methods, <code>DateUtility#formatDate</code> and <code>DateUtility#formatDateTime</code>, are formatting the date identically.
+To apply the old formatting, use <code>DateUtility#formatDateTimeShort</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-exceptionutility"><a class="anchor" href="#new-exceptionutility"></a>New ExceptionUtility</h3>
+<div class="paragraph">
+<p>A set of utility methods dealing with <code>Exception</code> and <code>Throwable</code> were moved and added to the new <code>ExceptionUtility</code>.</p>
+</div>
+<div class="paragraph">
+<p>Change invocations of <code>org.eclipse.scout.rt.platform.exception.ExceptionHandler.getRootCause()</code>
+to the new utility method  <code>org.eclipse.scout.rt.platform.util.ExceptionUtility.getRootCause()</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adapted-rest-errordorestclientexceptiontransformer"><a class="anchor" href="#adapted-rest-errordorestclientexceptiontransformer"></a>Adapted REST ErrorDoRestClientExceptionTransformer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The transformation logic for exceptions which occur while invoking a REST client was slightly adapted.
+For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gateway timeout) the adapted <code>ErrorDoRestClientExceptionTransformer</code> returns a <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code> instead of the former generic <code>org.eclipse.scout.rt.platform.exception.ProcessingException</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removed-deprecated-code"><a class="anchor" href="#removed-deprecated-code"></a>Removed Deprecated Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following functions were deprecated in a previous release and are now removed completely.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TabBox.ts: <code>selectTabById</code>, replaced by <code>setSelectedTab</code></p>
+</li>
+<li>
+<p>JQueryMouseWheelEvent: instead of using <code>DOMMouseScroll mousewheel</code> events use <code>wheel</code> and JQueryWheelEvent type</p>
+</li>
+<li>
+<p>Menu.ts: <code>addChildActions</code>, replaced by <code>insertChildActions</code></p>
+</li>
+<li>
+<p>Widget.ts: <code>_isRemovalPending</code>, replaced by <code>isRemovalPending</code></p>
+</li>
+<li>
+<p>CompositeFieldUtility.java: <code>moveFieldTo</code>, third parameter removed</p>
+</li>
+<li>
+<p>AbstractExtensionChain.java: <code>callChain</code>, vararg removed</p>
+</li>
+<li>
+<p>AbstractDataModelOperatorField.java: setAttribute, second parameter is not optional anymore</p>
+</li>
+<li>
+<p>FocusManager.ts: <code>requestFocus</code> does not accept a boolean anymore as third parameter</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removal-of-public-holiday-calendar-support"><a class="anchor" href="#removal-of-public-holiday-calendar-support"></a>Removal of Public Holiday Calendar Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A few classes used to read public holidays from an XML file and providing them to the calendar were removed without replacement:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractHolidayItemProvider</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.shared.services.common.calendar.IHolidayCalendarService</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.server.services.common.calendar.HolidayCalendarService</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.shared.services.common.calendar.HolidayItem</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.shared.services.common.calendar.HolidayCalendarItemParser</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
+<div class="sect3">
+<h4 id="modal-optional-for-views"><a class="anchor" href="#modal-optional-for-views"></a>Modal Optional for Views</h4>
+<div class="paragraph">
+<p>The default value for the <code>modal</code> property has been changed for forms with <code>displayStyle</code> = <code>Form.DisplaStyle.VIEW</code>, see <a href="../releasenotes/release-notes.html#modal-optional-for-views" class="xref page">Release Notes</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

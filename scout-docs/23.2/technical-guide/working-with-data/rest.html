@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>REST :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Working with Data</li>
+    <li><a href="rest.html">REST</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="rest.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/working-with-data/rest.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/working-with-data/rest.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.2/docs/modules/technical-guide/pages/working-with-data/rest.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">REST</h1>
+<div class="sect1">
+<h2 id="rest-resource-conventions"><a class="anchor" href="#rest-resource-conventions"></a>REST Resource Conventions</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. HTTP Methods for RESTful Services</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Method</th>
+<th class="tableblock halign-left valign-top">CRUD</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is most-often used to create new resources.</p>
+<p class="tableblock">POST is not idempotent. Making two identical POST requests will most-likely result in two resources containing the same information or the action executed twice.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only used to read or retrieve a representation of a resource.</p>
+<p class="tableblock">According to the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1">HTTP specification</a> GET (and HEAD) requests are used to read data  and must not change anything! If a REST API wants to violate the specification, such requests must be protected against <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a> which is not enabled for GET and HEAD requests by default. See the Scout Bean <code>org.eclipse.scout.rt.rest.csrf.AntiCsrfHelper</code> for more details.</p>
+<p class="tableblock">GET requests are idempotent, which means that making multiple identical requests ends up having the same result as a single request (assuming the data has not been changed in the meantime).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update/Replace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is most-often used to update resources.</p>
+<p class="tableblock">PUT expects to send the complete resource (not like PATCH) and is idempotent. In other words, if you create or update a resource using PUT and then make that same call again, the resource is still there and still has the same state as it did with the first call.</p>
+<p class="tableblock">If, for instance, calling PUT on a resource increments a counter within the resource, the call is no longer idempotent. In such a scenario it is strongly recommended to use POST for non-idempotent requests.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PATCH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PATCH is used to update resources. The PATCH request typically only contains the changes to the resource, not the complete resource.</p>
+<p class="tableblock">PATCH is not required to be idempotent. But it is possible to implement it in a way to be idempotent, which also helps prevent bad outcomes from collisions between multiple requests on the same resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to delete a resource.</p>
+<p class="tableblock">DELETE operations are idempotent concerning the result but may return another status code after the first deletion (e.g. 404 NOT FOUND).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-resource-provider"><a class="anchor" href="#rest-resource-provider"></a>REST Resource Provider</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A REST resource using the <a href="http://www.oracle.com/technetwork/java/javaee/tech/jax-rs-159890.html">JAX-RS</a> API is implemented by a POJO class annotated with a set of annotations.</p>
+</div>
+<div class="paragraph">
+<p>The Scout module <code>org.eclipse.scout.rt.rest</code> contains the basic <code>IRestResource</code> marker interface which integrates REST resources within the Scout framework.
+The interface is annotated by <code>@Bean</code> allowing the Scout platform to load and register all REST resources automatically at startup using the Jandex class inventory.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Example: REST resource</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Path("example")
+public class ExampleResource implements IRestResource {
+
+  @GET
+  @Path("{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public ExampleEntityDo getExamlpeEntity(@PathParam("id") String id) {
+    return BEANS.get(ExampleEntityDo.class)
+        .withName("example-" + id)
+        .withValues(1);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-resource-registration"><a class="anchor" href="#rest-resource-registration"></a>REST Resource Registration</h3>
+<div class="paragraph">
+<p>All available REST resources are automatically registered by the <code>RestApplication</code> class while the Scout platform startup.</p>
+</div>
+<div class="paragraph">
+<p>Add the following snippet to your <code>web.xml</code> file to expose your REST API using the <code>/api</code> context path:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. web.xml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- JAX-RS Jersey Servlet --&gt;
+&lt;servlet&gt;
+  &lt;servlet-name&gt;api&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;org.glassfish.jersey.servlet.ServletContainer&lt;/servlet-class&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt;
+    &lt;param-value&gt;org.eclipse.scout.rt.rest.RestApplication&lt;/param-value&gt;
+  &lt;/init-param&gt;
+  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;api&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="extend-rest-application"><a class="anchor" href="#extend-rest-application"></a>Extend REST Application</h3>
+<div class="paragraph">
+<p>The JAX-RS application API (<code>javax.ws.rs.core.Application</code>) allows a REST application implementation to specify a set of classes, a set of singleton instances and a map of custom properties to be registered.
+The Scout implementation of the REST application class <code>org.eclipse.scout.rt.rest.RestApplication</code> allows contributing classes, singletons and properties without needing to extend the <code>RestApplication</code> class.</p>
+</div>
+<div class="paragraph">
+<p>Three different contributor interfaces are available for contributions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>IRestApplicationClassesContributor</code> to contribute any classes</p>
+</li>
+<li>
+<p><code>IRestApplicationSingletonsContributor</code> to contribute any object instances (singletons)</p>
+</li>
+<li>
+<p><code>IRestApplicationPropertiesContributor</code> to contribute key/value properties</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Example class contributor</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static class ExampleClassContributor implements IRestApplicationClassesContributor {
+  @Override
+  public Set&lt;Class&lt;?&gt;&gt; contribute() {
+    return Collections.singleton(MyCustomExample.class);
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-objects"><a class="anchor" href="#data-objects"></a>Data Objects</h3>
+<div class="paragraph">
+<p>Scout data objects may be used as request and response objects for REST APIs.
+See <a href="data-object.html" class="xref page">Data Objects</a> for details and examples.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="marshaller"><a class="anchor" href="#marshaller"></a>Marshaller</h3>
+<div class="paragraph">
+<p>A REST API may be used by non-Java consumers. In order to communicate using a platform-independent format, usually REST services use JSON as transport format.
+The marshaller between Java data objects and JSON is abstracted in the JAX-RS specification.
+Using the <code>@Produces(MediaType.APPLICATION_JSON)</code> annotation, each REST service method specifies the produced data format.</p>
+</div>
+<div class="paragraph">
+<p>The Scout REST integration uses the popular Jackson library as default marshaller.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="runcontext"><a class="anchor" href="#runcontext"></a>RunContext</h3>
+<div class="paragraph">
+<p>Like a usual service call using the Scout service tunnel a REST request must ensure that processing of the request takes place within a <code>RunContext</code>.
+The <code>HttpServerRunContextFilter</code> or <code>HttpRunContextFilter</code> can be used to intercept incoming REST requests and wrap them within a Scout RunContext.
+<code>HttpServerRunContextFilter</code> can be used if a Scout server dependency is available. Optionally this filter also supports the creation of a Scout server session if this should be required (stateful). Refer to the javadoc for more details.
+The <code>HttpRunContextFilter</code> on the other hand does not provide session support and is always stateless.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, a REST resource implementation is not required to deal with setting up a RunContext to wrap the request within each method.
+The filter must be added in the <code>web.xml</code> configuration file and should be configured to be called after the authentication filter.
+The filter expects that the authentication has been performed and that a <code>subject</code> is available (JAAS context).
+All following filters and servlets and thus also the REST resources run automatically in the correct context.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. web.xml registration example for HttpServerRunContextFilter.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;filter&gt;
+   &lt;filter-name&gt;HttpServerRunContextFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.eclipse.scout.rt.server.context.HttpServerRunContextFilter&lt;/filter-class&gt;
+   &lt;init-param&gt;
+     &lt;param-name&gt;session&lt;/param-name&gt;
+     &lt;param-value&gt;false&lt;/param-value&gt;
+   &lt;/init-param&gt;
+ &lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+  &lt;filter-name&gt;HttpServerRunContextFilter&lt;/filter-name&gt;
+  &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Beside the <code>subject</code> and other attributes the <code>HttpServerRunContextFilter</code> and <code>HttpRunContextFilter</code> setup the Correlation ID, as well as the locale.
+Both values are read from the incoming request header, the caller must ensure that the headers <code>Accept-Language</code> and <code>X-Scout-Correlation-Id</code> are set accordingly.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dependency-management"><a class="anchor" href="#dependency-management"></a>Dependency Management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout REST services based on JAX-RS using the Jersey library and the Jackson JSON marshaller need a maven dependency to <code>jersey-media-json-jackson</code> in the application pom.xml.
+This enables the use of Jackson as JAX-RS marshaller with the Jersey JAX-RS implementation.
+Additionally, a dependency to the Scout module <code>org.eclipse.scout.rt.rest.jackson</code> is necessary.
+This module adds a set of Jackson additions in order to use the Jackson library together with Scout data objects.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. Dependency section of pom.xml to use Scout REST services with Jackson &amp; Jersey</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- JAX-RS Jersey --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.containers&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-container-servlet-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.inject&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-hk2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.media&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-media-json-jackson&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Jackson/Scout integration --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt.rest.jackson&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-client"><a class="anchor" href="#rest-client"></a>REST Client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout module <code>org.eclipse.scout.rt.rest</code> offers a set of helper classes in order to call REST services.</p>
+</div>
+<div class="paragraph">
+<p>Each REST service endpoint is represented by a specific REST resource client helper class. The (usually application scoped bean) class is used to specify the
+resource URL and additional properties used to build up the connection (authentication, additional headers,&#8230;&#8203;). Further it provides a call-back method for transforming
+unsuccessful responses into appropriate exception.</p>
+</div>
+<div class="paragraph">
+<p>At least the REST resource&#8217;s base URI must be specified:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. Example: REST resource client helper</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleRestClientHelper extends AbstractRestClientHelper {
+
+  @Override
+  protected String getBaseUri() {
+    return "https://api.example.org/"; <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+
+  @Override
+  protected void configureClientBuilder(ClientBuilder clientBuilder) {
+    super.configureClientBuilder(clientBuilder);
+    clientBuilder.property(RestClientProperties.COOKIE_SPEC, CookieSpecs.STANDARD);
+    clientBuilder.property(RestClientProperties.PROXY_URI, "http://my.proxy.com");
+  }
+
+  @Override
+  protected RuntimeException transformException(RuntimeException e, Response response) { <i class="conum" data-value="2"></i><b>(2)</b>
+    if (response != null &amp;&amp; response.hasEntity()) {
+      ErrorDo error = response.readEntity(ErrorResponse.class).getError();
+      throw new VetoException(error.getMessage())
+          .withTitle(error.getTitle());
+    }
+    return e;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Declare base uri.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Custom exception transformer that is used as default strategy for all invocations prepared by this helper. (This is just for demonstration. Better extend
+<code>org.eclipse.scout.rt.rest.client.proxy.AbstractEntityRestClientExceptionTransformer</code>).</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Based on the helper class, an example REST resource client may be implemented:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. Example: REST resource client</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleResourceClient implements IRestResourceClient {
+
+  protected static final String RESOURCE_PATH = "example";
+
+  protected ExampleRestClientHelper helper() {
+    return BEANS.get(ExampleRestClientHelper.class);
+  }
+
+  public ExampleEntityDo getExampleEntity(String id) {
+    WebTarget target = helper().target(RESOURCE_PATH)
+        .property(RestClientProperties.FOLLOW_REDIRECTS, false)
+        .path("/{id}")
+        .resolveTemplate("id", id);
+
+    return target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .get(ExampleEntityDo.class); <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+
+  public ExampleEntityDo updateExampleEntity(String id, ExampleEntityDo entity) {
+    WebTarget target = helper().target(RESOURCE_PATH)
+        .path("/{id}")
+        .resolveTemplate("id", id);
+
+    return target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .post(Entity.json(entity), ExampleEntityDo.class); <i class="conum" data-value="2"></i><b>(2)</b>
+  }
+
+  public void deleteExampleEntity(String id) {
+    WebTarget target = helper().target(RESOURCE_PATH)
+        .path("/{id}")
+        .resolveTemplate("id", id);
+
+    Response response = target.request().delete(); <i class="conum" data-value="3"></i><b>(3)</b>
+    response.close();
+  }
+
+  public ExampleEntityDo getExampleEntityCustomExceptionHandling(String id) {
+    WebTarget target = helper().target(RESOURCE_PATH, this::transformCustomException) <i class="conum" data-value="4"></i><b>(4)</b>
+        .path("/{id}")
+        .resolveTemplate("id", id);
+
+    return target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .get(ExampleEntityDo.class);
+  }
+
+  protected RuntimeException transformCustomException(RuntimeException e, Response r) {
+    if (r != null &amp;&amp; r.hasEntity() &amp;&amp; MediaType.TEXT_PLAIN_TYPE.equals(r.getMediaType())) {
+      String message = r.readEntity(String.class);
+      throw new VetoException(message);
+    }
+    return e;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>HTTP GET example: Directly read response into an object. Exceptions are transformed transparently and the underlying resources are released (e.g. HTTP client).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>HTTP POST example: Again, directly read the response into an object.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>HTTP DELETE example: This delete operation does not send a response if it was successful. Hence close the returned <code>Response</code> explicitly to release underlying resources
+(see next line). Note: Unsuccessful responses are already handled by the REST client proxy.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Use custom exception transformer.</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="rest-client-properties"><a class="anchor" href="#rest-client-properties"></a>REST Client Properties</h3>
+<div class="paragraph">
+<p>The Scout REST Client implementation offers a set of properties to customize the underlying REST- and HTTP client, see <code>org.eclipse.scout.rt.rest.client.RestClientProperties</code> for a list of supported properties.</p>
+</div>
+<div class="paragraph">
+<p>Properties can be set on the REST client during initialization (valid for all requests):</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Setting properties for REST Client for all requests</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Override
+  protected void configureClientBuilder(ClientBuilder clientBuilder) {
+    super.configureClientBuilder(clientBuilder);
+    clientBuilder.property(RestClientProperties.COOKIE_SPEC, CookieSpecs.STANDARD);
+    clientBuilder.property(RestClientProperties.PROXY_URI, "http://my.proxy.com");
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some properties (see JavaDoc for details) may also be set on a request level:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. Setting properties for REST Client for a single requests, e.g. setting <code>FOLLOW_REDIRECTS</code> to <code>false</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public ExampleEntityDo getExampleEntity(String id) {
+    WebTarget target = helper().target(RESOURCE_PATH)
+        .property(RestClientProperties.FOLLOW_REDIRECTS, false)
+        .path("/{id}")
+        .resolveTemplate("id", id);
+
+    return target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .get(ExampleEntityDo.class); <i class="conum" data-value="1"></i><b>(1)</b>
+  }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-client-http-proxy"><a class="anchor" href="#rest-client-http-proxy"></a>REST Client HTTP Proxy</h3>
+<div class="paragraph">
+<p>There are multiple possibilities to configure a REST client to use a HTTP proxy:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Directly on REST client instance: see <code>org.eclipse.scout.rt.rest.client.RestClientProperties.PROXY_URI</code> (and <code>PROXY_USER</code> / <code>PROXY_PASSWORD</code> properties)</p>
+</li>
+<li>
+<p>Using the dynamic Scout <code>org.eclipse.scout.rt.shared.http.proxy.ConfigurableProxySelector</code>, see example configuration:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Setting HTTP proxy for outgoing requests to *.example.com</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">scout.http.proxyPatterns[0]=.*\.example.com(:\d+)?=127.0.0.1:8888</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-cancellation-support"><a class="anchor" href="#rest-cancellation-support"></a>REST Cancellation Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>REST and the underlying HTTP protocol do not provide an explicit way to cancel running requests. Typically, a client terminates its connection to the HTTP server if it is no
+longer interested in the response. REST resources would have to monitor TCP connections and interpret a close as cancellation. Depending on the abstraction of the REST
+framework, connection events are not passed through and the cancellation is only recognized when the response is written to the closed connection. Until this happens,
+however, backend resources are used unnecessarily.</p>
+</div>
+<div class="paragraph">
+<p>Scout&#8217;s standard REST integration implements the described approach by closing the connection without any further action. It is not possible to react to this on the resource side.</p>
+</div>
+<div class="paragraph">
+<p>In order to enable a real cancellation, Scout also provides all necessary elements to assign an ID to a request, to manage these IDs in the backend during execution and to cancel
+transactions in the event of a cancellation. The following steps must be taken for their use:</p>
+</div>
+<div class="sect2">
+<h3 id="cancellation-resource-and-resource-client"><a class="anchor" href="#cancellation-resource-and-resource-client"></a>Cancellation Resource and Resource Client</h3>
+<div class="paragraph">
+<p>Scout does not impose nor provide a cancellation resource. It must be implemented by the project:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Example: REST cancellation Resource</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Path("cancellation")
+public class CancellationResource implements IRestResource {
+
+  @PUT
+  @Path("{requestId}")
+  public void cancel(@PathParam("requestId") String requestId) {
+    String userId = BEANS.get(IAccessControlService.class).getUserIdOfCurrentSubject(); <i class="conum" data-value="1"></i><b>(1)</b>
+    BEANS.get(RestRequestCancellationRegistry.class).cancel(requestId, userId); <i class="conum" data-value="2"></i><b>(2)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Resolve the <code>userId</code> of the current user. This is optional and may depend on the current project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Invoke the cancellation registry for the given <code>requestId</code> and <code>userId</code>.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 12. Example: REST cancellation Resource Client</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class CancellationResourceClient implements IRestResourceClient {
+
+  protected static final String RESOURCE_PATH = "cancellation";
+
+  protected CancellationRestClientHelper helper() {
+    return BEANS.get(CancellationRestClientHelper.class);
+  }
+
+  public void cancel(String requestId) {
+    WebTarget target = helper().target(RESOURCE_PATH)
+        .path("{requestId}")
+        .resolveTemplate("requestId", requestId);
+
+    Response response = target.request()
+        .put(Entity.json(""));
+    response.close();
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-cancellation-request-filter"><a class="anchor" href="#install-cancellation-request-filter"></a>Install Cancellation Request Filter</h3>
+<div class="paragraph">
+<p>To assign an ID to each request, an appropriate client request filter must be registered:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 13. Example: Register Client Request Cancellation Filter in REST Client Helper</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class CancellationRestClientHelper extends AbstractRestClientHelper {
+
+  @Override
+  protected String getBaseUri() {
+    return "https://api.example.org/";
+  }
+
+  @Override
+  protected void registerRequestFilters(ClientBuilder clientBuilder) {
+    super.registerRequestFilters(clientBuilder);
+    clientBuilder.register(new RestRequestCancellationClientRequestFilter(this::cancelRequest)); <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+
+  protected void cancelRequest(String requestId) {
+    BEANS.get(CancellationResourceClient.class).cancel(requestId); <i class="conum" data-value="2"></i><b>(2)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Register the <code>RestRequestCancellationClientRequestFilter</code> that assigns a UUID to every request, which is sent as an HTTP header named <code>X-ScoutRequestId</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Binds the actual cancel-operation to the <code>cancel</code> Method (in this case the cancellation rest resource client from above).</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implement-cancellation-servlet-filter"><a class="anchor" href="#implement-cancellation-servlet-filter"></a>Implement Cancellation Servlet Filter</h3>
+<div class="paragraph">
+<p>Requests arriving at the backend need to be registered in the cancellation registry. This is done by a servlet filter (Note: REST
+container filters would have two issues: 1. there is no real interceptor around the resource call, but only a <code>ContainerRequestFilter</code> that is
+invoked before and a <code>ContainerResponseFilter</code> which is invoked after the the request is passed to the resource. 2. Cancellation in
+Scout is tied to an <code>ITransaction</code> that are managed by a <code>RunContext</code> and observed and controlled by a <code>RunMonitor</code>. Depending on
+sub-RunContexts and their transaction isolation it might happen, that the transaction visible in a container filter is not controlled by the
+currently active <code>RunMonitor</code>. Therefore, a cancel request would not cancel the transaction.)</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 14. Example: Register client request cancellation filter in Rest Client Helper</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class RestRequestCancellationServletFilter extends AbstractRestRequestCancellationServletFilter {
+
+  @Override
+  protected Object resolveUserId(HttpServletRequest request) {
+    return BEANS.get(IAccessControlService.class).getUserIdOfCurrentSubject(); <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Implement the same <code>userId</code> Lookup as in the <code>CancellationResource</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally, declare the servlet filter in your <code>web.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 15. web.xml registration example for RestRequestCancellationFilter.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;filter&gt;
+   &lt;filter-name&gt;RestRequestCancellationFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.eclipse.scout.docs.snippets.rest.RestRequestCancellationServletFilter&lt;/filter-class&gt;
+ &lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+  &lt;filter-name&gt;RestRequestCancellationFilter&lt;/filter-name&gt;
+  &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Make sure the cancellation filter is registered after the HttpServerRunContextFilter.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

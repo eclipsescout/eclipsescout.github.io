@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Release Notes :: Eclipse Scout</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="23.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">23.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version is-current is-latest">
+          <a href="../index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="release-notes.html">Release Notes</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">23.1</button>
+  <div class="version-menu">
+    <a class="version" href="../../23.2/releasenotes/release-notes.html">23.2</a>
+    <a class="version is-current" href="release-notes.html">23.1</a>
+    <a class="version" href="../../22/releasenotes/release-notes.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/23.1/docs/modules/releasenotes/pages/release-notes.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Release Notes</h1>
+<div class="sect1">
+<h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest version of this release is: 23.1.8.</p>
+</div>
+<div class="paragraph">
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/22.0%2E%2E%2Ereleases/23.1">detailed change log</a> on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Coming from an older Scout version? Check out the <a href="../migration/migration-guide.html" class="xref page">Eclipse Scout Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/23.1.8">features/version/23.1.8</a> branch of our docs repository on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="re-license-from-epl-1-0-to-epl-2-0"><a class="anchor" href="#re-license-from-epl-1-0-to-epl-2-0"></a>Re-license from EPL-1.0 to EPL-2.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout has changed its license from the deprecated EPL-1.0 license to EPL-2.0.
+Usually this has no impact for your project.
+For details please consult the <a href="https://www.eclipse.org/legal/epl-2.0/faq.php">EPL FAQ</a> in particular the section with the <a href="https://www.eclipse.org/legal/epl-2.0/faq.php#h.a0eux401qus">major changes</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="improved-developer-experience-for-scout-js"><a class="anchor" href="#improved-developer-experience-for-scout-js"></a>Improved Developer Experience for Scout JS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout 23.1 contains many improvements for Scout JS developers.
+The goal was to make the development easier, more efficient and more fun.
+Please read the following chapters to learn how we did it.</p>
+</div>
+<div class="sect2">
+<h3 id="typescript-support"><a class="anchor" href="#typescript-support"></a>TypeScript Support</h3>
+<div class="paragraph">
+<p>One major addition in this release is TypeScript support.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We migrated the complete Scout JS code base to TypeScript. This means the Scout API is now fully typed.</p>
+</li>
+<li>
+<p>We enhanced the JS build, so you can write TypeScript yourself in your project.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This gives you many benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>More efficient development</strong><br>
+Typing allows your IDE to better assist with code completion during development and to only suggest methods and properties for an object that actually exist.<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/code_completion.png" alt="code completion">
+</div>
+<div class="title">Figure 1. Better Code Completion</div>
+</div>
+</li>
+<li>
+<p><strong>Easier entry</strong><br>
+With better code completion and clear method signatures, a not-so-experienced JavaScript developer can more easily get up to speed and understand the relationships in the code.</p>
+</li>
+<li>
+<p><strong>More confidence when updating</strong><br>
+If a used API has changed, the code turns red and the build fails.</p>
+</li>
+<li>
+<p><strong>More confidence during development</strong><br>
+Incorrect use of an API or code in general is detected at an early stage. The developer gets more confidence that his code will work.<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/compile_errors.png" alt="compile errors">
+</div>
+<div class="title">Figure 2. Compile Errors</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="well-defined-and-typed-widget-models"><a class="anchor" href="#well-defined-and-typed-widget-models"></a>Well-Defined and Typed Widget Models</h3>
+<div class="paragraph">
+<p>Widgets can be configured in many ways using the available properties.
+Until now, it was not obvious which properties were available and what they do.
+To improve that, every widget now comes with a well-defined model which contains all available properties including a description.
+The model is a TypeScript interface and named after the widget with the suffix <code>Model</code>.
+For example, you will find the model of a <code>Menu</code> under the name <code>MenuModel</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/widget_model.png" alt="widget model">
+</div>
+<div class="title">Figure 3. Widget Model</div>
+</div>
+<div class="paragraph">
+<p>The models can not only be used for documentation purposes, TypeScript and Scout SDK use them as well for code completion and type checks.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/model_completion.png" alt="model completion">
+</div>
+<div class="title">Figure 4. Widget Model Code Completion</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="well-defined-and-typed-widget-events"><a class="anchor" href="#well-defined-and-typed-widget-events"></a>Well-Defined and Typed Widget Events</h3>
+<div class="paragraph">
+<p>Most of the widgets can trigger events that can be used to react to user interactions.
+Until now, it was not obvious which events were available.
+To improve that, every widget now comes with a well-defined event map which contains all available events.
+The event map is a TypeScript interface and named after the widget with the suffix <code>EventMap</code>.
+For example, you will find the event map of a <code>Menu</code> under the name <code>MenuEventMap</code>.</p>
+</div>
+<div class="paragraph">
+<p>These event maps are used by TypeScript to provide code completion for the event name when adding an event handler:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/event_completion.png" alt="event completion">
+</div>
+<div class="title">Figure 5. Event Name Completion</div>
+</div>
+<div class="paragraph">
+<p>You also get the correct type of the event itself including its members in the handler:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/typed_events.png" alt="typed events">
+</div>
+<div class="title">Figure 6. Typed Event</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="typed-return-values-when-finding-widgets"><a class="anchor" href="#typed-return-values-when-finding-widgets"></a>Typed Return Values When Finding Widgets</h3>
+<div class="paragraph">
+<p>Retrieving a widget is typically done by using <code>this.widget('id')</code>.
+The result of that function is a generic <code>Widget</code>, so it is not possible to call a method of a specific widget without casting (at least with TypeScript).
+To do the type casting, you can either specify the return type directly at the time of usage.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Using the second parameter</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Menu} from '@eclipse-scout/core';
+
+let menu = this.widget('YourId', Menu);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Cast manually (TypeScript)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">import {Menu} from '@eclipse-scout/core';
+
+let menu = this.widget('YourId') as Menu;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or you can use widget maps.
+A widget map is an interface that maps the ids of the widgets to their type.
+This allows TypeScript to determine the return type automatically.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/typed_widget.png" alt="typed widget">
+</div>
+<div class="title">Figure 7. Typed <code>widget</code> function</div>
+</div>
+<div class="paragraph">
+<p>Scout SDK takes care of creating the widget maps, so you don&#8217;t have to write them manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="objecttype-as-class-reference"><a class="anchor" href="#objecttype-as-class-reference"></a>ObjectType as Class Reference</h3>
+<div class="paragraph">
+<p>It is now possible to use a class reference as <code>objectType</code>.
+An <code>objectType</code> is typically used when creating a new object using <code>scout.create(objectType)</code> or when defining a model.
+Using a class reference instead of a string will make the development easier because the IDE knows about the actual type and can provide
+code completion and other assistance.</p>
+</div>
+<div class="paragraph">
+<p>It may even improve the tree shaking process of the bundler (webpack).
+Because using a class reference requires an <code>import</code>, the bundler automatically includes the imported module.</p>
+</div>
+<div class="paragraph">
+<p>So,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">scout.create('Button', {parent: this});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>becomes this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Button} from '@eclipse-scout/core';
+
+scout.create(Button, {parent: this});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">export default () =&gt; ({
+  objectType: 'Form',
+  rootGroupBox: {
+    objectType: 'GroupBox'
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>becomes this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Form, GroupBox} from '@eclipse-scout/core';
+
+export default () =&gt; ({
+  objectType: Form,
+  rootGroupBox: {
+    objectType: GroupBox
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please see the <a href="../migration/migration-guide.html#objecttype-as-class-reference-scout-js" class="xref page">Migration Guide</a> for migration assistance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
+<div class="sect3">
+<h4 id="constants"><a class="anchor" href="#constants"></a>Constants</h4>
+<div class="paragraph">
+<p>Constants have been added for all menu types of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Calendar</p>
+</li>
+<li>
+<p>ImageField</p>
+</li>
+<li>
+<p>Planner</p>
+</li>
+<li>
+<p>TabBox</p>
+</li>
+<li>
+<p>Table</p>
+</li>
+<li>
+<p>Tree</p>
+</li>
+<li>
+<p>ValueField</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Instead of using string literals in e.g. a <code>MenuModel</code> one can use these constants now. Therefore, this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">import {Menu} from '@eclipse-scout/core';
+
+{
+  id: 'ExampleMenu',
+  text: 'Example',
+  objectType: Menu,
+  menuTypes: [
+    'Table.SingleSelection'
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>becomes this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">import {Menu, Table} from '@eclipse-scout/core';
+
+{
+  id: 'ExampleMenu',
+  text: 'Example',
+  objectType: Menu,
+  menuTypes: [
+    Table.MenuTypes.SingleSelection
+  ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="menu-type-support-for-valuefield-and-imagefield"><a class="anchor" href="#menu-type-support-for-valuefield-and-imagefield"></a>Menu type support for ValueField and ImageField</h4>
+<div class="paragraph">
+<p>Menu type support has been added to the <code>ValueField</code> and the <code>ImageField</code>.
+This means that e.g. the <code>ValueField</code> will display different menus whether a value is set or not.
+For more information about the menuType support of <code>ValueField</code> and <code>ImageField</code> see <a href="../technical-guide/user-interface/widget-reference.html#menu-types" class="xref page">Menu Types</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="javascript-code-migration-tool"><a class="anchor" href="#javascript-code-migration-tool"></a>JavaScript Code Migration Tool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is normal that code changes from time to time even on a larger scale.
+Since code migration is often a tedious task, any automation is welcome.</p>
+</div>
+<div class="paragraph">
+<p>With this release there are several code migration tasks, which are mostly optional, but recommended.
+That is why we tried to automate as much as possible and created a tool you can use as well.</p>
+</div>
+<div class="paragraph">
+<p>The main purpose of the tool is to migrate your JavaScript code to TypeScript, but other migration tasks make use of the tool as well.
+Instructions for these tasks can be found in the <a href="../migration/migration-guide.html" class="xref page">Eclipse Scout Migration Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to migrate your existing code to TypeScript, the migration tool will certainly help you.
+But be aware, that the majority of the work, which is adding types, will need to be done manually.</p>
+</div>
+<div class="paragraph">
+<p>Migrating to TypeScript is not required, you can still use JavaScript or write only new code with TypeScript.
+However, if you are a library developer, we recommend migrating to TypeScript to make the usage of the library easier.</p>
+</div>
+<div class="paragraph">
+<p>Detailed instruction for the migration can be found here: <a href="https://www.npmjs.com/package/@eclipse-scout/migrate">@eclipse-scout/migrate</a></p>
+</div>
+<div class="paragraph">
+<p>If you plan to use TypeScript for new code without migrating your existing code base, you just need to add a <code>tsconfig.json</code> like described here: <a href="https://www.npmjs.com/package/@eclipse-scout/tsconfig">@eclipse-scout/tsconfig</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="javascript-build-improvements"><a class="anchor" href="#javascript-build-improvements"></a>JavaScript Build Improvements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="library-build"><a class="anchor" href="#library-build"></a>Library Build</h3>
+<div class="paragraph">
+<p>If code is written with TypeScript, it needs to be transpiled to JavaScript before it can be used.
+Because this task takes some time, it should not be done by the project using a TypeScript library but by the library itself.
+This is true for Scout as well. Therefore, Scout 23.1 is shipped with prebuilt JavaScript code.</p>
+</div>
+<div class="paragraph">
+<p>To make sure your build uses the prebuilt version, your import statements need to be correct.
+Please have a look at the migration guide for details: <a href="../migration/migration-guide.html#imports" class="xref page">Migration Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you are a library developer, you should consider doing the same.
+To do so, you can use the support provided by Scout&#8217;s build tooling as described here: <a href="../technical-guide/user-interface/build-stack.html#authoring-libraries" class="xref page">Authoring Libraries</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="faster-and-more-efficient-minification"><a class="anchor" href="#faster-and-more-efficient-minification"></a>Faster and more Efficient Minification</h3>
+<div class="paragraph">
+<p>The Scout build now uses <a href="https://esbuild.github.io/">ESBuild</a> for the minification process.
+This reduces the duration and memory consumption of the production build a lot, which is especially beneficial if your build runs in a cloud environment with limited hardware.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="typescript-build"><a class="anchor" href="#typescript-build"></a>TypeScript Build</h3>
+<div class="paragraph">
+<p>As already mentioned in <a href="#typescript-support">TypeScript Support</a>, you can now use TypeScript for your Scout JS project or when writing custom widgets for Scout Classic.</p>
+</div>
+<div class="paragraph">
+<p>All you have to do is to create a <code>tsconfig.json</code> that extends from the default configuration provided by Scout as explained here: <a href="https://www.npmjs.com/package/@eclipse-scout/tsconfig">@eclipse-scout/tsconfig</a>
+The Scout build will transpile all files ending with <code>*.ts</code> and will start a separate process to check if the types are correct.
+That way you will not be blocked by the type checking, but you will still be informed if some types are wrong.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="eslint-for-typescript"><a class="anchor" href="#eslint-for-typescript"></a>ESLint for TypeScript</h3>
+<div class="paragraph">
+<p>We added linting support for TypeScript files.</p>
+</div>
+<div class="paragraph">
+<p>If you are already using Scout&#8217;s eslint module (<a href="https://www.npmjs.com/package/@eclipse-scout/eslint">@eclipse-scout/eslint</a>), you&#8217;ll get the linting automatically.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="typed-nodeid-for-node-identifier"><a class="anchor" href="#typed-nodeid-for-node-identifier"></a>Typed NodeId for Node Identifier</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In previous versions several ways were used to create/use a node identfier (e.g. to identify a specific client/backend server):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A typed class NodeId existed, the current identifier was accessed using <code>org.eclipse.scout.rt.dataobject.id.NodeId.current()</code></p>
+</li>
+<li>
+<p>Node identifiers could be accessed as String using <code>org.eclipse.scout.rt.platform.context.NodeIdentifier.get()</code></p>
+</li>
+<li>
+<p>And another node identifier (default implementation random UUID) could be accessed using  <code>org.eclipse.scout.rt.shared.INode#ID</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As of version 23.1 the typed <code>org.eclipse.scout.rt.dataobject.id.NodeId</code> is used wherever possible, the application scoped bean <code>org.eclipse.scout.rt.platform.context.NodeIdentifier</code> is still used for the computation of this typed <code>NodeId</code>. The <code>get()</code> method returning a <code>String</code> has been deprecated, the interface <code>org.eclipse.scout.rt.shared.INode</code> has been removed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="iid-interface-new-irootid-and-icompositeid"><a class="anchor" href="#iid-interface-new-irootid-and-icompositeid"></a>IId Interface, new IRootId and ICompositeId</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In previous versions the <code>IId</code> interface was typed with a generic <code>WRAPPED_TYPE extends Comparable&lt;WRAPPED_TYPE&gt;</code>.
+To be able to use the <code>IId</code> interface as general root for any kind of identifiers without having to deal with a concrete generic type, the generic type definition was removed and moved to the default implementation <code>AbstractRootId</code> and the typed sub-interfaces <code>IUuid</code>, <code>IStringId</code> and <code>ILongId</code>.</p>
+</div>
+<div class="paragraph">
+<p>As new feature IIds may consist of multiple wrapped components (e.g. composite ids). Use <code>ICompositeId</code> and <code>AbstractCompositeId</code> as base to build own composite types.
+Based on the adapted serialization mechanism (see <code>IdFactory</code> and IdCodec` classes) composite ids may also be used in data objects and REST APIs like the existing root ids.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Example composite id based on an example string id and an example uuid</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@IdTypeName("example.ExampleCompositeId")
+public final class ExampleCompositeId extends AbstractCompositeId {
+  private static final long serialVersionUID = 1L;
+
+  private ExampleCompositeId(ExampleStringId c1, ExampleUuId c2) {
+    super(c1, c2);
+  }
+
+  @RawTypes
+  public static ExampleCompositeId of(String c1, UUID c2) {
+    if (StringUtility.isNullOrEmpty(c1) || c2 == null) {
+      return null;
+    }
+    return new ExampleCompositeId(ExampleStringId.of(c1), ExampleUuId.of(c2));
+  }
+
+  public static ExampleCompositeId of(ExampleStringId c1, ExampleUuId c2) {
+    if (c1 == null || c2 == null) {
+      return null;
+    }
+    return new ExampleCompositeId(c1, c2);
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-calendar-tooltip"><a class="anchor" href="#new-calendar-tooltip"></a>New Calendar Tooltip</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The calendar component item of the calendar widget has new attributes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>subjectIconId - icon is showed in the calendar component in front of the subject</p>
+</li>
+<li>
+<p>subjectLabel - label in tooltip on top of the subject</p>
+</li>
+<li>
+<p>subjectAppLink - appLink in tooltip of calendar component</p>
+</li>
+<li>
+<p>descriptionElements - list of <code>ICalendarItemDescriptionElement</code> which is displayed in the body of the tooltip of the calendar component</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/calendar_tooltip.png" alt="calendar tooltip">
+</div>
+<div class="title">Figure 8. Calendar Component</div>
+</div>
+<div class="paragraph">
+<p>Further the calendar provides now a time range selection in the day, work week and week mode. By default, this feature is disabled, it can be configured with the <code>rangeSelectionAllowed</code> property. The start point and end point of the current selected time range can be accessed with the <code>selectedRange</code> property.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="categories-for-health-checkers"><a class="anchor" href="#categories-for-health-checkers"></a>Categories for Health Checkers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the health check servlet <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthCheckServlet</code> a new query parameter <em>category</em> has been introduced to create the possibility to check only some specific health checkers for a specific category. If a category is supplied using the parameter, the actual <code>IHealthChecker</code> checkers are filtered using the method <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.acceptCategory(HealthCheckCategoryId)</code>.</p>
+</div>
+<div class="paragraph">
+<p>If no category is provided there is no change in behavior and all checkers are executed.
+If an invalid category is provided an error is logged and the same behavior is executed as no category was provided.</p>
+</div>
+<div class="sect2">
+<h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API Changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>New method <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.acceptCategory(HealthCheckCategoryId)</code> was added, default implementation always returns <code>true</code></p>
+</li>
+<li>
+<p>Parameter <code>HealthCheckCategoryId</code> was added for <code>org.eclipse.scout.rt.server.commons.healthcheck.IHealthChecker.checkHealth(RunContext, HealthCheckCategoryId)</code>; if health check itself does not rely on a specific category ignore this parameter</p>
+</li>
+<li>
+<p>Parameter <code>HealthCheckCategoryId</code> was added for <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthChecker.execCheckHealth(HealthCheckCategoryId)</code>; if health check itself does not rely on a specific category ignore this parameter</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jsform"><a class="anchor" href="#jsform"></a>JsForm</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The JsForm is a Java-form that wraps a form implemented in JS. This allows a Scout Classic application to open a Scout JS form.
+For more information about the JsForm see <a href="../howtos/scout-classic/js-form-how-to.html" class="xref page">How to open a Scout JS form in a Scout Classic application</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="numberformatprovider"><a class="anchor" href="#numberformatprovider"></a>NumberFormatProvider</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The return type of <code>NumberFormatProvider#getIntegerInstance</code> was changed from <code>java.text.NumberFormat</code> to <code>java.text.DecimalFormat</code> to align the return type of all get<em>Xyz</em>Instance() methods.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
