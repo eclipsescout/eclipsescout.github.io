@@ -539,6 +539,16 @@ For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gatew
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="tree-insert-order-changed"><a class="anchor" href="#tree-insert-order-changed"></a>Tree: Insert Order Changed</h3>
+<div class="paragraph">
+<p><code>Tree.insertNodes</code> now adds new nodes (without an explicit childNodeIndex) at the bottom of the existing nodes instead of the top.
+This is already the case for the Scout Classic tree, and also for other widgets like table and tile grid.</p>
+</div>
+<div class="paragraph">
+<p>To insert the nodes at the beginning or any other position, you can use the new parameter <code>index</code>.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
 <div class="sect3">
 <h4 id="modal-optional-for-views"><a class="anchor" href="#modal-optional-for-views"></a>Modal Optional for Views</h4>
