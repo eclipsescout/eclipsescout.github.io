@@ -557,6 +557,36 @@ This is already the case for the Scout Classic tree, and also for other widgets 
 <p>The default value for the <code>modal</code> property has been changed for forms with <code>displayStyle</code> = <code>Form.DisplaStyle.VIEW</code>, see <a href="../releasenotes/release-notes.html#modal-optional-for-views" class="xref page">Release Notes</a>.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="formfield"><a class="anchor" href="#formfield"></a>FormField</h4>
+<div class="sect4">
+<h5 id="rename-requiressave-to-saveneeded"><a class="anchor" href="#rename-requiressave-to-saveneeded"></a>Rename requiresSave to saveNeeded</h5>
+<div class="paragraph">
+<p>The property <code>requiresSave</code> and the function <code>updateRequiresSave</code> on the <code>FormField</code> have been renamed to <code>saveNeeded</code> resp. <code>updateSaveNeeded</code>.
+This makes it consistent with the property <code>saveNeededVisible</code> on the Form and also with Scout Classic.</p>
+</div>
+<div class="paragraph">
+<p>To migrate it is best to search for <code>requiresSave</code> resp. <code>RequiresSave</code> in your JS/TS code base and replace the occurrences accordingly.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="formfield-visitfields-now-visits-deeper"><a class="anchor" href="#formfield-visitfields-now-visits-deeper"></a>VisitFields Now Visits Deeper</h5>
+<div class="paragraph">
+<p>The visiting is not limited to composite fields anymore which means more fields may be visited, see <a href="../releasenotes/release-notes.html#visitfields-across-field-trees" class="xref page">Release Notes</a>. If you need the old behavior, you can use the option <code>limitToSameFieldTree</code> in the options parameter of the <code>visitFields</code> method.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="touched-not-affected-by-value-change-anymore"><a class="anchor" href="#touched-not-affected-by-value-change-anymore"></a>Touched not Affected by Value Change Anymore</h5>
+<div class="paragraph">
+<p>A form field has a property <code>touched</code> which can be set by using <code>touch()</code>. A touched form field needs to be saved.
+Until now, a value change (by the user or by using <code>setValue</code>) set this property to true.
+This has been changed so that a value change does not change the property anymore, it can only be modified using <code>touch()</code> resp. <code>markAsSaved()</code>. This has the benefit that <code>touched</code> can be completely controlled by the developer.</p>
+</div>
+<div class="paragraph">
+<p>In order to check if a value has been changed or a field touched you can use the property <code>saveNeeded</code>.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

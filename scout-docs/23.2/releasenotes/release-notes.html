@@ -393,6 +393,31 @@ It is still true for <code>Form.DisplayStyle.Dialog</code>, but false for <code>
 <p>The reason why this was changed is, because it is less common to have modal views, which also aligns it with the behavior of Scout Classic.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="saveneeded-state-updated-automatically"><a class="anchor" href="#saveneeded-state-updated-automatically"></a>SaveNeeded State Updated Automatically</h4>
+<div class="paragraph">
+<p>The property <code>saveNeededVisible</code> now correctly visualizes if the form needs to be saved.
+The default for this property is true for Scout JS forms.
+For Scout Classic forms the default has not been changed and is still false.</p>
+</div>
+<div class="paragraph">
+<p>For this, the form now has a property called <code>saveNeeded</code> that will be updated automatically if the <code>saveNeeded</code> state on any child field changes (please note that the property on the form field was renamed from <code>requiresSave</code> to <code>saveNeeded</code>, see <a href="../migration/migration-guide.html#rename-requiressave-to-saveneeded" class="xref page">Migration Guide</a>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-property-checksaveneeded-on-form-fields"><a class="anchor" href="#new-property-checksaveneeded-on-form-fields"></a>New Property 'checkSaveNeeded' on Form Fields</h4>
+<div class="paragraph">
+<p>Sometimes the <code>saveNeeded</code> state is not of interest and should not affect the <code>saveNeeded</code> state of the form.
+This may be the case for fields that contain data that doesn&#8217;t need to be saved. For this kind of fields, the <code>saveNeeded</code> computation can now be disabled by setting <code>checkSaveNeeded</code> to false.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="visitfields-across-field-trees"><a class="anchor" href="#visitfields-across-field-trees"></a>VisitFields Across Field Trees</h4>
+<div class="paragraph">
+<p>The method <code>FormField.visitFields</code> now also visits form fields that are not directly connected to a parent form field.
+Example: a form field inside a menu. This was necessary to properly detect <code>saveNeeded</code> changes of such fields and validate them when a form is stored. If you need the old behavior, consult the <a href="../migration/migration-guide.html#formfield-visitfields-now-visits-deeper" class="xref page">Migration Guide</a>).</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
