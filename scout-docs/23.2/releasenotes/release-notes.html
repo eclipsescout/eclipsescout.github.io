@@ -430,6 +430,20 @@ For more information about the default menuTypes see <a href="../technical-guide
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="smartfields-error-handling-for-key-lookups"><a class="anchor" href="#smartfields-error-handling-for-key-lookups"></a>SmartFields: Error-Handling for Key-Lookups</h3>
+<div class="paragraph">
+<p>Before this change: If a key-lookup inside a SmartField didn&#8217;t return a result, the SmartField was presented to the user like no value has been chosen.
+Internally, however, the (most likely invalid) value was still set on the SmartField.
+Hence, the user couldn&#8217;t see that the current value is invalid and a new value should be set.</p>
+</div>
+<div class="paragraph">
+<p>This change puts a warning status on the SmartField if a key-lookup doesn&#8217;t return a value.</p>
+</div>
+<div class="paragraph">
+<p>Because of the potential consequences, this change was implemented for ScoutJS only (not for Scout Classic).</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
