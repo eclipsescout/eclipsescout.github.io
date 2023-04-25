@@ -399,7 +399,7 @@ public class ExampleResource implements IRestResource {
   @GET
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public ExampleEntityDo getExamlpeEntity(@PathParam("id") String id) {
+  public ExampleEntityDo getExampleEntity(@PathParam("id") String id) {
     return BEANS.get(ExampleEntityDo.class)
         .withName("example-" + id)
         .withValues(1);
@@ -935,6 +935,68 @@ Make sure the cancellation filter is registered after the HttpServerRunContextFi
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cha-rest-multipart"><a class="anchor" href="#cha-rest-multipart"></a>REST Multipart Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due to missing support for multipart handling in official JAX-RS API, Scout provides an own implementation allowing to use multipart requests without requiring other third party libraries.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 16. Example: Client</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public void pushContent(BinaryResource resource, String displayText) {
+    MultipartMessage multipartMessage = BEANS.get(MultipartMessage.class)
+        .addPart(MultipartPart.ofFile("resource", resource.getFilename(), new ByteArrayInputStream(resource.getContent())))
+        .addPart(MultipartPart.ofField("displayText", displayText));
+
+    WebTarget target = helper()
+        .target(RESOURCE_PATH)
+        .path("/content");
+
+    Response response = target.request()
+        .accept(MediaType.APPLICATION_JSON)
+        .post(multipartMessage.toEntity());
+    response.close();
+  }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 17. Example: Server</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @POST
+  @Path("content")
+  @Consumes(MediaType.MULTIPART_FORM_DATA)
+  public Response pushContent(IMultipartMessage multipartMessage) {
+    File file = null;
+    String displayText = null;
+    while (multipartMessage.hasNext()) {
+      try (IMultipartPart part = multipartMessage.next()) {
+        switch (part.getPartName()) {
+          case "resource": // file field part
+            String[] parts = FileUtility.getFilenameParts(part.getFilename());
+            file = IOUtility.createTempFile(part.getInputStream(), parts[0], parts[1]);
+            break;
+          case "displayText": // text field part
+            displayText = IOUtility.readStringUTF8(part.getInputStream());
+            break;
+          default:
+            throw new VetoException("Unexpected part {}", part.getPartName());
+        }
+      }
+      catch (Exception e) {
+        throw new PlatformException("Failed to handle multipart", e);
+      }
+    }
+
+    // do something
+    System.out.println(displayText + ": " + file.getAbsolutePath());
+
+    return Response.ok().build();
+  }</code></pre>
 </div>
 </div>
 </div>
