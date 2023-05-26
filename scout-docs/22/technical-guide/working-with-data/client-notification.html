@@ -441,13 +441,6 @@ together with the response of a regular service request. The notification is the
 <div class="paragraph">
 <p>In order to deal with multiple ui-server nodes, the server holds a single notifications queue per ui-server node.</p>
 </div>
-<div class="paragraph">
-<p>In these queues only the relevant notifications need to be kept:
-If a client notification is addressed to a session or user, that does not exist on a ui-server node, it is not added to the queue.</p>
-</div>
-<div class="paragraph">
-<p>Sessions and corresponding users are registered on the server upon creation (and de-registered after destruction).</p>
-</div>
 </div>
 </div>
 </div>
