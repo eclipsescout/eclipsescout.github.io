@@ -672,6 +672,95 @@ This is already the case for the Scout Classic tree, and also for other widgets 
 </div>
 </div>
 <div class="sect3">
+<h4 id="form-validation"><a class="anchor" href="#form-validation"></a>Form Validation</h4>
+<div class="paragraph">
+<p>The text to display when the Form validation failed has been moved from Lifecycle to Form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Lifecycle.validationFailedTextKey</code> to <code>Form.validationFailedText</code> and use the <code>${textKey:TextKey}</code> notation to specify a text key</p>
+</li>
+<li>
+<p><code>Lifecycle.validationFailedText</code> to <code>Form.validationFailedText</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The code to display a message box when the Form validation failed has been moved from Lifecycle to Form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Lifecycle._showStatusMessageBox</code> to <code>Form._showFormInvalidMessageBox</code></p>
+</li>
+<li>
+<p><code>Lifecycle._createStatusMessageBox</code> to <code>Form._createStatusMessageBox</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="form-error-handling"><a class="anchor" href="#form-error-handling"></a>Form Error Handling</h4>
+<div class="paragraph">
+<p>The load, postLoad and save operations of a Scout JS Form include automatic error handling now.
+Custom logic to handle errors (e.g. from REST calls) are in most cases no longer necessary and can therefore be removed.</p>
+</div>
+<div class="paragraph">
+<p>If the default error handling does not suit your needs override one of the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>_handleError</code>: to handle all phases (load, postLost, save)</p>
+</li>
+<li>
+<p><code>_handleLoadError</code>: load errors only</p>
+</li>
+<li>
+<p><code>_handlePostLoadError</code>: postLoad errors only</p>
+</li>
+<li>
+<p><code>_handleSaveError</code>: save errors only</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To customize the error handling from outside the form suppress the default handling using an event listener and apply your own logic in the catch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">form.on('error', event =&gt; {
+    if (event.phase === 'load') {
+      event.preventDefault(); // disable default error handling for 'load' only
+    }
+});
+form.open().catch(error =&gt; {
+  // add your custom error handling logic here
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As part of the new error handling the following methods changed its signature:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Form.validate</code> and <code>Lifecycle.validate</code>: Now return Promise&lt;Status&gt; instead of Promise&lt;boolean&gt;. The former boolean value can be obtained by calling isValid() on the new Status object.</p>
+</li>
+<li>
+<p><code>Lifecycle.handle</code> now only takes a function returning Promise&lt;void&gt;. There is no need to return a Status anymore.</p>
+</li>
+<li>
+<p><code>Form._onLifecycleLoad</code>, <code>Form._onLifecycleSave</code>, <code>Form._save</code>, <code>Form.save</code> and <code>Lifecycle._save</code>: now return Promise&lt;void&gt;. There is no need to return a Status anymore. A load/save failure should return a rejected Promise and a successful load/save should return a resolved promise. In case of an error the Promise might be rejected with any error or a Status describing the error.</p>
+</li>
+<li>
+<p><code>Form._handleLoadError</code>: Returns Promise&lt;void&gt; which indicates that the error was handled. A rejected promise means the error could not be handled. In such a case no fallback is applied! It is therefore the developers responsibility to ensure the error was handled as desired.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
 <h4 id="formfield"><a class="anchor" href="#formfield"></a>FormField</h4>
 <div class="sect4">
 <h5 id="rename-requiressave-to-saveneeded"><a class="anchor" href="#rename-requiressave-to-saveneeded"></a>Rename requiresSave to saveNeeded</h5>

@@ -428,6 +428,16 @@ This means, you can define an exclusive key for a form, and if another form shou
 <p>To open a form exclusively, use <code>createFormExclusive</code> on the <code>Desktop</code> and open the form as usual using <code>form.open()</code>.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="error-handling-for-save-and-load"><a class="anchor" href="#error-handling-for-save-and-load"></a>Error handling for save and load</h4>
+<div class="paragraph">
+<p>The load, postLoad and save operations of a Scout JS form include automatic error handling now.
+Custom logic to handle errors (e.g. from REST calls) are in most cases no longer necessary and can therefore be removed.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the migration guide on how to customize the new default error handling in case you need some special behavior.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
