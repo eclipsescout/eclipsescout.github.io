@@ -473,7 +473,7 @@ It is recommended to add an emtpy <code>scout.xml</code> file into the META-INF 
 <p>The Scout bean manager is a dynamic registry for beans. Beans are normal Java classes usually having some meta data describing the characteristics of the class.</p>
 </div>
 <div class="paragraph">
-<p>The bean manager can be changed at any time. This means beans can be registered or unregistered while the application is running. For this the bean manager contains methods to register and unregister beans. Furthermore methods to retrieve beans are provided.</p>
+<p>The bean manager can be changed at any time. This means beans can be registered or unregistered while the application is running. For this the bean manager contains methods to register and unregister beans. Furthermore, methods to retrieve beans are provided.</p>
 </div>
 <div class="paragraph">
 <p>The next sections describe how beans are registered, the different meta data of beans, how instances are created, how they can be retrieved and finally how the bean decoration works.</p>
@@ -502,7 +502,7 @@ It is recommended to add an emtpy <code>scout.xml</code> file into the META-INF 
 </div>
 </div>
 <div class="paragraph">
-<p>There is also a predefined bean registration built into the Scout runtime. This automatically registers all classes having an <code>org.eclipse.scout.rt.platform.@Bean</code> annotation. Therefore it is usually sufficient to only annotate a class with <code>@Bean</code> to have it available in the bean manager as shown in listing <a href="#lst-NormalBeanClass">Listing 4</a>.</p>
+<p>There is also a predefined bean registration built into the Scout runtime. This automatically registers all classes having an <code>org.eclipse.scout.rt.platform.@Bean</code> annotation. Therefore, it is usually sufficient to only annotate a class with <code>@Bean</code> to have it available in the bean manager as shown in listing <a href="#lst-NormalBeanClass">Listing 4</a>.</p>
 </div>
 <div id="lst-NormalBeanClass" class="listingblock">
 <div class="title">Listing 4. A normal bean</div>
@@ -519,7 +519,7 @@ public class BeanClass {
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-As the <code>@Bean</code> annotation is an <code>java.lang.annotation.@Inherited</code> annotation, this automatically registers all child classes too. This means that also interfaces may be <code>@Bean</code> annotated making all implementations automatically available in the bean manager! Furthermore other annotations may be <code>@Bean</code> annotated making all classes holding these annotations automatically to beans as well.
+As the <code>@Bean</code> annotation is an <code>java.lang.annotation.@Inherited</code> annotation, this automatically registers all child classes too. This means that also interfaces may be <code>@Bean</code> annotated making all implementations automatically available in the bean manager! Furthermore, other annotations may be <code>@Bean</code> annotated making all classes holding these annotations automatically to beans as well.
 </td>
 </tr>
 </table>
@@ -539,11 +539,11 @@ If you inherit a <code>@Bean</code> annotation from one of you super types but d
 <div class="sect3">
 <h4 id="tunneltoserver"><a class="anchor" href="#tunneltoserver"></a>@TunnelToServer</h4>
 <div class="paragraph">
-<p>There is a built in annotation <code>org.eclipse.scout.rt.shared.@TunnelToServer</code>. Interfaces marked with this annotation are called on the server. The server itself ignores this annotation.</p>
+<p>There is a built-in annotation <code>org.eclipse.scout.rt.shared.@TunnelToServer</code>. Interfaces marked with this annotation are called on the server. The server itself ignores this annotation.</p>
 </div>
 <div class="paragraph">
 <p>To achieve this a bean is registered on client side for each of those interfaces. Because the platform cannot directly create an instance for these beans a specific producer is registered which creates a proxy that delegates the call to the server.
-Please note that this annotation is not inherited. Therefore if an interface extends a tunnel-to-server interface and the new methods of this interface should be called on the server as well the new child interface has to repeat the annotation!</p>
+Please note that this annotation is not inherited. Therefore, if an interface extends a tunnel-to-server interface and the new methods of this interface should be called on the server as well the new child interface has to repeat the annotation!</p>
 </div>
 <div class="paragraph">
 <p>The proxy is created only once for a specific interface bean.</p>
@@ -596,7 +596,7 @@ public class BeanSingletonClass {
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Also <code>@ApplicationScoped</code> is an <code>@Inherited</code> annotation. Therefore all child classes automatically inherit this characteristic like with the <code>@Bean</code> annotation.
+Also <code>@ApplicationScoped</code> is an <code>@Inherited</code> annotation. Therefore, all child classes automatically inherit this characteristic like with the <code>@Bean</code> annotation.
 </td>
 </tr>
 </table>
@@ -741,13 +741,13 @@ In this situation the bean manager actually contains 3 beans:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>BEANS.get(IMyService.class)</code>: Returns <code>AnotherVersion</code> instance. The result cannot be an exact match because the requested type is an interface. Therefore of all candidates there is one single candidate with lowest order (comes first).</p>
+<p><code>BEANS.get(IMyService.class)</code>: Returns <code>AnotherVersion</code> instance. The result cannot be an exact match because the requested type is an interface. Therefore, of all candidates there is one single candidate with the lowest order (comes first).</p>
 </li>
 <li>
 <p><code>BEANS.get(MyServiceImpl.class)</code>: Returns <code>MyServiceImpl</code> because there is an exact match available.</p>
 </li>
 <li>
-<p><code>BEANS.get(MySpecialVersion.class)</code>: Returns <code>AnotherVersion</code>. The result cannot be an exact match because there is no exact bean with this class in the bean manager (<code>MySpecialVersion</code> has been replaced). Therefore only <code>AnotherVersion</code> remains as candidate in the hierarchy below <code>MySpecialVersion</code>.</p>
+<p><code>BEANS.get(MySpecialVersion.class)</code>: Returns <code>AnotherVersion</code>. The result cannot be an exact match because there is no exact bean with this class in the bean manager (<code>MySpecialVersion</code> has been replaced). Therefore, only <code>AnotherVersion</code> remains as candidate in the hierarchy below <code>MySpecialVersion</code>.</p>
 </li>
 <li>
 <p><code>BEANS.get(MyServiceMod.class)</code>: Returns <code>MyServiceMod</code> because there is no other candidate.</p>
@@ -801,7 +801,7 @@ Decorations are only supported if the class obtained by the bean manager (e.g. b
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-It is best practice to mark all annotations that are interpreted in the bean decoration factory with the annotation <code>org.eclipse.scout.rt.platform.@BeanInvocationHint</code>. However this annotation has no effect at runtime and is only for documentation reasons.
+It is best practice to mark all annotations that are interpreted in the bean decoration factory with the annotation <code>org.eclipse.scout.rt.platform.@BeanInvocationHint</code>. However, this annotation has no effect at runtime and is only for documentation reasons.
 </td>
 </tr>
 </table>
@@ -1033,7 +1033,7 @@ as new dependencies of your application aggregator module (if they are not alrea
 <p>Because the property classes are managed by the bean manager, you can use all the mechanisms to change the behavior (<code>@Replace</code> in particular).</p>
 </div>
 <div class="paragraph">
-<p><a href="#lst-PropertyConstant">Listing 10</a> demonstrates how you can use the replace annotation to change the existing <code>ApplicationNameProperty</code> class.
+<p><a href="#lst-PropertyConstant">Listing 10</a> demonstrates how you can use the @Replace annotation to change the existing <code>ApplicationNameProperty</code> class.
 The value is no longer fetched via the config mechanism, because the <code>getValue(String)</code> method is overridden.
 In this case a fixed value is returned.</p>
 </div>
@@ -1055,10 +1055,10 @@ public class ApplicationNameConstant extends ApplicationNameProperty {
 </div>
 <div class="paragraph">
 <p>The next example presented in <a href="#lst-PropertyRedirection">Listing 11</a> uses the same idea.
-In this case, the <code>getKey()</code> method is overridden to read the value from an other key as demonstrated is the <a href="#lst-PropertyRedirectionConfig">Listing 12</a>.</p>
+In this case, the <code>getKey()</code> method is overridden to read the value from another key as demonstrated is the <a href="#lst-PropertyRedirectionConfig">Listing 12</a>.</p>
 </div>
 <div id="lst-PropertyRedirection" class="listingblock">
-<div class="title">Listing 11. Property class reading the value from an other key.</div>
+<div class="title">Listing 11. Property class reading the value from another key.</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.eclipse.scout.rt.platform.IgnoreBean;
 import org.eclipse.scout.rt.platform.Replace;
@@ -1086,7 +1086,7 @@ myproject.applicationName=My Project Application</code></pre>
 <h3 id="configuration-validation"><a class="anchor" href="#configuration-validation"></a>Configuration validation</h3>
 <div class="paragraph">
 <p>During the Platform startup all classes implementing the interface <code>org.eclipse.scout.rt.platform.config.IConfigurationValidator</code> are asked to validate configuration provided in the <code>config.properties</code> files.
-If there is at least one <code>IConfigurationValidator</code> that accepts a given key-value-pair the configuration is considered to be valid. Otherwise the platform will not start.</p>
+If there is at least one <code>IConfigurationValidator</code> that accepts a given key-value-pair the configuration is considered to be valid. Otherwise, the platform will not start.</p>
 </div>
 <div class="paragraph">
 <p>The concrete implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> will also check if a configured value matches the default value. In case it does an info message (warn in development mode) will be logged but the platform will still start.
@@ -1364,7 +1364,7 @@ To minimize configuration files such entries should be removed from <code>config
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>scout.cspDirective[img-src]=`self` data: https: http://localhost:8086</pre>
+<pre>scout.cspDirective[img-src]=`self` data: 'self' data: https://media.example.com</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1422,14 +1422,14 @@ To minimize configuration files such entries should be removed from <code>config
 </dd>
 <dt class="hdlist1"><code>scout.http.connectionTtl</code> </dt>
 <dd>
-<p>Specifies the maximum life time in milliseconds for kept alive connections of the Apache HTTP client. The default value is 1 hour.</p>
+<p>Specifies the maximum lifetime in milliseconds for kept alive connections of the Apache HTTP client. The default value is 1 hour.</p>
 <div class="paragraph">
 <p>Data type: Integer</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.http.ignoreProxyPatterns</code> </dt>
 <dd>
-<p>Configure the proxy ignore list for the ConfigurableProxySelector. If an URI matches the pattern no proxy connection is used.</p>
+<p>Configure the proxy ignore list for the ConfigurableProxySelector. If a URI matches the pattern no proxy connection is used.</p>
 <div class="paragraph">
 <p>By default no proxy is configured.</p>
 </div>
@@ -1472,7 +1472,7 @@ scout.http.ignoreProxyPatterns[1]=...</pre>
 </dd>
 <dt class="hdlist1"><code>scout.http.proxyPatterns</code> </dt>
 <dd>
-<p>Configure proxies for the <code>ConfigurableProxySelector</code>. If an URI matches a pattern the corresponding proxy will be used.</p>
+<p>Configure proxies for the <code>ConfigurableProxySelector</code>. If a URI matches a pattern the corresponding proxy will be used.</p>
 <div class="paragraph">
 <p>By default no proxy is used.</p>
 </div>
@@ -1563,7 +1563,7 @@ scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
 <p>Depending on the implementor used, cached ports may increase performance, because port creation is an expensive operation due to WSDL and schema validation.</p>
 </div>
 <div class="paragraph">
-<p>The cache is based on a <code>corePoolSize</code>, meaning that that number of ports is created on a preemptive basis. If more ports than that number is required, they are are created on demand and also added to the cache until expired, which is useful at a high load.</p>
+<p>The cache is based on a <code>corePoolSize</code>, meaning that that number of ports is created on a preemptive basis. If more ports than that number is required, they are created on demand and also added to the cache until expired, which is useful at a high load.</p>
 </div>
 <div class="paragraph">
 <p>The default value is true.</p>
@@ -1697,21 +1697,21 @@ scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
 </dd>
 <dt class="hdlist1"><code>scout.mail.bouncedetector.heuristic.contents</code> </dt>
 <dd>
-<p>Non standard email bounce detection: content is checked against the provided list of heuristic contents (partial match, case-insensitive)</p>
+<p>Non-standard email bounce detection: content is checked against the provided list of heuristic contents (partial match, case-insensitive)</p>
 <div class="paragraph">
 <p>Data type: List</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.mail.bouncedetector.heuristic.senderPrefixes</code> </dt>
 <dd>
-<p>Non standard email bounce detection: sender is checked against the provided list of heuristic sender prefixes (prefix match, case-insensitive)</p>
+<p>Non-standard email bounce detection: sender is checked against the provided list of heuristic sender prefixes (prefix match, case-insensitive)</p>
 <div class="paragraph">
 <p>Data type: List</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.mail.bouncedetector.heuristic.subjects</code> </dt>
 <dd>
-<p>Non standard email bounce detection: subject is checked against the provided list of heuristic subjects (partial match, case-insensitive)</p>
+<p>Non-standard email bounce detection: subject is checked against the provided list of heuristic subjects (partial match, case-insensitive)</p>
 <div class="paragraph">
 <p>Data type: List</p>
 </div>
@@ -1914,7 +1914,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </dd>
 <dt class="hdlist1"><code>scout.sql.directJdbcConnection</code> </dt>
 <dd>
-<p>If true a direct JDBC connection is created. Otherwise a JNDI connection is used. The default value is true.</p>
+<p>If true a direct JDBC connection is created. Otherwise, a JNDI connection is used. The default value is true.</p>
 <div class="paragraph">
 <p>Data type: Boolean</p>
 </div>
@@ -2005,7 +2005,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </dd>
 <dt class="hdlist1"><code>scout.sql.transactionMemberId</code> </dt>
 <dd>
-<p>Id of the transaction member on which the connection is available.</p>
+<p>ID of the transaction member on which the connection is available.</p>
 <div class="paragraph">
 <p>Data type: String</p>
 </div>
