@@ -1635,6 +1635,20 @@ This prevents having multiple instances of BearerAuthAccessController with diffe
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="multi-hex-color-support-for-ichartvaluegroupbean-sine-22-0-51"><a class="anchor" href="#multi-hex-color-support-for-ichartvaluegroupbean-sine-22-0-51"></a>Multi hex color support for IChartValueGroupBean (sine 22.0.51)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>colorHexValue</code> property of a <code>IChartValueGroupBean</code> can now hold more than one hex value.
+These values are used to color the corresponding dataset in a ChartJS chart (bar, line, pie, bubble, etc.), if <code>autoColor</code> is turned off.
+The given colors are repeated for the whole dataset, e.g. if there are two colors given (blue and yellow) and the dataset contains 7 values, the elements are colored alternately in blue and yellow (starting and ending with blue).
+These colors are also used by the tooltip and the legend. If there are multiple colors for one legend label the first one will be used.</p>
+</div>
+<div class="paragraph">
+<p>If one processes this values further the code needs to be changed to work with <code>List&lt;String&gt;</code> instead of <code>String</code>.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
