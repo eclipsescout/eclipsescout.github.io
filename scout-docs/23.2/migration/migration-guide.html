@@ -654,6 +654,35 @@ For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gatew
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="multi-dimension-support"><a class="anchor" href="#multi-dimension-support"></a>Multi Dimension Support</h3>
+<div class="paragraph">
+<p>Since some properties on <code>Widget</code> and <code>Column</code> are now computed based on their dimensions, they must always be set using the corresponding setter.
+Even though it was already bad practise to set a value without using the setter, it may have worked for your case if you didn&#8217;t need a property change event or the property to be rendered.
+If you do so now, you will replace the computed value instead of setting the default dimension, which may result in unexpected behavior.</p>
+</div>
+<div class="paragraph">
+<p>Please check in your code, if you set the following properties directly and replace them with the corresponding setter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">Widget.visible = value -&gt; Widget.setVisible(value)
+Widget.enabled = value -&gt; Widget.setEnabled(value)
+Column.visible = value -&gt; Column.setVisible(value)
+Column.displayable = value -&gt; Column.setDisplayable(value)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Furthermore, <code>Widget.isVisible()</code> and <code>Column.isVisible()</code> have been deprecated because the <code>visible</code> properties are now computed and there is no need for having <code>isVisible()</code> anymore.
+Therefore, please use the property <code>visible</code> directly instead of calling <code>isVisible()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">Widget.isVisible -&gt; Widget.visible
+Column.isVisible -&gt; Column.visible</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="tree-insert-order-changed"><a class="anchor" href="#tree-insert-order-changed"></a>Tree: Insert Order Changed</h3>
 <div class="paragraph">
 <p><code>Tree.insertNodes</code> now adds new nodes (without an explicit childNodeIndex) at the bottom of the existing nodes instead of the top.
@@ -788,6 +817,19 @@ This has been changed so that a value change does not change the property anymor
 <div class="paragraph">
 <p>In order to check if a value has been changed or a field touched you can use the property <code>saveNeeded</code>.</p>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="busy-handling"><a class="anchor" href="#busy-handling"></a>Busy handling</h4>
+<div class="paragraph">
+<p>The busy handling has been simplified for Scout JS (see <a href="../releasenotes/release-notes.html#busy-handling" class="xref page">Release Notes</a>).</p>
+</div>
+<div class="paragraph">
+<p>The <code>Form.load</code> and <code>Form.save</code> methods now automatically include a busy indicator.
+Custom busy indicators for these two operations (e.g. when performing a Rest call) can therefore be removed.</p>
+</div>
+<div class="paragraph">
+<p>The method <code>Session.setBusy</code> was moved to <code>Desktop.setBusy</code>. So instead of calling <code>session.setBusy(&#8230;&#8203;)</code> use <code>session.desktop.setBusy(&#8230;&#8203;)</code>.</p>
 </div>
 </div>
 </div>

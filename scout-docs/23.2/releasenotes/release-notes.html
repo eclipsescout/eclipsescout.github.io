@@ -378,6 +378,25 @@ The here described functionality has not yet been released and is part of an upc
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="multi-dimension-support"><a class="anchor" href="#multi-dimension-support"></a>Multi Dimension Support</h3>
+<div class="paragraph">
+<p>Similar to Scout Classic, Scout JS now also supports multidimensional properties.</p>
+</div>
+<div class="paragraph">
+<p>A multidimensional property is a property that will be computed based on its dimensions.</p>
+</div>
+<div class="paragraph">
+<p>For example: <code>Widget.visible</code> is now multidimensional and computed based on the <code>default</code> and the <code>granted</code> dimension.
+Both dimensions need to be true to make the widget visible. This means, if a widget is made invisible using <code>widget.setVisibleGranted(false)</code>, calling <code>widget.setVisible(true)</code> (which will modify the default dimension) won&#8217;t have any effect.</p>
+</div>
+<div class="paragraph">
+<p>This feature makes it easy to really hide a widget that the user is not allowed to see without fearing that it could be made visible accidentally.</p>
+</div>
+<div class="paragraph">
+<p>To learn more about this, see <a href="../technical-guide/user-interface/multi-dimensions.html" class="xref page">Multiple Dimensions Support</a>.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
 <div class="sect3">
 <h4 id="modal-optional-for-views"><a class="anchor" href="#modal-optional-for-views"></a>Modal Optional for Views</h4>
@@ -431,11 +450,11 @@ This means, you can define an exclusive key for a form, and if another form shou
 <div class="sect3">
 <h4 id="error-handling-for-save-and-load"><a class="anchor" href="#error-handling-for-save-and-load"></a>Error handling for save and load</h4>
 <div class="paragraph">
-<p>The load, postLoad and save operations of a Scout JS form include automatic error handling now.
+<p>The <code>load</code>, <code>postLoad</code> and <code>save</code> operations of a Scout JS form include automatic error handling now.
 Custom logic to handle errors (e.g. from REST calls) are in most cases no longer necessary and can therefore be removed.</p>
 </div>
 <div class="paragraph">
-<p>Refer to the migration guide on how to customize the new default error handling in case you need some special behavior.</p>
+<p>Refer to the <a href="../migration/migration-guide.html#form-error-handling" class="xref page">Migration Guide</a> on how to customize the new default error handling in case you need some special behavior.</p>
 </div>
 </div>
 </div>
@@ -462,6 +481,34 @@ Hence, the user couldn&#8217;t see that the current value is invalid and a new v
 </div>
 <div class="paragraph">
 <p>Because of the potential consequences, this change was implemented for ScoutJS only (not for Scout Classic).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="busy-handling"><a class="anchor" href="#busy-handling"></a>Busy handling</h3>
+<div class="paragraph">
+<p>The busy handling has been simplified for Scout JS.
+A new class <code>BusySupport</code> has been introduced which should be used instead of directly creating a <code>BusyIndicator</code>.
+Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>multiple nested busy calls possible</p>
+</li>
+<li>
+<p>cancellation callbacks</p>
+</li>
+<li>
+<p>delayed rendering support</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It can be accessed using <code>Desktop.setBusy</code> (the Desktop is available on the Session) or <code>Form.setBusy</code>.
+Typically, it should not be necessary to create own <code>BusySupport</code> instances.</p>
+</div>
+<div class="paragraph">
+<p>In case you created custom busy handling, refer to the <a href="../migration/migration-guide.html#busy-handling" class="xref page">Migration Guide</a> on how to migrate.</p>
 </div>
 </div>
 </div>
