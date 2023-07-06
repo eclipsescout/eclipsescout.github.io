@@ -851,6 +851,137 @@ This is the permission level which is granted for those users.</p>
 You have to implement this by yourself.
 A recommended solution is to create a wrapper around <code>IPermissionCollection</code> and this wrapper caches calls to <code>IPermissionCollection#implies</code> if required.</p>
 </div>
+<div class="sect2">
+<h3 id="scoutjs"><a class="anchor" href="#scoutjs"></a>Scout JS</h3>
+<div class="paragraph">
+<p>The <code>access</code> utility provides the possibility and convenience of checking permissions in Scout JS code.</p>
+</div>
+<div class="paragraph">
+<p>All necessary information the Scout JS code needs is made available by the <code>PermissionResource</code> in the <code>org.eclipse.scout.rt.api</code>-module.
+To enable the feature this REST resource needs to be added to the server and the <code>access</code> utility needs to be bootstrapped in the entry file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Add maven dependency to server providing REST resources (see <a href="../working-with-data/rest.html" class="xref page">REST</a>)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+  &lt;artifactId&gt;org.eclipse.scout.rt.api&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. bootstrap the <code>access</code> utility in the entry file <code>myapp.js</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">new App().init({
+  bootstrap: {
+    permissionsUrl: 'api/permissions'
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the visibility of a field depends on a permission the <code>access</code> utility can be used to evaluate this permission.
+The method <code>quickCheck</code> returns a <code>boolean</code> while <code>check</code> returns a <code>JQuery.Promise&lt;boolean&gt;</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">field.setVisible(access.quickCheck('SomePermission'));
+
+access.check('SomePermission').then(granted =&gt; field.setVisible(granted);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If one has created <code>IOwnPermission</code>s with a special <code>implies</code>-logic and wants to make them available in Scout JS a couple of things need to be added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OwnPermissionDo</code>, data object used to transfer additional properties from the server to the Scout JS code</p>
+</li>
+<li>
+<p><code>ToOwnPermissionDoFunction</code>, <code>IToDoFunction</code> transforming <code>IOwnPermission</code> into the data object</p>
+</li>
+<li>
+<p><code>OwnPermission</code>, Scout JS pendant for <code>IOwnPermission</code> used by the <code>access</code> utility</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. <code>OwnPermissionDo</code> containing the <code>ToOwnPermissionDoFunction</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("myapp.OwnPermission")
+public class OwnPermissionDo extends PermissionDo {
+
+  protected static final String OWN_PERMISSION_OBJECT_TYPE = "myapp.OwnPermission";
+
+  public DoValue&lt;String&gt; foo() {
+    return doValue("foo");
+  }
+
+  public DoValue&lt;String&gt; bar() {
+    return doValue("bar");
+  }
+
+  /* **************************************************************************
+   * CUSTOM CONVENIENCE TO DO FUNCTION
+   * *************************************************************************/
+
+  @Order(4000)
+  public static class ToOwnPermissionDoFunction extends AbstractToPermissionDoFunction&lt;IOwnPermission, OwnPermissionDo&gt; {
+
+    @Override
+    public void apply(IOwnPermission ownPermission, OwnPermissionDo ownPermissionDo) {
+      BEANS.get(ToPermissionDoFunction.class).apply(ownPermission, ownPermissionDo);
+      ownPermissionDo
+          .withObjectType(OWN_PERMISSION_OBJECT_TYPE) // important to create the correct Scout JS pendant
+          .withFoo(ownPermission.getFoo())
+          .withBar(ownPermission.getBar());
+    }
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. important overridden methods in the Scout JS <code>OwnPermission</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">override matches(permission: Permission): boolean {
+  if (!super.matches(permission)) {
+    return false;
+  }
+  // check if permission is OwnPermission and foo matches
+  if (!(permission instanceof OwnPermission)) {
+    return false;
+  }
+  return this.foo === permission.foo;
+}
+
+protected override _evalPermissionQuick(permission: Permission): boolean {
+  // check if bar matches
+  return super._evalPermissionQuick(permission) &amp;&amp; this.bar === permission.bar;
+}
+
+protected override _evalPermission(permission: Permission): JQuery.Promise&lt;boolean&gt; {
+  // call server to evaluate foo and bar
+  return ajax.getJson(`api/permissions/checkFooBar/${permission.foo}/${permission.bar}`)
+    .catch((error: AjaxError) =&gt; {
+      // handle error and return false
+      return false;
+    });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>PermissionResource</code> will automatically collect the granted <code>IOwnPermission</code>s of a user (see <a href="#authorization-granting">Authorization (Granting)</a>).
+These <code>IOwnPermission</code>s will be transformed by the <code>ToOwnPermissionDoFunction</code> and send to the browser where <code>OwnPermission</code> instances are created.
+Each access check will now automatically consider the <code>matches</code>-, <code>implies</code>- and <code>evaluate</code>-logic of <code>OwnPermission</code>.</p>
+</div>
+</div>
 </div>
 </div>
 <div id="footnotes">
