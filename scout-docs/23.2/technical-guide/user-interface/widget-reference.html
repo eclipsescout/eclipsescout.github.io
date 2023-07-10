@@ -790,7 +790,7 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>Calendar.MenuTypes.EmptySpace</code></p>
+<p><code>Calendar.MenuType.EmptySpace</code></p>
 </li>
 </ul>
 </div>
@@ -800,10 +800,10 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>ImageField.MenuTypes.ImageUrl</code></p>
+<p><code>ImageField.MenuType.ImageUrl</code></p>
 </li>
 <li>
-<p><code>ImageField.MenuTypes.Null</code></p>
+<p><code>ImageField.MenuType.Null</code></p>
 </li>
 </ul>
 </div>
@@ -813,7 +813,7 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>Planner.MenuTypes.EmptySpace</code></p>
+<p><code>Planner.MenuType.EmptySpace</code></p>
 </li>
 </ul>
 </div>
@@ -823,7 +823,7 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>Table.MenuTypes.EmptySpace</code></p>
+<p><code>Table.MenuType.EmptySpace</code></p>
 </li>
 </ul>
 </div>
@@ -833,7 +833,7 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>TileGrid.MenuTypes.EmptySpace</code></p>
+<p><code>TileGrid.MenuType.EmptySpace</code></p>
 </li>
 </ul>
 </div>
@@ -843,7 +843,7 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>Tree.MenuTypes.EmptySpace</code></p>
+<p><code>Tree.MenuType.EmptySpace</code></p>
 </li>
 </ul>
 </div>
@@ -853,10 +853,10 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="ulist">
 <ul>
 <li>
-<p><code>ValueField.MenuTypes.NotNull</code></p>
+<p><code>ValueField.MenuType.NotNull</code></p>
 </li>
 <li>
-<p><code>ValueField.MenuTypes.Null</code></p>
+<p><code>ValueField.MenuType.Null</code></p>
 </li>
 </ul>
 </div>
@@ -866,8 +866,8 @@ Menu types are context specific and interpreted by the menu container (e.g. by a
 <div class="sect2">
 <h3 id="valuefield"><a class="anchor" href="#valuefield"></a>ValueField</h3>
 <div class="paragraph">
-<p>The <code>ValueField</code> support the menu types <code>ValueField.MenuTypes.Null</code> and <code>ValueField.MenuTypes.NotNull</code>.
-This means that the <code>ValueField</code> will only display menus with <code>ValueField.MenuTypes.Null</code> if the value is <code>null</code> or those with <code>ValueField.MenuTypes.NotNull</code> if the value is set.</p>
+<p>The <code>ValueField</code> support the menu types <code>ValueField.MenuType.Null</code> and <code>ValueField.MenuType.NotNull</code>.
+This means that the <code>ValueField</code> will only display menus with <code>ValueField.MenuType.Null</code> if the value is <code>null</code> or those with <code>ValueField.MenuType.NotNull</code> if the value is set.</p>
 </div>
 <div class="paragraph">
 <p>Menus added to a <code>ValueField</code> that need to be visible all the time do not need to specify all possible menu types.
@@ -888,7 +888,7 @@ The <code>ValueField</code> will treat a menu without menu types as if it had se
     text: 'Visible if value is null',
     objectType: Menu,
     menuTypes: [
-      ValueField.MenuTypes.Null
+      ValueField.MenuType.Null
     ]
   }
 ]</code></pre>
@@ -898,7 +898,7 @@ The <code>ValueField</code> will treat a menu without menu types as if it had se
 <div class="sect2">
 <h3 id="imagefield"><a class="anchor" href="#imagefield"></a>ImageField</h3>
 <div class="paragraph">
-<p>The <code>ImageField</code> supports the menu types <code>ImageField.MenuTypes.ImageUrl</code> and <code>ImageField.MenuTypes.Null</code>.</p>
+<p>The <code>ImageField</code> supports the menu types <code>ImageField.MenuType.ImageUrl</code> and <code>ImageField.MenuType.Null</code>.</p>
 </div>
 </div>
 </div>
