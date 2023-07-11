@@ -651,6 +651,30 @@ For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gatew
 </div>
 </div>
 <div class="sect1">
+<h2 id="adapt-planner-properties"><a class="anchor" href="#adapt-planner-properties"></a>Adapt Planner properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Planner.selectionMode</code> is removed. The properties <code>Planner.rangeSelectable</code> and <code>Planner.multiSelect</code> should be used instead. To get the same behavior as before, the modes should be translated as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SELECTION_MODE_NONE &#8594; <code>Planner.rangeSelectable = false</code> and <code>Planner.multiSelect = false</code></p>
+</li>
+<li>
+<p>SELECTION_MODE_SINGLE_RANGE &#8594; <code>Planner.rangeSelectable = true</code> and <code>Planner.multiSelect = false</code></p>
+</li>
+<li>
+<p>SELECTION_MODE_MULTI_RANGE &#8594; <code>Planner.rangeSelectable = true</code> and <code>Planner.multiSelect = true</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With <code>Planner.rangeSelectable = false</code> and <code>Planner.multiSelect = true</code> its now possible to select multiple rows even if no range is selectable. In addition, if multiple rows are selectable, the selected rows no longer have to be next to each other.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
