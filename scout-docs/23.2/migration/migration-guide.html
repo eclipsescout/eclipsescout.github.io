@@ -675,6 +675,123 @@ For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gatew
 </div>
 </div>
 <div class="sect1">
+<h2 id="properties-files-using-utf-8-instead-of-iso-8859-1-latin-1"><a class="anchor" href="#properties-files-using-utf-8-instead-of-iso-8859-1-latin-1"></a>.properties Files using UTF-8 instead of ISO-8859-1 (Latin-1)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>.properties</code> files, including, but not limited to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Text properties (NLS)</p>
+</li>
+<li>
+<p>Config properties</p>
+</li>
+<li>
+<p>User preferences via <code>FileSystemUserPreferencesStorageService</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>are now using UTF-8 instead of ISO-8859-1 encoding.</p>
+</div>
+<div class="paragraph">
+<p>Existing files need to be converted, e.g. by the help of <code>native2ascii</code>, which is available up to (but not including) JDK 17.
+Execute the following command in your workspace directory:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>find . -name "*.properties" -exec native2ascii -reverse -encoding utf8 {} {} \;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s recommended to check calls to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Properties#load</p>
+</li>
+<li>
+<p>Properties#store</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>and make sure that the <code>Reader</code>/<code>Writer</code> overload is used instead of the one with <code>InputStream</code>/<code>OutputStream</code> and that UTF-8 encoding is used for the reader/writer.
+Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (InputStream stream = getClass().getResourceAsStream(filename); Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+  Properties properties = new Properties();
+  properties.load(reader);
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, configure your IDE to use UTF-8 for <code>.properties</code> files too.</p>
+</div>
+<div class="paragraph">
+<p>Eclipse: Window/Preferences/General/Content Types</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Text/Java Properties File</p>
+</li>
+<li>
+<p>Default encoding: <code>UTF-8</code> &amp; press <code>Update</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>For sub entries too (e.g. Build Properties File, &#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>IntelliJ: File/Settings/Editor/File Encodings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Encoding: <code>UTF-8</code></p>
+</li>
+<li>
+<p>Properties Files (*.properties)</p>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p>Default encoding for properties files: <code>UTF-8</code></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Transparent native-to-ascii conversion: unchecked</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In <code>.editorconfig</code>, remove the section for <code>*.properties</code>, e.g. remove</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">[*.properties]
+charset = latin1 # latin1 = ISO-8859-1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Charset for <code>[*]</code> should already be set to <code>charset = utf-8</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">

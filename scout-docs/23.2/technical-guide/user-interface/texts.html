@@ -451,20 +451,12 @@ This is realized by overriding the getter getDynamicNlsBaseName(). Here an examp
 </ul>
 </div>
 <div class="paragraph">
-<p>If you decide to store your translated texts in .properties files, you migth want to use the <a href="https://wiki.eclipse.org/Scout/SDK/NLS_Editor">NLS Editor</a> to edit them.</p>
+<p>If you decide to store your translated texts in .properties files, you might want to use the <a href="https://wiki.eclipse.org/Scout/SDK/NLS_Editor">NLS Editor</a> to edit them.</p>
 </div>
 <div class="paragraph">
-<p>You need to respect the format defined by the Java Properties class. In particular the encoding of a .properties file is ISO-8859-1 (also known as Latin-1). All non-Latin-1 characters must be encoded. Examples:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>'à' =&gt; "\u00E0"
-'ç' =&gt; "\u00E7"
-'ß' =&gt; "\u00DF"</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The encoding is the "Unicode escape characters": \uHHHH where HHHH is a hexadecimal id of the character in the <a href="http://en.wikipedia.org/wiki/List_of_Unicode_characters">Unicode character table</a>. Read more on the .properties File on <a href="http://en.wikipedia.org/wiki/.properties">wikipedia</a>.</p>
+<p>You need to respect the format defined by the Java Properties class.
+In particular the encoding of a .properties file is UTF-8 since Java 9.
+Read more on the .properties File on <a href="http://en.wikipedia.org/wiki/.properties">wikipedia</a>.</p>
 </div>
 </div>
 <div class="sect2">
