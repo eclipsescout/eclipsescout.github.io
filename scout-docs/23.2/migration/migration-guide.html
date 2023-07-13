@@ -442,6 +442,28 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 </div>
 </div>
 <div class="sect1">
+<h2 id="new-3rd-party-requirements"><a class="anchor" href="#new-3rd-party-requirements"></a>New 3rd Party requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To update your application the following steps might be required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the newest <code>23.2.x</code> release.
+See <a href="https://search.maven.org/artifact/org.eclipse.scout/maven_rt_plugin_config-master">Maven central</a> for a list of versions available.</p>
+</li>
+<li>
+<p>Update the Scout versions (<code>package.json</code> and <code>pom.xml</code>) as shown in <a href="#obtaining-the-latest-version">Obtaining the Latest Version</a>.</p>
+</li>
+<li>
+<p>If you are using Eclipse and web-service providers, update the <code>.factorypath</code> files as shown in <a href="../technical-guide/working-with-data/jax-ws.html#jax-ws-appendix" class="xref page">JAX-WS Appendix</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="utilities"><a class="anchor" href="#utilities"></a>Utilities</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -788,6 +810,16 @@ charset = latin1 # latin1 = ISO-8859-1</code></pre>
 </div>
 <div class="paragraph">
 <p>Charset for <code>[*]</code> should already be set to <code>charset = utf-8</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cssclasses-interface"><a class="anchor" href="#cssclasses-interface"></a>CssClasses interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The interface <code>org.eclipse.scout.rt.client.ui.CssClasses</code> was moved to <code>org.eclipse.scout.rt.shared.CssClasses</code>.
+The old interface was left and marked <code>@Deprecated</code> for release 23/2 and will be removed in a future release.
+Change your imports to the moved interface in order to avoid deprecation warnings.</p>
 </div>
 </div>
 </div>
