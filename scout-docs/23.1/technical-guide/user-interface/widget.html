@@ -523,7 +523,7 @@ The content of that file would be a class <code>MyForm</code> that extends the <
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Form} from '@eclipse-scout/core';
 import model from './MyFormModel';
 
-export default class MyForm extends Form {
+export class MyForm extends Form {
   _jsonModel() {
     return model;
   }
@@ -677,7 +677,7 @@ But there is one precondition: your model has to be in a TypeScript file.</p>
 <div class="listingblock">
 <div class="title">Listing 7. Create Widget Map</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">export type MyFormWidgetMap = {
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export type MyFormWidgetMap = {
   'MainBox': GroupBox;
   'MyStringField': StringField;
 }</code></pre>
@@ -686,7 +686,7 @@ But there is one precondition: your model has to be in a TypeScript file.</p>
 <div class="listingblock">
 <div class="title">Listing 8. Link Widget Map</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Form} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Form} from '@eclipse-scout/core';
 import {MyFormWidgetMap} from './MyFormModel';
 
 export class MyForm extends Form {
@@ -703,7 +703,7 @@ export class MyForm extends Form {
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Form} from '@eclipse-scout/core';
 import {MyFormWidgetMap} from './MyFormModel';
 
-export default class MyForm extends Form {
+export class MyForm extends Form {
 
   constructor() {
     super();

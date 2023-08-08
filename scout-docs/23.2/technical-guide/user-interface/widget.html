@@ -803,7 +803,7 @@ console.log(groupBox.fields[0] instanceof StringField);</code></pre>
 <p>It checks if the property has changed at all (same as for regular properties).</p>
 </li>
 <li>
-<p>If the values are not equal, <code>_prepareWidgetProperty</code> is called which checks if the new value already is a widget and if not creates it. It also destroys the old widget unless the property should not be preserved (see <code>_preserveOnPropertyChangeProperties</code>). If the value is an array, it does so for each element in the array (only widgets which are not part of the new array will be destroyed).</p>
+<p>If the values are not equal, <code>_prepareWidgetProperty</code> is called which checks if the new value already is a widget and if not creates it. It also destroys the old widget unless the property should not be preserved (see <code>preserveOnPropertyChangeProperties</code>). If the value is an array, it does so for each element in the array (only widgets which are not part of the new array will be destroyed).</p>
 </li>
 <li>
 <p>If the widget is rendered, the old widget is removed unless the property should not be preserved. If there is a custom remove function (e.g. _removeXY where XY is the property name), it will be called instead of removing the widgets directly. Note that the widget may have already been removed by the destroy function at the prepare phase.</p>

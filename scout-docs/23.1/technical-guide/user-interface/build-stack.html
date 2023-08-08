@@ -356,7 +356,7 @@
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import PersonFormModel from './PersonFormModel';
 import {Form, models} from '@eclipse-scout/core';
 
-export default class PersonForm extends Form {
+export class PersonForm extends Form {
 
   _jsonModel() {
     return models.get(PersonFormModel);

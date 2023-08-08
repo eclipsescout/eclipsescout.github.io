@@ -357,42 +357,53 @@ And it can even be used to replace a specific widget completely, so your widget 
 <p>To extend from a widget, just create a new class, extend from the desired widget class and override the methods you want to adjust.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 1. SpecialStringField.js</div>
+<div class="title">Listing 1. SpecialStringField.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {StringField} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {StringField} from '@eclipse-scout/core';
 
-export default class SpecialStringField extends StringField {
+export class SpecialStringField extends StringField {
   // Override desired methods
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then, register it in your <code>index</code> file as usual and use it in your code by creating a new instance with <code>scout.create('yournamespace.SpecialStringField')</code> or as part of a model:</p>
+<p>Then, register it in your <code>index</code> file as usual and use it in your code by creating a new instance with <code>scout.create(SpecialStringField)</code> or as part of a model:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 2. index.js</div>
+<div class="title">Listing 2. index.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// ...
-export {default as SpecialStringField} from './SpecialStringField';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">// ...
+export * from './SpecialStringField';
 // ...
-window.yournamespace = Object.assign(window.yournamespace || {}, self);</code></pre>
+ObjectFactory.get().registerNamespace('yournamespace', self);</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 3. ExampleFormModel.js</div>
+<div class="title">Listing 3. ExampleFormModel.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">export default () =&gt; ({
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {FormModel, GroupBox} from '@eclipse-scout/core';
+import {SpecialStringField} from './index';
+
+export default (): FormModel =&gt; ({
   rootGroupBox: {
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'SpecialField',
-        objectType: 'yournamespace.SpecialStringField',
+        objectType: SpecialStringField,
         label: 'Your special field'
       }
     ]
   }
-});</code></pre>
+});
+
+/* **************************************************************************
+* GENERATED WIDGET MAPS
+* **************************************************************************/
+
+export type ExampleFormWidgetMap = {
+  'SpecialField': SpecialStringField;
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -401,8 +412,8 @@ window.yournamespace = Object.assign(window.yournamespace || {}, self);</code></
 <div class="listingblock">
 <div class="title">Listing 4. Adding a new object factory registration</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {SpecialStringField} from './index';
-import {scout} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {scout} from '@eclipse-scout/core';
+import {SpecialStringField} from './index';
 
 scout.addObjectFactories({
   'StringField': () =&gt; new SpecialStringField()
@@ -410,21 +421,22 @@ scout.addObjectFactories({
 </div>
 </div>
 <div class="paragraph">
-<p>More details can be found in the chapter <a href="#Object Factory">[Object Factory]</a>.</p>
+<p>More details can be found in the chapter <a href="object-factory.html" class="xref page">Object Factory</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="extending-a-model"><a class="anchor" href="#extending-a-model"></a>Extending a Model</h4>
 <div class="paragraph">
-<p>If you need to extend a widget that uses a model (see <a href="#Creating a Widget Declaratively">[Creating a Widget Declaratively]</a>), you may have to extend that model as well.
+<p>If you need to extend a widget that uses a model (see <a href="widget.html#creating-a-widget-declaratively" class="xref page">Creating a Widget Declaratively</a>), you may have to extend that model as well.
 To do so, extend the widget as described above and either adjust the widgets in the <code>init</code> function directly.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 5. ExtendedForm.js</div>
+<div class="title">Listing 5. ExtendedForm.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import ExampleForm from './ExampleForm';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {InitModelOf} from '@eclipse-scout/core';
+import {ExampleForm} from './ExampleForm';
 
-export default class ExtendedForm extends ExampleForm {
-  _init(model) {
+export class ExtendedForm extends ExampleForm {
+  protected override _init(model: InitModelOf&lt;this&gt;) {
     super._init(model);
     this.widget('SpecialField').setLabel('New label for the special field');
   }
@@ -436,16 +448,15 @@ export default class ExtendedForm extends ExampleForm {
 To do so, override the <code>_jsonModel</code> method and use <code>models.extend</code> to adapt the original model.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 6. ExtendedForm.js with separate model</div>
+<div class="title">Listing 6. ExtendedForm.ts with separate model</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {models} from '@eclipse-scout/core';
-import ExampleForm from './ExampleForm';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {FormModel, models} from '@eclipse-scout/core';
+import {ExampleForm} from './index';
 import ExtendedFormModel from './ExtendedFormModel';
 
-export default class ExtendedForm extends ExampleForm {
-  _jsonModel() {
-    let baseModel = super._jsonModel();
-    return models.extend(ExtendedFormModel, baseModel);
+export class ExtendedForm extends ExampleForm {
+  protected override _jsonModel(): FormModel {
+    return models.extend(ExtendedFormModel, super._jsonModel());
   }
 }</code></pre>
 </div>
@@ -467,9 +478,11 @@ export default class ExtendedForm extends ExampleForm {
 <p>The following example contains an extension for the field with the id <code>SpecialField</code> that sets a new value for the label.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 7. ExtendedFormModel.js</div>
+<div class="title">Listing 7. ExtendedFormModel.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">export default () =&gt; ({
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {ExtensionModel} from '@eclipse-scout/core';
+
+export default (): ExtensionModel =&gt; ({
   type: 'extension',
   extensions: [
     {
@@ -508,9 +521,9 @@ implement an <code>init</code> function, where you register the functions you wa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Extension, StringField} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Extension, StringField} from '@eclipse-scout/core';
 
-export default class MyExtension extends Extension {
+export class MyExtension extends Extension {
   init() {
     this.extend(StringField.prototype, '_init');
   }
@@ -522,12 +535,20 @@ export default class MyExtension extends Extension {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">_init(model) {
-  // Call the original _init() method of the StringField class
-  this.next(model);
-  // Extend the instance with a new property called bar with the value foo
-  // -&gt; EVERY string field now has this new property
-  this.extended.setProperty('bar', 'foo');
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Extension, InitModelOf, StringField} from '@eclipse-scout/core';
+
+export class MyExtension extends Extension&lt;StringField&gt; {
+  init() {
+    this.extend(StringField.prototype, '_init');
+  }
+
+  _init(model: InitModelOf&lt;StringField&gt;) {
+    // Call the original _init() method of the StringField class
+    this.next(model);
+    // Extend the instance with a new property called bar with the value foo
+    // -&gt; EVERY string field now has this new property
+    this.extended.setProperty('bar', 'foo');
+  }
 }</code></pre>
 </div>
 </div>
@@ -550,7 +571,7 @@ in case the current extension is the last extension in the extension chain.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>All extensions must be registered in the <code>_installExtensions</code> function of your <code>App</code> (make sure to use the namespace which is defined in your <code>index.js</code> instead of <code>yournamespace</code>).</p>
+<p>All extensions must be registered in the <code>_installExtensions</code> function of your <code>App</code>.</p>
 </div>
 <div class="paragraph">
 <p>You can find your app in your entrypoint file that is linked in your <code>webpack.config.js</code>.
@@ -559,14 +580,15 @@ Otherwise, you need to create a custom <code>App</code> first by extending from 
 this new app is initialized rather than the default one.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 8. CustomApp.js</div>
+<div class="title">Listing 8. CustomApp.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {App, Extension} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {App, Extension} from '@eclipse-scout/core';
+import {MyExtension} from './index';
 
-export default class CustomApp extends App {
-  _installExtensions() {
+export class CustomApp extends App {
+  override _installExtensions() {
     Extension.install([
-      'yournamespace.MyExtension'
+      MyExtension
     ]);
   }
 }</code></pre>
@@ -575,7 +597,7 @@ export default class CustomApp extends App {
 <div class="listingblock">
 <div class="title">Listing 9. Entry point file</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import CustomApp from './CustomApp';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import CustomApp from './CustomApp';
 
 let app = new CustomApp();
 app.init();</code></pre>
