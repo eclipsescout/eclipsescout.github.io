@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Release Notes :: Eclipse Scout</title>
+    <link rel="prev" href="../howtos/scout-js/flip-card-how-to.html">
+    <link rel="next" href="../migration/migration-guide.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="24.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">24.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="release-notes.html">Release Notes</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">24.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="release-notes.html">24.1</a>
+    <a class="version" href="../../23.2/releasenotes/release-notes.html">23.2</a>
+    <a class="version" href="../../23.1/releasenotes/release-notes.html">23.1</a>
+    <a class="version" href="../../22/releasenotes/release-notes.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/24.1/docs/modules/releasenotes/pages/release-notes.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Release Notes</h1>
+<div class="sect1">
+<h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest version of this release is: releases/24.1.</p>
+</div>
+<div class="paragraph">
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/23.2%2E%2E%2Ereleases/24.1">detailed change log</a> on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Coming from an older Scout version? Check out the <a href="../migration/migration-guide.html" class="xref page">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The here described functionality has not yet been released and is part of an upcoming release.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The demo applications for this version can be found on the <a href="https://github.com/bsi-software/org.eclipse.scout.docs/tree/features/version/releases/24.1">features/version/releases/24.1</a> branch of our docs repository on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="multi-dimension-support"><a class="anchor" href="#multi-dimension-support"></a>Multi Dimension Support</h3>
+<div class="paragraph">
+<p>Similar to Scout Classic, Scout JS now also supports multidimensional properties.</p>
+</div>
+<div class="paragraph">
+<p>A multidimensional property is a property that will be computed based on its dimensions.</p>
+</div>
+<div class="paragraph">
+<p>For example: <code>Widget.visible</code> is now multidimensional and computed based on the <code>default</code> and the <code>granted</code> dimension.
+Both dimensions need to be true to make the widget visible. This means, if a widget is made invisible using <code>widget.setVisibleGranted(false)</code>, calling <code>widget.setVisible(true)</code> (which will modify the default dimension) won&#8217;t have any effect.</p>
+</div>
+<div class="paragraph">
+<p>This feature makes it easy to really hide a widget that the user is not allowed to see without fearing that it could be made visible accidentally.</p>
+</div>
+<div class="paragraph">
+<p>To learn more about this, see <a href="../technical-guide/user-interface/multi-dimensions.html" class="xref page">Multiple Dimensions Support</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
+<div class="sect3">
+<h4 id="modal-optional-for-views"><a class="anchor" href="#modal-optional-for-views"></a>Modal Optional for Views</h4>
+<div class="paragraph">
+<p>Until now, the default value for <code>modal</code> was true.
+This has been changed so that the default now depends on the <code>displayStyle</code>:
+It is still true for <code>Form.DisplayStyle.Dialog</code>, but false for <code>Form.DisplayStyle.View</code>.</p>
+</div>
+<div class="paragraph">
+<p>This means if you require your view to be <code>modal</code>, set it to true. Otherwise, you can remove the setting.</p>
+</div>
+<div class="paragraph">
+<p>The reason why this was changed is, because it is less common to have modal views, which also aligns it with the behavior of Scout Classic.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="saveneeded-state-updated-automatically"><a class="anchor" href="#saveneeded-state-updated-automatically"></a>SaveNeeded State Updated Automatically</h4>
+<div class="paragraph">
+<p>The property <code>saveNeededVisible</code> now correctly visualizes if the form needs to be saved.
+The default for this property is true for Scout JS forms.
+For Scout Classic forms the default has not been changed and is still false.</p>
+</div>
+<div class="paragraph">
+<p>For this, the form now has a property called <code>saveNeeded</code> that will be updated automatically if the <code>saveNeeded</code> state on any child field changes (please note that the property on the form field was renamed from <code>requiresSave</code> to <code>saveNeeded</code>, see <a href="../migration/migration-guide.html#rename-requiressave-to-saveneeded" class="xref page">Migration Guide</a>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-property-checksaveneeded-on-form-fields"><a class="anchor" href="#new-property-checksaveneeded-on-form-fields"></a>New Property 'checkSaveNeeded' on Form Fields</h4>
+<div class="paragraph">
+<p>Sometimes the <code>saveNeeded</code> state is not of interest and should not affect the <code>saveNeeded</code> state of the form.
+This may be the case for fields that contain data that doesn&#8217;t need to be saved. For this kind of fields, the <code>saveNeeded</code> computation can now be disabled by setting <code>checkSaveNeeded</code> to false.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="visitfields-across-field-trees"><a class="anchor" href="#visitfields-across-field-trees"></a>VisitFields Across Field Trees</h4>
+<div class="paragraph">
+<p>The method <code>FormField.visitFields</code> now also visits form fields that are not directly connected to a parent form field.
+Example: a form field inside a menu. This was necessary to properly detect <code>saveNeeded</code> changes of such fields and validate them when a form is stored. If you need the old behavior, consult the <a href="../migration/migration-guide.html#formfield-visitfields-now-visits-deeper" class="xref page">Migration Guide</a>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="open-exclusive-support"><a class="anchor" href="#open-exclusive-support"></a>Open Exclusive Support</h4>
+<div class="paragraph">
+<p>A form can now be opened exclusively.
+This means, you can define an exclusive key for a form, and if another form should be opened with the same key, the first form will be activated instead of opening the second one.</p>
+</div>
+<div class="paragraph">
+<p>To open a form exclusively, use <code>createFormExclusive</code> on the <code>Desktop</code> and open the form as usual using <code>form.open()</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="error-handling-for-save-and-load"><a class="anchor" href="#error-handling-for-save-and-load"></a>Error handling for save and load</h4>
+<div class="paragraph">
+<p>The <code>load</code>, <code>postLoad</code> and <code>save</code> operations of a Scout JS form include automatic error handling now.
+Custom logic to handle errors (e.g. from REST calls) are in most cases no longer necessary and can therefore be removed.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="../migration/migration-guide.html#form-error-handling" class="xref page">Migration Guide</a> on how to customize the new default error handling in case you need some special behavior.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
+<div class="sect3">
+<h4 id="default-menutypes"><a class="anchor" href="#default-menutypes"></a>Default menuTypes</h4>
+<div class="paragraph">
+<p>Default menuTypes have been added to several widgets.
+This means that e.g. the <code>Table</code> treats a menu without a menuType as if it had set <code>Table.MenuType.EmptySpace</code>.
+For more information about the default menuTypes see <a href="../technical-guide/user-interface/widget-reference.html#menu-types" class="xref page">MenuTypes</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="smartfields-error-handling-for-key-lookups"><a class="anchor" href="#smartfields-error-handling-for-key-lookups"></a>SmartFields: Error-Handling for Key-Lookups</h3>
+<div class="paragraph">
+<p>Before this change: If a key-lookup inside a SmartField didn&#8217;t return a result, the SmartField was presented to the user like no value has been chosen.
+Internally, however, the (most likely invalid) value was still set on the SmartField.
+Hence, the user couldn&#8217;t see that the current value is invalid and a new value should be set.</p>
+</div>
+<div class="paragraph">
+<p>This change puts a warning status on the SmartField if a key-lookup doesn&#8217;t return a value.</p>
+</div>
+<div class="paragraph">
+<p>Because of the potential consequences, this change was implemented for ScoutJS only (not for Scout Classic).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="busy-handling"><a class="anchor" href="#busy-handling"></a>Busy handling</h3>
+<div class="paragraph">
+<p>The busy handling has been simplified for Scout JS.
+A new class <code>BusySupport</code> has been introduced which should be used instead of directly creating a <code>BusyIndicator</code>.
+Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>multiple nested busy calls possible</p>
+</li>
+<li>
+<p>cancellation callbacks</p>
+</li>
+<li>
+<p>delayed rendering support</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It can be accessed using <code>Desktop.setBusy</code> (the Desktop is available on the Session) or <code>Form.setBusy</code>.
+Typically, it should not be necessary to create own <code>BusySupport</code> instances.</p>
+</div>
+<div class="paragraph">
+<p>In case you created custom busy handling, refer to the <a href="../migration/migration-guide.html#busy-handling" class="xref page">Migration Guide</a> on how to migrate.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="access-control"><a class="anchor" href="#access-control"></a>Access Control</h3>
+<div class="paragraph">
+<p>Scout JS now supports permissions. It provides the possibility and convenience of checking permissions using the <code>access</code> utility.
+For more information about the <code>access</code> utility see <a href="../technical-guide/common-concepts/security.html#scoutjs" class="xref page">Authorization (Scout JS)</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sdk"><a class="anchor" href="#sdk"></a>SDK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout IntelliJ plugins have been improved to better support Scout JS development and working with <a href="../technical-guide/working-with-data/data-object.html" class="xref page">Data Objects</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="code-completion-for-typescript-based-ui-models"><a class="anchor" href="#code-completion-for-typescript-based-ui-models"></a>Code Completion for TypeScript Based UI Models</h3>
+<div class="paragraph">
+<p>To get the code completion for UI models, just start writing or press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span>.</p>
+</div>
+<div class="sect3">
+<h4 id="creating-new-fields"><a class="anchor" href="#creating-new-fields"></a>Creating new Fields</h4>
+<div class="paragraph">
+<p>Easily create a new <code>FormField</code>, <code>Menu</code>, <code>Column</code> and more Scout objects.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/create-new-fields.png" alt="create new fields">
+</div>
+<div class="title">Figure 1. Create a new field</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="select-objecttype"><a class="anchor" href="#select-objecttype"></a>Select ObjectType</h4>
+<div class="paragraph">
+<p>Change the object type of an existing object.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/objecttype-completion.png" alt="objecttype completion">
+</div>
+<div class="title">Figure 2. ObjectType completion</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="property-completion"><a class="anchor" href="#property-completion"></a>Property Completion</h4>
+<div class="paragraph">
+<p>Get a complete list of available properties in the current context.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/property-completion.png" alt="property completion">
+</div>
+<div class="title">Figure 3. Select a property</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="value-completion"><a class="anchor" href="#value-completion"></a>Value Completion</h4>
+<div class="paragraph">
+<p>If a property expects a value from a predefined list, you&#8217;ll get the available values.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/value-completion.png" alt="value completion">
+</div>
+<div class="title">Figure 4. Select a value</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="widgetmap-generation"><a class="anchor" href="#widgetmap-generation"></a>WidgetMap Generation</h3>
+<div class="paragraph">
+<p><a href="../technical-guide/user-interface/widget.html#widget-maps" class="xref page">Widget Maps</a> have been introduced with Scout 23.1. Now, you can use the SDK to create the maps. Just use the menu entry or press the keystroke <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd></span> to create the maps for the current model file. You can also create all maps in a certain scope or for the whole project.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/widget-map-menu.png" alt="widget map menu">
+</div>
+<div class="title">Figure 5. WidgetMap creation</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="do-templates"><a class="anchor" href="#do-templates"></a>DO Templates</h3>
+<div class="paragraph">
+<p>The SDK now contains templates to easily modify <a href="../technical-guide/working-with-data/data-object.html" class="xref page">Data Objects</a>. Just start writing <code>do</code> or use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>J</kbd></span> for a complete list of all templates.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/do-template.png" alt="do template">
+</div>
+<div class="title">Figure 6. DO templates</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a></span>
+  <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

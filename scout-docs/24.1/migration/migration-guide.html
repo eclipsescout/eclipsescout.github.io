@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Migration Guide :: Eclipse Scout</title>
+    <link rel="prev" href="../releasenotes/release-notes.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="24.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">24.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="migration-guide.html">Migration Guide</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">24.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="migration-guide.html">24.1</a>
+    <a class="version" href="../../23.2/migration/migration-guide.html">23.2</a>
+    <a class="version" href="../../23.1/migration/migration-guide.html">23.1</a>
+    <a class="version" href="../../22/migration/migration-guide.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/24.1/docs/modules/migration/pages/migration-guide.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Migration Guide</h1>
+<div class="sect1">
+<h2 id="about-this-document"><a class="anchor" href="#about-this-document"></a>About This Document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes all relevant changes <strong>from Eclipse Scout 23.2 to Eclipse Scout 24.1</strong>. If existing code has to be migrated, instructions are provided here.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The here described functionality has not yet been released and is part of an upcoming release.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://central.sonatype.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/releases/24.1">releases/24.1</a> on <em>Maven Central</em></p>
+</li>
+<li>
+<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/releases/24.1">releases/24.1</a> on <em>mvnrepository.com</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in the parent POM of your Scout application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
+    &lt;version&gt;releases/24.1&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in your package.json:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "name": "my-module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@eclipse-scout/cli": "releases/24.1",
+    "@eclipse-scout/releng": "^22.0.0"
+  },
+  "dependencies": {
+    "@eclipse-scout/core": "releases/24.1",
+    "jquery": "3.6.0"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pre-built Scout JavaScript assets are also available using a CDN (e.g. to be directly included in a html document):
+<a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
+<div class="paragraph">
+<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2023-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
+<div class="paragraph">
+<p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA.
+Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+<div class="paragraph">
+<p>You can download the complete Eclipse IDE with Scout SDK included here:<br>
+<a href="https://www.eclipse.org/downloads/packages/release/2023-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+</div>
+<div class="paragraph">
+<p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
+<a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-3rd-party-requirements"><a class="anchor" href="#new-3rd-party-requirements"></a>New 3rd Party requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To update your application the following steps might be required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the newest <code>23.2.x</code> release.
+See <a href="https://search.maven.org/artifact/org.eclipse.scout/maven_rt_plugin_config-master">Maven central</a> for a list of versions available.</p>
+</li>
+<li>
+<p>Update the Scout versions (<code>package.json</code> and <code>pom.xml</code>) as shown in <a href="#obtaining-the-latest-version">Obtaining the Latest Version</a>.</p>
+</li>
+<li>
+<p>If you are using Eclipse and web-service providers, update the <code>.factorypath</code> files as shown in <a href="../technical-guide/working-with-data/jax-ws.html#jax-ws-appendix" class="xref page">JAX-WS Appendix</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="utilities"><a class="anchor" href="#utilities"></a>Utilities</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="dateutility-new-default-date-time-format"><a class="anchor" href="#dateutility-new-default-date-time-format"></a>DateUtility: New Default Date Time Format</h3>
+<div class="paragraph">
+<p>Since this version, the method <code>DateUtility#formatDateTime</code> returns the date formatted with the <code>DateFormat.DEFAULT</code> and no longer with the <code>DateFormat.SHORT</code>.
+Now, both methods, <code>DateUtility#formatDate</code> and <code>DateUtility#formatDateTime</code>, are formatting the date identically.
+To apply the old formatting, use <code>DateUtility#formatDateTimeShort</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-exceptionutility"><a class="anchor" href="#new-exceptionutility"></a>New ExceptionUtility</h3>
+<div class="paragraph">
+<p>A set of utility methods dealing with <code>Exception</code> and <code>Throwable</code> were moved and added to the new <code>ExceptionUtility</code>.</p>
+</div>
+<div class="paragraph">
+<p>Change invocations of <code>org.eclipse.scout.rt.platform.exception.ExceptionHandler.getRootCause()</code>
+to the new utility method  <code>org.eclipse.scout.rt.platform.util.ExceptionUtility.getRootCause()</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adapted-rest-errordorestclientexceptiontransformer"><a class="anchor" href="#adapted-rest-errordorestclientexceptiontransformer"></a>Adapted REST ErrorDoRestClientExceptionTransformer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The transformation logic for exceptions which occur while invoking a REST client was slightly adapted.
+For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gateway timeout) the adapted <code>ErrorDoRestClientExceptionTransformer</code> returns a <code>org.eclipse.scout.rt.platform.exception.RemoteSystemUnavailableException</code> instead of the former generic <code>org.eclipse.scout.rt.platform.exception.ProcessingException</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removed-deprecated-code"><a class="anchor" href="#removed-deprecated-code"></a>Removed Deprecated Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following functions were deprecated in a previous release and are now removed completely.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TabBox.ts: <code>selectTabById</code>, replaced by <code>setSelectedTab</code></p>
+</li>
+<li>
+<p>JQueryMouseWheelEvent: instead of using <code>DOMMouseScroll mousewheel</code> events use <code>wheel</code> and JQueryWheelEvent type</p>
+</li>
+<li>
+<p>Menu.ts: <code>addChildActions</code>, replaced by <code>insertChildActions</code></p>
+</li>
+<li>
+<p>Widget.ts: <code>_isRemovalPending</code>, replaced by <code>isRemovalPending</code></p>
+</li>
+<li>
+<p>CompositeFieldUtility.java: <code>moveFieldTo</code>, third parameter removed</p>
+</li>
+<li>
+<p>AbstractExtensionChain.java: <code>callChain</code>, vararg removed</p>
+</li>
+<li>
+<p>AbstractDataModelOperatorField.java: setAttribute, second parameter is not optional anymore</p>
+</li>
+<li>
+<p>FocusManager.ts: <code>requestFocus</code> does not accept a boolean anymore as third parameter</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removal-of-public-holiday-calendar-support"><a class="anchor" href="#removal-of-public-holiday-calendar-support"></a>Removal of Public Holiday Calendar Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A few classes used to read public holidays from an XML file and providing them to the calendar were removed without replacement:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractHolidayItemProvider</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.shared.services.common.calendar.IHolidayCalendarService</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.server.services.common.calendar.HolidayCalendarService</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.shared.services.common.calendar.HolidayItem</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.shared.services.common.calendar.HolidayCalendarItemParser</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="health-check-servlet"><a class="anchor" href="#health-check-servlet"></a>Health Check Servlet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The logic of executing health checks was extracted from <code>org.eclipse.scout.rt.server.commons.healthcheck.AbstractHealthCheckServlet</code> and moved to an own <code>org.eclipse.scout.rt.server.commons.healthcheck.HealthCheckService</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AbstractHealthCheckServlet</code> is no longer abstract, was renamed to <code>HealthCheckServlet</code> and may be used without further individualization.</p>
+</div>
+<div class="paragraph">
+<p>To update to the new servlet, the following changes in your <code>web.xml</code> are necessary:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UI Server: Replace <code>org.eclipse.scout.rt.ui.html.admin.healthcheck.UiHealthCheckServlet</code> with <code>org.eclipse.scout.rt.server.commons.healthcheck.HealthCheckServlet</code> in your <code>web.xml</code></p>
+</li>
+<li>
+<p>Backend Server: Replace <code>org.eclipse.scout.rt.server.admin.healthcheck.ServerHealthCheckServlet</code> with <code>org.eclipse.scout.rt.server.commons.healthcheck.HealthCheckServlet</code> in your <code>web.xml</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removed-unused-nls-texts"><a class="anchor" href="#removed-unused-nls-texts"></a>Removed unused NLS texts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following NLS texts were unused within the Scout framework and removed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ButtonDeselectAll</p>
+</li>
+<li>
+<p>ButtonSelectAll</p>
+</li>
+<li>
+<p>ErrorTextLogin</p>
+</li>
+<li>
+<p>ErrorTextSecurity</p>
+</li>
+<li>
+<p>ErrorTitleLogin</p>
+</li>
+<li>
+<p>FileNotFoundMessage</p>
+</li>
+<li>
+<p>FormIncompleteIntro</p>
+</li>
+<li>
+<p>IOErrorInfo</p>
+</li>
+<li>
+<p>IOErrorText</p>
+</li>
+<li>
+<p>IOErrorTitle</p>
+</li>
+<li>
+<p>LogicTimeIsInGEHours</p>
+</li>
+<li>
+<p>LogicTimeIsInGEMinutes</p>
+</li>
+<li>
+<p>LogicTimeIsInHours</p>
+</li>
+<li>
+<p>LogicTimeIsInLEHours</p>
+</li>
+<li>
+<p>LogicTimeIsInLEMinutes</p>
+</li>
+<li>
+<p>LogicTimeIsInMinutes</p>
+</li>
+<li>
+<p>LogicTimeIsNotNow</p>
+</li>
+<li>
+<p>LogicTimeIsNow</p>
+</li>
+<li>
+<p>NetErrorInfo</p>
+</li>
+<li>
+<p>NetErrorText</p>
+</li>
+<li>
+<p>NoSorting</p>
+</li>
+<li>
+<p>OriginalErrorMessageIs</p>
+</li>
+<li>
+<p>VetoErrorText</p>
+</li>
+<li>
+<p>WeekShort</p>
+</li>
+<li>
+<p>Without</p>
+</li>
+<li>
+<p>searchingProposals</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adapt-planner-properties"><a class="anchor" href="#adapt-planner-properties"></a>Adapt Planner properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Planner.selectionMode</code> is removed. The properties <code>Planner.rangeSelectable</code> and <code>Planner.multiSelect</code> should be used instead. To get the same behavior as before, the modes should be translated as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SELECTION_MODE_NONE &#8594; <code>Planner.rangeSelectable = false</code> and <code>Planner.multiSelect = false</code></p>
+</li>
+<li>
+<p>SELECTION_MODE_SINGLE_RANGE &#8594; <code>Planner.rangeSelectable = true</code> and <code>Planner.multiSelect = false</code></p>
+</li>
+<li>
+<p>SELECTION_MODE_MULTI_RANGE &#8594; <code>Planner.rangeSelectable = true</code> and <code>Planner.multiSelect = true</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With <code>Planner.rangeSelectable = false</code> and <code>Planner.multiSelect = true</code> its now possible to select multiple rows even if no range is selectable. In addition, if multiple rows are selectable, the selected rows no longer have to be next to each other.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="properties-files-using-utf-8-instead-of-iso-8859-1-latin-1"><a class="anchor" href="#properties-files-using-utf-8-instead-of-iso-8859-1-latin-1"></a>.properties Files using UTF-8 instead of ISO-8859-1 (Latin-1)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>.properties</code> files, including, but not limited to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Text properties (NLS)</p>
+</li>
+<li>
+<p>Config properties</p>
+</li>
+<li>
+<p>User preferences via <code>FileSystemUserPreferencesStorageService</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>are now using UTF-8 instead of ISO-8859-1 encoding.</p>
+</div>
+<div class="paragraph">
+<p>Existing files need to be converted, e.g. by the help of <code>native2ascii</code>, which is available up to (but not including) JDK 17.
+Execute the following command in your workspace directory:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>find . -name "*.properties" -exec native2ascii -reverse -encoding utf8 {} {} \;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s recommended to check calls to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Properties#load</p>
+</li>
+<li>
+<p>Properties#store</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>and make sure that the <code>Reader</code>/<code>Writer</code> overload is used instead of the one with <code>InputStream</code>/<code>OutputStream</code> and that UTF-8 encoding is used for the reader/writer.
+Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (InputStream stream = getClass().getResourceAsStream(filename); Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+  Properties properties = new Properties();
+  properties.load(reader);
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, configure your IDE to use UTF-8 for <code>.properties</code> files too.</p>
+</div>
+<div class="paragraph">
+<p>Eclipse: Window/Preferences/General/Content Types</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Text/Java Properties File</p>
+</li>
+<li>
+<p>Default encoding: <code>UTF-8</code> &amp; press <code>Update</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>For sub entries too (e.g. Build Properties File, &#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>IntelliJ: File/Settings/Editor/File Encodings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Encoding: <code>UTF-8</code></p>
+</li>
+<li>
+<p>Properties Files (*.properties)</p>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p>Default encoding for properties files: <code>UTF-8</code></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Transparent native-to-ascii conversion: unchecked</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In <code>.editorconfig</code>, remove the section for <code>*.properties</code>, e.g. remove</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">[*.properties]
+charset = latin1 # latin1 = ISO-8859-1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Charset for <code>[*]</code> should already be set to <code>charset = utf-8</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cssclasses-interface"><a class="anchor" href="#cssclasses-interface"></a>CssClasses interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The interface <code>org.eclipse.scout.rt.client.ui.CssClasses</code> was moved to <code>org.eclipse.scout.rt.shared.CssClasses</code>.
+The old interface was left and marked <code>@Deprecated</code> for release 23/2 and will be removed in a future release.
+Change your imports to the moved interface in order to avoid deprecation warnings.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="multi-dimension-support"><a class="anchor" href="#multi-dimension-support"></a>Multi Dimension Support</h3>
+<div class="paragraph">
+<p>Since some properties on <code>Widget</code> and <code>Column</code> are now computed based on their dimensions, they must always be set using the corresponding setter.
+Even though it was already bad practise to set a value without using the setter, it may have worked for your case if you didn&#8217;t need a property change event or the property to be rendered.
+If you do so now, you will replace the computed value instead of setting the default dimension, which may result in unexpected behavior.</p>
+</div>
+<div class="paragraph">
+<p>Please check in your code, if you set the following properties directly and replace them with the corresponding setter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">Widget.visible = value -&gt; Widget.setVisible(value)
+Widget.enabled = value -&gt; Widget.setEnabled(value)
+Column.visible = value -&gt; Column.setVisible(value)
+Column.displayable = value -&gt; Column.setDisplayable(value)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Furthermore, <code>Widget.isVisible()</code> and <code>Column.isVisible()</code> have been deprecated because the <code>visible</code> properties are now computed and there is no need for having <code>isVisible()</code> anymore.
+Therefore, please use the property <code>visible</code> directly instead of calling <code>isVisible()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">Widget.isVisible -&gt; Widget.visible
+Column.isVisible -&gt; Column.visible</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tree-insert-order-changed"><a class="anchor" href="#tree-insert-order-changed"></a>Tree: Insert Order Changed</h3>
+<div class="paragraph">
+<p><code>Tree.insertNodes</code> now adds new nodes (without an explicit childNodeIndex) at the bottom of the existing nodes instead of the top.
+This is already the case for the Scout Classic tree, and also for other widgets like table and tile grid.</p>
+</div>
+<div class="paragraph">
+<p>To insert the nodes at the beginning or any other position, you can use the new parameter <code>index</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="form"><a class="anchor" href="#form"></a>Form</h3>
+<div class="sect3">
+<h4 id="modal-optional-for-views"><a class="anchor" href="#modal-optional-for-views"></a>Modal Optional for Views</h4>
+<div class="paragraph">
+<p>The default value for the <code>modal</code> property has been changed for forms with <code>displayStyle</code> = <code>Form.DisplaStyle.VIEW</code>, see <a href="../releasenotes/release-notes.html#modal-optional-for-views" class="xref page">Release Notes</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="form-validation"><a class="anchor" href="#form-validation"></a>Form Validation</h4>
+<div class="paragraph">
+<p>The text to display when the Form validation failed has been moved from Lifecycle to Form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Lifecycle.validationFailedTextKey</code> to <code>Form.validationFailedText</code> and use the <code>${textKey:TextKey}</code> notation to specify a text key</p>
+</li>
+<li>
+<p><code>Lifecycle.validationFailedText</code> to <code>Form.validationFailedText</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The code to display a message box when the Form validation failed has been moved from Lifecycle to Form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Lifecycle._showStatusMessageBox</code> to <code>Form._showFormInvalidMessageBox</code></p>
+</li>
+<li>
+<p><code>Lifecycle._createStatusMessageBox</code> to <code>Form._createStatusMessageBox</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="form-error-handling"><a class="anchor" href="#form-error-handling"></a>Form Error Handling</h4>
+<div class="paragraph">
+<p>The load, postLoad and save operations of a Scout JS Form include automatic error handling now.
+Custom logic to handle errors (e.g. from REST calls) are in most cases no longer necessary and can therefore be removed.</p>
+</div>
+<div class="paragraph">
+<p>If the default error handling does not suit your needs override one of the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>_handleError</code>: to handle all phases (load, postLost, save)</p>
+</li>
+<li>
+<p><code>_handleLoadError</code>: load errors only</p>
+</li>
+<li>
+<p><code>_handlePostLoadError</code>: postLoad errors only</p>
+</li>
+<li>
+<p><code>_handleSaveError</code>: save errors only</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To customize the error handling from outside the form suppress the default handling using an event listener and apply your own logic in the catch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">form.on('error', event =&gt; {
+    if (event.phase === 'load') {
+      event.preventDefault(); // disable default error handling for 'load' only
+    }
+});
+form.open().catch(error =&gt; {
+  // add your custom error handling logic here
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As part of the new error handling the following methods changed its signature:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Form.validate</code> and <code>Lifecycle.validate</code>: Now return Promise&lt;Status&gt; instead of Promise&lt;boolean&gt;. The former boolean value can be obtained by calling isValid() on the new Status object.</p>
+</li>
+<li>
+<p><code>Lifecycle.handle</code> now only takes a function returning Promise&lt;void&gt;. There is no need to return a Status anymore.</p>
+</li>
+<li>
+<p><code>Form._onLifecycleLoad</code>, <code>Form._onLifecycleSave</code>, <code>Form._save</code>, <code>Form.save</code> and <code>Lifecycle._save</code>: now return Promise&lt;void&gt;. There is no need to return a Status anymore. A load/save failure should return a rejected Promise and a successful load/save should return a resolved promise. In case of an error the Promise might be rejected with any error or a Status describing the error.</p>
+</li>
+<li>
+<p><code>Form._handleLoadError</code>: Returns Promise&lt;void&gt; which indicates that the error was handled. A rejected promise means the error could not be handled. In such a case no fallback is applied! It is therefore the developers responsibility to ensure the error was handled as desired.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="formfield"><a class="anchor" href="#formfield"></a>FormField</h4>
+<div class="sect4">
+<h5 id="rename-requiressave-to-saveneeded"><a class="anchor" href="#rename-requiressave-to-saveneeded"></a>Rename requiresSave to saveNeeded</h5>
+<div class="paragraph">
+<p>The property <code>requiresSave</code> and the function <code>updateRequiresSave</code> on the <code>FormField</code> have been renamed to <code>saveNeeded</code> resp. <code>updateSaveNeeded</code>.
+This makes it consistent with the property <code>saveNeededVisible</code> on the Form and also with Scout Classic.</p>
+</div>
+<div class="paragraph">
+<p>To migrate it is best to search for <code>requiresSave</code> resp. <code>RequiresSave</code> in your JS/TS code base and replace the occurrences accordingly.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="formfield-visitfields-now-visits-deeper"><a class="anchor" href="#formfield-visitfields-now-visits-deeper"></a>VisitFields Now Visits Deeper</h5>
+<div class="paragraph">
+<p>The visiting is not limited to composite fields anymore which means more fields may be visited, see <a href="../releasenotes/release-notes.html#visitfields-across-field-trees" class="xref page">Release Notes</a>. If you need the old behavior, you can use the option <code>limitToSameFieldTree</code> in the options parameter of the <code>visitFields</code> method.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="touched-not-affected-by-value-change-anymore"><a class="anchor" href="#touched-not-affected-by-value-change-anymore"></a>Touched not Affected by Value Change Anymore</h5>
+<div class="paragraph">
+<p>A form field has a property <code>touched</code> which can be set by using <code>touch()</code>. A touched form field needs to be saved.
+Until now, a value change (by the user or by using <code>setValue</code>) set this property to true.
+This has been changed so that a value change does not change the property anymore, it can only be modified using <code>touch()</code> resp. <code>markAsSaved()</code>. This has the benefit that <code>touched</code> can be completely controlled by the developer.</p>
+</div>
+<div class="paragraph">
+<p>In order to check if a value has been changed or a field touched you can use the property <code>saveNeeded</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="busy-handling"><a class="anchor" href="#busy-handling"></a>Busy handling</h4>
+<div class="paragraph">
+<p>The busy handling has been simplified for Scout JS (see <a href="../releasenotes/release-notes.html#busy-handling" class="xref page">Release Notes</a>).</p>
+</div>
+<div class="paragraph">
+<p>The <code>Form.load</code> and <code>Form.save</code> methods now automatically include a busy indicator.
+Custom busy indicators for these two operations (e.g. when performing a Rest call) can therefore be removed.</p>
+</div>
+<div class="paragraph">
+<p>The method <code>Session.setBusy</code> was moved to <code>Desktop.setBusy</code>. So instead of calling <code>session.setBusy(&#8230;&#8203;)</code> use <code>session.desktop.setBusy(&#8230;&#8203;)</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="menutypes"><a class="anchor" href="#menutypes"></a>MenuTypes</h3>
+<div class="paragraph">
+<p>The MenuType constants and types were renamed from <code>MenuTypes</code> to <code>MenuType</code>:</p>
+</div>
+<div class="paragraph">
+<p>Constants:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Calendar.MenuTypes</code> &#8594; <code>Calendar.MenuType</code></p>
+</li>
+<li>
+<p><code>ImageField.MenuTypes</code> &#8594; <code>ImageField.MenuType</code></p>
+</li>
+<li>
+<p><code>Planner.MenuTypes</code> &#8594; <code>Planner.MenuType</code></p>
+</li>
+<li>
+<p><code>TabBox.MenuTypes</code> &#8594; <code>TabBox.MenuType</code></p>
+</li>
+<li>
+<p><code>Table.MenuTypes</code> &#8594; <code>Table.MenuType</code></p>
+</li>
+<li>
+<p><code>TileGrid.MenuTypes</code> &#8594; <code>TileGrid.MenuType</code></p>
+</li>
+<li>
+<p><code>Tree.MenuTypes</code> &#8594; <code>Tree.MenuType</code></p>
+</li>
+<li>
+<p><code>ValueField.MenuTypes</code> &#8594; <code>ValueField.MenuType</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CalendarMenuTypes</code> &#8594; <code>CalendarMenuType</code></p>
+</li>
+<li>
+<p><code>ImageFieldMenuTypes</code> &#8594; <code>ImageFieldMenuType</code></p>
+</li>
+<li>
+<p><code>PlannerMenuTypes</code> &#8594; <code>PlannerMenuType</code></p>
+</li>
+<li>
+<p><code>TabBoxMenuTypes</code> &#8594; <code>TabBoxMenuType</code></p>
+</li>
+<li>
+<p><code>TableMenuTypes</code> &#8594; <code>TableMenuType</code></p>
+</li>
+<li>
+<p><code>TileGridMenuTypes</code> &#8594; <code>TileGridMenuType</code></p>
+</li>
+<li>
+<p><code>TreeMenuTypes</code> &#8594; <code>TreeMenuType</code></p>
+</li>
+<li>
+<p><code>ValueFieldMenuTypes</code> &#8594; <code>ValueFieldMenuType</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

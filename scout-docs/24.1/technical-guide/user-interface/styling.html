@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Styling :: Eclipse Scout</title>
+    <link rel="prev" href="desktop.html">
+    <link rel="next" href="mobile.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="24.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">24.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>User Interface</li>
+    <li><a href="styling.html">Styling</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">24.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="styling.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/user-interface/styling.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/user-interface/styling.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/user-interface/styling.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/24.1/docs/modules/technical-guide/pages/user-interface/styling.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Styling</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Beside JavaScript for business logic and for the models, every Scout JS app probably needs some CSS code at some point in time.
+If you are writing custom widgets, you need it for sure.
+But also if you are just using the given widgets you might have the need to adjust the look here and there.</p>
+</div>
+<div class="paragraph">
+<p>Scout uses <a href="https://github.com/less/less.js">LESS</a> as CSS preprocessor.
+It has a lot of advantages to pure CSS: variables, mixins, functions, imports etc.
+If you use the default build infrastructure provided by Scout, you cannot only use LESS easily without getting a headache on how to integrate it in your build system, you get access to all the LESS constructs used by Scout itself.
+This means you can use variables for colors, icons and sizes, mixins for animations and to avoid browser specific prefixes.
+You can import whole Scout LESS files for your custom themes, and you get a lot of sample code in the Scout code base because Scout itself uses the same concepts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setup-less-files"><a class="anchor" href="#setup-less-files"></a>Setup Less Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to get started you need a place to put all your LESS code.
+The recommendation is to create one LESS file for each widget.
+That means if your widget is called <code>MyWidget.js</code> you would create a file called <code>MyWidget.less</code>.
+Even if you adjust the look of an existing widget you can create a file called let&#8217;s say <code>StringField.less</code> and put the rules there.
+If you only have a few rules or non widget specific rules you can create a file called <code>main.less</code> and put them there.
+However, these are only recommendations, you can always do it as you like.</p>
+</div>
+<div class="paragraph">
+<p>The creation of these files won&#8217;t make them load automatically.
+You have to register them in your <code>index</code> file.
+This file should be put into your <code>src/main/js</code> folder and named <code>index.less</code>.
+Just include your new files using the LESS <code>@import</code> keyword.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Include a LESS file</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "style/colors";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to this <code>index</code> file you normally also have a <code>theme</code> file which will be used as entry point in your <code>webpack.config.js</code> and included in the <code>index.html</code>.
+The intention of the <code>theme</code> file is to group individual <code>index</code> files and make one file in order to load all rules at once within one request.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-customization"><a class="anchor" href="#basic-customization"></a>Basic Customization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that we have all the infrastructure set up, we can start adding some rules.
+As already said, you can use all the LESS variables from Scout.
+The variables can be found in the <code>scout/style</code> folder of the <code>@eclipse-scout/core</code> module.
+If you have a look at the file <code>colors.less</code> you find all the colors you can use or customize.
+Let&#8217;s say you want to change the background color of the header, you can redefine the variable <code>@desktop-header-background-color</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Changing the background color of the header</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@desktop-header-background-color: @palette-red-4;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s it! As you can see, changing this variable not only changes the background color of the header, it also changes the background color of the view-buttons on the top left, because they are supposed to have the same color.
+You could do the same by using CSS rules, but you would have to write several selectors to achieve the same.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/custom_header_background.png" alt="custom header background">
+</div>
+<div class="title">Figure 1. Helloworld default and with a custom header background color</div>
+</div>
+<div class="paragraph">
+<p>In this example a color from the Scout color palette is used.
+You can also use a custom hex code instead of <code>@palette-red-4</code> or define a custom color palette, if you want to use the same colors for different rules.</p>
+</div>
+<div class="paragraph">
+<p>Beside colors there are some other files in the style folder of the Scout module: <code>animations.less</code>, <code>fonts.less</code>, <code>icons.less</code>, <code>mixins.less</code> and <code>sizes.less</code>.
+All these files contain variables or mixins which are used by various Scout widgets and may be used by your project as well.</p>
+</div>
+<div class="sect2">
+<h3 id="accent-colors"><a class="anchor" href="#accent-colors"></a>Accent Colors</h3>
+<div class="paragraph">
+<p>In the above example to change the header background color, we adjusted a specific less variable to only change the header.
+As you may have noticed on the screenshot, the pencil on the top left, the title below and the text on the tile are still blue.
+This is expected, because they are not related to the header background color.
+If you want to change these colors as well, you could do it in the same way: Look for the LESS variables and adjust them.
+But you could also try to adjust the accent colors.</p>
+</div>
+<div class="paragraph">
+<p>Scout has a dedicated color palette for accent colors.
+Accent colors are used by many widgets, for titles, for links, for hover states etc.
+The default accent color of Scout is blue.</p>
+</div>
+<div class="paragraph">
+<p>So, instead of changing specific colors, you can try to change the accent color palette.
+For this example we use the slightly adjusted red palette, but you can use your own colors of course:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@accent-color-0: @palette-red-0;
+@accent-color-1: @palette-red-1;
+@accent-color-2: @palette-red-2;
+@accent-color-3: @palette-red-4;
+@accent-color-4: @palette-red-5;
+@accent-color-5: darken(@palette-red-5, 10%);</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/accent-color-change.png" alt="accent color change">
+</div>
+<div class="title">Figure 2. Accent color change</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="advanced-customization"><a class="anchor" href="#advanced-customization"></a>Advanced Customization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Redefining a LESS variable is the simplest way of customizing.
+If you need more control you can always write a custom CSS rule.
+Keep in mind that these rules need to be more specific than the default CSS rules of Scout, otherwise they won&#8217;t be executed (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" class="bare">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a> for details). We cannot guarantee that your custom rules will still work when migrating to a newer Scout version, because changing only a small part of the rule might make it more specific so that your rule won&#8217;t work anymore.
+That only applies to custom rules which are supposed to change existing look or behavior.
+If you are writing a custom widget without overriding default Scout rules there shouldn&#8217;t be any problems regarding migration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cha-themes"><a class="anchor" href="#cha-themes"></a>Themes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout applications support styling via CSS/LESS themes. Scout comes with two themes by default: the <em>default</em> theme with blue colors and the <em>dark</em> theme with gray/black colors. Technically a theme has a name and a set of LESS files.</p>
+</div>
+<div class="paragraph">
+<p>In Scout Classic a theme is activated by calling the method <code>AbstractDesktop#setTheme(String name)</code>. This causes the browser to reload the page and loads the CSS theme for that name, like <code>myapp-theme.css</code> for the <em>default</em> theme or <code>myapp-theme-dark.css</code> for the <em>dark</em> theme. The <em>default</em> theme is activated by passing a <code>null</code> value as name.</p>
+</div>
+<div class="paragraph">
+<p>In Scout JS you do the same thing by calling the method <code>Desktop#setTheme(name)</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you have multiple themes and you want to start with a defined theme by default, you can set a property in the <code>config.properties</code> file on the Scout UI server. In the following example the theme <em>rainbow</em> will be activated, which means the Scout application tries to load the CSS file <code>myapp-theme-rainbow.css</code> on start-up:</p>
+</div>
+<div class="literalblock">
+<div class="title">config.properties</div>
+<div class="content">
+<pre>scout.ui.theme=rainbow</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that Scout only provides an API to switch between themes. If the user of your Scout application should switch between various themes, your application must provide an UI element to do that. Scout provides no standard UI element for that. However, the Widgets apps for <a href="https://scout.bsi-software.com/widgets/">Scout Classic</a> and <a href="https://scout.bsi-software.com/jswidgets/">Scout JS</a> give you an idea of how you could implement that feature.</p>
+</div>
+<div class="paragraph">
+<p>You have two options to customize CSS styles in your Scout project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change CSS properties (or LESS variables) by overriding styles from the default theme</p>
+</li>
+<li>
+<p>Provide your own theme with a unique name like <code>rainbow</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If your Scout application should have only a single theme, option 1 is the way to go. If users should have the option to switch between various themes, you should go with option 2. In this chapter we will focus on the latter option.</p>
+</div>
+<div class="paragraph">
+<p>In order to understand Scout themes, take a look at the <code>myapp-theme.less</code> file which has been generated for your project by the Scout archetype. In the following examples we assume that the name of your project is <em>myapp</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. myapp-theme.less</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "~@eclipse-scout/core/src/index";
+@import "./src/main/js/index";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see the theme bundles various LESS modules. Line 1 imports the LESS module from the Scout core. This module contains style definitions for all UI elements provided by Scout. Line 2 imports the LESS module from your application. This module contains style definitions for custom widgets used in your project. The build creates a single CSS file <code>myapp-theme.css</code>, which is used as theme for your project.</p>
+</div>
+<div class="paragraph">
+<p>We recommend making an index file for each Scout module. These index files import each single LESS file which belongs to that module. This excerpt from Scouts <code>index.less</code> shows how we import all distinct LESS files required to style the desktop or the LESS variable definitions for all colors used in the stylesheet:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Excerpt from Scout core index.less</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "desktop/Desktop";
+@import "desktop/DesktopLogo";
+@import "desktop/DesktopDense";
+@import "desktop/bench/DesktopBench";
+@import "desktop/bench/BenchColumn";
+@import "style/colors";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>How does the dark theme for your Scout application look like? Like for the <em>default</em> theme, we create a LESS file <code>myapp-theme-dark.less</code>, but this time we import the <code>index-dark</code> modules.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. myapp-theme-dark.less</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "~@eclipse-scout/core/src/index-dark";
+@import "./src/main/js/index-dark";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look at the details in the <code>index-dark.less</code> file from the Scout core:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. index-dark.less</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "index";
+@import "style/colors-dark";
+@import "style/sizes-dark";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you see, the first thing we do on line 1 is to import the default theme 'index'. This means the <em>dark</em> theme inherits all style definitions from the default theme.
+The dark theme only extends new additional style and LESS variables or overrides styles or LESS variables from the default theme.
+This is what happens on line 2: <code>colors-dark.less</code> overrides some variables defined in the <code>colors.less</code> file from the default theme, like the gray colors:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. Excerpt from Scout core index-dark.less</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@palette-gray-0: @palette-white;
+@palette-gray-1: #F5F5F5;
+@palette-gray-2: #E9EBEB;
+@palette-gray-3: #BFC2C3;
+@palette-gray-4: #A7ACAD;
+@palette-gray-5: #7E8588;</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-and-runtime"><a class="anchor" href="#build-and-runtime"></a>Build and Runtime</h3>
+<div class="paragraph">
+<p>Scout uses Webpack to run the LESS parser and build the CSS themes.
+Your application needs at least one default theme.
+The Scout archetype adds this theme to your <code>webpack.config.js</code>.
+If your application needs to work with multiple themes you must add them to the list of config entries.
+In this example we add the two themes <em>dark</em> and <em>rainbow</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Excerpt from webpack.config.js</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">config.entry = {
+  'bsicrm': './src/main/js/myapp.js',
+  'login': './src/main/js/login.js',
+  'logout': './src/main/js/logout.js',
+  'myapp-theme': './src/main/js/myapp-theme.less',
+  'myapp-theme-dark': './src/main/js/myapp-theme-dark.less',
+  'myapp-theme-rainbow': './src/main/js/myapp-theme-rainbow.less'
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you use a Scout UI server as backend for your Scout JS application the class <code>WebResourceLoader</code> is responsible for supplying the requested CSS theme file to the browser.
+This class uses the current theme name as provided by the <code>UiThemeHelper</code>, which checks if a theme name is set by a cookie, the HTTP session or by an HTTP request parameter.
+These are good starting points for debugging, in case something unexpected happens while developing themes.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="desktop.html">Desktop</a></span>
+  <span class="next"><a href="mobile.html">Mobile Support</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lookup Call :: Eclipse Scout</title>
+    <link rel="prev" href="../user-interface/browser-support.html">
+    <link rel="next" href="code-type.html">
+    <meta name="generator" content="Antora 3.1.4">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../23.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="24.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">24.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../23.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../23.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Working with Data</li>
+    <li><a href="lookup-call.html">Lookup Call</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">24.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="lookup-call.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/working-with-data/lookup-call.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/working-with-data/lookup-call.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/working-with-data/lookup-call.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/bsi-software/org.eclipse.scout.docs/edit/releases/24.1/docs/modules/technical-guide/pages/working-with-data/lookup-call.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lookup Call</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Lookup Call</code> is used to lookup a single or multiple <code>Lookup Rows</code>. Several widgets like <code>Smart Field</code>, <code>List Box</code> or <code>Tree Box</code> take advantage of that concept in order to provide their proposals.</p>
+</div>
+<div class="paragraph">
+<p>The most important parts of a Lookup Row are the key and the value. The key can be of any type, the text must be of type String. In addition to the key and the text a Lookup Row can also define an icon, a tooltip text, CSS classes and more.</p>
+</div>
+<div class="paragraph">
+<p>Each Smart Field in Scout references a LookupCall class. The lookup call is in charge of querying a data source and returning results for that query. Example: when you type "f" into a Smart Field, a lookup call could return a result which contains lookup rows starting with "F", like "Faz" and "Foo".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The lookup call may return static (hard-coded) data which is already available in the browser, or may fetch an external data-source via HTTP, typically some kind of REST API. Depending on how your Smart Field is configured and used, the Smart Field will call different methods on the LookupCall instance and pass data to that method, like the search text the user has typed into the field. These methods are: <code>getAll</code>, <code>getByText</code>, <code>getByKey</code> and <code>getByRec</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>getByKey():</strong> Retrieves a single lookup row for a specific key value. Used by Smart Fields and Smart Columns to get the display text for a given key value.</p>
+</li>
+<li>
+<p><strong>getByText():</strong> Retrieve multiple lookup rows which match a certain String. Used by Smart Fields when the user starts to enter some text in the field.</p>
+</li>
+<li>
+<p><strong>getAll():</strong> Retrieves all available lookup rows. Used by Smart Fields when the user clicks on the field.</p>
+</li>
+<li>
+<p><strong>getByRec():</strong> This can only be used for hierarchical lookup calls. It retrieves all available sub-tree lookup rows for a given parent.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You must implement these methods. Start with creating a sub class of <code>LookupCall</code>(.js). Sub class <code>StaticLookupCall</code>(.js) when you need a simple lookup call that operates on data that is available locally. Sub class <code>RemoteLookupCall</code>(.js) when you must fetch lookup data from a remote server. This class is also used in Scout Classic to start a lookup on the Scout UI Server.</p>
+</div>
+<div class="paragraph">
+<p>Note that the lookup call works with <em>Deferreds</em>. This means the lookup call runs in the background and does not block the UI. When the lookup call is done eventually the Deferred is resolved and the Smart Field will process the result returned by the lookup call.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-classic"><a class="anchor" href="#scout-classic"></a>Scout Classic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lookup calls provide different method to compute the set of LookupRows :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>getDataByKey():</strong> Retrieves a single lookup row for a specific key value. Used by SmartFields and SmartColumns to get the display text for a given key value.</p>
+</li>
+<li>
+<p><strong>getDataByText():</strong> Retrieve multiple lookup rows which match a certain String. Used by SmartFields when the user starts to enter some text in the field.</p>
+</li>
+<li>
+<p><strong>getDataByAll():</strong> Retrieves all available lookup rows. Used by SmartFields when the user clicks on the browse icon.</p>
+</li>
+<li>
+<p><strong>getDataByRec():</strong> This can only be used for hierarchical lookup calls. It retrieves all available sub-tree lookup rows for a given parent.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="members"><a class="anchor" href="#members"></a>Members</h3>
+<div class="paragraph">
+<p>The Lookup call contains attributes (accessible with getter and setter) that can be used to compute the list of lookups rows. Out of the box you have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>key: contains the key value when the lookup is queried by key.</p>
+</li>
+<li>
+<p>text: contains the text input in case of a text lookup (typically this is the text entered by the user smart field).</p>
+</li>
+<li>
+<p>all: contains the browse hint in case of a lookup by all (typically when a user click on the button to see all proposal in a smart field).</p>
+</li>
+<li>
+<p>rec: contains the key of the parent entry, in when the children of a node are loaded.</p>
+</li>
+<li>
+<p>master: contains the value of the master field (if a master field is associated to the field using the lookup call).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is possible to add you own additional attributes, for example validityFrom, validityTo as date parameter. Just add them as field with getter and setter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ClassId("6154090e-86ac-4c08-9769-bf3ef61c1b4b")
+public class LanguageLookupCall extends LookupCall&lt;String&gt; {
+  // other stuff like serialVersionUID, Lookup Service definition...
+
+  private static final long serialVersionUID = 1L;
+
+  private Date m_validityFrom;
+  private Date m_validityTo;
+
+  @Override
+  protected Class&lt;? extends ILookupService&lt;String&gt;&gt; getConfiguredService() {
+    return ILanguageLookupService.class;
+  }
+
+  public Date getValidityFrom() {
+    return m_validityFrom;
+  }
+
+  public void setValidityFrom(Date validityFrom) {
+    this.m_validityFrom = validityFrom;
+  }
+
+  public Date getValidityTo() {
+    return m_validityTo;
+  }
+
+  public void setValidityTo(Date validityTo) {
+    this.m_validityTo = validityTo;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, you might want to set your properties before the lookup call query is sent. This can be done with the PrepareLookup event of the SmartField or the ListBox:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Override
+    protected void execPrepareLookup(ILookupCall&lt;String&gt; call) {
+      LanguageLookupCall c = (LanguageLookupCall) call;
+      c.setValidityFrom(DateUtility.parse("2012-02-26", "yyyy-mm-dd"));
+      c.setValidityTo(DateUtility.parse("2013-02-27", "yyyy-mm-dd"));
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you follow this pattern, you will consume the values on the server by casting the call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Override
+  public List&lt;? extends ILookupRow&lt;String&gt;&gt; getDataByAll(ILookupCall&lt;String&gt; call) {
+    LanguageLookupCall c = (LanguageLookupCall) call;
+    Date validityFrom = c.getValidityFrom();
+    Date validityTo = c.getValidityTo();
+
+    List&lt;? extends ILookupRow&lt;String&gt;&gt; result = new ArrayList&lt;&gt;();
+    //compute result: corresponding lookup rows (depending on validityFrom and validityTo).
+    return result;
+  }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="type-of-lookup-calls"><a class="anchor" href="#type-of-lookup-calls"></a>Type of Lookup Calls</h3>
+<div class="sect3">
+<h4 id="with-a-lookup-service"><a class="anchor" href="#with-a-lookup-service"></a>With a Lookup Service</h4>
+<div class="paragraph">
+<p>Delegation to the Lookup Service on server side.</p>
+</div>
+<div class="paragraph">
+<p>They are not necessarily restricted to a fix number of records. Instead, they should be favoured if the set of records is rather large.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="local-lookup-call"><a class="anchor" href="#local-lookup-call"></a>Local Lookup Call</h4>
+<div class="paragraph">
+<p>Such a LookupCall is used if the data can be provided directly without the need to make a backend call.</p>
+</div>
+<div class="paragraph">
+<p>An example of this approach is when a SmartField or a SmartColumn is configured to be used with a CodeType. The code types are cached, so it is not necessary to fetch them using a lookup service. Instead, a LocalLookupCall, in that case the <code>CodeLookupCall</code>, may be used to load the data. It creates the LookupRows corresponding to the codes in the CodeType.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="overview"><a class="anchor" href="#overview"></a>Overview</h4>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/LookupCall.png" alt="LookupCall">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="properties"><a class="anchor" href="#properties"></a>Properties</h4>
+<div class="paragraph">
+<p>Defined with <code>getConfiguredXxxxxx()</code> methods.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Service: Defines which service is used to retrieve lookup rows</p>
+</li>
+<li>
+<p>MasterRequired: Defines whether a master value must be set in order to query for multiple lookup rows</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-examples"><a class="anchor" href="#code-examples"></a>Code examples</h4>
+<div class="paragraph">
+<p><strong>Using a LookupCall in a SmartField:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Override
+    protected Class&lt;? extends ILookupCall&lt;String&gt;&gt; getConfiguredLookupCall() {
+      return LanguageLookupCall.class;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Accessing a LookupRow directly:</strong></p>
+</div>
+<div class="paragraph">
+<p>It is possible to access a LookupRow directly.
+In this example the input is a key (thisKey) and the method getDataByKey() is used.
+Before accessing the text, we ensure that a LookupRow has been retrieved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    //Execute the LookupCall (using DataByKey)
+    LookupCall&lt;String&gt; call = new LanguageLookupCall();
+    call.setKey(thisKey);
+    List&lt;? extends ILookupRow&lt;String&gt;&gt; rows = call.getDataByKey();
+
+    //Get the text (with a null check)
+    String text = null;
+    if (rows != null &amp;&amp; !rows.isEmpty()) {
+      text = rows.get(0).getText();
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../user-interface/browser-support.html">Browser Support</a></span>
+  <span class="next"><a href="code-type.html">Code Type</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>
