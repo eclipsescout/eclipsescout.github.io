@@ -117,6 +117,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/observability.html">Observability</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -405,7 +408,7 @@ In that case, you can set the alias to <code>inverted</code> as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">this._addPropertyDimensionAlias('enabled', 'locked', true);</code></pre>
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">this._addPropertyDimensionAlias('enabled', 'locked', {inverted: true});</code></pre>
 </div>
 </div>
 </div>

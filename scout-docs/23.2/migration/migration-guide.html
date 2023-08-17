@@ -118,6 +118,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -824,6 +827,18 @@ charset = latin1 # latin1 = ISO-8859-1</code></pre>
 <p>The interface <code>org.eclipse.scout.rt.client.ui.CssClasses</code> was moved to <code>org.eclipse.scout.rt.shared.CssClasses</code>.
 The old interface was left and marked <code>@Deprecated</code> for release 23/2 and will be removed in a future release.
 Change your imports to the moved interface in order to avoid deprecation warnings.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-dataobjecthelperclonelenient-within-idovaluemigrationhandlermigrate"><a class="anchor" href="#use-dataobjecthelperclonelenient-within-idovaluemigrationhandlermigrate"></a>Use DataObjectHelper#cloneLenient within IDoValueMigrationHandler#migrate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>DataObjectMigrator</code> uses <code>ILenientDataObjectMapper</code> to create a typed representation of the given data object after structure migration and before calling value migrations.
+For any implementation of a value migration working on a data object, most likely <code>DataObjectHelper#clone</code> is currently used to get a copy of the provided input argument.
+<code>DataObjectHelper#cloneLenient</code> must be used instead.
+There might be structural inconsistencies that are migrated by later value migrations.
+<code>DataObjectHelper#clone</code> would fail in such scenarios, <code>DataObjectHelper#cloneLenient</code> won&#8217;t.</p>
 </div>
 </div>
 </div>
