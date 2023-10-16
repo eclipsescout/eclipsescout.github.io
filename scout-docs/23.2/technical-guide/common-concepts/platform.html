@@ -992,12 +992,13 @@ To still allow overriding of such properties, the following lookup rules are app
 </ol>
 </div>
 <div class="paragraph">
-<p>When it comes to working with mapped config properties (subclasses of <code>org.eclipse.scout.rt.platform.config.AbstractMapConfigProperty</code>), there&#8217;s also some special mechanic to consider in terms of providing or overriding property map values using environment variables.
-Since it is not possible to reliably retrieve the original map key from an environment variable (again, due to the restrictions mentioned above), property map values may be supplied using environment variables whose value is a JSON object string:</p>
+<p>When it comes to working with String list or map value config properties (subclasses of <code>org.eclipse.scout.rt.platform.config.AbstractMapConfigProperty</code> or <code>org.eclipse.scout.rt.platform.config.AbstractStringListConfigProperty</code>), there&#8217;s also some special mechanic to consider in terms of providing or overriding property list or map values using environment variables.
+Since it is not possible to reliably retrieve the original list/map key from an environment variable (again, due to the restrictions mentioned above), property map values may be supplied using environment variables whose value is a JSON object string:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">my_map_property={"map-key-01": "value-01", "map-key-02": "value-02", "map-key-03": null}</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">my_map_property={"map-key-01": "value-01", "map-key-02": "value-02", "map-key-03": null}
+my_list_property={"0": "value-01", "1": "value-02", "2": null}</code></pre>
 </div>
 </div>
 <div class="paragraph">
