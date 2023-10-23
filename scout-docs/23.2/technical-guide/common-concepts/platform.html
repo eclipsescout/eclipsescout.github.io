@@ -993,7 +993,7 @@ To still allow overriding of such properties, the following lookup rules are app
 </div>
 <div class="paragraph">
 <p>When it comes to working with String list or map value config properties (subclasses of <code>org.eclipse.scout.rt.platform.config.AbstractMapConfigProperty</code> or <code>org.eclipse.scout.rt.platform.config.AbstractStringListConfigProperty</code>), there&#8217;s also some special mechanic to consider in terms of providing or overriding property list or map values using environment variables.
-Since it is not possible to reliably retrieve the original list/map key from an environment variable (again, due to the restrictions mentioned above), property map values may be supplied using environment variables whose value is a JSON object string:</p>
+Since it is not possible to reliably retrieve the original list/map key from an environment variable (again, due to the restrictions mentioned above), property map values may be supplied as a JSON object string:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1002,18 +1002,55 @@ my_list_property={"0": "value-01", "1": "value-02", "2": null}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The following rules apply, when such environment variables are read:
-* property map key/value pairs are added from the JSON object to the property map, overriding keys already being defined by sources of lower precedence (e.g. config.properties file)
-* a JSON object attribute value of "null" will remove a key potentially being defined by sources of lower precedence</p>
+<p>The usage of a JSON object string for a map/list property is not restricted to only environment variables but can be used within system properties or a properties file too.</p>
+</div>
+<div class="paragraph">
+<p>The following rules apply, when such properties are read:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>property map key/value pairs are added from the JSON object to the property map, overriding keys already being defined by sources of lower precedence (e.g. config.properties file)</p>
+</li>
+<li>
+<p>a JSON object attribute value of "null" will remove a key potentially being defined by sources of lower precedence</p>
+</li>
+<li>
+<p>a property value given by the [] pattern will override the value given by a JSON object string defined by the same source. Example within the same source (e.g. config.properties file):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>my.map.property={"map-key-01": "value-01", "map-key-02": "value-02"}</code></p>
+</li>
+<li>
+<p><code>my.map.property[map-key-02]=overridden-value-02</code></p>
+</li>
+<li>
+<p>Results in the value <code>overridden-value-02 for `map-key-02</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The parsing of JSON object strings is abstracted away using the new <code>org.eclipse.scout.rt.platform.config.IJsonPropertyReader</code> interface as parsing JSON strings is not implemented in the platform itself.
 However, there is a default implementation of this interface available in org.eclipse.scout.rt.dataobject which uses the <code>org.eclipse.scout.rt.platform.dataobject.IDataObjectMapper</code> feature to deserialize the JSON string into a Java Map.
 In order to use this, an implementation of the <code>IDataObjectMapper</code> interface is also required (e.g. <code>org.eclipse.scout.rt.jackson.dataobject.JacksonDataObjectMapper</code>).
-So in case you want to use this feature, you have to define
-* org.eclipse.scout.rt:org.eclipse.scout.rt.dataobject
-* org.eclipse.scout.rt:org.eclipse.scout.rt.jackson
-as new dependencies of your application aggregator module (if they are not already present).</p>
+So in case you want to use this feature, you have to define</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>org.eclipse.scout.rt:org.eclipse.scout.rt.dataobject</p>
+</li>
+<li>
+<p>org.eclipse.scout.rt:org.eclipse.scout.rt.jackson</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>as new dependencies of your application aggregator module (if they are not already present).</p>
 </div>
 <div class="paragraph">
 <p>A properties file may import other config files from the classpath or any other absolute URL. This is done using the special key <code>import</code>. It can be a single value or a list or map (e.g. <code>import[anyKey or number]</code>:</p>
