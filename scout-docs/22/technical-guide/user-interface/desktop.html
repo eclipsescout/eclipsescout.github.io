@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Desktop :: Eclipse Scout</title>
     <link rel="prev" href="value-field.html">
-    <link rel="next" href="styling.html">
+    <link rel="next" href="outline.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../../_/css/site.css">
     <script>var uiRootPath = '../../../../_'</script>
@@ -141,10 +141,25 @@
     <a class="nav-link" href="form-field.html">Form Field</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="value-field.html">Value Field</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="page.html">Page</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="styling.html">Styling</a>
@@ -341,13 +356,34 @@ This document is referring to a past Scout release. Please click <a href="../../
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>The desktop is the root widget of every Scout application.
+The default desktop consists of 3 areas:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigation<br>
+Displays an <a href="outline.html" class="xref page">Outline</a> with <a href="page.html" class="xref page">Pages</a></p>
+</li>
+<li>
+<p>Header<br>
+Shows the tabs of views and a toolbar with menus.<br>
+A view is a display mode of a <a href="form.html" class="xref page">Form</a>.</p>
+</li>
+<li>
+<p>Bench<br>
+Contains the content of the active view or active page.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="desktop-bench-layout"><a class="anchor" href="#desktop-bench-layout"></a>Desktop Bench Layout</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Desktop Layout can be configured using the <code>IDesktop.setBenchLayoutData</code> method. This property is observed and might be changed during the application lifecycle.
+<p>The layout of the desktop bench can be configured using the <code>IDesktop.setBenchLayoutData</code> method. This property is observed and might be changed during the application lifecycle.
 The desktop consists out of 9 view stacks (see <a href="#img-benchLayout-overview">Figure 1</a>). Each form can be assigned to a single view stack using the property DisplayViewId (<code>IForm.getConfiguredDisplayViewId</code>).
 If multiple forms are assigned to the same view stack the views will be displayed as tabs where the top form is visible and the corresponding tab selected.</p>
 </div>
@@ -423,7 +459,7 @@ Within a column the north, center and south parts can not differ in their width.
 </div>
 <nav class="pagination">
   <span class="prev"><a href="value-field.html">Value Field</a></span>
-  <span class="next"><a href="styling.html">Styling</a></span>
+  <span class="next"><a href="outline.html">Outline</a></span>
 </nav>
 </article>
   </div>

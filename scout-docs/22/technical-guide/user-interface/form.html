@@ -141,10 +141,25 @@
     <a class="nav-link" href="form-field.html">Form Field</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="value-field.html">Value Field</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="page.html">Page</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="styling.html">Styling</a>
@@ -355,7 +370,7 @@ This document is referring to a past Scout release. Please click <a href="../../
 </ol>
 </div>
 <div class="paragraph">
-<p>This is achieved by using <a href="form-field.html" class="xref page">Form Field</a>]s. Every form has one root group box (also called main box) which has 1:n form fields. The form fields are layouted using the logical grid layout, unless no custom layout is used. This makes it easy to arrange the fields in a uniform way.</p>
+<p>This is achieved by using <a href="form-field.html" class="xref page">Form Fields</a>. Every form has one root <a href="group-box.html" class="xref page">Group Box</a> (also called main box) which has 1:n form fields. The form fields are layouted using the logical grid layout, unless no custom layout is used. This makes it easy to arrange the fields in a uniform way.</p>
 </div>
 <div class="paragraph">
 <p>A form may be displayed in various ways, mainly controlled by the property <code>displayHint</code>.
@@ -365,12 +380,24 @@ The following display hints are available by default:</p>
 <ul>
 <li>
 <p><strong>view</strong>: the form will be opened in a tab and will take full width and height of the bench</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/view.png" alt="view" width="500">
+</div>
+<div class="title">Figure 1. A form with display hint = view</div>
+</div>
 </li>
 <li>
 <p><strong>dialog</strong>: the form will be opened as overlaying dialog and will be as width and height as necessary</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/dialog.png" alt="dialog" width="500">
+</div>
+<div class="title">Figure 2. A form with display hint = dialog</div>
+</div>
 </li>
 <li>
-<p><strong>popup-window</strong>: the form will be opened in a separate browser window (please note that this feature does not work properly with Internet Explorer)</p>
+<p><strong>popup-window</strong>: the form will be opened in a separate browser window</p>
 </li>
 </ul>
 </div>
