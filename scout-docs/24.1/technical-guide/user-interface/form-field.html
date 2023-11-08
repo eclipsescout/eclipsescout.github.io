@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Form Field :: Eclipse Scout</title>
     <link rel="prev" href="form.html">
-    <link rel="next" href="value-field.html">
+    <link rel="next" href="composite-field.html">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../../_/css/site.css">
     <script>var uiRootPath = '../../../../_'</script>
@@ -141,10 +141,25 @@
     <a class="nav-link" href="form-field.html">Form Field</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="value-field.html">Value Field</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="page.html">Page</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="styling.html">Styling</a>
@@ -337,10 +352,11 @@
 <article class="doc">
 <h1 class="page">Form Field</h1>
 <div class="paragraph">
-<p>A form field is a special kind of a widget. It is mainly used on forms but may actually be added to any other widget.</p>
+<p>A form field is a special kind of widget.
+It is mainly used on forms but may actually be added to any other widget.</p>
 </div>
 <div class="paragraph">
-<p>Every form field contains of the following parts:</p>
+<p>Every form field consists of the following parts:</p>
 </div>
 <div id="img-formfield" class="imageblock">
 <div class="content">
@@ -349,7 +365,30 @@
 <div class="title">Figure 1. Parts of a form field</div>
 </div>
 <div class="paragraph">
-<p>Typical form fields are <code>StringField</code>, <code>DateField</code> or <code>TableField</code>. All these fields have the API of <code>FormField</code> in common (like <code>setLabel()</code>, <code>setErrorStatus()</code>, etc.) but also provide additional API.</p>
+<p>This illustrates nicely some of the main features of a form field:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It can have a label<br>
+The label describes the purpose of the field.
+It can be on the left side, on top or even in the field itself.</p>
+</li>
+<li>
+<p>It can be mandatory<br>
+A mandatory field needs to be filled in when the form is saved.</p>
+</li>
+<li>
+<p>It can have a status<br>
+The status can be a tooltip with more details about the field.
+It may also show an error status if the field has invalid input.
+Or it can show a menu if the field provides actions.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Typical form fields are <code>StringField</code>, <code>DateField</code> or <code>TableField</code>.
+All these fields have the API of <code>FormField</code> in common (like <code>setLabel()</code>, <code>setErrorStatus()</code>, etc.) but also provide additional API.</p>
 </div>
 <div class="paragraph">
 <p>Some form fields are actually just a wrapper for another widget.
@@ -359,7 +398,7 @@ But if you want to use it in a <code>GroupBox</code>, which is a form field, you
 </div>
 <nav class="pagination">
   <span class="prev"><a href="form.html">Form</a></span>
-  <span class="next"><a href="value-field.html">Value Field</a></span>
+  <span class="next"><a href="composite-field.html">Composite Field</a></span>
 </nav>
 </article>
   </div>
