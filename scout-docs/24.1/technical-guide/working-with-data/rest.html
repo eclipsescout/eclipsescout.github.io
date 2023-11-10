@@ -614,7 +614,7 @@ unsuccessful responses into appropriate exception.</p>
   @Override
   protected void configureClientBuilder(ClientBuilder clientBuilder) {
     super.configureClientBuilder(clientBuilder);
-    clientBuilder.property(RestClientProperties.COOKIE_SPEC, CookieSpecs.STANDARD);
+    clientBuilder.property(RestClientProperties.COOKIE_SPEC, StandardCookieSpec.RELAXED);
     clientBuilder.property(RestClientProperties.PROXY_URI, "http://my.proxy.com");
   }
 
@@ -742,7 +742,7 @@ unsuccessful responses into appropriate exception.</p>
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Override
   protected void configureClientBuilder(ClientBuilder clientBuilder) {
     super.configureClientBuilder(clientBuilder);
-    clientBuilder.property(RestClientProperties.COOKIE_SPEC, CookieSpecs.STANDARD);
+    clientBuilder.property(RestClientProperties.COOKIE_SPEC, StandardCookieSpec.RELAXED);
     clientBuilder.property(RestClientProperties.PROXY_URI, "http://my.proxy.com");
   }</code></pre>
 </div>
