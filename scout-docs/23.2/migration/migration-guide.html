@@ -729,12 +729,12 @@ For HTTP error codes 502 (bad gateway), 503 (service unavailable) and 504 (gatew
 <p>are now using UTF-8 instead of ISO-8859-1 encoding.</p>
 </div>
 <div class="paragraph">
-<p>Existing files need to be converted, e.g. by the help of <code>native2ascii</code>, which is available up to (but not including) JDK 17.
-Execute the following command in your workspace directory:</p>
+<p>Existing files need to be converted, e.g. using the <code>native2ascii</code> tool, which is available e.g. in <a href="https://adoptium.net/temurin/releases/?version=8&amp;package=jdk">OpenJDK 8</a>.
+Execute the following command in your workspace directory in a Bash (also works e.g. in Git Bash or on WSL):</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>find . -name "*.properties" -exec native2ascii -reverse -encoding utf8 {} {} \;</pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">find . -name "*.properties" -exec native2ascii -reverse -encoding utf8 {} {} \;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -776,13 +776,6 @@ Example:</p>
 </li>
 <li>
 <p>Default encoding: <code>UTF-8</code> &amp; press <code>Update</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>For sub entries too (e.g. Build Properties File, &#8230;&#8203;)</p>
-</li>
-</ul>
-</div>
 </li>
 </ul>
 </div>
