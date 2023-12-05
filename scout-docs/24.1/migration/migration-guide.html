@@ -490,6 +490,93 @@ No migration is required, as this method did not change behavior in any way.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="former-jettyserver-for-development-can-be-used-in-a-productive-environment"><a class="anchor" href="#former-jettyserver-for-development-can-be-used-in-a-productive-environment"></a>Former JettyServer for development can be used in a productive environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>org.eclipse.scout.dev.jetty.JettyServer</code> was so far only used for development environments.
+With this release it was improved so that it can be used in a productive environment too (instead of building a .war file to be used in an application server).
+The Scout Application class contains a main-method which may be started directly and itself starts an embedded Jetty server.</p>
+</div>
+<div class="paragraph">
+<p>The following renaming is applied.</p>
+</div>
+<div class="sect2">
+<h3 id="modules"><a class="anchor" href="#modules"></a>Modules</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.dev.jetty</code> &#8594; <code>org.eclipse.scout.rt.app</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check dependencies within <code>pom.xml</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>org.eclipse.scout.dev.jetty.test</code> &#8594; <code>org.eclipse.scout.rt.app.test</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.dev.jetty.test.affix</code> &#8594; <code>org.eclipse.scout.rt.app.test.affix</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-classes"><a class="anchor" href="#java-classes"></a>Java classes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.dev.jetty.JettyServer</code> &#8594; <code>org.eclipse.scout.rt.app.Application</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Check run configurations etc.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="properties"><a class="anchor" href="#properties"></a>Properties</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>scout.jetty.port</code> &#8594; <code>scout.app.port</code></p>
+</li>
+<li>
+<p><code>scout.jetty.consoleInputHandler</code> &#8594; <code>scout.app.consoleInputHandlerEnabled</code></p>
+</li>
+<li>
+<p><code>scout.jetty.webapp.contextpath</code> &#8594; <code>scout.app.contextPath</code></p>
+</li>
+<li>
+<p><code>scout.jetty.webapp.folder</code> &#8594; <code>scout.app.webappDirectory</code></p>
+</li>
+<li>
+<p><code>scout.jetty.keyStorePath</code> &#8594; <code>scout.app.keyStorePath</code></p>
+</li>
+<li>
+<p><code>scout.jetty.autoCreateSelfSignedCertificate</code> &#8594; <code>scout.app.autoCreateSelfSignedCertificate</code></p>
+</li>
+<li>
+<p><code>scout.jetty.keyStorePassword</code> &#8594; <code>scout.app.keyStorePassword</code></p>
+</li>
+<li>
+<p><code>scout.jetty.privateKeyPassword</code> &#8594; <code>scout.app.privateKeyPassword</code></p>
+</li>
+<li>
+<p><code>scout.jetty.certificateAlias</code> &#8594; <code>scout.app.certificateAlias</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
