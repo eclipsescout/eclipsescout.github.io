@@ -1163,6 +1163,151 @@ To minimize configuration files such entries should be removed from <code>config
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1"><code>dev.username</code> </dt>
+<dd>
+<p>Allows to override the username returned by the DevUsernameProvider.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.autoCreateSelfSignedCertificate</code> </dt>
+<dd>
+<p>Specifies the X-500 name to use in the self-signed certificate when starting Scout application in development mode with TLS enabled.</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>`CN=my-host.my-domain.com,C=US,ST=CA,L=Sunnyvale,O=My Company Inc.`.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This property is only used in development mode and only if the property <code>scout.app.useTls</code> is true and no existing Java keystore is specified (property <code>scout.app.keyStorePath</code>).</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.certificateAlias</code> </dt>
+<dd>
+<p>HTTPS certificate alias of the key in the keystore to use.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.consoleInputHandlerEnabled</code> </dt>
+<dd>
+<p>Specifies whether the application uses a console input handler or not. The default value is true for development, false otherwise.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.contextPath</code> </dt>
+<dd>
+<p>The context path under which the application can be reached. The default value is / (i.e. root path).</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.http.request.maxHeaderSize</code> </dt>
+<dd>
+<p>Specifies the maximum allowed size in bytes for a HTTP request header. The default value is 8 KB (see org.eclipse.jetty.server.HttpConfiguration).</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.httpSessionEnabled</code> </dt>
+<dd>
+<p>Specifies whether the application uses HTTP session or not. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.httpSessionTimeoutInSeconds</code> </dt>
+<dd>
+<p>The session timeout in seconds to use if HTTP sessions are enabled. The default value is 300 seconds (5 minutes).</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.jvmShutdownHookEnabled</code> </dt>
+<dd>
+<p>Specifies if the JVM shutdown hook is registered. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.keyStorePassword</code> </dt>
+<dd>
+<p>HTTPS keystore password. Supports obfuscated values prefixed with <code>OBF:</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.keyStorePath</code> </dt>
+<dd>
+<p>Setting this property enables the HTTPS connector. The value of this property must point to the local key store.</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>`classpath:/dev/my-https.jks` or `file:///C:/Users/usr/Desktop/my-store.jks` or `C:/Users/usr/Desktop/my-store.jks`.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.port</code> </dt>
+<dd>
+<p>The port under which the application will be running. Default value is 8080.</p>
+<div class="paragraph">
+<p>Data type: Integer between 1 and 65535</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.privateKeyPassword</code> </dt>
+<dd>
+<p>The password (if any) for the specific key within the key store. Supports obfuscated values prefixed with <code>OBF:</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigHttpOnly</code> </dt>
+<dd>
+<p>Specifies whether the HTTP session cookie is HTTP only or not. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigSameSite</code> </dt>
+<dd>
+<p>Specifies the SameSite attribute of the HTTP session cookie. Valid values are: <code>None</code>, <code>Strict</code> or <code>Lax</code>. Default value is <code>Lax</code>.</p>
+<div class="paragraph">
+<p>Data type: SameSite</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigSecure</code> </dt>
+<dd>
+<p>Specifies whether any session tracking cookies created by the web application will be marked as secure. If true, the session tracking cookie will be marked as secure even if the request initiated the corresponding session using plain HTTP instead of HTTPS (e.g. Scout application behind reverse proxy terminating SSL). If false, the session tracking cookie will only be marked as secure if the request initiated the corresponding session is secure (using HTTPS). The default value is true for non-development mode.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.useTls</code> </dt>
+<dd>
+<p>Specifies if the Scout application should use TLS. If true, the server must either be started in development mode (then a new self-singed certificate is created automatically), or a Java KeyStore must be configured using property <code>scout.app.keyStorePath</code>. By default this property is true, if a Java KeyStore has been specified.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.webappDirectory</code> </dt>
+<dd>
+<p>The folder to find the webapp resources. The default value is <code>/src/main/webapp/</code></p>
+<div class="paragraph">
+<p>Data type: File</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>scout.application.name</code> </dt>
 <dd>
 <p>The display name of the application. Used e.g. in the info form and the diagnostic views. The default value is <code>unknown</code>.</p>
@@ -1240,7 +1385,7 @@ To minimize configuration files such entries should be removed from <code>config
 <dd>
 <p>Specifies the known credentials (username &amp; passwords) of the <code>org.eclipse.scout.rt.platform.security.ConfigFileCredentialVerifier</code>.</p>
 <div class="paragraph">
-<p>Credentials are separated by semicolon. Username and password information are separated by colon. Usernames are case-insensitive, and it is recommended that they should only consist of ASCII characters. Plain text passwords are case-sensitive.</p>
+<p>Credentials are separated by semicolon. Username and password information are separated by colon. Usernames are case-insensitive and it is recommended that they should only consist of ASCII characters. Plain text passwords are case-sensitive.</p>
 </div>
 <div class="paragraph">
 <p>By default the password information consists of Base64 encoded salt followed by a dot followed by the Base64 encoded SHA-512 hash of the password (using UTF-16).</p>
@@ -1376,11 +1521,25 @@ To minimize configuration files such entries should be removed from <code>config
 <p>Data type: Integer &gt;= 0</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>scout.clientnotification.maxNotificationPollerStaleTime</code> </dt>
+<dd>
+<p>The maximum amount of time in milliseconds between two client notification poller invocations before the poller job is restarted. Note: this value should be at least two times of both <code>scout.clientnotification.maxNotificationBlockingTimeOut</code> and <code>scout.clientnotification.notificationPollerCheckInterval</code>. The default is 90 seconds.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>scout.clientnotification.nodeQueueCapacity</code> </dt>
 <dd>
 <p>Capacity of the client notification queue. If maximum capacity is reached, notification messages are dropped. The default value is 200.</p>
 <div class="paragraph">
 <p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.notificationPollerLivenessCheckInterval</code> </dt>
+<dd>
+<p>Interval in milliseconds the poller job liveness check is performed. The default is 30 seconds.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.clientnotification.notificationQueueExpireTime</code> </dt>
@@ -1417,7 +1576,7 @@ To minimize configuration files such entries should be removed from <code>config
 <dd>
 <p>Configures individual Content Security Policy (CSP) directives.</p>
 <div class="paragraph">
-<p>See <a href="https://www.w3.org/TR/CSP2/">Content Security Policy Level 2</a> and the Bean <code>org.eclipse.scout.rt.server.commons.servlet.ContentSecurityPolicy</code> for more details.</p>
+<p>See <a href="https://www.w3.org/TR/CSP2/" class="bare">https://www.w3.org/TR/CSP2/</a> and the Bean <code>org.eclipse.scout.rt.server.commons.servlet.ContentSecurityPolicy</code> for more details.</p>
 </div>
 <div class="paragraph">
 <p>The value must be provided as a Map.</p>
@@ -1427,7 +1586,7 @@ To minimize configuration files such entries should be removed from <code>config
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>scout.cspDirective[img-src]=`self` data: 'self' data: https://media.example.com</pre>
+<pre>scout.cspDirective[img-src]=`self` data: https://media.example.com</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1448,11 +1607,40 @@ To minimize configuration files such entries should be removed from <code>config
 <p>Data type: List</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>scout.dev.texts.fileWatcherEnabled</code> </dt>
+<dd>
+<p>Specifies if the a file watcher should be installed for every nls resource bundle to invalidate the texts cache if a file changed. This property will only have an effect if platform runs in development mode.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>scout.devMode</code> </dt>
 <dd>
 <p>Property to specify if the application is running in development mode. Default is false.</p>
 <div class="paragraph">
 <p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.diagnostics.httpSessionIdLogMode</code> </dt>
+<dd>
+<p>Specifies in which form the HTTP session ID is provided as diagnostic context value.</p>
+<div class="paragraph">
+<p>Possible modes:</p>
+</div>
+<div class="paragraph">
+<p><code>off</code>: No HTTP session ID is provided.</p>
+</div>
+<div class="paragraph">
+<p><code>short</code>: Only a short and obfuscated version of the HTTP session is provided. The actual ID cannot be recovered from this.</p>
+</div>
+<div class="paragraph">
+<p><code>full</code>: The full HTTP session ID is provided, as reported by the application server. CAUTION: Only use this mode if you can guarantee that no malicious third party has access to the log files. Otherwise they might be able to hijack active sessions.</p>
+</div>
+<div class="paragraph">
+<p>In development mode, the default value is <code>full</code>. Otherwise, the default value is <code>short</code>.</p>
+</div>
+<div class="paragraph">
+<p>Data type: HttpSessionIdLogMode</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.externalBaseUrl</code> </dt>
@@ -1471,6 +1659,13 @@ To minimize configuration files such entries should be removed from <code>config
 </div>
 <div class="paragraph">
 <p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.headless</code> </dt>
+<dd>
+<p>Specifies if the Scout Platform runs in headless mode. If true, the Java system property <code>java.awt.headless</code> is set to true as well (if not already set). The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.healthCheckRemoteUrls</code> </dt>
@@ -1492,7 +1687,7 @@ To minimize configuration files such entries should be removed from <code>config
 </dd>
 <dt class="hdlist1"><code>scout.http.ignoreProxyPatterns</code> </dt>
 <dd>
-<p>Configure the proxy ignore list for the ConfigurableProxySelector. If a URI matches the pattern no proxy connection is used.</p>
+<p>Configure the proxy ignore list for the ConfigurableProxySelector. If an URI matches the pattern no proxy connection is used.</p>
 <div class="paragraph">
 <p>By default no proxy is configured.</p>
 </div>
@@ -1535,7 +1730,7 @@ scout.http.ignoreProxyPatterns[1]=...</pre>
 </dd>
 <dt class="hdlist1"><code>scout.http.proxyPatterns</code> </dt>
 <dd>
-<p>Configure proxies for the <code>ConfigurableProxySelector</code>. If a URI matches a pattern the corresponding proxy will be used.</p>
+<p>Configure proxies for the <code>ConfigurableProxySelector</code>. If an URI matches a pattern the corresponding proxy will be used.</p>
 <div class="paragraph">
 <p>By default no proxy is used.</p>
 </div>
@@ -1553,13 +1748,6 @@ scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
 </div>
 <div class="paragraph">
 <p>Data type: List</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>scout.http.redirectPost</code> </dt>
-<dd>
-<p>Enable redirect of POST requests (includes non-idempotent requests). The default value is true</p>
-<div class="paragraph">
-<p>Data type: Boolean</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.http.retryOnNoHttpResponseException</code> </dt>
@@ -1669,7 +1857,7 @@ scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
 <dd>
 <p>Fully qualified class name of the JAX-WS implementor to use. The class must extend <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsImplementorSpecifics</code>.</p>
 <div class="paragraph">
-<p>By default JAX-WS Metro (not bundled with JRE) is used. For that to work, add the Maven dependency to JAX-WS Metro to your server application`s pom.xml: com.sun.xml.ws:jaxws-rt:2.3.5.</p>
+<p>By default, JAX-WS Metro (not bundled with JRE) is used. For that to work, add the Maven dependency to JAX-WS Metro to your server application`s pom.xml: com.sun.xml.ws:jaxws-rt:2.2.10.</p>
 </div>
 <div class="paragraph">
 <p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsImplementorSpecifics</code> in its super hierarchy.</p>
@@ -1704,13 +1892,6 @@ scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
 </div>
 <div class="paragraph">
 <p>Data type: Subject name as String</p>
-</div>
-</dd>
-<dt class="hdlist1"><code>scout.app.port</code> </dt>
-<dd>
-<p>The port under which the jetty will be running.</p>
-<div class="paragraph">
-<p>Data type: Integer between 1 and 65535</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.jobmanager.allowCoreThreadTimeOut</code> </dt>
@@ -1777,6 +1958,13 @@ scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
 <p>Non-standard email bounce detection: subject is checked against the provided list of heuristic subjects (partial match, case-insensitive)</p>
 <div class="paragraph">
 <p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.malwareScanner.delay</code> </dt>
+<dd>
+<p>Delay in milliseconds to wait after writing the file to the temp directory. This lets the scanner some time for checking. Default is 500ms.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.malwareScanner.path</code> </dt>
@@ -1857,7 +2045,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </dd>
 <dt class="hdlist1"><code>scout.mom.requestreply.cancellationTopic</code> </dt>
 <dd>
-<p>Specifies the default topic to receive cancellation request for <code>request-reply</code> communication. By default a defined topic with the name <code>scout.mom.requestreply.cancellation</code> is used.</p>
+<p>Specifies the default topic to receive cancellation request for <code>request-reply</code> communication. By default, a defined topic with the name <code>scout.mom.requestreply.cancellation</code> is used.</p>
 <div class="paragraph">
 <p>Data type: IDestination</p>
 </div>
@@ -1876,9 +2064,89 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 <p>Data type: String</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>scout.otel.defaultExporter</code> </dt>
+<dd>
+<p>List of exporters to be used for traces, metrics and logs, separated by commas. Default is <code>otlp</code> or <code>none</code> in dev mode. Use this property to override the default.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.initializerEnabled</code> </dt>
+<dd>
+<p>Property to specify if the application is using the Scout OpenTelemetry initializer. Default is false. Set to false if you are using the OpenTelemetry Java Agent.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.platform.version</code> </dt>
+<dd>
+<p>Version of the scout platform. Used e.g. in the info form and the diagnostic views. The default value is bound to the implementation version in the manifest file.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.propertySupport.storeConfigValues</code> </dt>
+<dd>
+<p>Defines if config values should be stored using BasicPropertySupport, this is the current default and may be changed &gt; 22.0 in order to reduce global memory consumption.Default: true</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>scout.remotefileRootPath</code> </dt>
 <dd>
 <p>Absolute path to the root directory of the <code>RemoteFileService</code>. The default value is null.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.ensureHttpHeaderConnectionClose</code> </dt>
+<dd>
+<p>Ensures that the header <code>Connection: close</code> is added to every REST HTTP requests unless the header <code>Connection</code> is already set. As a result, TCP Connections are not reused by consecutive REST calls.The default value is true</p>
+<div class="paragraph">
+<p>This solves several rather rare issues that occurred in the HTTP client implementation when a connection was closed by the server side while it was being used by the client side for the next request.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serial.blacklistAppend</code> </dt>
+<dd>
+<p>Specifies a blacklist regex for fully qualified class names that are blocked in object serialization.</p>
+<div class="paragraph">
+<p>These rules are appended to the existing built-in blacklist (recommended).</p>
+</div>
+<div class="paragraph">
+<p>Comma separated list of regular expressions (regex).</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serial.blacklistReplace</code> </dt>
+<dd>
+<p>Specifies a blacklist regex for fully qualified class names that are blocked in object serialization.</p>
+<div class="paragraph">
+<p>These rules replace the existing built-in blacklist (not recommended).</p>
+</div>
+<div class="paragraph">
+<p>Comma separated list of regular expressions (regex).</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serial.whitelist</code> </dt>
+<dd>
+<p>Specifies the secure whitelist of fully qualified class names that are allowed to be used in object serialization.</p>
+<div class="paragraph">
+<p>Comma separated list of regular expressions (regex).</p>
+</div>
+<div class="paragraph">
+<p>The default regex .* is used for back compatibility only, this is unsafe.</p>
+</div>
+<div class="paragraph">
+<p>Make sure to define the property <code>scout.serial.whitelist</code> in the config.properties</p>
+</div>
 <div class="paragraph">
 <p>Data type: String</p>
 </div>
@@ -1977,7 +2245,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </dd>
 <dt class="hdlist1"><code>scout.sql.directJdbcConnection</code> </dt>
 <dd>
-<p>If true a direct JDBC connection is created. Otherwise, a JNDI connection is used. The default value is true.</p>
+<p>If true a direct JDBC connection is created. Otherwise a JNDI connection is used. The default value is true.</p>
 <div class="paragraph">
 <p>Data type: Boolean</p>
 </div>
@@ -2068,7 +2336,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </dd>
 <dt class="hdlist1"><code>scout.sql.transactionMemberId</code> </dt>
 <dd>
-<p>ID of the transaction member on which the connection is available.</p>
+<p>Id of the transaction member on which the connection is available.</p>
 <div class="paragraph">
 <p>Data type: String</p>
 </div>
@@ -2129,7 +2397,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </dd>
 <dt class="hdlist1"><code>scout.ui.locales</code> </dt>
 <dd>
-<p>Contains a comma separated list of supported locales (e.g. en,en-US,de-CH).</p>
+<p>Contains a comma separated list of supported locales (e.g. en,en-US,de-CH). To support all locales, use the keyword <code>all</code> instead.</p>
 <div class="paragraph">
 <p>This is only relevant if locales.json and texts.json should be sent to the client, which is not the case for remote apps. So this property is only used for JS only apps.</p>
 </div>
@@ -2138,6 +2406,16 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 </div>
 <div class="paragraph">
 <p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.maxUploadFileCount</code> </dt>
+<dd>
+<p>For security reasons, file upload is limited to a maximum number of file that can be processed at once.</p>
+<div class="paragraph">
+<p>By default this property is set to 100. A value of -1 means no limit</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.ui.maxUserIdleTime</code> </dt>
@@ -2177,6 +2455,27 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 <p>Data type: String</p>
 </div>
 </dd>
+<dt class="hdlist1"><code>scout.uinotification.cleanupJobInterval</code> </dt>
+<dd>
+<p>The cleanup job removes expired notifications from the registry.This property configures in seconds, how often the cleanup job should run. Default is set to 5 minutes.If set to 0, the job won`t run.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.expirationTime</code> </dt>
+<dd>
+<p>Configures in milliseconds how long the notification has to be kept in the registry until it can be removed.This value is used if no explicit expirationTime is set for a specific notification.Important: the expiration time should be larger than the timeout for the HTTP session used for the UI.This makes sure he won`t miss any notifications if he was offline for a while, because he will be logged out anyway after getting online again.Default is 7 minutes.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.waitTimeout</code> </dt>
+<dd>
+<p>Configures in milliseconds how long the request should listen for a new notification it is interested in is put into the registry.If set to 0, the currently available list of notifications will be returned immediately.Default is 1 minute.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
 <dt class="hdlist1"><code>scout.urlHints.enabled</code> </dt>
 <dd>
 <p>Enable or disable changing UrlHints using URL parameters in the browser address line.</p>
@@ -2201,7 +2500,7 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. <a href="https://github.com/wildfly/jandex" class="bare">https://github.com/wildfly/jandex</a>
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/smallrye/jandex" class="bare">https://github.com/smallrye/jandex</a>
 </div>
 <div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/.properties" class="bare">https://en.wikipedia.org/wiki/.properties</a>

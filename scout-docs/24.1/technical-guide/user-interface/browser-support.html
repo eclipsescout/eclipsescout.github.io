@@ -351,6 +351,8 @@
 </aside>
 <article class="doc">
 <h1 class="page">Browser Support</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>The Scout HTML UI requires a web browser with modern built-in technologies: HTML 5, CSS 3, JavaScript (ECMAScript 5). Scout does its best to support all browsers widely in use today by making use of vendor-specific prefixes, polyfills or other workarounds. However, some older or obscure browsers are not supported deliberately, simply because they are lacking basic capabilities or the required effort would be beyond reason.</p>
 </div>
@@ -390,6 +392,36 @@
 </div>
 </dd>
 </dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="http2"><a class="anchor" href="#http2"></a>HTTP/2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Starting with Scout 24 <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> is supported and highly recommended to be used!
+<code>HTTP/2</code> can use multiplexing for multiple requests over a single <code>TCP</code> connection which eliminates the issue that only a few number of tabs can be open in the Browser for the same Scout application.</p>
+</div>
+<div class="paragraph">
+<p>To ensure <code>HTTP/2</code> is used for the Browser running your Scout application the following should be considered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>HTTP/2</code> is only used by Browsers when the requests are encrypted (<a href="https://en.wikipedia.org/wiki/HTTPS">https</a>). Therefore, ensure your application is only accessible using <code>TLS</code> (which is recommended anyway).</p>
+</li>
+<li>
+<p><code>HTTP/2</code> must be enabled on the server that accepts the requests from the Browser. This may be a <a href="https://en.wikipedia.org/wiki/Web_application_firewall">WAF</a>, <a href="https://en.wikipedia.org/wiki/Load_balancing_(computing)">Load balancer</a>, or <a href="https://en.wikipedia.org/wiki/Reverse_proxy">Reverse Proxy</a> in front of your Scout application (for best security it is not recommended to expose the Scout server directly to the Internet). Please consult the documentation of your proxy or WAF on how to activate <code>HTTP/2</code> and <code>https</code>.</p>
+</li>
+<li>
+<p>You may also use <code>HTTP/2</code> from the front-end proxy or WAF to the actual Scout Jetty server but this is optional.</p>
+</li>
+<li>
+<p>The Scout Jetty server supports <code>HTTP/2</code> since version 24 out of the box.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="build-stack.html">Build Stack</a></span>

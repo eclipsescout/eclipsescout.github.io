@@ -400,6 +400,52 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 <div class="sect1">
+<h2 id="new-build-runtime-requirements"><a class="anchor" href="#new-build-runtime-requirements"></a>New Build &amp; Runtime Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout 24.1 requires at least the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Java 11 support has been dropped. Build and runtime therefore require Java 17 now. Java 21 Support is planned for a future release.</p>
+</li>
+<li>
+<p>Furthermore, the build requires</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven &gt;= 3.9.2</p>
+</li>
+<li>
+<p>Node 20 &gt;= 20.10.0</p>
+</li>
+<li>
+<p>pnpm 8 &gt;= 8.11.0</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="http2-support"><a class="anchor" href="#http2-support"></a>HTTP/2 Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Starting with release 24.1 the Scout <a href="https://eclipse.dev/jetty/">Jetty</a> server supports <code>HTTP/2</code> together with the already existing <code>HTTP/1.1</code>. It is enabled for <code>http</code> and <code>https</code> (<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>) access.
+Please note that Browsers only use <code>HTTP/2</code> when using <code>https</code>.</p>
+</div>
+<div class="paragraph">
+<p>When using <code>https</code> also <a href="https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation">ALPN</a> is supported which can upgrade an <code>HTTP/1.1</code> request to an <code>HTTP/2</code> request if the client supports it.</p>
+</div>
+<div class="paragraph">
+<p>For Scout 24 and newer enabling <code>HTTP/2</code> for your application is recommended. Please refer to the <a href="../technical-guide/user-interface/browser-support.html" class="xref page">documentation</a> on how to enable <code>HTTP/2</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="ui-notifications"><a class="anchor" href="#ui-notifications"></a>UI Notifications</h2>
 <div class="sectionbody">
 <div class="paragraph">

@@ -426,11 +426,11 @@ The here described functionality has not yet been released and is part of an upc
   "version": "1.0.0",
   "devDependencies": {
     "@eclipse-scout/cli": "releases/24.1",
-    "@eclipse-scout/releng": "^22.0.0"
+    "@eclipse-scout/releng": "^24.1.0"
   },
   "dependencies": {
     "@eclipse-scout/core": "releases/24.1",
-    "jquery": "3.6.0"
+    "jquery": "3.7.1"
   }
 }</code></pre>
 </div>
@@ -463,6 +463,76 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-build-runtime-requirements"><a class="anchor" href="#new-build-runtime-requirements"></a>New Build &amp; Runtime Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout 24.1 requires at least the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Java 11 support has been dropped. Build and runtime therefore require Java 17 now. Java 21 Support is planned for a future release.</p>
+</li>
+<li>
+<p>Furthermore, the build requires</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven &gt;= 3.9.2</p>
+</li>
+<li>
+<p>Node.js &gt;= 20.10.0</p>
+</li>
+<li>
+<p>pnpm &gt;= 8.11.0</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="http2-support"><a class="anchor" href="#http2-support"></a>HTTP/2 Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For Scout 24 and newer enabling <code>HTTP/2</code> for your application is recommended. Please refer to the <a href="../technical-guide/user-interface/browser-support.html" class="xref page">documentation</a> on how to enable <code>HTTP/2</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-changes"><a class="anchor" href="#build-changes"></a>Build changes</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The Maven build has the enforcer rule <a href="https://maven.apache.org/enforcer/enforcer-rules/dependencyConvergence.html">dependencyConvergence</a> enabled by default.
+Therefore, builds will fail if different versions for the same dependency are used.
+To fix this, ensure your dependencies converge and use the <a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html">dependencyManagement</a> where necessary to specify which version to use.</p>
+</li>
+<li>
+<p>The property <code>master_dependency_tycho-compiler_version</code> has been deleted as the Tycho compiler is no longer used.
+Instead, the property <code>master_dependency_ecj_version</code> may be used to specify the <a href="https://search.maven.org/artifact/org.eclipse.jdt/ecj">Eclipse compiler (ECJ)</a> version. By default version 3.31.0 is used which is part of Eclipse 4.27 (2023-03), IntelliJ 2023.2 and IntelliJ 2023.3.</p>
+</li>
+<li>
+<p>Typescript has been updated from 4.9.5 to 5.3.2. See <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#breaking-changes-and-deprecations">here</a> for a list of breaking changes and update your code accordingly.</p>
+</li>
+<li>
+<p>Update the version of the <code>maven_rt_plugin_config-master</code> in your <code>pom.xml</code> files to the newest <code>24.1.x</code> release.
+See <a href="https://search.maven.org/artifact/org.eclipse.scout/maven_rt_plugin_config-master">Maven central</a> for a list of versions available.</p>
+</li>
+<li>
+<p>Update the Scout versions (<code>package.json</code> and <code>pom.xml</code>) as shown in <a href="#obtaining-the-latest-version">Obtaining the Latest Version</a>.</p>
+</li>
+<li>
+<p>If you are using Eclipse and web-service providers, update the <code>.factorypath</code> files as shown in <a href="../technical-guide/working-with-data/jax-ws.html#jax-ws-appendix" class="xref page">JAX-WS Appendix</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
