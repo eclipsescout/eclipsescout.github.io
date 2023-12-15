@@ -2045,7 +2045,7 @@ List&lt;String&gt; httpResponseHeader = context.getHttpResponseHeader("X-CUSTOM-
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class PingWebServiceClient2 extends AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
 
   @Override
-  protected void execInstallHandlers(List&lt;javax.xml.ws.handler.Handler&lt;?&gt;&gt; handlerChain) {
+  protected void execInstallHandlers(List&lt;jakarta.xml.ws.handler.Handler&lt;?&gt;&gt; handlerChain) {
     handlerChain.add(new BasicAuthenticationHandler());
     handlerChain.add(BEANS.get(LogHandler.class));
   }
@@ -2075,7 +2075,7 @@ The credentials as provided via <code>InvocationContext</code> can be accessed v
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class PingWebServiceClient3 extends AbstractWebServiceClient&lt;PingWebService, PingWebServicePortType&gt; {
 
   @Override
-  protected void execInstallHandlers(List&lt;javax.xml.ws.handler.Handler&lt;?&gt;&gt; handlerChain) {
+  protected void execInstallHandlers(List&lt;jakarta.xml.ws.handler.Handler&lt;?&gt;&gt; handlerChain) {
     handlerChain.add(new BasicAuthenticationHandler());
     handlerChain.add(BEANS.get(LogHandler.class));
     handlerChain.add(BEANS.get(WsConsumerCorrelationIdHandler.class)); <i class="conum" data-value="1"></i><b>(1)</b>

@@ -411,7 +411,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;web-app&gt;
   ...
   &lt;!-- JAX-RS Jersey Servlet --&gt;
@@ -419,7 +419,7 @@
     &lt;servlet-name&gt;apiServlet&lt;/servlet-name&gt;
     &lt;servlet-class&gt;org.glassfish.jersey.servlet.ServletContainer&lt;/servlet-class&gt;
     &lt;init-param&gt;
-      &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt;
+      &lt;param-name&gt;jakarta.ws.rs.Application&lt;/param-name&gt;
       &lt;param-value&gt;org.eclipse.scout.rt.rest.RestApplication&lt;/param-value&gt;
     &lt;/init-param&gt;
     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
@@ -452,10 +452,10 @@
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.eclipse.scout.hellojs.ui.html.helloworld;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 import org.eclipse.scout.rt.platform.status.IStatus;
 import org.eclipse.scout.rt.platform.status.Status;
