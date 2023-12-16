@@ -506,6 +506,22 @@ Very few complex widgets still lack a comprehensive WAI-ARIA support as these wi
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="login-form-add-support-for-second-factor-form-based"><a class="anchor" href="#login-form-add-support-for-second-factor-form-based"></a>Login form: Add support for second-factor (form-based)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the <code>FormBasedAccessController</code> and the corresponding login box a basic second-factor support was added; a new credential verifier return value <code>org.eclipse.scout.rt.platform.security.ICredentialVerifier.AUTH_2FA_REQUIRED</code> was added which will prompt for a second factor token. To verify this token a second-factor verifier <code>ICredentialVerifier</code> needs to be registered.</p>
+</div>
+<div class="paragraph">
+<p>During form-based login, for second-factor enabled accounts, a token is requested (after first challenge has been completed successful), for this token a new text <code>ui.Token</code> has been added to the login form and must be added to the <code>[&#8230;&#8203;].ui.html/src/main/resources/WebContent/login.html</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;scout:message style="tag" key="ui.Login" key="ui.LoginFailed" key="ui.User" key="ui.Password" key="ui.Token" /&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
