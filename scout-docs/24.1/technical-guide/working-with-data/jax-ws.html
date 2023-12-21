@@ -635,7 +635,7 @@ It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor ne
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Some application servers like Oracle WebLogic Server (WLS) allow the port types to be registered as a Servlet in web.xml. However, this is vendor specific, and works despite the fact that port type does not implement 'javax.servlet.Servlet'.
+Some application servers like Oracle WebLogic Server (WLS) allow the port types to be registered as a Servlet in web.xml. However, this is vendor specific, and works despite the fact that port type does not implement 'jakarta.servlet.Servlet'.
 </td>
 </tr>
 </table>
@@ -1231,7 +1231,7 @@ See <a href="#jaxws.provider.authentication">Configure Authentication</a> for mo
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">handlerChain</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the handlers to be installed. The order of the handlers is as declared. A handler is looked up as a bean, and must implement <code>javax.xml.ws.handler.Handler</code> interface.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the handlers to be installed. The order of the handlers is as declared. A handler is looked up as a bean, and must implement <code>jakarta.xml.ws.handler.Handler</code> interface.<br>
 See <a href="#jaxws.provider.handlerChain">Configure JAX-WS Handlers</a> for more information.</p></td>
 </tr>
 </tbody>
@@ -1489,7 +1489,7 @@ public class PingWebServiceEntryPoint implements PingWebServicePortType {</code>
 <p>JAX-WS handlers are configured directly on the entry point definition via the array field <code>handlerChain</code>. In turn, <em>JaxWsAnnotationProcessor</em> generates a 'handler XML file' with the handler&#8217;s order preserved, and which is registered in entry point via annotation <code>handlerChain</code>.</p>
 </div>
 <div class="paragraph">
-<p>A handler can be initialized with static 'init parameters', which will be injected into the handler instance. For the injection to work, declare a member of the type <code>Map</code> in the handler class, and annotate it with <code>javax.annotation.Resource</code> annotation.</p>
+<p>A handler can be initialized with static 'init parameters', which will be injected into the handler instance. For the injection to work, declare a member of the type <code>Map</code> in the handler class, and annotate it with <code>jakarta.annotation.Resource</code> annotation.</p>
 </div>
 <div class="paragraph">
 <p>Because handlers are looked up via bean manager, a handler must be annotated with <code>ApplicationScoped</code> annotation.</p>
@@ -1555,7 +1555,7 @@ public class IPAddressFilter implements SOAPHandler&lt;SOAPMessageContext&gt; {
 <div class="sect2">
 <h3 id="jaxws.provider.statepropagation"><a class="anchor" href="#jaxws.provider.statepropagation"></a>Propagate state among Handlers and port type</h3>
 <div class="paragraph">
-<p>Sometimes it is useful to share state among handlers, and even with the port type. This can be done via <code>javax.xml.ws.handler.MessageContext</code>. By default, a property put onto message context is only available in the handler chain. To make it available to the port type as well, set its scope to 'APPLICATION' accordingly.</p>
+<p>Sometimes it is useful to share state among handlers, and even with the port type. This can be done via <code>jakarta.xml.ws.handler.MessageContext</code>. By default, a property put onto message context is only available in the handler chain. To make it available to the port type as well, set its scope to 'APPLICATION' accordingly.</p>
 </div>
 <div class="paragraph">
 <p>The following listings gives an example of how to propagate state among handlers and port type.</p>

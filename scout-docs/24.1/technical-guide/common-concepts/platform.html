@@ -644,7 +644,7 @@ Also <code>@ApplicationScoped</code> is an <code>@Inherited</code> annotation. T
 <div class="sect3">
 <h4 id="constructors"><a class="anchor" href="#constructors"></a>Constructors</h4>
 <div class="paragraph">
-<p>Beans must have empty constructors so that the bean manager can create instances. But furthermore it is possible to mark methods with the <code>javax.annotation.@PostConstruct</code> annotation. Those methods must have no parameters and will be called after instances have been created.</p>
+<p>Beans must have empty constructors so that the bean manager can create instances. But furthermore it is possible to mark methods with the <code>jakarta.annotation.@PostConstruct</code> annotation. Those methods must have no parameters and will be called after instances have been created.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -884,7 +884,7 @@ public class BackendCallProfilerDecorator&lt;T&gt; implements IBeanDecorator&lt;
 <div class="sect2">
 <h3 id="destroy-beans"><a class="anchor" href="#destroy-beans"></a>Destroy Beans</h3>
 <div class="paragraph">
-<p>Application scoped beans can declare methods annotated with <code>javax.annotation.@PreDestroy</code>. These methods will be called when the Scout platform is stopping.
+<p>Application scoped beans can declare methods annotated with <code>jakarta.annotation.@PreDestroy</code>. These methods will be called when the Scout platform is stopping.
 The methods may have any visibility modifier but must not be static and must not declare any parameters.
 If such a pre-destroy method throws an exception, the platform will continue to call all other pre-destroy methods (even methods on the same bean).</p>
 </div>

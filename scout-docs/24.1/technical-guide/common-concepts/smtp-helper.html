@@ -354,8 +354,8 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>org.eclipse.scout.rt.mail.smtp.SmtpHelper</code> is an <code>@ApplicationScoped</code> Bean that provides means of sending emails described by <code>javax.mail.internet.MimeMessage</code> objects via SMTP.
-The SMTP connection can either be provided as a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object containing all the required connection parameters or as an already created <code>javax.mail.Session</code> object.
+<p>The <code>org.eclipse.scout.rt.mail.smtp.SmtpHelper</code> is an <code>@ApplicationScoped</code> Bean that provides means of sending emails described by <code>jakarta.mail.internet.MimeMessage</code> objects via SMTP.
+The SMTP connection can either be provided as a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object containing all the required connection parameters or as an already created <code>jakarta.mail.Session</code> object.
 The <code>SmtpHelper</code> also supports pooling of SMTP connections as described in the section <a href="#connection-pooling-chapter">Connection Pooling</a>.</p>
 </div>
 </div>
@@ -422,7 +422,7 @@ The <code>SmtpHelper</code> also supports pooling of SMTP connections as describ
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">additionalSessionProperties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Can be used to specify any other property for the <code>javax.mail.Session</code> that is created from <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>. These additional properties are applied after all the other properties, thus may override already specified properties.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be used to specify any other property for the <code>jakarta.mail.Session</code> that is created from <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code>. These additional properties are applied after all the other properties, thus may override already specified properties.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"mail.smtp.socketFactory.class": "com.example.net.SocketFactory"</p></td>
 </tr>
 <tr>
@@ -521,7 +521,7 @@ CharsetSafeMimeMessage mimeMessage = BEANS.get(MailHelper.class).createMimeMessa
 </div>
 </div>
 <div class="paragraph">
-<p>In order to send the message you can either use a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object or an existing <code>javax.mail.Session</code> object as demonstrated in <a href="#lst-SmtpHelper.sendWithSmtpServerConfig">Listing 3</a> and <a href="#lst-SmtpHelper.sendWithSession">Listing 4</a>.</p>
+<p>In order to send the message you can either use a <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object or an existing <code>jakarta.mail.Session</code> object as demonstrated in <a href="#lst-SmtpHelper.sendWithSmtpServerConfig">Listing 3</a> and <a href="#lst-SmtpHelper.sendWithSession">Listing 4</a>.</p>
 </div>
 <div id="lst-SmtpHelper.sendWithSmtpServerConfig" class="listingblock">
 <div class="title">Listing 3. Send email using an <code>org.eclipse.scout.rt.mail.smtp.SmtpServerConfig</code> object.</div>
@@ -530,7 +530,7 @@ CharsetSafeMimeMessage mimeMessage = BEANS.get(MailHelper.class).createMimeMessa
 </div>
 </div>
 <div id="lst-SmtpHelper.sendWithSession" class="listingblock">
-<div class="title">Listing 4. Send email using an existing <code>javax.mail.Session</code> object.</div>
+<div class="title">Listing 4. Send email using an existing <code>jakarta.mail.Session</code> object.</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// The password has to be provided additionally as it is not stored in the session object.
 BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code></pre>
@@ -585,7 +585,7 @@ BEANS.get(SmtpHelper.class).sendMessage(session, password, mimeMessage);</code><
 If you want to send a lot of emails, this behaviour is rather inefficient as opening a new SMTP connection takes a long time compared to sending the email especially when using encrypted connections.
 To mitigate this overhead, the <code>SmtpHelper</code> supports pooling of SMTP connections which is activated using the <code>poolSize</code> property of <code>SmtpServerConfig</code> objects.
 If you set the pool size property to a value &gt; 0, the <code>SmtpHelper</code> will create parallel connections up to the specified number.
-This means, that connection pooling is not possible when you use the <code>sendMessage</code> method accepting an already prepared <code>javax.mail.Session</code> object.</p>
+This means, that connection pooling is not possible when you use the <code>sendMessage</code> method accepting an already prepared <code>jakarta.mail.Session</code> object.</p>
 </div>
 <div class="paragraph">
 <p><strong>Pooling</strong> in this context means the following:</p>
