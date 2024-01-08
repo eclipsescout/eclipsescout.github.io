@@ -489,6 +489,12 @@ To publish a notification, just add any <a href="../technical-guide/working-with
 <div class="paragraph">
 <p>To use the new version with the Google HTTP Client library a <code>org.eclipse.scout.rt.shared.http.transport.ApacheHttpTransport</code> is introduced (as the third party library itself does not support the newer version yet as the library itself refers to an older HttpClient version this older version is explicitly excluded).</p>
 </div>
+<div class="paragraph">
+<p>For <code>org.eclipse.scout.rt.server.commons.servlet.HttpProxy</code> the Google HTTP Client library is not used anymore, instead a new class <code>org.eclipse.scout.rt.shared.http.async.DefaultAsyncHttpClientManager</code> (configurable using a config property) is used. The new concept uses the HttpClient directly as async variant. <code>org.eclipse.scout.rt.shared.http.transport.ApacheHttpTransport</code> still uses the classic variant.</p>
+</div>
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.shared.http.BasicAuthHttpTransportManager</code> was removed, users may provide pre-emptive basic authentication using a custom <code>org.apache.hc.client5.http.protocol.HttpClientContext</code> for specific hosts (e.g for the <code>HttpProxy</code> using <code>org.eclipse.scout.rt.server.commons.servlet.HttpProxy.withHttpClientContextSupplier</code>).</p>
+</div>
 </div>
 </div>
 <div class="sect1">
