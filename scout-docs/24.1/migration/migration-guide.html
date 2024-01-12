@@ -774,6 +774,34 @@ The Scout Application class contains a main-method which may be started directly
 </div>
 </div>
 <div class="sect1">
+<h2 id="add-streaming-support-to-hashing-securityutility"><a class="anchor" href="#add-streaming-support-to-hashing-securityutility"></a>Add streaming support to hashing (SecurityUtility)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> supports streaming:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>byte[] hash(byte[] data, byte[] salt)</code> &#8594; <code>byte[] hash(byte[] data)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the new method where possible, if required use <code>ILegacySecurityProvider.createHash(byte[] data, byte[] salt)</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>NEW: <code>DigestInputStream toHashingStream(InputStream stream)</code></p>
+</li>
+<li>
+<p>NEW: <code>DigestOutputStream toHashingStream(OutputStream stream)</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="idexternalformatter-removed"><a class="anchor" href="#idexternalformatter-removed"></a>IdExternalFormatter removed</h2>
 <div class="sectionbody">
 <div class="paragraph">
