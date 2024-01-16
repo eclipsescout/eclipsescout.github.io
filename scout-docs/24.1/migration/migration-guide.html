@@ -810,6 +810,61 @@ This class was replaced by <code>IdCodec</code> and <code>IdInventory</code> in 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="apache-httpcomponents-client-5-2-x"><a class="anchor" href="#apache-httpcomponents-client-5-2-x"></a>Apache HttpComponents Client 5.2.x</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With Scout version 7 the usage of Apache HttpComponents Client was introduced (for example for communication between frontend and backend server). At that time version 4.5.3 was used which received only minor updates between releases (for major defects and security issues), version 24.1 of Scout upgrades the Apache HTTP Client to the next major version - now version 5.2.x is used.</p>
+</div>
+<div class="paragraph">
+<p>Scout does not depend itself on an older Apache HttpComponents Client version anymore; however the new client version can be co-located with earlier major version on the same classpath as package names and maven coordinates have been changed.</p>
+</div>
+<div class="paragraph">
+<p>This may result in changes if your project references (imports) Apache HttpComponents classes itself, e.g. <code>org.apache.http.HttpHeaders</code> has been moved to <code>org.apache.hc.core5.http.HttpHeaders</code>, <code>org.apache.http.impl.client.HttpClientBuilder</code> has been moved to <code>org.apache.hc.client5.http.impl.classic.HttpClientBuilder</code>, for further details the <a href="https://hc.apache.org/httpcomponents-client-5.2.x/migration-guide/index.html">Apache HttpClient 5.x migration guide</a> may be consulted (at the moment the classic API is still used to avoid too many changes).</p>
+</div>
+<div class="paragraph">
+<p>There is also behavior and API which has changed, the following behavioral changes have been noticed during development:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.rt.shared.http.EnhancedLaxRedirectStrategy</code> is removed, this strategy previously enforced a second HTTP POST request for certain HTTP redirect status codes (e.g. 302 Found). According to <a href="https://www.rfc-editor.org/rfc/rfc9110.html#status.302">RFC 9110</a> in this case the POST request may be replaced with a GET request which the HttpClient will now respect. For redirects which require to re-send the POST request a different status code must be used (e.g. 307 Temporary Redirect). The config property <code>scout.http.redirectPost</code> has been removed.</p>
+</li>
+<li>
+<p>Internal test <code>org.eclipse.scout.rt.server.commons.http.HttpRetryTest.testPostWithUnsupportedRetryAndFailureWhileHeadersAreSent</code> has been removed as retry-strategy has been changed, requests failing with a <code>org.apache.hc.core5.http.ConnectionClosedException</code> while sending the request are not retried anymore in general, furthermore only idempotent requests will be retried by default. However, the Scout specific implementation to retry requests dealing with a stale socket channel is kept (regardless of the request method).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For third-party dependencies which refer to an older HttpClient version either both versions will co-exist (see above) or it is necessary to search for updated third-party versions which reference the new version of the HttpClient.</p>
+</div>
+<div class="paragraph">
+<p>To use the new version with the Google HTTP Client library a <code>org.eclipse.scout.rt.shared.http.transport.ApacheHttpTransport</code> is introduced (as the third party library itself does not support the newer version yet as the library itself refers to an older HttpClient version this older version is explicitly excluded).</p>
+</div>
+<div class="paragraph">
+<p>For <code>org.eclipse.scout.rt.server.commons.servlet.HttpProxy</code> the Google HTTP Client library is not used anymore, instead a new class <code>org.eclipse.scout.rt.shared.http.async.DefaultAsyncHttpClientManager</code> (configurable using a config property) is used. The new concept uses the HttpClient directly as async variant. <code>org.eclipse.scout.rt.shared.http.transport.ApacheHttpTransport</code> still uses the classic variant.</p>
+</div>
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.shared.http.BasicAuthHttpTransportManager</code> was removed, users may provide pre-emptive basic authentication using a custom <code>org.apache.hc.client5.http.protocol.HttpClientContext</code> for specific hosts (e.g for the <code>HttpProxy</code> using <code>org.eclipse.scout.rt.server.commons.servlet.HttpProxy.withHttpClientContextSupplier</code>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="login-form-add-support-for-second-factor-form-based"><a class="anchor" href="#login-form-add-support-for-second-factor-form-based"></a>Login form: Add support for second-factor (form-based)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the <code>FormBasedAccessController</code> and the corresponding login box a basic second-factor support was added; a new credential verifier return value <code>org.eclipse.scout.rt.platform.security.ICredentialVerifier.AUTH_2FA_REQUIRED</code> was added which will prompt for a second factor token. To verify this token a second-factor verifier <code>ICredentialVerifier</code> needs to be registered.</p>
+</div>
+<div class="paragraph">
+<p>During form-based login, for second-factor enabled accounts, a token is requested (after first challenge has been completed successful), for this token a new text <code>ui.Token</code> has been added to the login form and must be added to the <code>[&#8230;&#8203;].ui.html/src/main/resources/WebContent/login.html</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;scout:message style="tag" key="ui.Login" key="ui.LoginFailed" key="ui.User" key="ui.Password" key="ui.Token" /&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
