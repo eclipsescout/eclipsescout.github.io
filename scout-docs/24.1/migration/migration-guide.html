@@ -621,12 +621,16 @@ xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"&gt;  <i class="conum" data-value="2"
 </div>
 </div>
 <div class="sect4">
-<h5 id="ui-server-web-xml"><a class="anchor" href="#ui-server-web-xml"></a>UI Server web.xml</h5>
+<h5 id="ui-server-multipart-request-configuration"><a class="anchor" href="#ui-server-multipart-request-configuration"></a>UI Server: Multipart request configuration</h5>
 <div class="paragraph">
 <p>As part of the switch to Jakarta EE the third party library dependency to Apache File Upload was eliminated.
 Scout now relies on plain Jakarta EE API to process HTTP multipart requests.
-Servlets processing multipart requests using Jakarta EE API requires a multipart-config in their servlet registration.
-Make sure to add a <em>&lt;multipart-config&gt;</em> section to your <code>web.xml</code> where the <code>UiServlet</code> is registered:</p>
+Servlets processing multipart requests using Jakarta EE API requires a multipart-config in their servlet registration.</p>
+</div>
+<div class="sect5">
+<h6 id="deployment-using-web-xml"><a class="anchor" href="#deployment-using-web-xml"></a>Deployment using web.xml</h6>
+<div class="paragraph">
+<p>If you use a <code>web.xml</code>-based deployment, make sure to add a <em>&lt;multipart-config&gt;</em> section to your <code>web.xml</code> where the <code>UiServlet</code> is registered:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 2. Example multipart-config in <em>web.xml</em> of Scout UI server</div>
@@ -660,6 +664,24 @@ Make sure to add a <em>&lt;multipart-config&gt;</em> section to your <code>web.x
 </table>
 </div>
 </div>
+<div class="sect5">
+<h6 id="deployment-using-jetty-server"><a class="anchor" href="#deployment-using-jetty-server"></a>Deployment using Jetty server</h6>
+<div class="paragraph">
+<p>If you switch to a Jetty-based deployment (see chapter <a href="#cha-jettyserver">Former JettyServer for development can be used in a productive environment</a> for details) a default multipart configuration providing the ability
+to upload multipart requests with unlimited size is automatically added by Scout framework.
+This corresponds to the same behavior as using the former Apache File Upload based implementation.</p>
+</div>
+<div class="paragraph">
+<p>Unlimited request size means, there is no global request size limit at level of the UI servlet.
+In practice the upload size is limited by implementations of <code>IUploadable</code> and the corresponding implementations in various JSON form fields,
+see <code>getConfiguredMaximumUploadSize()</code> implementations for default value for each type of field: e.g. <code>AbstractFileChooserField.getConfiguredMaximumUploadSize</code>.</p>
+</div>
+<div class="paragraph">
+<p>See <code>UiServletMultipartConfigProperty</code> and the config property <code>scout.ui.servletMultipartConfig</code> to provide a custom global multipart
+request configuration for your UI server.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -687,7 +709,7 @@ No migration is required, as this method did not change behavior in any way.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="former-jettyserver-for-development-can-be-used-in-a-productive-environment"><a class="anchor" href="#former-jettyserver-for-development-can-be-used-in-a-productive-environment"></a>Former JettyServer for development can be used in a productive environment</h2>
+<h2 id="cha-jettyserver"><a class="anchor" href="#cha-jettyserver"></a>Former JettyServer for development can be used in a productive environment</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>org.eclipse.scout.dev.jetty.JettyServer</code> was so far only used for development environments.
