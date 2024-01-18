@@ -62,7 +62,10 @@
     <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../getstarted/deploy-to-tomcat.html">Build Scout App and Deploy to Tomcat</a>
+    <a class="nav-link" href="../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-docker-container.html">Run as Docker Container</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
@@ -479,6 +482,18 @@ Very few complex widgets still lack a comprehensive WAI-ARIA support as these wi
 <div class="paragraph">
 <p>For the form-based login box a basic second-factor support was added.
 To verify the second factor a second credential verifier must be registered via <code>FormBasedAuthConfig#withSecondFactorVerifier</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scout-app-as-embedded-jetty-server-to-run-in-a-productive-environment"><a class="anchor" href="#scout-app-as-embedded-jetty-server-to-run-in-a-productive-environment"></a>Scout App as embedded Jetty Server to run in a productive environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The former <code>org.eclipse.scout.dev.jetty.JettyServer</code> (now <code>Application</code>) was so far only used for development environments.
+With this release it was improved so that it can be used in a productive environment too.
+The Scout Application class (<code>org.eclipse.scout.rt.app.Application</code>) contains a main-method which may be started directly and itself starts an embedded Jetty server.
+Therefore, an application server isn&#8217;t required anymore.
+See the migration guide for further information.</p>
 </div>
 </div>
 </div>
