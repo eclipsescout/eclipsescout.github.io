@@ -357,7 +357,8 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Java API for XML-Based Web Services (JAX-WS) is a Java programming language API for creating web services. JAX-WS is one of the Java XML programming APIs, and is part of the Java EE platform.</p>
+<p>The Java API for XML-Based Web Services (JAX-WS) is a Java programming language API for creating web services.
+JAX-WS is one of the Java XML programming APIs, and is part of the Java EE platform.</p>
 </div>
 <div class="paragraph">
 <p>Scout facilitates working with webservices, supports you in the generation of artifacts, and provides the following functionality:</p>
@@ -404,7 +405,8 @@
 <h3 id="jax-ws-version-and-implementor"><a class="anchor" href="#jax-ws-version-and-implementor"></a>JAX-WS version and implementor</h3>
 <div class="paragraph">
 <p>The JAX-WS Scout integration provides a thin layer on top of JAX-WS implementors to facilitate working with webservices.
-It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor neutral, and was tested with with the following implementations:</p>
+It depends on the JAX-WS 2.3.x API as specified in JSR 224.
+It is implementor neutral, and was tested with with the following implementations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -420,22 +422,9 @@ It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor ne
 </ul>
 </div>
 <div class="paragraph">
-<p>The integration does not require you to bundle the JAX-WS implementor with your application, which is a prerequisite for running in an EE container.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="running-jax-ws-in-a-servlet-container"><a class="anchor" href="#running-jax-ws-in-a-servlet-container"></a>Running JAX-WS in a servlet container</h3>
-<div class="paragraph">
-<p>A servlet container like Apache Tomcat typically does not ship with a JAX-WS implementor. As the actual implementor, you can either use <em>JAX-WS RI</em> as shipped with the JRE, or provide a separate implementor like <em>JAX-WS METRO</em> or <em>Apache CXF</em> in the form of a Maven dependency. However, <em>JAX-WS RI</em> does not provide a servlet based entry point, because the Servlet API is not part of the Java SE specification.</p>
-</div>
-<div class="paragraph">
-<p>When publishing webservices, it therefore is easiest to ship with a separate implementor: Declare a respective Maven dependency in your webbapp project - that is the Maven module typically containing the application&#8217;s <em>web.xml</em>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="running-jax-ws-in-a-ee-container"><a class="anchor" href="#running-jax-ws-in-a-ee-container"></a>Running JAX-WS in a EE container</h3>
-<div class="paragraph">
-<p>When running in an EE container, the container typically ships with a JAX-WS implementor. It is highly recommended to use that implementor, primarily to avoid classloading issues, and to further profit from the container&#8217;s monitoring and authentication facility. Refer to the containers documentation for more information.</p>
+<p>The integration requires you to bundle the JAX-WS implementor with your application.
+When publishing webservices, it therefore is easiest to ship with a separate implementor:
+Declare a respective Maven dependency in your webapp project - that is the Maven module ending in <code>.app</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -511,13 +500,11 @@ It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor ne
 <div class="sect3">
 <h4 id="jaxws.implementor.dependency"><a class="anchor" href="#jaxws.implementor.dependency"></a>Configure JAX-WS Maven dependency in pom.xml</h4>
 <div class="paragraph">
-<p>The effective dependency to the JAX-WS implementor is to be specified in the pom.xml of the webapp module (not the server module). That allows for running with a different implementor depending on the environment, e.g. to provide the implementor yourself when starting the application from within your IDE in Jetty, or to use the container&#8217;s implementor when deploying to an EE enabled application server. Even if providing the very same implementor for all environments yourself, it is good practice to do the configuration in the webapp module.</p>
+<p>The effective dependency to the JAX-WS implementor is to be specified in the pom.xml of the webapp module (i.e. <code>.app</code>, not the server module).</p>
 </div>
 <div class="paragraph">
-<p>A generally applicable configuration cannot be given, because the effective configuration depends on the implementor you choose, and whether it is already shipped with the application server you use. However, if <em>JAX-WS RI</em> is sufficient, you do not have to specify an implementor at all because already contained in JRE.</p>
-</div>
-<div class="paragraph">
-<p>If running in an EE application server, refer to the containers documentation for more information.</p>
+<p>A generally applicable configuration cannot be given, because the effective configuration depends on the implementor you choose.
+However, if <em>JAX-WS RI</em> is sufficient, you do not have to specify an implementor at all because already contained in JRE.</p>
 </div>
 <div class="paragraph">
 <p><a href="#lst-maven.dep.metro">Listing 1</a> provides sample configuration for shipping with <em>JAX_WS METRO</em> and <a href="#lst-maven.dep.cxf">Listing 2</a> does the same for <em>Apache CXF</em></p>
@@ -556,36 +543,43 @@ It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor ne
 </div>
 </div>
 <div class="sect3">
-<h4 id="configure-jax-ws-servlet-in-web-xml"><a class="anchor" href="#configure-jax-ws-servlet-in-web-xml"></a>Configure JAX-WS servlet in web.xml</h4>
+<h4 id="configure-jax-ws-servlet"><a class="anchor" href="#configure-jax-ws-servlet"></a>Configure JAX-WS servlet</h4>
 <div class="paragraph">
-<p>This section describes the configuration of the entry point Servlet to publish webservices. If working with webservice consumers only, no configuration is required.</p>
+<p>This section describes the configuration of the entry point Servlet to publish webservices.
+If working with webservice consumers only, no configuration is required.</p>
 </div>
 <div class="paragraph">
-<p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Configure JAX-WS Maven dependency in pom.xml</a>, the <em>web.xml</em> differs from implementor to implementor, and whether the implementor is already shipped with the application server. Nevertheless, the following <a href="#lst-jaxws.webxml.metro">Listing 3</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.webxml.cxf">Listing 4</a> for <em>Apache CXF</em>.</p>
+<p>Similar to the pom.xml as described in <a href="#jaxws.implementor.dependency">Configure JAX-WS Maven dependency in pom.xml</a>, the way the servlet needs to be registered differs from implementor to implementor.
+The following <a href="#lst-jaxws.registration.metro">Listing 3</a> show a sample configuration for <em>JAX-WS METRO</em> and <a href="#lst-jaxws.registration.cxf">Listing 4</a> for <em>Apache CXF</em>.</p>
 </div>
-<div id="lst-jaxws.webxml.metro" class="listingblock">
-<div class="title">Listing 3. web.xml for <em>JAX-WS METRO</em> Servlet</div>
+<div id="lst-jaxws.registration.metro" class="listingblock">
+<div class="title">Listing 3. Registration for <em>JAX-WS METRO</em> Servlet</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- JAX-WS METRO not bundled with JRE --&gt;
-&lt;context-param&gt;
-  &lt;param-name&gt;com.sun.xml.ws.server.http.publishStatusPage&lt;/param-name&gt;
-  &lt;param-value&gt;true&lt;/param-value&gt;
-&lt;/context-param&gt;
-&lt;context-param&gt;
-  &lt;param-name&gt;com.sun.xml.ws.server.http.publishWSDL&lt;/param-name&gt;
-  &lt;param-value&gt;true&lt;/param-value&gt;
-&lt;/context-param&gt;
-&lt;listener&gt;
-  &lt;listener-class&gt;com.sun.xml.ws.transport.http.servlet.WSServletContextListener&lt;/listener-class&gt;
-&lt;/listener&gt;
-&lt;servlet&gt;
-  &lt;servlet-name&gt;jaxws&lt;/servlet-name&gt;
-  &lt;servlet-class&gt;com.sun.xml.ws.transport.http.servlet.WSServlet&lt;/servlet-class&gt;
-&lt;/servlet&gt;
-&lt;servlet-mapping&gt;
-  &lt;servlet-name&gt;jaxws&lt;/servlet-name&gt;
-  &lt;url-pattern&gt;/jaxws/*&lt;/url-pattern&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-&lt;/servlet-mapping&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Order(5)
+public static class WSServletContextListenerFilterContributor implements IServletFilterContributor {
+
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    handler.addEventListener(new WSServletContextListener());
+  }
+}
+
+/**
+ * JAX-WS Metro.
+ */
+@Order(10)
+public static class JaxWsServletServletContributor implements IServletContributor {
+
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    // JAX-WS METRO not bundled with JRE
+    handler.setInitParameter("com.sun.xml.ws.server.http.publishStatusPage", "true");
+    handler.setInitParameter("com.sun.xml.ws.server.http.publishWSDL", "true");
+
+    ServletHolder servlet = handler.addServlet(WSServlet.class, "/jaxws/*"); <i class="conum" data-value="1"></i><b>(1)</b>
+    servlet.setInitOrder(1); // load-on-startup
+  }
+}</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -596,24 +590,22 @@ It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor ne
 </tr>
 </table>
 </div>
-<div id="lst-jaxws.webxml.cxf" class="listingblock">
-<div class="title">Listing 4. web.xml for <em>Apache CXF</em> Servlet</div>
+<div id="lst-jaxws.registration.cxf" class="listingblock">
+<div class="title">Listing 4. Registration for <em>Apache CXF</em> Servlet</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- JAX-WS Apache CXF --&gt;
-&lt;servlet&gt;
-  &lt;display-name&gt;CXF Servlet&lt;/display-name&gt;
-  &lt;servlet-name&gt;jaxws&lt;/servlet-name&gt;
-  &lt;servlet-class&gt;org.apache.cxf.transport.servlet.CXFServlet&lt;/servlet-class&gt;
-  &lt;init-param&gt;
-    &lt;param-name&gt;config-location&lt;/param-name&gt;
-    &lt;param-value&gt;/WEB-INF/cxf-jaxws.xml&lt;/param-value&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;/init-param&gt;
-  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-&lt;servlet-mapping&gt;
-  &lt;servlet-name&gt;jaxws&lt;/servlet-name&gt;
-  &lt;url-pattern&gt;/jaxws/*&lt;/url-pattern&gt; <i class="conum" data-value="2"></i><b>(2)</b>
-&lt;/servlet-mapping&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">/**
+ * JAX-WS Apache CXF.
+ */
+@Order(10)
+public static class JaxWsServletServletContributor implements IServletContributor {
+
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    ServletHolder servlet = handler.addServlet(CXFServlet.class, "/jaxws/*"); <i class="conum" data-value="2"></i><b>(2)</b>
+    servlet.setInitParameter("config-location", "/WEB-INF/cxf-jaxws.xml"); <i class="conum" data-value="1"></i><b>(1)</b>
+    servlet.setInitOrder(1); // load-on-startup
+  }
+}</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -625,21 +617,6 @@ It depends on the JAX-WS 2.3.x API as specified in JSR 224. It is implementor ne
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>the base URL where to publish the webservice endpoints</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>But, if running in an EE container, it is most likely that a Servlet configuration must not be configured, because the endpoints are discovered by the application server, or registered in a vendor specific way. Refer to the containers documentation for more information.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Some application servers like Oracle WebLogic Server (WLS) allow the port types to be registered as a Servlet in web.xml. However, this is vendor specific, and works despite the fact that port type does not implement 'jakarta.servlet.Servlet'.
-</td>
 </tr>
 </table>
 </div>
@@ -1729,13 +1706,8 @@ You have to implement your own handler if the consumer provides a correlation ID
 <div class="sect2">
 <h3 id="registration-of-webservice-endpoints"><a class="anchor" href="#registration-of-webservice-endpoints"></a>Registration of webservice endpoints</h3>
 <div class="paragraph">
-<p>The registration of webservice endpoints depends on the implementor you use, and whether you are running in an EE container with webservice auto discovery enabled.</p>
-</div>
-<div class="paragraph">
-<p>When running in an EE container, webservice providers are typically found by their presence. In order to be found, such webservice providers must be annotated with <code>WebService</code> annotation, and must have the coordinates 'serviceName' and 'portName' set. Still, most application servers allow for manual registration as well. E.g. if using Oracle WebLogic Server (WLS), endpoints to be published can be registered directly in 'web.xml' as a Servlet. However, this is vendor specific. Refer to the container&#8217;s documentation for more information.</p>
-</div>
-<div class="paragraph">
-<p>If not running in an EE container, the registration is implementor specific. In the following, an example for <em>JAX-WS METRO</em> and <em>Apache CXF</em> is given.</p>
+<p>The registration of webservice endpoints depends on the implementor you use.
+In the following, an example for <em>JAX-WS METRO</em> and <em>Apache CXF</em> is given.</p>
 </div>
 <div class="sect3">
 <h4 id="jax-ws-metro"><a class="anchor" href="#jax-ws-metro"></a>JAX-WS METRO</h4>
@@ -1761,7 +1733,7 @@ You have to implement your own handler if the consumer provides a correlation ID
 <div class="sect3">
 <h4 id="jaxws.registration.endpoints.cxf"><a class="anchor" href="#jaxws.registration.endpoints.cxf"></a>Apache CXF</h4>
 <div class="paragraph">
-<p>During startup, <em>Apache CXF</em> looks for the config file as specified in 'web.xml' via 'config-location'. See <a href="#lst-jaxws.webxml.cxf">Listing 4</a> for more information.</p>
+<p>During startup, <em>Apache CXF</em> looks for the config file as specified in the registration via 'config-location'. See <a href="#lst-jaxws.registration.cxf">Listing 4</a> for more information.</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 21. WEB-INF/cxf-jaxws.xml</div>

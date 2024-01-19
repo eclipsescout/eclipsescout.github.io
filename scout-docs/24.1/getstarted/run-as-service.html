@@ -522,22 +522,9 @@ Because the backend server is using HTTPS now, the URL in the frontend server mu
 <p>If you prefer to work with HTTP only on the frontend server, you need to modify the security settings of your Scout application.
 This can be done with the steps described below.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>In file <code>config.properties</code> (in the directory <code>helloscout.ui.html.app.war/src/main/resources</code>):</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Add the property <code>scout.app.sessionCookieConfigSecure=false</code> to remove the secure flag on the session cookie.</p>
-</li>
-<li>
-<p>Add the property <code>scout.auth.cookieSessionValidateSecure=false</code> to disable the check for an encrypted channel (HTTPS).</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p>In file <code>config.properties</code> (in the directory <code>helloscout.ui.html.app.war/src/main/resources</code>),
+add the property <code>scout.app.sessionCookieConfigSecure=false</code> to remove the secure flag on the session cookie.</p>
 </div>
 </div>
 </div>

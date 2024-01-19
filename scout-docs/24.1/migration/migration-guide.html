@@ -1047,10 +1047,6 @@ public static class UiServletContributor implements IServletContributor {
 <li>
 <p><code>session-config/cookie-config/secure</code> in <code>web.xml</code></p>
 </li>
-<li>
-<p><code>scout.auth.cookieSessionValidateSecure</code> (existing property) is used in the <code>UiServlet</code> for validation of HTTP only and secure flags.
-Make sure to set accordingly, if any of the other 2 properties are set to false</p>
-</li>
 </ul>
 </div>
 </li>
@@ -1065,6 +1061,11 @@ Make sure to set accordingly, if any of the other 2 properties are set to false<
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The property <code>scout.auth.cookieSessionValidateSecure</code> was removed.
+It was used in the <code>UiServlet</code> for validation of HTTP only and secure flags (to check if they were correctly defined in the <code>web.xml</code>).
+Because these two flags are now set via property, an additional property for validation isn&#8217;t required anymore.</p>
 </div>
 </div>
 <div class="sect3">

@@ -400,44 +400,24 @@
 <h2 id="rest-servlet"><a class="anchor" href="#rest-servlet"></a>REST Servlet</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Register the REST servlet in the web.xml of <code>org.eclipse.scout.hellojs.ui.html.app.dev</code> and <code>org.eclipse.scout.hellojs.ui.html.app.war</code>.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>org.eclipse.scout.hellojs.ui.html.app.dev/src/main/webapp/WEB-INF/web.xml</p>
-</li>
-<li>
-<p>org.eclipse.scout.hellojs.ui.html.app.war/src/main/webapp/WEB-INF/web.xml</p>
-</li>
-</ul>
+<p>Register the REST servlet via <code>IServletContributor</code> (i.e. <code>AppServletContributors</code> in <code>org.eclipse.scout.hellojs.ui.html.app</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;web-app&gt;
-  ...
-  &lt;!-- JAX-RS Jersey Servlet --&gt;
-  &lt;servlet&gt;
-    &lt;servlet-name&gt;apiServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;org.glassfish.jersey.servlet.ServletContainer&lt;/servlet-class&gt;
-    &lt;init-param&gt;
-      &lt;param-name&gt;jakarta.ws.rs.Application&lt;/param-name&gt;
-      &lt;param-value&gt;org.eclipse.scout.rt.rest.RestApplication&lt;/param-value&gt;
-    &lt;/init-param&gt;
-    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-  &lt;/servlet&gt;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">/**
+ * JAX-RS Jersey Servlet.
+ */
+@Order(20)
+public static class ApiServletContributor implements IServletContributor {
 
-  ...
-
-  &lt;servlet-mapping&gt;
-    &lt;servlet-name&gt;apiServlet&lt;/servlet-name&gt;
-    &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;
-
-  ...
-
-&lt;/web-app&gt;</code></pre>
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    ServletHolder servlet = handler.addServlet(ServletContainer.class, "/api/*");
+    servlet.setInitParameter(ServerProperties.WADL_FEATURE_DISABLE, Boolean.TRUE.toString());
+    servlet.setInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, RestApplication.class.getName());
+    servlet.setInitOrder(1); // load-on-startup
+  }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -482,7 +462,7 @@ public class ServerStateService implements IRestResource {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The path under which the service will be provided. Note: the full path is <code>/api/serverstatus</code> since the apiServlet is mapped to <code>/api/*</code> in the web.xml.</td>
+<td>The path under which the service will be provided. Note: the full path is <code>/api/serverstatus</code> since the apiServlet is mapped to <code>/api/*</code> in the <code>AppServletContributors</code> class.</td>
 </tr>
 </table>
 </div>

@@ -459,39 +459,7 @@ This enables admins to monitor the application and to react if a CSP violation i
 For a list of user agents supporting this feature please refer to <a href="https://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HttpOnly">OWASP</a>.</p>
 </div>
 <div class="paragraph">
-<p>It is recommended to always enable this flag.</p>
-</div>
-<div class="paragraph">
-<p>Since Java Servlet 3.0 specification this property can be set in the configuration in the deployment descriptor <code>WEB-INF/web.xml</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee  http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"
-         metadata-complete="true"&gt;
-  ...
-  &lt;session-config&gt;
-    ...
-    &lt;cookie-config&gt;
-      &lt;http-only&gt;true&lt;/http-only&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-      ...
-    &lt;/cookie-config&gt;
-    ...
-  &lt;/session-config&gt;
-  ...
-&lt;/web-app&gt;</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The HttpOnly flag activated</td>
-</tr>
-</table>
+<p>This flag is enabled by default via <code>scout.app.sessionCookieConfigHttpOnly</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -500,51 +468,10 @@ For a list of user agents supporting this feature please refer to <a href="https
 <p>Second the existence of the <code>Secure</code> flag is checked. The servlet container will then add this flag to the <code>Set-Cookie</code> HTTP response header. The purpose of the secure flag is to prevent cookies from being observed by unauthorized parties due to the transmission of a cookie in clear text. Therefore, setting this flag will prevent the user agent from transmitting the session id over an unencrypted channel.</p>
 </div>
 <div class="paragraph">
-<p>Since Java Servlet 3.0 specification this property can be set in the configuration in the deployment descriptor <code>WEB-INF/web.xml</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"
-         metadata-complete="true"&gt;
-  ...
-  &lt;session-config&gt;
-    ...
-    &lt;cookie-config&gt;
-      &lt;secure&gt;true&lt;/secure&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-      ...
-    &lt;/cookie-config&gt;
-    ...
-  &lt;/session-config&gt;
-  ...
-&lt;/web-app&gt;</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The Secure flag activated</td>
-</tr>
-</table>
+<p>This flag is enabled by default for non-development builds via <code>scout.app.sessionCookieConfigSecure</code>.</p>
 </div>
 <div class="paragraph">
 <p>This of course only makes sense if the application is exposed to the end user using an encrypted channel like <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a> (which is strongly recommended).</p>
-</div>
-<div class="paragraph">
-<p>Unfortunately for the UI server it is not possible to detect if an application uses a secured channel. Consider the following example: The servlet container is protected by a reverse proxy. The communication between the user agent and the proxy is encrypted while the channel between the proxy and the servlet container is not. In this scenario the container cannot know that from a user agent point of view the channel is secured.</p>
-</div>
-<div class="paragraph">
-<p>Because of this the validation assumes that the channel from the user agent to the entering node is secured and by default checks for the <code>Secure</code> flag. In case this assumption is not true and an unencrypted channel must be used this validation step can be disabled by setting the following property in the <code>config.propertis</code> file:</p>
-</div>
-<div class="paragraph">
-<p><code>scout.auth.cookieSessionValidateSecure=false</code></p>
-</div>
-<div class="paragraph">
-<p>This skips the <code>Secure</code> flag check completely. In this scenario (not using https) it is also required to remove the secure tag from the cookie config in the <code>WEB-INF/web.xml</code>.</p>
 </div>
 </div>
 </div>

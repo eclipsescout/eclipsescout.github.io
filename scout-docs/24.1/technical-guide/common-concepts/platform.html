@@ -1368,22 +1368,6 @@ To minimize configuration files such entries should be removed from <code>config
 <p>Data type: String</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>scout.auth.cookieSessionValidateSecure</code> </dt>
-<dd>
-<p>Specifies if the UI server should ensure a secure cookie configuration of the webapp.</p>
-<div class="paragraph">
-<p>If enabled the application validates that the <code>httpOnly</code> and <code>Secure</code> flags are set in the cookie configuration in the web.xml.</p>
-</div>
-<div class="paragraph">
-<p>This property should be disabled if no secure connection (https) is used to the client browser (not recommended).</p>
-</div>
-<div class="paragraph">
-<p>The default value is true.</p>
-</div>
-<div class="paragraph">
-<p>Data type: Boolean</p>
-</div>
-</dd>
 <dt class="hdlist1"><code>scout.auth.credentials</code> </dt>
 <dd>
 <p>Specifies the known credentials (username &amp; passwords) of the <code>org.eclipse.scout.rt.platform.security.ConfigFileCredentialVerifier</code>.</p>

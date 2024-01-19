@@ -771,17 +771,33 @@ Using the default artifact Id <strong>helloworld</strong> the following Maven mo
 </div>
 </li>
 <li>
-<p>Maven module <strong>helloworld.server.app.war</strong></p>
+<p>Maven module <strong>helloworld.server.app.image</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Contains all components to create a Scout server WAR file to deploy to an external web server.</p>
+<p>Contains all components to create a Scout server docker image.</p>
 </li>
 <li>
 <p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the server configuration.</p>
 </li>
 <li>
-<p>The file <code>pom.xml</code> is used to build the Scout server WAR file.</p>
+<p>The file <code>pom.xml</code> is used to build the Scout server docker image.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.server.app.zip</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to create a Scout server ZIP file to deploy to an external server.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the server configuration.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> is used to build the Scout server ZIP file.</p>
 </li>
 </ul>
 </div>
@@ -813,9 +829,6 @@ Using the default artifact Id <strong>helloworld</strong> the following Maven mo
 <p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the development configuration for the application.</p>
 </li>
 <li>
-<p>The file <code>web.xml</code> in folder <code>src/main/webapp</code> contains the web configuration for the application.</p>
-</li>
-<li>
 <p>The file <code>pom.xml</code> bundles the Jetty web server with the application.</p>
 </li>
 <li>
@@ -825,20 +838,33 @@ Using the default artifact Id <strong>helloworld</strong> the following Maven mo
 </div>
 </li>
 <li>
-<p>Maven module <strong>helloworld.ui.html.app.war</strong></p>
+<p>Maven module <strong>helloworld.ui.html.app.image</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Contains all components to create a Scout UI WAR file to deploy to an external web server.</p>
+<p>Contains all components to create a Scout UI docker image.</p>
 </li>
 <li>
 <p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the application configuration.</p>
 </li>
 <li>
-<p>The file <code>web.xml</code> in folder <code>src/main/webapp</code> contains the web configuration.</p>
+<p>The file <code>pom.xml</code> is used to build the Scout UI docker image.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>The file <code>pom.xml</code> is used to build the Scout UI WAR file.</p>
+<p>Maven module <strong>helloworld.ui.html.app.zip</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to create a Scout UI ZIP file to deploy to an external server.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the application configuration.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> is used to build the Scout UI ZIP file.</p>
 </li>
 </ul>
 </div>

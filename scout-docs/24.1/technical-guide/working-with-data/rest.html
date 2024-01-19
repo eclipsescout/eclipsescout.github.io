@@ -441,26 +441,24 @@ public class ExampleResource implements IRestResource {
 <p>All available REST resources are automatically registered by the <code>RestApplication</code> class while the Scout platform startup.</p>
 </div>
 <div class="paragraph">
-<p>Add the following snippet to your <code>web.xml</code> file to expose your REST API using the <code>/api</code> context path:</p>
+<p>Add an implementor of <code>IServletContributor</code> in your <code>UiServletContributors</code> container class to expose your REST API using the <code>/api</code> context path (set <code>@Order</code> appropriately):</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 2. web.xml</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- JAX-RS Jersey Servlet --&gt;
-&lt;servlet&gt;
-  &lt;servlet-name&gt;api&lt;/servlet-name&gt;
-  &lt;servlet-class&gt;org.glassfish.jersey.servlet.ServletContainer&lt;/servlet-class&gt;
-  &lt;init-param&gt;
-    &lt;param-name&gt;jakarta.ws.rs.Application&lt;/param-name&gt;
-    &lt;param-value&gt;org.eclipse.scout.rt.rest.RestApplication&lt;/param-value&gt;
-  &lt;/init-param&gt;
-  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">/**
+ * JAX-RS Jersey Servlet.
+ */
+@Order(20)
+public static class ApiServletContributor implements IServletContributor {
 
-&lt;servlet-mapping&gt;
-  &lt;servlet-name&gt;api&lt;/servlet-name&gt;
-  &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;</code></pre>
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    ServletHolder servlet = handler.addServlet(ServletContainer.class, "/api/*");
+    servlet.setInitParameter(ServerProperties.WADL_FEATURE_DISABLE, Boolean.TRUE.toString());
+    servlet.setInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, RestApplication.class.getName());
+    servlet.setInitOrder(1); // load-on-startup
+  }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -487,7 +485,7 @@ The Scout implementation of the REST application class <code>org.eclipse.scout.r
 </ul>
 </div>
 <div class="listingblock">
-<div class="title">Listing 3. Example class contributor</div>
+<div class="title">Listing 2. Example class contributor</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static class ExampleClassContributor implements IRestApplicationClassesContributor {
   @Override
@@ -526,26 +524,22 @@ The <code>HttpRunContextFilter</code> on the other hand does not provide session
 </div>
 <div class="paragraph">
 <p>Therefore, a REST resource implementation is not required to deal with setting up a RunContext to wrap the request within each method.
-The filter must be added in the <code>web.xml</code> configuration file and should be configured to be called after the authentication filter.
+The filter must be added via <code>IServletFilterContributor</code> and should be configured to be called after the authentication filter (set <code>@Order</code> appropriately).
 The filter expects that the authentication has been performed and that a <code>subject</code> is available (JAAS context).
 All following filters and servlets and thus also the REST resources run automatically in the correct context.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 4. web.xml registration example for HttpServerRunContextFilter.</div>
+<div class="title">Listing 3. Registration example for HttpServerRunContextFilter.</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;filter&gt;
-   &lt;filter-name&gt;HttpServerRunContextFilter&lt;/filter-name&gt;
-   &lt;filter-class&gt;org.eclipse.scout.rt.server.context.HttpServerRunContextFilter&lt;/filter-class&gt;
-   &lt;init-param&gt;
-     &lt;param-name&gt;session&lt;/param-name&gt;
-     &lt;param-value&gt;false&lt;/param-value&gt;
-   &lt;/init-param&gt;
- &lt;/filter&gt;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Order(40)
+public static class HttpServerRunContextFilterContributor implements IServletFilterContributor {
 
-&lt;filter-mapping&gt;
-  &lt;filter-name&gt;HttpServerRunContextFilter&lt;/filter-name&gt;
-  &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
-&lt;/filter-mapping&gt;</code></pre>
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    FilterHolder filter = handler.addFilter(HttpServerRunContextFilter.class, "/api/*", null);
+    filter.setInitParameter("session", "false");
+  }
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -565,7 +559,7 @@ Additionally, a dependency to the Scout module <code>org.eclipse.scout.rt.rest.j
 This module adds a set of Jackson additions in order to use the Jackson library together with Scout data objects.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 5. Dependency section of pom.xml to use Scout REST services with Jackson &amp; Jersey</div>
+<div class="title">Listing 4. Dependency section of pom.xml to use Scout REST services with Jackson &amp; Jersey</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- JAX-RS Jersey --&gt;
 &lt;dependency&gt;
@@ -605,7 +599,7 @@ unsuccessful responses into appropriate exception.</p>
 <p>At least the REST resource&#8217;s base URI must be specified:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 6. Example: REST resource client helper</div>
+<div class="title">Listing 5. Example: REST resource client helper</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleRestClientHelper extends AbstractRestClientHelper {
 
@@ -650,7 +644,7 @@ unsuccessful responses into appropriate exception.</p>
 <p>Based on the helper class, an example REST resource client may be implemented:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 7. Example: REST resource client</div>
+<div class="title">Listing 6. Example: REST resource client</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleResourceClient implements IRestResourceClient {
 
@@ -740,7 +734,7 @@ unsuccessful responses into appropriate exception.</p>
 <p>Properties can be set on the REST client during initialization (valid for all requests):</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 8. Setting properties for REST Client for all requests</div>
+<div class="title">Listing 7. Setting properties for REST Client for all requests</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @Override
   protected void configureClientBuilder(ClientBuilder clientBuilder) {
@@ -754,7 +748,7 @@ unsuccessful responses into appropriate exception.</p>
 <p>Some properties (see JavaDoc for details) may also be set on a request level:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 9. Setting properties for REST Client for a single requests, e.g. setting <code>FOLLOW_REDIRECTS</code> to <code>false</code></div>
+<div class="title">Listing 8. Setting properties for REST Client for a single requests, e.g. setting <code>FOLLOW_REDIRECTS</code> to <code>false</code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public ExampleEntityDo getExampleEntity(String id) {
     WebTarget target = helper().target(RESOURCE_PATH)
@@ -785,7 +779,7 @@ unsuccessful responses into appropriate exception.</p>
 </ul>
 </div>
 <div class="listingblock">
-<div class="title">Listing 10. Setting HTTP proxy for outgoing requests to *.example.com</div>
+<div class="title">Listing 9. Setting HTTP proxy for outgoing requests to *.example.com</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">scout.http.proxyPatterns[0]=.*\.example.com(:\d+)?=127.0.0.1:8888</code></pre>
 </div>
@@ -815,7 +809,7 @@ transactions in the event of a cancellation. The following steps must be taken f
 <p>Scout does not impose nor provide a cancellation resource. It must be implemented by the project:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 11. Example: REST cancellation Resource</div>
+<div class="title">Listing 10. Example: REST cancellation Resource</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Path("cancellation")
 public class CancellationResource implements IRestResource {
@@ -842,7 +836,7 @@ public class CancellationResource implements IRestResource {
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Listing 12. Example: REST cancellation Resource Client</div>
+<div class="title">Listing 11. Example: REST cancellation Resource Client</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class CancellationResourceClient implements IRestResourceClient {
 
@@ -871,7 +865,7 @@ public class CancellationResource implements IRestResource {
 <p>To assign an ID to each request, an appropriate client request filter must be registered:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 13. Example: Register Client Request Cancellation Filter in REST Client Helper</div>
+<div class="title">Listing 12. Example: Register Client Request Cancellation Filter in REST Client Helper</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class CancellationRestClientHelper extends AbstractRestClientHelper {
 
@@ -916,7 +910,7 @@ sub-RunContexts and their transaction isolation it might happen, that the transa
 currently active <code>RunMonitor</code>. Therefore, a cancel request would not cancel the transaction.)</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 14. Example: Register client request cancellation filter in Rest Client Helper</div>
+<div class="title">Listing 13. Example: Register client request cancellation filter in Rest Client Helper</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class RestRequestCancellationServletFilter extends AbstractRestRequestCancellationServletFilter {
 
@@ -936,20 +930,19 @@ currently active <code>RunMonitor</code>. Therefore, a cancel request would not 
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, declare the servlet filter in your <code>web.xml</code>:</p>
+<p>Finally, register servlet filter via <code>IServletFilterContributor</code> (set <code>@Order</code> appropriately):</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 15. web.xml registration example for RestRequestCancellationFilter.</div>
+<div class="title">Listing 14. Registration example for RestRequestCancellationFilter.</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;filter&gt;
-   &lt;filter-name&gt;RestRequestCancellationFilter&lt;/filter-name&gt;
-   &lt;filter-class&gt;org.eclipse.scout.docs.snippets.rest.RestRequestCancellationServletFilter&lt;/filter-class&gt;
- &lt;/filter&gt;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Order(45)
+public static class CancellationFilterContributor implements IServletFilterContributor {
 
-&lt;filter-mapping&gt;
-  &lt;filter-name&gt;RestRequestCancellationFilter&lt;/filter-name&gt;
-  &lt;url-pattern&gt;/api/*&lt;/url-pattern&gt;
-&lt;/filter-mapping&gt;</code></pre>
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    handler.addFilter(RestRequestCancellationServletFilter.class, "/api/*", null);
+  }
+}</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -974,7 +967,7 @@ Make sure the cancellation filter is registered after the HttpServerRunContextFi
 <p>Due to missing support for multipart handling in official JAX-RS API, Scout provides an own implementation allowing to use multipart requests without requiring other third party libraries.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 16. Example: Client</div>
+<div class="title">Listing 15. Example: Client</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public void pushContent(BinaryResource resource, String displayText) {
     MultipartMessage multipartMessage = BEANS.get(MultipartMessage.class)
@@ -993,7 +986,7 @@ Make sure the cancellation filter is registered after the HttpServerRunContextFi
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 17. Example: Server</div>
+<div class="title">Listing 16. Example: Server</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @POST
   @Path("content")
