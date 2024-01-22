@@ -1028,13 +1028,8 @@ my_list_property={"0": "value-01", "1": "value-02", "2": null}</code></pre>
 * a JSON object attribute value of "null" will remove a key potentially being defined by sources of lower precedence</p>
 </div>
 <div class="paragraph">
-<p>The parsing of JSON object strings is abstracted away using the new <code>org.eclipse.scout.rt.platform.config.IJsonPropertyReader</code> interface as parsing JSON strings is not implemented in the platform itself.
-However, there is a default implementation of this interface available in org.eclipse.scout.rt.dataobject which uses the <code>org.eclipse.scout.rt.platform.dataobject.IDataObjectMapper</code> feature to deserialize the JSON string into a Java Map.
-In order to use this, an implementation of the <code>IDataObjectMapper</code> interface is also required (e.g. <code>org.eclipse.scout.rt.jackson.dataobject.JacksonDataObjectMapper</code>).
-So in case you want to use this feature, you have to define
-* org.eclipse.scout.rt:org.eclipse.scout.rt.dataobject
-* org.eclipse.scout.rt:org.eclipse.scout.rt.jackson
-as new dependencies of your application aggregator module (if they are not already present).</p>
+<p>To parse the JSON object strings the <code>org.eclipse.scout.json</code> (lightweight JSON parsing) module is used as the bean manager is not yet available during configuration property initialization.
+Otherwise <code>org.eclipse.scout.rt.dataobject</code>/<code>org.eclipse.scout.rt.jackson</code> would be used if the bean manager would be available yet (more sophisticated JSON parsing modules).</p>
 </div>
 <div class="paragraph">
 <p>A properties file may import other config files from the classpath or any other absolute URL. This is done using the special key <code>import</code>. It can be a single value or a list or map (e.g. <code>import[anyKey or number]</code>:</p>
