@@ -1243,6 +1243,47 @@ Some modification might be necessary, see Jakarta migration guide above.</p>
 As mentioned before, this might not be supported anymore in a future release of Scout.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="deprecation-of-webappeventlistener"><a class="anchor" href="#deprecation-of-webappeventlistener"></a>Deprecation of WebappEventListener</h3>
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.server.commons.WebappEventListener</code> was responsible for the following tasks when the servlet context was initialized/destroyed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Starting/stopping the Scout plattform</p>
+</li>
+<li>
+<p>Setting context path to PlatformIdentifier</p>
+</li>
+<li>
+<p>Registering the servlet context as accessible bean (<code>ServletContext</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first task remains, the other two were removed (see next two sections).</p>
+</div>
+<div class="paragraph">
+<p><code>WebappEventListener</code> is still available and might be used for legacy applications running within an application server (see <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war modules</a>),
+but it is marked as deprecated and might be removed in a future release.</p>
+</div>
+<div class="sect3">
+<h4 id="removal-of-platformidentifier"><a class="anchor" href="#removal-of-platformidentifier"></a>Removal of PlatformIdentifier</h4>
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.platform.context.PlatformIdentifier</code> was removed with replacement.
+Because deploying to an application server is legacy only, each application will have its own Java runtime and <code>NodeIdentifier</code> can be used instead.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="servletcontext-not-accessible-via-beans-get-opt-anymore"><a class="anchor" href="#servletcontext-not-accessible-via-beans-get-opt-anymore"></a>ServletContext not accessible via BEANS.get/.opt anymore</h4>
+<div class="paragraph">
+<p>ServletContext could be accessed via BEANS.get/.opt so far because it was registered via <code>WebappEventListener</code>.
+It was only used within <code>ServletContextMimeTypeDetector</code> to ask the servlet context for its mime type mapping.
+This mime type detector was removed too.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1334,6 +1375,62 @@ This class was replaced by <code>IdCodec</code> and <code>IdInventory</code> in 
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;scout:message style="tag" key="ui.Login" key="ui.LoginFailed" key="ui.User" key="ui.Password" key="ui.Token" /&gt;</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="uitextcontributor"><a class="anchor" href="#uitextcontributor"></a>UiTextContributor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The interface org.eclipse.scout.rt.ui.html.IUiTextContributor has changed its signature. The function <code>contributeUiTextKeys</code> has been renamed to <code>contribute</code>.
+All implementations of this interface must rename this method as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="typescript-codetype-api-changes"><a class="anchor" href="#typescript-codetype-api-changes"></a>TypeScript CodeType API Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The TypeScript API to access CodeTypes and Codes has been streamlined and simplified:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>codes</code> utility</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>codes.get</code>: only accepts one parameter now (for the CodeType class or CodeType id). Accordingly, it no longer returns a <code>Code</code> but a <code>CodeType</code> instead. Furthermore, it no longer throws an error if the <code>CodeType</code> could not be found but returns null instead. To access a <code>Code</code> within a <code>CodeType</code> use <code>codes.get(MyCodeType).get(myCodeId)</code>.</p>
+</li>
+<li>
+<p><code>codes.optGet</code> and <code>codes.codeType</code>: has been deleted in favor of the new codes.get (see above).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>CodeType</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CodeType.add</code>: has been marked protected as it should not be called from the outside.</p>
+</li>
+<li>
+<p><code>CodeType.get</code>: Throws no error anymore if the requested Code could not be found but returns null instead.</p>
+</li>
+<li>
+<p><code>CodeType.optGet</code>: Has been deleted as <code>CodeType.get</code> can be used now (see above).</p>
+</li>
+<li>
+<p><code>CodeType.codes</code>: It is no longer a property but a function instead which by default returns all <code>Codes</code> of the <code>CodeType</code> recursively. It has a parameter which allows to only return the root <code>Codes</code>.</p>
+</li>
+<li>
+<p><code>CodeType.getCodes</code>: has been removed. Use the new function <code>CodeType.codes()</code> instead (see above).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>

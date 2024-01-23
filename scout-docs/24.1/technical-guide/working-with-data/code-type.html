@@ -425,7 +425,9 @@
 <h2 id="using-a-codetype"><a class="anchor" href="#using-a-codetype"></a>Using a CodeType</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="smartfield-or-smartcolumn"><a class="anchor" href="#smartfield-or-smartcolumn"></a>SmartField or SmartColumn</h3>
+<h3 id="in-java"><a class="anchor" href="#in-java"></a>In Java</h3>
+<div class="sect3">
+<h4 id="smartfield-or-smartcolumn"><a class="anchor" href="#smartfield-or-smartcolumn"></a>SmartField or SmartColumn</h4>
 <div class="paragraph">
 <p>CodeType in a SmartField (or SmartColumn).</p>
 </div>
@@ -447,8 +449,8 @@ public class YesOrNoSmartField extends AbstractSmartField&lt;Boolean&gt; {
 <p>If the SmartField (or SmartColumn) works with a CodeType, a specific LookupCall is instantiated to get the LookupRows based on the Codes contained in a CodeType.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="accessing-a-code-directly"><a class="anchor" href="#accessing-a-code-directly"></a>Accessing a code directly</h3>
+<div class="sect3">
+<h4 id="accessing-a-code-directly"><a class="anchor" href="#accessing-a-code-directly"></a>Accessing a code directly</h4>
 <div class="paragraph">
 <p>Scout-runtime will handle the instantiation and the caching of CodeTypes.</p>
 </div>
@@ -464,6 +466,174 @@ public class YesOrNoSmartField extends AbstractSmartField&lt;Boolean&gt; {
     }
     return null;
   }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="codetypes-in-typescript"><a class="anchor" href="#codetypes-in-typescript"></a>In TypeScript</h3>
+<div class="paragraph">
+<p>CodeTypes can also be used in TypeScript. Typical examples are <code>CodeLookupCall</code>, <code>SmartField</code> or <code>SmartColumn</code>.</p>
+</div>
+<div class="paragraph">
+<p>Generally there are two options: either the CodeTypes and their corresponding Codes are managed directly in TypeScript (then there is no such CodeType in Java) or a Java CodeType should be made available in the TypeScript code as well.</p>
+</div>
+<div class="sect3">
+<h4 id="typescript-only"><a class="anchor" href="#typescript-only"></a>TypeScript only</h4>
+<div class="paragraph">
+<p>CodeTypes can be managed using the <code>codes</code> utility. See the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {codes} from '@eclipse-scout/core';
+
+codes.init([{
+  id: '1',
+  codes: [{
+    id: 'code0',
+    children: [{ id: 'code01' }, { id: 'code02' }]
+  }]
+}]);
+codes.add({
+  id: '2',
+  codes: [{
+    id: '2.1'
+  }, {
+    id: '2.2'
+  }]
+});
+
+// returns 3 codes (default is recursive): code0, code01 and code02
+codes.get('1').codes();
+
+codes.remove(['1', '2']);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If there is no CodeType in the JavaCode, it would of course also be possible to use other TypeScript specific structures like <a href="https://www.typescriptlang.org/docs/handbook/enums.html">enums</a> instead of Scout CodeTypes.
+To use CodeTypes is especially handy if they already exist in the JavaCode and the structure and values should be reused.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reuse-a-java-codetype-in-typescript"><a class="anchor" href="#reuse-a-java-codetype-in-typescript"></a>Reuse a Java CodeType in TypeScript</h4>
+<div class="paragraph">
+<p>The easiest way to expose a Java CodeType to TypeScript is by adding the <code>@ApiExposed</code> annotation to it as shown in this example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApiExposed <i class="conum" data-value="1"></i><b>(1)</b>
+@ObjectType("sample.ExposedCodeType") <i class="conum" data-value="2"></i><b>(2)</b>
+@ClassId("00ee23a3-3a63-4c9e-80b9-25f0c0bf3c85")
+public class ExposedCodeType extends AbstractCodeType&lt;String, String&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+  private static final long serialVersionUID = 1L;
+  public static final String ID = "10000";
+
+  @Override
+  public String getId() {
+    return ID;
+  }
+
+  @Order(1000)
+  @ClassId("72cb3fd6-9fe6-4659-ab9b-96086b902c27")
+  public static class FirstCode extends AbstractCode&lt;String&gt; {
+    private static final long serialVersionUID = 1L;
+    public static final String ID = "1";
+
+    @Override
+    public String getId() {
+      return ID;
+    }
+  }
+
+  @Order(2000)
+  @ClassId("5621b905-4dc0-4ffa-a764-f6372ed36768")
+  public static class SecondCode extends AbstractCode&lt;String&gt; {
+    private static final long serialVersionUID = 1L;
+    public static final String ID = "2";
+
+    @Override
+    public String getId() {
+      return ID;
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Marks the CodeType to be exposed by the Scout API. Such CodeTypes may then be accessed using the REST API. For more control over the exposed CodeTypes create an implementation of <code>IApiExposedCodeTypeContributor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Specifies the TypeScript <code>objectType</code> for the CodeType. Only necessary if there is a dedicated TypeScript class for this CodeType.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The IDs must be serialized to Strings to expose them in the REST API. This works most straight forward, if String IDs are used in Java too. If this is not possible, the Ids will be converted using <code>toString</code>. If this is not sufficient you can implement an <code>ICodeTypeDoIdConverter</code> and manually convert your IDs.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On the TypeScript side you have to specify the URL to the API that exposes the marked CodeType so that they can be fetched. For this the URL to codes is added to the init config of your TypeScript App:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">new App().init({
+  bootstrap: {
+    textsUrl: 'texts.json',
+    permissionsUrl: 'api/permissions',
+    codesUrl: 'api/codes'
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because in the example above a custom <code>objectType</code> has been specified, a corresponding CodeType class must be created in TypeScript. This is only required if you need some custom fields or functions on your CodeType, but it is often quite handy.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Code, CodeType} from '@eclipse-scout/core';
+
+export class ExposedCodeType extends CodeType&lt;string&gt; {
+  first: Code&lt;string&gt;; <i class="conum" data-value="1"></i><b>(1)</b>
+  second: Code&lt;string&gt;; <i class="conum" data-value="1"></i><b>(1)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Optional: A field that matches the simple classname of the Java Code (lowercase first letter, no 'Code' suffix) can be added to the TypeScript CodeType. If such a field is available, the corresponding Code is automatically stored in that field. This makes accessing specific Codes easier (see examples below). If the automatic name matching should not be used the Java Code can be annotated with <code>@FieldName</code> to explicitly specify the name of the TypeScript field.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All attributes from the Java CodeType are automatically applied to the TypeScript CodeType. So there is no need to repeat any ID values, texts or other configuration of the Java code!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It is then possible to access the CodeType in TypeScript. Some examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {codes} from '@eclipse-scout/core';
+import {ExposedCodeType} from '../index';
+
+let idOfFirstCode = codes.get(ExposedCodeType).first.id; // Access CodeType by class and Code by field. Returns '1'.
+let isSecondCodeActive = codes.get('10000').get('2').active; // Access CodeType and Code by id. Returns true.
+let allCodesRecursively = codes.get(ExposedCodeType).codes(); // Access all codes of a CodeType. Returns two Codes.</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -497,10 +667,21 @@ public class YesOrNoSmartField extends AbstractSmartField&lt;Boolean&gt; {
 </div>
 </div>
 <div class="sect2">
-<h3 id="with-the-sdk"><a class="anchor" href="#with-the-sdk"></a>With the SDK</h3>
+<h3 id="with-the-ide"><a class="anchor" href="#with-the-ide"></a>With the IDE</h3>
 <div class="paragraph">
-<p>The SDK provides some help to generate CodeTypes and Codes.
-Use File &#8594; New &#8594; Scout &#8594; Scout Code Type to generate a new code.</p>
+<p>The SDK provides some help to generate CodeTypes and Codes.</p>
+</div>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+<div class="paragraph">
+<p>Use File &#8594; New &#8594; Scout &#8594; Scout Code Type.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="intellij"><a class="anchor" href="#intellij"></a>IntelliJ</h4>
+<div class="paragraph">
+<p>Right-click on a Java package (production, not test) &#8594; New &#8594; Scout Element &#8594; Code Type.</p>
+</div>
 </div>
 </div>
 </div>
