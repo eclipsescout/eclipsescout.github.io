@@ -1284,6 +1284,36 @@ This mime type detector was removed too.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="cleanupimproving-of-nodeidentifiercompute"><a class="anchor" href="#cleanupimproving-of-nodeidentifiercompute"></a>Cleanup/Improving of NodeIdentifier#compute</h3>
+<div class="paragraph">
+<p><code>NodeIdentifier</code> previously used the first property with a value according to the following priority:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>scout.nodeId</code></p>
+</li>
+<li>
+<p><code>weblogic.Name</code></p>
+</li>
+<li>
+<p><code>jboss.node.name</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As fallback a newly generated UUID was used.</p>
+</div>
+<div class="paragraph">
+<p>Only the first one (<code>scout.nodeId</code>) is considered now because not running within an application server anymore.</p>
+</div>
+<div class="paragraph">
+<p>Newly added was the computation of a node identifier in development mode.
+If no <code>scout.nodeId</code> is set, the local host name and the port of the Scout application is used as node identifier (e.g. <code>mycomputer:8082</code>).
+Therefore, for development mode, setting <code>scout.nodeId</code> in <code>config.properties</code> is not required anymore to have a static node identifier.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
