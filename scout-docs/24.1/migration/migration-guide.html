@@ -1020,19 +1020,10 @@ public static class UiServletContributor implements IServletContributor {
 
   @Override
   public void contribute(ServletContextHandler handler) {
-    ServletHolder servletHolder = handler.addServlet(UiServlet.class, "/*");
-    servletHolder.getRegistration().setMultipartConfig(CONFIG.getPropertyValue(UiServletMultipartConfigProperty.class)); <i class="conum" data-value="1"></i><b>(1)</b>
+    handler.addServlet(UiServlet.class, "/*");
   }
 }</code></pre>
 </div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Make sure to add the multipart config.</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Servlet contributor for <code>UiServlet</code> is already provided by <code>org.eclipse.scout.rt.ui.html.app.UiServletContributors</code>.</p>

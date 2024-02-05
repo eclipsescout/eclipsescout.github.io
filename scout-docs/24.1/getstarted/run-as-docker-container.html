@@ -503,6 +503,10 @@ To set/override property values via environment variables, use the <code>-e</cod
 <div class="paragraph">
 <p>If everything seems okay, visit <code><a href="http://localhost:8082" class="bare">http://localhost:8082</a></code> and enjoy your application running within Docker containers.</p>
 </div>
+<div class="paragraph">
+<p>The client preferences (column widths, &#8230;&#8203;) are by default written to <code>/tmp</code> (see UI <code>config.properties</code>, property <code>scout.client.userArea</code>), thus lost after a container restart.
+If desired, you might change the path for <code>scout.client.userArea</code> via environment variable and point it to a dedicated docker volume create for this purpose.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
