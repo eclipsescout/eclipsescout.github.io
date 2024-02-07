@@ -441,8 +441,7 @@ keytool -genkey -keyalg RSA -dname CN=localhost -alias helloscout_ui_localhost -
 <div class="listingblock">
 <div class="title">Listing 1. helloscout.ui.html.app.zip/config.properties</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.app.port=8443
-scout.app.keyStorePassword=changeit_store
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.app.keyStorePassword=changeit_store
 scout.app.privateKeyPassword=changeit_key
 scout.app.certificateAlias=helloscout_ui_localhost
 scout.app.keyStorePath=/opt/helloscout/certs/helloscout_ui_localhost.jks</code></pre>
@@ -478,8 +477,7 @@ scout.app.keyStorePath=/opt/helloscout/certs/helloscout_server_localhost.jks</co
 </div>
 </div>
 <div class="paragraph">
-<p>We don&#8217;t change the port of the backend server here.
-Because the backend server is using HTTPS now, the URL in the frontend server must be modified:</p>
+<p>Because the backend server is using HTTPS now, the URL in the frontend server must be modified:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 3. helloscout.ui.html.app.zip/config.properties</div>
@@ -647,6 +645,10 @@ dos2unix /opt/helloscout/helloscout-ui/bin/app.sh</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>The provided shell scripts (<code>app.sh</code>/<code>app.cmd</code>) are applying Java memory settings (<code>-Xms64m</code> and <code>-Xmx512m</code>) and override the HTTP port used for the Scout app (<code>scout.app.port</code>).
+The UI server uses 8082, while the backend server uses 8080.</p>
+</div>
+<div class="paragraph">
 <p>Check the logs if both applications started successfully</p>
 </div>
 <div class="listingblock">
@@ -656,23 +658,7 @@ cat /opt/helloscout/helloscout-ui/logs/app.plain.log</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can now connect to the application using the browser of your choice by navigating to:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>http://localhost:8082/</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>https://localhost:8443/</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>if you have chosen to configure HTTPS.
+<p>You can now connect to the application using the browser of your choice by navigating to <code><a href="http://localhost:8082/" class="bare">http://localhost:8082/</a></code> or <code><a href="https://localhost:8082/" class="bare">https://localhost:8082/</a></code> if you have chosen to configure HTTPS.
 In this case you might need to accept your self-signed certificate as the browser does not yet trust it.</p>
 </div>
 <div class="paragraph">
