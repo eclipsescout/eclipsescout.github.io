@@ -509,7 +509,7 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 </div>
 </div>
 <div class="sect1">
-<h2 id="build-changes"><a class="anchor" href="#build-changes"></a>Build changes</h2>
+<h2 id="build-changes"><a class="anchor" href="#build-changes"></a>Build Changes</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -556,7 +556,7 @@ As part of this Jakarta EE version update all module names and packages have bee
 Additionally, all Java EE imports have been migrated from <code>javax</code> to <code>jakarta</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="migration-guide"><a class="anchor" href="#migration-guide"></a>Migration guide</h4>
+<h4 id="migration-guide"><a class="anchor" href="#migration-guide"></a>Migration Guide</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -587,7 +587,7 @@ Additionally, all Java EE imports have been migrated from <code>javax</code> to 
 </ul>
 </div>
 <div class="sect4">
-<h5 id="jax-ws-services"><a class="anchor" href="#jax-ws-services"></a>JAX-WS services</h5>
+<h5 id="jax-ws-services"><a class="anchor" href="#jax-ws-services"></a>JAX-WS Services</h5>
 <div class="paragraph">
 <p>After the upgrade to 24.1, projects that use JAX-WS (Soap) as a provider should check the connection both on DEV and on the deployed system
 to ensure that everything is working as desired.
@@ -624,16 +624,16 @@ xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"&gt;  <i class="conum" data-value="2"
 </div>
 </div>
 <div class="sect4">
-<h5 id="ui-server-multipart-request-configuration"><a class="anchor" href="#ui-server-multipart-request-configuration"></a>UI Server: Multipart request configuration</h5>
+<h5 id="ui-server-multipart-request-configuration"><a class="anchor" href="#ui-server-multipart-request-configuration"></a>UI Server: Multipart Request Configuration</h5>
 <div class="paragraph">
 <p>As part of the switch to Jakarta EE the third party library dependency to Apache File Upload was eliminated.
 Scout now relies on plain Jakarta EE API to process HTTP multipart requests.
 Servlets processing multipart requests using Jakarta EE API requires a multipart-config in their servlet registration.</p>
 </div>
 <div class="sect5">
-<h6 id="deployment-using-web-xml"><a class="anchor" href="#deployment-using-web-xml"></a>Deployment using web.xml</h6>
+<h6 id="deployment-using-web-xml"><a class="anchor" href="#deployment-using-web-xml"></a>Deployment Using web.xml</h6>
 <div class="paragraph">
-<p>If you use a <code>web.xml</code>-based deployment (legacy only, see <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war modules</a>), make sure to add a <em>&lt;multipart-config&gt;</em> section to your <code>web.xml</code> where the <code>UiServlet</code> is registered:</p>
+<p>If you use a <code>web.xml</code>-based deployment (legacy only, see <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war Modules</a>), make sure to add a <em>&lt;multipart-config&gt;</em> section to your <code>web.xml</code> where the <code>UiServlet</code> is registered:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 2. Example multipart-config in <em>web.xml</em> of Scout UI server</div>
@@ -670,7 +670,7 @@ Servlets processing multipart requests using Jakarta EE API requires a multipart
 <div class="sect5">
 <h6 id="deployment-using-jetty-server"><a class="anchor" href="#deployment-using-jetty-server"></a>Deployment using Jetty server</h6>
 <div class="paragraph">
-<p>If you switch to a Jetty-based deployment (see chapter <a href="#cha-jettyserver">Former JettyServer for development can be used in a productive environment</a> for details) a default multipart configuration providing the ability
+<p>If you switch to a Jetty-based deployment (see chapter <a href="#cha-jettyserver">Former JettyServer for Development Can Be Used in a Productive Environment</a> for details) a default multipart configuration providing the ability
 to upload multipart requests with unlimited size is used by default (see chapter <a href="#migration-guide-24-1-jetty-web.xml-ui-servlet">UIServlet</a>).
 This corresponds to the same behavior as using the former Apache File Upload based implementation.</p>
 </div>
@@ -688,7 +688,7 @@ request configuration for your UI server.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="other-libraries"><a class="anchor" href="#other-libraries"></a>Other libraries</h3>
+<h3 id="other-libraries"><a class="anchor" href="#other-libraries"></a>Other Libraries</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -712,7 +712,7 @@ No migration is required, as this method did not change behavior in any way.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="cha-jettyserver"><a class="anchor" href="#cha-jettyserver"></a>Former JettyServer for development can be used in a productive environment</h2>
+<h2 id="cha-jettyserver"><a class="anchor" href="#cha-jettyserver"></a>Former JettyServer for Development Can Be Used in a Productive Environment</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>org.eclipse.scout.dev.jetty.JettyServer</code> was so far only used for development environments.
@@ -720,7 +720,7 @@ With this release it was improved so that it can be used in a productive environ
 The Scout Application class contains a main-method which may be started directly and itself starts an embedded Jetty server.</p>
 </div>
 <div class="paragraph">
-<p>The support for using a <code>web.xml</code> was dropped when using the Scout Application, <code>IServletContributor</code> and <code>IServletFilterContributer</code> are used instead (see <a href="#migration-guide-24-1-jetty-web.xml">web.xml</a> and <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war modules</a>).</p>
+<p>The support for using a <code>web.xml</code> was dropped when using the Scout Application, <code>IServletContributor</code> and <code>IServletFilterContributer</code> are used instead (see <a href="#migration-guide-24-1-jetty-web.xml">web.xml</a> and <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war Modules</a>).</p>
 </div>
 <div class="paragraph">
 <p>The following renaming/refactoring is applied.</p>
@@ -1111,7 +1111,7 @@ Because these two flags are now set via property, an additional property for val
 </div>
 </div>
 <div class="sect2">
-<h3 id="migration-guide-24-1-jetty-removal-of-war-modules"><a class="anchor" href="#migration-guide-24-1-jetty-removal-of-war-modules"></a>Removal of .war modules</h3>
+<h3 id="migration-guide-24-1-jetty-removal-of-war-modules"><a class="anchor" href="#migration-guide-24-1-jetty-removal-of-war-modules"></a>Removal of .war Modules</h3>
 <div class="paragraph">
 <p>The build of a <code>.war</code> file to be used within an application server (e.g. Tomcat) is deprecated now and might not work anymore in a further release (due to dependencies issues).
 Thus, it&#8217;s highly recommended to either use shell scripts to run your productive environment as a service or built docker images to be used in Kubernetes or a similar setup.
@@ -1272,7 +1272,7 @@ As mentioned before, this might not be supported anymore in a future release of 
 <p>The first task remains, the other two were removed (see next two sections).</p>
 </div>
 <div class="paragraph">
-<p><code>WebappEventListener</code> is still available and might be used for legacy applications running within an application server (see <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war modules</a>),
+<p><code>WebappEventListener</code> is still available and might be used for legacy applications running within an application server (see <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war Modules</a>),
 but it is marked as deprecated and might be removed in a future release.</p>
 </div>
 <div class="sect3">
@@ -1283,7 +1283,7 @@ Because deploying to an application server is legacy only, each application will
 </div>
 </div>
 <div class="sect3">
-<h4 id="servletcontext-not-accessible-via-beans-get-opt-anymore"><a class="anchor" href="#servletcontext-not-accessible-via-beans-get-opt-anymore"></a>ServletContext not accessible via BEANS.get/.opt anymore</h4>
+<h4 id="servletcontext-not-accessible-via-beans-get-opt-anymore"><a class="anchor" href="#servletcontext-not-accessible-via-beans-get-opt-anymore"></a>ServletContext Not Accessible via BEANS.get/.opt Anymore</h4>
 <div class="paragraph">
 <p>ServletContext could be accessed via BEANS.get/.opt so far because it was registered via <code>WebappEventListener</code>.
 It was only used within <code>ServletContextMimeTypeDetector</code> to ask the servlet context for its mime type mapping.
@@ -1324,7 +1324,7 @@ Therefore, for development mode, setting <code>scout.nodeId</code> in <code>conf
 </div>
 </div>
 <div class="sect1">
-<h2 id="add-streaming-support-to-hashing-securityutility"><a class="anchor" href="#add-streaming-support-to-hashing-securityutility"></a>Add streaming support to hashing (SecurityUtility)</h2>
+<h2 id="add-streaming-support-to-hashing-securityutility"><a class="anchor" href="#add-streaming-support-to-hashing-securityutility"></a>Add Streaming Support to Hashing (SecurityUtility)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> supports streaming:</p>
@@ -1352,7 +1352,7 @@ Therefore, for development mode, setting <code>scout.nodeId</code> in <code>conf
 </div>
 </div>
 <div class="sect1">
-<h2 id="idexternalformatter-removed"><a class="anchor" href="#idexternalformatter-removed"></a>IdExternalFormatter removed</h2>
+<h2 id="idexternalformatter-removed"><a class="anchor" href="#idexternalformatter-removed"></a>IdExternalFormatter Removed</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The former deprecated class <code>IdExternalFormatter</code> was removed.
@@ -1400,7 +1400,7 @@ This class was replaced by <code>IdCodec</code> and <code>IdInventory</code> in 
 </div>
 </div>
 <div class="sect1">
-<h2 id="login-form-add-support-for-second-factor-form-based"><a class="anchor" href="#login-form-add-support-for-second-factor-form-based"></a>Login form: Add support for second-factor (form-based)</h2>
+<h2 id="login-form-add-support-for-second-factor-form-based"><a class="anchor" href="#login-form-add-support-for-second-factor-form-based"></a>Login Form: Add Support for Second-Factor (Form-Based)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For the <code>FormBasedAccessController</code> and the corresponding login box a basic second-factor support was added; a new credential verifier return value <code>org.eclipse.scout.rt.platform.security.ICredentialVerifier.AUTH_2FA_REQUIRED</code> was added which will prompt for a second factor token. To verify this token a second-factor verifier <code>ICredentialVerifier</code> needs to be registered.</p>
@@ -1468,6 +1468,99 @@ All implementations of this interface must rename this method as well.</p>
 </div>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tree-improved-auto-check-behavior-when-checking-nodes"><a class="anchor" href="#tree-improved-auto-check-behavior-when-checking-nodes"></a>Tree: Improved Auto-Check Behavior When Checking Nodes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="new-behavior-explained"><a class="anchor" href="#new-behavior-explained"></a>New Behavior Explained</h3>
+<div class="paragraph">
+<p>When the <code>autoCheckChildren</code> property of the Tree or TreeBox widget is set to <code>true</code> (e.g. by overriding
+<code>getConfiguredAutoCheckChildNodes()</code>) the automatic check behavior has changed.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the following tree structure is given:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[ ] Node A
+  [ ] Child node 1
+  [ ] Child node 2
+
+
+Legend:
+[ ] -&gt; Node unchecked
+[-] -&gt; Node partly-checked
+[*] -&gt; Node checked</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-1"><a class="anchor" href="#example-1"></a>Example 1</h4>
+<div class="paragraph">
+<p>When checking or unchecking 'Node A' all its children are checked/unchecked too.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[*] Node A
+  [*] Child node 1    &lt;- Automatically checked
+  [*] Child node 2    &lt;- Automatically checked</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-2"><a class="anchor" href="#example-2"></a>Example 2</h4>
+<div class="paragraph">
+<p>When some of the child nodes are checked, the parent nodes get partly-checked.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[-] Node A            &lt;- Partly checked
+  [*] Child node 1
+  [ ] Child node 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When 'Child Node 2' gets checked too, the parent node is checked automatically.
+<strong>Attention: The mechanism of auto-checking the parent is new. It may break the logic in your application.</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[*] Node A            &lt;- Automatically checked
+  [*] Child node 1
+  [*] Child node 2</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api-changes-in-abstracttree"><a class="anchor" href="#api-changes-in-abstracttree"></a>API Changes in <code>AbstractTree</code></h3>
+<div class="sect3">
+<h4 id="execautocheckchildnodes"><a class="anchor" href="#execautocheckchildnodes"></a><code>execAutoCheckChildNodes</code></h4>
+<div class="paragraph">
+<p>Before this change, the auto-check logic was implemented in Java and JavaScript. The
+<code>org.eclipse.scout.rt.client.ui.basic.tree.AbstractTree#execAutoCheckChildNodes</code> method implemented the logic
+on Java side. This method was removed. The complete auto-check logic is now only on JavaScript side.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="checking-all-nodes"><a class="anchor" href="#checking-all-nodes"></a>Checking All Nodes</h4>
+<div class="paragraph">
+<p>To check all nodes of a tree in java, it was possible to check the root node while <code>autoCheckChildren</code> was true.
+This is no longer supported. The new best practice is to use the
+<code>org.eclipse.scout.rt.client.ui.basic.tree.AbstractTree#checkAllNodes</code> method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// No longer supported
+tree.setNodeChecked(tree.getRootNode(), true);
+
+// Use this
+tree.checkAllNodes();</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
