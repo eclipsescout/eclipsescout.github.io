@@ -994,6 +994,29 @@ This applies only to imports of <code>js</code> files. Imports to <code>less</co
 </div>
 </div>
 <div class="sect1">
+<h2 id="javascript-library-build"><a class="anchor" href="#javascript-library-build"></a>JavaScript Library Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If code is written with TypeScript, it needs to be transpiled to JavaScript before it can be used.
+Because this task takes some time, it should not be done by the project using a TypeScript library but by the library itself.
+This is true for Scout as well. Therefore, Scout 23.1 is shipped with prebuilt JavaScript code.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you are a library developer, you must do the same.
+To do so, you can use the support provided by Scout&#8217;s build tooling as described here: <a href="../technical-guide/user-interface/build-stack.html#authoring-libraries" class="xref page">Authoring Libraries</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="iid-types-idfactory-and-idexternalformatter"><a class="anchor" href="#iid-types-idfactory-and-idexternalformatter"></a>IId types, IdFactory and IdExternalFormatter</h2>
 <div class="sectionbody">
 <div class="paragraph">
