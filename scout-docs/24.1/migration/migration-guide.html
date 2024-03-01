@@ -543,20 +543,11 @@ See <a href="https://search.maven.org/artifact/org.eclipse.scout/maven_rt_plugin
 <h2 id="3rd-party-libraries-update"><a class="anchor" href="#3rd-party-libraries-update"></a>3rd Party Libraries Update</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="update-to-jakarta-ee"><a class="anchor" href="#update-to-jakarta-ee"></a>Update to Jakarta EE</h3>
+<h3 id="update-to-jakarta"><a class="anchor" href="#update-to-jakarta"></a>Update to Jakarta EE</h3>
 <div class="paragraph">
-<p>Until now, Scout was based on the Java EE Servlet Specification 4.0, many of our third-party libraries also depends on this specification
-(e.g. Jetty, HttpServlet API, JMS, JAX-WS, JAX-RS etc).
-With release 24/1 the Scout framework is moving towards Jakarta EE and is now based on the 5.0 specification.
-As part of this Jakarta EE version update all module names and packages have been renamed from javax to jakarta
-(due to legal requirements by Oracle as part of the open source donation of Java EE to the Eclipse Foundation).</p>
+<p>As part of the Jakarta EE version update all imports need to be renamed from javax to jakarta.
+The update also requires some changes on the usage of third party libraries.</p>
 </div>
-<div class="paragraph">
-<p>Together with the Jakarta EE update many third-party libraries have received a new version defined in Scout parent POM.
-Additionally, all Java EE imports have been migrated from <code>javax</code> to <code>jakarta</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="migration-guide"><a class="anchor" href="#migration-guide"></a>Migration Guide</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -586,8 +577,8 @@ Additionally, all Java EE imports have been migrated from <code>javax</code> to 
 </li>
 </ul>
 </div>
-<div class="sect4">
-<h5 id="jax-ws-services"><a class="anchor" href="#jax-ws-services"></a>JAX-WS Services</h5>
+<div class="sect3">
+<h4 id="jax-ws-services"><a class="anchor" href="#jax-ws-services"></a>JAX-WS Services</h4>
 <div class="paragraph">
 <p>After the upgrade to 24.1, projects that use JAX-WS (Soap) as a provider should check the connection both on DEV and on the deployed system
 to ensure that everything is working as desired.
@@ -623,15 +614,15 @@ xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"&gt;  <i class="conum" data-value="2"
 </table>
 </div>
 </div>
-<div class="sect4">
-<h5 id="ui-server-multipart-request-configuration"><a class="anchor" href="#ui-server-multipart-request-configuration"></a>UI Server: Multipart Request Configuration</h5>
+<div class="sect3">
+<h4 id="ui-server-multipart-request-configuration"><a class="anchor" href="#ui-server-multipart-request-configuration"></a>UI Server: Multipart Request Configuration</h4>
 <div class="paragraph">
 <p>As part of the switch to Jakarta EE the third party library dependency to Apache File Upload was eliminated.
 Scout now relies on plain Jakarta EE API to process HTTP multipart requests.
 Servlets processing multipart requests using Jakarta EE API requires a multipart-config in their servlet registration.</p>
 </div>
-<div class="sect5">
-<h6 id="deployment-using-web-xml"><a class="anchor" href="#deployment-using-web-xml"></a>Deployment Using web.xml</h6>
+<div class="sect4">
+<h5 id="deployment-using-web-xml"><a class="anchor" href="#deployment-using-web-xml"></a>Deployment Using web.xml</h5>
 <div class="paragraph">
 <p>If you use a <code>web.xml</code>-based deployment (legacy only, see <a href="#migration-guide-24-1-jetty-removal-of-war-modules">Removal of .war Modules</a>), make sure to add a <em>&lt;multipart-config&gt;</em> section to your <code>web.xml</code> where the <code>UiServlet</code> is registered:</p>
 </div>
@@ -667,8 +658,8 @@ Servlets processing multipart requests using Jakarta EE API requires a multipart
 </table>
 </div>
 </div>
-<div class="sect5">
-<h6 id="deployment-using-jetty-server"><a class="anchor" href="#deployment-using-jetty-server"></a>Deployment using Jetty server</h6>
+<div class="sect4">
+<h5 id="deployment-using-jetty-server"><a class="anchor" href="#deployment-using-jetty-server"></a>Deployment using Jetty server</h5>
 <div class="paragraph">
 <p>If you switch to a Jetty-based deployment (see chapter <a href="#cha-jettyserver">Former JettyServer for Development Can Be Used in a Productive Environment</a> for details) a default multipart configuration providing the ability
 to upload multipart requests with unlimited size is used by default (see chapter <a href="#migration-guide-24-1-jetty-web.xml-ui-servlet">UIServlet</a>).
@@ -682,7 +673,6 @@ see <code>getConfiguredMaximumUploadSize()</code> implementations for default va
 <div class="paragraph">
 <p>See <code>UiServletMultipartConfigProperty</code> and the config property <code>scout.ui.servletMultipartConfig</code> to provide a custom global multipart
 request configuration for your UI server.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1400,18 +1390,19 @@ This class was replaced by <code>IdCodec</code> and <code>IdInventory</code> in 
 </div>
 </div>
 <div class="sect1">
-<h2 id="login-form-add-support-for-second-factor-form-based"><a class="anchor" href="#login-form-add-support-for-second-factor-form-based"></a>Login Form: Add Support for Second-Factor (Form-Based)</h2>
+<h2 id="two-factor-auth"><a class="anchor" href="#two-factor-auth"></a>Login Form: Support for Second-Factor (Form-Based)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For the <code>FormBasedAccessController</code> and the corresponding login box a basic second-factor support was added; a new credential verifier return value <code>org.eclipse.scout.rt.platform.security.ICredentialVerifier.AUTH_2FA_REQUIRED</code> was added which will prompt for a second factor token. To verify this token a second-factor verifier <code>ICredentialVerifier</code> needs to be registered.</p>
-</div>
-<div class="paragraph">
-<p>During form-based login, for second-factor enabled accounts, a token is requested (after first challenge has been completed successful), for this token a new text <code>ui.Token</code> has been added to the login form and must be added to the <code>[&#8230;&#8203;].ui.html/src/main/resources/WebContent/login.html</code>:</p>
+<p>During form-based login, for second-factor enabled accounts, a token is requested (after first challenge has been completed successful).
+For this token a new text <code>ui.Token</code> has been added to the login form and must be added to the <code>WebContent/login.html</code> if you plan to use 2FA.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;scout:message style="tag" key="ui.Login" key="ui.LoginFailed" key="ui.User" key="ui.Password" key="ui.Token" /&gt;</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>To enable 2FA support in your application, see <a href="../technical-guide/common-concepts/security.html#two-factor-auth" class="xref page">Two-factor Authentication</a>.</p>
 </div>
 </div>
 </div>
@@ -1561,6 +1552,14 @@ tree.checkAllNodes();</code></pre>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ioutility-removed-duplicate-method-getfileextension"><a class="anchor" href="#ioutility-removed-duplicate-method-getfileextension"></a>IOUtility: Removed Duplicate Method getFileExtension</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Method getFileExtension from FileUtility should be used instead.</p>
 </div>
 </div>
 </div>

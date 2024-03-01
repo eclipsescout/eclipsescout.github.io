@@ -939,6 +939,26 @@ Each access check will now automatically consider the <code>matches</code>-, <co
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="login-form"><a class="anchor" href="#login-form"></a>Login Form</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout provides support for form based login.
+To activate the form based login, a <code>login.html</code> needs to be provided and the <code>FormBasedAccessController</code> along with a <code>ICredentialVerifier</code> needs to be added to the <code>AuthFilter</code>.
+An example setup can be found in the archetype.</p>
+</div>
+<div class="sect2">
+<h3 id="two-factor-auth"><a class="anchor" href="#two-factor-auth"></a>Two-factor Authentication (2FA)</h3>
+<div class="paragraph">
+<p>The form based login also supports two-factor-authentication.</p>
+</div>
+<div class="paragraph">
+<p>If the registered <code>ICredentialVerifier</code> requests a second factor by returning <code>AUTH_2FA_REQUIRED</code>, the <code>FormBasedAccessController</code> instructs the UI to show an input field so the user can enter the token.
+To verify this token a second-factor verifier <code>ICredentialVerifier</code> needs to be registered.</p>
+</div>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
