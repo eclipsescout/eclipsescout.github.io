@@ -27,7 +27,7 @@
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
-          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../24.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
         </div>
       </div>
     </div>
@@ -298,12 +298,12 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../index.html">Eclipse Scout</a>
+      <a class="title" href="../../../24.1/index.html">Eclipse Scout</a>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-latest">
           <a href="../../../24.1/index.html">24.1</a>
         </li>
-        <li class="version is-current is-latest">
+        <li class="version is-current">
           <a href="../../index.html">23.2</a>
         </li>
         <li class="version">
@@ -322,7 +322,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../index.html" class="home-link"></a>
+  <a href="../../../24.1/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Eclipse Scout</a></li>
@@ -348,6 +348,18 @@
 </aside>
 <article class="doc">
 <h1 class="page">SmartField: How to Apply Colors and Styles From a Lookup Row</h1>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to a past Scout release. Please click <a href="../../../24.1/howtos/scout-classic/smart-field-how-to.html" class="xref page">here</a> for the recent version.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>When a user selects a lookup-row from the proposal chooser in Scout versions &#8656; 6.0, the properties <code>foregroundColor</code>, <code>backgroundColor</code>, <code>font</code> and <code>tooltipText</code> have been automatically copied from the lookup-row to the field. In some cases this was exactly what a specific application needed, but in other cases it was hard to implement a specific behavior without overriding internal methods from the <code>SmartField</code>. For instance it was not possible to have a lookup-row with background-color red in the proposal-chooser and at the same time avoid the background-color of the field changing to red, when that row was being selected.</p>
 </div>
