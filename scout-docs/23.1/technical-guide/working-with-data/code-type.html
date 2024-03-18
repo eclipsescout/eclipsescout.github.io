@@ -366,7 +366,7 @@ This document is referring to a past Scout release. Please click <a href="../../
 <h2 id="description"><a class="anchor" href="#description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CodeTypes are used in <a href="https://wiki.eclipse.org/Scout/Concepts/SmartField">SmartField</a> to let the user choose between a finite list of values. The value stored by the field corresponds to the key of the selected code.</p>
+<p>CodeTypes are e.g. used in SmartFields, ListBoxes or TreeBoxes to let the user choose between a finite list of values. The value(s) stored by the field correspond to the key(s) of the selected code.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -374,24 +374,26 @@ This document is referring to a past Scout release. Please click <a href="../../
 </div>
 </div>
 <div class="paragraph">
-<p>A CodeType can be seen as a tree of <a href="https://wiki.eclipse.org/Scout/Concepts/Code">Codes</a>. Each code associates to the key (the Id) other properties: among others a Text and an IconId.</p>
+<p>A CodeType can be seen as a tree of Codes. Each code associates to the key (the Id) other properties: among others a Text and an IconId.</p>
 </div>
 <div class="paragraph">
-<p>In order to have the same resolving mechanism (getting the display text of a key), CodeTypes are also used in <a href="https://wiki.eclipse.org/Scout/Concepts/SmartColumn">SmartColumns</a>. To choose multiple values in the list, the fields <a href="https://wiki.eclipse.org/Scout/Concepts/ListBox">ListBox</a> (flat CodeType) and <a href="https://wiki.eclipse.org/Scout/Concepts/TreeBox">TreeBox</a> (hierarchical CodeType) can be used.</p>
+<p>In order to have the same resolving mechanism (getting the display text of a key), CodeTypes are also used in SmartColumns.
+To choose multiple values in the list, the fields ListBox (flat CodeType) and TreeBox (hierarchical CodeType) can be used.</p>
 </div>
 <div class="sect2">
 <h3 id="organisation-of-the-codes"><a class="anchor" href="#organisation-of-the-codes"></a>Organisation of the codes</h3>
 <div class="paragraph">
-<p>The codes are organized in a tree. Therefore, a CodeType can have one or more child codes at the root level, and each code can have other child codes. In a lot of cases a list of codes (meaning a tree containing only leaves at the first level) is sufficient to cover most of the need.</p>
+<p>The codes are organized in a tree. Therefore, a CodeType can have one or more child codes at the root level, and each code can have other child codes.
+Often a flat list of codes (without nested codes) is sufficient to cover most of the needs.</p>
 </div>
 <div class="paragraph">
-<p>Child codes are ordered in their parent code. This is realized with the <a href="https://wiki.eclipse.org/Scout/Concepts/Order_Annotation">order annotation</a>.</p>
+<p>Child codes are ordered in their parent code. This is implemented using the <code>@Order</code> annotation on the code class.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="type-of-the-key"><a class="anchor" href="#type-of-the-key"></a>Type of the key</h3>
 <div class="paragraph">
-<p>The type of the key is defined by its generic parameter <code>&lt;T&gt;</code>. It is very common to use a type from the <code>java.lang.*</code> package (like <code>Integer</code> or <code>String</code>), but any Java Object is suitable. It must:</p>
+<p>The type of the key is defined by its generic parameter <code>&lt;T&gt;</code>. It is very common to use a type from the <code>java.lang.*</code> package (like <code>Long</code> or <code>String</code>), but any Java Object is suitable. It must:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -407,7 +409,7 @@ This document is referring to a past Scout release. Please click <a href="../../
 </ul>
 </div>
 <div class="paragraph">
-<p>There is no obligation to have the same type for the Id between the codes of a CodeType (meaning the same generic type parameter for the codes inner-class). However, it is a good practice to have the same type between the codes of a CodeType, because the Id are used as value of <a href="https://wiki.eclipse.org/Scout/Concepts/SmartField">SmartFields</a>. Therefore, the generic parameter describing the type of value of a SmartField must be compatible with the type of the codes contained in the CodeType.</p>
+<p>There is no obligation to have the same type for the Id between the codes of a CodeType (meaning the same generic type parameter for the codes inner-class). However, it is a good practice to have the same type between the codes of a CodeType, because the Id might be used as value of e.g. a SmartField. Therefore, the generic parameter describing the type of value of a SmartField must be compatible with the type of the codes contained in the CodeType.</p>
 </div>
 </div>
 </div>
@@ -471,7 +473,7 @@ public class YesOrNoSmartField extends AbstractSmartField&lt;Boolean&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>The common way to define a CodeType is to extend AbstractCodeType. Each code is an inner-class extending AbstractCode. Like usual the properties of Codes and CodeTypes can be set using the <a href="https://wiki.eclipse.org/Scout/Concepts/GetConfigured_Methods">getConfiguredXxxxxx()</a> methods.</p>
+<p>The common way to define a CodeType is to extend AbstractCodeType. Each code is an inner-class extending AbstractCode. Like usual the properties of Codes and CodeTypes can be set by overriding any of the inherited methods starting with <code>getConfigured</code>.</p>
 </div>
 <div class="paragraph">
 <p>See the Java Code of a simple <code>YesOrNoCodeType</code> having just two codes:</p>
@@ -488,10 +490,18 @@ public class YesOrNoSmartField extends AbstractSmartField&lt;Boolean&gt; {
 </div>
 </div>
 <div class="sect2">
-<h3 id="with-the-sdk"><a class="anchor" href="#with-the-sdk"></a>With the SDK</h3>
+<h3 id="create-a-new-codetype-with-the-ide"><a class="anchor" href="#create-a-new-codetype-with-the-ide"></a>Create a new CodeType with the IDE</h3>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
 <div class="paragraph">
-<p>The SDK provides some help to generate CodeTypes and Codes.
-Use File &#8594; New &#8594; Scout &#8594; Scout Code Type to generate a new code.</p>
+<p>Use File &#8594; New &#8594; Scout &#8594; Scout Code Type to generate a new CodeType.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="intellij"><a class="anchor" href="#intellij"></a>IntelliJ</h4>
+<div class="paragraph">
+<p>Use the context menu on a package and select New &#8594; Scout Element &#8594; Code Type to generate a new CodeType.</p>
+</div>
 </div>
 </div>
 </div>
@@ -503,7 +513,7 @@ Use File &#8594; New &#8594; Scout &#8594; Scout Code Type to generate a new cod
 <p>Code types are not necessarily hardcoded. It is possible to implement other mechanisms to load a CodeType dynamically.</p>
 </div>
 <div class="paragraph">
-<p>The description of the Codes can come from a database or from an XML files. If you want to do so, you just need to implement the method corresponding to the event LoadCodes.</p>
+<p>The description of the Codes can e.g. come from a database or any other data source. If you want to do so, you just need to implement the method corresponding to the event <code>LoadCodes</code>.</p>
 </div>
 <div class="paragraph">
 <p>It is possible to use the static and the dynamic approach together. In this case, if there is a conflict (2 codes for the same id) the event OverwriteCode is triggered.</p>
@@ -525,7 +535,7 @@ Use File &#8594; New &#8594; Scout &#8594; Scout Code Type to generate a new cod
 </ul>
 </div>
 <div class="paragraph">
-<p>Note: A drawback is that the CodeType class is not aware of the language and the partition it is instantiated for. Only the <code>CodeTypeStore</code> that manages the CodeType instances knows for which language and which partition they have been instantiated.</p>
+<p>Note: A CodeType class is instantiated for each Locale and managed by the <code>CodeService</code>.</p>
 </div>
 </div>
 </div>

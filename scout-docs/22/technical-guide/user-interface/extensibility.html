@@ -407,7 +407,7 @@ export default class SpecialStringField extends StringField {
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// ...
 export {default as SpecialStringField} from './SpecialStringField';
 // ...
-window.yournamespace == Object.assign(window.yournamespace || {}, self);</code></pre>
+window.yournamespace = Object.assign(window.yournamespace || {}, self);</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -476,7 +476,7 @@ import ExtendedFormModel from './ExtendedFormModel';
 
 export default class ExtendedForm extends ExampleForm {
   _jsonModel() {
-    let baseModel == super._jsonModel();
+    let baseModel = super._jsonModel();
     return models.extend(ExtendedFormModel, baseModel);
   }
 }</code></pre>
@@ -609,7 +609,7 @@ export default class CustomApp extends App {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import CustomApp from './CustomApp';
 
-let app == new CustomApp();
+let app = new CustomApp();
 app.init();</code></pre>
 </div>
 </div>
@@ -650,7 +650,7 @@ Required version: The API described here requires Scout version 4.2 or newer.
 </ul>
 </div>
 <div class="paragraph">
-<p>The Scout extensibility concept offers three basic possibilites to extend existing components:</p>
+<p>The Scout extensibility concept offers three basic possibilities to extend existing components:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -666,7 +666,7 @@ Required version: The API described here requires Scout version 4.2 or newer.
 </ul>
 </div>
 <div class="paragraph">
-<p>The following chapers will introduce this concepts and present some examples.</p>
+<p>The following chapters will introduce this concepts and present some examples.</p>
 </div>
 </div>
 <div class="sect2">
@@ -691,7 +691,7 @@ Required version: The API described here requires Scout version 4.2 or newer.
 <p>Target classes can be all that are instanceof those extensible elements. This means an <code>AbstractStringFieldExtension</code> can be applied to <code>AbstractStringField</code> and all child classes.</p>
 </div>
 <div class="paragraph">
-<p>Extensions contain methods for all Scout Operations (see <a href="https://wiki.eclipse.org/Scout/Concepts/Exec_Methods">Exec Methods</a>). Those methods have the same signature except that they have one more input parameter. This method allows you to intercept the given Scout Operation and execute your own code even though the declaring class exists in a binary library. It is then your decision if you call the original code or completely replace it. To achieve this the <a href="http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern">Chain Pattern</a> is used: All extensions for a target class are called as part of a chain. The order is given by the order in which the extensions are registered. And the original method of the Scout element is an extension as well.</p>
+<p>Extensions contain methods for all Scout operations (inherited methods starting with <code>exec</code>). Those methods have the same signature except that they have one more input parameter. This method allows you to intercept the given Scout Operation and execute your own code even though the declaring class exists in a binary library. It is then your decision if you call the original code or completely replace it. To achieve this the <a href="http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern">Chain Pattern</a> is used: All extensions for a target class are called as part of a chain. The order is given by the order in which the extensions are registered. And the original method of the Scout element is an extension as well.</p>
 </div>
 <div class="paragraph">
 <p>Extensions to specific types of elements are prepared as abstract classes:</p>
@@ -717,7 +717,7 @@ Required version: The API described here requires Scout version 4.2 or newer.
 <div class="sect3">
 <h4 id="extending-a-stringfield-example"><a class="anchor" href="#extending-a-stringfield-example"></a>Extending a StringField example</h4>
 <div class="paragraph">
-<p>The following example changes the initial value of a <a href="https://wiki.eclipse.org/Scout/Concepts/StringField">StringField</a> called <code>NameField</code>:</p>
+<p>The following example changes the initial value of a StringField called <code>NameField</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 10. Extension for NameField</div>
@@ -740,7 +740,7 @@ Required version: The API described here requires Scout version 4.2 or newer.
 <p>Note: The type parameter of the extension (e.g. <code>NameField</code>) denotes the element which is extended.</p>
 </div>
 <div class="paragraph">
-<p>The extension needs to be registeres when starting the application:</p>
+<p>The extension needs to be registered when starting the application:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 11. Register extension for NameField</div>
@@ -758,10 +758,10 @@ Required version: The API described here requires Scout version 4.2 or newer.
 <p>The section before explained how to modify the behavior of existing Scout elements. This section will describe how to contribute new elements into existing containers.</p>
 </div>
 <div class="paragraph">
-<p>This is done by using the same mechanism as before. It is required to create an Extension too. But instead of overwriting any Scout Operation we directly define the new elements within the Extension. A lot of new elements can be added this way: <a href="https://wiki.eclipse.org/Scout/Concepts/Field">Fields</a>, <a href="https://wiki.eclipse.org/Scout/Concepts/Menu">Menus</a>, <a href="https://wiki.eclipse.org/Scout/Concepts/Column">Columns</a>, <a href="https://wiki.eclipse.org/Scout/Concepts/Code">Codes</a>, &#8230;&#8203;</p>
+<p>This is done by using the same mechanism as before. It is required to create an Extension too. But instead of overwriting any Scout Operation we directly define the new elements within the Extension. A lot of new elements can be added this way: Fields, Menus, Columns, Codes, &#8230;&#8203;</p>
 </div>
 <div class="paragraph">
-<p>Some new elements may also require a new <a href="http://en.wikipedia.org/wiki/Data_transfer_object">DTO</a> (<a href="https://wiki.eclipse.org/Scout/Concepts/FormData">FormData</a>, <a href="https://wiki.eclipse.org/Scout/Concepts/TablePageData">TablePageData</a>, <a href="https://wiki.eclipse.org/Scout/Concepts/TableData">TableData</a>) to be filled with data from the server. The corresponding DTO for the extension is automatically created when using the <a href="https://wiki.eclipse.org/Scout/SDK">SDK</a> 4.2 or newer and having the <code>@Data</code> annotation specified on your extension. As soon as the DTO extension has been registered in the <code>IExtensionRegistry</code> service it is automatically created when the target DTO is created and will also be imported and exported automatically!</p>
+<p>Some new elements may also require a new <a href="http://en.wikipedia.org/wiki/Data_transfer_object">DTO</a> (FormData, TablePageData, TableData) to be filled with data from the server. The corresponding DTO for the extension is automatically created when using the Scout Plugin 4.2 or newer in your IDE and having the <code>@Data</code> annotation specified on your extension. As soon as the DTO extension has been registered in the <code>IExtensionRegistry</code> service it is automatically created when the target DTO is created and will also be imported and exported automatically!</p>
 </div>
 <div class="paragraph">
 <p>The following example adds two new fields for salary and birthday to a <code>PersonForm</code>. Please note the <code>@Data</code> annotation which describes where the DTO for this extension should be created.</p>
@@ -804,7 +804,7 @@ public class PersonFormMainBoxExtension extends AbstractGroupBoxExtension&lt;Mai
 </div>
 </div>
 <div class="paragraph">
-<p>Then the <a href="https://wiki.eclipse.org/Scout/SDK">SDK</a> automatically creates the extension DTO which could look as follows. Please note: The DTO is generated automatically, but you have to register the generated DTO manually!</p>
+<p>Then the Scout IDE plugin automatically creates the extension DTO which could look as follows. Please note: The DTO is generated automatically, but you have to register the generated DTO manually!</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 14. Extension Data for PersonForm</div>
@@ -930,10 +930,10 @@ c.getSalary().setValue(new BigDecimal("200.0"));</code></pre>
 <div class="sect2">
 <h3 id="migration"><a class="anchor" href="#migration"></a>Migration</h3>
 <div class="paragraph">
-<p>The new extensibility concept is added on top of all existing extension possibilities like injection or sub-classing. Therefore, it works together with the current mechanisms. But for some use cases (like modifying template classes) it offers a lot of benefits. Therefore no migration is necessary. The concepts do exist alongside each others.</p>
+<p>The new extensibility concept is added on top of all existing extension possibilities like injection or sub-classing. Therefore, it works together with the current mechanisms. But for some use cases (like modifying template classes) it offers a lot of benefits. Therefore, no migration is necessary. The concepts do exist alongside each others.</p>
 </div>
 <div class="paragraph">
-<p>However there is one impact: Because the Scout Operation methods are now part of a call chain they may no longer be invoked directly. So any call to e.g. <code>execValidateValue()</code> is no longer allowed because this would exclude the extensions for this call. The Scout SDK marks such calls with error markers in the Eclipse Problems view. If really required the corresponding intercept-Method can be used. So instead directly calling <code>myField.execChangedValue</code> you may call <code>myField.interceptChangedValue()</code>.</p>
+<p>However, there is one impact: Because the Scout Operation methods are now part of a call chain they may no longer be invoked directly. So any call to e.g. <code>execValidateValue()</code> is no longer allowed because this would exclude the extensions for this call. The Scout SDK marks such calls with error markers in the Eclipse Problems view. If really required the corresponding intercept-Method can be used. So instead directly calling <code>myField.execChangedValue</code> you may call <code>myField.interceptChangedValue()</code>.</p>
 </div>
 </div>
 </div>

@@ -357,7 +357,7 @@ This document is referring to a past Scout release. Please click <a href="../../
 </div>
 </div>
 <div class="paragraph">
-<p>Its also possible to use some parameters:</p>
+<p>It&#8217;s also possible to use some parameters:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 2. Text lookup</div>
@@ -383,7 +383,7 @@ TEXTS.get("NameWithAge", name, age);</code></pre>
 <h2 id="text-properties-files"><a class="anchor" href="#text-properties-files"></a>Text properties files</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scout uses the java.util.ResourceBundle mechanism for native language support. So whatever language files you have in your <code>&lt;project-prefix&gt;.shared/resources/texts/*.properties</code> are taken as translation base.</p>
+<p>Scout uses the <code>java.util.ResourceBundle</code> mechanism for native language support. So whatever language files you have in your <code>&lt;project-prefix&gt;.shared/resources/texts/*.properties</code> are taken as translation base.</p>
 </div>
 <div class="paragraph">
 <p>Example setup:</p>
@@ -399,11 +399,7 @@ TEXTS.get("NameWithAge", name, age);</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>If your application starts with the <code>-vmargs -Duser.language=fr</code> or <code>eclipse.exe -nl=fr</code> the translations in Texts_fr.properties are considered.
-In case of any other user language the translations in Texts.properties are considered.</p>
-</div>
-<div class="paragraph">
-<p>It is possible to edit these files in the Eclipse Scout SDK with the NLS Editor.</p>
+<p>It is possible to edit these files in the Eclipse Scout SDK or IntelliJ Scout Plugin using the <a href="../../sdk/sdk-eclipse.html#sec-sdk_nls" class="xref page">NLS Editor</a>.</p>
 </div>
 </div>
 </div>
@@ -411,7 +407,7 @@ In case of any other user language the translations in Texts.properties are cons
 <h2 id="text-provider-service"><a class="anchor" href="#text-provider-service"></a>Text Provider Service</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Text Provider Services are services responsible to provide localization for texts in the user interface. A typical application contains a such service contributed by the Shared Project.</p>
+<p>Text Provider Services are services responsible to provide localization for texts in the user interface. A typical application contains such a service contributed by the Shared Project.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -424,15 +420,12 @@ In case of any other user language the translations in Texts.properties are cons
 </ul>
 </div>
 <div class="paragraph">
-<p>Using Text Provider Services developers can decide to store the translations in a custom container like a database or XML files. Furthermore using TextProviderServices it is very easy to overwrite any translated text in the application (also texts used in Scout itself) using the service ranking.</p>
-</div>
-<div class="paragraph">
-<p>The mechanism is aligned with the icon retrieval which is also managed using <a href="https://wiki.eclipse.org/index.php?title=Scout/Concepts/Icon_Provider_Service&amp;action=edit&amp;redlink=1">Icon Provider Services</a>.</p>
+<p>Using Text Provider Services developers can decide to store the translations in a custom container like a database or XML files. Furthermore, using TextProviderServices it is very easy to overwrite any translated text in the application (also texts used in Scout itself) using the bean order.</p>
 </div>
 <div class="sect2">
 <h3 id="localization-using-properties-files"><a class="anchor" href="#localization-using-properties-files"></a>Localization using .properties files</h3>
 <div class="paragraph">
-<p>By default the internationalization mechanism relies on .properties files using a reference implementation of the TextProviderServices:</p>
+<p>By default, the internationalization mechanism relies on .properties files using a reference implementation of the TextProviderServices:</p>
 </div>
 <div class="paragraph">
 <p>Service extending the <code>AbstractDynamicNlsTextProviderService</code> class.</p>
@@ -451,7 +444,7 @@ This is realized by overriding the getter getDynamicNlsBaseName(). Here an examp
 </div>
 </div>
 <div class="paragraph">
-<p>If configured like this, it means that the .properties files will be located in the same plug-in at the location:</p>
+<p>If configured like this, it means that the <code>.properties</code> files will be located in the same module at the location:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -470,7 +463,7 @@ This is realized by overriding the getter getDynamicNlsBaseName(). Here an examp
 </ul>
 </div>
 <div class="paragraph">
-<p>If you decide to store your translated texts in .properties files, you migth want to use the <a href="https://wiki.eclipse.org/Scout/SDK/NLS_Editor">NLS Editor</a> to edit them.</p>
+<p>If you decide to store your translated texts in .properties files, you might want to use the <a href="../../sdk/sdk-eclipse.html#sec-sdk_nls" class="xref page">NLS Editor</a> to edit them.</p>
 </div>
 <div class="paragraph">
 <p>You need to respect the format defined by the Java Properties class. In particular the encoding of a .properties file is ISO-8859-1 (also known as Latin-1). All non-Latin-1 characters must be encoded. Examples:</p>
