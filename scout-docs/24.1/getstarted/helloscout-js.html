@@ -412,22 +412,23 @@ Alternatively, you can also download and extract a
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">.
 │   package.json
+│   tsconfig.json
 │   webpack.config.js
 │
 ├───res
 │       index.html
 │
 └───src
-    │   helloworld.js
+    │   helloworld.ts
     │   helloworld.less
     │
     ├───desktop
-    │       Desktop.js
-    │       DesktopModel.js
+    │       Desktop.ts
+    │       DesktopModel.ts
     │
     └───greeting
-            HelloForm.js
-            HelloFormModel.js</code></pre>
+            HelloForm.ts
+            HelloFormModel.ts</code></pre>
 </div>
 </div>
 </div>
@@ -518,11 +519,12 @@ And in the subfolder <code>src/</code> you find the source files that are transf
     "serve": "live-server --mount=/:dist"
   },
   "devDependencies": {
-    "@eclipse-scout/cli": "^23.2.15",
+    "@eclipse-scout/cli": "^24.1.3",
+    "@eclipse-scout/tsconfig": "^24.1.3",
     "live-server": "^1.2.2"
   },
   "dependencies": {
-    "@eclipse-scout/core": "^23.2.15"
+    "@eclipse-scout/core": "^24.1.3"
   }
 }</code></pre>
 </div>
@@ -530,7 +532,7 @@ And in the subfolder <code>src/</code> you find the source files that are transf
 <div class="paragraph">
 <p>The <code>scripts</code> define what <code>npm run</code> should execute.
 They work a bit like aliases in Bash.
-To have all needed files available at <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code>,
+To have all required files available at <code><a href="http://127.0.0.1:8080/" class="bare">http://127.0.0.1:8080/</a></code>,
 we need to mount the folder <code>dist</code> to the root path <code>/</code> when starting the development server.</p>
 </div>
 <div class="paragraph">
@@ -544,6 +546,12 @@ or is already defined in the <code>package-lock.json</code> file.</p>
 <p>For more detailed and general information about <code>package.json</code> and <code>package-lock.json</code>,
 see the official documentation on Node.js:
 <a href="https://nodejs.dev/learn/the-package-json-guide">The package.json guide</a> and <a href="https://nodejs.dev/learn/the-package-lock-json-file">The package-lock.json file</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tsconfig"><a class="anchor" href="#tsconfig"></a>tsconfig</h4>
+<div class="paragraph">
+<p>The tsconfig.json file configures the TypeScript compiler. It extends a default config from Scout and specifies output dir and the directories that contain TypeScript files. For more details on tsconfig see the <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">TypeScript documentation</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -563,14 +571,14 @@ and write the results to the <code>dist</code> folder.</p>
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
 module.exports = (env, args) =&gt; {
   args.resDirArray = [
-    './res', 
+    './res',
     './node_modules/@eclipse-scout/core/res',
     './node_modules/@eclipse-scout/core/dist/locales.json',
     './node_modules/@eclipse-scout/core/dist/texts.json'
   ];
   const config = baseConfig(env, args);
   config.entry = {
-    'helloworld': './src/helloworld.js',
+    'helloworld': './src/helloworld.ts',
     'helloworld-theme': './src/helloworld.less'
   };
   return config;
@@ -584,7 +592,7 @@ In addition to the static resources of our application, we also need Scout&#8217
 <div class="paragraph">
 <p>In <code><strong>config.entry</strong></code>, the entry points for bundling JavaScript and CSS files are defined.
 For our application, the target files <code>helloworld.js</code> and <code>helloworld-theme.css</code> (defined without the file extension)
-are generated from the source files <code>src/helloworld.js</code> and <code>src/helloworld.less</code>, respectively.</p>
+are generated from the source files <code>src/helloworld.ts</code> and <code>src/helloworld.less</code>, respectively.</p>
 </div>
 <div class="paragraph">
 <p>The <code><strong>-theme</strong></code> <strong>suffix</strong> of the target CSS file is important for Scout&#8217;s post-processing to work properly.
@@ -628,22 +636,24 @@ The order of these elements is important.
 In particular, the <code>&lt;div&gt;</code> element with the class "scout" has to be placed before the inclusion of the scripts,
 since it is used to build the final DOM for our application.</p>
 </div>
-<div class="paragraph">
-<p>The other file in our <code>res/</code> folder, <code><strong>helloworld-texts.json</strong></code>, contains your own texts used in the application.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="source-files"><a class="anchor" href="#source-files"></a>Source Files</h3>
 <div class="sect3">
 <h4 id="entry-points"><a class="anchor" href="#entry-points"></a>Entry Points</h4>
 <div class="listingblock">
-<div class="title">Listing 5. src/helloworld.js</div>
+<div class="title">Listing 5. src/helloworld.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import { scout, App } from '@eclipse-scout/core';
-import { Desktop } from './desktop/Desktop'
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {App, ObjectFactory, scout} from '@eclipse-scout/core';
+import {Desktop} from './desktop/Desktop'
+import {HelloForm} from './greeting/HelloForm'
 
 scout.addObjectFactories({
   'Desktop': () =&gt; new Desktop()
+});
+
+ObjectFactory.get().registerNamespace('helloworld', {
+  HelloForm
 });
 
 new App().init({
@@ -655,7 +665,7 @@ new App().init({
 </div>
 </div>
 <div class="paragraph">
-<p>In our main JavaScript file, we import the <code>scout</code> namespace object as well as the class <code>App</code>.</p>
+<p>In our main TypeScript file, we import the <code>scout</code> namespace object as well as the class <code>App</code>.</p>
 </div>
 <div class="paragraph">
 <p>Before we initialize an instance of the Scout application (passing the location of the text urls and the locales url)
@@ -671,7 +681,7 @@ On application initialization, Scout is using that factory to create the desktop
 </li>
 <li>
 <p>Define our own namespace object, <code>helloworld</code>, and put our <code>HelloForm</code> class in it,
-so Scout can use it to build modular widgets at runtime (see <code>DesktopModel.js</code>).</p>
+so Scout can use it to build modular widgets at runtime (see <code>DesktopModel.ts</code>).</p>
 </li>
 </ol>
 </div>
@@ -705,19 +715,18 @@ This also makes it easier to e.g. reuse a form that should look similar elsewher
 </div>
 <div class="paragraph">
 <p>A typical model definition for a Scout widget defines an <code>objectType</code>.
-This is specified as a string containing the corresponding class, prefixed with the namespace in which it is accessible.
-Without a namespace prefix, the namespace <code>scout</code> is used as default.</p>
+This is specified as a reference to the corresponding class.</p>
 </div>
 <div class="paragraph">
 <p>Other object properties are used to configure the widget based on the specified <code>objectType</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 7. src/greeting/DesktopModel.js</div>
+<div class="title">Listing 7. src/greeting/DesktopModel.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {HelloForm} from "../greeting/HelloForm";
-import {Desktop} from "./Desktop";
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Desktop, DesktopModel} from "@eclipse-scout/core";
+import {HelloForm} from "../greeting/HelloForm";
 
-export default () =&gt; ({
+export default (): DesktopModel =&gt; ({
   objectType: Desktop,
   navigationHandleVisible: false,
   navigationVisible: false,
@@ -739,14 +748,13 @@ We only need the bench for our application, so we hide the other parts, includin
 We provide an instance of our HelloForm as a view on our desktop.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 8. src/greeting/Desktop.js</div>
+<div class="title">Listing 8. src/greeting/Desktop.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Desktop as ScoutDesktop} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Desktop as ScoutDesktop, DesktopModel as ScoutDesktopModel} from '@eclipse-scout/core';
 import DesktopModel from './DesktopModel';
 
 export class Desktop extends ScoutDesktop {
-
-  _jsonModel() {
+  protected override _jsonModel(): ScoutDesktopModel {
     return DesktopModel();
   }
 }</code></pre>
@@ -756,13 +764,14 @@ export class Desktop extends ScoutDesktop {
 <p>Our desktop doesn&#8217;t have any custom behavior, so we only import the <code>DesktopModel</code> here, in the <code>_jsonModel()</code> function.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 9. src/greeting/HelloFormModel.js</div>
+<div class="title">Listing 9. src/greeting/HelloFormModel.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Button, Form, GroupBox, StringField} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Button, Form, FormModel, GroupBox, StringField} from '@eclipse-scout/core';
 
-export default () =&gt; ({
+export default (): FormModel =&gt; ({
   objectType: Form,
   displayHint: Form.DisplayHint.VIEW,
+  modal: false,
   rootGroupBox: {
     objectType: GroupBox,
     borderDecoration: GroupBox.BorderDecoration.EMPTY,
@@ -781,7 +790,16 @@ export default () =&gt; ({
       }
     ]
   }
-});</code></pre>
+})
+
+/* **************************************************************************
+* GENERATED WIDGET MAPS
+* **************************************************************************/
+
+export type HelloFormWidgetMap = {
+  'NameField': StringField;
+  'GreetButton': Button;
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -791,24 +809,28 @@ These are in a group box inside the form.
 We define an empty border decoration around this group box to have a little padding.</p>
 </div>
 <div class="paragraph">
-<p>The <em>Enter</em> key is defined as the keyboard shortcut for our button
-and we set <code>processButton: false</code> to place the button next to our field instead of above it.</p>
+<p>The <em>Enter</em> key is defined as the keyboard shortcut for our button, and we set <code>processButton: false</code> to place the button next to our field instead of above it.</p>
+</div>
+<div class="paragraph">
+<p>At the bottom an auto generated type holding the WidgetMap can be found. Such a WidgetMap specifies which field id points to which type of widget as a flattened type. This is used later on in the Form when accessing such a widget using the <code>this.widget()</code> function to directly return the correct widget data type.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 10. src/greeting/HelloForm.js</div>
+<div class="title">Listing 10. src/greeting/HelloForm.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Form, MessageBoxes} from '@eclipse-scout/core';
-import HelloFormModel from './HelloFormModel';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Form, FormModel, InitModelOf, MessageBoxes} from '@eclipse-scout/core';
+import HelloFormModel, {HelloFormWidgetMap} from './HelloFormModel';
 
 export class HelloForm extends Form {
 
-  _jsonModel() {
+  declare widgetMap: HelloFormWidgetMap;
+
+  protected override _jsonModel(): FormModel {
     return HelloFormModel();
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf&lt;this&gt;) {
     super._init(model);
-    this.widget('GreetButton').on('click', event =&gt; {
+    this.widget('GreetButton').on('click', () =&gt; {
       let name = this.widget('NameField').value || 'stranger';
       MessageBoxes.openOk(this.session.desktop, `Hello ${name}!`);
     });
@@ -817,11 +839,11 @@ export class HelloForm extends Form {
 </div>
 </div>
 <div class="paragraph">
-<p>As in <code>Desktop.js</code>, we import the model but additionally add an event handler in the <code>_init(model)</code> function
+<p>As in <code>Desktop.ts</code>, we import the model but additionally add an event handler in the <code>_init(model)</code> function
 to implement the desired behavior when the button is clicked.</p>
 </div>
 <div class="paragraph">
-<p>To accomplish this, we can access our button and field by their respective <code>id</code> (see <code>HelloFormModel.js</code>).
+<p>To accomplish this, we can access our button and field by their respective <code>id</code> (see <code>HelloFormModel.ts</code>).
 An OK message box with the desired text is displayed using the convenience class <code>MessageBoxes</code> from Scout.</p>
 </div>
 </div>
