@@ -413,18 +413,17 @@ The X-Frame-Options header is described in RFC 7034 <sup class="footnote">[<a id
 <div class="sect2">
 <h3 id="x-xss-protection"><a class="anchor" href="#x-xss-protection"></a>X-XSS-Protection</h3>
 <div class="paragraph">
-<p>This header enables the XSS <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> filter built into most recent user agents.
-It&#8217;s usually enabled by default anyway, so the role of this header is to re-enable the filter for the website if it was disabled by the user.
-The X-XSS-Protection header is described in <a href="https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter/">controlling-the-xss-filter</a>.</p>
+<p>This header is no longer interpreted by modern browser engines and is considered insecure.
+Scout does no longer set this header in <code>HttpServletControl</code>.</p>
 </div>
 <div class="paragraph">
-<p>In Scout this header is configured to enable XSS protections and instructs the user-agent to block a page from loading if reflected XSS is detected.</p>
+<p>See MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="content-security-policy"><a class="anchor" href="#content-security-policy"></a>Content Security Policy</h3>
 <div class="paragraph">
-<p>Content Security Policy is an HTTP response header that helps you reduce XSS  risks on modern user agents by declaring what dynamic resources are allowed to load <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.
+<p>Content Security Policy is an HTTP response header that helps you reduce XSS  risks on modern user agents by declaring what dynamic resources are allowed to load <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.
 The CSP header is described in <a href="http://www.w3.org/TR/CSP1/">Level 1</a> and <a href="http://www.w3.org/TR/CSP2/">Level 2</a>. There is also a working draft for a <a href="http://www.w3.org/TR/CSP3/">Level 3</a>.</p>
 </div>
 <div class="paragraph">
@@ -433,16 +432,16 @@ The CSP header is described in <a href="http://www.w3.org/TR/CSP1/">Level 1</a> 
 <div class="ulist">
 <ul>
 <li>
-<p>JavaScript <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>: Only accepts JavaScript resources from the same origin (same scheme, host and port). Inline JavaScript is allowed and unsafe dynamic code evaluation (like <code>eval(string)</code>, <code>setTimeout(string)</code>, <code>setInterval(string)</code>, <code>new Function(string)</code>) is allowed as well.</p>
+<p>JavaScript <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>: Only accepts JavaScript resources from the same origin (same scheme, host and port). Inline JavaScript is allowed and unsafe dynamic code evaluation (like <code>eval(string)</code>, <code>setTimeout(string)</code>, <code>setInterval(string)</code>, <code>new Function(string)</code>) is allowed as well.</p>
 </li>
 <li>
-<p>Stylesheets (CSS) <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>: Only accepts Stylesheet resources from the same origin (same scheme, host and port). Inline style attributes are allowed.</p>
+<p>Stylesheets (CSS) <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>: Only accepts Stylesheet resources from the same origin (same scheme, host and port). Inline style attributes are allowed.</p>
 </li>
 <li>
-<p>Frames <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>: All sources are allowed because the iframes created by the Scout BrowserField run in the sandbox mode and therefore handle the security policy on their own.</p>
+<p>Frames <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>: All sources are allowed because the iframes created by the Scout BrowserField run in the sandbox mode and therefore handle the security policy on their own.</p>
 </li>
 <li>
-<p>All other types (Image, <code>WebSocket</code> <sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup>, <code>EventSource</code> <sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>, AJAX calls <sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>, fonts, <code>&lt;object&gt;</code> <sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup>, <code>&lt;embed&gt;</code> <sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup>, <code>&lt;applet&gt;</code> <sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup>, <code>&lt;audio&gt;</code> <sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup> and <code>&lt;video&gt;</code> <sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>) only allow resources from the same origin (same scheme, host and port).</p>
+<p>All other types (Image, <code>WebSocket</code> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>, <code>EventSource</code> <sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup>, AJAX calls <sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>, fonts, <code>&lt;object&gt;</code> <sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>, <code>&lt;embed&gt;</code> <sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup>, <code>&lt;applet&gt;</code> <sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup>, <code>&lt;audio&gt;</code> <sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup> and <code>&lt;video&gt;</code> <sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup>) only allow resources from the same origin (same scheme, host and port).</p>
 </li>
 </ul>
 </div>
@@ -1034,43 +1033,40 @@ Each access check will now automatically consider the <code>matches</code>-, <co
 <a href="#_footnoteref_3">3</a>. <a href="https://tools.ietf.org/html/rfc7034" class="bare">https://tools.ietf.org/html/rfc7034</a>
 </div>
 <div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" class="bare">https://en.wikipedia.org/wiki/Cross-site_scripting</a>
+<a href="#_footnoteref_4">4</a>. <a href="http://content-security-policy.com/" class="bare">http://content-security-policy.com/</a>
 </div>
 <div class="footnote" id="_footnotedef_5">
-<a href="#_footnoteref_5">5</a>. <a href="http://content-security-policy.com/" class="bare">http://content-security-policy.com/</a>
+<a href="#_footnoteref_5">5</a>. <a href="https://en.wikipedia.org/wiki/JavaScript" class="bare">https://en.wikipedia.org/wiki/JavaScript</a>
 </div>
 <div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. <a href="https://en.wikipedia.org/wiki/JavaScript" class="bare">https://en.wikipedia.org/wiki/JavaScript</a>
+<a href="#_footnoteref_6">6</a>. <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets" class="bare">https://en.wikipedia.org/wiki/Cascading_Style_Sheets</a>
 </div>
 <div class="footnote" id="_footnotedef_7">
-<a href="#_footnoteref_7">7</a>. <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets" class="bare">https://en.wikipedia.org/wiki/Cascading_Style_Sheets</a>
+<a href="#_footnoteref_7">7</a>. <a href="https://en.wikipedia.org/wiki/Framing_(World_Wide_Web" class="bare">https://en.wikipedia.org/wiki/Framing_(World_Wide_Web</a>)
 </div>
 <div class="footnote" id="_footnotedef_8">
-<a href="#_footnoteref_8">8</a>. <a href="https://en.wikipedia.org/wiki/Framing_(World_Wide_Web" class="bare">https://en.wikipedia.org/wiki/Framing_(World_Wide_Web</a>)
+<a href="#_footnoteref_8">8</a>. <a href="https://en.wikipedia.org/wiki/WebSocket" class="bare">https://en.wikipedia.org/wiki/WebSocket</a>
 </div>
 <div class="footnote" id="_footnotedef_9">
-<a href="#_footnoteref_9">9</a>. <a href="https://en.wikipedia.org/wiki/WebSocket" class="bare">https://en.wikipedia.org/wiki/WebSocket</a>
+<a href="#_footnoteref_9">9</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource" class="bare">https://developer.mozilla.org/en-US/docs/Web/API/EventSource</a>
 </div>
 <div class="footnote" id="_footnotedef_10">
-<a href="#_footnoteref_10">10</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource" class="bare">https://developer.mozilla.org/en-US/docs/Web/API/EventSource</a>
+<a href="#_footnoteref_10">10</a>. <a href="https://en.wikipedia.org/wiki/Ajax_%28programming%29" class="bare">https://en.wikipedia.org/wiki/Ajax_%28programming%29</a>
 </div>
 <div class="footnote" id="_footnotedef_11">
-<a href="#_footnoteref_11">11</a>. <a href="https://en.wikipedia.org/wiki/Ajax_%28programming%29" class="bare">https://en.wikipedia.org/wiki/Ajax_%28programming%29</a>
+<a href="#_footnoteref_11">11</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object</a>
 </div>
 <div class="footnote" id="_footnotedef_12">
-<a href="#_footnoteref_12">12</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object</a>
+<a href="#_footnoteref_12">12</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed</a>
 </div>
 <div class="footnote" id="_footnotedef_13">
-<a href="#_footnoteref_13">13</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed</a>
+<a href="#_footnoteref_13">13</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet</a>
 </div>
 <div class="footnote" id="_footnotedef_14">
-<a href="#_footnoteref_14">14</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet</a>
+<a href="#_footnoteref_14">14</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio</a>
 </div>
 <div class="footnote" id="_footnotedef_15">
-<a href="#_footnoteref_15">15</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio</a>
-</div>
-<div class="footnote" id="_footnotedef_16">
-<a href="#_footnoteref_16">16</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video</a>
+<a href="#_footnoteref_15">15</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video</a>
 </div>
 </div>
 <nav class="pagination">
