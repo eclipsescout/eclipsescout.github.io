@@ -930,6 +930,19 @@ During development, the <code>publishConfig</code> has no effect.</p>
 <p>Ensure the <code>dist</code> folder will be part of the bundled module by adding it to the list of files in <code>package.json</code>.</p>
 </li>
 <li>
+<p>In the pom.xml of the module add the following property:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;properties&gt;
+  &lt;master_skip_copy_webpack_build_output&gt;true&lt;/master_skip_copy_webpack_build_output&gt;
+&lt;/properties&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This prevents the Maven build to include the transpiled JavaScript code in the jar. It is not required there as it will be provided by the Node module instead.</p>
+</div>
+</li>
+<li>
 <p>Consult the <a href="https://webpack.js.org/guides/author-libraries/">Webpack Guide</a> if you want to learn more about authoring libraries in general.</p>
 </li>
 </ol>
