@@ -595,6 +595,10 @@ public class ExposedCodeType extends AbstractCodeType&lt;String, String&gt; { <i
 </div>
 </div>
 <div class="paragraph">
+<p>The url <code>api/codes</code> points to the <code>CodeResource</code> of the <code>org.eclipse.scout.rt.api</code> module.
+To make this work you need to ensure there is a dependency to that module in the <code>pom.xml</code> of your server module.</p>
+</div>
+<div class="paragraph">
 <p>Because in the example above a custom <code>objectType</code> has been specified, a corresponding CodeType class must be created in TypeScript. This is only required if you need some custom fields or functions on your CodeType, but it is often quite handy.</p>
 </div>
 <div class="listingblock">

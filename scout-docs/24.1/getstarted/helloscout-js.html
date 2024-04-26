@@ -394,7 +394,28 @@ We will start by getting the application running and then take a look at the cod
 <h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Make sure you have <a href="https://nodejs.org/dist/latest-v20.x/">Node.js 20</a> installed.</p>
+<p>For this tutorial you need to have <a href="https://nodejs.org/dist/latest-v20.x/">Node.js 20</a> installed.
+If you have multiple node versions installed, make sure the correct version is used by running the following command in your terminal.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">node --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this does not print the required version, you need to adjust your PATH variable (replace NODE_DIR with your installation directory).</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Windows Terminal</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">set PATH=NODE_DIR;%PATH%</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Shell</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">export PATH=NODE_DIR:$PATH</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -403,15 +424,23 @@ We will start by getting the application running and then take a look at the cod
 <div class="sectionbody">
 <div class="paragraph">
 <p>Clone the <a href="https://github.com/bsi-software/helloscoutjs.git">helloscoutjs</a> repository
-and checkout the branch <code>releases/24.1</code>.
-Alternatively, you can also download and extract a
+and checkout the branch <code>releases/24.1</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Clone repository and checkout branch</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone https://github.com/bsi-software/helloscoutjs.git --branch releases/24.1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can also download and extract a
 <a href="https://github.com/bsi-software/helloscoutjs/archive/refs/heads/releases/24.1.zip">ZIP file of the repository</a>.</p>
 </div>
 <div class="paragraph">
 <p>After that, the file and folder structure of your local copy should look like this (apart from a few more files):</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 1. Files and folders of the application</div>
+<div class="title">Listing 4. Files and folders of the application</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">.
 │   package.json
@@ -440,11 +469,19 @@ Alternatively, you can also download and extract a
 <h2 id="build-the-application"><a class="anchor" href="#build-the-application"></a>Build the Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the main folder, where the file <code>package.json</code> is located, open a terminal and execute <code><strong>npm install --ignore-scripts</strong></code>.</p>
+<p>Change the directory to the main folder where the file <code>package.json</code> is located and execute <code><strong>pnpm install</strong></code>.
+If this command fails, you likely don&#8217;t have pnpm installed.
+In that case execute <code><strong>npm install</strong></code> instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cd helloscoutjs
+pnpm install</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This creates a folder <code>node_modules</code>, containing all (direct and transitive) dependencies,
-as well as a file <code>package-lock.json</code>, listing all the specific versions of these dependencies.</p>
+as well as a file <code>package-lock.json</code> resp. <code>pnpm-lock.yaml</code> when using pnpm, listing all the specific versions of these dependencies.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -513,7 +550,7 @@ And in the subfolder <code>src/</code> you find the source files that are transf
 <p>For <code>npm</code> commands like <code>npm install</code> or <code>npm run &lt;script&gt;</code>, the file <code>package.json</code> provides the necessary information.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 2. package.json</div>
+<div class="title">Listing 5. package.json</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "scripts": {
@@ -569,7 +606,7 @@ and write the results to the <code>dist</code> folder.</p>
 <p>Scout provides a default webpack configuration which we use and adjust as follows.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 3. webpack.config.js</div>
+<div class="title">Listing 6. webpack.config.js</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">const baseConfig = require('@eclipse-scout/cli/scripts/webpack-defaults');
 module.exports = (env, args) =&gt; {
@@ -616,7 +653,7 @@ it has to define a <code>DOCTYPE</code>, a default language and a title.
 Furthermore, to allow for responsive web design, we include the <code>&lt;meta&gt;</code> viewport element.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 4. res/index.html</div>
+<div class="title">Listing 7. res/index.html</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -645,7 +682,7 @@ since it is used to build the final DOM for our application.</p>
 <div class="sect3">
 <h4 id="entry-points"><a class="anchor" href="#entry-points"></a>Entry Points</h4>
 <div class="listingblock">
-<div class="title">Listing 5. src/helloworld.ts</div>
+<div class="title">Listing 8. src/helloworld.ts</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {App, ObjectFactory, scout} from '@eclipse-scout/core';
 import {Desktop} from './desktop/Desktop'
@@ -689,7 +726,7 @@ so Scout can use it to build modular widgets at runtime (see <code>DesktopModel.
 </ol>
 </div>
 <div class="listingblock">
-<div class="title">Listing 6. src/helloworld.less</div>
+<div class="title">Listing 9. src/helloworld.less</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-less hljs" data-lang="less">@import "~@eclipse-scout/core/src/index";</code></pre>
 </div>
@@ -724,7 +761,7 @@ This is specified as a reference to the corresponding class.</p>
 <p>Other object properties are used to configure the widget based on the specified <code>objectType</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 7. src/greeting/DesktopModel.ts</div>
+<div class="title">Listing 10. src/greeting/DesktopModel.ts</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Desktop, DesktopModel} from "@eclipse-scout/core";
 import {HelloForm} from "../greeting/HelloForm";
@@ -751,7 +788,7 @@ We only need the bench for our application, so we hide the other parts, includin
 We provide an instance of our HelloForm as a view on our desktop.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 8. src/greeting/Desktop.ts</div>
+<div class="title">Listing 11. src/greeting/Desktop.ts</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Desktop as ScoutDesktop, DesktopModel as ScoutDesktopModel} from '@eclipse-scout/core';
 import DesktopModel from './DesktopModel';
@@ -767,7 +804,7 @@ export class Desktop extends ScoutDesktop {
 <p>Our desktop doesn&#8217;t have any custom behavior, so we only import the <code>DesktopModel</code> here, in the <code>_jsonModel()</code> function.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 9. src/greeting/HelloFormModel.ts</div>
+<div class="title">Listing 12. src/greeting/HelloFormModel.ts</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Button, Form, FormModel, GroupBox, StringField} from '@eclipse-scout/core';
 
@@ -818,7 +855,7 @@ We define an empty border decoration around this group box to have a little padd
 <p>At the bottom an auto generated type holding the WidgetMap can be found. Such a WidgetMap specifies which field id points to which type of widget as a flattened type. This is used later on in the Form when accessing such a widget using the <code>this.widget()</code> function to directly return the correct widget data type.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 10. src/greeting/HelloForm.ts</div>
+<div class="title">Listing 13. src/greeting/HelloForm.ts</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Form, FormModel, InitModelOf, MessageBoxes} from '@eclipse-scout/core';
 import HelloFormModel, {HelloFormWidgetMap} from './HelloFormModel';
@@ -860,7 +897,7 @@ An OK message box with the desired text is displayed using the convenience class
 <p>As a starting point, use the file you cloned/downloaded from the helloscoutjs repository.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 11. .gitignore</div>
+<div class="title">Listing 14. .gitignore</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby"># Git
 *.orig
