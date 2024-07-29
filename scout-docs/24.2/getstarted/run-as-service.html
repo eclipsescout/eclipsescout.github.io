@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Build Scout App and Run as Service :: Eclipse Scout</title>
+    <link rel="prev" href="helloscout.html">
+    <link rel="next" href="run-as-docker-container.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../24.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="24.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">24.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../24.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">24.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../24.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="getstarted.html">Get Started</a></li>
+    <li>Scout Classic</li>
+    <li><a href="run-as-service.html">Build Scout App and Run as Service</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">24.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="run-as-service.html">24.2</a>
+    <a class="version" href="../../24.1/getstarted/run-as-service.html">24.1</a>
+    <a class="version is-missing" href="../../23.2/index.html">23.2</a>
+    <a class="version is-missing" href="../../23.1/index.html">23.1</a>
+    <a class="version is-missing" href="../../22/index.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/24.2/docs/modules/getstarted/pages/run-as-service.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Build Scout App and Run as Service</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>At some point during the application development you will want to install your software on a machine that is intended for productive use.
+This is the moment where you need to be able to build and package your Scout application in a way that can be deployed on a server.</p>
+</div>
+<div class="paragraph">
+<p>A Scout applications can be deployed to any server running Java.
+For the purpose of this tutorial we will use <a href="https://ubuntu.com/download/server">Ubuntu Server 22.04</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prepare-directory"><a class="anchor" href="#prepare-directory"></a>Prepare directory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The applications will be placed in <code>/opt/helloscout</code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mkdir /opt/helloscout</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prepare-java"><a class="anchor" href="#prepare-java"></a>Prepare Java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Java 17 is required to run the Scout applications</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>apt install openjdk-17-jdk</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>update-alternatives --config java</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and select Java 17 as default.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="verify-the-security-settings"><a class="anchor" href="#verify-the-security-settings"></a>Verify the Security Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You need to decide if the users of your application should communicate with the Scout frontend server using HTTPS.
+We strongly recommend to use HTTPS for any productive environment.
+This is why the <code>Hello Scout</code> applications are configured to expect HTTPS between the browser and the frontend server for production by default.</p>
+</div>
+<div class="paragraph">
+<p>In case you don&#8217;t want to use HTTPS the application must be slightly modified.
+Then you can skip the next two sections and instead follow the instructions in section <a href="#run-as-service-work-with-http">Update the Scout Application to work with HTTP</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="frontend-create-and-install-a-self-signed-certificate"><a class="anchor" href="#frontend-create-and-install-a-self-signed-certificate"></a>Frontend: Create and Install a Self-Signed Certificate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;re planing to use a reverse proxy (e.g. <a href="https://nginx.org/">nginx</a>) handling the SSL for your frontend server,
+you may skip this section and make sure to use the URL of the reverse proxy instead of the one of the frontend server
+when accessing the application in the browser.</p>
+</div>
+<div class="paragraph">
+<p>The first step is to create a self-signed certificate using the keytool provided with the Java runtime.
+The example command line below will create such a certificate using the alias <code>helloscout_ui_localhost</code> and place it into the keystore file <code>helloscout_ui_localhost.jks</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mkdir /opt/helloscout/certs
+keytool -genkey -keyalg RSA -dname CN=localhost -alias helloscout_ui_localhost -keystore /opt/helloscout/certs/helloscout_ui_localhost.jks -keypass changeit_key -storepass changeit_store</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second step is to adapt the configuration of the frontend server to use the newly created certificate</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. helloscout.ui.html.app.zip/config.properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.app.keyStorePassword=changeit_store
+scout.app.privateKeyPassword=changeit_key
+scout.app.certificateAlias=helloscout_ui_localhost
+scout.app.keyStorePath=/opt/helloscout/certs/helloscout_ui_localhost.jks</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="frontend-backend-server-communication-over-an-encrypted-channel"><a class="anchor" href="#frontend-backend-server-communication-over-an-encrypted-channel"></a>Frontend-backend server communication over an encrypted channel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The communication between the frontend and the backend server isn&#8217;t encrypted by default
+because they might be running on the same machine or in a protected environment and no access to the backend server is available from "outside".</p>
+</div>
+<div class="paragraph">
+<p>You might skip this section if encryption of that communication isn&#8217;t required.</p>
+</div>
+<div class="paragraph">
+<p>The first two steps are similar to the ones described for the frontend server.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool -genkey -keyalg RSA -dname CN=localhost -alias helloscout_server_localhost -keystore /opt/helloscout/certs/helloscout_server_localhost.jks -keypass changeit_key -storepass changeit_store</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. helloscout.server.app.zip/config.properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.app.keyStorePassword=changeit_store
+scout.app.privateKeyPassword=changeit_key
+scout.app.certificateAlias=helloscout_server_localhost
+scout.app.keyStorePath=/opt/helloscout/certs/helloscout_server_localhost.jks</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because the backend server is using HTTPS now, the URL in the frontend server must be modified:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. helloscout.ui.html.app.zip/config.properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.backendUrl=https://localhost:8080</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because the frontend server connects over HTTPS, the SSL certificate of the backend server must be trusted by the Java runtime running in the frontend server.</p>
+</div>
+<div class="paragraph">
+<p>For that, export the newly created self-signed certificate from the <code>helloscout_server_localhost.jks</code> keystore file into the <code>helloscout_server_localhost.der</code> certificate file.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>keytool -exportcert -alias helloscout_server_localhost -storepass changeit_store -keystore /opt/helloscout/certs/helloscout_server_localhost.jks -file /opt/helloscout/certs/helloscout_server_localhost.der</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the last step add the self-signed certificate to the trusted certificates of the frontend server.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. helloscout.ui.html.app.zip/config.properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.trustedCertificates[0]=/opt/helloscout/certs/helloscout_server_localhost.der</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As alternative to changing <code>scout.trustedCertificates</code>, you could also add the self-signed certificate to the known certificates of the Java runtime (not described here).</p>
+</div>
+<div class="paragraph">
+<p>Your applications are now properly configured to use an encrypted communication between the frontend und the backend server.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-as-service-work-with-http"><a class="anchor" href="#run-as-service-work-with-http"></a>Update the Scout Application to work with HTTP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer to work with HTTP only on the frontend server, you need to modify the security settings of your Scout application.
+This can be done with the steps described below.</p>
+</div>
+<div class="paragraph">
+<p>In file <code>config.properties</code> (in the directory <code>helloscout.ui.html.app.war/src/main/resources</code>),
+add the property <code>scout.app.sessionCookieConfigSecure=false</code> to remove the secure flag on the session cookie.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-as-service-create-deployable-unit"><a class="anchor" href="#run-as-service-create-deployable-unit"></a>Create deployable unit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You are now ready to move the <code>Hello Scout</code> application from our development environment to a productive setup.
+The simplest option to move our application into the 'wild' is to build it using Maven.</p>
+</div>
+<div class="paragraph">
+<p>The default output to be used in a productive environment is provided by the <code>.app.zip</code> modules.
+It will provide two <code>.zip</code> archives
+The first ZIP file contains the Scout backend server with all business logic.
+The second ZIP file contains the Scout frontend server that is responsible for communicating with the web browser of the user.</p>
+</div>
+<div class="paragraph">
+<p>Each ZIP file contains the following directories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>bin</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Shell scripts for Unix (<code>app.sh</code>) and Windows (<code>.app.cmd</code>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>lib</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All libraries (<code>*.jar</code>) required to run the Java application</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>conf</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>config.properties</code> and <code>logback.xml</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To start the build, use the following command in your parent module (<code>helloscout</code>):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mvn clean verify</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This starts the compilation, executes all test cases and bundles the result into two ZIP files.
+As soon as the build is reporting success (this may take a few minutes) you can find the built ZIP files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Scout backend ZIP file <code>helloscout-server.zip</code> in directory <code>helloscout/helloscout.server.app.zip/target</code></p>
+</li>
+<li>
+<p>The Scout frontend ZIP file <code>helloscout-ui.zip</code> in directory <code>helloscout/helloscout.ui.html.app.zip/target</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To see the new files within Eclipse you may need to refresh the <code>target</code> directory below each project using the F5 keystroke.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unzip-run"><a class="anchor" href="#unzip-run"></a>Unzip &amp; Run</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copy the two ZIP files mentioned above to <code>/opt/helloscout</code> and unzip them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cd /opt/helloscout
+unzip helloscout-server.zip -d .
+unzip helloscout-ui.zip -d .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now start the backend server, then the frontend server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cd /opt/helloscout/helloscout-server
+bin/app.sh
+cd /opt/helloscout/helloscout-ui
+bin/app.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;ve got an exception like</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-bash: bin/app.sh: /bin/bash^M: bad interpreter: No such file or directory</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then the bash scripts are using Windows line separators. Convert them to unix line separators by</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">dos2unix /opt/helloscout/helloscout-server/bin/app.sh
+dos2unix /opt/helloscout/helloscout-ui/bin/app.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The provided shell scripts (<code>app.sh</code>/<code>app.cmd</code>) are applying Java memory settings (<code>-Xms64m</code> and <code>-Xmx512m</code>) and override the HTTP port used for the Scout app (<code>scout.app.port</code>).
+The UI server uses 8082, while the backend server uses 8080.</p>
+</div>
+<div class="paragraph">
+<p>Check the logs if both applications started successfully</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cat /opt/helloscout/helloscout-server/logs/app.plain.log
+cat /opt/helloscout/helloscout-ui/logs/app.plain.log</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now connect to the application using the browser of your choice by navigating to <code><a href="http://localhost:8082/" class="bare">http://localhost:8082/</a></code> or <code><a href="https://localhost:8082/" class="bare">https://localhost:8082/</a></code> if you have chosen to configure HTTPS.
+In this case you might need to accept your self-signed certificate as the browser does not yet trust it.</p>
+</div>
+<div class="paragraph">
+<p>Then you will see the login page.
+Two users have been predefined: <code>admin</code> with password <code>admin</code> and <code>scott</code> with password <code>tiger</code>.
+You can find this configuration in the <code>config.properties</code> file of the application.</p>
+</div>
+<div class="paragraph">
+<p>To stop the servers, call</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">kill -15 `cat /opt/helloscout/helloscout-ui/bin/app.pid`
+kill -15 `cat /opt/helloscout/helloscout-server/bin/app.pid`</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-service-definition"><a class="anchor" href="#create-a-service-definition"></a>Create a service definition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the final step of this tutorial, we create two services, one for the frontend, one for the backend server, so that your applications are started automatically.</p>
+</div>
+<div class="paragraph">
+<p>Stop the servers as mentioned above if not already stopped.</p>
+</div>
+<div class="paragraph">
+<p>Start by creating a new user</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo adduser --system --group --disabled-password --shell /bin/bash --home /home/helloscout --gecos 'Helloscout' helloscout</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make sure that the directory <code>/opt/helloscout</code> can be accessed by the user</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">sudo chown -R helloscout:helloscout /opt/helloscout/
+sudo chmod -R 750 /opt/helloscout/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now create two service files</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. /etc/systemd/system/helloscout-server.service</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">[Unit]
+Description=Helloscout Server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/helloscout/helloscout-server/
+ExecStart=/opt/helloscout/helloscout-server/bin/app.sh
+PIDFile=/opt/helloscout/helloscout-server/bin/app.pid
+
+Environment=JAVA_BIN=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
+
+User=helloscout
+Group=helloscout
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. /etc/systemd/system/helloscout-ui.service</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">[Unit]
+Description=Helloscout UI
+After=syslog.target network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/helloscout/helloscout-ui/
+ExecStart=/opt/helloscout/helloscout-ui/bin/app.sh
+PIDFile=/opt/helloscout/helloscout-ui/bin/app.pid
+
+Environment=JAVA_BIN=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
+
+User=helloscout
+Group=helloscout
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;re now ready to register the services and start them</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">sudo systemctl daemon-reload
+sudo systemctl enable --now helloscout-server
+sudo systemctl enable --now helloscout-ui</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To check the status, call</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">sudo systemctl status helloscout-server
+sudo systemctl status helloscout-ui</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead of <code>status</code> the keywords: <code>start</code>, <code>stop</code>, <code>restart</code> might be used for the appropriate actions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In a productive environment it is recommended to deploy the server and the user interface into two dedicated machines.
+This is because these two tiers have different requirements on resources, load balancing and access protection.
+Furthermore, it is strongly recommended using an encrypted connection (e.g. TLS 1.3 <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>)
+between client browsers and the Scout frontend server AND between the Scout frontend and backend server!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section is only used to get rid of everything just created.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove the services (and stop them if still running)</p>
+</li>
+<li>
+<p>Remove the service definitions</p>
+</li>
+<li>
+<p>Remove the directory structure</p>
+</li>
+<li>
+<p>Remove the user</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">sudo systemctl disable --now helloscout-server
+sudo systemctl disable --now helloscout-ui
+rm /etc/systemd/system/helloscout-server.service
+rm /etc/systemd/system/helloscout-ui.service
+sudo systemctl daemon-reload
+rm -rf /opt/helloscout
+deluser helloscout</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. TLS: <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" class="bare">https://en.wikipedia.org/wiki/Transport_Layer_Security</a>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="helloscout.html">Hello Scout Classic</a></span>
+  <span class="next"><a href="run-as-docker-container.html">Run as Docker Container</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

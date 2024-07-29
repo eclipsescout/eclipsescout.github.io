@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Data Objects :: Eclipse Scout</title>
+    <link rel="prev" href="ui-notifications.html">
+    <link rel="next" href="rest.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../24.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="24.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">24.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../24.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">24.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../24.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Working with Data</li>
+    <li><a href="data-object.html">Data Objects</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">24.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="data-object.html">24.2</a>
+    <a class="version" href="../../../24.1/technical-guide/working-with-data/data-object.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/working-with-data/data-object.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/working-with-data/data-object.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/working-with-data/data-object.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/24.2/docs/modules/technical-guide/pages/working-with-data/data-object.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Data Objects</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div id="cha-data-objects" class="paragraph">
+<p>Data objects are Scout beans, which are used as data transfer objects for synchronous REST and asynchronous MOM interfaces.
+Furthermore, they can be used as domain objects within business logic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-object-definition"><a class="anchor" href="#data-object-definition"></a>Data Object Definition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A data object extends the <code>DoEntity</code> base class and declares each attribute as a single accessor method.
+Attributes of two kinds are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Value attribute of type <code>T</code></p>
+</li>
+<li>
+<p>List attribute of type <code>List&lt;T&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The name of the accessor method defines the attribute name.
+The return value of the accessor method defines the attribute type.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Example: ExampleEntityDo</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("lorem.ExampleEntity")
+@TypeVersion(Lorem_1_2_0.class)
+public class ExampleEntityDo extends DoEntity {
+
+  public DoValue&lt;String&gt; name() { <i class="conum" data-value="1"></i><b>(1)</b>
+    return doValue("name");
+  }
+
+  public DoList&lt;Integer&gt; values() { <i class="conum" data-value="2"></i><b>(2)</b>
+    return doList("values");
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntityDo withName(String name) {
+    name().set(name);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public String getName() {
+    return name().get();
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntityDo withValues(Collection&lt;? extends Integer&gt; values) {
+    values().updateAll(values);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntityDo withValues(Integer... values) {
+    values().updateAll(values);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public List&lt;Integer&gt; getValues() {
+    return values().get();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Example attribute of type <code>String</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Example attribute of type <code>List&lt;Integer&gt;</code></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For convenience reasons when working with the data objects it is recommended to add a getter and a with (e.g. setter) method.
+Using the convenience with methods, new data objects can be created with fluent-style API:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Example: Create ExampleEntityDo instance</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName("Example")
+        .withValues(1, 2, 3, 4, 5);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="marshalling"><a class="anchor" href="#marshalling"></a>Marshalling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the <code>IDataObjectMapper</code> interface a data object can be converted from and to its string representation.
+The marshalling strategy is generic and replaceable.
+The Scout platform defines the <code>IDataObjectMapper</code> interface, at runtime a Scout bean implementing the interface must be available.</p>
+</div>
+<div class="paragraph">
+<p>The Scout module <code>org.eclipse.scout.rt.jackson</code> provides a default implementation serializing data objects from and to JSON using the <a href="https://github.com/FasterXML/jackson">Jackson library</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Example: Serialize ExampleEntityDo</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    String string = BEANS.get(IDataObjectMapper.class).writeValue(entity);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The data object <code>ExampleEntityDo</code> serialized to JSON:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Example: ExampleEntityDo as JSON</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "_type" : "lorem.ExampleEntity",
+  "_typeVersion": "lorem-1.2.0",
+  "name" : "example",
+  "values" : [1,2,3,4,5]
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. Example: Deserialize ExampleEntityDo</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleEntityDo marhalled = BEANS.get(IDataObjectMapper.class)
+        .readValue(string, ExampleEntityDo.class);</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="type-name"><a class="anchor" href="#type-name"></a>Type Name</h3>
+<div class="paragraph">
+<p>A data object is annotated with a logical type name using the <code>@TypeName</code> annotation.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Declaring a logical type name using the <code>@TypeName</code> annotation for each data object is mandatory.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The annotation value is added to the serialized JSON object as top-level <code>_type</code> property.
+Using the type property the data object marshaller is able to find and instantiate the matching data object class, without having to rely on a fully classified class name.
+It avoids a 1:1 dependency between the serialized JSON String and the fully classified class name.
+A stable type name is required in order to be able to change the data object structure without breaking the API.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="type-version"><a class="anchor" href="#type-version"></a>Type Version</h3>
+<div class="paragraph">
+<p>A data object may be annotated with a type version using the <code>@TypeVersion</code> annotation.
+The type version represents the version of the structure of the data object and not the version of the data within the data object.
+The type version value should be incremented, each time, the data object class is modified (add/remove/rename attributes).
+If a version is required for versioning the values of a data object, consider add a <code>version</code> attribute, incrementing its value, every time a value of the data object is modified.</p>
+</div>
+<div class="paragraph">
+<p>The annotation value is added to the serialized JSON object as top-level <code>_typeVersion</code> property.
+The serialized <code>_typeVersion</code> value is not deserialized into an attribute, since the deserializer creates a concrete data object class at runtime, having the <code>@TypeVersion</code> annotation providing the type version value.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Declaring a logical type version using the `@TypeVersion`annotation is highly recommended if a data object is persisted as JSON document to a file or database.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="cha-namespace-and-itypeversion"><a class="anchor" href="#cha-namespace-and-itypeversion"></a>Namespace and ITypeVersion</h4>
+<div class="paragraph">
+<p>A namespace (implementation of <code>INamespace</code>) represents a container for data objects.
+Each data object must have a unique type name within a namespace.
+Scout has its own namespace (with ID <code>scout</code>), your project should use an own one.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. Example: LoremNamespace</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public final class LoremNamespace implements INamespace {
+
+  public static final String ID = "lorem";
+  public static final double ORDER = 9000;
+
+  @Override
+  public String getId() {
+    return ID;
+  }
+
+  @Override
+  public double getOrder() {
+    return ORDER;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A class implementing <code>ITypeVersion</code> is used within the <code>@TypeVersion</code> annotation.
+Several type versions for one namespace may be bundled in a container class.</p>
+</div>
+<div class="paragraph">
+<p>There are a few different constructors provided by <code>AbstractTypeVersion</code> that simplify the definition of such a type version.
+The default constructor extracts the namespace and version based on the class name.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. Example: LoremTypeVersions</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public final class LoremTypeVersions {
+
+  private LoremTypeVersions() {
+  }
+
+  public static final class Lorem_1_0_0 extends AbstractTypeVersion {
+  }
+
+  public static final class Lorem_1_2_0 extends AbstractTypeVersion {
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="signature-test"><a class="anchor" href="#signature-test"></a>Signature Test</h4>
+<div class="paragraph">
+<p><code>AbstractDataObjectSignatureTest</code> provides an abstract implementation of a test that creates a signature of all data object annotated with a type version
+including additional signatures (e.g. referenced <code>IEnum</code> with their values).
+A signature test enables to detect changes in data object that might need a migration.
+Each module containing data objects with type version annotation should implement a data object signature test.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Example: DocsSnippetsDataObjectSignatureTest</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class DocsSnippetsDataObjectSignatureTest extends AbstractDataObjectSignatureTest {
+
+  @Override
+  protected String getFilenamePrefix() {
+    return "docs-snippets";
+  }
+
+  @Override
+  protected String getPackageNamePrefix() {
+    return "org.eclipse.scout.docs.snippets";
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-object-naming-convention"><a class="anchor" href="#data-object-naming-convention"></a>Data Object Naming Convention</h3>
+<div class="paragraph">
+<p>Scout objects use the following naming conventions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A data object class should use the `Do' suffix.</p>
+</li>
+<li>
+<p>The value of the <code>@TypeName</code> annotation corresponds to the simple class name without <code>Do</code> suffix</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A namespace prefix (separated by a dot) is recommended in order to avoid duplicated type names across different modules (e.g. <code>scout.Bookmark</code>, <code>helloworld.MyDataObject</code>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attribute-name"><a class="anchor" href="#attribute-name"></a>Attribute Name</h3>
+<div class="paragraph">
+<p>The default attribute name within the serialized string corresponds to the name of the attribute accessor method defined in the data object.
+To use a custom attribute name within the serialized string, the attribute accessor method can be annotated by <code>@AttributeName</code> providing the custom attribute name.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. Example: Custom Attribute Name</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @AttributeName("myCustomName")
+  public DoValue&lt;String&gt; name() {
+    return doValue("myCustomName"); <i class="conum" data-value="1"></i><b>(1)</b>
+  }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Important: The annotation value must be equals to the string constant used for the <code>doValue()</code> or <code>doList()</code> attribute declaration.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Example: Custom Attribute Name as JSON</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">{
+  "_type" : "CustomAttributeNameEntity",
+  "myCustomName" : "example"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attribute-format"><a class="anchor" href="#attribute-format"></a>Attribute Format</h3>
+<div class="paragraph">
+<p>Using the <code>ValueFormat</code> annotation a data type dependent format string may be provided, which is used for the marshalling.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Example: Custom Attribute Format</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @ValueFormat(pattern = IValueFormatConstants.DATE_PATTERN)
+  public DoValue&lt;Date&gt; date() {
+    return doValue("date");
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>IValueFormatConstants</code> interface declares a set of default format pattern constants.</p>
+</div>
+<div class="paragraph">
+<p>Attributes with type <code>java.util.Date</code> accept the format pattern specified by <code>SimpleDateFormat</code> class (see <a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html" class="bare">https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html</a>)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ignoring-an-attribute"><a class="anchor" href="#ignoring-an-attribute"></a>Ignoring an Attribute</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>@JsonIgnore</code> annotation included in the Jackson library is currently not supported for data objects.
+To ignore an attribute when serializing a data object, the attribute must be removed from the data object by either not setting a value for the desired attribute
+or by explicitly removing the attribute before a data object is serialized:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 12. Example: Remove an attribute from a data object</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName("Example")
+        .withValues(1, 2, 3, 4, 5);
+
+    // remove by attribute accessor method reference
+    entity.remove(entity::name);
+
+    // remove by attribute node
+    entity.remove(entity.name());
+
+    // remove by attribute name
+    entity.remove(entity.name().getAttributeName());
+
+    // remove by attribute name raw
+    entity.remove("name");</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="handling-of-doentity-attributes"><a class="anchor" href="#handling-of-doentity-attributes"></a>Handling of DoEntity Attributes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Instead of data objects, a REST or MOM interface could be built using simple plain old Java objects (POJOs).
+Compared to POJOs a Scout data object offers additional support and convenience when working with attributes.</p>
+</div>
+<div class="paragraph">
+<p>A JSON attribute may have three different states:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Attribute available with a value</p>
+</li>
+<li>
+<p>Attribute available with value <code>null</code></p>
+</li>
+<li>
+<p>Attribute not available</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These three states cannot be represented with a POJO object which is based on a single variable with a pair of getter/setter.
+In order to differ between <em>value not available</em> and <em>value is null</em>, a wrapper type is required, which beside the value stores the information, if the attribute is available.
+Scout data objects solve this issue: Data objects internally use a <code>Map&lt;String, DoNode&lt;?&gt;&gt;</code> where the abstract <code>DoNode</code> at runtime is represented by a <code>DoValue&lt;T&gt;</code> or a <code>DoList&lt;T&gt;</code> object instance wrapping the value.</p>
+</div>
+<div class="sect2">
+<h3 id="access-data-object-attributes"><a class="anchor" href="#access-data-object-attributes"></a>Access Data Object Attributes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Value: <code>DoNode.get()</code> returns the (wrapped) value of the attribute</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Listing 13. Example: ExampleEntityDo Access the Attribute Value</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName("Example")
+        .withValues(1, 2, 3, 4, 5);
+
+    // access using attribute accessor
+    String name1 = entity.name().get();
+    List&lt;Integer&gt; values1 = entity.values().get();
+
+    // access using generated attribute getter
+    String name2 = entity.getName();
+    List&lt;Integer&gt; values2 = entity.getValues();</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Existence: Using the <code>DoNode.exists()</code> method, each attribute may be checked for existence</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Listing 14. Example: ExampleEntityDo Attribute Existence</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    // check existence of attribute
+    boolean hasName = entity.name().exists();</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="abstract-data-objects-polymorphism"><a class="anchor" href="#abstract-data-objects-polymorphism"></a>Abstract Data Objects &amp; Polymorphism</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A simple data objects is implemented by subclassing the <code>DoEntity</code> class.</p>
+</div>
+<div class="paragraph">
+<p>For a complex hierarchy of data objects the base class may be abstract and extend the <code>DoEntity</code> class, further subclasses extend the abstract base class.
+The abstract base data object class does not need to specify a <code>@TypeName</code> annotation since there are no instances of the abstract class which are serialized or deserialized directly.
+Each non-abstract subclass must specify a unique <code>@TypeName</code> annotation value.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 15. Example: Abstract class AbstractExampleEntityDo with one attribute</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public abstract class AbstractExampleEntityDo extends DoEntity {
+  public DoValue&lt;String&gt; name() {
+    return doValue("name");
+  }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 16. Example: Subclass 1 with an additional attribute and a unique type name</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("ExampleEntity1")
+public class ExampleEntity1Do extends AbstractExampleEntityDo {
+  public DoValue&lt;String&gt; name1Ex() {
+    return doValue("name1Ex");
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntity1Do withName1Ex(String name1Ex) {
+    name1Ex().set(name1Ex);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public String getName1Ex() {
+    return name1Ex().get();
+  }
+
+  @Override
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntity1Do withName(String name) {
+    name().set(name);
+    return this;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 17. Example: Subclass 2 with an additional attribute and a unique type name</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("ExampleEntity2")
+public class ExampleEntity2Do extends AbstractExampleEntityDo {
+  public DoValue&lt;String&gt; name2Ex() {
+    return doValue("name2Ex");
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntity2Do withName2Ex(String name2Ex) {
+    name2Ex().set(name2Ex);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public String getName2Ex() {
+    return name2Ex().get();
+  }
+
+  @Override
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntity2Do withName(String name) {
+    name().set(name);
+    return this;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 18. Example: Class with attributes of type AbstractExampleEntityDo</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class ExampleDoEntityListDo extends DoEntity {
+  public DoList&lt;AbstractExampleEntityDo&gt; listAttribute() {
+    return doList("listAttribute");
+  }
+
+  public DoValue&lt;AbstractExampleEntityDo&gt; singleAttribute() {
+    return doValue("singleAttribute");
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleDoEntityListDo withListAttribute(Collection&lt;? extends AbstractExampleEntityDo&gt; listAttribute) {
+    listAttribute().updateAll(listAttribute);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleDoEntityListDo withListAttribute(AbstractExampleEntityDo... listAttribute) {
+    listAttribute().updateAll(listAttribute);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public List&lt;AbstractExampleEntityDo&gt; getListAttribute() {
+    return listAttribute().get();
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleDoEntityListDo withSingleAttribute(AbstractExampleEntityDo singleAttribute) {
+    singleAttribute().set(singleAttribute);
+    return this;
+  }
+
+  @Generated("DoConvenienceMethodsGenerator")
+  public AbstractExampleEntityDo getSingleAttribute() {
+    return singleAttribute().get();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 19. Example: Using the ExampleDoEntityListDo class with different kinds of AbstractExampleEntityDo sub classes</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleDoEntityListDo entity = BEANS.get(ExampleDoEntityListDo.class);
+    entity.withListAttribute(
+        BEANS.get(ExampleEntity1Do.class)
+            .withName1Ex("one-ex")
+            .withName("one"),
+        BEANS.get(ExampleEntity2Do.class)
+            .withName2Ex("two-ex")
+            .withName("two"));
+
+    entity.withSingleAttribute(
+        BEANS.get(ExampleEntity1Do.class)
+            .withName1Ex("single-one-ex")
+            .withName("single-one"));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If an instance of <code>ExampleDoEntityListDo</code> is serialized, each attribute is serialized using its runtime data type, adding an appropriate <code>_type</code> attribute to each serialized object.
+Therefore, the deserializer knows which concrete class to instantiate while deserializing the JSON document.
+This mechanism is used for simple value properties and list value properties.
+To each object which is part of a list value property the <code>_type</code> property is added to support polymorphism within single elements of a list.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 20. Example: ExampleDoEntityListDo as JSON</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "_type" : "ExampleDoEntityListDo",
+  "listAttribute" : [ {
+    "_type" : "ExampleEntity1",
+    "name" : "one",
+    "name1Ex" : "one-ex"
+  }, {
+    "_type" : "ExampleEntity2",
+    "name" : "two",
+    "name2Ex" : "two-ex"
+  } ],
+  "singleAttribute" : {
+    "_type" : "ExampleEntity1",
+    "name" : "single-one",
+    "name1Ex" : "single-one-ex"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rename-an-attribute-of-a-data-object-in-a-subclass"><a class="anchor" href="#rename-an-attribute-of-a-data-object-in-a-subclass"></a>Rename an attribute of a data object in a subclass</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To rename a data object attribute in a subclass, override the attribute accessor method and annotate it with <code>@AttributeName</code> using the new attribute name as value.
+Additionally the overridden method must call the <code>doValue()</code> method providing the new attribute name as argument.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 21. Example: Rename attribute in a data object subclass</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("ExampleEntityEx")
+public class ExampleEntityExDo extends ExampleEntityDo {
+
+  @Override
+  @AttributeName("nameEx")
+  public DoValue&lt;String&gt; name() { <i class="conum" data-value="1"></i><b>(1)</b>
+    return doValue("nameEx");
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  @Override
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntityExDo withName(String name) {
+    name().set(name);
+    return this;
+  }
+
+  @Override
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntityExDo withValues(Collection&lt;? extends Integer&gt; values) {
+    values().updateAll(values);
+    return this;
+  }
+
+  @Override
+  @Generated("DoConvenienceMethodsGenerator")
+  public ExampleEntityExDo withValues(Integer... values) {
+    values().updateAll(values);
+    return this;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Rename <code>name</code> attribute of superclass to <code>nameEx</code></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="interfaces-to-data-objects"><a class="anchor" href="#interfaces-to-data-objects"></a>Interfaces to Data Objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the basic data object interface <code>IDoEntity</code> to model a data object hierarchy with own base interfaces and a set of implementing classes.</p>
+</div>
+<div class="paragraph">
+<p>Interfaces extending <code>IDataObject</code> do not need a <code>@TypeName</code> annotation, since they are never directly serialized or deserialized.</p>
+</div>
+<div class="paragraph">
+<p>The interfaces may be used as types for attributes within a data object. At runtime the concrete classes implementing the interfaces are serialized and their <code>@TypeName</code> annotation value is used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="equals-and-hashcode"><a class="anchor" href="#equals-and-hashcode"></a>Equals and Hashcode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Data Object base class <code>DoEntity</code> defines a generic <code>equals()</code> and <code>hashCode()</code> implementation considering all attributes of a data object for equality.
+A data object is equals to another data object, if the Java class of both data objects is identical and the attribute maps (including their nested values) of both data objects are equals.</p>
+</div>
+<div class="paragraph">
+<p>For futher details see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.eclipse.scout.rt.dataobject.DoEntity.equals(Object)</code></p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.dataobject.DoNode.equals(Object)</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="generic-doentity"><a class="anchor" href="#generic-doentity"></a>Generic DoEntity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An instance of the <code>DoEntity</code> class can represent any kind of JSON document.
+If the JSON document contains no type attributes or no matching data object class exists at runtime, the JSON document is deserialized into a raw <code>DoEntity</code> instance holding all attributes.
+To access the attributes of the data object a set of generic getter methods may be used by specifying the attribute name.
+A generic JSON document is deserialized into a generic tree-like structure of nested <code>DoEntity</code> instances.
+If the serialized JSON document contains a <code>_type</code> and/or <code>_typeVersion</code> attribute, the attribute and its value is added as attribute to the generic raw <code>DoEntity</code> instance.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 22. Example: ExampleEntityDo accessing attribute "by name"</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleEntityDo entity = BEANS.get(ExampleEntityDo.class)
+        .withName("Example")
+        .withValues(1, 2, 3, 4, 5);
+
+    // access name attribute by its attribute name
+    Object name1 = entity.get("name"); <i class="conum" data-value="1"></i><b>(1)</b>
+    String name2 = entity.get("name", String.class); <i class="conum" data-value="2"></i><b>(2)</b>
+    String name3 = entity.getString("name"); <i class="conum" data-value="3"></i><b>(3)</b>
+
+    // access values attribute by its attribute name
+    List&lt;Object&gt; values1 = entity.getList("values"); <i class="conum" data-value="4"></i><b>(4)</b>
+    List&lt;String&gt; values2 = entity.getList("values", String.class); <i class="conum" data-value="5"></i><b>(5)</b>
+    List&lt;String&gt; values3 = entity.getStringList("values"); <i class="conum" data-value="6"></i><b>(6)</b>
+
+    // optional list attribute access by its attribute name
+    Optional&lt;List&lt;Object&gt;&gt; values4 = entity.optList("values"); <i class="conum" data-value="7"></i><b>(7)</b>
+    Optional&lt;List&lt;String&gt;&gt; values5 = entity.optList("values", String.class); <i class="conum" data-value="8"></i><b>(8)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Accessing value attribute, default type is <code>Object</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Accessing value attribute, specify the type as class object if known</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Accessing value attribute, convenience method for a set of common types</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Accessing list attribute, default type is <code>Object</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Accessing list attribute, specify the type as class object if known</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Accessing list attribute, convenience method for a set of common types</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Accessing optional list attribute, default type is <code>Object</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Accessing optional list attribute, specify the type as class object if known</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a list attribute is not available, using one of the <code>getList(&#8230;&#8203;)</code> getters adds an empty list as attribute value into the entity and returns the list.
+Use <code>optList(&#8230;&#8203;)</code> in order to get an optionally available list without adding a new empty list as attribute.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Apart of the convenience methods available directly within the <code>DoEntity</code> class, the <code>DataObjectHelper</code> class contains a set of further convenience methods to access raw values of a data object.</p>
+</div>
+<div class="sect2">
+<h3 id="accessing-number-values"><a class="anchor" href="#accessing-number-values"></a>Accessing number values</h3>
+<div class="paragraph">
+<p>If a generic JSON document is deserialized to a <code>DoEntity</code> class without using a subclass specifying the attribute types, all attributes of type JSON number are deserialized into the smallest possible Java type.
+For instance the number value 42 is deserialized into an Integer value, a large number may be deserialized into a <code>BigInteger</code> or <code>BigDecimal</code> if it is a floating point value.
+Using the convenience method <code>DoEntity.getDecimal(&#8230;&#8203;)</code> each number attribute is converted automatically into a <code>BigDecimal</code> instance on access.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If a generic JSON document is deserialized, only a set of basic Java types like String, Number, Double are supported. Every JSON object is deserialized into a (nested) <code>DoEntity</code> structure, which internally is represented by a nested structure of <code>Map&lt;String, Object&gt;</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="map-of-objects"><a class="anchor" href="#map-of-objects"></a>Map of objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To build map-like a data object (corresponds to <code>Map&lt;String, T&gt;</code>), the <code>DoMapEntity&lt;T&gt;</code> base class may be used.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 23. Example: Map&lt;String, ExampleEntityDo&gt; as ExampleMapEntityDo data object</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("ExampleMapEntity")
+public class ExampleMapEntityDo extends DoMapEntity&lt;ExampleEntityDo&gt; {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example JSON document of  ExampleMapEntityDo instance with two elements:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 24. Example: ExampleMapEntityDo with two elements:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">{
+  "_type" : "ExampleMapEntity",
+  "mapAttribute1" : {
+    "_type" : "ExampleEntity",
+    "name" : "example-1",
+    "values" : [1,2,3,4,5]
+  },
+    "mapAttribute2" : {
+    "_type" : "ExampleEntity",
+    "name" : "example-2",
+    "values" : [6,7,8,9]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 25. Example: Accessing attributes</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    ExampleMapEntityDo mapEntity = BEANS.get(ExampleMapEntityDo.class);
+    mapEntity.put("mapAttribute1",
+        BEANS.get(ExampleEntityDo.class)
+            .withName("Example")
+            .withValues(1, 2, 3, 4, 5));
+    mapEntity.put("mapAttribute2",
+        BEANS.get(ExampleEntityDo.class)
+            .withName("Example")
+            .withValues(6, 7, 8, 9));
+
+    ExampleEntityDo attr1 = mapEntity.get("mapAttribute1"); <i class="conum" data-value="1"></i><b>(1)</b>
+    Map&lt;String, ExampleEntityDo&gt; allAttributes = mapEntity.all(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Accessing attribute using <code>get</code> method returns the attribute of declared type <code>T</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Accessing all attributes using <code>all</code> method returns a map with all attributes of type <code>T</code></td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+A <code>DoMapEntity&lt;T&gt;</code> subclass may declare custom attributes of another type than <code>T</code> (e.g. an integer size attribute). If attributes of other types are used, using the <code>all</code> method results in a <code>ClassCastException</code> since not all attributes are of the same type any longer.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="idataobject-interface-data-objects-with-unknown-structure"><a class="anchor" href="#idataobject-interface-data-objects-with-unknown-structure"></a>IDataObject Interface - Data Objects with unknown structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>According to the <a href="http://json.org/">JSON specification</a> a JSON document at top level may contain a object or an array. If a JSON string of unknown structure is deserialized, the common super interface <code>IDataObject</code> may be used as target type for the call to the deserializer:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 26. Example: Deserialize a JSON document with unknown structure</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    String json = "&lt;any JSON content&gt;";
+    IDataObjectMapper mapper = BEANS.get(IDataObjectMapper.class);
+    IDataObject dataObject = mapper.readValue(json, IDataObject.class);
+    if (dataObject instanceof IDoEntity) {
+      // handle object content
+    }
+    else if (dataObject instanceof DoList) {
+      // handle array content
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ad-hoc-data-objects"><a class="anchor" href="#ad-hoc-data-objects"></a>Ad-Hoc Data Objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>DoEntityBuilder</code> may be used to build ad-hoc data objects without a concrete Java class defining its attributes.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 27. Example: DoEntityBuilder</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    IDoEntity entity = BEANS.get(DoEntityBuilder.class)
+        .put("attr1", "foo")
+        .put("attr2", "bar")
+        .putList("listAttr", 1, 2, 3)
+        .build(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+    String entityString = BEANS.get(DoEntityBuilder.class)
+        .put("attr1", "foo")
+        .put("attr2", "bar")
+        .putList("listAttr", 1, 2, 3)
+        .buildString(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Builder for a DoEntity object</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Builder for the string representation of a DoEntity objects</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="maven-dependencies"><a class="anchor" href="#maven-dependencies"></a>Maven Dependencies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout data object implementation does not reference any specific Java serialization library or framework.
+The basic building blocs of data objects are part of the Scout platform and to not reference any thirdparty libraries.
+At runtime an implementation of the <code>IDataObjectMapper</code> interface must be provided.
+The Scout default implementation based on the JSON library Jackson is provided by adding a maven dependency to the module <code>org.eclipse.scout.rt.jackson</code>.
+The dependency to this module must be added in the top-level .dev/.app module.
+A dependency within the program code is not necessaray as long as no specific Jackson features should be used within the application code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-object-inventory"><a class="anchor" href="#data-object-inventory"></a>Data Object Inventory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The class <code>org.eclipse.scout.rt.dataobject.DataObjectInventory</code> provides access to all available data objects at runtime.
+For each data object all available attributes and their properties (name, type, accessor method and format pattern) are available:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 28. Example: Accessing data object inventory</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    Map&lt;String, DataObjectAttributeDescriptor&gt; attributes =
+        BEANS.get(DataObjectInventory.class).getAttributesDescription(ExampleEntityDo.class);
+    attributes.forEach(
+        (key, value) -&gt; System.out.println("Attribute " + key + " type " + value.getType()));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Apart from attribute descriptions, the inventory provides access to type name and type version of each data object class.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extending-with-custom-serializer-and-deserializer"><a class="anchor" href="#extending-with-custom-serializer-and-deserializer"></a>Extending with custom serializer and deserializer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application scoped beans <code>DataObjectSerializers</code> resp. <code>DataObjectDeserializers</code> define the available serializer and deserializer classes used to marshal the data objects.
+Own custom serializer and deserializer implementations can be added by replacing  the corresponding base class and register its own custom serializer or deserializer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enumerations-within-data-objects"><a class="anchor" href="#enumerations-within-data-objects"></a>Enumerations within Data Objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implementations of <code>org.eclipse.scout.rt.dataobject.enumeration.IEnum</code> add a <code>stringValue()</code> method to each enumeration value, guaranteeing a constant, fixed string value for each enumeration value.
+An arbitrary Java enum may be used within a data object, but does not guarantee a stable serialized value, if an enumeration value is changed in future.</p>
+</div>
+<div class="paragraph">
+<p>Additionally implementations of <code>IEnum</code> can be annotated with <code>@EnumName</code> to support being referenced in a data object signature test.</p>
+</div>
+<div class="paragraph">
+<p>All instances of <code>IEnum</code> may be used within data objects and are automatically serialized to their JSON string value representation and deserialized back to the correct Java class instance.</p>
+</div>
+<div class="paragraph">
+<p>The default resolver mechanism for <code>IEnum</code> (see <code>org.eclipse.scout.rt.dataobject.enumeration.EnumResolver</code>) matches the given string with the available string values in the current enumeration implementation to look up the matching enumeration value.
+An optional static <code>resolve()</code> method handles the resolve of a given string value into the correct enumeration value allowing to support even string values, whose enumeration values where changed or deleted.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 29. Example IEnum implementation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @EnumName("scout.ExampleEnum")
+  public enum ExampleEnum implements IEnum {
+
+    ONE("one"),
+    TWO("two"),
+    THREE("three");
+
+    private final String m_stringValue;
+
+    ExampleEnum(String stringValue) {
+      m_stringValue = stringValue;
+    }
+
+    @Override
+    public String stringValue() {
+      return m_stringValue;
+    }
+
+    public static ExampleEnum resolve(String value) { <i class="conum" data-value="1"></i><b>(1)</b>
+      // custom null handling
+      if (value == null) {
+        return null;
+      }
+      switch (value) {
+        // custom handling of old values (assuming 'old' was used in earlier revisions)
+        case "one":
+          return ONE;
+        case "two":
+          return TWO;
+        case "three":
+          return THREE;
+        case "four":
+          return THREE;
+        default:
+          // custom handling of unknown values
+          throw new AssertionException("unsupported status value '{}'", value);
+      }
+    }
+
+  }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Optional resolve method</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="typed-ids-within-data-objects"><a class="anchor" href="#typed-ids-within-data-objects"></a>Typed IDs within Data Objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implementations of <code>org.eclipse.scout.rt.dataobject.id.IId&lt;WRAPPED_TYPE&gt;</code> interface wrap an arbitrary value adding a concrete Java type to a scalar value.
+E.g. the key of an example entity which technically is a UUID becomes an instance of the <code>ExampleId</code> class.</p>
+</div>
+<div class="paragraph">
+<p>All instances of <code>IId</code> may be used within data objects and are automatically serialized to their JSON string representation of the wrapped value and deserialized back to the correct Java class instance.</p>
+</div>
+<div class="paragraph">
+<p>An exampleId instance may then be used as type-safe parameter for further referencing a given example entity record, for instance as attribute value within a data object.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 30. Example ID implementation wrapping a UUID</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @IdTypeName("scout.ExampleId")
+  public static final class ExampleId extends AbstractUuId {
+    private static final long serialVersionUID = 1L;
+
+    public static ExampleId create() {
+      return new ExampleId(UUID.randomUUID());
+    }
+
+    public static ExampleId of(UUID id) {
+      if (id == null) {
+        return null;
+      }
+      return new ExampleId(id);
+    }
+
+    public static ExampleId of(String id) {
+      if (id == null) {
+        return null;
+      }
+      return new ExampleId(UUID.fromString(id));
+    }
+
+    private ExampleId(UUID id) {
+      super(id);
+    }
+  }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-unit-testing"><a class="anchor" href="#sec-unit-testing"></a>Unit Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A set of utility methods for unit tests with data objects are provided within the <code>DataObjectTestHelper</code> class.
+Commonly used are a set of assert methods (e.g. <code>assertEquals(Object expected, Object actual)</code>) for testing data objects for (deep) equality.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="ui-notifications.html">UI Notifications</a></span>
+  <span class="next"><a href="rest.html">REST</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>
