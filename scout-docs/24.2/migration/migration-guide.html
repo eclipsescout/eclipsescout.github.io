@@ -652,6 +652,45 @@ If you need to adjust the properties you have to use the new <code>clone</code> 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="dateformat-format"><a class="anchor" href="#dateformat-format"></a>DateFormat: format()</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>format()</code> function on the <code>DateFormat</code> class accepts two arguments.
+The first argument <code>date</code> specifies the <code>Date</code> object to format.
+The optional second boolean argument was used specify a hint for the formatting of a previously analyzed user input.</p>
+</div>
+<div class="paragraph">
+<p>The second argument was replaced with an <em>options</em> object with the following properties:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">analyzeInfo</dt>
+<dd>
+<p>The result of a previously analyzed user input when formatting it again.
+It helps the internal format functions to adjust the length of an accepted term to match to the corresponding user input.
+Normally, it is not necessary to set this value.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Migration</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No migration is necessary if the <code>format()</code> function is called with a single <code>Date</code> argument.</p>
+</li>
+<li>
+<p>If the second argument was set to <code>false</code>, it can simply be removed (that was the default, anyway).</p>
+</li>
+<li>
+<p>If the second argument was set to <code>true</code>, replace it with an options object with the <code>analyzeInfo</code> property set.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
