@@ -312,6 +312,9 @@
     <li class="component is-current">
       <a class="title" href="../../../24.1/index.html">Eclipse Scout</a>
       <ul class="versions">
+        <li class="version">
+          <a href="../../../25.1/index.html">25.1</a>
+        </li>
         <li class="version is-current">
           <a href="../../index.html">24.2</a>
         </li>
@@ -349,6 +352,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">24.2</button>
   <div class="version-menu">
+    <a class="version" href="../../../25.1/technical-guide/common-concepts/platform.html">25.1</a>
     <a class="version is-current" href="platform.html">24.2</a>
     <a class="version" href="../../../24.1/technical-guide/common-concepts/platform.html">24.1</a>
     <a class="version" href="../../../23.2/technical-guide/common-concepts/platform.html">23.2</a>
@@ -2164,21 +2168,6 @@ scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
 <p>Data type: String</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>scout.permissionResource.throughput</code> </dt>
-<dd>
-<p>Specifies how many requests to the PermissionResource the server can handle per second.
-The value is used to spread a permission refresh on the browser to reduce server load.</p>
-<div class="paragraph">
-<p>Use a high value for fast servers. Then the permission refresh on the browser will be very soon after permissions on the server have been reloaded, but load on the server is increased.
-Use smaller values to reduce server load but increase the delay between the reload on the server and the refresh on the browser.</p>
-</div>
-<div class="paragraph">
-<p>The default is 30 requests per second.</p>
-</div>
-<div class="paragraph">
-<p>Data type: Integer &gt; 0</p>
-</div>
-</dd>
 <dt class="hdlist1"><code>scout.rest.ensureHttpHeaderConnectionClose</code> </dt>
 <dd>
 <p>Ensures that the header <code>Connection: close</code> is added to every REST HTTP requests unless the header <code>Connection</code> is already set. As a result, TCP Connections are not reused by consecutive REST calls.The default value is true</p>
@@ -2554,6 +2543,23 @@ Use smaller values to reduce server load but increase the delay between the relo
 <p>Configures in milliseconds how long the request should listen for a new notification it is interested in is put into the registry.If set to 0, the currently available list of notifications will be returned immediately.Default is 1 minute.</p>
 <div class="paragraph">
 <p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.handler.throughput</code> </dt>
+<dd>
+<p>Specifies how many requests of browser side UI notification handlers can be processed per second.
+The value is used to delay requests from the UI notification handlers to the server.</p>
+<div class="paragraph">
+<p>Use a high value for fast servers. Then the refresh on the browser will be very soon, but peak load on the server is increased.</p>
+</div>
+<div class="paragraph">
+<p>Use smaller values to reduce server load but increase the delay between the reload on the server and the refresh on the browser.</p>
+</div>
+<div class="paragraph">
+<p>The default is 30 requests per second.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>scout.urlHints.enabled</code> </dt>

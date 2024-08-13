@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Migration Guide :: Eclipse Scout</title>
+    <link rel="prev" href="../releasenotes/release-notes.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../24.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="25.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">25.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../24.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../24.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="migration-guide.html">Migration Guide</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">25.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="migration-guide.html">25.1</a>
+    <a class="version" href="../../24.2/migration/migration-guide.html">24.2</a>
+    <a class="version" href="../../24.1/migration/migration-guide.html">24.1</a>
+    <a class="version" href="../../23.2/migration/migration-guide.html">23.2</a>
+    <a class="version" href="../../23.1/migration/migration-guide.html">23.1</a>
+    <a class="version" href="../../22/migration/migration-guide.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.1/docs/modules/migration/pages/migration-guide.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Migration Guide</h1>
+<div class="sect1">
+<h2 id="about-this-document"><a class="anchor" href="#about-this-document"></a>About This Document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes all relevant changes <strong>from Eclipse Scout 24.1 to Eclipse Scout 24.2</strong>. If existing code has to be migrated, instructions are provided here.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The here described functionality has not yet been released and is part of an upcoming release.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://central.sonatype.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/24.2.0-beta.2">24.2.0-beta.2</a> on <em>Maven Central</em></p>
+</li>
+<li>
+<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/24.2.0-beta.2">24.2.0-beta.2</a> on <em>mvnrepository.com</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in the parent POM of your Scout application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
+    &lt;version&gt;24.2.0-beta.2&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in your package.json:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "name": "my-module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@eclipse-scout/cli": "24.2.0-beta.2",
+    "@eclipse-scout/releng": "^24.1.0"
+  },
+  "dependencies": {
+    "@eclipse-scout/core": "24.2.0-beta.2",
+    "jquery": "3.7.1"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pre-built Scout JavaScript assets are also available using a CDN (e.g. to be directly included in a html document):
+<a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
+<div class="paragraph">
+<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2024-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
+<div class="paragraph">
+<p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA.
+Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+<div class="paragraph">
+<p>You can download the complete Eclipse IDE with Scout SDK included here:<br>
+<a href="https://www.eclipse.org/downloads/packages/release/2024-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+</div>
+<div class="paragraph">
+<p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
+<a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
+</div>
+<div class="paragraph">
+<p>For nightly beta builds use this P2 update site:
+<a href="https://download.eclipse.org/scout/nightly" class="bare">https://download.eclipse.org/scout/nightly</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="typed-permissionId"><a class="anchor" href="#typed-permissionId"></a>Typed PermissionId</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A new <code>org.eclipse.scout.rt.api.data.security.PermissionId</code> was introduced to be used as typed identifier for permissions instead of the untyped name as <code>String</code> which was previously used.</p>
+</div>
+<div class="paragraph">
+<p>The argument of the <code>org.eclipse.scout.rt.security.AbstractPermission.AbstractPermission</code> only constructor was changed from <code>String</code> to <code>PermissionId</code>, a new <code>AbstractPermission#getId()</code> method was introduced which will return an id equal to the supplied id (actually internally the name is still stored as <code>String</code> and just wrapped on request). &#8594; All permission names should be changed from <code>String</code> to <code>PermissionId</code> identifiers.</p>
+</div>
+<div class="paragraph">
+<p>With this change the following data objects have been adjusted:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type name</th>
+<th class="tableblock halign-left valign-top">Attribute type</th>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">New type</th>
+<th class="tableblock halign-left valign-top">New name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scout.PermissionCollection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;String, ? extends Collection&lt;PermissionDo&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">permissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;PermissionId, ? extends Collection&lt;PermissionDo&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(unchanged)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scout.Permission</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PermissionId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="value-migration-primary-sort-order"><a class="anchor" href="#value-migration-primary-sort-order"></a>Primary sort order for IDoValueMigrationHandler</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Untyped data object value migration handlers need to be applied before regular value migrations because they may convert typed values to the expected target type.
+A typical use case is the conversion from <code>UnknownId</code> to a typed target ID in case of renaming a type ID name.</p>
+</div>
+<div class="paragraph">
+<p>Classes implementing <code>IDoValueMigrationHandler</code> directly need to implement the new method <code>IDoValueMigrationHandler.primarySortOrder()</code>.
+It&#8217;s highly recommended to extend <code>AbstractDoValueMigrationHandler</code> which defines <code>DEFAULT_PRIMARY_SORT_ORDER</code> by default instead of implementing only the interface.</p>
+</div>
+<div class="paragraph">
+<p>The primary sort order can be used to group different types of value migrations.
+Regular value migrations (i.e. sub-classes of <code>AbstractDoValueMigrationHandler</code> use <code>IDoValueMigrationHandler.DEFAULT_PRIMARY_SORT_ORDER</code>) and are applied after untyped value migrations (i.e. sub-classes of <code>AbstractDoValueUntypedMigrationHandler</code>) which use <code>IDoValueMigrationHandler.UNTYPED_PRIMARY_SORT_ORDER</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-object-mapper-unknown-id-lenient-mode"><a class="anchor" href="#data-object-mapper-unknown-id-lenient-mode"></a>Data object mapper support reading of unknown ids in lenient mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout data object mapper was improved to allow to deserialize qualified ids with unknown type (e.g. a serialized qualified id whose id type class is no longer available).
+In lenient mode such ids are now deserialized as instance of <code>UnknownId</code> allowing to retain the unknown id value for further usage and migration of those ids.
+The former implementation returned <code>null</code> in this case.
+The default (non-lenient) deserialization remains unchanged and throws a <code>PlatformException</code> if a qualified id with an unknown type is deserialized.</p>
+</div>
+<div class="paragraph">
+<p>Check usages of <code>org.eclipse.scout.rt.dataobject.ILenientDataObjectMapper</code> and <code>org.eclipse.scout.rt.dataobject.id.IdCodec.fromQualifiedLenient</code> and change the existing code which checks for a <code>null</code> value accordingly to retain the existing code behavior.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IId id = BEANS.get(IdCodec.class).fromQualifiedLenient(idString);
+return id instanceof UnknownId ? null : id;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basiccache-removal-of-deprecated-constructors"><a class="anchor" href="#basiccache-removal-of-deprecated-constructors"></a>BasicCache: Removal of Deprecated Constructors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The two constructors of <code>BasicCache</code> not supporting the label supplier were removed.
+As replacement, use the constructor including label supplier as second argument.
+The label supplier can be retrieved via <code>CacheBuilder#getLabelSupplier()</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="calendar-support-for-multiple-calendars"><a class="anchor" href="#calendar-support-for-multiple-calendars"></a>Calendar: Support for Multiple Calendars</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The calendar widget is now capable of handling multiple calendars. See <a href="../releasenotes/release-notes.html#multiple-calendars" class="xref page">multiple calendar support</a> in the release notes for details.</p>
+</div>
+<div class="paragraph">
+<p>In most cases no changes have to be done. Some minor API changes have been made in the TypeScript part of the widget (Calendar.ts).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="limitedResult"><a class="anchor" href="#limitedResult"></a>Max Row Count and Limited Result for Scout JS Pages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pages written in TypeScript now support a maximum row count and inform the user if there would be more data than allowed to fetch (limited result).
+If you want to use this feature for your Scout JS pages as well, follow these instructions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The page must tell the maximum numbers of rows it would like to load. This is done using the new function <code>_withMaxRowCountContribution</code>.</p>
+</li>
+<li>
+<p>The data source must read this maximum value and limit the number of rows in case there are more. It reports back if there would have been more data available. This is done with the <code>MaxResultsHelper</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>There are several <a href="../technical-guide/user-interface/page.html#scout-js-examples" class="xref page">Examples</a> which explain how to use these new components.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="splitbox-scout-js"><a class="anchor" href="#splitbox-scout-js"></a>SplitBox (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following constants have been deprecated.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">SplitBox.SPLITTER_POSITION_TYPE_RELATIVE_FIRST
+SplitBox.SPLITTER_POSITION_TYPE_RELATIVE_SECOND
+SplitBox.SPLITTER_POSITION_TYPE_ABSOLUTE_FIRST
+SplitBox.SPLITTER_POSITION_TYPE_ABSOLUTE_SECOND</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use the new enum instead: <code>SplitBox.SplitterPositionType</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logical-grid-layout-config-scout-js"><a class="anchor" href="#logical-grid-layout-config-scout-js"></a>Logical Grid Layout Config (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The properties on the <code>LogicalGridLayoutConfig</code> are not writable anymore.
+Setting them will no longer have an effect.
+If you need to adjust the properties you have to use the new <code>clone</code> method.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. New way to modify the logical grid layout configuration</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">tileGrid.setLayoutConfig(tileGrid.layoutConfig.clone({columnWidth: 130}));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So you need to check whether you write the properties directly, e.g. using <code>layoutConfig.columnWidth = 130</code> and replace that by using the <code>clone</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The layout configuration is available on several widgets like <code>GroupBox</code>, <code>RadioButtonGroup</code>,  <code>TileGrid</code> and more.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dateformat-format"><a class="anchor" href="#dateformat-format"></a>DateFormat: format()</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>format()</code> function on the <code>DateFormat</code> class accepts two arguments.
+The first argument <code>date</code> specifies the <code>Date</code> object to format.
+The optional second boolean argument was used specify a hint for the formatting of a previously analyzed user input.</p>
+</div>
+<div class="paragraph">
+<p>The second argument was replaced with an <em>options</em> object with the following properties:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">analyzeInfo</dt>
+<dd>
+<p>The result of a previously analyzed user input when formatting it again.
+It helps the internal format functions to adjust the length of an accepted term to match to the corresponding user input.
+Normally, it is not necessary to set this value.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Migration</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No migration is necessary if the <code>format()</code> function is called with a single <code>Date</code> argument.</p>
+</li>
+<li>
+<p>If the second argument was set to <code>false</code>, it can simply be removed (that was the default, anyway).</p>
+</li>
+<li>
+<p>If the second argument was set to <code>true</code>, replace it with an options object with the <code>analyzeInfo</code> property set.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

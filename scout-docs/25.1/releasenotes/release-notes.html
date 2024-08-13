@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Release Notes :: Eclipse Scout</title>
+    <link rel="prev" href="../howtos/scout-js/rest-service-how-to.html">
+    <link rel="next" href="../migration/migration-guide.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../24.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="25.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">25.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../24.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../24.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="release-notes.html">Release Notes</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">25.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="release-notes.html">25.1</a>
+    <a class="version" href="../../24.2/releasenotes/release-notes.html">24.2</a>
+    <a class="version" href="../../24.1/releasenotes/release-notes.html">24.1</a>
+    <a class="version" href="../../23.2/releasenotes/release-notes.html">23.2</a>
+    <a class="version" href="../../23.1/releasenotes/release-notes.html">23.1</a>
+    <a class="version" href="../../22/releasenotes/release-notes.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.1/docs/modules/releasenotes/pages/release-notes.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Release Notes</h1>
+<div class="sect1">
+<h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest version of this release is: 24.2.0-beta.2.</p>
+</div>
+<div class="paragraph">
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/24.1%2E%2E%2Ereleases/24.2">detailed change log</a> on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Coming from an older Scout version? Check out the <a href="../migration/migration-guide.html" class="xref page">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The here described functionality has not yet been released and is part of an upcoming release.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The demo applications for this version can be found on the <a href="https://github.com/eclipse-scout/scout.docs/tree/features/version/24.2.0-beta.2">features/version/24.2.0-beta.2</a> branch of our docs repository on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://scout.bsi-software.com/contacts/" class="bare">https://scout.bsi-software.com/contacts/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/widgets/" class="bare">https://scout.bsi-software.com/widgets/</a></p>
+</li>
+<li>
+<p><a href="https://scout.bsi-software.com/jswidgets/" class="bare">https://scout.bsi-software.com/jswidgets/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="iid-signature"><a class="anchor" href="#iid-signature"></a>IId signature</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This release introduces a mechanism to add signatures to <code>IId</code> that are e.g. sent to the browser or provided by a REST endpoint.
+For more information see <a href="../technical-guide/common-concepts/security.html#iid-signature" class="xref page">IId signature</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="multiple-calendars"><a class="anchor" href="#multiple-calendars"></a>Calendar: Support for Multiple Calendars</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The calendar widget is now capable of handling multiple calendar resources. In the left sidebar of the calendar appears a widget, which allows choosing the current visible resources.</p>
+</div>
+<div class="paragraph">
+<p>By using a <code>CalendarResourceDo</code> object, new resources can be defined and added to the widget. These are the most important properties of the DataObject:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resourceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UUID (String)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique identifier of a resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">parentId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UUID (String)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A resource can be a member of a resource group. If so, this property references the UUID of the resource group. A resource group is a normal <code>CalendarResourceDo</code> object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">visible</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates, if the resource is currently visible. This property changes when the user shows/hides the resource in the sidebar.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selectable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates, if a range selection on this resource can be performed in the day view.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A <code>CalendarResourceDo</code> can be added to the calendar by using <code>ICalendar#setResources</code> or <code>AbstractCalendar#getConfiguredResources</code>.</p>
+</div>
+<div class="paragraph">
+<p>A calendar item can be assigned to a resource by referencing the resource by its ID using <code>ICalendarItem#setResourceId</code>.</p>
+</div>
+<div class="paragraph">
+<p>When a CalendarItemProvider only produces items for one specific calendar, the method <code>AbstractCalendarItemProvider#getConfiguredAssociatedResource</code> can be overridden. All items produced by it are automatically assigned to the specified resource.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="max-row-count-and-limited-result-for-scout-js-pages"><a class="anchor" href="#max-row-count-and-limited-result-for-scout-js-pages"></a>Max Row Count and Limited Result for Scout JS Pages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pages written in TypeScript now support a maximum row count and inform the user if there would be more data than allowed to fetch (limited result).
+If you want to use this feature for your Scout JS pages as well, follow these instructions in the <a href="../migration/migration-guide.html#limitedResult" class="xref page">Migration Guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access-config-properties-from-scout-js"><a class="anchor" href="#access-config-properties-from-scout-js"></a>Access Config Properties from Scout JS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Selected config properties can now be accessed from Scout JS.
+See the <a href="../technical-guide/common-concepts/platform.html#access-config-ts" class="xref page">Configuration documentation</a> on how to expose more properties to the browser and how to access them from TypeScript.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tile-grid"><a class="anchor" href="#tile-grid"></a>Tile Grid</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="movable-scout-js"><a class="anchor" href="#movable-scout-js"></a>Movable (Scout JS)</h3>
+<div class="paragraph">
+<p>Tiles can now be marked as "movable", see <code>TileModel.movable</code>.
+This allows them to be moved to another position using drag &amp; drop.</p>
+</div>
+<div class="paragraph">
+<p>Please note that this feature is only available for Scout JS based tile grids.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resizable-scout-js"><a class="anchor" href="#resizable-scout-js"></a>Resizable (Scout JS)</h3>
+<div class="paragraph">
+<p>Tiles can now be marked as "resizable", see <code>TileModel.resizable</code>.
+This allows them to be resized by grabbing an edge or corner of the tile.</p>
+</div>
+<div class="paragraph">
+<p>Please note that this feature is only available for Scout JS based tile grids.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wrappable"><a class="anchor" href="#wrappable"></a>Wrappable</h3>
+<div class="paragraph">
+<p>The wrapping behavior of a tile grid can now be disabled using the new <code>wrappable</code> property.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t need your grid to wrap the tiles you can consider disabling it which may slightly improve the performance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tile-animateboundschange"><a class="anchor" href="#tile-animateboundschange"></a>Tile: AnimateBoundsChange</h3>
+<div class="paragraph">
+<p>The new property makes it possible to disable the animation for size and position changes for a specific tile.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logical-grid"><a class="anchor" href="#logical-grid"></a>Logical Grid</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="max-width-and-height-scout-js"><a class="anchor" href="#max-width-and-height-scout-js"></a>Max Width and Height (Scout JS)</h3>
+<div class="paragraph">
+<p>The logical grid now supports the new grid data properties <code>maxWidthInPixel</code> and <code>maxHeightInPixel</code>.
+As the names imply these properties make it possible to limit the size of a grid cell.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="spy"><a class="anchor" href="#spy"></a>Spy</h3>
+<div class="paragraph">
+<p>If you are curious how the logical grid works or have problems arranging your widgets inside a logical grid, the new logical grid spy may help you to understand it better.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../common/_images/logical_grid_spy.png" alt="logical grid spy">
+</div>
+</div>
+<div class="paragraph">
+<p>Please see <a href="../technical-guide/user-interface/logical-grid.html#logical-grid-spy" class="xref page">Logical Grid Spy</a> for more information on how to enable it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clone-method-scout-js"><a class="anchor" href="#clone-method-scout-js"></a>Clone Method (Scout JS)</h3>
+<div class="paragraph">
+<p>With the new clone method on the <code>GridData</code> object you can modify the grid data hints of a widget a lot easier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">widget.setGridDataHints(widget.gridDataHints.clone({h: 2}))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This also helps adjusting the grid data hints on the fly for debugging purposes in the developer tools of your browser.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/grid_data_clone.png" alt="grid data clone">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="event-for-grid-data-property-change"><a class="anchor" href="#event-for-grid-data-property-change"></a>Event for Grid Data Property Change</h3>
+<div class="paragraph">
+<p>Form fields and tiles now trigger a property change event whenever the calculated grid data object changes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chart"><a class="anchor" href="#chart"></a>Chart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The chart introduces two new properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.colorMode</code> Determines what parts of the chart data is colored with the same colors.</p>
+</li>
+<li>
+<p><code>options.plugins.legend.pointsVisible</code> Whether the colored points in the legend are visible.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information about the Chart widget see <a href="../technical-guide/user-interface/widget-reference.html#chart" class="xref page">Chart</a>.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
+  <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

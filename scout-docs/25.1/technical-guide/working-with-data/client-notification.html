@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Client Notifications :: Eclipse Scout</title>
+    <link rel="prev" href="code-type.html">
+    <link rel="next" href="ui-notifications.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../../24.1/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="25.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">25.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../24.1/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../24.1/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Working with Data</li>
+    <li><a href="client-notification.html">Client Notifications</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">25.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="client-notification.html">25.1</a>
+    <a class="version" href="../../../24.2/technical-guide/working-with-data/client-notification.html">24.2</a>
+    <a class="version" href="../../../24.1/technical-guide/working-with-data/client-notification.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/working-with-data/client-notification.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/working-with-data/client-notification.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/working-with-data/client-notification.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.1/docs/modules/technical-guide/pages/working-with-data/client-notification.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Client Notifications</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a scout application, typically, the scout client requests some data from the scout server. Sometimes, however, the communication needs to go the other way:
+The scout server needs to inform the scout client about something.
+With client notifications it is possible to do so.</p>
+</div>
+<div id="img-client_notifications" class="imageblock">
+<div class="content">
+<img src="../../common/_images/clientNotifications.png" alt="clientNotifications">
+</div>
+<div class="title">Figure 1. Client Notifications</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Example scenarios for client notifications are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>some data shared by client and server has changed (e.g. a cache on the client is no longer up-to-date, or a shared variable has changed)</p>
+</li>
+<li>
+<p>a new incoming phone call is available for a specific client and should be shown in the GUI</p>
+</li>
+<li>
+<p>a user wants to send a message to another user</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Scout itself uses client notifications to synchronize code type and permission caches and session shared variables.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-flow"><a class="anchor" href="#data-flow"></a>Data Flow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A client notification message is just a serializable object.
+It is published on the server and can be addressed either to all client nodes or only to a specific session or user.
+On the UI server side, handlers can be used to react upon incoming notifications.</p>
+</div>
+<div class="paragraph">
+<p>Client notification handlers may change the state of the client model. In case of visible changes in the UI, these changes are automatically
+reflected in the UI.</p>
+</div>
+<div class="paragraph">
+<p>In case of multiple server nodes, the client notifications are synchronized using cluster notifications to ensure that all UI servers receive the notifications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="push-technology"><a class="anchor" href="#push-technology"></a>Push Technology</h2>
+<div class="sectionbody">
+<div id="img-long_polling" class="imageblock">
+<div class="content">
+<img src="../../common/_images/cn_long_polling.png" alt="cn long polling">
+</div>
+<div class="title">Figure 2. Long Polling</div>
+</div>
+<div class="paragraph">
+<p>Client notifications are implemented using <code>long polling</code> as described below, because long polling works reliably in most corporate networks with proxy servers between server and client
+ as well as with security policies that do not allow server push.</p>
+</div>
+<div class="paragraph">
+<p>With long polling, the client requests notifications from the server repeatedly. If no new notifications are available on the server, instead of sending an empty response,
+the server holds the request open and waits until new notifications are available or a timeout is reached.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the long polling mechanism, pending client notifications are also transferred to the client along with the response of regular client requests.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="components"><a class="anchor" href="#components"></a>Components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A client notification can be published on the server using the <code>ClientNotificationRegistry</code>.
+Publishing can be done either in a non-transactional or transactional way (only processed, when the transaction is committed).</p>
+</div>
+<div class="paragraph">
+<p>The UI Server either receives the notifications via the <code>ClientNotificationPoller</code> or in case of transactional notifications
+together with the response of a regular service request. The notification is then dispatched to the corresponding handler.</p>
+</div>
+<div class="paragraph">
+<p>When a client notifications is published on the server, it is automatically synchronized with the other server nodes (by default).</p>
+</div>
+<div id="img-client_notification_big_picture" class="imageblock">
+<div class="content">
+<img src="../../common/_images/cn_big_picture.png" alt="cn big picture">
+</div>
+<div class="title">Figure 3. Client Notification Big Picture</div>
+</div>
+<div class="sect2">
+<h3 id="multiple-server-nodes"><a class="anchor" href="#multiple-server-nodes"></a>Multiple Server Nodes</h3>
+<div id="img-client_notification_multiple" class="imageblock">
+<div class="content">
+<img src="../../common/_images/cn_multiple_servers.png" alt="cn multiple servers">
+</div>
+<div class="title">Figure 4. Client Notification Multiple Server Nodes</div>
+</div>
+<div class="paragraph">
+<p>In order to deal with multiple ui-server nodes, the server holds a single notifications queue per ui-server node were all client notifications are added (filtering is not possible on the server anymore as the backend may not know about all users or sessions of a specific ui-server). The ui-server decides how to deal further with these notifications (maybe even ignores them if they are not addressed to one of its users or sessions).</p>
+</div>
+<div class="paragraph">
+<p>If an ui-server changes its backend server node and connects to another one, a new notification queue is created on this backend server (unless the ui-server is already known there) and the old notification queue on the old backend server is removed after it has expired after a specific timeout (see <code>org.eclipse.scout.rt.server.clientnotification.ClientNotificationProperties.NotificationQueueExpireTime</code>).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Notifications which have been added to the old queue after the ui-server consumed them lastly but before the ui-server connects to the new server will not be transferred to the ui-server.</p>
+</li>
+<li>
+<p>If an ui-server would randomly connect to different backend servers multiple notification queues for the specific ui-server may exist (unless a timeout is reached) and one notification may be delivered multiple times to the same ui-server, this should be avoided.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="publishing"><a class="anchor" href="#publishing"></a>Publishing</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Listing 1. Publishing Client Notifications</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">BEANS.get(ClientNotificationRegistry.class).putForUser("admin", new PersonTableChangedNotification());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are several options to choose from when publishing a new client notification:</p>
+</div>
+<div class="sect2">
+<h3 id="clientnotificationaddress"><a class="anchor" href="#clientnotificationaddress"></a>ClientNotificationAddress</h3>
+<div class="paragraph">
+<p>The <code>ClientNotificationAddress</code> determines which how the client notification needs to be dispatched and handled.
+A client notification can be addressed to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>all nodes</p>
+</li>
+<li>
+<p>all sessions</p>
+</li>
+<li>
+<p>one or more specific session</p>
+</li>
+<li>
+<p>one or more specific user</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transactional-vs-non-transactional"><a class="anchor" href="#transactional-vs-non-transactional"></a>Transactional vs. Non-transactional</h3>
+<div class="paragraph">
+<p>Client notifications can be published in a transactional or non-transactional way.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Transactional means that the client notifications are only published once the transaction is committed.
+If the transaction fails, client notifications are disregarded.</p>
+</li>
+<li>
+<p>Non-transactional means that client notifications are published immediately without considering any transactions.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="distributing-to-all-cluster-nodes"><a class="anchor" href="#distributing-to-all-cluster-nodes"></a>Distributing to all Cluster Nodes</h3>
+<div class="paragraph">
+<p>Generally, it makes sense to distribute the client notifications automatically to all other server cluster nodes (if available). This is achieved using <code>ClusterNotifications</code>.
+It is however also possible to publish client notifications without cluster distribution. E.g. in case of client notifications already received from other cluster nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coalescing-notifications"><a class="anchor" href="#coalescing-notifications"></a>Coalescing Notifications</h3>
+<div class="paragraph">
+<p>It is possible that a service generates a lot of client notifications that are obsolete once a newer notification is created.
+In this case a coalescer can be created to reduce the notifications:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Client Notification Coalescer</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class BookmarkNotificationCoalescer implements ICoalescer&lt;BookmarkChangedClientNotification&gt; {
+
+  @Override
+  public List&lt;BookmarkChangedClientNotification&gt; coalesce(List&lt;BookmarkChangedClientNotification&gt; notifications) {
+    // reduce to one
+    return CollectionUtility.arrayList(CollectionUtility.firstElement(notifications));
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="handling"><a class="anchor" href="#handling"></a>Handling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>ClientNotificationDispatcher</code> is responsible for dispatching the client notifications to the correct handler.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-a-client-notification-handler"><a class="anchor" href="#creating-a-client-notification-handler"></a>Creating a Client Notification Handler</h3>
+<div class="paragraph">
+<p>To create a new client notification handler for a specific client notification, all you need to do is creating a class implementing
+<code>org.eclipse.scout.rt.shared.notification.INotificationHandler&lt;T&gt;</code>, where <code>T</code> is the type (or subtype) of the notification to handle.</p>
+</div>
+<div class="paragraph">
+<p>The new handler does not need to be registered anywhere. It is available via jandex class inventory.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Notification Handler for <code>MessageNotifications</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MessageNotificationHandler implements INotificationHandler&lt;MessageNotification&gt; {
+
+  @Override
+  public void handleNotification(final MessageNotification notification) {</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="handling-notifications-temporarily"><a class="anchor" href="#handling-notifications-temporarily"></a>Handling Notifications Temporarily</h3>
+<div class="paragraph">
+<p>Sometimes it is necessary to start and stop handling notification dynamically, (e.g. when a form is opened) in this case <code>AbstractObservableNotificationHandler</code>
+can be used to add and remove listeners.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asynchronous-dispatching"><a class="anchor" href="#asynchronous-dispatching"></a>Asynchronous Dispatching</h3>
+<div class="paragraph">
+<p>Dispatching is always done asynchronously. However, in case of transactional notifications,
+a service call blocks until all transactional notifications returned with the service response are handled.</p>
+</div>
+<div class="paragraph">
+<p>This behavior was implemented to simplify for example the usage of shared caches:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Blocking until notification handling completed</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CodeService cs = BEANS.get(CodeService.class);
+cs.reloadCodeType(UiThemeCodeType.class);
+
+//client-side reload triggered by client notifications is finished
+List&lt;? extends ICode&lt;String&gt;&gt; reloadedCodes = cs.getCodeType(UiThemeCodeType.class).getCodes();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above, it is guaranteed, that the codetype is up-to-date as soon as reloadCodeType is finished.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="updating-scout-model"><a class="anchor" href="#updating-scout-model"></a>Updating Scout Model</h3>
+<div class="paragraph">
+<p>Notification handlers are never called from a scout model thread.
+If the scout model needs to be updated when handling notifications, a model job needs to be created for that task.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. Notification Handler Creating Model Job</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Override
+public void handleNotification(final MessageNotification notification) {
+  ModelJobs.schedule(() -&gt; {
+    IDesktop desktop = ClientSessionProvider.currentSession().getDesktop();
+    // e.g. send dataChanged event to UI listeners
+    desktop.dataChanged(notification.getMessage());
+  }, ModelJobs.newInput(ClientRunContexts.copyCurrent()));
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Make sure to always run updates to the scout models in a model job (forms, pages, &#8230;&#8203;): Use ModelJobs.schedule(&#8230;&#8203;) where necessary in notification handlers.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="code-type.html">Code Type</a></span>
+  <span class="next"><a href="ui-notifications.html">UI Notifications</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>
