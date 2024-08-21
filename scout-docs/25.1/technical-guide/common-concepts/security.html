@@ -1050,6 +1050,22 @@ Let&#8217;s say the application provides REST endpoints under <code>/api</code> 
 }</code></pre>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+A signed <code>IId</code> may contain special characters such as <code>#</code> or <code>;</code>.
+When such an <code>IId</code> is used as an URL parameter it needs to be encoded (see <a href="https://www.ietf.org/rfc/rfc3986.html#section-2">RFC 3986</a>).
+This encoding needs to be done in the application, you can use e.g. <code>encodeURIComponent()</code> in JS or <code>IOUtility.urlEncode()</code> in Java.
+In addition, make sure that no part of your infrastructure setup (e.g. a proxy) decodes these URL encoded parameters before the request reaches your Scout server as this will lead to unexpected behaviour.
+If you are using e.g. an Apache reverse proxy (see <a href="https://httpd.apache.org/docs/current/mod/mod_proxy.html">Apache documentation</a>) consider enabling the <code>nocanon</code> flag as this particular proxy will decode all URLs by default.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Also requests sent by a REST client can be signed automatically. To achieve this, two things need to be done.</p>
 </div>
