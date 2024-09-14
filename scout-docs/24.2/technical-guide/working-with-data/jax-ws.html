@@ -2035,7 +2035,7 @@ List&lt;String&gt; httpResponseHeader = context.getHttpResponseHeader("X-CUSTOM-
 
   @Override
   protected void execInstallHandlers(List&lt;jakarta.xml.ws.handler.Handler&lt;?&gt;&gt; handlerChain) {
-    handlerChain.add(new BasicAuthenticationHandler());
+    handlerChain.add(BEANS.get(BasicAuthenticationHandler.class));
     handlerChain.add(BEANS.get(LogHandler.class));
   }
 }</code></pre>
@@ -2065,7 +2065,7 @@ The credentials as provided via <code>InvocationContext</code> can be accessed v
 
   @Override
   protected void execInstallHandlers(List&lt;jakarta.xml.ws.handler.Handler&lt;?&gt;&gt; handlerChain) {
-    handlerChain.add(new BasicAuthenticationHandler());
+    handlerChain.add(BEANS.get(BasicAuthenticationHandler.class));
     handlerChain.add(BEANS.get(LogHandler.class));
     handlerChain.add(BEANS.get(WsConsumerCorrelationIdHandler.class)); <i class="conum" data-value="1"></i><b>(1)</b>
   }
