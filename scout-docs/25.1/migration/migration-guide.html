@@ -479,219 +479,33 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
 <a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
 </div>
-<div class="paragraph">
-<p>For nightly beta builds use this P2 update site:
-<a href="https://download.eclipse.org/scout/nightly" class="bare">https://download.eclipse.org/scout/nightly</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="typed-permissionId"><a class="anchor" href="#typed-permissionId"></a>Typed PermissionId</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A new <code>org.eclipse.scout.rt.api.data.security.PermissionId</code> was introduced to be used as typed identifier for permissions instead of the untyped name as <code>String</code> which was previously used.</p>
-</div>
-<div class="paragraph">
-<p>The argument of the <code>org.eclipse.scout.rt.security.AbstractPermission.AbstractPermission</code> only constructor was changed from <code>String</code> to <code>PermissionId</code>, a new <code>AbstractPermission#getId()</code> method was introduced which will return an id equal to the supplied id (actually internally the name is still stored as <code>String</code> and just wrapped on request). &#8594; All permission names should be changed from <code>String</code> to <code>PermissionId</code> identifiers.</p>
-</div>
-<div class="paragraph">
-<p>With this change the following data objects have been adjusted:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type name</th>
-<th class="tableblock halign-left valign-top">Attribute type</th>
-<th class="tableblock halign-left valign-top">Attribute name</th>
-<th class="tableblock halign-left valign-top">New type</th>
-<th class="tableblock halign-left valign-top">New name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">scout.PermissionCollection</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;String, ? extends Collection&lt;PermissionDo&gt;&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">permissions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;PermissionId, ? extends Collection&lt;PermissionDo&gt;&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(unchanged)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">scout.Permission</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PermissionId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="value-migration-primary-sort-order"><a class="anchor" href="#value-migration-primary-sort-order"></a>Primary sort order for IDoValueMigrationHandler</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Untyped data object value migration handlers need to be applied before regular value migrations because they may convert typed values to the expected target type.
-A typical use case is the conversion from <code>UnknownId</code> to a typed target ID in case of renaming a type ID name.</p>
-</div>
-<div class="paragraph">
-<p>Classes implementing <code>IDoValueMigrationHandler</code> directly need to implement the new method <code>IDoValueMigrationHandler.primarySortOrder()</code>.
-It&#8217;s highly recommended to extend <code>AbstractDoValueMigrationHandler</code> which defines <code>DEFAULT_PRIMARY_SORT_ORDER</code> by default instead of implementing only the interface.</p>
-</div>
-<div class="paragraph">
-<p>The primary sort order can be used to group different types of value migrations.
-Regular value migrations (i.e. sub-classes of <code>AbstractDoValueMigrationHandler</code> use <code>IDoValueMigrationHandler.DEFAULT_PRIMARY_SORT_ORDER</code>) and are applied after untyped value migrations (i.e. sub-classes of <code>AbstractDoValueUntypedMigrationHandler</code>) which use <code>IDoValueMigrationHandler.UNTYPED_PRIMARY_SORT_ORDER</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="data-object-mapper-unknown-id-lenient-mode"><a class="anchor" href="#data-object-mapper-unknown-id-lenient-mode"></a>Data object mapper support reading of unknown ids in lenient mode</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Scout data object mapper was improved to allow to deserialize qualified ids with unknown type (e.g. a serialized qualified id whose id type class is no longer available).
-In lenient mode such ids are now deserialized as instance of <code>UnknownId</code> allowing to retain the unknown id value for further usage and migration of those ids.
-The former implementation returned <code>null</code> in this case.
-The default (non-lenient) deserialization remains unchanged and throws a <code>PlatformException</code> if a qualified id with an unknown type is deserialized.</p>
-</div>
-<div class="paragraph">
-<p>Check usages of <code>org.eclipse.scout.rt.dataobject.ILenientDataObjectMapper</code> and <code>org.eclipse.scout.rt.dataobject.id.IdCodec.fromQualifiedLenient</code> and change the existing code which checks for a <code>null</code> value accordingly to retain the existing code behavior.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IId id = BEANS.get(IdCodec.class).fromQualifiedLenient(idString);
-return id instanceof UnknownId ? null : id;</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="basiccache-removal-of-deprecated-constructors"><a class="anchor" href="#basiccache-removal-of-deprecated-constructors"></a>BasicCache: Removal of Deprecated Constructors</h2>
+<h2 id="jakarta-activation-and-mail-update"><a class="anchor" href="#jakarta-activation-and-mail-update"></a>New version for Jakarta Activation and Jakarta Mail</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The two constructors of <code>BasicCache</code> not supporting the label supplier were removed.
-As replacement, use the constructor including label supplier as second argument.
-The label supplier can be retrieved via <code>CacheBuilder#getLabelSupplier()</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="calendar-support-for-multiple-calendars"><a class="anchor" href="#calendar-support-for-multiple-calendars"></a>Calendar: Support for Multiple Calendars</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The calendar widget is now capable of handling multiple calendars. See <a href="../releasenotes/release-notes.html#multiple-calendars" class="xref page">multiple calendar support</a> in the release notes for details.</p>
-</div>
-<div class="paragraph">
-<p>In most cases no changes have to be done. Some minor API changes have been made in the TypeScript part of the widget (Calendar.ts).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="limitedResult"><a class="anchor" href="#limitedResult"></a>Max Row Count and Limited Result for Scout JS Pages</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Pages written in TypeScript now support a maximum row count and inform the user if there would be more data than allowed to fetch (limited result).
-If you want to use this feature for your Scout JS pages as well, follow these instructions:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The page must tell the maximum numbers of rows it would like to load. This is done using the new function <code>_withMaxRowCountContribution</code>.</p>
-</li>
-<li>
-<p>The data source must read this maximum value and limit the number of rows in case there are more. It reports back if there would have been more data available. This is done with the <code>MaxResultsHelper</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>There are several <a href="../technical-guide/user-interface/page.html#scout-js-examples" class="xref page">Examples</a> which explain how to use these new components.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="splitbox-scout-js"><a class="anchor" href="#splitbox-scout-js"></a>SplitBox (Scout JS)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The following constants have been deprecated.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">SplitBox.SPLITTER_POSITION_TYPE_RELATIVE_FIRST
-SplitBox.SPLITTER_POSITION_TYPE_RELATIVE_SECOND
-SplitBox.SPLITTER_POSITION_TYPE_ABSOLUTE_FIRST
-SplitBox.SPLITTER_POSITION_TYPE_ABSOLUTE_SECOND</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Use the new enum instead: <code>SplitBox.SplitterPositionType</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="logical-grid-layout-config-scout-js"><a class="anchor" href="#logical-grid-layout-config-scout-js"></a>Logical Grid Layout Config (Scout JS)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The properties on the <code>LogicalGridLayoutConfig</code> are not writable anymore.
-Setting them will no longer have an effect.
-If you need to adjust the properties you have to use the new <code>clone</code> method.</p>
-</div>
-<div class="listingblock">
-<div class="title">Listing 1. New way to modify the logical grid layout configuration</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">tileGrid.setLayoutConfig(tileGrid.layoutConfig.clone({columnWidth: 130}));</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>So you need to check whether you write the properties directly, e.g. using <code>layoutConfig.columnWidth = 130</code> and replace that by using the <code>clone</code> method.</p>
-</div>
-<div class="paragraph">
-<p>The layout configuration is available on several widgets like <code>GroupBox</code>, <code>RadioButtonGroup</code>,  <code>TileGrid</code> and more.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="dateformat-format"><a class="anchor" href="#dateformat-format"></a>DateFormat: format()</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <code>format()</code> function on the <code>DateFormat</code> class accepts two arguments.
-The first argument <code>date</code> specifies the <code>Date</code> object to format.
-The optional second boolean argument was used specify a hint for the formatting of a previously analyzed user input.</p>
-</div>
-<div class="paragraph">
-<p>The second argument was replaced with an <em>options</em> object with the following properties:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">analyzeInfo</dt>
-<dd>
-<p>The result of a previously analyzed user input when formatting it again.
-It helps the internal format functions to adjust the length of an accepted term to match to the corresponding user input.
-Normally, it is not necessary to set this value.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p><strong>Migration</strong>:</p>
+<p>For these dependencies the versions have been updated to the Jakarta EE 10 version:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>No migration is necessary if the <code>format()</code> function is called with a single <code>Date</code> argument.</p>
+<p>Jakarta Activation 2.1</p>
 </li>
 <li>
-<p>If the second argument was set to <code>false</code>, it can simply be removed (that was the default, anyway).</p>
-</li>
-<li>
-<p>If the second argument was set to <code>true</code>, replace it with an options object with the <code>analyzeInfo</code> property set.</p>
+<p>Jakarta Mail 2.1</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>As the <em>groupId</em> has been changed for these dependencies, exclusions for the older version <em>com.sun.activation:jakarta.activation</em> (resp. <em>mail</em>) have been added for other dependencies which did depend on these (maven duplicate-finder should point them out).
+Existing exclusions for <em>jakarta.activation:jakarta.activation-api</em> and <em>org.eclipse.angus:angus-activation</em> (resp. <em>mail</em>) should be removed for other dependencies (two new dependencies instead of one to differ between API and implementation).</p>
+</div>
+<div class="paragraph">
+<p>Modules including dependencies to <em>com.sun.activation:jakarta.activation</em> should instead use <em>org.eclipse.angus:angus-activation</em> (same for <em>mail</em>) as dependency (which includes the API and implementation).
+If your implementation references implementation classes the package name needs to be adjusted (implementation has been moved).</p>
 </div>
 </div>
 </div>
