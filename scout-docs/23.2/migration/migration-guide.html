@@ -904,6 +904,14 @@ Column.isVisible -&gt; Column.visible</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="table-enabled-state-of-menus-depends-on-selected-rows"><a class="anchor" href="#table-enabled-state-of-menus-depends-on-selected-rows"></a>Table: Enabled State of Menus Depends on Selected Rows</h3>
+<div class="paragraph">
+<p>Menus on a table with menu type <code>SingleSelection</code> or <code>MultiSelection</code> are now disabled if some of the selected rows are disabled.
+This makes it consistent with the existing Scout Classic behavior.
+If you need these menus to always be enabled, you can set the property <code>inheritAccessibility</code> to false.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="tree-insert-order-changed"><a class="anchor" href="#tree-insert-order-changed"></a>Tree: Insert Order Changed</h3>
 <div class="paragraph">
 <p><code>Tree.insertNodes</code> now adds new nodes (without an explicit childNodeIndex) at the bottom of the existing nodes instead of the top.
