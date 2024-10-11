@@ -185,6 +185,9 @@
     <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -521,6 +524,17 @@ Existing exclusions for <em>jakarta.activation:jakarta.activation-api</em> and <
 <div class="paragraph">
 <p>Modules including dependencies to <em>com.sun.activation:jakarta.activation</em> should instead use <em>org.eclipse.angus:angus-activation</em> (same for <em>mail</em>) as dependency (which includes the API and implementation).
 If your implementation references implementation classes the package name needs to be adjusted (implementation has been moved).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clientcallback-renamed-to-uicallback"><a class="anchor" href="#clientcallback-renamed-to-uicallback"></a>ClientCallback renamed to UiCallback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>org.eclipse.scout.rt.client.ui.desktop.ClientCallback</code> has been renamed to <code>org.eclipse.scout.rt.client.ui.desktop.hybrid.uicallback.UiCallback</code>.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, invoking TypeScript code from the client Java code has been simplified using <code>org.eclipse.scout.rt.client.ui.desktop.hybrid.uicallback.UiCallbacks</code>. See the <a href="../technical-guide/user-interface/ui-callback.html" class="xref page">UI Callback technical guide</a> for more details.</p>
 </div>
 </div>
 </div>

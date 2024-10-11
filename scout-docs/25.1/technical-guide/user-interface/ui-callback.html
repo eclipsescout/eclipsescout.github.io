@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Composite Field :: Eclipse Scout</title>
-    <link rel="prev" href="form-field.html">
-    <link rel="next" href="group-box.html">
+    <title>UI Callbacks :: Eclipse Scout</title>
+    <link rel="prev" href="widget-reference.html">
+    <link rel="next" href="html-document-parser.html">
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../../../../_/css/site.css">
     <script>var uiRootPath = '../../../../_'</script>
@@ -146,7 +146,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="form-field.html">Form Field</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="composite-field.html">Composite Field</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -185,7 +185,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="widget-reference.html">Widget Reference</a>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="ui-callback.html">UI Callbacks</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -349,53 +349,182 @@
     <li><a href="../../index.html">Eclipse Scout</a></li>
     <li><a href="../technical-guide.html">Technical Guide</a></li>
     <li>User Interface</li>
-    <li><a href="composite-field.html">Composite Field</a></li>
+    <li><a href="ui-callback.html">UI Callbacks</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">25.1</button>
   <div class="version-menu">
-    <a class="version is-current" href="composite-field.html">25.1</a>
-    <a class="version" href="../../../24.2/technical-guide/user-interface/composite-field.html">24.2</a>
-    <a class="version" href="../../../24.1/technical-guide/user-interface/composite-field.html">24.1</a>
-    <a class="version" href="../../../23.2/technical-guide/user-interface/composite-field.html">23.2</a>
+    <a class="version is-current" href="ui-callback.html">25.1</a>
+    <a class="version is-missing" href="../../../24.2/index.html">24.2</a>
+    <a class="version is-missing" href="../../../24.1/index.html">24.1</a>
+    <a class="version is-missing" href="../../../23.2/index.html">23.2</a>
     <a class="version is-missing" href="../../../23.1/index.html">23.1</a>
-    <a class="version" href="../../../22/technical-guide/user-interface/composite-field.html">22</a>
+    <a class="version is-missing" href="../../../22/index.html">22</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.1/docs/modules/technical-guide/pages/user-interface/composite-field.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.1/docs/modules/technical-guide/pages/user-interface/ui-callback.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Composite Field</h1>
+<h1 class="page">UI Callbacks</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>A composite field is a special type of <a href="form-field.html" class="xref page">Form Field</a> that contains other form fields.</p>
-</div>
-<div class="paragraph">
-<p>Typical examples are:</p>
+<p>UI Callbacks can be used to invoke TypeScript code running in the browser from Java code running on the client backend.
+It consists of two main parts:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="group-box.html" class="xref page">Group Box</a></p>
+<p>A TypeScript handler that contains the code to be called from the client. It implements the interface <code>UiCallbackHandler</code>.
+It receives the id of the current callback, the widget the callback belongs to (owner) and an optional DataObject as arguments.</p>
 </li>
 <li>
-<p>Tab Box</p>
-</li>
-<li>
-<p>Sequence Box</p>
+<p>An optional Java handler to process the response from the TypeScript handler.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Since a form field itself actually can contain other form fields, the composite field is not much more than a marker interface without special abilities.</p>
+<p>The following code illustrates a simple example for a <code>UiCallbackHandler</code> on browser side:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. The TypeScript handler with the browser side logic.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Desktop, UiCallbackHandler} from '@eclipse-scout/core';
+export class SampleUiCallbackHandler implements UiCallbackHandler {
+  handle(callbackId: string, owner: Desktop, request: CallbackInputDo): JQuery.Promise&lt;CallbackResultDo&gt; {
+    const result: CallbackResultDo = {
+      _type: 'scout.CallbackResult',
+      message: 'message from the browser'
+    };
+    return $.resolvedPromise(result);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>UiCallbackHandler</code> can be invoked from the Java client as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Java code on the client to start the callback.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CallbackInputDo dataToSendToUi = BEANS.get(CallbackInputDo.class).withValue("Data to send to the browser.");  <i class="conum" data-value="1"></i><b>(1)</b>
+UiCallback&lt;CallbackResultDo&gt; callback = UiCallbacks.get().send(IDesktop.CURRENT.get(), "scout.SampleUiCallbackHandler", dataToSendToUi);  <i class="conum" data-value="2"></i><b>(2)</b>
+CallbackResultDo result = callback.get(5, TimeUnit.SECONDS);  <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Creates a new <code>DataObject</code> which holds the data to send to the <code>SampleUiCallbackHandler</code> on the browser.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Starts the callback in the context of the current <code>Desktop</code> widget and sends the given input <code>DataObject</code> to the <code>SampleUiCallbackHandler</code> on the browser.
+The context widget specifies the maximum lifetime of the callback. As soon as the context widget is disposed, the callback is automatically cancelled.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Retrieves the result from the UI callback and waits no more than 5 seconds for a result to be available. A result can be of the following form:
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>DataObject</code> as returned by the UI handler in case the call was successful.</p>
+</li>
+<li>
+<p>Throwing an <code>ExecutionException</code> holding the <code>ProcessingException</code> if the browser returned an error.</p>
+</li>
+<li>
+<p>Throwing a <code>CancellationException</code> if the callback has been cancelled (by the user itself or because e.g. the context <code>Widget</code> has been disposed).</p>
+</li>
+<li>
+<p>Throwing a <code>TimeoutException</code> in case the timeout elapsed (only possible if a timeout was specified).</p>
+</li>
+<li>
+<p>Throwing an <code>InterruptedException</code> in case the thread was interrupted while waiting for the result to arrive.</p>
+</li>
+</ul>
+</div></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="optional-java-handler"><a class="anchor" href="#optional-java-handler"></a>Optional Java handler</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible to further process the response from the UI handler before returning the result. For this an <code>org.eclipse.scout.rt.client.ui.desktop.hybrid.uicallback.IUiCallbackHandler</code> can be implemented:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Java UI callback handler example.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ObjectType("scout.SampleUiCallbackHandler")  <i class="conum" data-value="1"></i><b>(1)</b>
+class SampleUiCallbackHandler implements IUiCallbackHandler&lt;CallbackResultDo, String&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
+  @Override
+  public Pair&lt;String, ? extends Throwable&gt; onCallbackDone(CallbackResultDo callbackResultDo) {
+    return ImmutablePair.of(callbackResultDo.getMessage(), null); <i class="conum" data-value="3"></i><b>(3)</b>
+  }
+
+  @Override
+  public Pair&lt;String, ? extends Throwable&gt; onCallbackFailed(Throwable exception, String message, String code) {
+    return ImmutablePair.of(null, new ProcessingException("My custom message.")); <i class="conum" data-value="4"></i><b>(4)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This handler specifies the <code>ObjectType</code> of the TypeScript handler using an annotation. As an alternative the handler could overwrite <code>uiCallbackHandlerObjectType</code> to specify the <code>ObjectType</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This handler converts the result from the <code>CallbackResultDo</code> returned by the UI handler to a string.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>onCallbackDone</code> can be used to convert the resulting DO (either to another value or to an Exception).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code>onCallbackFailed</code> can be used to convert the Exception (either to a result or to another Exception).</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Such a handler can then be used as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Java UI callback in use.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CallbackInputDo dataToSendToUi = BEANS.get(CallbackInputDo.class).withValue("Data to send to the browser.");   <i class="conum" data-value="1"></i><b>(1)</b>
+String message = UiCallbacks.get().send(myForm, new SampleUiCallbackHandler(), dataToSendToUi).get(5, TimeUnit.SECONDS);   <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Creates a new <code>DataObject</code> which holds the data to send to the <code>SampleUiCallbackHandler</code> on the browser.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Callback using a <code>Form</code> as context and the <code>SampleUiCallbackHandler</code> which directly converts the result to only returning the message in case the call is successful and to throw a custom <code>ProcessingException</code> in case the call fails.</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="form-field.html">Form Field</a></span>
-  <span class="next"><a href="group-box.html">Group Box</a></span>
+  <span class="prev"><a href="widget-reference.html">Widget Reference</a></span>
+  <span class="next"><a href="html-document-parser.html">HTML Document Parser</a></span>
 </nav>
 </article>
   </div>
