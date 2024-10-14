@@ -538,6 +538,18 @@ If your implementation references implementation classes the package name needs 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="formfield-use-_computeempty-instead-of-_updateempty"><a class="anchor" href="#formfield-use-_computeempty-instead-of-_updateempty"></a>FormField: use _computeEmpty instead of _updateEmpty</h3>
+<div class="paragraph">
+<p>If a widget implements <code>_updateEmpty</code> it should now implement <code>_computeEmpty</code> instead.
+This guarantees that a property change event is triggered and the render function called, if there is any.</p>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
