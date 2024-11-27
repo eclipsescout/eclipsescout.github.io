@@ -442,6 +442,32 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"><a class="anchor" href="#rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"></a>REST MetaResource version endpoint: IApiVersion removed, new support for build date provider</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>IApiVersion</code> interface which was references by <code>MetaResource</code> operation <code>/version</code> was removed.
+The API version was never used (e.g. increased) and did not provide any value.
+The <code>MetaResource</code> operation <code>/version</code> still provides info about application name and version.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, a new <code>IModuleBuildDateProvider</code> was introduced, which allows an application to provide its own build date which is then returned as part of the <code>MetaResource</code> endpoint <code>/version</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>MetaResource</code> endpoint <code>/version</code> (e.g. <code><a href="https://&lt;server-url&gt;/api/meta/version?verbose=true" class="bare">https://&lt;server-url&gt;/api/meta/version?verbose=true</a></code>) returns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">{
+"_type": "suite.MetaVersionInfo",
+"applicationName": "My Application",
+"applicationVersion": "1.2.34",
+"buildDate": "2024-11-20 16:01:32.000"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>

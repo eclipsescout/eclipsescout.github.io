@@ -1050,6 +1050,69 @@ For more information see <a href="../common-concepts/security.html#iid-signature
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="meta-resource"><a class="anchor" href="#meta-resource"></a>Meta Resource</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout provides a <code>MetaResource</code> which a set of endpoints offering various meta information about available endpoints.
+The <code>MetaResource</code> is available at <code><a href="https://&lt;server-url&gt;/api/meta/" class="bare">https://&lt;server-url&gt;/api/meta/</a></code></p>
+</div>
+<div class="sect2">
+<h3 id="version"><a class="anchor" href="#version"></a>Version</h3>
+<div class="paragraph">
+<p>See <code>MetaResource</code> endpoint <code>/version</code> (e.g. <code><a href="https://&lt;server-url&gt;/api/meta/version?verbose=true" class="bare">https://&lt;server-url&gt;/api/meta/version?verbose=true</a></code>) for version information.
+The response looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+"_type": "suite.MetaVersionInfo",
+"applicationName": "My Application", <i class="conum" data-value="1"></i><b>(1)</b>
+"applicationVersion": "1.2.34", <i class="conum" data-value="2"></i><b>(2)</b>
+"buildDate": "2024-11-20 16:01:32.000" <i class="conum" data-value="3"></i><b>(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Based on config property <code>scout.application.name</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Based on config property <code>scout.application.version</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Based on <code>IModuleBuildDateProvider</code> implementation, which allows an application to provide its own build date.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example-implementation-for-imodulebuilddateprovider"><a class="anchor" href="#example-implementation-for-imodulebuilddateprovider"></a>Example implementation for <code>IModuleBuildDateProvider</code></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class BuildDateProvider implements IModuleBuildDateProvider {
+  @Override
+  public Date getBuildDate() {
+    return BEANS.get(JarManifestHelper.class).getBuildDateAttribute(getClass());  <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Reads build date from JAR manifest of module of class which is specified by <code>getClass()</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="data-object.html">Data Objects</a></span>
   <span class="next"><a href="jax-ws.html">Webservices with JAX-WS</a></span>
