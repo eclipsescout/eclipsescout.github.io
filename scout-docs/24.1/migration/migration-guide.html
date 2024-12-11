@@ -599,6 +599,13 @@ The update also requires some changes on the usage of third party libraries.</p>
 to ensure that everything is working as desired.
 This applies above all to cases when own libraries in /WEB-INF/lib are used or the corresponding resources in /META-INF/resources.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="update-namespace-in-binding-files"><a class="anchor" href="#update-namespace-in-binding-files"></a>Update namespace in binding files</h4>
+<div class="paragraph">
+<p>If your JAX-WS service uses bindings in <em>jaxb-binding.xml</em> or <em>jaxws-binding.xml</em> the namespace attribute must be updated.
+Use the new namespace <em><a href="https://jakarta.ee/xml/ns/jaxb" class="bare">https://jakarta.ee/xml/ns/jaxb</a></em>.</p>
+</div>
 <div class="paragraph">
 <p>If your JAX-WS service uses global bindings, the <em>global-bindings.xml</em> file must be updated according to the following example:</p>
 </div>
