@@ -372,7 +372,7 @@
 <h2 id="about-this-document"><a class="anchor" href="#about-this-document"></a>About This Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document describes all relevant changes <strong>from Eclipse Scout 24.1 to Eclipse Scout 24.2</strong>. If existing code has to be migrated, instructions are provided here.</p>
+<p>This document describes all relevant changes <strong>from Eclipse Scout 24.2 to Eclipse Scout 25.1</strong>. If existing code has to be migrated, instructions are provided here.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -399,10 +399,10 @@ The here described functionality has not yet been released and is part of an upc
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://central.sonatype.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/24.2.0-beta.2">24.2.0-beta.2</a> on <em>Maven Central</em></p>
+<p><a href="https://central.sonatype.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/24.2.17">24.2.17</a> on <em>Maven Central</em></p>
 </li>
 <li>
-<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/24.2.0-beta.2">24.2.0-beta.2</a> on <em>mvnrepository.com</em></p>
+<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/24.2.17">24.2.17</a> on <em>mvnrepository.com</em></p>
 </li>
 </ul>
 </div>
@@ -414,7 +414,7 @@ The here described functionality has not yet been released and is part of an upc
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
     &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
     &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
-    &lt;version&gt;24.2.0-beta.2&lt;/version&gt;
+    &lt;version&gt;24.2.17&lt;/version&gt;
     &lt;type&gt;pom&lt;/type&gt;
     &lt;scope&gt;import&lt;/scope&gt;
 &lt;/dependency&gt;</code></pre>
@@ -445,11 +445,11 @@ The here described functionality has not yet been released and is part of an upc
   "name": "my-module",
   "version": "1.0.0",
   "devDependencies": {
-    "@eclipse-scout/cli": "24.2.0-beta.2",
-    "@eclipse-scout/releng": "^24.1.0"
+    "@eclipse-scout/cli": "24.2.17",
+    "@eclipse-scout/releng": "^25.1.0"
   },
   "dependencies": {
-    "@eclipse-scout/core": "24.2.0-beta.2",
+    "@eclipse-scout/core": "24.2.17",
     "jquery": "3.7.1"
   }
 }</code></pre>
@@ -463,7 +463,7 @@ The here described functionality has not yet been released and is part of an upc
 <div class="sect2">
 <h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
 <div class="paragraph">
-<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2024-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2025-03/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
@@ -476,7 +476,7 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
 <div class="paragraph">
 <p>You can download the complete Eclipse IDE with Scout SDK included here:<br>
-<a href="https://www.eclipse.org/downloads/packages/release/2024-06/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+<a href="https://www.eclipse.org/downloads/packages/release/2025-03/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
 </div>
 <div class="paragraph">
 <p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
@@ -496,6 +496,56 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <ul>
 <li>
 <p>Build and runtime of Scout 25.1 require Java 21 (Java 17 support has been dropped).</p>
+</li>
+<li>
+<p>Furthermore, the build requires</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven &gt;= 3.9.9</p>
+</li>
+<li>
+<p>Node: &gt;= 22.12.0</p>
+</li>
+<li>
+<p>Pnpm: &gt;= 9.15.0</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="pnpm-settings-changes"><a class="anchor" href="#pnpm-settings-changes"></a>Pnpm Settings Changes</h3>
+<div class="paragraph">
+<p>Pnpm 9 changed the default of <code>link-workspace-packages</code> from false to true, see
+<a href="https://github.com/pnpm/pnpm/releases/tag/v9.0.0" class="bare">https://github.com/pnpm/pnpm/releases/tag/v9.0.0</a></p>
+</div>
+<div class="paragraph">
+<p>Scout uses snapshot ranges (&gt;=25.1.0-snapshot &lt;25.1.0) in the <code>package.json</code> files instead of the <code>workspace:</code> protocol to link workspace packages together.</p>
+</div>
+<div class="paragraph">
+<p>If the flag is false, <code>pnpm install</code> or <code>pnpm update</code> downloads the dependencies instead of using the ones from the workspace.</p>
+</div>
+<div class="paragraph">
+<p>So this flag needs to be true when having more than one npm package in the workspace that depend on each other. To do so, add the property <code>link-workspace-packages=true</code> to your <code>.npmrc</code> file in your workspace or user home directory. We also recommend to put <code>prefer-workspace-packages=false</code> to ensure workspace packages are always preferred even if there are newer versions in the remote repository.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-changes"><a class="anchor" href="#build-changes"></a>Build Changes</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The Maven coordinates of the <code>git-commit-id-plugin</code> changed from <code>pl.project13.maven:git-commit-id-plugin</code> to <code>io.github.git-commit-id:git-commit-id-maven-plugin</code>.</p>
+</li>
+<li>
+<p>The Maven coordinates of the <code>download-maven-plugin</code> changed from <code>com.googlecode.maven-download-plugin:download-maven-plugin</code> to <code>io.github.download-maven-plugin:download-maven-plugin</code>.</p>
+</li>
+<li>
+<p>The support for the outdated <code>org.apache.tomcat.maven:tomcat7-maven-plugin</code> has been dropped. If you still rely on this plugin, you have to specify the desired version in your own scripts.</p>
 </li>
 </ul>
 </div>

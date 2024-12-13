@@ -373,10 +373,10 @@
 <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The latest version of this release is: 24.2.0-beta.2.</p>
+<p>The latest version of this release is: 24.2.17.</p>
 </div>
 <div class="paragraph">
-<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/24.1%2E%2E%2Ereleases/24.2">detailed change log</a> on GitHub.</p>
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/24.2%2E%2E%2Ereleases/25.1">detailed change log</a> on GitHub.</p>
 </div>
 <div class="paragraph">
 <p>Coming from an older Scout version? Check out the <a href="../migration/migration-guide.html" class="xref page">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
@@ -399,7 +399,7 @@ The here described functionality has not yet been released and is part of an upc
 <h2 id="demo-applications"><a class="anchor" href="#demo-applications"></a>Demo Applications</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The demo applications for this version can be found on the <a href="https://github.com/eclipse-scout/scout.docs/tree/features/version/24.2.0-beta.2">features/version/24.2.0-beta.2</a> branch of our docs repository on GitHub.</p>
+<p>The demo applications for this version can be found on the <a href="https://github.com/eclipse-scout/scout.docs/tree/features/version/24.2.17">features/version/24.2.17</a> branch of our docs repository on GitHub.</p>
 </div>
 <div class="paragraph">
 <p>If you just want to play around with them without looking at the source code, you can always use the deployed versions:</p>
@@ -429,6 +429,22 @@ The here described functionality has not yet been released and is part of an upc
 <ul>
 <li>
 <p>Build and runtime of Scout 25.1 require Java 21 (Java 17 support has been dropped).</p>
+</li>
+<li>
+<p>Furthermore, the build requires</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven &gt;= 3.9.9</p>
+</li>
+<li>
+<p>Node: &gt;= 22.12.0</p>
+</li>
+<li>
+<p>Pnpm: &gt;= 9.15.0</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -501,6 +517,16 @@ combination.</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="listbox-new-default-for-multiselect"><a class="anchor" href="#listbox-new-default-for-multiselect"></a>ListBox: New Default for MultiSelect</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default for the <code>multiSelect</code> property has been changed from <code>false</code> to <code>true</code>.
+If it is true, the user can select all rows at once and check or uncheck them.
+Also, when creating a list box with Scout JS, the default is already true, so this makes it more consistent.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
