@@ -26,7 +26,7 @@
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
-          <a class="logo" href="https://www.eclipse.org/scout"><img src="../../24.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../24.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
         </div>
       </div>
     </div>
@@ -528,7 +528,9 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <p>If the flag is false, <code>pnpm install</code> or <code>pnpm update</code> downloads the dependencies instead of using the ones from the workspace.</p>
 </div>
 <div class="paragraph">
-<p>So this flag needs to be true when having more than one npm package in the workspace that depend on each other. To do so, add the property <code>link-workspace-packages=true</code> to your <code>.npmrc</code> file in your workspace or user home directory. We also recommend to put <code>prefer-workspace-packages=false</code> to ensure workspace packages are always preferred even if there are newer versions in the remote repository.</p>
+<p>So this flag needs to be true when having more than one npm package in the workspace that depend on each other.
+To do so, add the property <code>link-workspace-packages=true</code> to your <code>.npmrc</code> file in your workspace or user home directory.
+We also recommend to put <code>prefer-workspace-packages=true</code> to ensure workspace packages are always preferred even if there are newer versions in the remote repository.</p>
 </div>
 </div>
 </div>
