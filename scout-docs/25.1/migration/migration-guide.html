@@ -603,6 +603,33 @@ Search for references to the constant <code>@icon-error</code> in your own *.les
 </div>
 </div>
 <div class="sect1">
+<h2 id="deprecated-meta-tag-apple-mobile-web-app-capable-removed"><a class="anchor" href="#deprecated-meta-tag-apple-mobile-web-app-capable-removed"></a>Deprecated meta tag "apple-mobile-web-app-capable" removed</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The &lt;meta&gt; tag "apple-mobile-web-app-capable" has been deprecated in iOS for several years.
+Chromium-based browsers recently started reporting this with a warning on the console.
+Because the tag had no effect anyway, it can simply be removed.</p>
+</div>
+<div class="paragraph">
+<p><em>Migration:</em>
+In existing projects, search for the text <code>&lt;meta name="apple-mobile-web-app-capable" content="yes"/&gt;</code> in all *.html files and remove it.
+The template in the Scout archetype was updated accordingly, so newly created projects will no longer contain the deprecated tag.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Mobile browsers will still offer the possibility to add a home screen icon for the application (which will just be a bookmark, opened in the regular browser). To properly configure it as an "app", consider adding a <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest">PWA manifest</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
