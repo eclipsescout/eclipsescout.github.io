@@ -630,6 +630,69 @@ Mobile browsers will still offer the possibility to add a home screen icon for t
 </div>
 </div>
 <div class="sect1">
+<h2 id="use-scout-properties-for-selenium-test-module-configuration"><a class="anchor" href="#use-scout-properties-for-selenium-test-module-configuration"></a>Use scout properties for selenium test module configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Test setup provided by module <code>org.eclipse.scout.rt.ui.html.selenium</code> now uses scout properties instead of system properties.
+The following table contains the mapping (see also class <code>SeleniumProperties</code>).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 66.6666%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">old system property</th>
+<th class="tableblock halign-left valign-top">scout config properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>web.app.url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.selenium.webAppUrl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>query.params</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.selenium.webQueryParams</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>take.screenshot.on.failure</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.selenium.screenshotOnFailure</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>webdriver.chrome.driver</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.selenium.driverConfig[webdriver.chrome.driver]</code></p>
+<p class="tableblock">(now optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.selenium.driver</code></p>
+<p class="tableblock">Must be set either to <code>chrome</code>, <code>edge</code> or <code>firefox</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scout.selenium.driverRemoteServerUrl</code></p>
+<p class="tableblock">May be set (usually to <code><a href="http://localhost:4444" class="bare">http://localhost:4444</a></code>) in order to use selenium docker grid.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All driver-specific configurations may be set with the property <code>scout.selenium.driverConfig</code>.
+For example, the following setting will set up logging for the chrome driver as before:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">scout.selenium.driverConfig[webdriver.chrome.logfile]=${java.io.tmpdir}webdriver.log
+scout.selenium.driverConfig[webdriver.chrome.verboseLogging]=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See also module <code>org.eclipse.scout.widgets.ui.html.app.selenium</code> for a sample properties file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
