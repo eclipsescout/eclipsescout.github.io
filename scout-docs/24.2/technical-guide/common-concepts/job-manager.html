@@ -1055,9 +1055,9 @@ A job which is scheduled to run on a copy of the submitting <code>RunContext</co
     .andMatchState(JobState.RUNNING)
     .andMatch(new SessionJobEventFilter(ISession.CURRENT.get()))
     .toFilter(), event -&gt; {
-      IFuture&lt;?&gt; future = event.getData().getFuture(); <i class="conum" data-value="2"></i><b>(2)</b>
-      System.out.println("Job commences execution: " + future.getJobInput().getName());
-    });</code></pre>
+  IFuture&lt;?&gt; future = event.getData().getFuture(); <i class="conum" data-value="2"></i><b>(2)</b>
+  System.out.println("Job commences execution: " + future.getJobInput().getName());
+});</code></pre>
 </div>
 </div>
 <div class="colist arabic">
