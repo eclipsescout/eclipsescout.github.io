@@ -517,9 +517,9 @@ RunContexts.empty()
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">transactionScope</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">To control transaction boundaries. By default, a new transaction is started, and committed or rolled back upon completion.</p>
-<p class="tableblock"> * Use <code>TransactionScope.REQUIRES_NEW</code> to run the code in a new transaction (by default).
- * Use <code>TransactionScope.REQUIRED</code> to only start a new transaction if not running in a transaction yet.
- * Use <code>TransactionScope.MANDATORY</code> to enforce that the caller is already running in a transaction. Otherwise, a <code>TransactionRequiredException</code> is thrown.</p></td>
+<p class="tableblock">* Use <code>TransactionScope.REQUIRES_NEW</code> to run the code in a new transaction (by default).
+* Use <code>TransactionScope.REQUIRED</code> to only start a new transaction if not running in a transaction yet.
+* Use <code>TransactionScope.MANDATORY</code> to enforce that the caller is already running in a transaction. Otherwise, a <code>TransactionRequiredException</code> is thrown.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ITransaction.CURRENT.get()</p></td>
 </tr>
 <tr>
