@@ -459,6 +459,90 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 <div class="sect1">
+<h2 id="hybridaction-support-for-context-elements"><a class="anchor" href="#hybridaction-support-for-context-elements"></a>HybridAction: Support for Context Elements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>HybridActions</em> allow you to call Java code from JavaScript in Scout Classic applications.
+A hybrid action consists of an ID (identifying the corresponding action in the other layer) and an arbitrary data object (holding an action-specific payload).
+Additionally, you can now also include references to other UI elements, e.g. form fields, tree nodes or table rows.
+The JSON adapter layer automatically converts these so-called <em>context elements</em> to identifiers and resolves them to the corresponding counter-part on the other side.</p>
+</div>
+<div class="paragraph">
+<p><em>HybridEvents</em> have a new property <code>contextElements</code> of type <em>HybridActionContextElements</em>.
+This object can hold multiple lists of context elements, each list identified by a string key.
+Every list consists of one or more <em>HybridActionContextElement</em> objects with the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>widget</code>: mandatory, points to a Scout widget (e.g. a table).
+It is automatically converted to an adapter ID and vice versa by the JSON layer.</p>
+</li>
+<li>
+<p><code>element</code>: optional, points to an element owned by the widget (e.g. a table row).
+Only the widget-specific model adapter knows how to serialize and deserialize this reference.
+This kind of conversion is handled by a matching implementation of <code>(I)HybridActionContextElementConverter</code>.
+Currently, Scout provides implementations for tree nodes, table rows and table columns.
+See the documentation of these classes on how to add your own custom implementation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Calling a HybridAction with context elements in JavaScript</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">let data = {maxRows: 5};
+// Send selected row as context element to UI server
+let contextElements = scout.create(HybridActionContextElements)
+  .withElement('selectedRow', this.table, this.table.selectedRow());
+HybridManager.get(this.session).callActionAndWaitWithContext('myapp.FindSimilarRows', data, contextElements)
+  .then(result =&gt; {
+    // Result rows are sent back from the UI server as context elements
+    if (result.contextElements.isEmpty()) {
+      MessageBoxes.openOk(this, 'No similar rows found!');
+    } else {
+      let similarRows = result.contextElements.getList('similarRows').map(contextElement =&gt; contextElement.getElement(TableRow));
+      this.table.selectRows(similarRows);
+    }
+  });</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Consuming and sending back context elements in the HybridAction implementation in Java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@HybridActionType(FindSimilarRowsHybridAction.TYPE)
+public class FindSimilarRowsHybridAction extends AbstractHybridAction&lt;IDoEntity&gt; {
+
+  protected static final String TYPE = "myapp.FindSimilarRows";
+
+  @Override
+  public void execute(IDoEntity data) {
+    HybridActionContextElements resultContextElements = BEANS.get(HybridActionContextElements.class);
+    try {
+      // Get table and selected row sent from the UI
+      ITable table = getContextElement("selectedRow").getWidget(ITable.class);
+      ITableRow selectedRow = getContextElement("selectedRow").getElement(ITableRow.class);
+      Long maxRows = TypeCastUtility.castValue(data.get("maxRows"), Long.class);
+
+      List&lt;ITableRow&gt; similarRows = BEANS.get(SimilarRowsFinder.class).findSimilarRows(table, selectedRow, maxRows);
+
+      // Send back similar rows as context elements
+      resultContextElements.withElements("similarRows", similarRows.stream()
+        .map(row -&gt; HybridActionContextElement.of(table, row))
+        .collect(Collectors.toList()));
+    }
+    finally { // always signal the end of the action to the UI, even in the case of an error on the server
+      fireHybridActionEndEvent(resultContextElements);
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"><a class="anchor" href="#rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"></a>REST MetaResource version endpoint: IApiVersion removed, new support for build date provider</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -475,10 +559,10 @@ The <code>MetaResource</code> operation <code>/version</code> still provides inf
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">{
-"_type": "suite.MetaVersionInfo",
-"applicationName": "My Application",
-"applicationVersion": "1.2.34",
-"buildDate": "2024-11-20 16:01:32.000"
+  "_type": "suite.MetaVersionInfo",
+  "applicationName": "My Application",
+  "applicationVersion": "1.2.34",
+  "buildDate": "2024-11-20 16:01:32.000"
 }</code></pre>
 </div>
 </div>
