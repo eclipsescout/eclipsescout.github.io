@@ -543,7 +543,7 @@ public class FindSimilarRowsHybridAction extends AbstractHybridAction&lt;IDoEnti
 </div>
 </div>
 <div class="sect1">
-<h2 id="rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"><a class="anchor" href="#rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"></a>REST MetaResource version endpoint: IApiVersion removed, new support for build date provider</h2>
+<h2 id="rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"><a class="anchor" href="#rest-metaresource-version-endpoint-iapiversion-removed-new-support-for-build-date-provider"></a>REST MetaResource Version Endpoint: IApiVersion Removed, New Support for Build Date Provider</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>IApiVersion</code> interface which was references by <code>MetaResource</code> operation <code>/version</code> was removed.
@@ -569,7 +569,7 @@ The <code>MetaResource</code> operation <code>/version</code> still provides inf
 </div>
 </div>
 <div class="sect1">
-<h2 id="change-keystroke-for-search-and-reset-button"><a class="anchor" href="#change-keystroke-for-search-and-reset-button"></a>Change keystroke for search and reset button</h2>
+<h2 id="change-keystroke-for-search-and-reset-button"><a class="anchor" href="#change-keystroke-for-search-and-reset-button"></a>Change Keystroke for Search and Reset Button</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Changed the shortcut keys for search and reset to a more common key
@@ -604,7 +604,17 @@ combination.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="listbox-new-default-for-multiselect"><a class="anchor" href="#listbox-new-default-for-multiselect"></a>ListBox: New Default for MultiSelect</h2>
+<h2 id="tree-new-keystroke-for-expand-and-collapse"><a class="anchor" href="#tree-new-keystroke-for-expand-and-collapse"></a>Tree: New Keystroke for Expand and Collapse</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tree nodes can now be expanded and collapsed using the arrow keys → and ←.
+This is more intuitive than the current + and - keys.
+However, + and - are still supported and do the same as the new keys, as this is also quite common.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="list-box-new-default-for-multiselect"><a class="anchor" href="#list-box-new-default-for-multiselect"></a>List Box: New Default for MultiSelect</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The default for the <code>multiSelect</code> property has been changed from <code>false</code> to <code>true</code>.
@@ -614,11 +624,14 @@ Also, when creating a list box with Scout JS, the default is already true, so th
 </div>
 </div>
 <div class="sect1">
-<h2 id="lookupcolumn"><a class="anchor" href="#lookupcolumn"></a>LookupColumn</h2>
+<h2 id="lookup-column-scout-js"><a class="anchor" href="#lookup-column-scout-js"></a>Lookup Column (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>LookupColumn</code> is a multivalued lookup call column. If editable it opens a popup containing a <code>LookupBox</code> in order to select multiple values.
 The column supports lookup calls and code types and has a <code>distinct</code> property to enforce that the same value is not selected in more than one row.</p>
+</div>
+<div class="paragraph">
+<p>Please note that this feature is only available for Scout JS based tables.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -635,25 +648,7 @@ The column supports lookup calls and code types and has a <code>distinct</code> 
 </div>
 </div>
 <div class="sect1">
-<h2 id="removed-deprecated-code"><a class="anchor" href="#removed-deprecated-code"></a>Removed deprecated code</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The following code has been marked as deprecated for removal in previous releases and was now  removed:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>(Java) <code>ActionUtility</code>  &#8594; use <code>MenuUtility</code> instead</p>
-</li>
-<li>
-<p>(TS) <code>Page#pageForTableRow</code> &#8594; use <code>TableRow#page</code> instead</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="use-scout-properties-for-selenium-test-module-configuration"><a class="anchor" href="#use-scout-properties-for-selenium-test-module-configuration"></a>Use scout properties for selenium test module configuration</h2>
+<h2 id="use-scout-properties-for-selenium-test-module-configuration"><a class="anchor" href="#use-scout-properties-for-selenium-test-module-configuration"></a>Use Scout Properties for Selenium Test Module Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Configuration for selenium test setup is now done through scout properties instead of system properties.

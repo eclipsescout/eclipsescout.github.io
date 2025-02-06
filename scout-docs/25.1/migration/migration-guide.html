@@ -554,7 +554,7 @@ We also recommend to put <code>prefer-workspace-packages=true</code> to ensure w
 </div>
 </div>
 <div class="sect1">
-<h2 id="jakarta-activation-and-mail-update"><a class="anchor" href="#jakarta-activation-and-mail-update"></a>New version for Jakarta Activation and Jakarta Mail</h2>
+<h2 id="jakarta-activation-and-mail-update"><a class="anchor" href="#jakarta-activation-and-mail-update"></a>New Version for Jakarta Activation and Jakarta Mail</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For these dependencies the versions have been updated to the Jakarta EE 10 version:</p>
@@ -580,7 +580,7 @@ If your implementation references implementation classes the package name needs 
 </div>
 </div>
 <div class="sect1">
-<h2 id="clientcallback-renamed-to-uicallback"><a class="anchor" href="#clientcallback-renamed-to-uicallback"></a>ClientCallback renamed to UiCallback</h2>
+<h2 id="clientcallback-renamed-to-uicallback"><a class="anchor" href="#clientcallback-renamed-to-uicallback"></a>ClientCallback Renamed to UiCallback</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>org.eclipse.scout.rt.client.ui.desktop.ClientCallback</code> has been renamed to <code>org.eclipse.scout.rt.client.ui.desktop.hybrid.uicallback.UiCallback</code>.</p>
@@ -591,7 +591,7 @@ If your implementation references implementation classes the package name needs 
 </div>
 </div>
 <div class="sect1">
-<h2 id="less-constant-renamed"><a class="anchor" href="#less-constant-renamed"></a>LESS constant renamed</h2>
+<h2 id="less-constant-renamed"><a class="anchor" href="#less-constant-renamed"></a>LESS Constant Renamed</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The LESS constant <code>@icon-error</code> for the <a href="../technical-guide/user-interface/icons.html" class="xref page">font icon</a> with the code point U+E001 was renamed to <code>@icon-exclamation-mark-circle</code> to align it with its corresponding Java and JavaScript constants.</p>
@@ -603,7 +603,7 @@ Search for references to the constant <code>@icon-error</code> in your own *.les
 </div>
 </div>
 <div class="sect1">
-<h2 id="deprecated-meta-tag-apple-mobile-web-app-capable-removed"><a class="anchor" href="#deprecated-meta-tag-apple-mobile-web-app-capable-removed"></a>Deprecated meta tag "apple-mobile-web-app-capable" removed</h2>
+<h2 id="deprecated-meta-tag-apple-mobile-web-app-capable-removed"><a class="anchor" href="#deprecated-meta-tag-apple-mobile-web-app-capable-removed"></a>Deprecated Meta Tag “Apple-Mobile-Web-App-Capable” Removed</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The &lt;meta&gt; tag "apple-mobile-web-app-capable" has been deprecated in iOS for several years.
@@ -630,7 +630,25 @@ Mobile browsers will still offer the possibility to add a home screen icon for t
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-scout-properties-for-selenium-test-module-configuration"><a class="anchor" href="#use-scout-properties-for-selenium-test-module-configuration"></a>Use scout properties for selenium test module configuration</h2>
+<h2 id="removed-deprecated-code"><a class="anchor" href="#removed-deprecated-code"></a>Removed Deprecated Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following code was marked as deprecated for removal in previous releases and has now been removed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(Java) <code>ActionUtility</code> &#8594; use <code>MenuUtility</code> instead</p>
+</li>
+<li>
+<p>(TS) <code>Page#pageForTableRow</code> &#8594; use <code>TableRow#page</code> instead</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-scout-properties-for-selenium-test-module-configuration"><a class="anchor" href="#use-scout-properties-for-selenium-test-module-configuration"></a>Use Scout Properties for Selenium Test Module Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Test setup provided by module <code>org.eclipse.scout.rt.ui.html.selenium</code> now uses scout properties instead of system properties.
@@ -696,7 +714,7 @@ scout.selenium.driverConfig[webdriver.chrome.verboseLogging]=true</code></pre>
 <h2 id="scout-js"><a class="anchor" href="#scout-js"></a>Scout JS</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="formfield-use-_computeempty-instead-of-_updateempty"><a class="anchor" href="#formfield-use-_computeempty-instead-of-_updateempty"></a>FormField: use _computeEmpty instead of _updateEmpty</h3>
+<h3 id="formfield-use-_computeempty-instead-of-_updateempty"><a class="anchor" href="#formfield-use-_computeempty-instead-of-_updateempty"></a>FormField: Use _computeEmpty Instead of _updateEmpty</h3>
 <div class="paragraph">
 <p>If a widget implements <code>_updateEmpty</code> it should now implement <code>_computeEmpty</code> instead.
 This guarantees that a property change event is triggered and the render function called, if there is any.</p>

@@ -521,23 +521,27 @@ The request will return immediately containing information about the last notifi
 After that handshake process, a new request is initiated and the UI is ready to receive notifications.</p>
 </div>
 <div class="paragraph">
-<p>In JavaScript, the promise returned by the <code>subscribe</code> function will be resolved once the handshake process is successful.
+<p>In JavaScript, the promise returned by the <code>subscribe</code> function will be resolved once the handshake process is successful and rejected if the process failed.
 Make sure to wait for that promise to be resolved before doing any other asynchronous operation (e.g. other REST calls) that relate to this specific topic.
 This ensures you won&#8217;t miss any relevant UI notification that may have been published right after the subscription.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">uiNotifications.subscribe(topic, handler).then(topic =&gt; {
-  // Subscription was successful, add more dependent tasks here
-});</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">uiNotifications.subscribe(topic, handler)
+  .then(topic =&gt; {
+    // Subscription was successful, add more dependent tasks here
+  })
+  .catch(error =&gt; {
+    // Subscription failed, handle error (e.g. using App.get().errorHandler.handle(error))
+  });</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>After the handshake, the UI connects again to the UI notification REST resource that will check the registry for new notifications.
 If there are no notifications yet, a listener is added to the registry that will be informed as soon as a new notification is put into the registry.
-This operation is non blocking, this means, no thread is blocked while waiting for new notifications.
+This operation is non-blocking, this means, no thread is blocked while waiting for new notifications.
 The request waits by default for 1 minute (see <code>scout.uinotification.waitTimeout</code>).
-After that time, or as soon as a new notification is added, it will be released and a new connection will be reastablished.</p>
+After that time, or as soon as a new notification is added, it will be released and a new connection will be reestablished.</p>
 </div>
 <div class="sect2">
 <h3 id="multiple-systems"><a class="anchor" href="#multiple-systems"></a>Multiple Systems</h3>
