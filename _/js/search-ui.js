@@ -16,14 +16,17 @@
    */
   function buildHighlightedText (text, positions, snippetLength) {
     const textLength = text.length;
-    const validPositions = positions
-      .filter((position) => position.length > 0 && position.start + position.length <= textLength);
+    const validPositions = positions.filter(
+      (position) => position.length > 0 && position.start + position.length <= textLength
+    );
 
     if (validPositions.length === 0) {
       return [
         {
           type: 'text',
-          text: text.slice(0, snippetLength >= textLength ? textLength : snippetLength) + (snippetLength < textLength ? '...' : ''),
+          text:
+            text.slice(0, snippetLength >= textLength ? textLength : snippetLength) +
+            (snippetLength < textLength ? '...' : ''),
         },
       ]
     }
@@ -50,8 +53,9 @@
       });
     }
     let lastEndPosition = 0;
-    const positionsWithinRange = orderedPositions
-      .filter((position) => position.start >= range.start && position.start + position.length <= range.end);
+    const positionsWithinRange = orderedPositions.filter(
+      (position) => position.start >= range.start && position.start + position.length <= range.end
+    );
 
     for (const position of positionsWithinRange) {
       const start = position.start;
@@ -89,50 +93,24 @@
    */
   function findTermPosition (lunr, term, text) {
     const str = text.toLowerCase();
-    // const len = str.length
-
-    // experiment with avoiding regex
     const index = str.indexOf(term);
-    const len = str.substr(index).match(/^[^.,\s]*/)[0].length;
 
-    if (index === -1) {
-      // Not found
-      return {
-        start: 0,
-        length: 0,
-      }
-    } else {
-      return {
-        start: index,
-        length: len,
+    if (index >= 0) {
+      // extend term until word boundary to return the entire word
+      const boundaries = str.substr(index).match(/^[\p{Alpha}]+/u);
+      if (boundaries !== null && boundaries.length >= 0) {
+        return {
+          start: index,
+          length: boundaries[0].length,
+        }
       }
     }
 
-    // for (let sliceEnd = 0, sliceStart = 0; sliceEnd <= len; sliceEnd++) {
-    //   const char = str.charAt(sliceEnd)
-    //   const sliceLength = sliceEnd - sliceStart
-    //
-    //   if ((char.match(lunr.tokenizer.separator) || sliceEnd === len)) {
-    //     if (sliceLength > 0) {
-    //       const value = str.slice(sliceStart, sliceEnd)
-    //       // QUESTION: if we get an exact match without running the pipeline should we stop?
-    //       if (value.includes(term)) {
-    //         // returns the first match
-    //         return {
-    //           start: sliceStart,
-    //           length: value.length,
-    //         }
-    //       }
-    //     }
-    //     sliceStart = sliceEnd + 1
-    //   }
-    // }
-
-    // not found!
-    // return {
-    //   start: 0,
-    //   length: 0,
-    // }
+    // Not found
+    return {
+      start: 0,
+      length: 0,
+    }
   }
 
   /* global CustomEvent, globalThis */
@@ -329,7 +307,7 @@
   }
 
   function filter (result, documents) {
-    const facetFilter = facetFilterInput && facetFilterInput.checked && facetFilterInput.dataset.facetFilter;
+    const facetFilter = facetFilterInput?.checked && facetFilterInput.dataset.facetFilter;
     if (facetFilter) {
       const [field, value] = facetFilter.split(':');
       return result.filter((item) => {
