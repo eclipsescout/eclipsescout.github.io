@@ -577,6 +577,132 @@ For example for a Jetty .war deployment it may be registered by activating the <
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="new-DO-api"><a class="anchor" href="#new-DO-api"></a>Switch to the New Data Object API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout JS now supports DataObjects to be written as classes in TypeScript.
+A new serialization mechanisms takes care of recursively (de)serializing such DataObjects in a way compatible with the Scout Java backends.
+It supports base types like <code>number</code>, <code>string</code>, <code>boolean</code>, but also more complex types like <code>Array</code>, <code>Date</code>, <code>Map</code>, <code>Set</code> or nested Data Objects.
+Also, TypeScript specific types like <code>Record</code> or <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types">string literal types</a> are supported.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to switch to the new API where possible by following these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Convert existing DOs (typically declared as TypeScript interfaces extending <code>DoEntity</code>) to classes.
+The <code>typeName</code> must be declared as <a href="https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators">Decorator</a> (like Java Annotations but first character lowercase):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {BaseDoEntity, typeName} from '@eclipse-scout/core';
+
+@typeName('mynamespace.MyEntity') <i class="conum" data-value="1"></i><b>(1)</b>
+export class MyEntityDo extends BaseDoEntity { <i class="conum" data-value="2"></i><b>(2)</b>
+  entityId: string;
+  timestamp: Date;
+  items: Record&lt;string, MyOtherDo&gt;;
+  descriptions: Map&lt;string, DescriptionDo&gt;;
+  attachments: AttachmentDo[];
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Declare the <code>typeName</code> of the Data Object as decorator. Typically, this is the class name without the <code>Do</code> suffix and must match the <code>@TypeName</code> annotation of the matching Java Data Object class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Convert to a class extending <code>BaseDoEntity</code>.</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>If sending or receiving Data Objects to/from the Scout backend migrate the ajax calls to the newly provided convenience methods for Data Objects:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>ajax.getDataObject</code>: <code>GET</code> request receiving a Data Object.</p>
+</li>
+<li>
+<p><code>ajax.postDataObject</code>: <code>POST</code> request sending and receiving a Data Object.</p>
+</li>
+<li>
+<p><code>ajax.putDataObject</code>: <code>PUT</code> request sending and receiving a Data Object.</p>
+</li>
+<li>
+<p><code>ajax.removeDataObject</code>: <code>DELETE</code> request sending and receiving a Data Object.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The new (de)serialization mechanism converts most of the data types automatically between its <code>json</code> format and the Data Object class.
+Therefore, manual conversions (e.g. for <code>Date</code>) can be removed. This includes the use of utilities like <code>JsonValueMapper</code>, <code>objects.parseJson</code> or <code>objects.stringifyJson</code>.
+Accordingly, these functions have been removed.
+If custom data types need to be converted, try implementing a <code>DoNodeSerializer</code> in TypeScript and register your new converter in <code>dataObjects.serializers</code>.</p>
+</li>
+<li>
+<p>As Data Objects are classes now, they can no longer be created as object literals (Pojo).
+Instead, <code>scout.create</code> should be used:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {scout} from '@eclipse-scout/core';
+
+const entityDo = scout.create(MyEntityDo, {
+  entityId: '12345',
+  ...
+});</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To create a shallow copy of a Data Object a new instance must be created as well:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {scout} from '@eclipse-scout/core';
+
+const shallowCopy = scout.create(MyEntityDo, {
+  ...originalEntityDo,
+  additionalPropertyForTheCopy: 'ShallowCopyWillHaveThisAdditionalValue'
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Important: If the spread operator is not the first statement, you need to convert the DO to a Pojo first (<code>.toPojo()</code>), otherwise undefined values from the DO may override actual values.
+Therefore, it is recommended to always use the original Data Object as the first spread statement.</p>
+</div>
+</li>
+<li>
+<p>To create a deep copy of a Data Object use the <code>clone</code> function:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">const deepCopy = originalEntityDo.clone({
+  additionalPropertyForTheCopy: 'DeepCopyWillHaveThisAdditionalValue'
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Important: In the (optional) extra model passed to the <code>clone</code> function only primitives and pojos are copied deeply.
+Complex objects like <code>Date</code> or <code>Map</code> in this extra model are copied by value!</p>
+</div>
+</li>
+<li>
+<p>When using the <code>HybridManager</code> or the <code>JsForm</code>: It uses the Data Object class and deserializes to these classes (instead of a Pojo as before) as soon as a class having a matching <code>@typeName</code> decorator is found in TypeScript.
+So to use the new API for <code>HybridManager</code> or <code>JsForm</code>, just create the necessary Data Object classes. But keep in mind that as soon it is converted, these instances will be returned instead of a Pojo.
+So this might require some more code migrations on your side (see above).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>An example implementation can be found in the <a href="../howtos/scout-js/rest-service-how-to.html" class="xref page">REST HowTo</a>.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>

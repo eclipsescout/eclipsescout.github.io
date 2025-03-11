@@ -399,6 +399,33 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="behavior-change-of-scout-js-utilities-objects-valuecopy-objects-equals-and-objects-equalsrecursive"><a class="anchor" href="#behavior-change-of-scout-js-utilities-objects-valuecopy-objects-equals-and-objects-equalsrecursive"></a>Behavior Change of Scout JS Utilities objects.valueCopy, objects.equals And objects.equalsRecursive</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to support the new class-based Data Objects, these functions had to be improved as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Date</code>: is compared by its value (rather than the reference <code>===</code> as before) and copied by value (new instance is created).</p>
+</li>
+<li>
+<p><code>Map</code>: is deeply compared by its content (rather than the reference <code>===</code> as before) and deeply copied.</p>
+</li>
+<li>
+<p><code>Set</code>: is deeply compared by its content (rather than the reference <code>===</code> as before) and deeply copied.</p>
+</li>
+<li>
+<p>The function <code>objects.valueCopy</code> uses the function <code>clone</code> if existing to create deep clones (except for <code>Widgets</code>).</p>
+</li>
+<li>
+<p>The function <code>objects.equalsRecursive</code> uses the same equals logic as <code>objects.equals</code> which includes equality for empty arrays and the use of the <code>equals</code> functions of the objects, if available.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>

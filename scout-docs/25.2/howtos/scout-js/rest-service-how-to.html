@@ -594,7 +594,7 @@ public class PizzaResource implements IRestResource {
 <div class="listingblock">
 <div class="title">Listing 5. hellojs.ui/src/main/js/pizza/PizzaTablePage.ts</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {ajax, DoEntity, NumberColumn, ObjectOrModel, PageWithTable, PageWithTableModel, systems, Table, TableRow } from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {ajax, BaseDoEntity, NumberColumn, ObjectOrModel, PageWithTable, PageWithTableModel, systems, Table, TableRow, typeName} from '@eclipse-scout/core';
 
 export class PizzaTablePage extends PageWithTable {
   protected override _jsonModel(): PageWithTableModel {
@@ -622,15 +622,16 @@ export class PizzaTablePage extends PageWithTable {
     };
   }
 
-  protected override _loadTableData(searchFilter: any): JQuery.Promise&lt;PizzaResponse&gt; {
+  protected override _loadTableData(searchFilter: PizzaRestrictionDo): JQuery.Promise&lt;PizzaResponse&gt; {
     const resourceUrl = systems.getOrCreate().getEndpointUrl('pizza', 'pizza'); <i class="conum" data-value="2"></i><b>(2)</b>
     const restriction = this._withMaxRowCountContribution(searchFilter); <i class="conum" data-value="3"></i><b>(3)</b>
-    return ajax.postJson(resourceUrl + '/list', restriction); <i class="conum" data-value="4"></i><b>(4)</b>
+    return ajax.postDataObject(resourceUrl + '/list', restriction); <i class="conum" data-value="4"></i><b>(4)</b>
   }
 
   protected override _transformTableDataToTableRows(tableData: PizzaResponse): ObjectOrModel&lt;TableRow&gt;[] {
     return tableData.items.map(pizza =&gt; {
       return { <i class="conum" data-value="5"></i><b>(5)</b>
+        data: pizza,
         cells: [
           pizza.size,
           pizza.price
@@ -641,12 +642,21 @@ export class PizzaTablePage extends PageWithTable {
 }
 
 <i class="conum" data-value="6"></i><b>(6)</b>
-export interface PizzaResponse extends DoEntity {
+@typeName('hellojs.PizzaResponse')
+export class PizzaResponse extends BaseDoEntity {
   items: PizzaDo[];
 }
 
  <i class="conum" data-value="7"></i><b>(7)</b>
-export interface PizzaDo extends DoEntity {
+@typeName('hellojs.Pizza')
+export class PizzaDo extends BaseDoEntity {
+  size: number;
+  price: number;
+}
+
+<i class="conum" data-value="8"></i><b>(8)</b>
+@typeName('hellojs.PizzaRestriction')
+export class PizzaRestrictionDo extends BaseDoEntity {
   size: number;
   price: number;
 }</code></pre>
@@ -676,11 +686,15 @@ export interface PizzaDo extends DoEntity {
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>The declaration of the PizzaResponse on client side. Attribute names must correspond the PizzaResponse class in Java.</td>
+<td>The declaration of the PizzaResponse on client side. Attribute names and typeName must correspond the PizzaResponse class in Java.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>The declaration of the PizzaDo on client side. Attribute names must correspond the PizzaDo class in Java.</td>
+<td>The declaration of the PizzaDo on client side. Attribute names and typeName must correspond the PizzaDo class in Java.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The declaration of the PizzaRestrictionDo on client side. Attribute names and typeName must correspond the PizzaRestrictionDo class in Java.</td>
 </tr>
 </table>
 </div>
