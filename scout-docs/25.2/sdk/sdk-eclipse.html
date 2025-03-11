@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Scout SDK for Eclipse :: Eclipse Scout</title>
+    <link rel="prev" href="sdk-intellij.html">
+    <link rel="next" href="../howtos/how-tos.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../24.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="25.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">25.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../24.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../24.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="sdk.html">Scout SDK</a></li>
+    <li><a href="sdk-eclipse.html">Scout SDK for Eclipse</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">25.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="sdk-eclipse.html">25.2</a>
+    <a class="version" href="../../25.1/sdk/sdk-eclipse.html">25.1</a>
+    <a class="version" href="../../24.2/sdk/sdk-eclipse.html">24.2</a>
+    <a class="version" href="../../24.1/sdk/sdk-eclipse.html">24.1</a>
+    <a class="version" href="../../23.2/sdk/sdk-eclipse.html">23.2</a>
+    <a class="version" href="../../23.1/sdk/sdk-eclipse.html">23.1</a>
+    <a class="version" href="../../22/sdk/sdk-eclipse.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.2/docs/modules/sdk/pages/sdk-eclipse.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Scout SDK for Eclipse</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>This chapter presents the Scout SDK plugins available for the Eclipse IDE.
+The Scout SDK provides wizards to create new project and application components, adds code assistance to the Java Editor and comes with a NLS editor to manage all translated text entries of the application.</p>
+</div>
+<div class="paragraph">
+<p>The chapter is organized as follows:
+Because the Scout Tooling is based on the Eclipse IDE, <a href="#sec-eclipse_ide_tooling">Eclipse IDE tooling</a> provides a short overview of frequently used Eclipse features.
+A high level description of the Scout tooling is provided in <a href="#sec-sdk_overview">Scout SDK Overview</a>.
+<a href="#sec-sdk_wizard">Scout Wizards</a>, <a href="#sec-sdk_content_assist">Scout Content Assistance</a> and <a href="#sec-sdk_nls">Scout NLS Tooling</a> then provide detailed descriptions of the functionality offered by the Scout SDK.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-eclipse_ide_tooling"><a class="anchor" href="#sec-eclipse_ide_tooling"></a>Eclipse IDE tooling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout tooling is an extension of the Eclipse IDE.
+The goal of this section is not to provide a complete overview on the features contained in the Eclipse IDE.
+It provides a short overview of the important eclipse features, frequently used during the development of a Scout Application.
+Experienced Eclipse IDE users might skip this section.</p>
+</div>
+<div class="sect2">
+<h3 id="start-the-new-wizard"><a class="anchor" href="#start-the-new-wizard"></a>Start the New Wizard</h3>
+<div class="paragraph">
+<p>To start the <strong>New Wizard</strong> wizard press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use menu <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#8230;&#8203;</b></span>.
+In the first wizard step type the name of the object you want to create into the <strong>Wizards</strong> field as shown in <a href="#img-eclipse_new_wizard">Figure 1</a>.</p>
+</div>
+<div id="img-eclipse_new_wizard" class="imageblock">
+<div class="content">
+<img src="../common/_images/eclipse_new_wizard.png" alt="eclipse new wizard">
+</div>
+<div class="title">Figure 1. "New" Wizard</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-a-new-java-class"><a class="anchor" href="#create-a-new-java-class"></a>Create a new Java class</h3>
+<div class="paragraph">
+<p>Start the <strong>New Wizard</strong> and type <strong>Class</strong> in the Wizards field.
+Select <strong>Class</strong>
+Click on <b class="button">Next</b> to open the <strong>New class wizard</strong></p>
+</div>
+<div id="img-eclipse_new_class" class="imageblock">
+<div class="content">
+<img src="../common/_images/eclipse_new_class.png" alt="eclipse new class">
+</div>
+<div class="title">Figure 2. "New Java Class" Wizard</div>
+</div>
+<div class="paragraph">
+<p>You can choose define the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Source folder</strong>: Click on <b class="button">Browse</b> to choose the project where the class belongs.</p>
+</li>
+<li>
+<p><strong>Package</strong>: Click on <b class="button">Browse</b> to choose the package in the given project.
+If the package does not exist it will be created a new one automatically.</p>
+</li>
+<li>
+<p><strong>Name</strong>: Type the class name</p>
+</li>
+<li>
+<p><strong>Modifiers</strong>: Choose public or default. Or abstract and/or final.</p>
+</li>
+<li>
+<p><strong>Superclass</strong>: Choose the parent class clicking on <b class="button">Browse</b></p>
+</li>
+<li>
+<p><strong>Interfaces</strong>: Click on <b class="button">Add</b> to add the list of interfaces your class implements.</p>
+</li>
+<li>
+<p><strong>Method stubs</strong>: Include methods in your class.</p>
+</li>
+<li>
+<p><strong>Comments</strong>: Generate predefine comments.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Click on <b class="button">Finish</b> when you are done with the class definition.
+The java editor will open and you can start editing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-a-new-java-package"><a class="anchor" href="#create-a-new-java-package"></a>Create a new Java package</h3>
+<div class="paragraph">
+<p>Start the <strong>New Wizard</strong> and type <strong>Package</strong> in the Wizards field.
+Select <strong>Package</strong>
+Click on <b class="button">Next</b> to open the <strong>New package wizard</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../common/_images/create_new_package_wizard.png" alt="create new package wizard">
+</div>
+</div>
+<div class="paragraph">
+<p>In the <strong>New package wizard</strong> you can define the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Source folder</strong>: Click on <b class="button">Browse</b> to choose the project where the package belongs.</p>
+</li>
+<li>
+<p><strong>Name</strong>: Write the name of the package.</p>
+</li>
+<li>
+<p><strong>Package info</strong>: Choose the checkbox if you want package-info</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Click on <b class="button">Next</b> to create the project. The <strong>Project Browser</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="organize-java-imports"><a class="anchor" href="#organize-java-imports"></a>Organize Java imports</h3>
+<div class="paragraph">
+<p>The <em>import</em> section of a java class needs to be kept up-to-date.
+New imports need to be added and no longer used ones should be removed.
+Eclipse offers a the shortcut <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></span> to accomplish this task.</p>
+</div>
+<div class="paragraph">
+<p>In case an import cannot be resolved because several candidates exist, a selection list is displayed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rename-a-class"><a class="anchor" href="#rename-a-class"></a>Rename a class</h3>
+<div class="paragraph">
+<p>Renaming a class without SDK support is not so easy.
+The class and possibly the compilation unit need to be renamed.
+Then every reference to the class within the workspace needs to be updated.</p>
+</div>
+<div class="paragraph">
+<p>All this work is accomplished by using the <em>Class rename Wizard</em>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Wizard using one of the following methods</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span></p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Context Menu</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Refactor</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Rename&#8230;&#8203;</b></span></p>
+</li>
+<li>
+<p>Select the class in the tree and press <kbd>F2</kbd></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Choose the new name for the class</p>
+</li>
+<li>
+<p>Specify which references need to be updated</p>
+</li>
+<li>
+<p>Click <strong>[Finish]</strong> or <strong>[Next]</strong> to continue</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="alternative-method"><a class="anchor" href="#alternative-method"></a>Alternative Method</h4>
+<div class="paragraph">
+<p>A class can be renamed by select the class name anywhere in code and pressing <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>1</kbd></span>.
+The option <strong>[Rename in Workspace]</strong> will rename the class without using a the wizard.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rename-a-package"><a class="anchor" href="#rename-a-package"></a>Rename a package</h3>
+<div class="paragraph">
+<p>Renaming a package without SDK support would be a tedious undertaking.
+All classes in the package and its subpackages would have to be modified as well as the directory structure on disk.
+Then every reference to the package within the workspace needs to be updated.</p>
+</div>
+<div class="paragraph">
+<p>All this work is accomplished by using the <em>Package rename Wizard</em>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Wizard using one of the following methods</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span></p>
+</li>
+<li>
+<p><span class="menuseq"><b class="menu">Context Menu</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Refactor</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Rename&#8230;&#8203;</b></span></p>
+</li>
+<li>
+<p>Select the package in the tree and press <kbd>F2</kbd></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Choose the new name for the package</p>
+</li>
+<li>
+<p>Specify which references need to be updated</p>
+</li>
+<li>
+<p>Click <strong>[OK]</strong> or <strong>[Prview]</strong> to continue</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-sdk_overview"><a class="anchor" href="#sec-sdk_overview"></a>Scout SDK Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout SDK tooling helps the Scout developer to quickly create frequently used Scout components.
+This Scout Tooling is implemented as extensions of the Eclipse IDE in the form of wizards, content assist extension to the Eclipse Java editor and support for dealing with translated texts called NLS support.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Scout Wizards</dt>
+<dd>
+<p>The Scout SDK tooling includes a number of wizards for the creation of frequently used Scout components.
+In many cases the execution of such wizards involves the creation/editing of several source files.
+In the case of the creation of a new Scout form this includes the form class in the client module of the Scout application, a form data class and a service that communicates
+Descriptions for the individual wizards are provided in <a href="#sec-sdk_wizard">Scout Wizards</a>.</p>
+</dd>
+<dt class="hdlist1">Content Assist</dt>
+<dd>
+<p>In the Scout framework the hierarchical organization of Scout components if frequently reflected in the form of inner classes.
+This allows the Scout tooling to provide context specific proposals in the form of content assist proposals offered in the Java editor of the Eclipse IDE.
+Examples for this form of the tooling includes the creation of form fields or adding columns and context menus to tables.
+Content assist support is described in detail in <a href="#sec-sdk_content_assist">Scout Content Assistance</a>.</p>
+</dd>
+<dt class="hdlist1">NLS Tooling</dt>
+<dd>
+<p>Eclipse Scout comes with NLS (National Language Support).
+To support Scout developers in using Scout&#8217;s NLS (National Language Support) the Scout SDK offers corresponding tooling to work with translated texts.
+This tooling is described in <a href="#sec-sdk_nls">Scout NLS Tooling</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="sect2">
+<h3 id="sec-sdk_wizard"><a class="anchor" href="#sec-sdk_wizard"></a>Scout Wizards</h3>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The Scout SDK provides a set of wizards to create new Scout projects and various components for your Scout applications.</p>
+</div>
+<div class="paragraph">
+<p>To start any of these wizards press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use menu <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#8230;&#8203;</b></span>.
+In the first wizard step type "<em>Scout</em>" into the <strong>Wizards</strong> field as shown in <a href="#img-sdk_wizard_new">Figure 3</a>.</p>
+</div>
+<div id="img-sdk_wizard_new" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_wizard.png" alt="sdk new wizard">
+</div>
+<div class="title">Figure 3. Selecting Scout Wizards in the Eclipse wizard dialog</div>
+</div>
+<div class="paragraph">
+<p>The wizards provided by the Scout SDK are introduced and described in the sections listed below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New Project Wizard (<a href="#sec-wizard_project">New Project Wizard</a>)</p>
+</li>
+<li>
+<p>New Page Wizard (<a href="#sec-wizard_page">New Page Wizard</a>)</p>
+</li>
+<li>
+<p>New Form Wizard (<a href="#sec-wizard_form">New Form Wizard</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="sec-wizard_project"><a class="anchor" href="#sec-wizard_project"></a>New Project Wizard</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <em>New Scout Project</em> wizard can be used to create a new Scout project from scratch.</p>
+</div>
+<div class="paragraph">
+<p>To open the wizard press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> or use <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#8230;&#8203;</b></span> and type "<em>Scout</em>" into the <strong>Wizards</strong> search field.
+Then, select the entry "<em>Scout Project</em>" and click on <b class="button">Next</b>.
+This leads to the initial dialog of the <em>New Scout Project</em> wizard as shown in <a href="#img-sdk_wizard_project">Figure 4</a>.</p>
+</div>
+<div id="img-sdk_wizard_project" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_project.png" alt="sdk new project">
+</div>
+<div class="title">Figure 4. The new Project Wizard</div>
+</div>
+<div class="paragraph">
+<p>A detailed description of the indiviudal wizard fields of <a href="#img-sdk_wizard_project">Figure 4</a> is provided in the next section.</p>
+</div>
+<div class="paragraph">
+<p>By clicking on the <b class="button">Finish</b> button the wizard is started and a new Scout client server application is created in the form of a Maven multi-module project.</p>
+</div>
+<div class="sect4">
+<h5 id="wizard-fields-and-default-values"><a class="anchor" href="#wizard-fields-and-default-values"></a>Wizard Fields and Default Values</h5>
+<div class="paragraph">
+<p>All fields of the <a href="#img-sdk_wizard_project">Figure 4</a> are initially filled with default values.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Group Id</dt>
+<dd>
+<p>Maven groupId used for all created projects. The default value is <code>org.eclipse.scout.apps</code>.</p>
+</dd>
+<dt class="hdlist1">Artifact Id</dt>
+<dd>
+<p>Maven artifactId for the parent project. The additional projects are derived from this name. The default value is <strong>helloworld</strong>.</p>
+</dd>
+<dt class="hdlist1">Display Name</dt>
+<dd>
+<p>The name of the application presented to the user. This name is shown in the Browser title bar. The default value is <em>"My Application"</em></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>With the <em class="element">Project Location</em> group box, you can control where the project will be created.
+Unchecked the <em class="element">Use default Workspace location</em> checkbox to enter an other value in the <em class="element">Target Directory</em> Field.
+The <b class="button">Browse&#8230;&#8203;</b> button can help you to find the appropriate path.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="created-components"><a class="anchor" href="#created-components"></a>Created Components</h5>
+<div class="paragraph">
+<p>With the <a href="#img-sdk_wizard_project">Figure 4</a> wizard a complete Maven multi-module project is created.
+Using the default artifact Id <strong>helloworld</strong> the following Maven modules are created.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven module <strong>helloworld</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains the project&#8217;s parent <code>pom.xml</code> file</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.client</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains model components of the client application in <code>src/main/java</code> and model tests in <code>src/test/java</code>.</p>
+</li>
+<li>
+<p>The class <code>HelloWorldForm</code> in package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> is an example of a model class.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.shared</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains components needed in both the client and the server application.</p>
+</li>
+<li>
+<p>For examples see the <code>IHelloWorldService</code> interface in <code>src/main/java</code> and class <code>HelloWorldFormData</code> in <code>src/generated/java</code>.</p>
+</li>
+<li>
+<p>The <code>Texts.nls</code> file that can be opened in the Scout NLS Editor.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.server</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains the model components of the server application in <code>src/main/java</code> and model tests in <code>src/test/java</code>.</p>
+</li>
+<li>
+<p>The class <code>HelloWorldService</code> in package <code>org.eclipse.scout.apps.helloworld.server.helloworld</code> is an example of such a model class.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.server.app.dev</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to run the Scout server application from within the Eclipse IDE.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the development configuration for the Scout server application.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> bundles the Jetty web server with the server application.</p>
+</li>
+<li>
+<p>The file <code>[webapp] dev server.launch</code> contains the launch configuration for the Eclipse IDE.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.server.app.image</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to create a Scout server docker image.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the server configuration.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> is used to build the Scout server docker image.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.server.app.zip</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to create a Scout server ZIP file to deploy to an external server.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the server configuration.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> is used to build the Scout server ZIP file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.ui.html</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains servlet filters and the HTML pages as well as custom CSS and JavaScript files for the Scout UI Server.</p>
+</li>
+<li>
+<p>See class <code>UiServletFilter</code> in <code>src/main/java</code> and folder <code>WebContent</code> in <code>source/main/resources</code>.</p>
+</li>
+<li>
+<p>The file <code>js build.launch</code> contains the launch configuration for the Eclipse IDE that executes the JavaScript build.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.ui.html.app.dev</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to run the Scout UI application from within the Eclipse IDE.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the development configuration for the application.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> bundles the Jetty web server with the application.</p>
+</li>
+<li>
+<p>The file <code>[webapp] dev ui.launch</code> contains the launch configuration for the Eclipse IDE.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.ui.html.app.image</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to create a Scout UI docker image.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the application configuration.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> is used to build the Scout UI docker image.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Maven module <strong>helloworld.ui.html.app.zip</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains all components to create a Scout UI ZIP file to deploy to an external server.</p>
+</li>
+<li>
+<p>The file <code>config.properties</code> in folder <code>src/main/resources</code> contains the application configuration.</p>
+</li>
+<li>
+<p>The file <code>pom.xml</code> is used to build the Scout UI ZIP file.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sec-wizard_page"><a class="anchor" href="#sec-wizard_page"></a>New Page Wizard</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <em>New Scout Page</em> wizard can be used to create a new page and related classes.
+To start the wizard use <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#8230;&#8203;</b></span> or press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span>.</p>
+</div>
+<div id="img-sdk_wizard_page" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_page.png" alt="sdk new page">
+</div>
+<div class="title">Figure 5. The new Page Wizard</div>
+</div>
+<div class="paragraph">
+<p>In the case of <a href="#img-sdk_wizard_page">Figure 5</a> the package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> has been selected in the Package Explorer.
+The only wizard field that then needs to be filled in manually is the <strong>Name</strong> field.</p>
+</div>
+<div class="paragraph">
+<p>By clicking on the <b class="button">Finish</b> button the wizard is started and the specified components are created.</p>
+</div>
+<div class="sect4">
+<h5 id="wizard-fields-and-default-values-2"><a class="anchor" href="#wizard-fields-and-default-values-2"></a>Wizard Fields and Default Values</h5>
+<div class="paragraph">
+<p>Most of the fields of the <a href="#img-sdk_wizard_page">Figure 5</a> will be filled with default values depending on the current context of the IDE.
+The context can be derived from a package selected in the Package Explorer or from the class in the active Java Editor.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Source Folder</dt>
+<dd>
+<p>The source folder of the Maven client module used for the creation of the page. The default value is the <code>src/main/java</code> folder in the Maven client module.</p>
+</dd>
+<dt class="hdlist1">Package</dt>
+<dd>
+<p>The Java package that will contain the page class. The Scout SDK will try to guess the package name from the current context and derive matching package names for the Maven shared module.</p>
+</dd>
+<dt class="hdlist1">Name</dt>
+<dd>
+<p>The name of the page class. According to Scout conventions the class name ends with the suffix <code>TablePage</code> (for subclasses of <code>AbstractPageWithTable</code>) or <code>NodePage</code> (for <code>AbstractPageWithNodes</code>).</p>
+</dd>
+<dt class="hdlist1">Super Class</dt>
+<dd>
+<p>The super class for the form. <code>AbstractPageWithTable</code> is the default value.</p>
+</dd>
+<dt class="hdlist1">Shared Source Folder</dt>
+<dd>
+<p>The source folder of the Maven shared module used for creation of the page data and the service interface. The default value is the <code>src/main/java</code> folder in the Maven shared module.</p>
+</dd>
+<dt class="hdlist1">Server Source Folder</dt>
+<dd>
+<p>The source folder of the Maven server module used for creation of the service implementation. The default value is the <code>src/main/java</code> folder in the Maven server module.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="created-components-2"><a class="anchor" href="#created-components-2"></a>Created Components</h5>
+<div class="paragraph">
+<p>In the <a href="#img-sdk_wizard_page">Figure 5</a> example shown above the Scout SDK will create the following components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Maven module <strong>helloworld.client</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>MyTablePage</code> page class in folder <code>src/main/java</code> and package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In Maven module <strong>helloworld.shared</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>IMyService</code> service interface in folder <code>src/main/java</code> and package <code>org.eclipse.scout.apps.helloworld.shared.helloworld</code></p>
+</li>
+<li>
+<p><code>MyTablePageData</code> page data class in folder <code>src/generated/java</code> and package <code>org.eclipse.scout.apps.helloworld.shared.helloworld</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In Maven module <strong>helloworld.server</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>MyService</code> implementation in folder <code>src/main/java</code> and package <code>org.eclipse.scout.apps.helloworld.server.helloworld</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sec-wizard_form"><a class="anchor" href="#sec-wizard_form"></a>New Form Wizard</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The <em>New Form</em> wizard is be used to create a new form including a form data, permissions and and related service.
+To start the wizard use <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">New</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Other&#8230;&#8203;</b></span> or press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span>.</p>
+</div>
+<div id="img-sdk_wizard_form" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_new_form.png" alt="sdk new form">
+</div>
+<div class="title">Figure 6. The new Form Wizard</div>
+</div>
+<div class="paragraph">
+<p>In the case of <a href="#img-sdk_wizard_form">Figure 6</a> the package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code> has been selected in the Package Explorer.
+The only wizard field that then needs to be filled in manually is the <strong>Name</strong> field.</p>
+</div>
+<div class="paragraph">
+<p>By clicking on the <b class="button">Finish</b> button the wizard is started and the specified components are created.</p>
+</div>
+<div class="sect4">
+<h5 id="wizard-fields-and-default-values-3"><a class="anchor" href="#wizard-fields-and-default-values-3"></a>Wizard Fields and Default Values</h5>
+<div class="paragraph">
+<p>Most of the fields of the <a href="#img-sdk_wizard_form">Figure 6</a> will be filled with default values depending on the current context of the IDE.
+The context can be derived from a package selected in the Package Explorer or from the class in the active Java Editor.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Source Folder</dt>
+<dd>
+<p>The source folder of the Maven client module used for the creation of the form class. The default value is the <code>src/main/java</code> folder in the Maven client module.</p>
+</dd>
+<dt class="hdlist1">Package</dt>
+<dd>
+<p>The Java package that will contain the form class. The Scout SDK will try to guess the package name from the current context and derive matching package names for the Maven shared and server modules.</p>
+</dd>
+<dt class="hdlist1">Name</dt>
+<dd>
+<p>The name of the form class. According to Scout conventions the class name ends with the suffix <code>Form</code>.</p>
+</dd>
+<dt class="hdlist1">Super Class</dt>
+<dd>
+<p>The super class for the form. <code>AbstractForm</code> is the default value.</p>
+</dd>
+<dt class="hdlist1">Create FormData</dt>
+<dd>
+<p>If ticked, a form data class will be created in the shared module.</p>
+</dd>
+<dt class="hdlist1">Create Service</dt>
+<dd>
+<p>If ticked, a service interface is created in the shared module and a service implementation is created in the Maven server module.</p>
+</dd>
+<dt class="hdlist1">Create Permissions</dt>
+<dd>
+<p>If ticked, read and update permissions are created in the Maven shared module.</p>
+</dd>
+<dt class="hdlist1">Shared Source Folder</dt>
+<dd>
+<p>The source folder of the Maven shared module used for creation of the form data, the service interface and the permission classes. The default value is the <code>src/main/java</code> folder in the Maven shared module.</p>
+</dd>
+<dt class="hdlist1">Server Source Folder</dt>
+<dd>
+<p>The source folder of the Maven server module used for the service class creation. The default value is the <code>src/main/java</code> folder in the Maven server module.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="created-components-3"><a class="anchor" href="#created-components-3"></a>Created Components</h5>
+<div class="paragraph">
+<p>In the <a href="#img-sdk_wizard_form">Figure 6</a> example shown above the Scout SDK will create the following components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Maven module <strong>helloworld.client</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>MyForm</code> form class in folder <code>src/main/java</code> and package <code>org.eclipse.scout.apps.helloworld.client.helloworld</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In Maven module <strong>helloworld.shared</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>In folder <code>src/main/java</code> and package <code>org.eclipse.scout.apps.helloworld.shared.helloworld</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>IMyService</code> service interface</p>
+</li>
+<li>
+<p>The <code>ReadMyPermission</code> permission class</p>
+</li>
+<li>
+<p>The <code>UpdateMyPermission</code> permission class</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <code>MyFormData</code> form data class in folder <code>src/generated/java</code> and package <code>org.eclipse.scout.apps.helloworld.shared.helloworld</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In Maven module <strong>helloworld.server</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>MyService</code> service class in folder <code>src/main/java</code> and package <code>org.eclipse.scout.apps.helloworld.server.helloworld</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec-sdk_content_assist"><a class="anchor" href="#sec-sdk_content_assist"></a>Scout Content Assistance</h3>
+<div class="paragraph">
+<p>To create new Scout components that are represented by inner classes in the Scout framework, the Scout tooling extends the Java content assist of the Eclipse Java editor.
+The offered proposals are context specific.
+Depending on the current cursor position in the Java editor, possible Scout components are added to the proposal list.</p>
+</div>
+<div class="paragraph">
+<p>In a class representing a group box in a form, the Scout content assist adds proposals for various form fields. In a table class the content assist adds proposals to add table columns or context menus.
+Those proposals trigger the creation of inner classes for form fields, table columns or codes.
+The Eclipse content assist can be started by typing <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span>.</p>
+</div>
+<div class="sect3">
+<h4 id="sec-sdk_new_form_field"><a class="anchor" href="#sec-sdk_new_form_field"></a>Create new Form Fields</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>To add additional form fields to a form the current edit position needs to be inside of a Scout group box.
+Typing <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span> then provides access to the most frequently used Scout widgets as shown in <a href="#img-java_proposals_groupbox">Figure 7</a>.</p>
+</div>
+<div id="img-java_proposals_groupbox" class="imageblock">
+<div class="content">
+<img src="../common/_images/java_proposals_groupbox2.png" alt="java proposals groupbox2">
+</div>
+<div class="title">Figure 7. Proposals to create new form fields in a GroupBox</div>
+</div>
+<div class="paragraph">
+<p>When a template is selected, it is possible to customize it by navigating between the different Edit-Groups with the <kbd>Tab</kbd> Key (this works exactly like other templates in the Eclipse Editor).
+With this mechanism you can quickly define the class name, the parent class and other properties.
+To exit the Edit-Mode just press <kbd>Enter</kbd>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sec-sdk_new_table_column"><a class="anchor" href="#sec-sdk_new_table_column"></a>Create new Table Columns</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>For adding new columns in a table set the current edit position inside a Scout table.
+The Scout table itself may be located inside of a TableField as shown in <a href="#img-java_proposals_table">Figure 8</a> or can also be located inside of a Scout TablePage.</p>
+</div>
+<div id="img-java_proposals_table" class="imageblock">
+<div class="content">
+<img src="../common/_images/java_proposals_table2.png" alt="java proposals table2">
+</div>
+<div class="title">Figure 8. Proposals to create new columns in a Table</div>
+</div>
+<div class="paragraph">
+<p>Next to adding columns the content assist shown in <a href="#img-java_proposals_table">Figure 8</a> can also be used to add key stroke actions and menus to tables.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create-new-codes"><a class="anchor" href="#create-new-codes"></a>Create new Codes</h4>
+<div class="paragraph">
+<p>Adding new Codes to an existing CodeType is supported by the content assist as shown in <a href="#img-java_proposals_code">Figure 9</a>.</p>
+</div>
+<div id="img-java_proposals_code" class="imageblock">
+<div class="content">
+<img src="../common/_images/java_proposals_code.png" alt="java proposals code">
+</div>
+<div class="title">Figure 9. Proposals to create new codes in a CodeType</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec-sdk_nls"><a class="anchor" href="#sec-sdk_nls"></a>Scout NLS Tooling</h3>
+<div class="sect3">
+<h4 id="sec-add_text_entry"><a class="anchor" href="#sec-add_text_entry"></a>Adding a new Translated Text Entry</h4>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Translated text entries are most frequently added when working in the Java editor view.</p>
+</div>
+<div class="paragraph">
+<p>When the the current edit position is inside the String parameter of the <code>TEXTS.get()</code> code, the content assist (opened with <kbd>Ctrl</kbd> + <kbd>Space</kbd>) provides support for the NLS entries as shown in <a href="#img-java_proposals_texts">Figure 10</a>.</p>
+</div>
+<div id="img-java_proposals_texts" class="imageblock">
+<div class="content">
+<img src="../common/_images/java_proposals_texts.png" alt="java proposals texts">
+</div>
+<div class="title">Figure 10. Proposals corresponding to NLS Support.</div>
+</div>
+<div class="paragraph">
+<p>Selecting one of proposal entries (like "DateOfBirth" in the example) shows the available translations on the right side.
+To select a specific proposal entry you may double click on the entry or hit the <kbd>Enter</kbd> key.
+To create a new text entry select <strong>New text&#8230;&#8203;</strong> at the end of the proposal list.</p>
+</div>
+<div class="paragraph">
+<p>Adding a translated text can then be done in the <em class="wizard">New Entry</em> wizard provided by the Scout SDK as shown in <a href="#img-new_text_entry_wizard">Figure 11</a>.</p>
+</div>
+<div id="img-new_text_entry_wizard" class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_wizard_nls_entry.png" alt="sdk wizard nls entry">
+</div>
+<div class="title">Figure 11. Adding a new text with the New Entry wizard.</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Key Name</dt>
+<dd>
+<p>This field holds the text key that is used to access translated text.</p>
+</dd>
+<dt class="hdlist1">default</dt>
+<dd>
+<p>This field holds the default translated text for the key. Make sure to at least provide a translated text in this tab.</p>
+</dd>
+<dt class="hdlist1">French (France)</dt>
+<dd>
+<p>Additional tabs to enter translations for other languages may be present. Adding additional languages is described in the text for the NLS editor.</p>
+</dd>
+<dt class="hdlist1">Copy key to the clipboard</dt>
+<dd>
+<p>Select this checkbox to copy the key name to the clipboard and paste it later in your code.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sec-nls_editor"><a class="anchor" href="#sec-nls_editor"></a>The NLS Editor</h4>
+<div class="paragraph">
+<p>
+</p>
+</div>
+<div class="paragraph">
+<p>To manage translated application texts for different languages the Scout SDK includes a NLS editor.
+This editor helps to efficiently deal to edit all the property files that are used with the default setup of Scout.</p>
+</div>
+<div class="paragraph">
+<p>The NLS editor can be accessed for each text provider service of a Scout application via the <code>*.nls</code> files of the shared Maven modules of the application.
+In the case of the "Hello World" application you will find the <code>Texts.nls</code> file in module <code>org.eclipse.scout.helloworld.shared</code>.
+To open the editor for the "Hello World" application select the <code>Texts.nls</code> file first and then use context menu <span class="menuseq"><b class="menu">Open With</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">NLS Editor</b></span>.</p>
+</div>
+<div class="paragraph">
+<p>The screenshot below shows the opened NLS editor.
+In the first column the <code>key</code> values are shown that are used in accessing translations through <code>TEXTS.get("key")</code>.
+The second columns holds the default translations followed by columns holding the translations for other translated languages.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../common/_images/sdk_editor_nls.png" alt="sdk editor nls">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="action-buttons"><a class="anchor" href="#action-buttons"></a>Action Buttons</h4>
+<div class="paragraph">
+<p>Actions on the top right corner:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 45%;">
+<col style="width: 45%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_refresh.png" alt="icon refresh"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refresh NLS Project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reload the content of the editor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_find_obj.png" alt="icon find obj"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show NLS entry usage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For each row, search in the Java code where the NLS Key is used. Results are displayed in the first column.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_text_add.png" alt="icon text add"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New entry&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opens the New Text Entry Wizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_fileadd_pending.png" alt="icon fileadd pending"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New language&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opens the Add a Language Wizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_import.png" alt="icon import"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Import&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Import the NLS entries of an external file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_export.png" alt="icon export"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export the NLS entries to an external file</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Import and Export requires additional components.</p>
+</div>
+<div class="paragraph">
+<p>Hide inherited rows checkbox</p>
+</div>
+<div class="paragraph">
+<p>On the top of each column, the text fields allow you to filter the entries in the table.
+With the <b class="button">Reset</b> button on the right you will empty those filters.</p>
+</div>
+<div class="paragraph">
+<p>The entries in the table can be directly edited by pressing F2 or double-clicking into a text cell.</p>
+</div>
+<div class="paragraph">
+<p>On each row it is possible to call following context menu:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 45%;">
+<col style="width: 45%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_text.png" alt="icon text"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modify Entry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opens the New Text Entry Wizard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_find_obj.png" alt="icon find obj"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find references to 'Xxx'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search in the Java code where the NLS Key is used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../common/_images/icon_text_remove.png" alt="icon text remove"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove Xxx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete the NLS Entry from the files</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="default-mapping-to-properties-files"><a class="anchor" href="#default-mapping-to-properties-files"></a>Default Mapping to Properties Files</h4>
+<div class="paragraph">
+<p>The mapping between the properties files is registered in the "Text Provider Service" class.
+Per default the files follow this pattern:
+<code>&lt;your application&gt;.shared/src/main/resources/&lt;identifier of the project&gt;/texts/Texts&lt;language&gt;.properties</code></p>
+</div>
+<div class="paragraph">
+<p>where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;identifier of the project&gt;</code> is a chain of folders following the same convention as the Java source files with the package name.
+For example the <code>org.eclipse.contacts.shared</code> project uses <code>org/eclipse/scout/contacts/shared</code> as path.</p>
+</li>
+<li>
+<p><code>&lt;language&gt;</code> is an identifier of the language and the country. Some possible file names:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Texts.properties</code> is the default language</p>
+</li>
+<li>
+<p><code>Texts_de.properties</code> is for German</p>
+</li>
+<li>
+<p><code>Texts_fr_BE</code> will be for French in Belgium</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-missing-nls-keys"><a class="anchor" href="#find-missing-nls-keys"></a>Find missing NLS Keys</h4>
+<div class="paragraph">
+<p>If NLS keys are used in the code that do not exist in a properties file, an ugly placeholder is displayed to the user. To find such missing translations the Menu <code>Scout &#8594; Search missing text keys&#8230;&#8203;</code> may be handy.
+The result is listed in the Eclipse <code>Search</code> view.</p>
+</div>
+<div class="paragraph">
+<p>The search also takes the scope of each NLS key into account. So that the key is considered to be available there must be a <code>TextProviderService</code> with that key on the classpath of that module.</p>
+</div>
+<div class="paragraph">
+<p>Reported false positives can be suppressed using the following comment at the end of the corresponding line: <code>NO-NLS-CHECK</code>. Matches on that line are then not reported in future searches anymore.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="apx-install_scout"><a class="anchor" href="#apx-install_scout"></a>Appendix A: Scout SDK Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter walks you through the installation of the Eclipse Scout SDK.
+There are two ways to install it.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install a prepackaged Eclipse IDE tailored for Scout developers.</p>
+</li>
+<li>
+<p>Install the Scout SDK plugins into an existing Eclipse IDE.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="install-eclipse-ide-for-scout-developers"><a class="anchor" href="#install-eclipse-ide-for-scout-developers"></a>Install Eclipse IDE for Scout Developers</h3>
+<div class="paragraph">
+<p>The installation process for the Eclipse package containing Scout is described in the <a href="../getstarted/helloscout.html#eclipse" class="xref page">Hello Scout Tutorial</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-scout-to-your-existing-eclipse-ide"><a class="anchor" href="#add-scout-to-your-existing-eclipse-ide"></a>Add Scout to your Existing Eclipse IDE</h3>
+<div class="paragraph">
+<p>This section describes the installation of Scout into an existing Eclipse installation.
+As the audience of this section is assumed to be familiar with Eclipse, we do not describe how you got your Eclipse installation in the first place.
+For the provided screenshots we start from the popular package <em>Eclipse IDE for Java EE Developers</em>.</p>
+</div>
+<div id="img-eclipse_install_new_software" class="imageblock">
+<div class="content">
+<img src="../common/_images/eclipse_install_new_software.png" alt="eclipse install new software">
+</div>
+<div class="title">Figure 12. Eclipse menu to install additional software</div>
+</div>
+<div class="paragraph">
+<p>To add Scout to your existing Eclipse installation, you need to start Eclipse.
+Then select the <span class="menuseq"><b class="menu">Help</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Install New Software&#8230;&#8203;</b></span> menu as shown in <a href="#img-eclipse_install_new_software">Figure 12</a> to open the install dialog.</p>
+</div>
+<div id="img-eclipse_select_scout_features" class="imageblock">
+<div class="content">
+<img src="../common/_images/eclipse_select_scout_features.png" alt="eclipse select scout features">
+</div>
+<div class="title">Figure 13. Select the Scout features to add to the Eclipse installation</div>
+</div>
+<div class="paragraph">
+<p>In the install dialog, select the update site matching your Eclipse installation.
+Type Scout into the filter field below and select Eclipse Scout SDK (Binary only).
+Then, move through the installation with the <b class="button">Next</b> button.
+On the last installation step, accept the presented EPL terms by clicking on the appropriate radio button.
+To complete the installation, click the <b class="button">Finish</b> button and accept the request for a restart of Eclipse.
+After the restart of the Eclipse IDE the Scout SDK is ready to use!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-installation"><a class="anchor" href="#verifying-the-installation"></a>Verifying the Installation</h3>
+<div class="paragraph">
+<p>The simplest way to verify your Scout installation is to create a &#8220;Hello World&#8221; Scout project
+and run the corresponding Scout application as described in <a href="../getstarted/helloscout.html" class="xref page">Hello Scout</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="sdk-intellij.html">Scout SDK for IntelliJ</a></span>
+  <span class="next"><a href="../howtos/how-tos.html">How-Tos</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

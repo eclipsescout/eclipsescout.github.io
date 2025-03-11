@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Widget Reference :: Eclipse Scout</title>
+    <link rel="prev" href="icons.html">
+    <link rel="next" href="ui-callback.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../../24.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="25.2">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="icons.html">Icons</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">25.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../24.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../24.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>User Interface</li>
+    <li><a href="widget-reference.html">Widget Reference</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">25.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="widget-reference.html">25.2</a>
+    <a class="version" href="../../../25.1/technical-guide/user-interface/widget-reference.html">25.1</a>
+    <a class="version" href="../../../24.2/technical-guide/user-interface/widget-reference.html">24.2</a>
+    <a class="version" href="../../../24.1/technical-guide/user-interface/widget-reference.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/user-interface/widget-reference.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/user-interface/widget-reference.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/user-interface/widget-reference.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.2/docs/modules/technical-guide/pages/user-interface/widget-reference.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Widget Reference</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter describes some of the widgets available in Scout. At the moment most of the widgets are not described yet, but they are already available at the <a href="https://scout.bsi-software.com/jswidgets">Scout JS Widgets Application</a>. With this application you can try the widgets out and get a feel of what they are capable of and how they are used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="smart-field"><a class="anchor" href="#smart-field"></a>Smart Field</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Smart Field</code> provides a list of proposals the user can choose from to pick one single value. In contrast to a common drop down list, the Smart Field provides search as you type which is especially useful for large lists. A very common case is to call a REST service and lookup the proposals while typing. This combination of a drop down list and a search field is the reason why it is called smart.</p>
+</div>
+<div id="img-smart_field" class="imageblock">
+<div class="content">
+<img src="../../common/_images/smart_field.png" alt="smart field">
+</div>
+<div class="title">Figure 1. Smart Field</div>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t need the search as you type feature, you can switch it off by setting the property <code>displayHint</code> to <code>dropdown</code> so that it behaves like a regular drop down list. This means the user cannot filter the values anymore using the keyboard and can choose the values only by mouse / touch.</p>
+</div>
+<div id="img-drop_down_field" class="imageblock">
+<div class="content">
+<img src="../../common/_images/drop_down_field.png" alt="drop down field">
+</div>
+<div class="title">Figure 2. Smart Field with display style set to 'dropdown'</div>
+</div>
+<div class="paragraph">
+<p>Another type of Smart Field is the so called <code>Proposal Field</code>. A Proposal Field does not require the user to choose from the available proposals but allows him to enter custom text as well.</p>
+</div>
+<div id="img-proposal_field" class="imageblock">
+<div class="content">
+<img src="../../common/_images/proposal_field.png" alt="proposal field">
+</div>
+<div class="title">Figure 3. Proposal Field</div>
+</div>
+<div class="paragraph">
+<p>In order to provide the proposals you can either use a <a href="../working-with-data/lookup-call.html" class="xref page">Lookup Call</a> or a <code>Code Type</code>.</p>
+</div>
+<div class="paragraph">
+<p>In a Scout JS application you can use SmartFields like in a classic Scout application. Any REST service can be used to provide results for a SmartField lookup call. However, the SmartField expects the result to have a defined structure. If the REST service API is in your hands, you can simply return a JSON response with the right structure. This means less work to do for you in the JavaScript layer, because you don&#8217;t have to transform the response to a structure the SmartField can process. If you must use a service which API you cannot change, you have no other choice than doing some kind of transformation in JavaScript.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how the response for a lookup call should look like in order to be processed by the SmartField:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">{
+  "queryBy": "ALL|TEXT|KEY|REC", # lookup type, as requested by the client
+  "text": "foo", # [optional] only set when queryBy=TEXT, contains the requested search text
+  "key": "123",  # [optional] only set when queryBy=KEY, contains the key of the requested lookup row
+  "rec": "234",  # [optional] only set when queryBy=REC, contains the key of the requested parent lookup row
+  "lookupRows": [ # the result set of this lookup, contains 0-n lookup rows
+    {
+      # key and text are mandatory properties, all other properties are optional
+      "key": "unique lookup row key",
+      "text": "lookup row text",
+      "iconId": "person.svg",
+      "tooltipText": "foo",
+      "enabled": false,
+      "active": false,
+      "cssClass": "special-format",
+      "backgroundColor": "#cc00ee", # deprecated, use cssClass instead
+      "foregroundColor": "#333333", # deprecated, use cssClass instead
+      "font": "Dialog-PLAIN-12",    # deprecated, use cssClass instead
+      "parentKey": "234",           # only used for hierarchical smart fields
+      "additionalTableRowData": [   # only used for table like lookup results with multiple columns
+                                    # contains 0-n objects with arbitrary properties
+        {
+          "foo": "bar"
+        }
+      ]
+    }
+  ],
+  "exception": "something went wrong" # [optional] only set when an error occurred during the lookup request
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how the request for a Scout JS SmartField lookup call could look like. Your request to a REST API can look completely different. This example just gives you an idea of how to implement your own LookupCall.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">{
+  "type": "lookupByAll|Text|Key|Rec", # lookup type
+  "text": "foo", # [optional] only set when type=lookupByText, contains the requested search text
+  "key": "123",  # [optional] only set when type=lookupByKey, contains the key of the requested lookup row
+  "rec": "234",  # [optional] only set when type=lookupByRec, contains the key of the requested parent lookup
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chart"><a class="anchor" href="#chart"></a>Chart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Chart</code> visualizes data in several ways like bars, lines or a pie. The <code>Chart</code> has two main properties, a data and a config object.
+Imagine you are an ice cream shop, and you want to display how many scoops you sold in which month.</p>
+</div>
+<div class="paragraph">
+<p>The data object holds the data about the sold scoops, their flavours and the date you sold them.</p>
+</div>
+<div class="paragraph">
+<p>The config object defines how your chart should be styled, e.g. it should be a bar chart and the axes should get an extra label like 'month' and 'flavour'.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the type that is set on the config object the <code>Chart</code> picks a renderer to display the chart. The renderer is now creating a <code>&lt;canvas&gt;</code>- or <code>&lt;svg&gt;</code>-element and renders the chart.
+Each time you update the data or the config it is rerendered.</p>
+</div>
+<div class="paragraph">
+<p>Most of the charts are rendered using <a href="https://www.chartjs.org/">chart.js</a> and the config object is handed over so you can use all properties chart.js provides to style your chart.
+In addition to the chart.js-properties we added custom properties, some of them only have an impact on certain charts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.autoColor</code> Whether the colors should be computed automatically.</p>
+</li>
+<li>
+<p><code>options.colorScheme</code> A specific color scheme for the colors, also inverted ones are possible for dark backgrounds.</p>
+</li>
+<li>
+<p><code>options.colorMode</code> Determines what parts of the chart data is colored with the same colors.</p>
+</li>
+<li>
+<p><code>options.transparent</code> Whether the chart should be transparent or opaque.</p>
+</li>
+<li>
+<p><code>options.maxSegments</code> Max. number of segments for radial charts like pie, doughnut, radar, polar area.</p>
+</li>
+<li>
+<p><code>options.clickable</code> Whether a chart is clickable.</p>
+</li>
+<li>
+<p><code>options.checkable</code> Whether a chart is checkable.</p>
+</li>
+<li>
+<p><code>options.otherSegmentClickable</code> Whether the consolidated others segment is clickable.</p>
+</li>
+<li>
+<p><code>options.plugins.legend.clickable</code> Whether the legend is clickable.</p>
+</li>
+<li>
+<p><code>options.plugins.legend.pointsVisible</code> Whether the colored points in the legend are visible.</p>
+</li>
+<li>
+<p><code>options.xLabelMap</code> and <code>options.yLabelMap</code> Label mapping for discrete values.</p>
+</li>
+<li>
+<p><code>options.handleResize</code> Whether the chart should handle resizing itself (not necessary if the containers size is updated).</p>
+</li>
+<li>
+<p><code>options.numberFormatter</code> A custom number formatter, e.g. 1000000 &#8594; 1 Mio. €.</p>
+</li>
+<li>
+<p><code>options.reformatLabels</code> Whether the data labels should be reformatted. It is assumed that data labels (incl. numeric labels) are correctly formatted. If one wants to have the data labels formatted using the number formatter, this flag can be used.
+Consider a bar chart and the x-axis displays the years 2010-2020, these labels should not be reformatted. However, if the x-axis displays the prices 250, 500, 750 and 1000, these labels should be reformatted to 250 €, 500 €, 750 € and 1.000 €.</p>
+</li>
+<li>
+<p><code>options.plugins.tooltip.cssClass</code> Custom css class for additional styling of the tooltip</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Bubble:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.bubble.sizeOfLargestBubble</code> The size to which the largest bubble is scaled.</p>
+</li>
+<li>
+<p><code>options.bubble.minBubbleSize</code> Min. size of a bubble.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Fulfillment:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.fulfillment.startValue</code> Where the animation should start.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Salesfunnel:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.salesfunnel.normalized</code> Defines if the bars should be rendered smaller from top to bottom or if they get a size according to their values.</p>
+</li>
+<li>
+<p><code>options.salesfunnel.calcConversionRate</code> Whether the conversion rate should be rendered.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Speedo:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.speedo.greenAreaPosition</code> Define where the green area is located.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Venn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>options.venn.numberOfCircles</code> Between 1 and 3.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The colors used for grid lines, axes, etc. and the auto colors for datasets can be overridden using CSS.</p>
+</div>
+<div class="paragraph">
+<p>For a more detailed example see <a href="../../howtos/scout-js/chart-how-to.html" class="xref page">How to Create a Chart for Scout JS</a> resp. <a href="../../howtos/scout-classic/chart-how-to.html" class="xref page">How to Create a Chart for Scout Classic</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filter-field"><a class="anchor" href="#filter-field"></a>Filter Field</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The widgets <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share a common filter API which includes a filter field.
+This filter field is enabled by default and can be turned off using the property <code>textFilterEnabled</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/tree_box_with_filter_field.png" alt="tree box with filter field">
+</div>
+<div class="title">Figure 4. Filter field</div>
+</div>
+<div class="paragraph">
+<p>This filter field will filter the rows, nodes or tiles by their display text.
+This is simple for rows and nodes but quite complicated for tiles due to the large number of different types of tiles.
+Therefore, it is possible to provide a strategy to the <code>TileGrid.js</code> and <code>TileAccordion.js</code> how to create a text filter for the tile type used in this case and how to update the text this filter accepts.</p>
+</div>
+<div class="paragraph">
+<p>Consider a tile <code>CustomTile</code> with a property <code>relevantTextForFilter</code>. A filter for this tile type might look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {objects, strings} from '@eclipse-scout/core';
+
+class CustomTileFilter {
+
+  constructor() {
+    this.acceptedText = null;
+  }
+
+  setAcceptedText(acceptedText) {
+    acceptedText = (acceptedText || '').trim().toLowerCase();
+    if (objects.equals(this.acceptedText, acceptedText)) {
+      return false;
+    }
+    this.acceptedText = acceptedText;
+    return true;
+  }
+
+  accept(tile) {
+    if (strings.empty(this.acceptedText)) {
+      return true;
+    }
+    let filterText = strings.toLowerCase(tile.relevantTextForFilter);
+    if (strings.empty(filterText)) {
+      return false;
+    }
+    return filterText.indexOf(this.acceptedText) &gt; -1;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>CustomTileFilter</code> is now passed to a TileGrid via</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">tileGrid.createTextFilter = () =&gt; scout.create(CustomTileFilter);
+tileGrid.updateTextFilterText = (filter, text) =&gt; filter.setAcceptedText(text);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The common filter API which <code>Table.js</code>, <code>Tree.js</code>, <code>TileGrid.js</code> and <code>TileAccordion.js</code> share can also be implemented by all other widgets.</p>
+</div>
+<div class="paragraph">
+<p>A minimal example of a widget implementing the filter API looks like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class FilterWidget extends Widget {
+  constructor() {
+    super();
+    this.elements = [];
+
+    this.filters = [];
+    this.textFilterEnabled = true;
+    this.filterSupport = this._createFilterSupport();
+
+    this.filteredElementsDirty = false;
+  }
+
+  _init(model) {
+    super._init(model);
+    this.setElements(this.elements);
+    this.setFilters(this.filters);
+  }
+
+  _createKeyStrokeContext() {
+    return new KeyStrokeContext();
+  }
+
+  _render() {
+    this.$container = this.$parent.appendDiv();
+    this.htmlComp = HtmlComponent.install(this.$container, this.session);
+  }
+
+  _renderProperties() {
+    super._renderProperties();
+    this._renderTextFilterEnabled();
+  }
+
+  _remove() {
+    this.filterSupport.remove();
+    super._remove();
+  }
+
+  setElements(elements) {
+    this.setProperty('elements', elements);
+    this.filter();
+  }
+
+  setTextFilterEnabled(textFilterEnabled) {
+    this.setProperty('textFilterEnabled', textFilterEnabled);
+  }
+
+  _renderTextFilterEnabled() {
+    this.filterSupport.renderFilterField();
+  }
+
+  isTextFilterFieldVisible() {
+    return this.textFilterEnabled;
+  }
+
+  /**
+   * @returns {FilterSupport}
+   */
+  _createFilterSupport() {
+    return new FilterSupport({
+      widget: this,
+      $container: () =&gt; this.$container,
+      getElementsForFiltering: () =&gt; this.elements,
+      getElementText: element =&gt; element.text
+    });
+  }
+
+  addFilter(filter, applyFilter = true) {
+    this.filterSupport.addFilter(filter, applyFilter);
+  }
+
+  removeFilter(filter, applyFilter = true) {
+    this.filterSupport.removeFilter(filter, applyFilter);
+  }
+
+  setFilters(filters, applyFilter = true) {
+    this.filterSupport.setFilters(filters, applyFilter);
+  }
+
+  filter() {
+    this.filterSupport.filter();
+  }
+
+  updateFilteredElements(result, opts) {
+    this.filteredElementsDirty = false;
+  }
+}
+
+class Element {
+  constructor() {
+    this.text = null;
+    this.filterAccepted = true;
+  }
+
+  setFilterAccepted(filterAccepted) {
+    this.filterAccepted = filterAccepted;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The widget creates a <code>FilterSupport</code> and passes all filter-related calls to this object. This <code>FilterSupport</code> manages the filters and the filter field.
+It only needs a small amount of information from the widget:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>widget</code> Widget that created the support</p>
+</li>
+<li>
+<p><code>$container</code> jQuery element that will be used for the visualization. It may be a function to resolve the container later. If this property is not set the $container of the widget is used by default.</p>
+</li>
+<li>
+<p><code>getElementsForFiltering</code> Get all elements to which the filters should be applied.</p>
+</li>
+<li>
+<p><code>getElementText</code> Get text of an element.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are several other options that can be passed to the <code>FilterSupport</code>, e.g. a strategy to create a custom text filter. For a complete list of the options please see the JS-Doc of the <code>FilterSupport</code>.</p>
+</div>
+<div class="paragraph">
+<p>The methods <code>addFilter(filter, applyFilter = true)</code>, <code>removeFilter(filter, applyFilter = true)</code> and <code>setFilters(filters, applyFilter = true)</code> of the <code>FilterSupport</code> work with filter objects containing an accept-function and accept-functions directly.
+These methods will check if the list of filters really changed and then apply the new filters if <code>applyFilter</code> is set to <code>true</code>. The filters are stored in the widgets <code>filters</code> property.</p>
+</div>
+<div class="paragraph">
+<p>The widget needs to implement a <code>updateFilteredElements(result, opts)</code> method, which is called after the filters were applied if the list of filtered elements changed.
+Before this method is called the widgets <code>filteredElementsDirty</code> is set to <code>false</code> and the values passed are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>result</code> An object containing the <code>newlyHidden</code> and <code>newlyShown</code> elements.</p>
+</li>
+<li>
+<p><code>opts</code> An object containing additional information, e.g. the text from the text filter.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The elements that are filtered needs to have a <code>setFilterAccepted(filterAccepted)</code>-method which is used by the <code>FilterSupport</code> to indicate whether this element is accepted by the filters or not.</p>
+</div>
+<div class="paragraph">
+<p>In order to use the filter field the widget needs an <code>isTextFilterFieldVisible()</code>-method and a <code>KeyStrokeContext</code>.
+The <code>isTextFilterFieldVisible()</code>-method is used to determine whether the filter field needs to be added to or removed from the <code>$container</code> when <code>filterSupport.renderFilterField()</code> is called.
+The <code>KeyStrokeContext</code> is needed to register KeyStrokes that move the focus towards the filter field while typing.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="menu-types"><a class="anchor" href="#menu-types"></a>MenuTypes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A menu type provides a way to control the visibility of a menu for common use cases.
+For example: a menu should be displayed only if an item is selected or a value present.
+Menu types are context specific and interpreted by the menu container (e.g. by a table or value field).</p>
+</div>
+<div class="paragraph">
+<p>Please refer to the respective container for the available menu types and their functions.</p>
+</div>
+<div class="paragraph">
+<p>Most widgets specify some default menuTypes. Menus without any menuTypes are treated as if these default menuTypes are set. The defaults are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Calendar</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Calendar.MenuType.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ImageField</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ImageField.MenuType.ImageUrl</code></p>
+</li>
+<li>
+<p><code>ImageField.MenuType.Null</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Planner</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Planner.MenuType.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Table</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Table.MenuType.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TileGrid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TileGrid.MenuType.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Tree</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Tree.MenuType.EmptySpace</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ValueField</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ValueField.MenuType.NotNull</code></p>
+</li>
+<li>
+<p><code>ValueField.MenuType.Null</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="valuefield"><a class="anchor" href="#valuefield"></a>ValueField</h3>
+<div class="paragraph">
+<p>The <code>ValueField</code> support the menu types <code>ValueField.MenuType.Null</code> and <code>ValueField.MenuType.NotNull</code>.
+This means that the <code>ValueField</code> will only display menus with <code>ValueField.MenuType.Null</code> if the value is <code>null</code> or those with <code>ValueField.MenuType.NotNull</code> if the value is set.</p>
+</div>
+<div class="paragraph">
+<p>Menus added to a <code>ValueField</code> that need to be visible all the time do not need to specify all possible menu types.
+The <code>ValueField</code> will treat a menu without menu types as if it had set all menu types and therefore will always display it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">import {Menu, ValueField} from '@eclipse-scout/core';
+
+[
+  {
+    id: 'AlwaysVisibleMenu',
+    text: 'Always visible',
+    objectType: Menu
+  },
+  {
+    id: 'VisibleIfNullMenu',
+    text: 'Visible if value is null',
+    objectType: Menu,
+    menuTypes: [
+      ValueField.MenuType.Null
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="imagefield"><a class="anchor" href="#imagefield"></a>ImageField</h3>
+<div class="paragraph">
+<p>The <code>ImageField</code> supports the menu types <code>ImageField.MenuType.ImageUrl</code> and <code>ImageField.MenuType.Null</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="icons.html">Icons</a></span>
+  <span class="next"><a href="ui-callback.html">UI Callbacks</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

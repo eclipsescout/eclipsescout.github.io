@@ -313,6 +313,9 @@
       <a class="title" href="../../index.html">Eclipse Scout</a>
       <ul class="versions">
         <li class="version">
+          <a href="../../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
           <a href="../../../25.1/index.html">25.1</a>
         </li>
         <li class="version is-current is-latest">
@@ -352,6 +355,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">24.2</button>
   <div class="version-menu">
+    <a class="version" href="../../../25.2/howtos/scout-classic/smart-field-how-to.html">25.2</a>
     <a class="version" href="../../../25.1/howtos/scout-classic/smart-field-how-to.html">25.1</a>
     <a class="version is-current" href="smart-field-how-to.html">24.2</a>
     <a class="version" href="../../../24.1/howtos/scout-classic/smart-field-how-to.html">24.1</a>
@@ -368,6 +372,18 @@
 </aside>
 <article class="doc">
 <h1 class="page">SmartField: How to Apply Colors and Styles From a Lookup Row</h1>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to a past Scout release. Please click <a href="smart-field-how-to.html" class="xref page">here</a> for the recent version.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>When a user selects a lookup-row from the proposal chooser in Scout versions &#8656; 6.0, the properties <code>foregroundColor</code>, <code>backgroundColor</code>, <code>font</code> and <code>tooltipText</code> have been automatically copied from the lookup-row to the field. In some cases this was exactly what a specific application needed, but in other cases it was hard to implement a specific behavior without overriding internal methods from the <code>SmartField</code>. For instance it was not possible to have a lookup-row with background-color red in the proposal-chooser and at the same time avoid the background-color of the field changing to red, when that row was being selected.</p>
 </div>
