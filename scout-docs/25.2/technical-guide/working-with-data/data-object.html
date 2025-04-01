@@ -1507,6 +1507,137 @@ Commonly used are a set of assert methods (e.g. <code>assertEquals(Object expect
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="DO-scoutjs"><a class="anchor" href="#DO-scoutjs"></a>Data Objects in Scout JS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout JS supports Data Objects to be written as classes in TypeScript.
+It recursively supports (de)serializing such Data Objects in a way compatible with the Scout Java backend.
+It supports base types like <code>number</code>, <code>string</code>, <code>boolean</code>, but also more complex types like <code>Array</code>, <code>Date</code>, <code>Map</code>, <code>Set</code> or nested Data Objects.
+Also, TypeScript specific types like <code>Record</code> or <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types">string literal types</a> are supported.</p>
+</div>
+<div class="paragraph">
+<p>Similar to a Data Object in Java it extends a common base class named <code>BaseDoEntity</code> and holds an annotation (called <a href="https://www.typescriptlang.org/docs/handbook/decorators.html">Decorator</a> in TypeScript) providing the type name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">@typeName('docu.DocumentationSample') <i class="conum" data-value="1"></i><b>(1)</b>
+export class DocumentationSampleDo extends BaseDoEntity { <i class="conum" data-value="2"></i><b>(2)</b>
+  size: number;
+  name: string;
+  active: boolean;
+  items: ItemDo[];
+  timestamp: Date;
+  descriptions: Map&lt;string, DescriptionDo&gt;;
+  texts: Record&lt;string, string&gt;;
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Specifies the type name of the Data Object like in Java (note the difference that decorators in TypeScript are not capitalized!). The value must exactly match the one in the corresponding Data Object in Java so that the serialization works (see <a href="#type-name">Type Name</a>). This identifier connects the two implementations.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>All Data Objects must extend (directly or indirectly) <code>BaseDoEntity</code>.</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="advantages"><a class="anchor" href="#advantages"></a>Advantages</h3>
+<div class="paragraph">
+<p>Using such Data Object classes has several advantages over POJOs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It can be (de)serialized automatically including the necessary data type conversions (like Date or nested Data Objects).</p>
+</li>
+<li>
+<p>There is no need to always explicitly set the <code>_type</code> attribute which reduces noise and duplicated constants.</p>
+</li>
+<li>
+<p>Data Objects are stronger typed.</p>
+</li>
+<li>
+<p>It is possible to check for types of Data Objects using <code>instanceof</code> instead of comparing <code>_type</code> attributes which is more intuitive.</p>
+</li>
+<li>
+<p>There are various other helper functions available on the Data Object itself like <code>clone</code>, <code>equals</code>, <code>toPojo</code>, or functions to access and modify Data Object contributions.</p>
+</li>
+<li>
+<p>They work seamlessly with other utilities like <code>dataObjects</code> or <code>ajax</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>An example implementation can be found in the <a href="../../howtos/scout-js/rest-service-how-to.html" class="xref page">REST HowTo</a> which might be helpful to understand the concepts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-data-object-instances"><a class="anchor" href="#creating-data-object-instances"></a>Creating Data Object instances</h3>
+<div class="paragraph">
+<p>Data Objects are created using <code>scout.create</code> which allows to pass some initial values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">let myDo = scout.create(DocumentationSampleDo, {
+  size: 4,
+  items: [{
+    itemNo: 57863,
+    ref: '1af7a8dd-cc57-4403-8ae4-b9f5a892518e'
+  }, {
+    itemNo: 97395,
+    ref: '92935890-6725-4d65-8042-f7737ebf68ce'
+  }],
+  timestamp: new Date(), // could also be a string: '2025-03-21 10:19:26.687'
+  descriptions: {
+    first: {id: 1, label: 'First Label'},
+    second: {id: 2, label: 'Second Label'}
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please note that the nested Data Objects (<code>ItemDo</code> and <code>DescriptionDo</code> in this example) are automatically converted from the Pojo used in the given model to real instances of the corresponding Data Objects.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deserializing"><a class="anchor" href="#deserializing"></a>(De)Serializing</h3>
+<div class="paragraph">
+<p>Typically, such Data Objects are sent to a REST backend or received from one.
+For this case use the functions provided by the <code>ajax</code> utility which automatically (de)serializes the Data Objects:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>getDataObject</code></p>
+</li>
+<li>
+<p><code>postDataObject</code></p>
+</li>
+<li>
+<p><code>putDataObject</code></p>
+</li>
+<li>
+<p><code>removeDataObject</code></p>
+</li>
+<li>
+<p><code>callDataObject</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In case an existing Data Object instance should be converted to a Pojo the <code>toPojo</code> function can be called directly on the Data Object instance.</p>
+</div>
+<div class="paragraph">
+<p>For more control over the (de)serialization the functions provided by the <code>dataObjects</code> utility may be used.</p>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="ui-notifications.html">UI Notifications</a></span>
   <span class="next"><a href="rest.html">REST</a></span>

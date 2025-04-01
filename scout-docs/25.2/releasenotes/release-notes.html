@@ -400,6 +400,22 @@ The here described functionality has not yet been released and is part of an upc
 </div>
 </div>
 <div class="sect1">
+<h2 id="new-data-object-api-for-scout-js"><a class="anchor" href="#new-data-object-api-for-scout-js"></a>New Data Object API for Scout JS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout JS now supports DataObjects to be written as classes in TypeScript.
+A new serialization mechanisms takes care of recursively (de)serializing such DataObjects in a way compatible with the Scout Java backends.
+It supports base types like <code>number</code>, <code>string</code>, <code>boolean</code>, but also more complex types like <code>Array</code>, <code>Date</code>, <code>Map</code>, <code>Set</code> or nested Data Objects.
+Also, TypeScript specific types like <code>Record</code> or <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types">string literal types</a> are supported.</p>
+</div>
+<div class="paragraph">
+<p>Please read the <a href="../technical-guide/working-with-data/data-object.html#DO-scoutjs" class="xref page">DO documentation for Scout JS</a> for more details and the advantages of the new API.
+It is recommended to switch to the new API where ever possible by following the steps from the <a href="../migration/migration-guide.html#new-DO-api" class="xref page">migration guide</a>.
+An example implementation can be found in the <a href="../howtos/scout-js/rest-service-how-to.html" class="xref page">REST HowTo</a> which might be helpful to understand the new concepts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="behavior-change-of-scout-js-utilities-objects-valuecopy-objects-equals-and-objects-equalsrecursive"><a class="anchor" href="#behavior-change-of-scout-js-utilities-objects-valuecopy-objects-equals-and-objects-equalsrecursive"></a>Behavior Change of Scout JS Utilities objects.valueCopy, objects.equals And objects.equalsRecursive</h2>
 <div class="sectionbody">
 <div class="paragraph">

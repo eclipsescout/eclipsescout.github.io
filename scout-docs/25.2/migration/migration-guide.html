@@ -581,13 +581,11 @@ For example for a Jetty .war deployment it may be registered by activating the <
 <h2 id="new-DO-api"><a class="anchor" href="#new-DO-api"></a>Switch to the New Data Object API</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scout JS now supports DataObjects to be written as classes in TypeScript.
-A new serialization mechanisms takes care of recursively (de)serializing such DataObjects in a way compatible with the Scout Java backends.
-It supports base types like <code>number</code>, <code>string</code>, <code>boolean</code>, but also more complex types like <code>Array</code>, <code>Date</code>, <code>Map</code>, <code>Set</code> or nested Data Objects.
-Also, TypeScript specific types like <code>Record</code> or <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types">string literal types</a> are supported.</p>
+<p>Please read the <a href="../technical-guide/working-with-data/data-object.html#DO-scoutjs" class="xref page">DO documentation for Scout JS</a> for more details and the advantages of the new API.
+An example implementation can be found in the <a href="../howtos/scout-js/rest-service-how-to.html" class="xref page">REST HowTo</a> which might be helpful to understand the new concepts.</p>
 </div>
 <div class="paragraph">
-<p>It is recommended to switch to the new API where possible by following these steps:</p>
+<p>Follow these steps to switch to the new API:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -697,9 +695,6 @@ So to use the new API for <code>HybridManager</code> or <code>JsForm</code>, jus
 So this might require some more code migrations on your side (see above).</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p>An example implementation can be found in the <a href="../howtos/scout-js/rest-service-how-to.html" class="xref page">REST HowTo</a>.</p>
 </div>
 </div>
 </div>
