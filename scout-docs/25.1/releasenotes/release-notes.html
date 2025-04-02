@@ -648,6 +648,17 @@ Refer to the migration guide for more details.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="migration-handler-for-data-object-deletion"><a class="anchor" href="#migration-handler-for-data-object-deletion"></a>Migration Handler for data object deletion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The new <code>AbstractDoDeletionMigrationHandler</code> can be used when a data objects class is completely deleted.<br>
+This migration handler will throw an exception, whenever it encounters a data object with a type name of a deleted <code>IDoEntity</code> class.
+When a data object with type version is deleted (i.e. a sub-class of <code>IDoEntity</code> with a @TypeVersion annotation) and was part of another data object, make sure to implement a <code>IDoStructureMigrationHandler</code> which migrates and removes the respective data objects.
+In addition, implement a sub-class of <code>AbstractDoDeletionMigrationHandler</code> to ensure that all occurrences of the deleted <code>IDoEntity</code> class have been removed.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
