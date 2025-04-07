@@ -586,7 +586,7 @@ If you inherit a <code>@Bean</code> annotation from one of you super types but d
 </table>
 </div>
 <div class="sect3">
-<h4 id="tunneltoserver"><a class="anchor" href="#tunneltoserver"></a>@TunnelToServer</h4>
+<h4 id="tunnel-to-server"><a class="anchor" href="#tunnel-to-server"></a>@TunnelToServer</h4>
 <div class="paragraph">
 <p>There is a built-in annotation <code>org.eclipse.scout.rt.shared.@TunnelToServer</code>. Interfaces marked with this annotation are called on the server. The server itself ignores this annotation.</p>
 </div>
@@ -596,6 +596,10 @@ Please note that this annotation is not inherited. Therefore, if an interface ex
 </div>
 <div class="paragraph">
 <p>The proxy is created only once for a specific interface bean.</p>
+</div>
+<div class="paragraph">
+<p>The <code>idSignature</code> flag of the annotation can be used to enable id signatures for all data objects transferred over the service tunnel for a specific interface.
+For more information and examples when this is necessary see <a href="security.html#id-signature-service-tunnel" class="xref page">IId signatures in service tunnel</a>.</p>
 </div>
 </div>
 </div>

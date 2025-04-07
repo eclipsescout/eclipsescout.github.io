@@ -1098,12 +1098,34 @@ If you are using e.g. an Apache reverse proxy (see <a href="https://httpd.apache
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
+<div id="id-signature-service-tunnel" class="paragraph">
+<p>The service tunnel supports id signatures as well, but they are not enabled by default.
+To enable id signatures in the service tunnel for a specific interface use the <code>idSignature</code> flag of the <code>TunnelToServer</code> annotation (see <a href="platform.html#tunnel-to-server" class="xref page">@TunnelToServer</a>).
+This is necessary if e.g. an <code>IDataObject</code> which is known to the backend but not to the ui server is passed on to the browser where it is used for REST calls to endpoints hosted on the backend server.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Enable id signatures for all calls to <code>ISignedService</code> using the <code>idSignature</code> flag of the <code>TunnelToServer</code> annotation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TunnelToServer(idSignature = true)
+public interface ISignedService extends IService {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a method of an interface needs to be called with signatures or without signatures depending on the context, one can create its own proxy and pass the id signature flag in the <code>ServiceTunnelOptions</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Enable id signatures for a call to <code>IUnsignedService#someMethod()</code> using the <code>idSignature</code> flag of the <code>ServiceTunnelOptions</code> annotation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ServiceTunnelUtility.createProxy(IUnsignedService.class, ServiceTunnelOptions.create().withIdSignature(true)).someMethod();</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p><code>IId</code> that are not affected by key probing like e.g. <code>AbstractUuId</code> or <code>AbstractStringId</code> will not be signed by default, while e.g. all <code>Long</code> based <code>IId</code> will be signed.
 If there is a special <code>IId</code> that does not support signatures it can be excluded from the signature mechanism using the <code>IdSignature</code> annotation.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 10. Exclude the <code>UnsignedId</code> using the <code>IdSignature</code> annotation.</div>
+<div class="title">Listing 12. Exclude the <code>UnsignedId</code> using the <code>IdSignature</code> annotation.</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@IdSignature(false)
 public final class UnsignedId extends AbstractStringId {
