@@ -698,6 +698,27 @@ So this might require some more code migrations on your side (see above).</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="generic-type-parameter-for-putif-method"><a class="anchor" href="#generic-type-parameter-for-putif-method"></a>Generic Type Parameter for <code>putIf()</code> Method</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>putIf</code> method on <em>IDoEntity</em> and <em>DoEntityBuilder</em> has been updated to use a generic type parameter for the <code>value</code> and <code>predicate</code> arguments.
+This ties the predicate to the type of the value, making it easier to use and reducing the need for type casting.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Before
+result.putIf("name", myName, o -&gt; StringUtility.hasText((String) o));
+
+// After
+result.putIf("name", myName, StringUtility::hasText);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Migration:</strong> Check usages in your code and remove now-redundant type casts.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
