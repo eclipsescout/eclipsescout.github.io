@@ -460,6 +460,28 @@ This migration handler will remove the contribution with the given type name and
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="table-default-row-action"><a class="anchor" href="#table-default-row-action"></a>Table default row action</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout JS <code>Table</code> has a new property <code>defaultRowAction</code> of type <code>Action</code>.
+If set, this action is executed when a row is double-clicked.
+Prior to the execution, a <code>rowAction</code> event is triggered.
+When default is prevented on this event, the <code>defaultRowAction</code> is not executed.
+The <code>defaultRowAction</code> can be used to execute a particular <code>Menu</code> of the <code>Table</code> on a row action.
+It can be specified in the <code>TableModel</code> by referencing the id of the <code>Menu</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">defaultRowAction: 'MyMenu',
+menus: [{
+  id: 'MyMenu',
+  objectType: Menu
+}]</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>

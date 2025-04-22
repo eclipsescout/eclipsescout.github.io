@@ -606,6 +606,9 @@ export class MyEntityDo extends BaseDoEntity { <i class="conum" data-value="2"><
 }</code></pre>
 </div>
 </div>
+</li>
+</ol>
+</div>
 <div class="colist arabic">
 <table>
 <tr>
@@ -614,11 +617,9 @@ export class MyEntityDo extends BaseDoEntity { <i class="conum" data-value="2"><
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Convert to a class extending <code>BaseDoEntity</code>.</td>
-</tr>
-</table>
-</div>
-</li>
+<td>Convert to a class extending <code>BaseDoEntity</code>.
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>If sending or receiving Data Objects to/from the Scout backend migrate the ajax calls to the newly provided convenience methods for Data Objects:</p>
 <div class="olist loweralpha">
@@ -670,13 +671,20 @@ const shallowCopy = scout.create(MyEntityDo, {
 });</code></pre>
 </div>
 </div>
+</li>
+</ol>
+</div></td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Important: If the spread operator is not the first statement, you need to convert the DO to a Pojo first (<code>.toPojo()</code>), otherwise undefined values from the DO may override actual values.
-Therefore, it is recommended to always use the original Data Object as the first spread statement.</p>
+Therefore, it is recommended to always use the original Data Object as the first spread statement.
+. To create a deep copy of a Data Object use the <code>clone</code> function:</p>
 </div>
-</li>
-<li>
-<p>To create a deep copy of a Data Object use the <code>clone</code> function:</p>
+<div class="paragraph">
+<p>+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">const deepCopy = originalEntityDo.clone({
@@ -686,15 +694,10 @@ Therefore, it is recommended to always use the original Data Object as the first
 </div>
 <div class="paragraph">
 <p>Important: In the (optional) extra model passed to the <code>clone</code> function only primitives and pojos are copied deeply.
-Complex objects like <code>Date</code> or <code>Map</code> in this extra model are copied by value!</p>
-</div>
-</li>
-<li>
-<p>When using the <code>HybridManager</code> or the <code>JsForm</code>: It uses the Data Object class and deserializes to these classes (instead of a Pojo as before) as soon as a class having a matching <code>@typeName</code> decorator is found in TypeScript.
+Complex objects like <code>Date</code> or <code>Map</code> in this extra model are copied by value!
+. When using the <code>HybridManager</code> or the <code>JsForm</code>: It uses the Data Object class and deserializes to these classes (instead of a Pojo as before) as soon as a class having a matching <code>@typeName</code> decorator is found in TypeScript.
 So to use the new API for <code>HybridManager</code> or <code>JsForm</code>, just create the necessary Data Object classes. But keep in mind that as soon it is converted, these instances will be returned instead of a Pojo.
 So this might require some more code migrations on your side (see above).</p>
-</li>
-</ol>
 </div>
 </div>
 </div>
@@ -716,6 +719,83 @@ result.putIf("name", myName, StringUtility::hasText);</code></pre>
 </div>
 <div class="paragraph">
 <p><strong>Migration:</strong> Check usages in your code and remove now-redundant type casts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hybrid-actions"><a class="anchor" href="#hybrid-actions"></a>Hybrid actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All <code>IHybridAction</code> are now using a namespace and typed data objects instead of <code>IDoEntity</code>.
+If you are calling some of the provided <code>IHybridAction</code>, please check if you need to enhance the <code>actionType</code> or send typed data objects.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">disposeWidgets(widgetIds: string[]) {
+  HybridManager.get(this.session).callAction('scout.DisposeWidgets', scout.create(DisposeWidgetsHybridActionDo, {
+    ids: widgetIds
+  }));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>DisposeWidgetsHybridAction</code> in this example belongs to the namespace <em>scout</em> and the data passed to it needs to be a <code>DisposeWidgetsHybridActionDo</code>.</p>
+</div>
+<div class="paragraph">
+<p>The changed <code>IHybridAction</code> are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DisposeWidgetsHybridAction</code>: namespace was added</p>
+<div class="ulist">
+<ul>
+<li>
+<p>action type was changed from <code>DisposeWidgets</code> to <code>scout.DisposeWidgets</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>AbstractFormHybridAction</code>: namespace was added</p>
+<div class="ulist">
+<ul>
+<li>
+<p>action types were changed from <code>openForm</code> and <code>createForm</code> to <code>scout.openForm</code> and <code>scout.createForm</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="table-default-row-action"><a class="anchor" href="#table-default-row-action"></a>Table default row action</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>Table</code> now supports a <code>defaultRowAction</code> (see <a href="../releasenotes/release-notes.html#table-default-row-action" class="xref page">Release Notes</a>).
+Therefore, it is no longer necessary to listen on <code>rowAction</code> events in order to execute a <code>Menu</code></p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. old: listening for a <code>rowAction</code> event in order to execute <code>MyMenu</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">table.on('rowAction', e =&gt; table.widget('MyMenu').doAction());</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. new: using the <code>defaultRowAction</code> property in the <code>TableModel</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">defaultRowAction: 'MyMenu',
+menus: [{
+  id: 'MyMenu',
+  objectType: Menu
+}]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the changes made for this feature the method <code>Table._triggerRowAction</code> was removed.
+Classes overriding this method in order to execute additional logic or prevent the <code>rowAction</code> events from being triggered can simply listen on <code>rowAction</code> and execute the logic in an event handler or prevent the default.</p>
 </div>
 </div>
 </div>
