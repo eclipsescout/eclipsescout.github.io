@@ -402,8 +402,10 @@ The goal is to establish <a href="https://opentelemetry.io/docs/what-is-opentele
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Traces</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not supported, planned</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">❌</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">supported, based on OpenTelemetry
+disabled by default (see configuration property <code>scout.otel.tracing.enabled</code> and <code>scout.otel.initializerEnabled</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(✅)<br>
+currently being tested</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Metrics</p></td>
@@ -436,7 +438,7 @@ This initializer will set up the <code>io.opentelemetry.api.GlobalOpenTelemetry<
 <div class="ulist">
 <ul>
 <li>
-<p>Exporters: <code>otlp</code> for metrics (<code>none</code> for traces and logs due to missing (tested) support)<br>
+<p>Exporters: <code>otlp</code> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> for metrics and traces (<code>none</code> for logs due to missing (tested) support)<br>
 Protocol: <code>http/protobuf</code></p>
 </li>
 <li>
@@ -459,10 +461,49 @@ All these defaults can be changed by the corresponding system property or enviro
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="traces-context-propagation"><a class="anchor" href="#traces-context-propagation"></a>Traces: <code>Context</code> Propagation</h3>
+<div class="paragraph">
+<p>It is important to properly propagate the OpenTelemetry <code>Context</code> between threads in order to correctly relate spans and preserve the hierarchy of the calls.
+<code>Context</code> propagation is especially relevant in Scout Applications when calls are made between Scout UI and Scout backend server and within the Scout UI server when we
+go from Scout UI Thread to the Scout Model Thread.</p>
+</div>
+<div class="paragraph">
+<p>Overview of the <code>Context</code> propagation:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetryFilter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The parent <code>Context</code> is extracted from the incoming HttpRequest (header). Relevant for both UI and backend to capture incoming calls.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HttpServiceTunnel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>Context</code> is injected into a header of the outgoing HttpRequest. This is a relevant instrumentation to capture calls from UI to backend.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ScoutOpenTelemetryContextStorage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Everytime a new <code>Context</code> is made current, that <code>Context</code> is stored on the RunContext. This ensures proper propagation between UI thread and Model thread.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetryContextProcessor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ensures that the correct <code>Context</code> is propagated between RunContexts.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-to-enable-a-scout-application"><a class="anchor" href="#how-to-enable-a-scout-application"></a>How To Enable A Scout Application</h2>
+<h2 id="setup-opentelemetry-in-a-scout-application"><a class="anchor" href="#setup-opentelemetry-in-a-scout-application"></a>Setup OpenTelemetry in a Scout Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Add the SDK related maven dependencies to the maven module(s), e.g. the <code>.server</code> and <code>.ui.html</code>, according to <a href="#lst-contacts_db_pom">Listing 1</a>.</p>
@@ -483,8 +524,16 @@ All these defaults can be changed by the corresponding system property or enviro
 </div>
 <div class="paragraph">
 <p>The OpenTelemetry&#8217;s <a href="https://opentelemetry.io/docs/instrumentation/java/automatic/">Automatic Instrumentation</a> can be used by disabling the Scout&#8217;s <code>OpenTelemetryInitializer</code>.
-Therefore, the configuration property <code>scout.otel.initializerEnabled</code> must be set to <code>false</code>.
+by setting the configuration property <code>scout.otel.initializerEnabled</code> to <code>false</code>.
 Then you can follow the official setup guide.</p>
+</div>
+<div class="sect2">
+<h3 id="tracing"><a class="anchor" href="#tracing"></a>Tracing</h3>
+<div class="paragraph">
+<p>Activate tracing by setting the configuration properties <code>scout.otel.initializerEnabled</code> and <code>scout.otel.tracing.enabled</code> to <code>true</code>.
+Make sure to include the OpenTelemetryFilter in your setup (e.g by adding it as a IServletFilterContributor or including it in the web.xml).
+OpenTelemetryFilter should be placed first.</p>
+</div>
 </div>
 </div>
 </div>
@@ -505,8 +554,8 @@ Follow these steps to run the infrastructure and prepare the application for obs
 <li>
 <p>Start up the observability infrastructure (for demonstration purposes).<br>
 <code>docker compose up</code><br>
-To access <code>Prometheus</code> go to <a href="http://localhost:9090/" class="bare">http://localhost:9090/</a><br>
-To access <code>Grafana</code> go to <a href="http://localhost:3000/" class="bare">http://localhost:3000/</a></p>
+To access <code>Grafana</code> go to <a href="http://localhost:3000/" class="bare">http://localhost:3000/</a><br>
+(<code>Prometheus</code>: <a href="http://localhost:9090/" class="bare">http://localhost:9090/</a>)</p>
 </li>
 <li>
 <p>Activate OpenTelemetry SDK &amp; OTLP exporter in the application.<br></p>
@@ -525,6 +574,16 @@ To access <code>Grafana</code> go to <a href="http://localhost:3000/" class="bar
 <p>Use OTLP exporter in <code>dev</code> mode.<br>
 Set configuration property: <code>scout.otel.defaultExporter=otlp</code> or use the system property/environment variables of the autoconfigure feature.</p>
 </li>
+<li>
+<p>Activate OpenTelemetry Tracing support in the application<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Configuration property <code>scout.otel.tracing.enabled=true</code></p>
+</li>
+</ul>
+</div>
+</li>
 </ol>
 </div>
 <div class="admonitionblock tip">
@@ -534,7 +593,7 @@ Set configuration property: <code>scout.otel.defaultExporter=otlp</code> or use 
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Use the exporter <code>logging-otlp</code> to just print out the observability data.
+Use the <a href="https://opentelemetry.io/docs/languages/java/configuration/#properties-exporters">exporter <code>logging-otlp</code></a> to just print out the observability data.
 But do not forget to add the required maven dependency <code>io.opentelemetry:opentelemetry-exporter-logging-otlp</code>.
 </td>
 </tr>
@@ -590,6 +649,66 @@ see <code>org.eclipse.scout.rt.platform.opentelemetry.IHistogramViewHintProvider
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="providing-custom-samplers"><a class="anchor" href="#providing-custom-samplers"></a>Providing Custom Samplers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>ISamplerCustomizerProvider</code> interface allows you to define custom sampling logic based on span attributes. This can help reduce the number of traces sent to the collector by dropping traces that match specific rules.</p>
+</div>
+<div class="paragraph">
+<p>In the example below, two sampling rules are defined. If <strong>either</strong> rule matches (logical OR), the corresponding trace will be dropped. The <strong>first</strong> rule contains two conditions that must both be met (logical AND).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MySamplerProvider implements ISamplerCustomizerProvider {
+
+  @Override
+  public Sampler createSamplerCustomizer(Sampler fallback, ConfigProperties config) {
+    return new RuleBasedSamplerBuilder(SpanKind.SERVER, fallback)
+        .drop(
+            EqualityCondition.of(UrlAttributes.URL_QUERY, "poll"),        <i class="conum" data-value="1"></i><b>(1)</b>
+            RegexCondition.of(UrlAttributes.URL_PATH, "^/json")           <i class="conum" data-value="2"></i><b>(2)</b>
+        )
+        .drop(
+            RegexCondition.of(UrlAttributes.URL_PATH, "^/status")         <i class="conum" data-value="3"></i><b>(3)</b>
+        )
+        .build();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>EqualityCondition</code>: The span attribute value is equals to a target value - in this case "poll"</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>RegexCondition</code>: The span attribute value matches a given pattern - in this case "^/json"</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A single condition forming the second rule, matching the pattern <code>^/status</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="manual-instrumentation-for-tracing"><a class="anchor" href="#manual-instrumentation-for-tracing"></a>Manual Instrumentation for Tracing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To instrument your own Scout Application see examples for manual instrumentation <a href="https://github.com/open-telemetry/opentelemetry-java-examples?tab=readme-ov-file#java-opentelemetry-examples">here</a></p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. OpenTelemetry Protocol - for more information see <a href="https://opentelemetry.io/docs/specs/otlp/" class="bare">https://opentelemetry.io/docs/specs/otlp/</a>
 </div>
 </div>
 <nav class="pagination">
