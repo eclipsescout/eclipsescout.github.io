@@ -375,6 +375,8 @@
 </aside>
 <article class="doc">
 <h1 class="page">Object Factory</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>As seen in the <a href="widget.html#creating-a-widget" class="xref page">Creating a Widget</a>, a widget may be created using <code>scout.create</code>.
 When using this function, the call is delegated to the <code>ObjectFactory</code>.</p>
@@ -385,19 +387,43 @@ A typical Scout object has an <code>objectType</code> and an <code>init</code> f
 But actually any kind of object with a constructor function may be created.</p>
 </div>
 <div class="paragraph">
-<p>If you use a string based object type, objects are created using naming convention by default.
+<p>To create and initialize a new object, the <code>objectType</code> needs to be passed.
+The <code>objectType</code> is either a class reference pointing to the object you want to create or the name of the object.
+When using a class reference, the return value will be typed, so the IDE can assist you with code completion, which makes it the recommended approach.
+When using the name of the object (string based object type), the object needs to be registered using <code>ObjectFactory.get().registerNamespace</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Creating an object by class reference</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, Table} from '@eclipse-scout/core';
+
+let table = scout.create(Table, model);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Creating an object by name</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout} from '@eclipse-scout/core';
+
+let obj = scout.create('scout.Table', model);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you use a string based object type, the object is created using naming convention by default.
 This means when calling <code>scout.create('scout.Table', model)</code>, the <code>scout</code> namespace is searched for a class called <code>Table</code>.
 Since <code>scout</code> is the default namespace, it may be omitted.
-So calling <code>scout.create('Table', model)</code> has the same effect.
-If there is such a class found, it will be instantiated and the <code>init</code> function called, if there is one.
+So calling <code>scout.create('Table', model)</code> has the same effect.</p>
+</div>
+<div class="paragraph">
+<p>After creating the object, it will be instantiated and the <code>init</code> function called, if there is one.
 The <code>model</code> is passed to that <code>init</code> function.
 So instead of using <code>scout.create</code> you could also use the following code:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 1. Creating an object without the ObjectFactory</div>
+<div class="title">Listing 3. Creating an object without the ObjectFactory</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Table} from '@eclipse-scout/core';
-var table = new Table();
+let table = new Table();
 table.init(model);</code></pre>
 </div>
 </div>
@@ -410,11 +436,11 @@ If <code>scout.create('Table')</code> is called the object factory will check if
 Only if there is no registration found, the default approach using the naming convention is performed.</p>
 </div>
 <div class="paragraph">
-<p>In order to register you class, you need a file called <code>objectFactories</code> and add that to your JavaScript module (e.g. index.js).
+<p>In order to register your class, you need a file called <code>objectFactories</code> and add that to your JavaScript module (e.g. index.ts).
 The content of that file may look as following:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 2. Adding a new object factory registration</div>
+<div class="title">Listing 4. Adding a new object factory registration</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {CustomTable} from './index';
 import {scout} from '@eclipse-scout/core';
@@ -425,8 +451,8 @@ scout.addObjectFactories({
 </div>
 </div>
 <div class="paragraph">
-<p>This will simply add a new factory for the type <code>Table</code> the the list of existing factories.
-From now on <code>yourproject.CustomTable</code> will be instantiated every time a <code>Table</code> should be created.</p>
+<p>This will simply add a new factory for the type <code>Table</code> to the list of existing factories.
+From now on, <code>yourproject.CustomTable</code> will be instantiated every time a <code>Table</code> needs to be created.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -440,6 +466,44 @@ So, <code>scout.create('Table')</code> as well as <code>scout.create(Table)</cod
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="object-factory-hints"><a class="anchor" href="#object-factory-hints"></a>Object Factory Hints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When creating a new object using the <code>ObjectFactory</code>, the object can automatically be extended by the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>objectType</code>: the string based object type of the created object. This works only if the object has been registered using <code>ObjectFactory.get().registerNamespace</code>.</p>
+</li>
+<li>
+<p><code>id</code>: a generated ID based on the UI sequence (see <code>ObjectIdProvider.createUiSeqId</code>), if the <code>model</code> does not already contain an id.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Whether these properties are added is controlled by the <code>objectFactoryHints</code> decorator.
+This decorator can be added to the class of the object that is supposed to be created by the object factory.
+It provides two options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ensureObjectType</code>: specifies whether the string based object type needs to be resolved and assigned. Default is true.</p>
+</li>
+<li>
+<p><code>ensureId</code>: specifies whether a unique id needs to be assigned if the object does not already have one. Default is false.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The decorator is optional. If neither the class nor a super class is decorated, the default hints will be applied.</p>
+</div>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="widget.html">Widget</a></span>

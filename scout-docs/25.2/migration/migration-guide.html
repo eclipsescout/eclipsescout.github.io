@@ -575,6 +575,41 @@ This handler has been added to the main class <code>org.eclipse.scout.rt.app.App
 <p>If the application is not run using the recommended main class <code>org.eclipse.scout.rt.app.Application</code>, e.g. for .war deployments the <code>GzipHandler</code> is not registered automatically.
 For example for a Jetty .war deployment it may be registered by activating the <code>gzip</code> Jetty module.</p>
 </div>
+<div class="sect2">
+<h3 id="id-handling-of-scout-js-objects"><a class="anchor" href="#id-handling-of-scout-js-objects"></a>ID handling of Scout JS objects</h3>
+<div class="paragraph">
+<p>The following changed for Scout JS IDs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In older releases an attribute <code>data-classid</code> has been written to the browser DOM if the corresponding URL hints have been enabled (e.g. <code>debug</code> or <code>inspector</code>). The attribute name has been changed to <code>data-uuid</code>. It holds the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Scout Classic elements (Java): the values returned by <code>ITypeWithClassId#classId()</code> (existing behavior).</p>
+</li>
+<li>
+<p>For Scout JS elements (TypeScript): the value of the new <code>uuid</code> attribute.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <code>classId</code> of Java classes is now always sent to the UI, it is not required to enable the property <code>scout.urlHints</code> anymore. However, it is still necessary to set the query parameter <code>inspector</code> or <code>debug</code> to write these values to the DOM attribute <code>data-uuid</code> to <code>true</code>, if not running in dev mode.</p>
+</li>
+<li>
+<p><code>widgets.createUniqueId()</code> has been moved to <code>ObjectIdProvider.createUiSeqId()</code> and requires no argument anymore.</p>
+</li>
+<li>
+<p><code>ObjectFactory.get().createUniqueId()</code> has been moved to <code>ObjectIdProvider.createUiSeqId()</code>.</p>
+</li>
+<li>
+<p>Ids of <code>ObjectIdProvider.createUiSeqId()</code> have a new format. The old <code>ui</code> prefix has been replaced with <code>_ui_</code>. So instead of <code>ui1234</code> it has now the value <code>_ui_1234</code>. This helps to read the values as it separates the number from the prefix and also improves detection if an ID is coming from the UI sequence.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -698,6 +733,18 @@ Complex objects like <code>Date</code> or <code>Map</code> in this extra model a
 . When using the <code>HybridManager</code> or the <code>JsForm</code>: It uses the Data Object class and deserializes to these classes (instead of a Pojo as before) as soon as a class having a matching <code>@typeName</code> decorator is found in TypeScript.
 So to use the new API for <code>HybridManager</code> or <code>JsForm</code>, just create the necessary Data Object classes. But keep in mind that as soon it is converted, these instances will be returned instead of a Pojo.
 So this might require some more code migrations on your side (see above).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adjusted-content-security-policy-csp"><a class="anchor" href="#adjusted-content-security-policy-csp"></a>Adjusted Content Security Policy (CSP)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>base-uri</code>, <code>form-action</code>, <code>child-src</code> and <code>worker-src</code> are now set to 'self' to only accept resources from the same origin.
+Until now, they accepted ressources from every origin.</p>
+</div>
+<div class="paragraph">
+<p>If other origins need to be allowed, they have to be whitelisted explicitly, see also <a href="../technical-guide/common-concepts/security.html#csp" class="xref page">Content Security Policy</a>.</p>
 </div>
 </div>
 </div>
