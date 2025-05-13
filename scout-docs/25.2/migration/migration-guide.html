@@ -182,6 +182,12 @@
     <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -575,8 +581,11 @@ This handler has been added to the main class <code>org.eclipse.scout.rt.app.App
 <p>If the application is not run using the recommended main class <code>org.eclipse.scout.rt.app.Application</code>, e.g. for .war deployments the <code>GzipHandler</code> is not registered automatically.
 For example for a Jetty .war deployment it may be registered by activating the <code>gzip</code> Jetty module.</p>
 </div>
-<div class="sect2">
-<h3 id="id-handling-of-scout-js-objects"><a class="anchor" href="#id-handling-of-scout-js-objects"></a>ID handling of Scout JS objects</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="id-handling-of-scout-js-objects"><a class="anchor" href="#id-handling-of-scout-js-objects"></a>ID handling of Scout JS objects</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The following changed for Scout JS IDs:</p>
 </div>
@@ -608,7 +617,6 @@ For example for a Jetty .war deployment it may be registered by activating the <
 <p>Ids of <code>ObjectIdProvider.createUiSeqId()</code> have a new format. The old <code>ui</code> prefix has been replaced with <code>_ui_</code>. So instead of <code>ui1234</code> it has now the value <code>_ui_1234</code>. This helps to read the values as it separates the number from the prefix and also improves detection if an ID is coming from the UI sequence.</p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
