@@ -467,8 +467,10 @@ This migration handler will remove the contribution with the given type name and
 </div>
 </div>
 <div class="sect1">
-<h2 id="table-default-row-action"><a class="anchor" href="#table-default-row-action"></a>Table default row action</h2>
+<h2 id="table-scout-js"><a class="anchor" href="#table-scout-js"></a>Table (Scout JS)</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="table-default-row-action"><a class="anchor" href="#table-default-row-action"></a>Default Row Action</h3>
 <div class="paragraph">
 <p>The Scout JS <code>Table</code> has a new property <code>defaultRowAction</code> of type <code>Action</code>.
 If set, this action is executed when a row is double-clicked.
@@ -484,6 +486,30 @@ menus: [{
   id: 'MyMenu',
   objectType: Menu
 }]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="column-improved-api"><a class="anchor" href="#column-improved-api"></a>Column: Improved API</h3>
+<div class="paragraph">
+<p>Some new methods have been added to easier get the cells and their values:
+<code>cells()</code>, <code>cellValues()</code>, <code>selectedCells()</code>, <code>selectedCellValue()</code>, <code>selectedCellValues()</code>, <code>checkedCellValue()</code>, <code>checkedCellValues()</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="move-table-row-menu-helper"><a class="anchor" href="#move-table-row-menu-helper"></a>Move Table Row Menu Helper</h3>
+<div class="paragraph">
+<p>If you need menus that move rows of a table up or down, you can use the new <code>MoveTableRowMenuHelper</code>.
+The helper implements actions for the move menus and updates their states (enabled, visible) accordingly.</p>
+</div>
+<div class="paragraph">
+<p>To use it, just create the helper and install it for your menus:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">const moveRowHelper = scout.create(MoveTableRowMenuHelper);
+moveRowHelper.install({table, moveRowUpMenu, moveRowDownMenu});</code></pre>
+</div>
 </div>
 </div>
 </div>

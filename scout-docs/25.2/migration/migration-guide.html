@@ -749,7 +749,7 @@ So this might require some more code migrations on your side (see above).</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>base-uri</code>, <code>form-action</code>, <code>child-src</code> and <code>worker-src</code> are now set to 'self' to only accept resources from the same origin.
-Until now, they accepted ressources from every origin.</p>
+Until now, they accepted resources from every origin.</p>
 </div>
 <div class="paragraph">
 <p>If other origins need to be allowed, they have to be whitelisted explicitly, see also <a href="../technical-guide/common-concepts/security.html#csp" class="xref page">Content Security Policy</a>.</p>
@@ -778,7 +778,7 @@ result.putIf("name", myName, StringUtility::hasText);</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="hybrid-actions"><a class="anchor" href="#hybrid-actions"></a>Hybrid actions</h2>
+<h2 id="hybrid-actions"><a class="anchor" href="#hybrid-actions"></a>Hybrid Actions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>All <code>IHybridAction</code> are now using a namespace and typed data objects instead of <code>IDoEntity</code>.
@@ -826,8 +826,10 @@ If you are calling some of the provided <code>IHybridAction</code>, please check
 </div>
 </div>
 <div class="sect1">
-<h2 id="table-default-row-action"><a class="anchor" href="#table-default-row-action"></a>Table default row action</h2>
+<h2 id="table-scout-js"><a class="anchor" href="#table-scout-js"></a>Table (Scout JS)</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="default-row-action"><a class="anchor" href="#default-row-action"></a>Default Row Action</h3>
 <div class="paragraph">
 <p>The <code>Table</code> now supports a <code>defaultRowAction</code> (see <a href="../releasenotes/release-notes.html#table-default-row-action" class="xref page">Release Notes</a>).
 Therefore, it is no longer necessary to listen on <code>rowAction</code> events in order to execute a <code>Menu</code></p>
@@ -851,6 +853,49 @@ menus: [{
 <div class="paragraph">
 <p>With the changes made for this feature the method <code>Table._triggerRowAction</code> was removed.
 Classes overriding this method in order to execute additional logic or prevent the <code>rowAction</code> events from being triggered can simply listen on <code>rowAction</code> and execute the logic in an event handler or prevent the default.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-behavior-for-roworderchanged-event"><a class="anchor" href="#new-behavior-for-roworderchanged-event"></a>New Behavior for RowOrderChanged Event</h3>
+<div class="paragraph">
+<p>The event is not triggered for each animation step anymore but only once after the row order has been applied to the model.
+This means the property <code>event.animating</code> is now obsolete and has therefore been removed, so you don&#8217;t have to check it anymore.
+If you really need to be informed during the animation, just listen for the new <code>rowOrderChangeAnimation</code> event.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simplified-api-of-movecolumn"><a class="anchor" href="#simplified-api-of-movecolumn"></a>Simplified API of moveColumn()</h3>
+<div class="paragraph">
+<p>The parameters <code>visibleOldPos</code> and <code>dragged</code> have been removed, it is not necessary to pass them anymore.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="column-now-requires-parent"><a class="anchor" href="#column-now-requires-parent"></a>Column Now Requires Parent</h3>
+<div class="paragraph">
+<p>When creating a <code>Column</code> using <code>scout.create</code>, the table now needs to be passed using the <code>parent</code> property.
+This replaces the <code>session</code> and <code>table</code> properties.</p>
+</div>
+<div class="paragraph">
+<p>To migrate search for the dynamic creation of columns and replace these two properties with the new <code>parent</code> property.
+This is also relevant for other column types like <code>BooleanColumn</code>, <code>DateColumn</code>, <code>IconColumn</code>, <code>NumberColumn</code>, <code>SmartColumn</code> and custom columns.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. old: using the <code>session</code> and <code>table</code> properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">return scout.create(Column, {
+  session: this.session,
+  table: table
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. new: using the <code>parent</code> property</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">return scout.create(Column, {
+  parent: table
+});</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
