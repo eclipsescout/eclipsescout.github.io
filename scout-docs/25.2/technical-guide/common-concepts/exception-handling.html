@@ -554,7 +554,7 @@ By default, a <a href="#processingexception">ProcessingException</a> is logged a
 catch (Exception e) {
   throw BEANS.get(PlatformExceptionTranslator.class).translate(e)
       .withContextInfo("cid", "12345")
-      .withContextInfo("user", Subject.getSubject(AccessController.getContext()))
+      .withContextInfo("user", Subject.current())
       .withContextInfo("job", IFuture.CURRENT.get());
 }</code></pre>
 </div>

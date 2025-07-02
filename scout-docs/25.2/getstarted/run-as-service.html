@@ -410,11 +410,11 @@ For the purpose of this tutorial we will use <a href="https://ubuntu.com/downloa
 <h2 id="prepare-java"><a class="anchor" href="#prepare-java"></a>Prepare Java</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Java 21 is required to run the Scout applications</p>
+<p>Java 24 is required to run the Scout applications</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>apt install openjdk-21-jdk</pre>
+<pre>apt install openjdk-24-jdk</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -426,7 +426,7 @@ For the purpose of this tutorial we will use <a href="https://ubuntu.com/downloa
 </div>
 </div>
 <div class="paragraph">
-<p>and select Java 21 as default.</p>
+<p>and select Java 24 as default.</p>
 </div>
 </div>
 </div>
@@ -746,7 +746,7 @@ WorkingDirectory=/opt/helloscout/helloscout-server/
 ExecStart=/opt/helloscout/helloscout-server/bin/app.sh
 PIDFile=/opt/helloscout/helloscout-server/bin/app.pid
 
-Environment=JAVA_BIN=/usr/lib/jvm/java-21-openjdk-amd64/bin/java
+Environment=JAVA_BIN=/usr/lib/jvm/java-24-openjdk-amd64/bin/java
 
 User=helloscout
 Group=helloscout
@@ -768,7 +768,7 @@ WorkingDirectory=/opt/helloscout/helloscout-ui/
 ExecStart=/opt/helloscout/helloscout-ui/bin/app.sh
 PIDFile=/opt/helloscout/helloscout-ui/bin/app.pid
 
-Environment=JAVA_BIN=/usr/lib/jvm/java-21-openjdk-amd64/bin/java
+Environment=JAVA_BIN=/usr/lib/jvm/java-24-openjdk-amd64/bin/java
 
 User=helloscout
 Group=helloscout

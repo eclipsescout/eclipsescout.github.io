@@ -417,7 +417,7 @@ RunContexts.empty()
     .run(() -&gt; {
       // run some code <i class="conum" data-value="3"></i><b>(3)</b>
       System.out.println(NlsLocale.CURRENT.get()); // &gt; Locale.US
-      System.out.println(Subject.getSubject(AccessController.getContext())); // &gt; john
+      System.out.println(Subject.current()); // &gt; john
     });</code></pre>
 </div>
 </div>
@@ -486,7 +486,7 @@ RunContexts.empty()
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">subject</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subject to run the code on behalf</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subject.getSubject(AccessController.getContext())</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subject.current()</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locale</p></td>
