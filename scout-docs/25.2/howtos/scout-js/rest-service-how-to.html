@@ -706,6 +706,116 @@ export class PizzaRestrictionDo extends BaseDoEntity {
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="page-with-table-search-form"><a class="anchor" href="#page-with-table-search-form"></a>Create a search form</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Listing 6. hellojs.ui/src/main/js/pizza/PizzaSearchForm.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Form, FormModel, GroupBox, NumberField, ResetMenu, scout, SearchMenu} from '@eclipse-scout/core';
+import {PizzaRestrictionDo} from './PizzaTablePage';
+
+export class PizzaSearchForm extends Form {
+  protected override _jsonModel(): FormModel {
+    return { <i class="conum" data-value="1"></i><b>(1)</b>
+      title: 'Search',
+      rootGroupBox: {
+        id: 'MainBox',
+        objectType: GroupBox,
+        fields: [
+          {
+            id: 'SizeField',
+            objectType: NumberField,
+            text: 'Size'
+          },
+          {
+            id: 'PriceField',
+            objectType: NumberField,
+            text: 'Price'
+          }
+        ],
+        menus: [ <i class="conum" data-value="2"></i><b>(2)</b>
+          {
+            id: 'SearchMenu',
+            objectType: SearchMenu
+          },
+          {
+            id: 'ResetMenu',
+            objectType: ResetMenu
+          }
+        ]
+      }
+    };
+  }
+
+  override importData() { <i class="conum" data-value="3"></i><b>(3)</b>
+    this.widget('SizeField').setValue(this.data?.size);
+    this.widget('PriceField').setValue(this.data?.price);
+  }
+
+  override exportData(): PizzaRestrictionDo { <i class="conum" data-value="4"></i><b>(4)</b>
+    return scout.create(PizzaRestrictionDo, {
+      size: this.widget('SizeField').value,
+      price: this.widget('PriceField').value
+    });
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A small inline model for the <code>PizzaSearchForm</code> having a search field for the size and the price.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Adding a <code>SearchMenu</code> and <code>ResetMenu</code> automatically reloads the table when these menus are clicked.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Importing the data: sets the values of the <code>PizzaRestrictionDo</code> on the fields.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Exporting the data: creates a <code>PizzaRestrictionDo</code> using the values of the fields.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. hellojs.ui/src/main/js/pizza/PizzaTablePage.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">protected override _jsonModel(): PageWithTableModel {
+  return {
+    // ...
+    detailTable: {
+      // ...
+      tableControls: [ <i class="conum" data-value="1"></i><b>(1)</b>
+        {
+          id: 'SearchFromTableControl',
+          objectType: SearchFormTableControl,
+          form: {
+            id: 'SearchForm',
+            objectType: PizzaSearchForm
+          }
+        }
+      ]
+    }
+  };
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Adding the <code>PizzaSearchForm</code> to the inline model of the <code>PizzaTablePage</code>. It is set as the form of a <code>SearchFormTableControl</code>.
+Each time the table page loads its data it exports the data of the search form and uses it as search filter.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="flip-card-how-to.html">How to Create a Custom Field</a></span>
   <span class="next"><a href="../../releasenotes/release-notes.html">Release Notes</a></span>

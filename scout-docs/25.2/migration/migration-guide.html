@@ -955,6 +955,56 @@ To show only the read-only label again, set <code>valueEditable: false</code>.</
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="search-form-table-control-scout-js"><a class="anchor" href="#search-form-table-control-scout-js"></a>Search Form Table Control (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout JS <code>PageWithTable</code> will no longer filter its controls for the first <code>FormTableControl</code> holding a <code>Form</code> when looking for its search filter but for the first <code>SearchFormTableControl</code>
+(see <a href="../howtos/scout-js/rest-service-how-to.html#page-with-table-search-form" class="xref page">Search Form</a> for more details).
+Therefore, all existing search form table controls need to be migrated to the <code>SearchFormTableControl</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. old: A <code>FormTableControl</code> containing the search form.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">tableControls: [
+  {
+    id: 'SearchFromTableControl',
+    objectType: FormTableControl,
+    iconId: icons.SEARCH,
+    keyStroke: 'ctrl-shift-f',
+    form: {
+      id: 'SearchForm',
+      objectType: MySearchForm
+    }
+  }
+]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. new: A <code>SearchFormTableControl</code> containing the search form. <code>iconId</code> and <code>keyStroke</code> were removed as they are identical to the defaults of <code>SearchFormTableControl</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">tableControls: [
+  {
+    id: 'SearchFromTableControl',
+    objectType: SearchFormTableControl,
+    form: {
+      id: 'SearchForm',
+      objectType: MySearchForm
+    }
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>SearchFormTableControl</code> uses <code>icons.SEARCH</code> as its default icon and adds the keystroke 'ctrl-shift-f'.</p>
+</div>
+<div class="paragraph">
+<p>If the search form contains a <code>SearchMenu</code> or <code>ResetMenu</code> or any other <code>Menu</code> triggering a 'search' or 'reset' event on the search form,
+all listeners on these events that reload the table can be removed as this is now done by the <code>PageWithTable</code> itself.
+Not removing these listeners will result in the data being loaded twice.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
