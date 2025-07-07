@@ -512,6 +512,21 @@ menus: [{
 </div>
 </div>
 <div class="sect2">
+<h3 id="new-api-to-insert-delete-or-set-columns"><a class="anchor" href="#new-api-to-insert-delete-or-set-columns"></a>New API to insert, delete or set columns</h3>
+<div class="paragraph">
+<p>The new methods <code>insertColumn</code>, <code>insertColumns</code>, <code>deleteColumn</code>, <code>deleteColumns</code> and <code>setColumns</code> can be used to modify the <code>columns</code> of the <code>Table</code>.
+The columns inserted using <code>insertColumn</code>, <code>insertColumns</code> or <code>setColumns</code> are initialized with an <code>initValue</code> that can be passed to the methods directly or in form of a callback.
+When the <code>columns</code> of the <code>Table</code> are modified using one of these methods the <code>Table</code> will automatically recalculate its checkable and table node column, re-apply filters and apply sorting, grouping and background effects.
+Therefore, method <code>setColumns</code> can also be used to change and apply e.g. sort properties of multiple columns at once.
+In order to do so, simply change the properties of the columns and call</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">table.setColumns([...table.columns]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="move-table-row-menu-helper"><a class="anchor" href="#move-table-row-menu-helper"></a>Move Table Row Menu Helper</h3>
 <div class="paragraph">
 <p>If you need menus that move rows of a table up or down, you can use the new <code>MoveTableRowMenuHelper</code>.
