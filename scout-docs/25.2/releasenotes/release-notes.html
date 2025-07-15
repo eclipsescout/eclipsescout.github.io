@@ -553,6 +553,65 @@ The <code>PageWithTable</code> uses the data of the search form as its search fi
 </div>
 </div>
 <div class="sect1">
+<h2 id="table-organizer-menu"><a class="anchor" href="#table-organizer-menu"></a>Table Organizer Menu</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the top right corner of the table header is a menu with a gear icon that opens the table organizer form.
+This form has been simplified and now has a cleaner look.</p>
+</div>
+<div class="paragraph">
+<p>Also, the menu is now available for Scout JS tables.
+It is visible by default for the table of a <code>PageWithTable</code>.
+If it should be visible for other tables as well, just add the menu <code>TableOrganizerMenu</code> to the menus of your table.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">table: {
+  objectType: Table,
+  menus: [
+    {
+      objectType: TableOrganizerMenu
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/table_organizer_form.png" alt="table organizer form">
+</div>
+<div class="title">Figure 1. Table Organizer Form</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-group-in-table-column-menu"><a class="anchor" href="#new-group-in-table-column-menu"></a>New Group in Table Column Menu</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The column menu now has a group called <code>Width</code> containing the following actions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Optimize width: makes the column as big as necessary to show its content</p>
+</li>
+<li>
+<p>Optimize width of all columns: makes all columns as big as necessary to show their content</p>
+</li>
+<li>
+<p>Adjust width: allows the user to set the width in pixels of that column</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/column_header_menu.png" alt="column header menu">
+</div>
+<div class="title">Figure 2. Column Header Menu</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="slider"><a class="anchor" href="#slider"></a>Slider</h2>
 <div class="sectionbody">
 <div class="paragraph">
