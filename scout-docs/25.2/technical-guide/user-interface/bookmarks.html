@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>URL Hints :: Eclipse Scout</title>
-    <link rel="prev" href="object-identifiers.html">
-    <link rel="next" href="widget-reference.html">
+    <title>Bookmarks :: Eclipse Scout</title>
+    <link rel="prev" href="page.html">
+    <link rel="next" href="styling.html">
     <meta name="generator" content="Antora 3.1.10">
     <link rel="stylesheet" href="../../../../_/css/site.css">
     <script>var uiRootPath = '../../../../_'</script>
@@ -167,7 +167,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="page.html">Page</a>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="bookmarks.html">Bookmarks</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -188,7 +188,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="object-identifiers.html">Object Identifiers</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="url-hints.html">URL Hints</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -364,13 +364,13 @@
     <li><a href="../../index.html">Eclipse Scout</a></li>
     <li><a href="../technical-guide.html">Technical Guide</a></li>
     <li>User Interface</li>
-    <li><a href="url-hints.html">URL Hints</a></li>
+    <li><a href="bookmarks.html">Bookmarks</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">25.2</button>
   <div class="version-menu">
-    <a class="version is-current" href="url-hints.html">25.2</a>
+    <a class="version is-current" href="bookmarks.html">25.2</a>
     <a class="version is-missing" href="../../../25.1/index.html">25.1</a>
     <a class="version is-missing" href="../../../24.2/index.html">24.2</a>
     <a class="version is-missing" href="../../../24.1/index.html">24.1</a>
@@ -379,123 +379,152 @@
     <a class="version is-missing" href="../../../22/index.html">22</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.2/docs/modules/technical-guide/pages/user-interface/url-hints.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.2/docs/modules/technical-guide/pages/user-interface/bookmarks.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">URL Hints</h1>
+<h1 class="page">Bookmarks</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>URL hints are various query parameters mainly used to debug or test the application.</p>
+<p>A bookmark describes a specific place in the desktop navigation.
+It consists of the following information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The selected <a href="outline.html" class="xref page">outline</a></p>
+</li>
+<li>
+<p>The selected <a href="page.html" class="xref page">page</a></p>
+</li>
+<li>
+<p>The path from the outline&#8217;s root to the selected page</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For each page, the bookmark not only holds information about its identity but also about its state, e.g. search data, table filters, table settings etc.</p>
+</div>
+<div class="paragraph">
+<p>This data can be persisted and used later to jump back to the same location in a single action.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The information presented in this chapter applies to Scout JS only.
+Scout Classic applications may use the legacy <code>BookmarkUtility</code> for a similar functionality.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_bookmark"><a class="anchor" href="#_creating_a_bookmark"></a>Creating a Bookmark</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All bookmark actions are provided by the class <code>BookmarkSupport</code>.
+A singleton instance is accessible via the static <code>get()</code> method.
+To create a new bookmark, simply call the <code>createBookmark()</code> method.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 1. Activating the debug hint for the jswidgets application</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">https://scout.bsiag.com/jswidgets/?debug=true</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">let bookmark = await BookmarkSupport.get(session).createBookmark();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As the use of these hints can reveal internal information about the application, they must be explicitly enabled using the config property <a href="../common-concepts/platform.html#scout.urlHints.enabled" class="xref page">scout.urlHints.enabled</a>.</p>
+<p>By default, this creates a bookmark for the currently selected page.
+A different page can be specified via the optional argument <code>CreateBookmarkParam</code>.
+The same argument allows configuring the type and content of the resulting bookmark.</p>
 </div>
 <div class="paragraph">
-<p>The state of the hints is stored as a cookie to make it available in subsequent requests without the need to create a HTTP session.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The default values for the hints change depending on whether the platform is running in <a href="../common-concepts/platform.html#scout.devMode" class="xref page">development mode</a>.
-If it runs in development mode, you typically don&#8217;t have to set any of these values for your regular development process.
-</td>
-</tr>
-</table>
+<p>The return value is a <a href="../working-with-data/data-object.html" class="xref page">data object</a> containing mainly the bookmark definition itself (=&#160;the page state and the path).
+Depending on the implementation, additional metadata may be included, e.g. a human-readable title.</p>
 </div>
 <div class="paragraph">
-<p>The following hints are available:</p>
+<p>For a page to be bookmarkable, it needs to have a <a href="object-identifiers.html" class="xref page">unique identifier</a>, so it can be recognized later.
+This identifier is usually assigned by specifying the <code>uuid</code> property in the page model.
+Because all child pages of a table page are of the same type and therefore share the same <code>uuid</code>, some additional information is needed to unambiguously identify them:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the table has columns marked as <em>primary key</em>, the corresponding row values are converted to a <code>BookmarkTableRowIdentifierDo</code> and stored in the bookmark.</p>
+</li>
+<li>
+<p>If present, the <em>page param</em> of the child page is included in the bookmark.
+This data object contains the necessary input to re-create a specific page instance (e.g. the key of the corresponding entity).
+It needs to have the same name as the page with the suffix <code>PageParamDo</code> (e.g. Person<em>Page</em> &#8594; Person<em>PageParamDo</em>).
+For pages without an explicit page param, a <code>PageIdDummyPageParamDo</code> with the page&#8217;s <code>uuid</code> is stored in the bookmark.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="cache"><a class="anchor" href="#cache"></a>cache</h2>
+<h2 id="_activating_a_bookmark"><a class="anchor" href="#_activating_a_bookmark"></a>Activating a Bookmark</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Enables (true) or disables (false) HTTP caching of resources.</p>
+<p>Given a <code>BookmarkDo</code>, you can instruct the <code>BookmarkSupport</code> to navigate to the corresponding location.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">await BookmarkSupport.get(session).activateBookmark(bookmark);</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>If caching is enabled, reasonable caching headers (Cache-Control, ETag, Last-Modified) are set for static resources.
-Additionally, the server caches these resources in memory to reduce file-system access to a minimum.</p>
+<p>This resolves the elements of the page path step-by-step.
+Each page is loaded and restored to the previous state, before a drill-down with the next element of the path is performed.
+In case one element of the page path cannot be found anymore (e.g. because the corresponding data has been deleted in the meantime), the process stops and a warning is shown to the user.
+Otherwise, the last page in the page is selected.</p>
 </div>
 <div class="paragraph">
-<p>If caching is disabled, the Cache-Control header is set with the appropriate values to instruct the caller (browser, proxies) that the resource must not be cached.
-Also, the server won&#8217;t cache these resources in memory.</p>
-</div>
-<div class="paragraph">
-<p>Default value is true (false in development mode).</p>
+<p>Instead of jumping to the original location, it is also possible to simply create a new instance of a bookmarked page and add it dynamically to the outline.
+In that case, the rest of the page path in the bookmark is irrelevant.
+If the page requires some input, it has to be stored in an explicit <em>page param</em>, so it can be re-created without its parent.
+With the stored page param in hand, you can compute the corresponding object type of the page by using the <code>PageResolver</code>.
+Then, use <code>scout.create()</code> to <a href="widget.html#creating-a-widget" class="xref page">create</a> the page instance and add it to the outline like any other page.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="minify"><a class="anchor" href="#minify"></a>minify</h2>
+<h2 id="_managing_bookmarks"><a class="anchor" href="#_managing_bookmarks"></a>Managing Bookmarks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Enables (true) or disables (false) minification of JS / CSS files.</p>
+<p>The <code>BookmarkSupport</code> offers basic operations to create and activate bookmarks, but does not specify how they should be stored.
+Applications can and should implement their own UI if they want to enable their users to use this function.</p>
 </div>
 <div class="paragraph">
-<p>If the value is true, the <a href="html-document-parser.html" class="xref page">HTML Document Parser</a> will augment the JavaScript and CSS file names with a fingerprint (content-hash) and the <code>.min.</code> suffix: <code>[name]-[contenthash].min.js/css</code>, e.g. <code>jswidgets-2d8843a6ef22419e10a2.min.js</code>.
-The returned html file will instruct the browser to load the minified versions of these resources.</p>
+<p>Two basic form are provided as a starting point, although their use is entirely optional:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BookmarkForm</code>: Allows to set or edit a bookmark&#8217;s name.</p>
+</li>
+<li>
+<p><code>ManageBookmarksForm</code>: Shows a list of bookmark entries and allows to edit, reorder and delete them.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>If the value is false, the unminified versions are loaded.</p>
-</div>
-<div class="paragraph">
-<p>Default value is true (false in development mode).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="inspector"><a class="anchor" href="#inspector"></a>inspector</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Enables (true) or disables (false) inspector attributes in DOM (<code>modelClass</code>, <code>uuid</code>).
-See also <a href="object-identifiers.html" class="xref page">Object Identifiers</a></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The inspector hint can be used without enabling <a href="../common-concepts/platform.html#scout.urlHints.enabled" class="xref page">scout.urlHints.enabled</a>.
-In that case, the <code>modelClass</code> of Java objects won&#8217;t be available, but the <code>classId</code> will, which does not expose names of source code elements.
-For JavaScript objects both <code>uuid</code> and <code>modelClass</code> will be added because they are available in the browser anyway.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Default value is false (true in development mode).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="debug"><a class="anchor" href="#debug"></a>debug</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>True sets <code>cache=false</code>, <code>minify=false</code>, <code>inspector=true</code>. False sets the opposite.</p>
+<p>The <code>BookmarkStore</code> base class specifies methods to load and store bookmarks.
+Scout provides a default implementation called <code>LocalBookmarkStore</code> that saves bookmarks as JSON into the browser&#8217;s local storage.
+To use a different storage method (e.g. storing to a database via <a href="../working-with-data/rest.html" class="xref page">REST service</a>), you can register your own implementation via the <a href="object-factory.html" class="xref page">object factory</a>.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="object-identifiers.html">Object Identifiers</a></span>
-  <span class="next"><a href="widget-reference.html">Widget Reference</a></span>
+  <span class="prev"><a href="page.html">Page</a></span>
+  <span class="next"><a href="styling.html">Styling</a></span>
 </nav>
 </article>
   </div>

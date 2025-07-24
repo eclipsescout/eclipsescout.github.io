@@ -168,6 +168,9 @@
     <a class="nav-link" href="page.html">Page</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="styling.html">Styling</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -193,6 +196,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ui-preferences.html">UI Preferences</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="html-document-parser.html">HTML Document Parser</a>
@@ -415,7 +421,7 @@ A widget contains the model, which represents the state of the widget. In a Scou
 <p>The big advantage of this concept is that the model of the widget may be changed any time, even if the widget is not rendered. This means you can prepare a widget like a form, prepare all its child widgets like the form fields, and then render them at once. If you want to hide the form, just remove it. It won&#8217;t be displayed anymore, but you can still modify it, like changing the label of a field or adding rows to a table. The next time it is rendered the changes will be reflected. If you do such a modification when it is rendered, it will be reflected immediately.</p>
 </div>
 <div class="paragraph">
-<p>Destroying a widget means it will detach itself from the parent and destroy all its children. Typically this is done by Scout itself e.g. when closing a form.
+<p>Destroying a widget means it will detach itself from the parent and destroy all its children. Typically, this is done by Scout itself e.g. when closing a form.
 If you want to destroy a widget yourself, it is recommended to do that by deleting it in its owner or parent (e.g. a GroupBox has a method <code>deleteField</code> which will destroy the field if the GroupBox is its owner).
 If you have attached listeners to other widgets at initialization time, now is the time to detach them. After a widget is destroyed it cannot be used anymore. Every attempt will result in a <code>Widget is destroyed</code> error.</p>
 </div>
@@ -510,7 +516,7 @@ If the group box is rendered, it will render its fields too.</p>
 <div class="paragraph">
 <p>You don&#8217;t need a group box to render the string field, you could render it directly onto the desktop.
 But if you want to use a form, you need a group box and create the form, group box and the field.
-Doing this programmatically, meaning creating each widget separately using <code>scout.create</code>, is time consuming, that is why we suggest to use the declarative approach.</p>
+Doing this programmatically, meaning creating each widget separately using <code>scout.create</code>, is time-consuming, that is why we suggest to use the declarative approach.</p>
 </div>
 </div>
 </div>
@@ -619,7 +625,7 @@ export default {
 </div>
 <div class="paragraph">
 <p>Obviously this makes the JSON code harder to read and understand and the developer has to lookup the enum/constant definition first.
-This is where the <em>${const:NAME}</em> tag comes to help.
+This is where the <code>${const:NAME}</code> tag comes to help.
 A widget can define a list of properties that can be used with the const-tag.
 The widget defines in which enum/constant the name provided by the tag is resolved.
 Using the const-tag, the JSON example now looks like this:</p>
@@ -686,7 +692,7 @@ To do the type casting, you can either specify the return type directly at the t
 <div class="listingblock">
 <div class="title">Listing 5. Using the second parameter</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {Menu} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Menu} from '@eclipse-scout/core';
 
 let menu = this.widget('YourId', Menu);</code></pre>
 </div>
@@ -694,7 +700,7 @@ let menu = this.widget('YourId', Menu);</code></pre>
 <div class="listingblock">
 <div class="title">Listing 6. Cast manually (TypeScript)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">import {Menu} from '@eclipse-scout/core';
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Menu} from '@eclipse-scout/core';
 
 let menu = this.widget('YourId') as Menu;</code></pre>
 </div>
@@ -794,7 +800,7 @@ console.log(field.labelVisible); // prints true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It is important to always use the setter to modify a property, because calling it does not just change the value. Instead it will call the method <code>setProperty(propertyName, value)</code> which does the following:</p>
+<p>It is important to always use the setter to modify a property, because calling it does not just change the value. Instead, it will call the method <code>setProperty(propertyName, value)</code> which does the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -818,10 +824,10 @@ console.log(field.labelVisible); // prints true</code></pre>
 <h2 id="widget-properties"><a class="anchor" href="#widget-properties"></a>Widget Properties</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A widget property is a special kind of a property which references another widget.</p>
+<p>A widget property is a special kind of property that references another widget.</p>
 </div>
 <div class="paragraph">
-<p>Defining a property as widget property has the benefit that the widget is created automatically. Lets take the group box as an example. A group box has a widget property called fields. The fields are widgets, namely form fields. If you create a group box, you may specify its fields directly:</p>
+<p>Defining a property as widget property has the benefit that the widget is created automatically. Let&#8217;s take the group box as an example. A group box has a widget property called fields. The fields are widgets, namely form fields. If you create a group box, you may specify its fields directly:</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 11. Creating the string field automatically using a widget property</div>
@@ -841,7 +847,7 @@ console.log(groupBox.fields[0] instanceof StringField);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the above example the group box is created using <code>scout.create</code>. After creating the group box you can access the property fields and you will notice that the string field was created as well, even though <code>scout.create</code> has not been called explicitly for the string field. This is because the property <code>fields</code> is defined as widget property. During the initialization of the group box it sets the property <code>fields</code> and because the value is not a widget yet (resp. the elements in the array), <code>scout.create</code> will be called.</p>
+<p>In the above example the group box is created using <code>scout.create</code>. After creating the group box you can access the property fields. You will notice that the string field was created as well, even though <code>scout.create</code> has not been called explicitly for the string field. This is because the property <code>fields</code> is defined as widget property. During the initialization of the group box it sets the property <code>fields</code> and because the value is not a widget yet (resp. the elements in the array), <code>scout.create</code> will be called.</p>
 </div>
 <div class="paragraph">
 <p>This will also happen if you use a setter of a widget property. You can either call the setter with a previously created widget, or just pass the model and the widget will be created automatically.</p>
@@ -1098,7 +1104,7 @@ for an icon-font is the <em>scoutIcons.ttf</em> which comes shipped with Scout.<
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Image</strong>: iconId is an URL which points to an image resource accessible via HTTP.</p>
+<p><strong>Image</strong>: iconId is a URL which points to an image resource accessible via HTTP.</p>
 <div class="paragraph">
 <p>Example: <code>/icons/person.png</code></p>
 </div>
@@ -1149,7 +1155,7 @@ This is something you will have to do very often if you specified your widgets i
 </li>
 <li>
 <p>Establishing a link independent of the DOM structure<br>
-Normally a child widget contains HTML elements which are children of the parent&#8217;s HTML elements. Even though this is the regular case it is not a must. Amongst others the following widgets have HTML elements appended to the HTML element of the desktop rather than their actual parents: dialogs, popups, tooltips. The main reason is because these widgets lay on top of every other widget. In order to not get into the z-index hell it is a lot easier to put these widgets on the top level of the DOM structure. But since the HTML elements are now separated, the only link is the parent/child hierarchy.<br>
+Normally a child widget contains HTML elements which are children of the parent&#8217;s HTML elements. Even though this is the regular case it is not a must. Amongst others the following widgets have HTML elements appended to the HTML element of the desktop rather than their actual parents: dialogs, popups, tooltips. The main reason is that these widgets lay on top of every other widget. In order to not get into the z-index hell it is a lot easier to put these widgets on the top level of the DOM structure. But since the HTML elements are now separated, the only link is the parent/child hierarchy.<br>
 Imagine you have a string field which displays a tooltip. The parent of the tooltip is the string field but the HTML element is appended to the HTML element of the desktop. Removing the string field will now remove the tooltip as well even though their HTML elements are not linked.<br>
 Or think about the following case: there is a popup open which contains a smart field. The smart field shows a popup by itself displaying the proposals. The HTML elements of the main popup and the smart field popup are siblings meaning they are on the same level in the DOM. Normally a popup gets closed when an element not belonging to the popup is clicked. But why is the main popup not closed if the user clicks into the smart field popup even though their HTML elements are not linked? Exactly, because the smart field popup is a child of the smart field and therefore a child of the main popup.</p>
 </li>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>URL Hints :: Eclipse Scout</title>
-    <link rel="prev" href="object-identifiers.html">
-    <link rel="next" href="widget-reference.html">
+    <title>UI Preferences :: Eclipse Scout</title>
+    <link rel="prev" href="ui-callback.html">
+    <link rel="next" href="html-document-parser.html">
     <meta name="generator" content="Antora 3.1.10">
     <link rel="stylesheet" href="../../../../_/css/site.css">
     <script>var uiRootPath = '../../../../_'</script>
@@ -188,7 +188,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="object-identifiers.html">Object Identifiers</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="url-hints.html">URL Hints</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -197,7 +197,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="ui-callback.html">UI Callbacks</a>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="ui-preferences.html">UI Preferences</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -364,13 +364,13 @@
     <li><a href="../../index.html">Eclipse Scout</a></li>
     <li><a href="../technical-guide.html">Technical Guide</a></li>
     <li>User Interface</li>
-    <li><a href="url-hints.html">URL Hints</a></li>
+    <li><a href="ui-preferences.html">UI Preferences</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">25.2</button>
   <div class="version-menu">
-    <a class="version is-current" href="url-hints.html">25.2</a>
+    <a class="version is-current" href="ui-preferences.html">25.2</a>
     <a class="version is-missing" href="../../../25.1/index.html">25.1</a>
     <a class="version is-missing" href="../../../24.2/index.html">24.2</a>
     <a class="version is-missing" href="../../../24.1/index.html">24.1</a>
@@ -379,123 +379,213 @@
     <a class="version is-missing" href="../../../22/index.html">22</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.2/docs/modules/technical-guide/pages/user-interface/url-hints.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/25.2/docs/modules/technical-guide/pages/user-interface/ui-preferences.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">URL Hints</h1>
+<h1 class="page">UI Preferences</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>URL hints are various query parameters mainly used to debug or test the application.</p>
+<p>Some widgets allow the user to change their appearance.
+UI preferences can store these adjustments and restore them automatically when the user starts a new session.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The information presented in this chapter applies to Scout JS only.
+In Scout Classic applications, preferences are handled similarly by the class <code>ClientUiPreferences</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ui-preferences-storage"><a class="anchor" href="#ui-preferences-storage"></a>Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is a global utility <code>scout.uiPreferences</code> that loads and stores all UI preferences for the current user.
+It is automatically initialized on application startup, so all widgets can access the preferences  synchronously.
+The data consists of a single data object <code>UiPreferencesDo</code> that is loaded from and stored to an implementation of the abstract <code>scout.UiPreferencesStore</code>.</p>
+</div>
+<div class="paragraph">
+<p>The default implementation uses the browser&#8217;s local storage as means of persistence.
+To store the data somewhere else (e.g. on a central database), you can register your own implementation via the <a href="object-factory.html" class="xref page">object factory</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_table_preferences"><a class="anchor" href="#_table_preferences"></a>Table Preferences</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If enabled, tables store the following settings in the UI preferences:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tile mode</p>
+</li>
+<li>
+<p>For each column:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Position</p>
+</li>
+<li>
+<p>Visibility</p>
+</li>
+<li>
+<p>Width</p>
+</li>
+<li>
+<p>Sort index and direction</p>
+</li>
+<li>
+<p>Grouping</p>
+</li>
+<li>
+<p>Aggregation and background color (<code>NumberColumn</code> only)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Custom columns (if a <code>TableCustomizer</code> is present on the table)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to activate the feature for a table, set the property <code>uiPreferencesEnabled</code> to <code>true</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For the detail page of a table page, this feature is enabled automatically.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To ensure that the settings are assigned to the correct table, make sure it has a unique <code>uuid</code>.
+In case the same table is used in different places in the application that should not share the same preferences, you can make the identifier even more specific by specifying the property <code>userPreferenceContext</code>.</p>
+</div>
+<div class="paragraph">
+<p>Tables support multiple sets of preferences called "profiles".
+The current preferences are stored in a special global profile.
+If the <code>TableOrganizerMenu</code> is added to the table, a small gear icon appears in the top right of the table that allows the user to create and activate additional profiles or reset the table to the initial preferences.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 1. Activating the debug hint for the jswidgets application</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">https://scout.bsiag.com/jswidgets/?debug=true</code></pre>
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">{
+  objectType: Table,
+  uuid: '59164ac1-f19e-49eb-8d3d-14329424aae4',
+  uiPreferencesEnabled: true
+  menus: [
+    {
+      objectType: TableOrganizerMenu
+    }
+  ],
+  columns: [
+    ....
+  ]
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As the use of these hints can reveal internal information about the application, they must be explicitly enabled using the config property <a href="../common-concepts/platform.html#scout.urlHints.enabled" class="xref page">scout.urlHints.enabled</a>.</p>
+<p>All functions to create, manage or apply table UI preferences are provided by the utility <code>scout.tableUiPreferences</code>.</p>
 </div>
 <div class="paragraph">
-<p>The state of the hints is stored as a cookie to make it available in subsequent requests without the need to create a HTTP session.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The default values for the hints change depending on whether the platform is running in <a href="../common-concepts/platform.html#scout.devMode" class="xref page">development mode</a>.
-If it runs in development mode, you typically don&#8217;t have to set any of these values for your regular development process.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following hints are available:</p>
+<p>When creating a bookmark for a <code>PageWithTable</code>, the current UI preferences of the detail table are automatically stored as part of the bookmark.
+When the bookmark is activated later, the stored preferences are then also restored.
+In addition to the properties listed above, the bookmark also preserves the current user filters.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="cache"><a class="anchor" href="#cache"></a>cache</h2>
+<h2 id="_creating_a_custom_preference_handler"><a class="anchor" href="#_creating_a_custom_preference_handler"></a>Creating a Custom Preference Handler</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Enables (true) or disables (false) HTTP caching of resources.</p>
+<p>To add preference support for a custom widget, you can provide your own handler by following these steps.</p>
 </div>
-<div class="paragraph">
-<p>If caching is enabled, reasonable caching headers (Cache-Control, ETag, Last-Modified) are set for static resources.
-Additionally, the server caches these resources in memory to reduce file-system access to a minimum.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create custom class that can import and export the preference data.</p>
+</li>
+<li>
+<p>Because the class is stateful, provide a global singleton, so all widgets operate on the same instance.</p>
+</li>
+<li>
+<p>Register a handler with the global <code>UiPreferences</code> class that extracts the relevant parts of the <code>UiPreferencesDo</code> object into your own class.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>If caching is disabled, the Cache-Control header is set with the appropriate values to instruct the caller (browser, proxies) that the resource must not be cached.
-Also, the server won&#8217;t cache these resources in memory.</p>
-</div>
-<div class="paragraph">
-<p>Default value is true (false in development mode).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="minify"><a class="anchor" href="#minify"></a>minify</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Enables (true) or disables (false) minification of JS / CSS files.</p>
-</div>
-<div class="paragraph">
-<p>If the value is true, the <a href="html-document-parser.html" class="xref page">HTML Document Parser</a> will augment the JavaScript and CSS file names with a fingerprint (content-hash) and the <code>.min.</code> suffix: <code>[name]-[contenthash].min.js/css</code>, e.g. <code>jswidgets-2d8843a6ef22419e10a2.min.js</code>.
-The returned html file will instruct the browser to load the minified versions of these resources.</p>
-</div>
-<div class="paragraph">
-<p>If the value is false, the unminified versions are loaded.</p>
-</div>
-<div class="paragraph">
-<p>Default value is true (false in development mode).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="inspector"><a class="anchor" href="#inspector"></a>inspector</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Enables (true) or disables (false) inspector attributes in DOM (<code>modelClass</code>, <code>uuid</code>).
-See also <a href="object-identifiers.html" class="xref page">Object Identifiers</a></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The inspector hint can be used without enabling <a href="../common-concepts/platform.html#scout.urlHints.enabled" class="xref page">scout.urlHints.enabled</a>.
-In that case, the <code>modelClass</code> of Java objects won&#8217;t be available, but the <code>classId</code> will, which does not expose names of source code elements.
-For JavaScript objects both <code>uuid</code> and <code>modelClass</code> will be added because they are available in the browser anyway.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Default value is false (true in development mode).</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export class MyUiPreferences {
+
+  protected _myPreferences: MyUiPreferencesContributionDo;
+
+  _importMyPreferences(myPreferences: MyUiPreferencesContributionDo) {
+    this._myPreferences = myPreferences || scout.create(MyUiPreferencesContributionDo);
+  }
+
+  _exportMyPreferences(): MyUiPreferencesContributionDo {
+    return this._myPreferences;
+  }
+
+  storeMyPreference(value: string) {
+    this._myPreferences.value = value;
+    uiPreferences.scheduleStore(MyUiPreferences);
+  }
+
+  applyMyPreference(myWidget: MyWidget) {
+    myWidget.setValue(this._myPreferences.value);
+  }
+}
+
+export const myUiPreferences = objects.createSingletonProxy(MyUiPreferences);
+
+UiPreferences.registerHandler(MyUiPreferences, {
+  importPreferences: preferences =&gt; {
+    myUiPreferences._importMyPreferences(preferences.getContribution(MyUiPreferencesContributionDo));
+  },
+  exportPreferences: preferences =&gt; {
+    preferences.addContribution(myUiPreferences._exportMyPreferences());
+  }
+});</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export class MyWidget extends Widget {
+
+  _init(model: ModelOf&lt;this&gt;) {
+    ...
+    myUiPreferences.applyMyPreference(this);
+    this.on('valueUpdated', event =&gt; myUiPreferences.storeMyPreference(value));
+  }
+}</code></pre>
 </div>
-<div class="sect1">
-<h2 id="debug"><a class="anchor" href="#debug"></a>debug</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>True sets <code>cache=false</code>, <code>minify=false</code>, <code>inspector=true</code>. False sets the opposite.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="object-identifiers.html">Object Identifiers</a></span>
-  <span class="next"><a href="widget-reference.html">Widget Reference</a></span>
+  <span class="prev"><a href="ui-callback.html">UI Callbacks</a></span>
+  <span class="next"><a href="html-document-parser.html">HTML Document Parser</a></span>
 </nav>
 </article>
   </div>
