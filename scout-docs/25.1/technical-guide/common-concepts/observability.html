@@ -6,7 +6,7 @@
     <title>Observability :: Eclipse Scout</title>
     <link rel="prev" href="smtp-helper.html">
     <link rel="next" href="../user-interface/widget.html">
-    <meta name="generator" content="Antora 3.1.10">
+    <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../../../../_/css/site.css">
     <script>var uiRootPath = '../../../../_'</script>
   </head>
@@ -702,6 +702,27 @@ see <code>org.eclipse.scout.rt.platform.opentelemetry.IHistogramViewHintProvider
 <div class="sectionbody">
 <div class="paragraph">
 <p>To instrument your own Scout Application see examples for manual instrumentation <a href="https://github.com/open-telemetry/opentelemetry-java-examples?tab=readme-ov-file#java-opentelemetry-examples">here</a></p>
+</div>
+<div class="paragraph">
+<p>When implementing span attributes in your application, exercise caution and ensure that <strong>no customer or user data is included</strong>. This includes personally identifiable information (PII), such as names,
+email addresses, user IDs, or any content that could be used to infer what a user was working on within the Scout Application.
+Including such data in span attributes can pose <strong>privacy, security, and compliance risks</strong>, and may inadvertently enable <strong>user tracking</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Best Practices</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use only anonymized, non-sensitive metadata in span attributes.</p>
+</li>
+<li>
+<p>Avoid embedding raw user input.</p>
+</li>
+<li>
+<p>If in doubt, consult your security or privacy team before instrumenting data.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
