@@ -1824,7 +1824,7 @@ scout.http.ignoreProxyPatterns[1]=...</pre>
 <p>By default no proxy is used.</p>
 </div>
 <div class="paragraph">
-<p>The property value is of the format REGEXP_FOR_URI=PROXY_HOST:PROXY_PORT</p>
+<p>The property value is of the format REGEXP_FOR_URI=PROXY_TYPE=PROXY_HOST:PROXY_PORT</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -1832,7 +1832,8 @@ scout.http.ignoreProxyPatterns[1]=...</pre>
 <div class="listingblock">
 <div class="content">
 <pre>scout.http.proxyPatterns[0]=.*\.example.com(:\d+)?=127.0.0.1:8888
-scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.company.com</pre>
+scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.example.com:8080
+scout.http.proxyPatterns[2]=.*\.example.net(:\d+)?=SOCKS=proxy.example.com:1080</pre>
 </div>
 </div>
 <div class="paragraph">
