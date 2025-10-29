@@ -1182,7 +1182,7 @@ public class CountryLookupCall extends LocalLookupCall&lt;String&gt; { <i class=
     List&lt;LookupRow&lt;String&gt;&gt; rows = new ArrayList&lt;&gt;();
 
     for (String countryCode : Locale.getISOCountries()) {
-      Locale country = new Locale("", countryCode);
+      Locale country = Locale.of("", countryCode);
       rows.add(new LookupRow&lt;&gt;(countryCode, country.getDisplayCountry())); <i class="conum" data-value="3"></i><b>(3)</b>
     }
 
