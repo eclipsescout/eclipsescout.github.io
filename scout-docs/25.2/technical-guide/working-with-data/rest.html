@@ -1059,6 +1059,58 @@ Make sure the cancellation filter is registered after the HttpServerRunContextFi
 </div>
 </div>
 <div class="sect1">
+<h2 id="rest-chunked-support"><a class="anchor" href="#rest-chunked-support"></a>REST Chunked Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due to missing support for responses using chunks of data (e.g. data objects) in official Jakarta RESTful Web Services API, Scout provides an own implementation allowing to use chunked responses without requiring other third party libraries.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 17. Example: Client</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public void loadData() {
+    Response response = helper()
+        .target(RESOURCE_PATH)
+        .path("data")
+        .request()
+        .accept(MediaType.APPLICATION_JSON)
+        .get();
+
+    IChunkedDataReader&lt;ExampleEntityDo&gt; reader = IChunkedDataReader.create(response, ExampleEntityDo.class, "\r\n");
+    ExampleEntityDo chunk;
+    while ((chunk = reader.read()) != null) {
+      // process chunk
+      System.out.println("Read chunk " + chunk);
+    }
+    response.close();
+  }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 18. Example: Server</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @GET
+  @Path("data")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response loadData() {
+    @SuppressWarnings("resource")
+    IChunkedDataWriter&lt;ExampleEntityDo&gt; writer = IChunkedDataWriter.create(ExampleEntityDo.class, "\r\n", 100);
+
+    Jobs.schedule(() -&gt; {
+      try (writer) {
+        // write data objects to writer
+        writer.write(BEANS.get(ExampleEntityDo.class).withName("example1"));
+        writer.write(BEANS.get(ExampleEntityDo.class).withName("example2"));
+        // ...
+      }
+    }, Jobs.newInput());
+
+    return Response.ok(writer.toEntity()).build();
+  }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="iid-signature"><a class="anchor" href="#iid-signature"></a>IId signature</h2>
 <div class="sectionbody">
 <div class="paragraph">
