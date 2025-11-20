@@ -674,6 +674,27 @@ This migration handler will remove the contribution with the given type name and
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="simple-tab-box-with-vertical-tabs"><a class="anchor" href="#simple-tab-box-with-vertical-tabs"></a>Simple tab box with vertical tabs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>SimpleTabBox</code> has been improved.
+The tabs can now be placed on all four sides of the box by adjusting the attribute <code>position</code> on the <code>SimpleTabArea</code> accordingly.
+In particular, this allows the tabs to be aligned vertically.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">scout.create(SimpleTabBox&lt;SimpleTabView&gt;, {
+  parent: this,
+  tabArea: {
+    objectType: SimpleTabArea,
+    position: SimpleTabArea.Position.LEFT
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
