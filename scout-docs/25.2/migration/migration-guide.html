@@ -499,9 +499,27 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 <div class="ulist">
 <ul>
 <li>
-<p>Build and runtime of Scout 25.2 require Java 24 (Java 21 support has been dropped). The compiler target level is set to Java 21. We plan to update to Java 25 LTS as soon as it is available.</p>
+<p>Build and runtime of Scout 25.2 require Java 25.</p>
+</li>
+<li>
+<p>Earlier releases of Scout 25.2 (&le; 25.2.16) still require Java 24.</p>
+</li>
+<li>
+<p>Java 21 and Java 24 support have been dropped. The compiler target level is set to Java 21.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When upgrading to Scout 25.2, remove the <code>&lt;jdk.source.version&gt;</code> property from the root <code>pom.xml</code> file of your Scout application.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
