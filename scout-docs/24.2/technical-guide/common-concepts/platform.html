@@ -1774,7 +1774,7 @@ To minimize configuration files such entries should be removed from <code>config
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>scout.http.ignoreProxyPatterns[0]=https?://localhost(?::\d+)?(?:/.*)?
+<pre>scout.http.ignoreProxyPatterns[0]=https?://localhost(?::\\d+)?(?:/.*)?
 scout.http.ignoreProxyPatterns[1]=...</pre>
 </div>
 </div>
@@ -1820,9 +1820,9 @@ scout.http.ignoreProxyPatterns[1]=...</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>scout.http.proxyPatterns[0]=.*\.example.com(:\d+)?=127.0.0.1:8888
-scout.http.proxyPatterns[1]=.*\.example.org(:\d+)?=proxy.example.com:8080
-scout.http.proxyPatterns[2]=.*\.example.net(:\d+)?=SOCKS=proxy.example.com:1080</pre>
+<pre>scout.http.proxyPatterns[0]=.*\\.example\\.com(:\\d+)?=127.0.0.1:8888
+scout.http.proxyPatterns[1]=.*\\.example\\.org(:\\d+)?=proxy.example.com:8080
+scout.http.proxyPatterns[2]=.*\\.example\\.net(:\\d+)?=SOCKS=proxy.example.com:1080</pre>
 </div>
 </div>
 <div class="paragraph">
