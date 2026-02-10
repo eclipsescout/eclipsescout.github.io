@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How to Use a REST Service in Scout JS :: Eclipse Scout</title>
+    <link rel="prev" href="flip-card-how-to.html">
+    <link rel="next" href="../../releasenotes/release-notes.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../how-tos.html">How-Tos</a></li>
+    <li>Scout JS</li>
+    <li><a href="rest-service-how-to.html">How to Use a REST Service in Scout JS</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="rest-service-how-to.html">26.1</a>
+    <a class="version" href="../../../25.2/howtos/scout-js/rest-service-how-to.html">25.2</a>
+    <a class="version" href="../../../25.1/howtos/scout-js/rest-service-how-to.html">25.1</a>
+    <a class="version" href="../../../24.2/howtos/scout-js/rest-service-how-to.html">24.2</a>
+    <a class="version" href="../../../24.1/howtos/scout-js/rest-service-how-to.html">24.1</a>
+    <a class="version" href="../../../23.2/howtos/scout-js/rest-service-how-to.html">23.2</a>
+    <a class="version" href="../../../23.1/howtos/scout-js/rest-service-how-to.html">23.1</a>
+    <a class="version" href="../../../22/howtos/scout-js/rest-service-how-to.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/howtos/pages/scout-js/rest-service-how-to.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">How to Use a REST Service in Scout JS</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../../25.2/howtos/scout-js/rest-service-how-to.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this how-to a Jakarta RESTful Web Service is created and consumed from a Scout JS <a href="../../technical-guide/user-interface/page.html#page-with-table" class="xref page">Page with Table</a>.</p>
+</div>
+<div class="paragraph">
+<p>The goal is to create a new <a href="../../technical-guide/user-interface/page.html#page-with-table" class="xref page">Page with Table</a> and load its data from a REST resource.</p>
+</div>
+<div class="paragraph">
+<p>A working example using the same concepts can also be created using the <a href="https://search.maven.org/artifact/org.eclipse.scout.archetypes/scout-hellojs-app">Scout JS Sample Application</a>.
+The easiest way to create such an application is to use the new project wizards provided by the Scout plugin for IntelliJ or Eclipse and then selecting TypeScript as the language for the user interface.
+The created <code>PersonTablePage.ts</code> can be used as a starting point.</p>
+</div>
+<div class="paragraph">
+<p>In this how-to a similar setup is created step by step.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="validate-prerequisites"><a class="anchor" href="#validate-prerequisites"></a>Validate Prerequisites</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="maven-dependencies"><a class="anchor" href="#maven-dependencies"></a>Maven Dependencies</h3>
+<div class="paragraph">
+<p>Ensure the following Maven dependencies are added to the App module. Add missing dependencies if necessary.</p>
+</div>
+<div class="paragraph">
+<p>hellojs.app/pom.xml</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
+  ...
+  &lt;!-- Jackson --&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt.rest.jackson&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+
+  &lt;!-- Jakarta RESTful Web Services with Jersey --&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.containers&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-container-servlet&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.inject&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-hk2&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.glassfish.jersey.media&lt;/groupId&gt;
+    &lt;artifactId&gt;jersey-media-json-jackson&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-servlet"><a class="anchor" href="#rest-servlet"></a>REST Servlet</h3>
+<div class="paragraph">
+<p>Ensure the API servlet is registered using <code>IServletContributor</code> (i.e. <code>AppServletContributors</code> in <code>hellojs.app</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">/**
+ * Register Jakarta RESTful Web Services Servlet from Jersey.
+ */
+@Order(20)
+public static class ApiServletContributor implements IServletContributor {
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    ServletHolder servlet = handler.addServlet(ServletContainer.class, ServletConstants.API_PATH_WITH_WILDCARD);
+    servlet.setInitParameter(ServerProperties.WADL_FEATURE_DISABLE, Boolean.TRUE.toString());
+    servlet.setInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, RestApplication.class.getName());
+    servlet.setInitOrder(1); // load-on-startup
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="provide-a-restful-service"><a class="anchor" href="#provide-a-restful-service"></a>Provide a RESTful service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section the RESTful service and the data transfer objects (<a href="../../technical-guide/working-with-data/data-object.html" class="xref page">DataObjects</a>) it uses are created.
+The design of the DataObject automatically reflects the design of the REST service.</p>
+</div>
+<div class="sect2">
+<h3 id="dataobjects"><a class="anchor" href="#dataobjects"></a>DataObjects</h3>
+<div class="paragraph">
+<p>The DataObjects are created in the <code>hellojs.data</code> module as they might be used in other modules as well. The sample Pizza REST service uses 3 DataObjects:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An object holding the restrictions sent to the service. These restrictions are sent by the client and may be used to configure the result: which attributes should be returned, how many elements, which elements (attribute filter), etc.</p>
+<div class="listingblock">
+<div class="title">Listing 1. hellojs.data/src/main/java/org/eclipse/scout/apps/hellojs/data/pizza/PizzaRestrictionDo.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("hellojs.PizzaRestriction")
+public class PizzaRestrictionDo extends DoEntity {
+  ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the restrictions are empty for now.</p>
+</div>
+</li>
+<li>
+<p>The business object that represent one element in the result list. Here a single Pizza.</p>
+<div class="listingblock">
+<div class="title">Listing 2. hellojs.data/src/main/java/org/eclipse/scout/apps/hellojs/data/pizza/PizzaDo.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("hellojs.Pizza")
+public class PizzaDo extends DoEntity {
+  public DoValue&lt;Integer&gt; size() {
+    return doValue("size");
+  }
+  public DoValue&lt;BigDecimal&gt; price() {
+    return doValue("price");
+  }
+  ...
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The response object. It holds a list of Pizza but may also contain more information or error messages.</p>
+<div class="listingblock">
+<div class="title">Listing 3. hellojs.data/src/main/java/org/eclipse/scout/apps/hellojs/data/pizza/PizzaResponse.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("hellojs.PizzaResponse")
+public class PizzaResponse extends DoEntity {
+  public DoList&lt;PizzaDo&gt; items() {
+    return doList("items");
+  }
+  ...
+}</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-the-restful-service"><a class="anchor" href="#create-the-restful-service"></a>Create the RESTful service</h3>
+<div class="paragraph">
+<p>Create the RESTful service in the <code>hellojs.api</code> module. This service will answer the request and provide the table data.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. hellojs.api/src/main/java/org/eclipse/scout/apps/hellojs/api/pizza/PizzaResource.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Path("pizza") <i class="conum" data-value="1"></i><b>(1)</b>
+public class PizzaResource implements IRestResource {
+  @POST <i class="conum" data-value="2"></i><b>(2)</b>
+  @Path("list") <i class="conum" data-value="3"></i><b>(3)</b>
+  @Consumes(MediaType.APPLICATION_JSON) <i class="conum" data-value="4"></i><b>(4)</b>
+  @Produces(MediaType.APPLICATION_JSON)
+  public PizzaResponse list(PizzaRestrictionDo restrictions) { <i class="conum" data-value="5"></i><b>(5)</b>
+    MaxResultsHelper.ResultLimiter limiter = BEANS.get(MaxResultsHelper.class).limiter(restrictions); <i class="conum" data-value="6"></i><b>(6)</b>
+    List&lt;PizzaDo&gt; pizzas = listPizzas(restrictions, limiter.getQueryLimit()).collect(Collectors.toList()); <i class="conum" data-value="7"></i><b>(7)</b>
+    PizzaResponse response = BEANS.get(PizzaResponse.class);
+    return response.withItems(limiter.limit(pizzas, response)); <i class="conum" data-value="8"></i><b>(8)</b>
+  }
+
+  protected Stream&lt;PizzaDo&gt; listPizzas(PizzaRestrictionDo restrictions, int maxNumberOfRows) {
+    // TODO implement service to return data
+    return BEANS.get(PizzaService.class).list(restrictions, maxNumberOfRows);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The path under which the service will be provided. Note: the full path is <code>/api/pizza</code> since the apiServlet is mapped to <code>/api/*</code> in the <code>AppServletContributors</code> class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Even this entry point only reads data, <code>POST</code> is used instead of <code>GET</code>. This allows to pass the restrictions in the body which can hold much more data than the URL query string.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The sub path of the <code>list</code> entry point. The full path to this entry point will therefore be <code>/api/pizza/list</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This entrypoint expects the restrictions to be passed as <code>JSON</code> and returns the resulting response as <code>JSON</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The request data object as input and the response data object as output.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Create a result limiter which will be configured using the data provided by the Scout JS Page (see below) and a server side hard limit. The limits are attached to the restriction data object in a special contribution (<code>MaxRowCountContributionDo</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Loads the pizzas and uses the query-limit of the limiter as maximum number of rows to return. This limit is one element more than the requested limit to detect if all items have been loaded or more would be available.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Fills the response with the items limited to the number of maximum requested rows. The information if more rows would be available is automatically attached to the response by using a contribution (<code>LimitedResultInfoContributionDo</code>). This information can be consumed by the Page on client side to display corresponding messages to the user.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-the-page-with-table"><a class="anchor" href="#create-the-page-with-table"></a>Create the Page with Table</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Listing 5. hellojs.ui/src/main/js/pizza/PizzaTablePage.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {ajax, BaseDoEntity, NumberColumn, ObjectOrModel, PageWithTable, PageWithTableModel, systems, Table, TableRow, typeName} from '@eclipse-scout/core';
+
+export class PizzaTablePage extends PageWithTable {
+  protected override _jsonModel(): PageWithTableModel {
+    return {
+      leaf: true,
+      text: 'Pizzas',
+      detailTable: {
+        objectType: Table,
+        maxRowCount: 10, <i class="conum" data-value="1"></i><b>(1)</b>
+        columns: [
+          {
+            id: 'SizeColumn',
+            objectType: NumberColumn,
+            text: 'Size',
+            width: 200
+          },
+          {
+            id: 'PriceColumn',
+            objectType: NumberColumn,
+            text: 'Price',
+            width: 200
+          }
+        ]
+      }
+    };
+  }
+
+  protected override _loadTableData(searchFilter: PizzaRestrictionDo): JQuery.Promise&lt;PizzaResponse&gt; {
+    const resourceUrl = systems.getOrCreate().getEndpointUrl('pizza', 'pizza'); <i class="conum" data-value="2"></i><b>(2)</b>
+    const restriction = this._withMaxRowCountContribution(searchFilter); <i class="conum" data-value="3"></i><b>(3)</b>
+    return ajax.postDataObject(resourceUrl + '/list', restriction); <i class="conum" data-value="4"></i><b>(4)</b>
+  }
+
+  protected override _transformTableDataToTableRows(tableData: PizzaResponse): ObjectOrModel&lt;TableRow&gt;[] {
+    return tableData.items.map(pizza =&gt; {
+      return { <i class="conum" data-value="5"></i><b>(5)</b>
+        data: pizza,
+        cells: [
+          pizza.size,
+          pizza.price
+        ]
+      };
+    });
+  }
+}
+
+<i class="conum" data-value="6"></i><b>(6)</b>
+@typeName('hellojs.PizzaResponse')
+export class PizzaResponse extends BaseDoEntity {
+  items: PizzaDo[];
+}
+
+ <i class="conum" data-value="7"></i><b>(7)</b>
+@typeName('hellojs.Pizza')
+export class PizzaDo extends BaseDoEntity {
+  size: number;
+  price: number;
+}
+
+<i class="conum" data-value="8"></i><b>(8)</b>
+@typeName('hellojs.PizzaRestriction')
+export class PizzaRestrictionDo extends BaseDoEntity {
+  size: number;
+  price: number;
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A small inline model for the PizzaTablePage having two columns. The Table is configured to only load the first 10 Pizzas.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Gets the URL to the PizzaResource. The second argument is the default value which corresponds to the <code>@Path</code> on the <code>PizzaResource</code> class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Attaches the <code>MaxRowCountContributionDo</code> (contains the <code>maxRowCount</code> of the table) to the restrictions.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Send the <code>POST</code> to the given URL having the restriction in the body encoded as <code>JSON</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Map a single <code>PizzaDo</code> from the response to the column of the table. The mapping is done by index here.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The declaration of the PizzaResponse on client side. Attribute names and typeName must correspond the PizzaResponse class in Java.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The declaration of the PizzaDo on client side. Attribute names and typeName must correspond the PizzaDo class in Java.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The declaration of the PizzaRestrictionDo on client side. Attribute names and typeName must correspond the PizzaRestrictionDo class in Java.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="page-with-table-search-form"><a class="anchor" href="#page-with-table-search-form"></a>Create a search form</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Listing 6. hellojs.ui/src/main/js/pizza/PizzaSearchForm.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Form, FormModel, GroupBox, NumberField, ResetMenu, scout, SearchMenu} from '@eclipse-scout/core';
+import {PizzaRestrictionDo} from './PizzaTablePage';
+
+export class PizzaSearchForm extends Form {
+  protected override _jsonModel(): FormModel {
+    return { <i class="conum" data-value="1"></i><b>(1)</b>
+      title: 'Search',
+      rootGroupBox: {
+        id: 'MainBox',
+        objectType: GroupBox,
+        fields: [
+          {
+            id: 'SizeField',
+            objectType: NumberField,
+            text: 'Size'
+          },
+          {
+            id: 'PriceField',
+            objectType: NumberField,
+            text: 'Price'
+          }
+        ],
+        menus: [ <i class="conum" data-value="2"></i><b>(2)</b>
+          {
+            id: 'SearchMenu',
+            objectType: SearchMenu
+          },
+          {
+            id: 'ResetMenu',
+            objectType: ResetMenu
+          }
+        ]
+      }
+    };
+  }
+
+  override importData() { <i class="conum" data-value="3"></i><b>(3)</b>
+    this.widget('SizeField').setValue(this.data?.size);
+    this.widget('PriceField').setValue(this.data?.price);
+  }
+
+  override exportData(): PizzaRestrictionDo { <i class="conum" data-value="4"></i><b>(4)</b>
+    return scout.create(PizzaRestrictionDo, {
+      size: this.widget('SizeField').value,
+      price: this.widget('PriceField').value
+    });
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A small inline model for the <code>PizzaSearchForm</code> having a search field for the size and the price.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Adding a <code>SearchMenu</code> and <code>ResetMenu</code> automatically reloads the table when these menus are clicked.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Importing the data: sets the values of the <code>PizzaRestrictionDo</code> on the fields.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Exporting the data: creates a <code>PizzaRestrictionDo</code> using the values of the fields.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. hellojs.ui/src/main/js/pizza/PizzaTablePage.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">protected override _jsonModel(): PageWithTableModel {
+  return {
+    // ...
+    detailTable: {
+      // ...
+      tableControls: [ <i class="conum" data-value="1"></i><b>(1)</b>
+        {
+          id: 'SearchFromTableControl',
+          objectType: SearchFormTableControl,
+          form: {
+            id: 'SearchForm',
+            objectType: PizzaSearchForm
+          }
+        }
+      ]
+    }
+  };
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Adding the <code>PizzaSearchForm</code> to the inline model of the <code>PizzaTablePage</code>. It is set as the form of a <code>SearchFormTableControl</code>.
+Each time the table page loads its data it exports the data of the search form and uses it as search filter.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="flip-card-how-to.html">How to Create a Custom Field</a></span>
+  <span class="next"><a href="../../releasenotes/release-notes.html">Release Notes</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

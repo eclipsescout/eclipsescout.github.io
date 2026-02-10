@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Migration Guide :: Eclipse Scout</title>
+    <link rel="prev" href="../releasenotes/release-notes.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="migration-guide.html">Migration Guide</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="migration-guide.html">26.1</a>
+    <a class="version" href="../../25.2/migration/migration-guide.html">25.2</a>
+    <a class="version" href="../../25.1/migration/migration-guide.html">25.1</a>
+    <a class="version" href="../../24.2/migration/migration-guide.html">24.2</a>
+    <a class="version" href="../../24.1/migration/migration-guide.html">24.1</a>
+    <a class="version" href="../../23.2/migration/migration-guide.html">23.2</a>
+    <a class="version" href="../../23.1/migration/migration-guide.html">23.1</a>
+    <a class="version" href="../../22/migration/migration-guide.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/migration/pages/migration-guide.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Migration Guide</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../25.2/migration/migration-guide.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-this-document"><a class="anchor" href="#about-this-document"></a>About This Document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes all relevant changes <strong>from Eclipse Scout 25.2 to Eclipse Scout 26.1</strong>. If existing code has to be migrated, instructions are provided here.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="obtaining-the-latest-version"><a class="anchor" href="#obtaining-the-latest-version"></a>Obtaining the Latest Version</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="scout-runtime-for-java"><a class="anchor" href="#scout-runtime-for-java"></a>Scout Runtime for Java</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for Java are distributed using Maven Central:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://central.sonatype.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/26.1.0-beta.1">26.1.0-beta.1</a> on <em>Maven Central</em></p>
+</li>
+<li>
+<p><a href="https://mvnrepository.com/artifact/org.eclipse.scout.rt/org.eclipse.scout.rt/26.1.0-beta.1">26.1.0-beta.1</a> on <em>mvnrepository.com</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in the parent POM of your Scout application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+    &lt;artifactId&gt;org.eclipse.scout.rt&lt;/artifactId&gt;
+    &lt;version&gt;26.1.0-beta.1&lt;/version&gt;
+    &lt;type&gt;pom&lt;/type&gt;
+    &lt;scope&gt;import&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-runtime-for-javascript"><a class="anchor" href="#scout-runtime-for-javascript"></a>Scout Runtime for JavaScript</h3>
+<div class="paragraph">
+<p>Scout Runtime artifacts for JavaScript are distributed using npm:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.npmjs.com/package/@eclipse-scout/core">Scout Core Runtime</a></p>
+</li>
+<li>
+<p><a href="https://www.npmjs.com/search?q=%40eclipse-scout">All official Scout JavaScript packages</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usage example in your package.json:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "name": "my-module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@eclipse-scout/cli": "26.1.0-beta.1",
+    "@eclipse-scout/releng": "^26.1.0"
+  },
+  "dependencies": {
+    "@eclipse-scout/core": "26.1.0-beta.1",
+    "jquery": "3.7.1"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pre-built Scout JavaScript assets are also available using a CDN (e.g. to be directly included in a html document):
+<a href="https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist" class="bare">https://www.jsdelivr.com/package/npm/@eclipse-scout/core?path=dist</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ide-tooling-scout-sdk"><a class="anchor" href="#ide-tooling-scout-sdk"></a>IDE Tooling (Scout SDK)</h3>
+<div class="paragraph">
+<p>Scout officially supports <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> and <a href="https://www.eclipse.org/downloads/packages/release/2025-12/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="intellij-idea"><a class="anchor" href="#intellij-idea"></a>IntelliJ IDEA</h4>
+<div class="paragraph">
+<p>You can download the Scout plugin for IntelliJ IDEA from the <a href="https://plugins.jetbrains.com/plugin/13393-eclipse-scout/">JetBrains Plugin Repository</a> or you can use the plugins client built into IntelliJ IDEA.
+Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">IntelliJ Help</a> on how to install and manage plugins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="eclipse"><a class="anchor" href="#eclipse"></a>Eclipse</h4>
+<div class="paragraph">
+<p>You can download the complete Eclipse IDE with Scout SDK included here:<br>
+<a href="https://www.eclipse.org/downloads/packages/release/2025-12/r/eclipse-ide-scout-developers">Eclipse for Scout Developers</a></p>
+</div>
+<div class="paragraph">
+<p>To install the Scout SDK into your existing Eclipse IDE, use this P2 update site:<br>
+<a href="https://download.eclipse.org/scout/releases" class="bare">https://download.eclipse.org/scout/releases</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-build-runtime-requirements"><a class="anchor" href="#new-build-runtime-requirements"></a>New Build &amp; Runtime Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout 26.1 requires at least the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build and runtime of Scout 26.1 require Java 25. The compiler target level is set to Java 21.</p>
+</li>
+<li>
+<p>Furthermore, the build requires</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Node: &gt;= 24.12.0</p>
+</li>
+<li>
+<p>Pnpm: &gt;= 10.26.1</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="action-menu-tabbable-default-changed-scout-js"><a class="anchor" href="#action-menu-tabbable-default-changed-scout-js"></a>Action / Menu: Tabbable Default Changed (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An <code>Action</code> and a <code>Menu</code> is now tabbable and has a keystroke to execute it by default.
+This means if you used an action or a menu <em>outside</em> a menu bar, it can now get the focus using the keyboard.
+This is important to improve the accessibility of your application.</p>
+</div>
+<div class="paragraph">
+<p>However, there may be some actions or menus that should not be tabbable.
+In that case just set <code>tabbable</code> to false.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="widgetfield-scrollable-default-changed-scout-js"><a class="anchor" href="#widgetfield-scrollable-default-changed-scout-js"></a>WidgetField: Scrollable Default Changed (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>WidgetField</code> has a property <code>scrollable</code> whose default value is <code>true</code>.
+This is often not desired as a <code>WidgetField</code> is supposed to be a wrapper for a widget without changing its behavior.
+This is why the default value has been changed to <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>So you need to check your widget fields if they really need to be scrollable and if yes set <code>scrollable</code> to true.
+Normally, this should not be the case as a surrounding container like the main box is already scrollable.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="switch-tabbable-default-changed-scout-js"><a class="anchor" href="#switch-tabbable-default-changed-scout-js"></a>Switch: Tabbable Default Changed (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Switch</code> is now tabbable by default.
+This is important to improve the accessibility of your application.</p>
+</div>
+<div class="paragraph">
+<p>However, there may be some switches that should not be tabbable.
+In that case just set <code>tabbable</code> to false.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="code-cleanup"><a class="anchor" href="#code-cleanup"></a>Code Cleanup</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="jquery-scout-scout-js"><a class="anchor" href="#jquery-scout-scout-js"></a>JQuery-Scout (Scout JS)</h3>
+<div class="paragraph">
+<p>The following functions have been renamed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>select(boolean) &#8594; setSelected(boolean)<br>
+If you followed the naming convention, you can use the following regex to find the occurrences:
+<code>\$\w+\.select\(</code><br>
+Note: <code>select()</code> also exists on an <code>HTMLInputElement</code>, so make sure you don&#8217;t accidentally rename the wrong method (if you use TypeScript the compiler will help you).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following functions have been removed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>selectOne()<br>
+Replace with <code>setSelected(true)</code> and <code>setSelected(false)</code> on the siblings.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="widget-cssclass-api-changes-scout-js"><a class="anchor" href="#widget-cssclass-api-changes-scout-js"></a>Widget.cssClass: API Changes (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The methods to modify the <code>cssClass</code> property of the <code>Widget</code> were moved to the <code>styles</code> utility (see <a href="../releasenotes/release-notes.html#styles-css-class" class="xref page">Release Notes</a>).
+The API of <code>setCssClass</code>, <code>addCssClass</code>, <code>removeCssClass</code>, <code>toggleCssClass</code> and <code>hasCssClass</code> remains the same but the method <code>cssClassAsArray</code> and the static method <code>cssClassAsArray</code> were removed.
+Code using these methods must be migrated as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. old: using the <code>cssClassAsArray</code> methods of the <code>Widget</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">const widget = scout.create(Widget, {
+  // ...
+  cssClass: 'foo bar'
+});
+const widgetCssClassAsArray = widget.cssClassAsArray();
+
+const cssClass = 'foo bar';
+const cssClassAsArray = Widget.cssClassAsArray(cssClass);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. new: using the <code>cssClassAsArray</code> methods of the <code>styles</code> utility.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">const widget = scout.create(Widget, {
+  // ...
+  cssClass: 'foo bar'
+});
+const widgetCssClassAsArray = styles.cssClassAsArray(widget.cssClass);
+
+const cssClass = 'foo bar';
+const cssClassAsArray = styles.cssClassAsArray(cssClass);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="widgets-util-behavior-change-of-preserveandsetproperty-scout-js"><a class="anchor" href="#widgets-util-behavior-change-of-preserveandsetproperty-scout-js"></a>widgets Util: Behavior Change of preserveAndSetProperty (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you use the function <code>widgets.preserveAndSetProperty</code> in your JavaScript code, please make sure that the variable that stores the preserved value is not initialized or initialized to <code>undefined</code>.
+If it is initialized to <code>null</code>, remove the initialization.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="service-tunnel-servlet-removed-rest-resource-added"><a class="anchor" href="#service-tunnel-servlet-removed-rest-resource-added"></a>Service tunnel: Servlet removed, REST resource added</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the past the service tunnel used its own servlet/communication implementation to transfer data between client and server module.
+The own (proprietary) logic was removed and standard REST communication will be used for data transfer now.</p>
+</div>
+<div class="paragraph">
+<p>Most applications should not be affected by these changes as for the outside the service tunnel should still function the same way it did previously (most changes are under the hood).</p>
+</div>
+<div class="paragraph">
+<p>However, for further understanding a few changes included in this change are described here:</p>
+</div>
+<div class="paragraph">
+<p>The service tunnel client (e.g. <code>HttpServiceTunnel</code>) has been moved from <code>org.eclipse.scout.rt.shared</code> to <code>org.eclipse scout.rt.client</code>; in the past it would have been possible to use the service tunnel for communication between backend servers, this is not possible anymore.
+As the class now resides in the client the <code>ClientHttpServiceTunnel</code> has been integrated into the <code>HttpServiceTunnel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>HttpServiceTunnel</code> does not send the outgoing HTTP request itself anymore, instead a newly created <code>ProcessResourceClient</code> (REST resource client) is used.
+This resource client uses the newly added <code>ScoutBackendRestClientHelper</code> for configuration.
+The <code>HttpServiceTunnelTransportManager</code> and its configuration properties <code>scout.servicetunnel.maxConnectionsPerRoute</code> and <code>scout.servicetunnel.maxConnectionsTotal</code> have been removed.</p>
+</div>
+<div class="paragraph">
+<p>On the server-side there is no <code>ServiceTunnelServlet</code> anymore to answer incoming HTTP requests, instead a <code>ProcessResource</code> (REST resource) has been created which delegates the request to the <code>ServiceTunnelService</code>.</p>
+</div>
+<div class="paragraph">
+<p>Arbitrary <code>IServiceTunnelContentHandler</code> support was removed (and also the <code>SoapServiceTunnelContentHandler</code> implementation), the service tunnel now always uses the <code>BinaryServiceTunnelContentHandler</code> bean (which may still be extended).</p>
+</div>
+<div class="paragraph">
+<p>The duplicate request detection <code>SequenceNumberDuplicateDetector</code> has been removed.</p>
+</div>
+<div class="paragraph">
+<p>By default, the service tunnel uses gzip compression for outgoing and incoming requests, this may be configured using the following configuration properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>scout.servicetunnel.compress</code>: Specifies if the service tunnel should use gzip compression for outgoing requests (default: true)</p>
+</li>
+<li>
+<p><code>scout.app.gzip.inflateBufferSize</code>: Set a positive number to enable incoming compressed requests (default: 2048), positive number must be set if previous property is set to <code>true</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For outgoing request compression the <code>org.glassfish.jersey.message.GZipEncoder</code> is installed (by the <code>GzipEncoderContributor</code>, it handles content-encoding possibly set by <code>ProcessResourceClient</code>).
+Incoming request decompression and outgoing response compression is handled by the <code>org.eclipse.jetty.compression.server.CompressionHandler</code> with <code>org.eclipse.jetty.compression.gzip.GzipCompression</code>.
+The response decompression (if applicable) is handled by the HTTP client <code>org.apache.hc.client5.http.entity.DecompressingEntity</code>.</p>
+</div>
+<div class="paragraph">
+<p>Applications which are deployed using a <code>web.xml</code> to a Jetty (legacy) may need to add the <code>compression-gzip</code> module.
+Also, the process servlet and its mapping must be removed from the <code>web.xml</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following configuration properties have been changed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>server.url</code> (legacy): Removed, use <code>scout.backendUrl</code> instead.</p>
+</li>
+<li>
+<p><code>scout.servicetunnel.targetUrl</code>: Removed, use <code>scout.backendUrl</code> instead.</p>
+</li>
+<li>
+<p><code>scout.backendUrl</code>: Moved from shared to client code (not applicable for server backend application anymore)</p>
+</li>
+<li>
+<p><code>scout.createTunnelToServerBeans</code>: Moved from shared to client code (not applicable for server backend application anymore)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For all REST requests the cancellation behavior has been changed, previously a cancel request was sent and the client did wait (blocking) for the backend request to be cancelled.
+Now the same cancel request is sent to the backend which tries to cancel the possibly running request, but the client-side also aborts the running request itself without waiting for any cancellation response allowing the user to interact quicker with the application again (same behavior as previously in service tunnel).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="defaultauthtoken-package-changed-constant-moved"><a class="anchor" href="#defaultauthtoken-package-changed-constant-moved"></a>DefaultAuthToken: Package changed, constant moved</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the <code>DefaultAuthToken</code> was not used exclusively for the service-tunnel the following types and constants have been moved:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type/Constant</th>
+<th class="tableblock halign-left valign-top">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.servicetunnel.http.DefaultAuthToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.authentication.DefaultAuthToken</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.servicetunnel.http.DefaultAuthTokenPrincipalProducer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.authentication.DefaultAuthTokenPrincipalProducer</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.servicetunnel.http.DefaultAuthTokenSigner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.authentication.DefaultAuthTokenSigner</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.servicetunnel.http.DefaultAuthTokenVerifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.authentication.DefaultAuthTokenVerifier</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.servicetunnel.http.HttpServiceTunnel#TOKEN_AUTH_HTTP_HEADER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.eclipse.scout.rt.shared.authentication.DefaultAuthToken#HTTP_HEADER_NAME</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="session-api-changes"><a class="anchor" href="#session-api-changes"></a>Session API changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the move toward a stateless backend server, the API of the session has been changed.</p>
+</div>
+<div class="paragraph">
+<p><code>ISession</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>getSharedVariableMap</code> moved to the <code>IClientSession</code>.</p>
+</li>
+<li>
+<p><code>getUserId</code> moved to the <code>IClientSession</code>. On server, use the ThreadLocal <code>UserId.CURRENT</code> instead.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>IClientSession</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>replaceSharedVariableMapInternal</code> removed. To update variables on the client session use <code>setSharedVariables</code> or send a <code>SharedContextChangedNotification</code> from the backend.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>AbstractServerSession</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>m_sharedVariableMap</code> removed. No more data should be stored on the server session. The data should be stored in user-based caches or loaded from the database instead. To add additional variables during client session initialization, implement an <code>IInitialSharedVariableContributor</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>AbstractClientSession</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>initializeSharedVariables</code> renamed to <code>loadInitialSharedVariables</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>ServiceTunnelRequest</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>getSessionId</code> removed. Replaced by a custom HTTP Header <code>X-Scout-Client-Session-Id</code>.</p>
+</li>
+<li>
+<p><code>setSessionId</code> removed. Replaced by a custom HTTP Header <code>X-Scout-Client-Session-Id</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-preferences-moved-from-shared-to-client"><a class="anchor" href="#user-preferences-moved-from-shared-to-client"></a>User Preferences Moved from Shared to Client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the move toward a stateless server session, <code>IPreferences</code>, <code>IUserPreferencesService</code>, <code>IUserPreferencesStorageService</code>, <code>IPreferenceChangeListener</code> and their corresponding implementations have been moved from shared to client.</p>
+</div>
+<div class="paragraph">
+<p>If you use these classes you need to adjust your import statements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-object-serializer-provider-implementations-supplemented-with-order-annotation"><a class="anchor" href="#data-object-serializer-provider-implementations-supplemented-with-order-annotation"></a>Data Object Serializer Provider Implementations Supplemented with Order Annotation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout implementation <code>ScoutDataObjectSerializerProvider</code> of serializer/deserializer provider interface <code>IDataObjectSerializerProvider</code> was supplemented with an <code>@Order</code> annotation using value 4500
+to achieve a fixed order when looking up all instances by <code>BEANS.all(IDataObjectSerializerProvider.class)</code>.</p>
+</div>
+<div class="paragraph">
+<p>ACTION: Check custom implementations of <code>IDataObjectSerializerProvider</code> interface.
+Default order for bean implementations without <code>@Order</code> annotation is 5000, which means your <code>IDataObjectSerializerProvider</code> is invoked as last instance.
+Usually this is appropriate if your implementation just adds serializer or deserializers for additional classes.</p>
+</div>
+<div class="paragraph">
+<p>If you want to override any Scout serializer/deserializer use an order lower than 4500 for your implementation and become the first provider which is invoked.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="simple-tab-box-scout-js"><a class="anchor" href="#simple-tab-box-scout-js"></a>Simple tab box (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>SimpleTabBox</code> has been improved and can now display the tabs on any side of the box.
+As part of these adjustments, the associated <code>SimpleTabAreaLayout</code> has been modified and attributes have been renamed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tabWidth</code> was renamed to <code>tabSize</code></p>
+</li>
+<li>
+<p><code>tabMinWidth</code> was renamed to <code>tabMinSize</code></p>
+</li>
+<li>
+<p><code>overflowTabItemWidth</code> was renamed to <code>overflowTabItemSize</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="search-outline"><a class="anchor" href="#search-outline"></a>SearchOutline (Scout Classic)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>SearchOutline</code> now works for both Scout Classic and Scout JS pages (see <a href="../releasenotes/release-notes.html#search-outline" class="xref page">Release Notes</a>).
+With this the property <code>searchStatus</code> was removed as it may no longer be updated manually.
+Pages that need to add information to the <code>searchStatus</code> may simply implement <code>ISearchPage</code> and update their provided <code>ISearchState</code> with information about the result count, whether the result is limited or the search is still pending.
+The <code>SearchOutline</code> will collect all these information and build an aggregated <code>searchStatus</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="junit-runtime-assertion-for-platformtestrunner"><a class="anchor" href="#junit-runtime-assertion-for-platformtestrunner"></a>JUnit: Runtime assertion for <code>PlatformTestRunner</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A new default runtime assertion has been added to the <code>PlatformTestRunner</code>.</p>
+</div>
+<div class="paragraph">
+<p>If a test method exceeds a specific runtime duration it is still completed but fails afterward (allowing to easier identify unwanted long-running successful tests).</p>
+</div>
+<div class="paragraph">
+<p>The default runtime limit is set to three minutes.
+The limit may be increased by setting a higher timeout on the <code>@Test</code> annotation.
+The limit is disabled completely when a negative timeout is set on the <code>@Test</code> annotation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removed-automatic-binding-for-session-variables-in-sql-statements"><a class="anchor" href="#removed-automatic-binding-for-session-variables-in-sql-statements"></a>Removed automatic binding for session variables in SQL statements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Previously, SQL queries could reference session variables as bind parameters without explicitly providing their values. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">SELECT :userId;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, the <code>:userId</code> bind was automatically populated from the current session context.</p>
+</div>
+<div class="paragraph">
+<p><strong>What Changed:</strong>
+Automatic binding of session variables to SQL bind parameters has been <strong>removed</strong>. Queries now require explicit binding of the session variables during execution.</p>
+</div>
+<div class="paragraph">
+<p>For compatibility reasons the <code>userId</code> bind is still automatically bound with the current user id. But all the other session variables are not automatically bound anymore.</p>
+</div>
+<div class="paragraph">
+<p><strong>Action Required:</strong>
+Review and update your queries to explicitly bind the session variables when executing SQL statements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="apirestapplication-mark-external-accessible-rest-operations"><a class="anchor" href="#apirestapplication-mark-external-accessible-rest-operations"></a>ApiRestApplication: Mark external accessible REST operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A new <code>ApiExposedFilter</code> has been created to distinguish between internal and external (proxied) requests, it is installed automatically by the <code>ApiApiExposedFeature</code> for the <code>ApiRestApplication</code> (feature is annotated with <code>@RestApplicationScope(RestApplicationScopes.API)</code> hence <code>ExtRestApplication</code> will ignore it).</p>
+</div>
+<div class="paragraph">
+<p>All REST operations (methods) available through <code>ApiRestApplication</code> (for all resources)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>which are accessed externally using an <code>AbstractRestProxyRequestHandler</code> (accessed from scripts run by the browser) should be marked with <code>@ApiExposed</code> to keep them accessible (either the resource method or the whole class).</p>
+</li>
+<li>
+<p>which are only used internally between applications (not accessed externally) may optionally be marked with <code>@ApiExposed(false)</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="eslint-update"><a class="anchor" href="#eslint-update"></a>ESLint Update</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout updated to the latest version of <a href="https://eslint.org/">ESLint</a>.
+Because ESLint changed their config file format, you need to adjust your ESLint files.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Rename <code>.eslintrc.js</code> to <code>eslint.config.mjs</code></p>
+</li>
+<li>
+<p>Rewrite the content according to the Scout archetype</p>
+</li>
+<li>
+<p>Add the exclusions from <code>.eslintignore</code> and remove that file (<code>**/node_modules</code> is ignored by default and doesn&#8217;t need to be added)</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Example eslint.config.mjs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import {defineConfig, globalIgnores} from 'eslint/config';
+import scoutConfig from '@eclipse-scout/eslint-config';
+
+export default defineConfig([
+  scoutConfig,
+  globalIgnores([
+    '.git',
+    '.idea',
+    '*/dist',
+    '*/target',
+    '*/src/main/resources',
+    '*/src/test/resources',
+    '*/src/main/java',
+    '*/src/test/java'
+  ])
+]);</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="eslint-rule-deprecation"><a class="anchor" href="#eslint-rule-deprecation"></a>ESLint Rule Deprecation</h3>
+<div class="paragraph">
+<p>ESlint deprecated their formatting rules and moved them to a plugin called <code>@stylistic</code>.
+Scout now uses this plugin, so the existing rules still apply.</p>
+</div>
+<div class="paragraph">
+<p>This impacts you if you have a customized ruleset in <code>eslint.config.mjs</code> or if you have <code>eslint-disable</code> or <code>eslint-disable-next-line</code> directives in your code.
+In either case, just prefix the deprecated rule names with <code>@stylistic</code>.
+The easiest way to find these issues is to run <code>eslint .</code> in your workspace.</p>
+</div>
+<div class="paragraph">
+<p>Example migration:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. Old</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/* eslint-disable brace-style */
+// eslint-disable-next-line max-len</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. New</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/* eslint-disable @stylistic/brace-style */
+// eslint-disable-next-line @stylistic/max-len</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more details about the deprecation please consult the official <a href="https://eslint.org/blog/2023/10/deprecating-formatting-rules/">ESLint announcement</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="http-cache-control"><a class="anchor" href="#http-cache-control"></a>HTTP Cache Control</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the past the following call was used to disable caching for an HTTP response: <code>HttpCacheControl.checkAndSetCacheHeaders(req, resp, null)</code>.
+This can now be changed to the more readable variant as the underlying method is public now: <code>HttpCacheControl.disableCaching(resp)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The new function <code>BEANS.get(HttpCacheControl.class).disableCaching(response)</code> can also be used to replace the old pattern of manually setting the HTTP response headers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="csp-hardening"><a class="anchor" href="#csp-hardening"></a>Hardening the Content Security Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP">Content Security Policy</a> used by Scout applications has been hardened.
+It now makes use of nonces for JavaScript which may prevent cross-site scripting attacks. Nonces are only used for <code>script</code> tags. <code>style</code> or <code>link</code> tags used for CSS are not affected.</p>
+</div>
+<div class="sect2">
+<h3 id="api-changes"><a class="anchor" href="#api-changes"></a>API Changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The bean <code>org.eclipse.scout.rt.server.commons.servlet.ContentSecurityPolicy</code> has been moved to <code>org.eclipse.scout.rt.security.csp.ContentSecurityPolicy</code> and is therefore more widely available.</p>
+<div class="paragraph">
+<p>Furthermore, it changed its meaning: In the past it was a builder that was prefilled with the Scout defaults, adapted by your <code>config.properties</code> settings. This is no longer the case.
+This class represents only a builder now and starts empty on creation.</p>
+</div>
+<div class="paragraph">
+<p>Please note: an empty CSP does not mean everything is blocked. Instead, not configuring a directive means: all allowed!
+Therefore, it is recommended to replace the former <code>ContentSecurityPolicy</code> class with the new <code>ConfigurableContentSecurityPolicy</code> or <code>BlockAllContentSecurityPolicy</code> class (see below).</p>
+</div>
+</li>
+<li>
+<p>New bean <code>org.eclipse.scout.rt.security.csp.ConfigurableContentSecurityPolicy</code> which replaces the old <code>ContentSecurityPolicy</code> class.
+It is still preloaded with the same Scout default directives which still can be adapted in your <code>config.properties</code>.</p>
+</li>
+<li>
+<p>New bean <code>org.eclipse.scout.rt.security.csp.BlockAllContentSecurityPolicy</code> which by default blocks all. It can be used as starting point to create a policy as restrictive as possible, by selectively opening directives.</p>
+</li>
+<li>
+<p>The CSP <code>ConfigProperty</code> classes have been moved from <code>org.eclipse.scout.rt.server.commons.ServerCommonsConfigProperties</code> to <code>org.eclipse.scout.rt.security.csp.ContentSecurityPolicyConfigProperties</code>.</p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.server.commons.servlet.HttpServletControl.HTTP_HEADER_CSP</code> has been moved to <code>org.eclipse.scout.rt.security.csp.ContentSecurityPolicy.HTTP_HEADER</code>.</p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.server.commons.servlet.HttpServletControl.CSP_REPORT_URL</code> has been moved to <code>org.eclipse.scout.rt.security.csp.ContentSecurityPolicy.REPORT_URL</code>.</p>
+</li>
+<li>
+<p><code>org.eclipse.scout.rt.server.commons.servlet.HttpServletControl.HTTP_HEADER_CSP_LEGACY</code> has been removed as it was only used by legacy browsers no longer supported.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="content-security-policy-migration"><a class="anchor" href="#content-security-policy-migration"></a>Content Security Policy Migration</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Responses to REST resources now include a <code>BlockAllContentSecurityPolicy</code> by default. This prevents possible attacks if the response is of type <code>text/html</code>, <code>image/svg</code> or <code>text/javascript</code> (which would be interpreted by a browser).</p>
+<div class="paragraph">
+<p>If you need REST responses to be interpreted by the browser, you have to apply your own CSP header with your rules to the response. If the header is already present, the default header is not added.</p>
+</div>
+</li>
+<li>
+<p>If you manually (without using <code>$.injectScript</code>) load new JavaScript code: Consider migrating to <code>$.injectScript</code> or add the <code>nonce</code> attribute where necessary. The current value can be retrieved on the Scout App: <code>App.get().nonce</code>.</p>
+</li>
+<li>
+<p>If you use an <code>AbstractHtmlField</code> or <code>AbstractHtmlTile</code> that contains inline JavaScript code, these <code>script</code> tags require the <code>nonce</code> attribute to be executed.</p>
+<div class="paragraph">
+<p>The value can be obtained:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Scout Classic by using <code>org.eclipse.scout.rt.shared.ui.webresource.SessionNonce.provide()</code>.</p>
+</li>
+<li>
+<p>In Scout JS from the App: <code>App.get().nonce</code>.</p>
+</li>
+<li>
+<p>In the JSON layer from the UiSession: <code>org.eclipse.scout.rt.ui.html.IUiSession.getNonce()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>'unsafe-inline'</code>: If you did use the CSP expression <code>'unsafe-inline'</code>: This expression is ignored by browsers if nonces are used.
+Therefore, this CSP expression can be removed. Instead, add the <code>nonce</code> attribute to your inline <code>script</code> tags as described above.</p>
+</li>
+<li>
+<p>External <code>script</code> tags in your entrypoint html files: If you use hardcoded <code>script</code> tags in your entrypoint html files (instead of using <code>scout:scripts</code> e.g. to point to an external script), add the following attribute: <code>nonce="scout:nonce"</code>.
+This expression will then be replaced with the correct nonce automatically.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features"><a class="anchor" href="#new-features"></a>New Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If you load content to <code>AbstractBrowserField</code> by using a <code>BinaryResource</code>: Until now the CSP of the resources loaded into the <code>BrowserField</code> used the same CSP as the Scout application itself (this is still the case, but as the policy is more restrictive now, scripts from the Scout server are no longer automatically accepted).</p>
+<div class="paragraph">
+<p>Now you have more control: The <code>AbstractBrowserField</code> now allows configuring the CSP for each instance and resource. It is recommended to use specific CSP rules for such fields which should be as restrictive as possible.</p>
+</div>
+<div class="paragraph">
+<p>As a starting policy the new <code>BlockAllContentSecurityPolicy</code> could be used and then opening directives as necessary. The created policies can be applied to a field in e.g. the <code>execInitField</code> method by using the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setContentSecurityPolicy</code>: One CSP for the whole field (all resources of the field).</p>
+</li>
+<li>
+<p><code>putContentSecurityPolicy</code>: A CSP for a specific resource of the field.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <code>ConfigurableContentSecurityPolicy</code> is more flexible now. It is recommended to harden your CSP with these new features:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>As in older releases it can still be configured using the config property <code>scout.cspDirective</code>. Directives added to this property completely replace the hard-coded directive coming from the Scout defaults and should be configured as minimal as possible (same as in older releases).</p>
+</li>
+<li>
+<p>A second config property <code>scout.cspDirectiveAppend</code> was added. Its directives do not replace but append instead. It may append to the Scout defaults (if nothing is configured) or to the ones configured using <code>scout.cspDirective</code>.</p>
+<div class="paragraph">
+<p>This allows to e.g. set some always-valid directives in the <code>scout.cspDirective</code> property within the <code>config.properties</code> file and then adding more expressions to a directive e.g. using an environment variable for specific installations.</p>
+</div>
+</li>
+<li>
+<p>For both properties it can be specified for which html entry point the directive is valid by using a suffix. Example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># directive valid for all entry points
+scout.cspDirective[script-src]=https://my.cdn.org/
+
+# additional url only for login.html
+scout.cspDirective[script-src#login.html]=https://login.cdn.org/</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To set this value as environment variable it is required to use the JSON synthax as explained in the <a href="../technical-guide/common-concepts/platform.html#property-resolution" class="xref page">Technical Guide</a>.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>If you need to change the response of a resource (e.g. to finetune its CSP response header), the new interface <code>org.eclipse.scout.rt.ui.html.res.loader.WebResourceLoader.IWebResourceResponseInterceptorContributor</code> can be implemented.
+Such contributors are called for each web resource loaded and return a list of <code>org.eclipse.scout.rt.server.commons.servlet.cache.IHttpResponseInterceptor</code> for a request.
+These interceptors are then called before sending the response to the client. You can e.g. identify a request with <code>responseObject.getCacheKey().getResourcePath()</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

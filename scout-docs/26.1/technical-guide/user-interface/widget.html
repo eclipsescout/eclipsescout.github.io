@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Widget :: Eclipse Scout</title>
+    <link rel="prev" href="../common-concepts/observability.html">
+    <link rel="next" href="object-factory.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>User Interface</li>
+    <li><a href="widget.html">Widget</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="widget.html">26.1</a>
+    <a class="version" href="../../../25.2/technical-guide/user-interface/widget.html">25.2</a>
+    <a class="version" href="../../../25.1/technical-guide/user-interface/widget.html">25.1</a>
+    <a class="version" href="../../../24.2/technical-guide/user-interface/widget.html">24.2</a>
+    <a class="version" href="../../../24.1/technical-guide/user-interface/widget.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/user-interface/widget.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/user-interface/widget.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/user-interface/widget.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/technical-guide/pages/user-interface/widget.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Widget</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../../25.2/technical-guide/user-interface/widget.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A widget is a component which may be rendered. It may be simple like a label, or more complex like a tree or table. A form is a widget and a form field, too.
+A widget contains the model, which represents the state of the widget. In a Scout Classic application, that model will be sent from the UI server to the browser and the Scout UI will use that model to create the widget. In a Scout JS app, the model may be provided using JSON or directly with JavaScript.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lifecycle"><a class="anchor" href="#lifecycle"></a>Lifecycle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every widget has a lifecycle. After a widget is instantiated, it has to be initialized using <code>init</code>. If you want to display it, you have to call the <code>render</code> method. If you want to remove it from the DOM, call the <code>remove</code> method. Removing a widget is not the same as destroying it. You can still use it, you can for example change some properties and then render it again. If it is really not needed anymore, the <code>destroy</code> method is called (typically by Scout itself).</p>
+</div>
+<div class="paragraph">
+<p>So you see the widget actually has 3 important states:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>initialized</p>
+</li>
+<li>
+<p>rendered</p>
+</li>
+<li>
+<p>destroyed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The big advantage of this concept is that the model of the widget may be changed any time, even if the widget is not rendered. This means you can prepare a widget like a form, prepare all its child widgets like the form fields, and then render them at once. If you want to hide the form, just remove it. It won&#8217;t be displayed anymore, but you can still modify it, like changing the label of a field or adding rows to a table. The next time it is rendered the changes will be reflected. If you do such a modification when it is rendered, it will be reflected immediately.</p>
+</div>
+<div class="paragraph">
+<p>Destroying a widget means it will detach itself from the parent and destroy all its children. Typically, this is done by Scout itself e.g. when closing a form.
+If you want to destroy a widget yourself, it is recommended to do that by deleting it in its owner or parent (e.g. a GroupBox has a method <code>deleteField</code> which will destroy the field if the GroupBox is its owner).
+If you have attached listeners to other widgets at initialization time, now is the time to detach them. After a widget is destroyed it cannot be used anymore. Every attempt will result in a <code>Widget is destroyed</code> error.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-widget"><a class="anchor" href="#creating-a-widget"></a>Creating a Widget</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A widget may be created using the constructor function or <code>scout.create</code>.
+Best practice is to always use <code>scout.create</code> which gives you two benefits:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You don&#8217;t have to call <code>init</code> by yourself.</p>
+</li>
+<li>
+<p>The widget may be extended (see <a href="object-factory.html" class="xref page">Object Factory</a> for details).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following example creates a <code>StringField</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Creating a string field</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, StringField} from '@eclipse-scout/core';
+
+let field = scout.create(StringField, {
+  parent: groupBox,
+  label: 'hello',
+  value: 'world'
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first parameter is the object type.
+Typically, it is a class reference pointing to the widget you want to create.
+When using a class reference, the return value will be typed, so the IDE can assist you with code completion.
+For this reason, this syntax is recommended.</p>
+</div>
+<div class="paragraph">
+<p>The object type can also be a string, like the name of the class.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Creating a string field by string based object type</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">let field = scout.create('StringField', {
+  parent: groupBox,
+  label: 'hello',
+  value: 'world'
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In that case, the <code>ObjectFactory</code> will look for the class in the namespace object, which is put on the <code>window</code>.
+<code>StringField</code> belongs to the <code>scout</code> namespace which is the default and can therefore be omitted.
+If the string field belonged to another name space called <code>mynamespace</code>, you would have to write the following:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Creating a field considering the name space</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">scout.create('mynamespace.StringField', {})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second parameter of <code>scout.create</code> is the model.
+The model is the specification for your widget.
+In case of the <code>StringField</code> you can specify properties like the label, the max length, whether it is enabled and visible and more.
+If you don&#8217;t specify them, the defaults are used. The only needed property is the <code>parent</code>.</p>
+</div>
+<div class="paragraph">
+<p>To get a list of all available <code>StringField</code> properties, have a look at the interface <a href="https://github.com/eclipse-scout/scout.rt/blob/releases/26.1/eclipse-scout-core/src/form/fields/stringfield/StringFieldModel.ts">StringFieldModel</a>.
+Such a model definition is available for every widget.
+Just add the suffix <code>Model</code> to the widget name and you&#8217;ll find it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/widget_model.png" alt="widget model">
+</div>
+<div class="title">Figure 1. Widget Model Definition</div>
+</div>
+<div class="paragraph">
+<p>Every widget needs a parent.
+The parent is responsible to render (and remove) its children.
+In the example above, the parent is a group box.
+This group box has a property called <code>fields</code>.
+If the group box is rendered, it will render its fields too.</p>
+</div>
+<div class="paragraph">
+<p>You don&#8217;t need a group box to render the string field, you could render it directly onto the desktop.
+But if you want to use a form, you need a group box and create the form, group box and the field.
+Doing this programmatically, meaning creating each widget separately using <code>scout.create</code>, is time-consuming, that is why we suggest to use the declarative approach.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-widget-declaratively"><a class="anchor" href="#creating-a-widget-declaratively"></a>Creating a Widget Declaratively</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Have a look at the above example again.
+The second parameter, the model, defines some properties of the string field.
+This actually already is the declarative approach, because you could also set each property manually after creating the string field using the according methods.
+In order to create a form, we need to specify multiple widgets, respectively a widget hierarchy, at once.
+The following example defines a form with a group box and a string field.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. A form model defined declaratively</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {GroupBox, StringField} from '@eclipse-scout/core';
+
+export default {
+  title: 'My first form!',
+  rootGroupBox: {
+    id: 'MainBox',
+    objectType: GroupBox,
+    fields: [
+      {
+        id: 'MyStringField',
+        objectType: StringField,
+        label: 'hello',
+        value: 'world'
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To keep things nice and clean we separate the model from the code by putting this description of the form in a separate file called <code>MyFormModel.js</code>.
+Typically, you would create a file called <code>MyForm.js</code> as well, which contains the logic to interact with the fields.
+But since we just want to open the form it is not necessary.
+Instead, you can use the following code to create the form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Form, scout} from '@eclipse-scout/core';
+import model from './MyFormModel';
+
+let form = scout.create(Form, $.extend({parent: desktop}, model));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can open the form using <code>form.open()</code> and it will look like this:</p>
+</div>
+<div id="img-scoutjs_myform" class="imageblock">
+<div class="content">
+<img src="../../common/_images/scoutjs_myform.png" alt="scoutjs myform">
+</div>
+<div class="title">Figure 2. First form</div>
+</div>
+<div class="paragraph">
+<p>As soon as you would like to add some code that interacts with the fields or maybe just want to not always load the model manually when creating the form, you should create a file called <code>MyForm.js</code>.
+The content of that file would be a class <code>MyForm</code> that extends the <code>Form</code> from Scout and a method called <code>_jsonModel</code> that returns our model.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Form} from '@eclipse-scout/core';
+import model from './MyFormModel';
+
+export class MyForm extends Form {
+  _jsonModel() {
+    return model;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Creating the form is now possible using the following code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">let form = scout.create(MyForm, {parent: desktop});</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-constants-in-a-json-model"><a class="anchor" href="#using-constants-in-a-json-model"></a>Using constants in a JSON model</h3>
+<div class="paragraph">
+<p>In previous Scout versions, the model was defined in a JSON file.
+Even though it is still possible, it is not recommended anymore, because writing the model using JavaScript is much more convenient.
+One advantage is, that you can use constants the same way as in your regular JavaScript code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {FormField} from '@eclipse-scout/core';
+export default {
+  ...
+  labelPosition: FormField.LabelPosition.TOP
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you use a JSON based model, you cannot reference Scout&#8217;s JavaScript enums/constants, and you&#8217;d have to write the following to assign the constant value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{ "labelPosition": 2 }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Obviously this makes the JSON code harder to read and understand and the developer has to lookup the enum/constant definition first.
+This is where the <code>${const:NAME}</code> tag comes to help.
+A widget can define a list of properties that can be used with the const-tag.
+The widget defines in which enum/constant the name provided by the tag is resolved.
+Using the const-tag, the JSON example now looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{ "labelPosition": "${const:ON_FIELD}" }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you want to provide const-tag support for a custom widget, you need to call  <code>scout.Widget#resolveConsts</code> in the <code>_init</code> function of your widget and for each supported property specify the property name and the object that contains the enum/constant definition.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="finding-a-widget"><a class="anchor" href="#finding-a-widget"></a>Finding a Widget</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the example from the previous chapter we have seen how to create a widget, in that specific case we created a form.
+Typically, it is not sufficient to just create a form, you most likely want to interact with the fields, like reading the values the user entered.
+In order to do that you need access to the fields.
+The easiest way is to use the IDs specified in the JSON.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s have a look at our example form again:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">export default {
+  title: 'My first form!',
+  rootGroupBox: {
+    id: 'MainBox',
+    objectType: GroupBox,
+    fields: [
+      {
+        id: 'MyStringField',
+        objectType: StringField,
+        label: 'hello',
+        value: 'world'
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example we have 3 widgets: the form, the root group box and a string field.
+These widgets are linked to each other which enables us to find the string field starting from the form.
+This can be done by using the following command:</p>
+</div>
+<div class="paragraph">
+<p><code>let stringField = form.widget('MyStringField');</code></p>
+</div>
+<div class="paragraph">
+<p>Now you can read its value, change properties, add event handlers and so on.</p>
+</div>
+<div class="sect2">
+<h3 id="widget-maps"><a class="anchor" href="#widget-maps"></a>Widget Maps</h3>
+<div class="paragraph">
+<p>The result of the <code>widget</code> function to find a widget is a generic <code>Widget</code>, so it is not possible to call a method of a specific widget without casting (at least with TypeScript).
+To do the type casting, you can either specify the return type directly at the time of usage.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. Using the second parameter</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Menu} from '@eclipse-scout/core';
+
+let menu = this.widget('YourId', Menu);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. Cast manually (TypeScript)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Menu} from '@eclipse-scout/core';
+
+let menu = this.widget('YourId') as Menu;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or you can use widget maps.</p>
+</div>
+<div class="paragraph">
+<p>A widget map is a type that maps the ids of the widgets to their object type.
+This allows TypeScript to determine the return type automatically.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/typed_widget.png" alt="typed widget">
+</div>
+<div class="title">Figure 3. Typed <code>widget</code> function</div>
+</div>
+<div class="paragraph">
+<p>Scout SDK takes care of creating the widget maps, so you don&#8217;t have to write them manually.
+But there is one precondition: your model has to be in a TypeScript file.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, here is how you would do it manually for our example form from above.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a type called 'MyFormWidgetMap' in the file 'MyFormModel.ts'</p>
+</li>
+<li>
+<p>Link it to the form by re declaring the type of <code>widgetMap</code>.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. Create Widget Map</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export type MyFormWidgetMap = {
+  'MainBox': GroupBox;
+  'MyStringField': StringField;
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Link Widget Map</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {Form} from '@eclipse-scout/core';
+import {MyFormWidgetMap} from './MyFormModel';
+
+export class MyForm extends Form {
+  declare widgetMap: MyFormWidgetMap;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re using JavaScript for your form, you can use JSDoc to link the <code>widgetMap</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. Link Widget Map in JavaScript</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {Form} from '@eclipse-scout/core';
+import {MyFormWidgetMap} from './MyFormModel';
+
+export class MyForm extends Form {
+
+  constructor() {
+    super();
+
+    /** @type MyFormWidgetMap */
+    this.widgetMap = null;
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="properties"><a class="anchor" href="#properties"></a>Properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As seen before, every widget has a model representing its state. This model is written onto the widget at the time it is being instantiated. The properties of that model are now available as properties of the widget. So in order to access such a property, just call <code>widget.yourProperty</code>. If you want to modify the property, just call <code>widget.setYourProperty(value)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Accessing and modifying a property</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, StringField} from '@eclipse-scout/core';
+
+var field = scout.create(StringField, {
+  parent: parent,
+  labelVisible: false
+});
+console.log(field.labelVisible); // prints false
+
+field.setLabelVisible(true);
+console.log(field.labelVisible); // prints true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is important to always use the setter to modify a property, because calling it does not just change the value. Instead, it will call the method <code>setProperty(propertyName, value)</code> which does the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It will check if the property has changed at all. If the value is still the same, nothing happens. To compare the values <code>objects.equals</code> is used, which uses <code>===</code> to compare and if that returns false, uses the equals methods of the given objects, if available.</p>
+</li>
+<li>
+<p>If the values are not equal, the model is updated using the method <code>_setProperty</code> (notice the <code>_</code>). Beside setting the value it also notifies every listener about the property change. So if another widget is interested in that property it may attach a listener and will be informed on every property change (see also the <a href="#events">Events</a> for details).</p>
+</li>
+<li>
+<p>In order to reflect the property change in the UI, the <code>_render</code> method is called, if available. The name of this method depends on the property name, it always starts with <code>_render</code> and ends with the property name. Example: <code>_renderLabelVisible</code>. If the widget does not implement such a method, nothing happens.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>It is worth to mention that the behavior of step 2 may be influenced by the widget. If the widget provides a method called <code>_setPropertyName</code> (e.g. <code>_setLabelVisible</code>, notice the <code>_</code>), that method will be called instead of <code>_setProperty</code>. This may be useful if something other should be done beside setting the property. If that is the case, that new function is responsible to call <code>_setProperty</code> by itself in order to set the property and inform the listeners. That method may also be called by the <code>_init</code> method to make sure the additional code is also executed during initialization (calling the public setter in <code>_init</code> would not have any effect due to the equals check at the beginning).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="widget-properties"><a class="anchor" href="#widget-properties"></a>Widget Properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A widget property is a special kind of property that references another widget.</p>
+</div>
+<div class="paragraph">
+<p>Defining a property as widget property has the benefit that the widget is created automatically. Let&#8217;s take the group box as an example. A group box has a widget property called fields. The fields are widgets, namely form fields. If you create a group box, you may specify its fields directly:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Creating the string field automatically using a widget property</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, StringField, GroupBox} from '@eclipse-scout/core';
+
+var groupBox = scout.create(GroupBox, {
+  parent: parent,
+  label: 'My Group Box',
+  fields: [{
+    objectType: StringField,
+    label: 'My String Field'
+  }]
+});
+// check if the string field was created as well
+console.log(groupBox.fields[0] instanceof StringField);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example the group box is created using <code>scout.create</code>. After creating the group box you can access the property fields. You will notice that the string field was created as well, even though <code>scout.create</code> has not been called explicitly for the string field. This is because the property <code>fields</code> is defined as widget property. During the initialization of the group box it sets the property <code>fields</code> and because the value is not a widget yet (resp. the elements in the array), <code>scout.create</code> will be called.</p>
+</div>
+<div class="paragraph">
+<p>This will also happen if you use a setter of a widget property. You can either call the setter with a previously created widget, or just pass the model and the widget will be created automatically.</p>
+</div>
+<div class="paragraph">
+<p>In addition to creating widgets, calling such a setter will also make sure that obsolete widgets are destroyed. This means if the widget was created using the setter, it will be destroyed when the setter is called with another widget which replaces the previous one. If the widget was created before calling the setter, meaning the <code>owner</code> is another widget, it won&#8217;t be destroyed.</p>
+</div>
+<div class="paragraph">
+<p>So if a property is defined as widget property, calling a setter will do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It checks if the property has changed at all (same as for regular properties).</p>
+</li>
+<li>
+<p>If the values are not equal, <code>_prepareWidgetProperty</code> is called which checks if the new value already is a widget and if not creates it. It also destroys the old widget unless the property should not be preserved (see <code>preserveOnPropertyChangeProperties</code>). If the value is an array, it does so for each element in the array (only widgets which are not part of the new array will be destroyed).</p>
+</li>
+<li>
+<p>If the widget is rendered, the old widget is removed unless the property should not be preserved. If there is a custom remove function (e.g. _removeXY where XY is the property name), it will be called instead of removing the widgets directly. Note that the widget may have already been removed by the destroy function at the prepare phase.</p>
+</li>
+<li>
+<p>The model is updated (same as for regular properties).</p>
+</li>
+<li>
+<p>The render method is called (same as for regular properties).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="events"><a class="anchor" href="#events"></a>Events</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every widget supports event handling by using the class <code>EventSupport</code>.
+This allows the widgets to attach listeners to other widgets and getting informed when an event happens.</p>
+</div>
+<div class="paragraph">
+<p>The 3 most important methods are the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>on</code>: adds a listener</p>
+</li>
+<li>
+<p><code>off</code>: removes a listener</p>
+</li>
+<li>
+<p><code>trigger</code>: triggers an event</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>So if a widget is interested in an event of another widget, it calls the function <code>on</code> with a callback function as parameter.
+If it is not interested anymore, it uses the function <code>off</code> with the same callback function as parameter.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows how to handle a button click event.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 12. Handling an event</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, Button} from '@eclipse-scout/core';
+
+let button = scout.create(Button, {
+  parent: parent,
+  label: 'click me!'
+});
+button.render();
+button.on('click', event =&gt; {
+  // print 'Button "click me!" has been clicked'
+  console.log('Button "' + event.source.label + '" has been clicked');
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every click on the button will execute the callback function.
+To stop listening, you could call <code>button.off('click')</code>, but this would remove every listener listening to the 'click' event.
+Better is to pass the same reference to the callback used with <code>on</code> as parameter for <code>off</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 13. Stop listening for an event</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, Button} from '@eclipse-scout/core';
+
+let button = scout.create(Button, {
+  parent: parent,
+  label: 'click me!'
+});
+button.render();
+let callback = event =&gt; {
+  // print 'Button "click me!" has been clicked'
+  console.log('Button "' + event.source.label + '" has been clicked');
+
+  // stop listening, a second click won't print anything
+  button.off('click', callback);
+};
+button.on('click', callback);</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the callback function is bound using <code>bind()</code>, the bound function has to be used when removing the listener using <code>off</code>.
+This is because <code>bind()</code> returns a new function wrapping the original callback.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to trigger an event rather than listening to one, you would use the function <code>trigger</code>.
+This is what the button in the above example does.
+When it is being clicked, it calls <code>this.trigger('click')</code> (<code>this</code> points to the instance of the button).
+With the second parameter you may specify additional data which will be copied onto the event.
+By default, the event contains the type (e.g. 'click') and the source which triggered it (e.g. the button).</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 14. Triggering an event with custom event data</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">trigger('click', {
+  foo: 'bar'
+});
+
+// callback
+function(event) {
+  console.log(event.foo); // prints bar
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="property-change-event"><a class="anchor" href="#property-change-event"></a>Property Change Event</h3>
+<div class="paragraph">
+<p>A special kind of event is the property change event. Whenever a property changes, such an event is triggered.</p>
+</div>
+<div class="paragraph">
+<p>The event has the following properties:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>type</code>: the type of the event which is always <code>propertyChange</code></p>
+</li>
+<li>
+<p><code>source</code>: the widget which triggered the event</p>
+</li>
+<li>
+<p><code>name</code>: the name of the property</p>
+</li>
+<li>
+<p><code>newValue</code>: the new value of the property</p>
+</li>
+<li>
+<p><code>oldValue</code>: the old value of the property</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Listening to such an event works in the same way as for other events, just use the type <code>propertyChange</code>. The listening below shows how to handle the property change event if the <code>selected</code> property of a toggle button changes.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 15. Example of a property change event</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import {scout, Button} from '@eclipse-scout/core';
+
+let button = scout.create(Button, {
+  parent: parent,
+  label: 'click me!',
+  displayStyle: Button.DisplayStyle.TOGGLE
+});
+button.render();
+button.on('propertyChange', event =&gt; {
+  if (event.propertyName == 'selected') {
+    // prints 'Property selected changed from false to true'
+    console.log('Property ' + event.propertyName + ' changed from ' + event.oldValue + ' to ' + event.newValue);
+  }
+});
+button.setSelected(true);</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The above propertyChange handler ist executed for ALL property changes of that button.
+This makes it necessary to check for the right property name inside the listener as it is done here with the <code>if</code> statement at the start of the listener.
+Because this is a very common pattern there is a shortcut available.
+You can listen for a specific property change with the following notation: <code>propertyChange:propertyName</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Listing 16. Listen for specific property changes</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">button.on('propertyChange:selected', event =&gt; {
+  // This listener is only executed when the 'selected' property changes
+  console.log('Property ' + event.propertyName + ' changed from ' + event.oldValue + ' to ' + event.newValue);
+});
+button.setSelected(true);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="event-maps"><a class="anchor" href="#event-maps"></a>Event Maps</h3>
+<div class="paragraph">
+<p>If you want to know what events are available for a specific widget, you can have a look at its event map.
+The event map is a TypeScript interface and named after the widget with the suffix <code>EventMap</code>.
+For example, you will find the event map of a <code>Menu</code> under the name <a href="https://github.com/eclipse-scout/scout.rt/blob/releases/26.1/eclipse-scout-core/src/menu/MenuEventMap.ts">MenuEventMap</a>.</p>
+</div>
+<div class="paragraph">
+<p>Beside having a complete list of the available events, these event maps are also used by TypeScript to provide code completion for the event name when adding an event handler:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/event_completion.png" alt="event completion">
+</div>
+<div class="title">Figure 4. Event Name Completion</div>
+</div>
+<div class="paragraph">
+<p>You also get the correct type of the event itself including its members in the handler:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/typed_events.png" alt="typed events">
+</div>
+<div class="title">Figure 5. Typed Event</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="icons"><a class="anchor" href="#icons"></a>Icons</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See chapter <a href="#icons">Icons</a> for a general introduction to icons in Scout.</p>
+</div>
+<div class="paragraph">
+<p>Widgets that have a property <code>iconId</code> (for instance <code>Menu</code>) can display an icon. This iconId references
+an icon which can be either a bitmap image (GIF, PNG, JPEG, etc.) or a character from an icon-font. An example
+for an icon-font is the <em>scoutIcons.ttf</em> which comes shipped with Scout.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the type (image, font-icon) the iconId property references:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Image</strong>: iconId is a URL which points to an image resource accessible via HTTP.</p>
+<div class="paragraph">
+<p>Example: <code>/icons/person.png</code></p>
+</div>
+</li>
+<li>
+<p><strong>Font-icon</strong>: iconId has the format <code>font:[UTF-character]</code>.</p>
+<div class="paragraph">
+<p>Example: <code>font:\uE043</code>, references a character in <em>scoutIcons.ttf</em></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>font:fooIcons \uE109</code>, references a character in custom font <em>fooIcons.ttf</em></p>
+</div>
+</li>
+<li>
+<p><strong>Icon Constants</strong>: iconId has the format: <code>${iconId:[constant]}</code>, where constant is a constant in the module <code>icons.js</code>.
+This format is especially useful when you configure a Scout widget with a JSON model. The value of the constant
+is again either an image or a font-icon as described above.</p>
+<div class="paragraph">
+<p>Example: <code>${iconId:ANGLE_UP}</code> uses <code>icons.ANGLE_UP</code>, icons predefined by Scout</p>
+</div>
+<div class="paragraph">
+<p>Example: <code>${iconId:foo.BAR}</code> uses <code>foo.icons.BAR</code>, use this for custom icon constant objects</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="parent-and-owner"><a class="anchor" href="#parent-and-owner"></a>Parent and Owner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As seen in the previous chapters, the creation of a widget requires a parent. This establishes a link between the child and the parent widget which is necessary for several actions.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Rendering a widget into the container of the parent<br>
+If you call <code>widget.render()</code> you don&#8217;t have to specify the HTML container to which the widget should be appended. It takes the container of the parent widget by default which is <code>parent.$container</code>. You can still pass a custom <code>$parent</code> if you like.</p>
+</li>
+<li>
+<p>Removing a widget and its children<br>
+If <code>widget.remove()</code> is called, the widget will be removed from the DOM. Even though removing the parent HTML node would be sufficient in order to make the children disappear from the screen, every child widget will be removed as well. This gives the child widgets the possibility to clean up their rendering state and detach listeners. This is necessary because the widgets still exist after removal and their data can still be updated. Such cleanup actions are typically done by overriding <code>widget._remove()</code>. Remember to call the <code>_remove</code> of the super class as well.</p>
+</li>
+<li>
+<p>Finding child widgets<br>
+This is something you will have to do very often if you specified your widgets in a JSON file. If you want to access these widgets from JavaScript you need to get them first. This is easy due to the linkage of the widgets. You can just use the function <code>widget(id)</code>. See also chapter <a href="#finding-a-widget">Finding a Widget</a> for more details.</p>
+</li>
+<li>
+<p>Establishing a link independent of the DOM structure<br>
+Normally a child widget contains HTML elements which are children of the parent&#8217;s HTML elements. Even though this is the regular case it is not a must. Amongst others the following widgets have HTML elements appended to the HTML element of the desktop rather than their actual parents: dialogs, popups, tooltips. The main reason is that these widgets lay on top of every other widget. In order to not get into the z-index hell it is a lot easier to put these widgets on the top level of the DOM structure. But since the HTML elements are now separated, the only link is the parent/child hierarchy.<br>
+Imagine you have a string field which displays a tooltip. The parent of the tooltip is the string field but the HTML element is appended to the HTML element of the desktop. Removing the string field will now remove the tooltip as well even though their HTML elements are not linked.<br>
+Or think about the following case: there is a popup open which contains a smart field. The smart field shows a popup by itself displaying the proposals. The HTML elements of the main popup and the smart field popup are siblings meaning they are on the same level in the DOM. Normally a popup gets closed when an element not belonging to the popup is clicked. But why is the main popup not closed if the user clicks into the smart field popup even though their HTML elements are not linked? Exactly, because the smart field popup is a child of the smart field and therefore a child of the main popup.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>So far we have learned what the parent is. But what is the owner? The owner is the only one which is allowed to destroy its children. Normally, the parent and the owner are the same, that is why you don&#8217;t have to specify the owner explicitly when creating a widget. The owner will be different if you specify it explicitly or if you use <code>setParent()</code> to temporarily change the parent of a widget. In that case the owner points to the old parent. This means if the new parent were destroyed, the newly linked child would not be destroyed, only removed from the DOM.</p>
+</div>
+<div class="paragraph">
+<p>This comes in handy if you want to temporarily give the control over rendering/removal to another widget (like a popup) but don&#8217;t let the other widget destroy your widget (e.g. when the popup is closed) because you want to use your widget again (e.g. display it on another popup).</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../common-concepts/observability.html">Observability</a></span>
+  <span class="next"><a href="object-factory.html">Object Factory</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

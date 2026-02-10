@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Run as Docker Container :: Eclipse Scout</title>
+    <link rel="prev" href="run-as-service.html">
+    <link rel="next" href="one-day-tutorial.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="getstarted.html">Get Started</a></li>
+    <li>Scout Classic</li>
+    <li><a href="run-as-docker-container.html">Run as Docker Container</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="run-as-docker-container.html">26.1</a>
+    <a class="version" href="../../25.2/getstarted/run-as-docker-container.html">25.2</a>
+    <a class="version" href="../../25.1/getstarted/run-as-docker-container.html">25.1</a>
+    <a class="version" href="../../24.2/getstarted/run-as-docker-container.html">24.2</a>
+    <a class="version" href="../../24.1/getstarted/run-as-docker-container.html">24.1</a>
+    <a class="version is-missing" href="../../23.2/index.html">23.2</a>
+    <a class="version is-missing" href="../../23.1/index.html">23.1</a>
+    <a class="version is-missing" href="../../22/index.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/getstarted/pages/run-as-docker-container.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Run as Docker Container</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../25.2/getstarted/run-as-docker-container.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A different approach than to use the output of the <code>.app.zip</code> module builds is to build docker images instead.
+The docker images might be used within a Kubernetes setup or similar to run your application.
+In this guide we use a local Docker installation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setup-local-registry"><a class="anchor" href="#setup-local-registry"></a>Setup Local Registry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Maven property <code>docker.app.image.registry</code> (in the parent <code>pom.xml</code>) defines where the docker image is pushed to.
+By default, <code>localhost:5000</code> is used which represents a locally running Docker registry without authentication.
+If you like to use a public docker registry or have a private one already running,
+modify that property accordingly and make sure to add authentication details to your Maven settings if required.</p>
+</div>
+<div class="paragraph">
+<p>To run a local Docker registry, execute the following command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker run -d --rm -p 5000:5000 --name registry registry:2.8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will run the container in background (<code>-d</code>),
+automatically removes the container when it exits (<code>--rm</code>),
+binds port 5000 of the container to port 5000 of the host machine port (<code>-p 5000:5000</code>)
+and names the Docker container <code>registry</code> (<code>--name registry</code>).</p>
+</div>
+<div class="paragraph">
+<p>To check the logs of the registry, run</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker logs -f registry</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-and-push-docker-images"><a class="anchor" href="#build-and-push-docker-images"></a>Build and push Docker images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the <code>.app.image</code> modules to be built, the Maven profile <code>exec.docker.image</code> must be activated.
+This manual activation is to avoid that a full Maven build of the project would fail because usually there is no local Docker registry running that would accept the built images.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/GoogleContainerTools/jib">Google Jib</a> is used to build Docker images without the need of a Docker daemon.</p>
+</div>
+<div class="paragraph">
+<p>To run the Maven build including the build and publish of the Docker images for your backend and UI server, use the following command in your parent module (<code>helloscout</code>):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mvn clean install -Pexec.docker.image -Djib.allowInsecureRegistries=true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We activate the required Maven profile (<code>-Pexec.docker.image</code>)
+and tell Google JIB to allow insecure registries (<code>-Djib.allowInsecureRegistries=true</code>) because our local registry is only running on <code>http</code>.</p>
+</div>
+<div class="paragraph">
+<p>Check the output of the build, it should say something as</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Built and pushed image as localhost:5000/helloscout-server, localhost:5000/helloscout-server:1.0.0-latest</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for the module <code>helloscout.server.app.image</code> and similar for <code>helloscout.ui.html.app.image</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-the-servers"><a class="anchor" href="#run-the-servers"></a>Run the servers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Because the frontend server needs to be able to communicate with the backend server, we create an own network</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker network create helloscout-network</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which will be used by both servers.</p>
+</div>
+<div class="paragraph">
+<p>The docker images always expose port 8080 (see <code>pom.xml</code> of the <code>.app.image</code> modules).
+For the backend server we use port 8080 on the host machine too (<code>-p 8080:8080</code>).
+It wouldn&#8217;t be necessary to expose the backend server port, because only the frontend servers needs to communicate with it, through the newly created network.
+Start the backend server with</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker run -d -p 8080:8080 --pull always --network helloscout-network --name helloscout-server localhost:5000/helloscout-server:1.0.0-latest</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>--pull always</code> is used to ensure that if new images are built via Maven, these are pulled and used (instead of the existing ones).</p>
+</div>
+<div class="paragraph">
+<p>To check the logs, use</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker logs helloscout-server</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If everything was successful, a log output containing</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Server ready. The application is available on the following addresses</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>should be present.</p>
+</div>
+<div class="paragraph">
+<p>The default <code>logback.xml</code> configuration of the <code>.app.image</code> modules use a JSON format to be easily parsed by <a href="https://grafana.com/oss/loki/">Loki</a> or a similar log aggregation tool.
+If you prefer plain text, change the encoder class from <code>net.logstash.logback.encoder.LogstashEncoder</code> too <code>org.eclipse.scout.rt.platform.logger.FixedPatternLogbackEncoder</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>config.properties</code> of your frontend server (<code>helloscout.ui.html.app.image</code>) the property <code>scout.backendUrl</code> is not defined (because not known before).
+Within a docker network, the containers are accessible by their names (<code>--name</code> argument when container is run).
+To set/override property values via environment variables, use the <code>-e</code> argument (i.e. <code>-e scout_backendUrl=http://helloscout-server:8080</code>, environment variables use <code>_</code> instead of <code>.</code>).</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker run -d -p 8082:8080 --pull always --network helloscout-network --name helloscout-ui -e scout_backendUrl=http://helloscout-server:8080 localhost:5000/helloscout-ui:1.0.0-latest</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check if the frontend server was successfully started too by having a look at the logs</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker logs helloscout-ui</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If everything seems okay, visit <code><a href="http://localhost:8082" class="bare">http://localhost:8082</a></code> and enjoy your application running within Docker containers.</p>
+</div>
+<div class="paragraph">
+<p>The client preferences (column widths, &#8230;&#8203;) are by default written to <code>/tmp</code> (see UI <code>config.properties</code>, property <code>scout.client.userArea</code>), thus lost after a container restart.
+If desired, you might change the path for <code>scout.client.userArea</code> via environment variable and point it to a dedicated docker volume create for this purpose.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section is only used to get rid of everything just created.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove the containers (and stop them if still running)</p>
+</li>
+<li>
+<p>Remove the network</p>
+</li>
+<li>
+<p>Remove the images</p>
+</li>
+<li>
+<p>Stop the local registry (will auto-remove itself due to started with <code>--rm</code>)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">docker container rm --force helloscout-ui
+docker container rm --force helloscout-server
+docker network remove helloscout-network
+docker rmi localhost:5000/helloscout-ui:1.0.0-latest
+docker rmi localhost:5000/helloscout-server:1.0.0-latest
+docker container stop registry</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="run-as-service.html">Build Scout App and Run as Service</a></span>
+  <span class="next"><a href="one-day-tutorial.html">One Day Tutorial</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

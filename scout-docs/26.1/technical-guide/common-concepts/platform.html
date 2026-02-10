@@ -1,0 +1,3003 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Platform :: Eclipse Scout</title>
+    <link rel="prev" href="../technical-guide.html">
+    <link rel="next" href="application.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Common Concepts</li>
+    <li><a href="platform.html">Platform</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="platform.html">26.1</a>
+    <a class="version" href="../../../25.2/technical-guide/common-concepts/platform.html">25.2</a>
+    <a class="version" href="../../../25.1/technical-guide/common-concepts/platform.html">25.1</a>
+    <a class="version" href="../../../24.2/technical-guide/common-concepts/platform.html">24.2</a>
+    <a class="version" href="../../../24.1/technical-guide/common-concepts/platform.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/common-concepts/platform.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/common-concepts/platform.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/common-concepts/platform.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/technical-guide/pages/common-concepts/platform.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Platform</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../../25.2/technical-guide/common-concepts/platform.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Scout contains a platform which provides basic functionality required by many software applications. The following list gives some examples for which tasks the platform is responsible for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#sec-app.lifecycle">Application Lifecycle Management</a></p>
+</li>
+<li>
+<p><a href="#sec-bean.manager">Object Instance Management (Bean Management)</a></p>
+</li>
+<li>
+<p><a href="#sec-config.management">Configuration Management</a></p>
+</li>
+<li>
+<p><a href="#sec-class.inventory">Application Inventory</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-app.lifecycle"><a class="anchor" href="#sec-app.lifecycle"></a>Application Lifecycle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The lifecycle of a Scout application is controlled by implementations of <code>org.eclipse.scout.rt.platform.IPlatform</code>.
+This interface contains methods to start and stop the application and to retrieve the <a href="#sec-bean.manager">Bean Manager</a> associated with this application.
+The class <code>org.eclipse.scout.rt.platform.Platform</code> provides access to the current platform instance. On first access the platform is automatically created and started.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/platformStates.png" alt="platformStates">
+</div>
+</div>
+<div class="paragraph">
+<p>During its startup, the platform transitions through several states. Depending on the state of the platform some components may already be initialized and ready to use while others are not available yet.</p>
+</div>
+<div class="paragraph">
+<p>See enum <code>org.eclipse.scout.rt.platform.IPlatform.State</code> for a description of each state and what may be used in a certain state.</p>
+</div>
+<div class="sect2">
+<h3 id="platform-listener"><a class="anchor" href="#platform-listener"></a>Platform Listener</h3>
+<div class="paragraph">
+<p>To participate in the application startup or shutdown a platform listener can be created.
+For this a class implementing <code>org.eclipse.scout.rt.platform.IPlatformListener</code> must be created. The listener is automatically a bean and must therefore not be registered anywhere.
+See <a href="#sec-bean.manager">Bean Manager</a> to learn more about bean management in Scout and how the listener becomes a bean.
+As soon as the state of the platform changes the listener will be notified.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. A listener that will do some work as soon as the platform has been started.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MyListener implements IPlatformListener {
+  @Override
+  public void stateChanged(PlatformEvent event) {
+    if (event.getState() == State.PlatformStarted) {
+      // do some work as soon as the platform has been started completely
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+As platform listeners may run as part of the startup or shutdown not the full Scout platform may be available. Depending on the state some tasks cannot be performed or some platform models are not available yet!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-class.inventory"><a class="anchor" href="#sec-class.inventory"></a>Class Inventory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout applications use an inventory containing the classes available together with some meta data about them.
+This allows finding classes available on the classpath by certain criteria:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All subclasses of a certain base class (also known as type hierarchy)</p>
+</li>
+<li>
+<p>All classes having a specific annotation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This class inventory can be accessed as described in listing <a href="#lst-ClassInventory">Listing 2</a>.</p>
+</div>
+<div id="lst-ClassInventory" class="listingblock">
+<div class="title">Listing 2. Access the Scout class inventory.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IClassInventory classInventory = ClassInventory.get();
+
+// get all classes below IService
+Set&lt;IClassInfo&gt; services = classInventory.getAllKnownSubClasses(IService.class);
+
+// get all classes having a Bean annotation (directly on them self).
+Set&lt;IClassInfo&gt; classesHavingBeanAnnot = classInventory.getKnownAnnotatedTypes(Bean.class);</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scout-xml"><a class="anchor" href="#scout-xml"></a>scout.xml</h3>
+<div class="paragraph">
+<p>In its static initializer, the <code>ClassInventory</code> collects classes in projects containing a resource called META-INF/scout.xml.</p>
+</div>
+<div class="paragraph">
+<p>Scanning all classes would be unnecessarily slow and consume too much memory.
+The file <code>scout.xml</code> is just an empty xml file. Scout itself also includes <code>scout.xml</code> files in all its projects.</p>
+</div>
+<div class="paragraph">
+<p>The format XML was chosen to allow adding exclusions in large projects, but this feature is not implemented right now.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+It is recommended to add an emtpy <code>scout.xml</code> file into the META-INF folder of your projects, such that the classes are available in the 'ClassInventory'.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Scout uses Jandex <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> to build the class inventory. The meta data to find classes can be pre-computed during build time into an index file describing the contents of the jar file. See the jandex project for details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-bean.manager"><a class="anchor" href="#sec-bean.manager"></a>Bean Manager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Scout bean manager is a dynamic registry for beans. Beans are normal Java classes usually having some meta data describing the characteristics of the class.</p>
+</div>
+<div class="paragraph">
+<p>The bean manager can be changed at any time. This means beans can be registered or unregistered while the application is running. For this the bean manager contains methods to register and unregister beans. Furthermore, methods to retrieve beans are provided.</p>
+</div>
+<div class="paragraph">
+<p>The next sections describe how beans are registered, the different meta data of beans, how instances are created, how they can be retrieved and finally how the bean decoration works.</p>
+</div>
+<div class="sect2">
+<h3 id="bean-registration"><a class="anchor" href="#bean-registration"></a>Bean registration</h3>
+<div class="paragraph">
+<p>Usually beans are registered during application startup. The application startup can be intercepted using platform listeners as described in <a href="#platform-listener">Platform Listener</a>.</p>
+</div>
+<div id="lst-RegisterBeansListener" class="listingblock">
+<div class="title">Listing 3. A listener that registers a bean (direct class or with meta data).</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class RegisterBeansListener implements IPlatformListener {
+  @Override
+  public void stateChanged(PlatformEvent event) {
+    if (event.getState() == State.BeanManagerPrepared) {
+      // register the class directly
+      BEANS.getBeanManager().registerClass(BeanSingletonClass.class);
+
+      // Or register with meta information
+      BeanMetaData beanData = new BeanMetaData(BeanClass.class).withApplicationScoped(true);
+      BEANS.getBeanManager().registerBean(beanData);
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is also a predefined bean registration built into the Scout runtime. This automatically registers all classes having an <code>org.eclipse.scout.rt.platform.@Bean</code> annotation. Therefore, it is usually sufficient to only annotate a class with <code>@Bean</code> to have it available in the bean manager as shown in listing <a href="#lst-NormalBeanClass">Listing 4</a>.</p>
+</div>
+<div id="lst-NormalBeanClass" class="listingblock">
+<div class="title">Listing 4. A normal bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Bean
+public class BeanClass {
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+As the <code>@Bean</code> annotation is an <code>java.lang.annotation.@Inherited</code> annotation, this automatically registers all child classes too. This means that also interfaces may be <code>@Bean</code> annotated making all implementations automatically available in the bean manager! Furthermore, other annotations may be <code>@Bean</code> annotated making all classes holding these annotations automatically to beans as well.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you inherit a <code>@Bean</code> annotation from one of you super types but don&#8217;t want to be automatically registered into the bean manger you can use the <code>org.eclipse.scout.rt.platform.@IgnoreBean</code> annotation. Those classes will then be skipped.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="tunnel-to-server"><a class="anchor" href="#tunnel-to-server"></a>@TunnelToServer</h4>
+<div class="paragraph">
+<p>There is a built-in annotation <code>org.eclipse.scout.rt.shared.@TunnelToServer</code>. Interfaces marked with this annotation are called on the server. The server itself ignores this annotation.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this a bean is registered on client side for each of those interfaces. Because the platform cannot directly create an instance for these beans a specific producer is registered which creates a proxy that delegates the call to the server.
+Please note that this annotation is not inherited. Therefore, if an interface extends a tunnel-to-server interface and the new methods of this interface should be called on the server as well the new child interface has to repeat the annotation!</p>
+</div>
+<div class="paragraph">
+<p>The proxy is created only once for a specific interface bean.</p>
+</div>
+<div class="paragraph">
+<p>The <code>idSignature</code> flag of the annotation can be used to enable id signatures for all data objects transferred over the service tunnel for a specific interface.
+For more information and examples when this is necessary see <a href="security.html#id-signature-service-tunnel" class="xref page">IId signatures in service tunnel</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bean-scopes"><a class="anchor" href="#bean-scopes"></a>Bean Scopes</h3>
+<div class="paragraph">
+<p>The most important meta data of a bean is the scope. It describes how many instances of a bean can exist in a single application. There are two different possibilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Unlimited instances: Each bean retrieval results in a new instance of the bean. This is the default.</p>
+</li>
+<li>
+<p>Only one instance: There can only be one instance by Scout platform. From an application point of view this can be seen as singleton. The instance is created on first use and each subsequent retrieval of the bean results in this same cached instance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As like all bean meta data this characteristic can be provided in two different ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>With a Java annotation on the bean class as shown in the listing <a href="#lst-BeanClass">Listing 5</a>.</p>
+</li>
+<li>
+<p>With bean meta data as shown in listing <a href="#lst-RegisterBeansListener">Listing 3</a>.</p>
+</li>
+</ol>
+</div>
+<div id="lst-BeanClass" class="listingblock">
+<div class="title">Listing 5. An application scoped bean using annotations</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class BeanSingletonClass {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the Java annotation <code>org.eclipse.scout.rt.platform.@ApplicationScoped</code> describes a bean having singleton characteristics.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Also <code>@ApplicationScoped</code> is an <code>@Inherited</code> annotation. Therefore, all child classes automatically inherit this characteristic like with the <code>@Bean</code> annotation.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bean-creation"><a class="anchor" href="#bean-creation"></a>Bean Creation</h3>
+<div class="paragraph">
+<p>It is not only possible to influence the number of instances to be created (see <a href="#bean-scopes">Bean Scopes</a>), but also to create beans eagerly, execute methods after creation (like constructors) or to delegate the bean creation completely. These topics are described in the next sections.</p>
+</div>
+<div class="sect3">
+<h4 id="eager-beans"><a class="anchor" href="#eager-beans"></a>Eager Beans</h4>
+<div class="paragraph">
+<p>By default beans are created on each request. An exception are the beans marked to be application scoped (as shown in <a href="#bean-scopes">Bean Scopes</a>). Those beans are only created on first request (lazy). This means if a bean is never requested while the application is running, there will never be an instance of this class.</p>
+</div>
+<div class="paragraph">
+<p>But sometimes it is necessary to create beans already at the application startup (eager). This can be done by marking the bean as <code>org.eclipse.scout.rt.platform.@CreateImmediately</code>. All classes holding this annotation must also be marked as <code>@ApplicationScoped</code>! These beans will then be created as part of the application startup.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="constructors"><a class="anchor" href="#constructors"></a>Constructors</h4>
+<div class="paragraph">
+<p>Beans must have empty constructors so that the bean manager can create instances. But furthermore it is possible to mark methods with the <code>jakarta.annotation.@PostConstruct</code> annotation. Those methods must have no parameters and will be called after instances have been created.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When querying the bean manager for an application scoped bean, it will always return the same instance. However, the constructor of an application scoped bean may run more than once, whereas a method annotated with @PostConstruct in an application scoped been is guaranteed to run exactly once.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bean-retrieval"><a class="anchor" href="#bean-retrieval"></a>Bean Retrieval</h3>
+<div class="paragraph">
+<p>To retrieve a bean the class <code>org.eclipse.scout.rt.platform.BEANS</code> should be used. This class provides (amongst others) the following methods:</p>
+</div>
+<div id="lst-BeanRetrieval" class="listingblock">
+<div class="title">Listing 6. How to get beans.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">BeanSingletonClass bean = BEANS.get(BeanSingletonClass.class);
+BeanClass beanOrNull = BEANS.opt(BeanClass.class);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>get()</code> method throws an exception if there is not a single bean result. So if no bean can be found or if multiple equivalent bean candidates are available this method fails!</p>
+</li>
+<li>
+<p>The <code>opt()</code> method requires a single or no bean result. It fails if multiple equivalent bean candidates are available and returns <code>null</code> if no one can be found.</p>
+</li>
+<li>
+<p>The <code>all()</code> method returns all beans in the correct order. The list may also contain no beans at all.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are now two more annotations that have an effect on which beans are returned if multiple beans match a certain class. Consider the following example bean hierarchy:</p>
+</div>
+<div id="img-beanHierarchy" class="imageblock">
+<div class="content">
+<img src="../../common/_images/beanHierarchy.png" alt="beanHierarchy">
+</div>
+<div class="title">Figure 1. A sample bean hierarchy.</div>
+</div>
+<div class="paragraph">
+<p>In this situation 4 bean candidates are available: MyServiceImpl, MyServiceMod, MySpecialVersion and AnotherVersion.
+But which one is returned by <code>BEANS.get(IMyService.class)</code>? Or by <code>BEANS.get(MySpecialVersion.class)</code>?
+This can be influenced with the <code>org.eclipse.scout.rt.platform.@Order</code> and <code>org.eclipse.scout.rt.platform.@Replace</code> annotations.
+The next sections describe the idea behind these annotations and gives some examples.</p>
+</div>
+<div class="sect3">
+<h4 id="order"><a class="anchor" href="#order"></a>@Order</h4>
+<div class="paragraph">
+<p>This annotation works exactly the same as in the Scout user interface where it brings classes into an order. It allows to assign a <code>double</code> value to a class. All beans of a certain type are sorted according to this value in ascending order. This means a low order value is equivalent with a low position in a list (come first).</p>
+</div>
+<div class="paragraph">
+<p>Please note that the <code>@Order</code> annotation is not inherited so that each bean must declare its own value where it fits in.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The <code>@Order</code> annotation value may be inherited in case it replaces. See the next section for details.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If a bean does not declare an order value, the default of <code>5000</code> is used. Scout itself uses orders from <code>4001</code> to <code>5999</code>.
+So for user applications the value <code>4000</code> and below can be used to declare more important beans.
+For testing bean mocks the value <code>-10'000</code> can be used which then usually comes before each normal Scout or application bean.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/defaultOrders.png" alt="defaultOrders">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="replace"><a class="anchor" href="#replace"></a>@Replace</h4>
+<div class="paragraph">
+<p>The <code>@Replace</code> annotation can be set to beans having another bean as super class. This means that the original bean (the super class) is no longer available in the Scout bean manager and only the new child class is returned.</p>
+</div>
+<div class="paragraph">
+<p>If the replacing bean (the child class) has no own <code>@Order</code> annotation defined but the replaced bean (the super class) has an <code>@Order</code> value, this order is inherited to the child. This is the only special case in which the <code>@Order</code> annotation value is inherited!</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
+<div class="paragraph">
+<p>The next examples use the bean situation as shown in figure <a href="#img-beanHierarchy">Figure 1</a>.
+In this situation the bean manager actually contains 3 beans:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>AnotherVersion</code> with <code>@Order</code> of 4000. This bean has no own order and would therefore get the default order of 5000. But because it is replacing another bean it inherits its order.</p>
+</li>
+<li>
+<p><code>MyServiceMod</code> with <code>@Order</code> of 4500. This bean declares its own order.</p>
+</li>
+<li>
+<p><code>MyServiceImpl</code> with <code>@Order</code> of 5000. This bean gets the default order of 5000 because it does not declare an order.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The bean <code>MySpecialVersion</code> is not part of the bean manager because it has been replaced by <code>AnotherVersion</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BEANS.get(IMyService.class)</code>: Returns <code>AnotherVersion</code> instance. The result cannot be an exact match because the requested type is an interface. Therefore, of all candidates there is one single candidate with the lowest order (comes first).</p>
+</li>
+<li>
+<p><code>BEANS.get(MyServiceImpl.class)</code>: Returns <code>MyServiceImpl</code> because there is an exact match available.</p>
+</li>
+<li>
+<p><code>BEANS.get(MySpecialVersion.class)</code>: Returns <code>AnotherVersion</code>. The result cannot be an exact match because there is no exact bean with this class in the bean manager (<code>MySpecialVersion</code> has been replaced). Therefore, only <code>AnotherVersion</code> remains as candidate in the hierarchy below <code>MySpecialVersion</code>.</p>
+</li>
+<li>
+<p><code>BEANS.get(MyServiceMod.class)</code>: Returns <code>MyServiceMod</code> because there is no other candidate.</p>
+</li>
+<li>
+<p><code>BEANS.all(IMyService.class)</code>: Returns a list with all beans sorted by <code>@Order</code>. This results in: <code>AnotherVersion</code>, <code>MyServiceMod</code>, <code>MyServiceImpl</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If <code>MyServiceMod</code> would have no <code>@Order</code> annotation, there would be two bean candidates available with the same default order of 5000: <code>MyServiceImpl</code> and <code>MyServiceMod</code>. In this case a call to <code>BEANS.get(IMyService.class)</code> would fail because there are several equivalent candidates. Equivalent candidates means they have the same <code>@Order</code> value and the system cannot decide which one is the right one.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bean-decoration"><a class="anchor" href="#bean-decoration"></a>Bean Decoration</h3>
+<div class="paragraph">
+<p>Bean decorations allow to wrap interfaces with a proxy to intercept each method call to the interface of a bean and apply some custom logic.
+For this a <code>IBeanDecorationFactory</code> has to be implemented. This is one single factory instance for the entire application. It decides which decorators are created for a bean request.
+The factory is asked for decorators on every bean retrieval. This allows to write bean decoration factories depending on dynamic conditions.</p>
+</div>
+<div class="paragraph">
+<p>As bean decoration factories are beans themselves, it is sufficient to create an implementation of <code>org.eclipse.scout.rt.platform.IBeanDecorationFactory</code> and to ensure this implementation is used (see <a href="#bean-retrieval">Bean Retrieval</a>).
+This factory receives the bean to be decorated and the originally requested bean class to decide which decorators it should create.
+In case no decoration is required the factory may return <code>null</code>. Then the original bean is used without decorations.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Decorations are only supported if the class obtained by the bean manager (e.g. by using <code>BEANS.get()</code>) is an interface!
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+It is best practice to mark all annotations that are interpreted in the bean decoration factory with the annotation <code>org.eclipse.scout.rt.platform.@BeanInvocationHint</code>. However, this annotation has no effect at runtime and is only for documentation reasons.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sample in listing <a href="#lst-BeanDecorationFactory">Listing 7</a> wraps each call to the server with a profiler decorator that measures how long a server call takes.</p>
+</div>
+<div id="lst-BeanDecorationFactory" class="listingblock">
+<div class="title">Listing 7. Bean decoration example.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Replace
+public class ProfilerDecorationFactory extends SimpleBeanDecorationFactory {
+  @Override
+  public &lt;T&gt; IBeanDecorator&lt;T&gt; decorate(IBean&lt;T&gt; bean, Class&lt;? extends T&gt; queryType) {
+    return new BackendCallProfilerDecorator&lt;&gt;(super.decorate(bean, queryType));
+  }
+}
+
+public class BackendCallProfilerDecorator&lt;T&gt; implements IBeanDecorator&lt;T&gt; {
+
+  private final IBeanDecorator&lt;T&gt; m_inner;
+
+  public BackendCallProfilerDecorator(IBeanDecorator&lt;T&gt; inner) {
+    m_inner = inner;
+  }
+
+  @Override
+  public Object invoke(IBeanInvocationContext&lt;T&gt; context) {
+    final String className;
+    if (context.getTargetObject() == null) {
+      className = context.getTargetMethod().getDeclaringClass().getSimpleName();
+    }
+    else {
+      className = context.getTargetObject().getClass().getSimpleName();
+    }
+
+    String timerName = className + '.' + context.getTargetMethod().getName();
+    TuningUtility.startTimer();
+    try {
+      if (m_inner != null) {
+        // delegate to the next decorator in the chain
+        return m_inner.invoke(context);
+      }
+      // forward to real bean
+      return context.proceed();
+    }
+    finally {
+      TuningUtility.stopTimer(timerName);
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="destroy-beans"><a class="anchor" href="#destroy-beans"></a>Destroy Beans</h3>
+<div class="paragraph">
+<p>Application scoped beans can declare methods annotated with <code>jakarta.annotation.@PreDestroy</code>. These methods will be called when the Scout platform is stopping.
+The methods may have any visibility modifier but must not be static and must not declare any parameters.
+If such a pre-destroy method throws an exception, the platform will continue to call all other pre-destroy methods (even methods on the same bean).</p>
+</div>
+<div class="paragraph">
+<p>Please note that pre-destroy methods are only called for application-scoped beans that already have created their instance.</p>
+</div>
+<div class="paragraph">
+<p>Pre-destroy methods inherited from super classes are always called after the ones from the class itself. Methods that are overridden are only called on the leaf class.
+Private methods are always called (because they cannot be overridden). The order in which multiple methods in the same declaring class are called is undefined.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-config.management"><a class="anchor" href="#sec-config.management"></a>Configuration Management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Applications usually require some kind of configuration mechanism to use the same binaries in a different environment or situation. Scout applications provide a configuration mechanism using properties files <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>For each property a class cares about default values and value validation. These classes share the <code>org.eclipse.scout.rt.platform.config.IConfigProperty</code> interface and are normal application scoped beans providing access to a specific configuration value as shown in listing <a href="#lst-ConfigProperties">Listing 8</a>. If the property class is an inner class it has to be defined as a static class with the <code>static</code> modifier.</p>
+</div>
+<div id="lst-ConfigProperties" class="listingblock">
+<div class="title">Listing 8. A configuration property of type Long.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.eclipse.scout.rt.platform.config.AbstractLongConfigProperty;
+
+/**
+ * Property of data type {@link Long} with key 'my.custom.timeout' and default value '3600L'.
+ */
+public class MyCustomTimeoutProperty extends AbstractLongConfigProperty {
+
+  @Override
+  public String getKey() {
+    return "my.custom.timeout"; <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+
+  @Override
+  public String description() {
+    return "Description of the custom timeout property. The default value is 3600.";
+  }
+
+  @Override
+  public Long getDefaultValue() {
+    return 3600L; <i class="conum" data-value="2"></i><b>(2)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>key</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>default value</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="accessing-config-properties"><a class="anchor" href="#accessing-config-properties"></a>Accessing Config Properties</h3>
+<div class="sect3">
+<h4 id="in-java"><a class="anchor" href="#in-java"></a>In Java</h4>
+<div class="paragraph">
+<p>To read the configured value you can use the <code>CONFIG</code> class as demonstrated in <a href="#lst-getPropertyValue">Listing 9</a>.</p>
+</div>
+<div id="lst-getPropertyValue" class="listingblock">
+<div class="title">Listing 9. Read the configured value in your code.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Long value = CONFIG.getPropertyValue(MyCustomTimeoutProperty.class);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="access-config-ts"><a class="anchor" href="#access-config-ts"></a>In TypeScript</h4>
+<div class="paragraph">
+<p>By default, only the properties with the following keys are available in the browser: <code>scout.devMode</code>, <code>scout.ui.backgroundPollingMaxWaitTime</code> and <code>scout.uinotification.waitTimeout</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following steps describe how you can access more config properties from the TypeScript code running in the browser.
+However, be careful which properties you expose, as their values will be visible on each client. So don&#8217;t use the feature for sensitive values like passwords!</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mark which properties should be available in the browser:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you want to expose your own config properties to the browser, the annotation <code>@ApiExposed</code> must be added to the corresponding property class in the Java code.</p>
+</li>
+<li>
+<p>In case you don&#8217;t have the possibility to modify the property class (e.g. if you want to expose a Scout property), you have to create a contributor that adds the property to the list of exported properties:</p>
+<div id="lst-addConfigPropertyByContributor" class="listingblock">
+<div class="title">Listing 10. Expose a config property to the browser using a contributor.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class YourConfigPropertyContributor extends AbstractApiExposedConfigPropertyContributor {
+  @Override
+  protected Collection&lt;? extends IConfigProperty&lt;?&gt;&gt; getExposedProperties() {
+    return Collections.singleton(BEANS.get(ApplicationVersionProperty.class));
+  }
+}</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>To have it accessible in TypeScript, the key and the value data type of the property must be declared using <a href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html">TypeScript declaration merging</a> as shown in <a href="#lst-declareTypeScriptConfigProperty">Listing 11</a></p>
+<div id="lst-declareTypeScriptConfigProperty" class="listingblock">
+<div class="title">Listing 11. Declare the new property in TypeScript.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {MainConfigProperties} from '@eclipse-scout/core';
+
+declare module '@eclipse-scout/core' {
+  export interface MainConfigProperties {
+    'my.custom.timeout': number;
+  }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you write a Scout JS application (where the user interface is written in TypeScript), the properties are not fetched by default. In Scout Classic this step is not necessary as the config properties are always automatically fetched. For Scout JS apps enable it using the <code>bootstrapSystem</code> function of the <code>config</code> utility. Add the following code before the init of your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {App} from '@YourApplication/ui';
+import {config} from '@eclipse-scout/core';
+
+App.addBootstrapper(() =&gt; config.bootstrapSystem());</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then you are ready to access the property in TypeScript using the <code>config</code> utility:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {config} from '@eclipse-scout/core';
+
+const myCustomTimeout = config.get('my.custom.timeout')?.value;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The variable <code>myCustomTimeout</code> will then hold the value stored in the <code>config.properties</code> file of your UI backend.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="property-resolution"><a class="anchor" href="#property-resolution"></a>Property resolution</h3>
+<div class="paragraph">
+<p>The given property key is searched in the following environments:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the system properties (<code>java.lang.System.getProperty(String)</code>).</p>
+</li>
+<li>
+<p>In the environment variables of the system (<code>java.lang.System.getenv(String)</code>).</p>
+</li>
+<li>
+<p>In the properties file. The properties file can be</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>a file on the local filesystem where the system property with key <code>config.properties</code> holds an absolute URL to the file or</p>
+</li>
+<li>
+<p>a file on the classpath with path <code>/config.properties</code> (recommended).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If none of the above is found, the default value of the property is applied.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Supported formats are simple key-value pairs, list values and map values. For more details about the format please refer to the JavaDoc of the <code>org.eclipse.scout.rt.platform.config.PropertiesHelper</code> class.</p>
+</div>
+<div class="paragraph">
+<p>Since the environment variable names are more restrictive in many shells and systems than the property names in Java, overriding a property containing a dot/period (<code>.</code>) with an environment variable would not be possible.
+To still allow overriding of such properties, the following lookup rules are applied in-order to find a matching environment variable:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An exact match of your property key (<code>my.property</code>)</p>
+</li>
+<li>
+<p>A match where periods are replaced by underscores (<code>my_property</code>)</p>
+</li>
+<li>
+<p>An uppercase match of your property key (<code>MY.PROPERTY</code>)</p>
+</li>
+<li>
+<p>An uppercase match where periods are replaced by underscores (<code>MY_PROPERTY</code>)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When it comes to working with String list or map value config properties (subclasses of <code>org.eclipse.scout.rt.platform.config.AbstractMapConfigProperty</code> or <code>org.eclipse.scout.rt.platform.config.AbstractStringListConfigProperty</code>), there&#8217;s also some special mechanic to consider in terms of providing or overriding property list or map values using environment variables.
+Since it is not possible to reliably retrieve the original list/map key from an environment variable (again, due to the restrictions mentioned above), property map values may be supplied as a JSON object string:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">my_map_property={"map-key-01": "value-01", "map-key-02": "value-02", "map-key-03": null}
+my_list_property={"0": "value-01", "1": "value-02", "2": null}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The usage of a JSON object string for a map/list property is not restricted to only environment variables but can be used within system properties or a properties file too.</p>
+</div>
+<div class="paragraph">
+<p>The following rules apply, when such properties are read:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>property map key/value pairs are added from the JSON object to the property map, overriding keys already being defined by sources of lower precedence (e.g. config.properties file)</p>
+</li>
+<li>
+<p>a JSON object attribute value of "null" will remove a key potentially being defined by sources of lower precedence</p>
+</li>
+<li>
+<p>a property value given by the [] pattern will override the value given by a JSON object string defined by the same source. Example within the same source (e.g. config.properties file):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>my.map.property={"map-key-01": "value-01", "map-key-02": "value-02"}</code></p>
+</li>
+<li>
+<p><code>my.map.property[map-key-02]=overridden-value-02</code></p>
+</li>
+<li>
+<p>Results in the value <code>overridden-value-02 for `map-key-02</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To parse the JSON object strings the <code>org.eclipse.scout.json</code> (lightweight JSON parsing) module is used as the bean manager is not yet available during configuration property initialization.
+Otherwise <code>org.eclipse.scout.rt.dataobject</code>/<code>org.eclipse.scout.rt.jackson</code> would be used if the bean manager would be available yet (more sophisticated JSON parsing modules).</p>
+</div>
+<div class="paragraph">
+<p>A properties file may import other config files from the classpath or any other absolute URL. This is done using the special key <code>import</code>. It can be a single value or a list or map (e.g. <code>import[anyKey or number]</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import[0]=classpath:myConfigs/other.properties</code></p>
+</li>
+<li>
+<p><code>import[1]=file:/C:/path/to/my/settings.properties</code></p>
+</li>
+<li>
+<p><code>import[2]=file:${catalina.base}/conf/db_connection.properties</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Scout already has some config properties. For a list and the corresponding documentation see <a href="#sec-app.configProperties">Scout Config Properties</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-examples"><a class="anchor" href="#additional-examples"></a>Additional examples</h3>
+<div class="paragraph">
+<p>Because the property classes are managed by the bean manager, you can use all the mechanisms to change the behavior (<code>@Replace</code> in particular).</p>
+</div>
+<div class="paragraph">
+<p><a href="#lst-PropertyConstant">Listing 12</a> demonstrates how you can use the @Replace annotation to change the existing <code>ApplicationNameProperty</code> class.
+The value is no longer fetched via the config mechanism, because the <code>getValue(String)</code> method is overridden.
+In this case a fixed value is returned.</p>
+</div>
+<div id="lst-PropertyConstant" class="listingblock">
+<div class="title">Listing 12. Property class providing a constant value.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.eclipse.scout.rt.platform.IgnoreBean;
+import org.eclipse.scout.rt.platform.Replace;
+import org.eclipse.scout.rt.platform.config.PlatformConfigProperties.ApplicationNameProperty;
+
+@Replace
+public class ApplicationNameConstant extends ApplicationNameProperty {
+  @Override
+  protected String readFromSource(String namespace) {
+    return "Contacts Application";
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The next example presented in <a href="#lst-PropertyRedirection">Listing 13</a> uses the same idea.
+In this case, the <code>getKey()</code> method is overridden to read the value from another key as demonstrated is the <a href="#lst-PropertyRedirectionConfig">Listing 14</a>.</p>
+</div>
+<div id="lst-PropertyRedirection" class="listingblock">
+<div class="title">Listing 13. Property class reading the value from another key.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.eclipse.scout.rt.platform.IgnoreBean;
+import org.eclipse.scout.rt.platform.Replace;
+import org.eclipse.scout.rt.platform.config.PlatformConfigProperties.ApplicationNameProperty;
+
+@Replace
+public class ApplicationNamePropertyRedirection extends ApplicationNameProperty {
+
+  @Override
+  public String getKey() {
+    return "myproject.applicationName";
+  }
+}</code></pre>
+</div>
+</div>
+<div id="lst-PropertyRedirectionConfig" class="listingblock">
+<div class="title">Listing 14. Read the configured value in your code.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">### Redirected Application Config
+myproject.applicationName=My Project Application</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration-validation"><a class="anchor" href="#configuration-validation"></a>Configuration validation</h3>
+<div class="paragraph">
+<p>During the Platform startup all classes implementing the interface <code>org.eclipse.scout.rt.platform.config.IConfigurationValidator</code> are asked to validate configuration provided in the <code>config.properties</code> files.
+If there is at least one <code>IConfigurationValidator</code> that accepts a given key-value-pair the configuration is considered to be valid. Otherwise, the platform will not start.</p>
+</div>
+<div class="paragraph">
+<p>The concrete implementation <code>org.eclipse.scout.rt.platform.config.ConfigPropertyValidator</code> will also check if a configured value matches the default value. In case it does an info message (warn in development mode) will be logged but the platform will still start.
+To minimize configuration files such entries should be removed from <code>config.properties</code> files.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec-app.configProperties"><a class="anchor" href="#sec-app.configProperties"></a>Scout Config Properties</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>dev.username</code> </dt>
+<dd>
+<p>Allows to override the username returned by the DevUsernameProvider.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>org.eclipse.scout.rt.platform.management.EnableListenerListProfiling</code> </dt>
+<dd>
+<p>Defines if all IListenerListWithManagement classes are monitored and exposed via JMX beans. Enable this feature to detect memory issues or possible leaks, this may result in a global performance decrease therefore this feature is disabled by default.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.autoCreateSelfSignedCertificate</code> </dt>
+<dd>
+<p>Specifies the X-500 name to use in the self-signed certificate when starting Scout application in development mode with TLS enabled.</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>`CN=my-host.my-domain.com,C=US,ST=CA,L=Sunnyvale,O=My Company Inc.`.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This property is only used in development mode and only if the property <code>scout.app.useTls</code> is true and no existing Java keystore is specified (property <code>scout.app.keyStorePath</code>).</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.certificateAlias</code> </dt>
+<dd>
+<p>HTTPS certificate alias of the key in the keystore to use.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.consoleInputHandlerEnabled</code> </dt>
+<dd>
+<p>Specifies whether the application uses a console input handler or not. The default value is true for development, false otherwise.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.contextHandlerExtendedResourceLookup</code> </dt>
+<dd>
+<p>Specifies whether the application context handler should also lookup resources w/o base resource. The default value is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.contextPath</code> </dt>
+<dd>
+<p>The context path under which the application can be reached. The default value is / (i.e. root path).</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.enabled</code> </dt>
+<dd>
+<p>Specifies whether org.eclipse.jetty.compression.server.CompressionHandler is used. Default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.excluded.inflate.paths</code> </dt>
+<dd>
+<p>Excluded inflate paths for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.excluded.methods</code> </dt>
+<dd>
+<p>Excluded methods for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.excluded.mimeTypes</code> </dt>
+<dd>
+<p>Excluded MIME types for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.excluded.paths</code> </dt>
+<dd>
+<p>Excluded paths for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.included.inflate.paths</code> </dt>
+<dd>
+<p>Included inflate paths for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.included.methods</code> </dt>
+<dd>
+<p>Included methods for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.included.mimeTypes</code> </dt>
+<dd>
+<p>Included MIME types for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.included.paths</code> </dt>
+<dd>
+<p>Included paths for org.eclipse.jetty.compression.server.CompressionHandler (respected only if at least one is set otherwise Jetty default is used).</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.inflateBufferSize</code> </dt>
+<dd>
+<p>Inflater buffer size for org.eclipse.jetty.compression.server.CompressionHandler to enable compressed requests. Default value: 2048</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.minSize</code> </dt>
+<dd>
+<p>Minimum size to trigger compression for org.eclipse.jetty.compression.server.CompressionHandler. If not set Jetty default value will be used.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.gzip.syncFlush</code> </dt>
+<dd>
+<p>Enables sync flush for org.eclipse.jetty.compression.server.CompressionHandler. Default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.http.request.maxHeaderSize</code> </dt>
+<dd>
+<p>Specifies the maximum allowed size in bytes for a HTTP request header. The default value is 72 KB.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.httpSessionEnabled</code> </dt>
+<dd>
+<p>Specifies whether the application uses HTTP session or not. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.httpSessionTimeout</code> </dt>
+<dd>
+<p>The session timeout in seconds to use if HTTP sessions are enabled. The default value is 300 seconds (5 minutes) for non-development mode, 3600 seconds (60 minutes) for development mode.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.jvmShutdownHookEnabled</code> </dt>
+<dd>
+<p>Specifies if the JVM shutdown hook is registered. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.keyStorePassword</code> </dt>
+<dd>
+<p>HTTPS keystore password. Supports obfuscated values prefixed with <code>OBF:</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.keyStorePath</code> </dt>
+<dd>
+<p>Setting this property enables the HTTPS connector. The value of this property must point to the local key store.</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>`classpath:/dev/my-https.jks` or `file:///C:/Users/usr/Desktop/my-store.jks` or `C:/Users/usr/Desktop/my-store.jks`.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.port</code> </dt>
+<dd>
+<p>The port under which the application will be running. Default value is 8080.</p>
+<div class="paragraph">
+<p>Data type: Integer between 1 and 65535</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.privateKeyPassword</code> </dt>
+<dd>
+<p>The password (if any) for the specific key within the key store. Supports obfuscated values prefixed with <code>OBF:</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigHttpOnly</code> </dt>
+<dd>
+<p>Specifies whether the HTTP session cookie is HTTP only or not. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigPartitioned</code> </dt>
+<dd>
+<p>Specifies whether the HTTP session cookie created by the web application will be marked as partitioned. The default value is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigSameSite</code> </dt>
+<dd>
+<p>Specifies the SameSite attribute of the HTTP session cookie. Valid values are: <code>None</code>, <code>Strict</code> or <code>Lax</code>. Default value is <code>Lax</code>.</p>
+<div class="paragraph">
+<p>Data type: SameSite</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.sessionCookieConfigSecure</code> </dt>
+<dd>
+<p>Specifies whether the HTTP session cookie created by the web application will be marked as secure. If true, the HTTP session cookie will be marked as secure even if the request initiated the corresponding session uses plain HTTP instead of HTTPS (e.g. Scout application behind reverse proxy terminating TLS). If false, the HTTP session cookie will not be marked as secure even if the request initiated the corresponding session is secure (using HTTPS). By default the cookie is secure for non-development code (property <code>scout.devMode</code> is false) or if the value of the property <code>scout.app.useTls</code> is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.app.useTls</code> </dt>
+<dd>
+<p>Specifies if the Scout application should use TLS. If true, the server must either be started in development mode (then a new self-singed certificate is created automatically), or a Java KeyStore must be configured using property <code>scout.app.keyStorePath</code>. By default this property is true, if a Java KeyStore has been specified.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.application.name</code> </dt>
+<dd>
+<p>The display name of the application. Used e.g. in the info form. The default value is <code>unknown</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.application.version</code> </dt>
+<dd>
+<p>The application version as displayed to the user. Used e.g. in the info form. The default value is <code>0.0.0</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.auth.anonymousEnabled</code> </dt>
+<dd>
+<p>Specifies if the <code>AnonymousAccessController</code> is enabled. Therefore, if a security filter uses this controller no login is required.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.auth.credentials</code> </dt>
+<dd>
+<p>Specifies the known credentials (username &amp; passwords) of the <code>org.eclipse.scout.rt.platform.security.ConfigFileCredentialVerifier</code>.</p>
+<div class="paragraph">
+<p>Credentials are separated by semicolon. Username and password information are separated by colon. Usernames are case-insensitive and it is recommended that they should only consist of ASCII characters. Plain text passwords are case-sensitive.</p>
+</div>
+<div class="paragraph">
+<p>By default the password information consists of Base64 encoded salt followed by a dot followed by the Base64 encoded SHA-512 hash of the password (using UTF-16).</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.auth.credentials=username1:base64EncodedSalt.base64EncodedPasswordHash;username2:base64EncodedSalt.base64EncodedPasswordHash</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create a salt and hash tuples based on a clear text password use the <code>org.eclipse.scout.rt.platform.security.ConfigFileCredentialVerifier.main()</code> method that can be invoked from the command line.</p>
+</div>
+<div class="paragraph">
+<p>If <code>scout.auth.credentialsPlaintext</code> is set to <code>true</code> the password information just consists of the cleartext password.</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.auth.credentialsPlaintext</code> </dt>
+<dd>
+<p>Specifies if the passwords specified in property <code>scout.auth.credentials</code> is plaintext (not recommended) or hashed. A value of false indicates hashed passwords which is the default.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.auth.privateKey</code> </dt>
+<dd>
+<p>Specifies the Base64 encoded private key for signing requests from the UI server to the backend server. By validating the signature the server can ensure the request is trustworthy.</p>
+<div class="paragraph">
+<p>New public-private-key-pairs can be created by invoking the class <code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> on the command line.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Base64 encoded String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.auth.publicKey</code> </dt>
+<dd>
+<p>Specifies the Base64 encoded public key used to validate signed requests on the backend server. The public key must match the private key stored in the property <code>scout.auth.privateKey</code> on the UI server.</p>
+<div class="paragraph">
+<p>New public-private-key-pairs can be created by invoking the class <code>org.eclipse.scout.rt.platform.security.SecurityUtility</code> on the command line.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Base64 encoded String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.auth.tokenTtl</code> </dt>
+<dd>
+<p>Number of milliseconds a signature on a request from the UI server to the backend server is valid (TTL for the authentication token). If a request is not received within this time, it is rejected.</p>
+<div class="paragraph">
+<p>By default this property is set to 10 minutes.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.backendUrl</code> </dt>
+<dd>
+<p>The URL of the scout backend server (without any servlets).</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.backendUrl=http://localhost:8080</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default this property is null.</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.client.defaultUiCallbackTimeoutMillis</code> </dt>
+<dd>
+<p>Default maximum time in milliseconds to wait for the browser to respond to a UI callback request.</p>
+<div class="paragraph">
+<p>The default value is 15 seconds.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.client.jobCompletionDelayOnSessionShutdown</code> </dt>
+<dd>
+<p>Specifies the maximal time (in seconds) to wait until running jobs are cancelled on session shutdown.</p>
+<div class="paragraph">
+<p>The default value is 10 seconds.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.client.memoryPolicy</code> </dt>
+<dd>
+<p>Specifies how long the client keeps fetched data before it is discarded. One of <code>small</code>, <code>medium</code> or <code>large</code>. The default value is <code>large</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.client.notificationSubject</code> </dt>
+<dd>
+<p>Technical subject under which received client notifications are executed.</p>
+<div class="paragraph">
+<p>By default <code>notification-authenticator</code> is used.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Subject name as String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.client.testingSessionTtl</code> </dt>
+<dd>
+<p>Testing client session expiration in milliseconds. The default value is 1 day.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.client.userArea</code> </dt>
+<dd>
+<p>User data area (e.g. in the user home) to store user preferences. If nothing is specified the user home of the operating system is used. By default no user home is set.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.chunkSize</code> </dt>
+<dd>
+<p>The maximum number of client notifications that are consumed at once. The default is 100.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.maxNotificationBlockingTimeOut</code> </dt>
+<dd>
+<p>The maximum amount of time in millisecons a consumer blocks while waiting for new notifications. The default is 10 seconds.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.maxNotificationPollerStaleTime</code> </dt>
+<dd>
+<p>The maximum amount of time in milliseconds between two client notification poller invocations before the poller job is restarted. Note: this value should be at least two times of both <code>scout.clientnotification.maxNotificationBlockingTimeOut</code> and <code>scout.clientnotification.notificationPollerCheckInterval</code>. The default is 90 seconds.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.nodeQueueCapacity</code> </dt>
+<dd>
+<p>Capacity of the client notification queue. If maximum capacity is reached, notification messages are dropped. The default value is 10000.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.notificationPollerLivenessCheckInterval</code> </dt>
+<dd>
+<p>Interval in milliseconds the poller job liveness check is performed. The default is 30 seconds.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clientnotification.notificationQueueExpireTime</code> </dt>
+<dd>
+<p>If no message is consumed for the specified number of milliseconds, client notification queues (with possibly pending notifications) are removed.</p>
+<div class="paragraph">
+<p>This avoids overflows and unnecessary memory consumption. Old queues may exist if a node does not properly unregister (e.g. due to a crash).</p>
+</div>
+<div class="paragraph">
+<p>The default value is 10 minutes.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.clustersync.user</code> </dt>
+<dd>
+<p>Technical subject under which received cluster sync notifications are executed. The default value is <code>system</code>.</p>
+<div class="paragraph">
+<p>Data type: Subject name as String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.createTunnelToServerBeans</code> </dt>
+<dd>
+<p>Specifies if the Scout platform should create proxy beans for interfaces annotated with <code>TunnelToServer</code>. Calls to beans of such types are then tunneled to the Scout backend.</p>
+<div class="paragraph">
+<p>By default this property is enabled if the property <code>scout.backendUrl</code> is set.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.cspDirective</code> </dt>
+<dd>
+<p>Configures Content Security Policy (CSP Version 2) directives. The value must be provided as a Map.</p>
+<div class="paragraph">
+<p>See <a href="https://www.w3.org/TR/CSP2/" class="bare">https://www.w3.org/TR/CSP2/</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</a> for available directives and their meaning.</p>
+</div>
+<div class="paragraph">
+<p>The values of this property replace the Scout defaults which are configured in the bean <code>org.eclipse.scout.rt.security.csp.ConfigurableContentSecurityPolicy</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the Scout application uses different html entry points, the CSP can configured individually: for a specific entry point using its name as suffix in the map key: scout.cspDirective[script-src#entrypoint.html]. Directives without entrypoint suffix are used for all entry points.</p>
+</div>
+<div class="paragraph">
+<p>To append to configured defaults use the config property <code>scout.cspDirectiveAppend</code> instead.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.cspDirective[img-src]=`self` https://media.example.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: Map</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.cspDirectiveAppend</code> </dt>
+<dd>
+<p>Configures additional Content Security Policy (CSP Version 2) directive expressions. The value must be provided as a Map.</p>
+<div class="paragraph">
+<p>See <a href="https://www.w3.org/TR/CSP2/" class="bare">https://www.w3.org/TR/CSP2/</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</a> for available directives and their meaning.</p>
+</div>
+<div class="paragraph">
+<p>The values of this property are appended to the already existing defaults (e.g. as configured in the bean <code>org.eclipse.scout.rt.security.csp.ConfigurableContentSecurityPolicy</code> or in a config.properties file).</p>
+</div>
+<div class="paragraph">
+<p>If the Scout application uses different html entry points, the CSP can configured individually: for a specific entry point using its name as suffix in the map key: scout.cspDirectiveAppend[script-src#entrypoint.html]. Directives without entrypoint suffix are used for all entry points.</p>
+</div>
+<div class="paragraph">
+<p>This allows to e.g. specify your default properties in the config.properties file using property <code>scout.cspDirective</code> and afterward extending it depending on a specific environment with an environment variable using this property.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.cspDirectiveAppend[img-src]=https://additional.host.org</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: Map</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.cspEnabled</code> </dt>
+<dd>
+<p>Enable or disable Content Security Policy (CSP) headers. The headers can be modified by replacing the bean <code>org.eclipse.scout.rt.security.csp.ContentSecurityPolicy</code> or using the property <code>scout.cspDirective</code>.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.cspExclusions</code> </dt>
+<dd>
+<p>A list of regex strings. If the pathInfo of the request matches one of these strings the csp headers won`t be set. This property only has an effect if csp is enabled, see <code>scout.cspEnabled</code>.</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.dataobject.jackson.streamReadConstraints</code> </dt>
+<dd>
+<p>Jackson constraints to use for JSON reading.</p>
+<div class="paragraph">
+<p>Map property with the keys as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>maxNestingDepth: Sets the maximum nesting depth. The depth is a count of objects and arrays that have not been closed, <code>{</code> and <code>[</code> respectively. (default: 1000)</p>
+</li>
+<li>
+<p>maxDocumentLength: Sets the maximum allowed document length (for positive values over 0) or indicate that any length is acceptable (0 or negative number). The length is in input units of the input source, that is, in bytes or chars. (default: -1)</p>
+</li>
+<li>
+<p>maxNameLength: Sets the maximum name length (in chars or bytes, depending on input context). (default: 50000)</p>
+</li>
+<li>
+<p>maxNumberLength: Sets the maximum number length (in chars or bytes, depending on input context). (default: 1000)</p>
+</li>
+<li>
+<p>maxStringLength: Sets the maximum string length for a single attribute value of type text (in chars or bytes, depending on input context). (default: 100000000)</p>
+<div class="paragraph">
+<p>Data type: StreamReadConstraints</p>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.dataobject.jackson.streamWriteConstraints</code> </dt>
+<dd>
+<p>Jackson constraints to use for JSON writing.</p>
+<div class="paragraph">
+<p>Map property with the keys as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>maxNestingDepth: Sets the maximum nesting depth. The depth is a count of objects and arrays that have not been closed, <code>{</code> and <code>[</code> respectively. (default: 1000)</p>
+<div class="paragraph">
+<p>Data type: StreamWriteConstraints</p>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.dev.texts.fileWatcherEnabled</code> </dt>
+<dd>
+<p>Specifies if the a file watcher should be installed for every nls resource bundle to invalidate the texts cache if a file changed. This property will only have an effect if platform runs in development mode.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+</dl>
+</div>
+<div id="scout.devMode" class="dlist">
+<dl>
+<dt class="hdlist1"><code>scout.devMode</code> </dt>
+<dd>
+<p>Property to specify if the application is running in development mode. Default is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.diagnostics.httpSessionIdLogMode</code> </dt>
+<dd>
+<p>Specifies in which form the HTTP session ID is provided as diagnostic context value.</p>
+<div class="paragraph">
+<p>Possible modes:</p>
+</div>
+<div class="paragraph">
+<p><code>off</code>: No HTTP session ID is provided.</p>
+</div>
+<div class="paragraph">
+<p><code>short</code>: Only a short and obfuscated version of the HTTP session is provided. The actual ID cannot be recovered from this.</p>
+</div>
+<div class="paragraph">
+<p><code>full</code>: The full HTTP session ID is provided, as reported by the application server. CAUTION: Only use this mode if you can guarantee that no malicious third party has access to the log files. Otherwise they might be able to hijack active sessions.</p>
+</div>
+<div class="paragraph">
+<p>In development mode, the default value is <code>full</code>. Otherwise, the default value is <code>short</code>.</p>
+</div>
+<div class="paragraph">
+<p>Data type: HttpSessionIdLogMode</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.externalBaseUrl</code> </dt>
+<dd>
+<p>Absolute URL to the deployed http(s):// base of the web-application. The URL should include proxies, redirects, etc.</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.externalBaseUrl=https://www.my-company.com/my-scout-application/.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This URL is used to replace <code>&lt;scout:base /&gt;</code> tags.</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.headless</code> </dt>
+<dd>
+<p>Specifies if the Scout Platform runs in headless mode. If true, the Java system property <code>java.awt.headless</code> is set to true as well (if not already set). The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.healthCheckRemoteUrls</code> </dt>
+<dd>
+<p>Comma separated list of URLs the <code>RemoteHealthChecker</code> should access.</p>
+<div class="paragraph">
+<p>By default no URLs are set.</p>
+</div>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.async.forceHttp2.maxConnectionsPerRoute</code> </dt>
+<dd>
+<p>Specifies the default maximum connections per route property for the default async force-http2 HTTP client.</p>
+<div class="paragraph">
+<p>Default value is 2048.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.async.forceHttp2.maxConnectionsTotal</code> </dt>
+<dd>
+<p>Specifies the default total maximum connections property for the default async force-http2 HTTP client.</p>
+<div class="paragraph">
+<p>The default value is 2048.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.connectionTtl</code> </dt>
+<dd>
+<p>Specifies the maximum lifetime in milliseconds for kept alive connections of the Apache HTTP client. The default value is 1 hour.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.evictExpiredConnections</code> </dt>
+<dd>
+<p>Enable eviction of expired connections.</p>
+<div class="paragraph">
+<p>The default value is enabled (= true)</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.evictIdleConnectionsTimeout</code> </dt>
+<dd>
+<p>Enable eviction of idle connections with the specified number in seconds (use zero to disable).</p>
+<div class="paragraph">
+<p>The default value is 1 minute</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.ignoreProxyPatterns</code> </dt>
+<dd>
+<p>Configure the proxy ignore list for the ConfigurableProxySelector. If an URI matches the pattern no proxy connection is used.</p>
+<div class="paragraph">
+<p>By default no proxy is configured.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.http.ignoreProxyPatterns[0]=https?://localhost(?::\\d+)?(?:/.*)?
+scout.http.ignoreProxyPatterns[1]=...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.keepAlive</code> </dt>
+<dd>
+<p>Enable/disable HTTP keep-alive connections.</p>
+<div class="paragraph">
+<p>The default value is defined by the system property <code>http.keepAlive</code> or true if the system property is undefined.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.maxConnectionsPerRoute</code> </dt>
+<dd>
+<p>Configuration property to define the default maximum connections per route of the Apache HTTP client. The default value is 32.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.maxConnectionsTotal</code> </dt>
+<dd>
+<p>Specifies the total maximum connections of the Apache HTTP client. The default value is 128.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.proxy.async.clientManager</code> </dt>
+<dd>
+<p>Default client manager for HttpProxy bean; users of this bean may choose a different client manager.</p>
+<div class="paragraph">
+<p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.shared.http.async.AbstractAsyncHttpClientManager</code> in its super hierarchy.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.proxy.async.timeout</code> </dt>
+<dd>
+<p>Timeout for async servlet contexts.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.proxyPatterns</code> </dt>
+<dd>
+<p>Configure proxies for the <code>ConfigurableProxySelector</code>. If an URI matches a pattern the corresponding proxy will be used.</p>
+<div class="paragraph">
+<p>By default no proxy is used.</p>
+</div>
+<div class="paragraph">
+<p>The property value is of the format REGEXP_FOR_URI=PROXY_HOST:PROXY_PORT</p>
+</div>
+<div class="paragraph">
+<p>Alternatively also a proxy type can be defined (must be a type of the enum java.net.Proxy$Type) using this format REGEXP_FOR_URI=PROXY_TYPE=PROXY_HOST:PROXY_PORT</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.http.proxyPatterns[0]=.*\\.example\\.com(:\\d+)?=127.0.0.1:8888
+scout.http.proxyPatterns[1]=.*\\.example\\.org(:\\d+)?=proxy.example.com:8080
+scout.http.proxyPatterns[2]=.*\\.example\\.net(:\\d+)?=SOCKS=proxy.example.com:1080</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.retryOnNoHttpResponseException</code> </dt>
+<dd>
+<p>Enable retry of request (includes non-idempotent requests) on NoHttpResponseException</p>
+<div class="paragraph">
+<p>Assuming that the cause of the exception was most probably a stale socket channel on the server side.</p>
+</div>
+<div class="paragraph">
+<p>The default value is true</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.retryOnSocketExceptionByConnectionReset</code> </dt>
+<dd>
+<p>Enable retry of request (includes non-idempotent requests) on {@link SocketException} with message <code>Connection reset</code></p>
+<div class="paragraph">
+<p>Assuming that the cause of the exception was most probably a stale socket channel on the server side.</p>
+</div>
+<div class="paragraph">
+<p>The default value is true</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.http.transportFactory</code> </dt>
+<dd>
+<p>Fully qualified class name of the HTTP transport factory the application uses. The class must implement <code>org.eclipse.scout.rt.shared.http.IHttpTransportFactory</code>.</p>
+<div class="paragraph">
+<p>By default <code>org.eclipse.scout.rt.shared.http.ApacheHttpTransportFactory</code> is used.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.shared.http.IHttpTransportFactory</code> in its super hierarchy.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.idSignaturePassword</code> </dt>
+<dd>
+<p>Password to create signatures for ids that are serialized or deserialized. The value of this password must be equal for all parts of an application.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jandex.rebuild</code> </dt>
+<dd>
+<p>Specifies if Jandex indexes should be rebuilt. Is only necessary to enable during development when the class files change often. The default value is false.</p>
+<div class="paragraph">
+<p>Data type: RebuildStrategy</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.consumer.connectTimeout</code> </dt>
+<dd>
+<p>Connect timeout in milliseconds to abort a webservice request, if establishment of the connection takes longer than this timeout. A timeout of null means an infinite timeout. The default value is null.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.consumer.portCache.corePoolSize</code> </dt>
+<dd>
+<p>Number of ports to be preemptively cached to speed up webservice calls. The default value is 10.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.consumer.portCache.enabled</code> </dt>
+<dd>
+<p>Indicates whether to use a preemptive port cache for webservice clients.</p>
+<div class="paragraph">
+<p>Depending on the implementor used, cached ports may increase performance, because port creation is an expensive operation due to WSDL and schema validation.</p>
+</div>
+<div class="paragraph">
+<p>The cache is based on a <code>corePoolSize</code>, meaning that that number of ports is created on a preemptive basis. If more ports than that number is required, they are created on demand and also added to the cache until expired, which is useful at a high load.</p>
+</div>
+<div class="paragraph">
+<p>The default value is true.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.consumer.portCache.ttl</code> </dt>
+<dd>
+<p>Maximum time in seconds to retain ports in the cache if the value of <code>scout.jaxws.consumer.portCache.corePoolSize</code> is exceeded. That typically occurs at high load, or if <code>scout.jaxws.consumer.portCache.corePoolSize</code> is undersized. The default value is 15 minutes.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.consumer.portPoolEnabled</code> </dt>
+<dd>
+<p>To indicate whether to pool webservice clients.</p>
+<div class="paragraph">
+<p>Creating new service and Port instances is expensive due to WSDL and schema validation. Using the pool helps to reduce these costs. The default value is true.</p>
+</div>
+<div class="paragraph">
+<p>The pool size is unlimited but its elements are removed after a certain time (configurable)</p>
+</div>
+<div class="paragraph">
+<p>If this value is true, the value of property <code>scout.jaxws.consumer.portCache.enabled</code> has no effect.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.consumer.readTimeout</code> </dt>
+<dd>
+<p>Read timeout in milliseconds to abort a webservice request, if it takes longer than this timeout for data to be available for read. A timeout of null means an infinite timeout. The default value is null.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.implementor</code> </dt>
+<dd>
+<p>Fully qualified class name of the JAX-WS implementor to use. The class must extend <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsImplementorSpecifics</code>.</p>
+<div class="paragraph">
+<p>By default, JAX-WS Metro (not bundled with JRE) is used. For that to work, add the Maven dependency to JAX-WS Metro to your server application`s pom.xml: com.sun.xml.ws:jaxws-rt:2.2.10.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.server.jaxws.implementor.JaxWsImplementorSpecifics</code> in its super hierarchy.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.loghandlerDebug</code> </dt>
+<dd>
+<p>Indicates whether to log SOAP messages in debug or info level. The default value is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.provider.authentication.basicRealm</code> </dt>
+<dd>
+<p>Security Realm used for Basic Authentication; used by <code>org.eclipse.scout.rt.server.jaxws.provider.auth.method.BasicAuthenticationMethod</code>. The default value is <code>JAX-WS</code>.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.provider.user.authenticator</code> </dt>
+<dd>
+<p>Technical Subject used to authenticate webservice requests. The default value is <code>jaxws-authenticator</code>.</p>
+<div class="paragraph">
+<p>Data type: Subject name as String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jaxws.provider.user.handler</code> </dt>
+<dd>
+<p>Technical subject used to invoke JAX-WS handlers if the request is not authenticated yet; used by <code>org.eclipse.scout.rt.server.jaxws.provider.handler.HandlerDelegate</code>.</p>
+<div class="paragraph">
+<p>The default value is <code>jaxws-handler</code>.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Subject name as String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jobmanager.allowCoreThreadTimeOut</code> </dt>
+<dd>
+<p>Specifies whether threads of the core-pool should be terminated after being idle for longer than the value of property <code>scout.jobmanager.keepAliveTime</code>. The defautl value is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jobmanager.corePoolSize</code> </dt>
+<dd>
+<p>The number of threads to keep in the pool, even if they are idle. The default value is 25.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jobmanager.keepAliveTime</code> </dt>
+<dd>
+<p>The time limit (in seconds) for which threads, which are created upon exceeding the <code>scout.jobmanager.corePoolSize</code> limit, may remain idle before being terminated. The default value is 1 minute.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jobmanager.maximumPoolSize</code> </dt>
+<dd>
+<p>The maximal number of threads to be created once the value of <code>scout.jobmanager.corePoolSize</code> is exceeded. The default value is unlimited (which means limited by the resources of the machine).</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.jobmanager.prestartCoreThreads</code> </dt>
+<dd>
+<p>Specifies whether all threads of the core-pool should be started upon job manager startup, so that they are idle waiting for work.</p>
+<div class="paragraph">
+<p>By default this is disabled in development mode (property <code>scout.devMode</code> is true) and enabled otherwise.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.loadWebResourcesFromFilesystem</code> </dt>
+<dd>
+<p>Specifies if the application should look for web resources (like .js, .html or .css) on the local filesystem. If true, the resources will be searched in modules that follow the Scout naming conventions (e.g. name.ui.app.dev, name.ui.app, name.ui) on the local filesystem first and (if not found) on the classpath second. If false, the resources are searched on the Java classpath only. By default this property is true in dev mode and false otherwise.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mail.bouncedetector.heuristic.contents</code> </dt>
+<dd>
+<p>Non-standard email bounce detection: content is checked against the provided list of heuristic contents (partial match, case-insensitive)</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mail.bouncedetector.heuristic.senderPrefixes</code> </dt>
+<dd>
+<p>Non-standard email bounce detection: sender is checked against the provided list of heuristic sender prefixes (prefix match, case-insensitive)</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mail.bouncedetector.heuristic.subjects</code> </dt>
+<dd>
+<p>Non-standard email bounce detection: subject is checked against the provided list of heuristic subjects (partial match, case-insensitive)</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.malwareScanner.delay</code> </dt>
+<dd>
+<p>Delay in milliseconds to wait after writing the file to the temp directory. This lets the scanner some time for checking. Default is 500ms.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.malwareScanner.path</code> </dt>
+<dd>
+<p>Path to a malware scanner checked directory. The default value is null which means the system temp path is used.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.cluster.destination.clusterNotificationTopic</code> </dt>
+<dd>
+<p>Name of the topic for cluster notifications published by scout application.</p>
+<div class="paragraph">
+<p>Data type: IDestination</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.cluster.environment</code> </dt>
+<dd>
+<p>Contains the configuration to connect to the network or broker. This configuration is specific to the MOM implementor</p>
+<div class="paragraph">
+<p>Example to connect to a peer based cluster, which is useful in development mode because there is no central broker:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.mom.cluster.environment[scout.mom.name]=Scout Cluster MOM
+scout.mom.cluster.environment[scout.mom.connectionfactory.name]=ClusterMom
+scout.mom.cluster.environment[java.naming.factory.initial]=org.apache.activemq.jndi.ActiveMQInitialContextFactory
+scout.mom.cluster.environment[java.naming.provider.url]=failover:(peer://mom/cluster?persistent=false)
+scout.mom.cluster.environment[connectionFactoryNames]=ClusterMom</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: Map</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.cluster.implementor</code> </dt>
+<dd>
+<p>Specifies the MOM implementor.</p>
+<div class="paragraph">
+<p>Example to work with a JMS based implementor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>scout.mom.cluster.implementor=org.eclipse.scout.rt.mom.jms.JmsMomImplementor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.mom.api.IMomImplementor</code> in its super hierarchy.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.failover.connectionRetryCount</code> </dt>
+<dd>
+<p>Specifies the connection retry count for connection failover. Default is 15. The value 0 disables connection failover.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.failover.connectionRetryIntervalMillis</code> </dt>
+<dd>
+<p>Specifies the connection retry interval in milliseconds. Default is 2000ms.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.failover.sessionRetryIntervalMillis</code> </dt>
+<dd>
+<p>Specifies the session retry interval in milliseconds. Default is 5000ms.</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.marshaller</code> </dt>
+<dd>
+<p>Specifies the default Marshaller to use if no marshaller is specified for a MOM or a destination. By default the <code>JsonDataObjectMarshaller</code> is used.</p>
+<div class="paragraph">
+<p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.mom.api.marshaller.IMarshaller</code> in its super hierarchy.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.requestreply.cancellationTopic</code> </dt>
+<dd>
+<p>Specifies the default topic to receive cancellation request for <code>request-reply</code> communication. By default, a defined topic with the name <code>scout.mom.requestreply.cancellation</code> is used.</p>
+<div class="paragraph">
+<p>Data type: IDestination</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.mom.requestreply.enabled</code> </dt>
+<dd>
+<p>Specifies if <code>request-reply</code> messaging is enabled by default. This value can also be configured individually per MOM. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.nodeId</code> </dt>
+<dd>
+<p>Specifies the cluster node name. If not specified a default id is computed.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.asyncObservableConcurrentJobCount</code> </dt>
+<dd>
+<p>The number of concurrent jobs that are executing observations asynchronously. The default value is 5.</p>
+<div class="paragraph">
+<p>Note: This value should be smaller than the number of max DB connections and there should be a fair amount of DB connections available for synchronous requests.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.asyncObservationInterval</code> </dt>
+<dd>
+<p>Minimum interval (in seconds) at which the observations are executed asynchronously.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.defaultExporter</code> </dt>
+<dd>
+<p>List of exporters to be used for traces, metrics and logs, separated by commas. Default is <code>otlp</code> or <code>none</code> in dev mode. Use this property to override the default.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.initializerEnabled</code> </dt>
+<dd>
+<p>Property to specify if the application is using the Scout OpenTelemetry initializer. Default is false. Set to false if you are using the OpenTelemetry Java Agent.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.span.attribute.processor.enabled</code> </dt>
+<dd>
+<p>Property to specify if org.eclipse.scout.rt.shared.opentelemetry.OpenTelemetrySpanAttributeProcessor should add span attributes. Default is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.otel.tracing.enabled</code> </dt>
+<dd>
+<p>Property to specify if the application is using the Scout OpenTelemetry Tracing. Default is false.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.passwordPolicy.minLength</code> </dt>
+<dd>
+<p>Minimum length for passwords checked by org.eclipse.scout.rt.platform.security.PasswordPolicy</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.platform.version</code> </dt>
+<dd>
+<p>Version of the scout platform. Used e.g. in the info form. The default value is bound to the implementation version in the manifest file.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.propertySupport.storeConfigValues</code> </dt>
+<dd>
+<p>Defines if config values should be stored using BasicPropertySupport, this is the current default and may be changed &gt; 22.0 in order to reduce global memory consumption.Default: true</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.remotefileRootPath</code> </dt>
+<dd>
+<p>Absolute path to the root directory of the <code>RemoteFileService</code>. The default value is null.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.api.exposed.enforce</code> </dt>
+<dd>
+<p>Set to true to reject non api-exposed operations with a not found error (404), no warning will be logged in this case (just for development mode); if set to false only a warning will be logged but requests are not rejected (default value: true)</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.client.http.connectionKeepAlive</code> </dt>
+<dd>
+<p>Specifies the maximum life time in milliseconds for kept alive connections of the REST HTTP client. The default value is 30 minutes.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.client.http.connectionTimeToLive</code> </dt>
+<dd>
+<p>Specifies the maximum time to live of a HTTP connection within the HTTP connection pool. May be zero if the connection does not have an expiry deadline. The default value is 30 minutes.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.client.http.forceEncodeUriForRequest</code> </dt>
+<dd>
+<p>Specifies whether the URI should be re-encoded to force US-ASCII encoding (strict RFC 2396 compliance), default: true</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.client.http.maxConnectionsPerRoute</code> </dt>
+<dd>
+<p>Configuration property to define the default maximum connections per route of the Apache HTTP client. The default value is 32</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.client.http.maxConnectionsTotal</code> </dt>
+<dd>
+<p>Specifies the total maximum connections of the Apache HTTP client. The default value is 128</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.client.http.validateAfterInactivity</code> </dt>
+<dd>
+<p>Defines period of inactivity in milliseconds after which persistent connections must be re-validated prior to being leased to the consumer. Non-positive value passed to this method disables connection validation. This check helps detect connections that have become stale (half-closed) while kept inactive in the pool. The default value is 1</p>
+<div class="paragraph">
+<p>Data type: Integer</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.rest.ensureHttpHeaderConnectionClose</code> </dt>
+<dd>
+<p>Ensures that the header <code>Connection: close</code> is added to every REST HTTP requests unless the header <code>Connection</code> is already set. As a result, TCP Connections are not reused by consecutive REST calls.The default value is true</p>
+<div class="paragraph">
+<p>This solves several rather rare issues that occurred in the HTTP client implementation when a connection was closed by the server side while it was being used by the client side for the next request.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.driver</code> </dt>
+<dd>
+<p>Driver to use (<code>chrome</code>, <code>edge</code>, <code>firefox</code>)</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.driverConfig</code> </dt>
+<dd>
+<p>Possibility to set arbitrary selenium driver properties</p>
+<div class="paragraph">
+<p>Data type: Map</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.driverRemoteServerUrl</code> </dt>
+<dd>
+<p>If remote server URL is set, then the driver connects to selenium driver instance usually deployed with docker.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.screenshotOnFailure</code> </dt>
+<dd>
+<p>If set, then a screenshot is taken in case of a failed test</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.simulateSlowNetwork</code> </dt>
+<dd>
+<p>If set, unit tests simulate slow network</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.webAppUrl</code> </dt>
+<dd>
+<p>URL to web application under test</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.selenium.webQueryParams</code> </dt>
+<dd>
+<p>Query params appended to web application under test</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serial.blacklistAppend</code> </dt>
+<dd>
+<p>Specifies a blacklist regex for fully qualified class names that are blocked in object serialization.</p>
+<div class="paragraph">
+<p>These rules are appended to the existing built-in blacklist (recommended).</p>
+</div>
+<div class="paragraph">
+<p>Comma separated list of regular expressions (regex).</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serial.blacklistReplace</code> </dt>
+<dd>
+<p>Specifies a blacklist regex for fully qualified class names that are blocked in object serialization.</p>
+<div class="paragraph">
+<p>These rules replace the existing built-in blacklist (not recommended).</p>
+</div>
+<div class="paragraph">
+<p>Comma separated list of regular expressions (regex).</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serial.whitelist</code> </dt>
+<dd>
+<p>Specifies the secure whitelist of fully qualified class names that are allowed to be used in object serialization.</p>
+<div class="paragraph">
+<p>Comma separated list of regular expressions (regex).</p>
+</div>
+<div class="paragraph">
+<p>The default regex .* is used for back compatibility only, this is unsafe.</p>
+</div>
+<div class="paragraph">
+<p>Make sure to define the property <code>scout.serial.whitelist</code> in the config.properties</p>
+</div>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.serverSessionTtl</code> </dt>
+<dd>
+<p>Server sessions that have not been accessed for the specified number of milliseconds are removed from the cache. The default value is one day.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.servicetunnel.compress</code> </dt>
+<dd>
+<p>Specifies if the service tunnel should use gzip compression for requests, default value: true</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.smtp.connectionTimeout</code> </dt>
+<dd>
+<p>Socket connection timeout value in milliseconds.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.smtp.debugReceiverEmail</code> </dt>
+<dd>
+<p>If specified all emails are sent to this address instead of the real one. This may be useful during development to not send emails to real users by accident.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.smtp.pool.maxConnectionLifetime</code> </dt>
+<dd>
+<p>Max. lifetime of pooled connections in seconds.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.smtp.pool.maxIdleTime</code> </dt>
+<dd>
+<p>Max. idle time for pooled connections in seconds.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.smtp.pool.waitForConnectionTimeout</code> </dt>
+<dd>
+<p>Max. wait time for SMTP connection in seconds. If the value is 0, callers will wait infinitely long for SMTP connections.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.smtp.readTimeout</code> </dt>
+<dd>
+<p>Socket read timeout value in milliseconds.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.directJdbcConnection</code> </dt>
+<dd>
+<p>If true a direct JDBC connection is created. Otherwise, a JNDI connection is used. The default value is true.</p>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.driverName</code> </dt>
+<dd>
+<p>The driver name to use. By default <code>oracle.jdbc.OracleDriver</code> is used.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.mappingName</code> </dt>
+<dd>
+<p>The JDBC mapping name. By default <code>jdbc:oracle:thin:@localhost:1521:ORCL</code> is used.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.pool.connectionBusyTimeout</code> </dt>
+<dd>
+<p>Connections will be closed after this timeout in milliseconds even if the connection is still busy. The default value is 6 hours.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.pool.connectionIdleTimeout</code> </dt>
+<dd>
+<p>Idle connections will be closed after this timeout in milliseconds. The default value is 5 minutes.</p>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.pool.size</code> </dt>
+<dd>
+<p>The maximum number of connections to create. The default pool size is 25.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.properties</code> </dt>
+<dd>
+<p>Semicolon separated list of properties to pass to the JDBC connection. The default value is null. E.g.: key1=val1;key2=val2</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jdbc.statementCacheSize</code> </dt>
+<dd>
+<p>Maximum number of cached SQL statements. The default value is 25.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jndi.initialContextFactory</code> </dt>
+<dd>
+<p>The name of the object to lookup in the JNDI context. Default is null.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jndi.name</code> </dt>
+<dd>
+<p>The name of the object to lookup in the JNDI context. Default is null.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jndi.providerUrl</code> </dt>
+<dd>
+<p>JNDI provider url (e.g. <code>ldap://somehost:389</code>). Default is null.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.jndi.urlPkgPrefixes</code> </dt>
+<dd>
+<p>A colon-separated list of package prefixes for the class name of the factory class that will create a URL context factory. Default is null.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.password</code> </dt>
+<dd>
+<p>The password to connect to the database (JDBC or JNDI)</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.transactionMemberId</code> </dt>
+<dd>
+<p>Id of the transaction member on which the connection is available.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.sql.username</code> </dt>
+<dd>
+<p>The username to connect to the database (JDBC or JNDI)</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.texts.showKeys</code> </dt>
+<dd>
+<p>If this property is set to true, the <code>TextKeyTextProviderService</code> will be registered with high priority, and each call to TEXTS.get() will return the given text key instead of the translation.</p>
+<div class="paragraph">
+<p>This is useful for debug/testing purposes or exporting forms to JSON.</p>
+</div>
+<div class="paragraph">
+<p>By default this property is false.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.tiles.dataLoadQueueTimeoutSeconds</code> </dt>
+<dd>
+<p>Maximum number of seconds a tile load job can execute until it is automatically cancelled. The default value is 2 minutes.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.tiles.maxConcurrentDataLoadThreads</code> </dt>
+<dd>
+<p>Maximum number of threads per server that can be created to load tiles. The default value is 25.</p>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.trustedCertificates</code> </dt>
+<dd>
+<p>URIs to DER (Base64) encoded certificate files that should be trusted. The URI may refer to a local file or a resource on the classpath (use classpath: prefix). The default value is an empty list.</p>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.backgroundPollingMaxWaitTime</code> </dt>
+<dd>
+<p>The polling request (which waits for a background job to complete) stays open until a background job has completed or the specified number of seconds elapsed.</p>
+<div class="paragraph">
+<p>This property must have a value between 3 and the value of property <code>scout.ui.maxUserIdleTime</code>.</p>
+</div>
+<div class="paragraph">
+<p>By default this property is set to 1 minute.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.locales</code> </dt>
+<dd>
+<p>Contains a comma separated list of supported locales (e.g. en,en-US,de-CH). To support all locales, use the keyword <code>all</code> instead.</p>
+<div class="paragraph">
+<p>This is only relevant if locales.json and texts.json should be sent to the client, which is not the case for remote apps. So this property is only used for JS only apps.</p>
+</div>
+<div class="paragraph">
+<p>By default no locales are supported.</p>
+</div>
+<div class="paragraph">
+<p>Data type: List</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.maxUploadFileCount</code> </dt>
+<dd>
+<p>For security reasons, file upload is limited to a maximum number of file that can be processed at once.</p>
+<div class="paragraph">
+<p>By default this property is set to 100. A value of -1 means no limit</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.maxUserIdleTime</code> </dt>
+<dd>
+<p>If a user is inactive (no user action) for the specified number of seconds, the session is stopped and the user is logged out.</p>
+<div class="paragraph">
+<p>By default this property is set to 4 hours.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.modelJobTimeout</code> </dt>
+<dd>
+<p>The maximal timeout in seconds to wait for model jobs to complete during a UI request. After that timeout the model jobs will be aborted so that the request may return to the client.</p>
+<div class="paragraph">
+<p>By default this property is set to 1 hour.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Long &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.servletMultipartConfig</code> </dt>
+<dd>
+<p>Multipart configuration for inbound servlet.</p>
+<div class="paragraph">
+<p>Map property with the keys as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>location: the directory location where files will be stored temporarily (default: temp directory)</p>
+</li>
+<li>
+<p>maxFileSize: the maximum size allowed in MB for uploaded files, -1 means unlimited (default: -1 MB)</p>
+</li>
+<li>
+<p>maxRequestSize: the maximum size allowed in MB for multipart/form-data requests, -1 means unlimited (default: -1 MB)</p>
+</li>
+<li>
+<p>fileSizeThreshold: the size threshold in MB after which files will written to disk (default: 20 MB)</p>
+<div class="paragraph">
+<p>Data type: MultipartConfigElement</p>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.sessionstore.housekeepingDelay</code> </dt>
+<dd>
+<p>Number of seconds before the housekeeping job starts after a UI session has been unregistered from the store.</p>
+<div class="paragraph">
+<p>By default this property is set to 30 seconds.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.ui.theme</code> </dt>
+<dd>
+<p>The name of the UI theme which is activated when the application starts.</p>
+<div class="paragraph">
+<p>Data type: String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.cleanupJobInterval</code> </dt>
+<dd>
+<p>The cleanup job removes expired notifications from the registry.This property configures in seconds, how often the cleanup job should run. Default is set to 5 minutes.If set to 0, the job won`t run.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.expirationTime</code> </dt>
+<dd>
+<p>Configures in milliseconds how long the notification has to be kept in the registry until it can be removed.This value is used if no explicit expirationTime is set for a specific notification.Important: the expiration time should be larger than the timeout for the HTTP session used for the UI.This makes sure he won`t miss any notifications if he was offline for a while, because he will be logged out anyway after getting online again.Default is 7 minutes.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.handler.throughput</code> </dt>
+<dd>
+<p>Specifies how many requests of browser side UI notification handlers can be processed per second.</p>
+<div class="paragraph">
+<p>The value is used to delay requests from the UI notification handlers to the server.</p>
+</div>
+<div class="paragraph">
+<p>Use a high value for fast servers. Then the refresh on the browser will be very soon, but peak load on the server is increased.</p>
+</div>
+<div class="paragraph">
+<p>Use smaller values to reduce server load but increase the delay between the reload on the server and the refresh on the browser.</p>
+</div>
+<div class="paragraph">
+<p>The default is 30 requests per second.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Integer &gt;= 0</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.uinotification.waitTimeout</code> </dt>
+<dd>
+<p>Configures in milliseconds how long the request should listen for a new notification it is interested in is put into the registry.If set to 0, the currently available list of notifications will be returned immediately.Default is 1 minute.</p>
+<div class="paragraph">
+<p>Data type: Long</p>
+</div>
+</dd>
+</dl>
+</div>
+<div id="scout.urlHints.enabled" class="dlist">
+<dl>
+<dt class="hdlist1"><code>scout.urlHints.enabled</code> </dt>
+<dd>
+<p>Enable or disable changing UrlHints using URL parameters in the browser address line.</p>
+<div class="paragraph">
+<p>By default has the same value as the config property <code>scout.devMode</code> meaning it is by default only enabled in development mode.</p>
+</div>
+<div class="paragraph">
+<p>Data type: Boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>scout.util.defaultDecimalSupportProvider</code> </dt>
+<dd>
+<p>Specifies the default DefaultDecimalSupportProvider to use. By default the <code>DefaultDecimalSupportProvider</code> is used.</p>
+<div class="paragraph">
+<p>Data type: Fully qualified class name. The class must have <code>org.eclipse.scout.rt.platform.util.DECIMAL$DefaultDecimalSupportProvider</code> in its super hierarchy.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/smallrye/jandex" class="bare">https://github.com/smallrye/jandex</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/.properties" class="bare">https://en.wikipedia.org/wiki/.properties</a>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../technical-guide.html">Technical Guide</a></span>
+  <span class="next"><a href="application.html">Application</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>

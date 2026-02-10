@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eclipse Scout Release Notes :: Eclipse Scout</title>
+    <link rel="prev" href="../howtos/scout-js/rest-service-how-to.html">
+    <link rel="next" href="../migration/migration-guide.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide/technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/common-concepts/observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../technical-guide/working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Eclipse Scout</a></li>
+    <li><a href="release-notes.html">Release Notes</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="release-notes.html">26.1</a>
+    <a class="version" href="../../25.2/releasenotes/release-notes.html">25.2</a>
+    <a class="version" href="../../25.1/releasenotes/release-notes.html">25.1</a>
+    <a class="version" href="../../24.2/releasenotes/release-notes.html">24.2</a>
+    <a class="version" href="../../24.1/releasenotes/release-notes.html">24.1</a>
+    <a class="version" href="../../23.2/releasenotes/release-notes.html">23.2</a>
+    <a class="version" href="../../23.1/releasenotes/release-notes.html">23.1</a>
+    <a class="version" href="../../22/releasenotes/release-notes.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/releasenotes/pages/release-notes.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Eclipse Scout Release Notes</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../25.2/releasenotes/release-notes.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest version of this release is: 26.1.0-beta.1.</p>
+</div>
+<div class="paragraph">
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/25.2%2E%2E%2Ereleases/26.1">detailed change log</a> on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Coming from an older Scout version? Check out the <a href="../migration/migration-guide.html" class="xref page">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="styles-css-class"><a class="anchor" href="#styles-css-class"></a>Utility to Modify CSS Classes (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>styles</code> utility was extended with new methods to modify the <code>cssClass</code>-string of objects or check whether a css class is set or not.
+These methods are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addCssClass</code>: adds one or more css classes</p>
+</li>
+<li>
+<p><code>removeCssClass</code>: removes one or more css classes</p>
+</li>
+<li>
+<p><code>toggleCssClass</code>: toggles, i.e. adds or removes, one or more css classes depending on a condition</p>
+</li>
+<li>
+<p><code>hasCssClass</code>: checks whether one or more css classes are set</p>
+</li>
+<li>
+<p><code>cssClassAsArray</code>: splits a <code>cssClass</code>-string into an array of css classes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, similar methods have been added to the <code>Cell</code> class to easier query and modify the <code>cssClass</code> property: <code>addCssClass</code>, <code>removeCssClass</code>, <code>toggleCssClass</code>, <code>hasCssClass</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="session-api-changes"><a class="anchor" href="#session-api-changes"></a>Session API changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the move toward a stateless backend server, the API of the session has been changed. More info can be found in the <a href="../migration/migration-guide.html" class="xref page">Migration Guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-scout-classic-child-pages-to-a-jspage"><a class="anchor" href="#adding-scout-classic-child-pages-to-a-jspage"></a>Adding Scout Classic Child Pages to a JsPage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The JsPage enables the use of pages implemented in Scout JS in a Scout Classic outline.
+It can now use Scout Classic pages as its child pages.
+The child pages are created by the Java implementation of the JsPage and triggered by its equivalent in Scout JS.
+For more information see <a href="../howtos/scout-classic/js-page-how-to.html#how-to-js-page" class="xref page">How-To</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-preferences-moved-from-shared-to-client"><a class="anchor" href="#user-preferences-moved-from-shared-to-client"></a>User Preferences Moved from Shared to Client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the move toward a stateless server session, <code>IPreferences</code>, <code>IUserPreferencesService</code>, <code>IUserPreferencesStorageService</code>, <code>IPreferenceChangeListener</code> and their corresponding implementations have been moved from shared to client.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="simple-tab-box-with-vertical-tabs"><a class="anchor" href="#simple-tab-box-with-vertical-tabs"></a>Simple Tab Box with Vertical Tabs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>SimpleTabBox</code> has been improved.
+The tabs can now be placed on all four sides of the box by adjusting the attribute <code>position</code> on the <code>SimpleTabArea</code> accordingly.
+In particular, this allows the tabs to be aligned vertically.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">scout.create(SimpleTabBox&lt;SimpleTabView&gt;, {
+  parent: this,
+  tabArea: {
+    objectType: SimpleTabArea,
+    position: SimpleTabArea.Position.LEFT
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="widget-new-properties-to-control-focus-behavior-scout-js"><a class="anchor" href="#widget-new-properties-to-control-focus-behavior-scout-js"></a>Widget: New Properties to Control Focus Behavior (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following properties have been added to the Widget class and are therefore available for every widget.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tabbable: controls whether the widget should be focusable using keyboard.</p>
+</li>
+<li>
+<p>preventClickFocus: set to true if the widget must not be focused when it is clicked.</p>
+</li>
+<li>
+<p>preventInitialFocus: set to true if the widget must not be considered as initial focus candidate, e.g. when opening a form.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="search-outline"><a class="anchor" href="#search-outline"></a>Search Outline (Scout JS and Scout Classic)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>SearchOutline</code> now works for both Scout Classic and Scout JS pages.
+Executing a search in Scout Classic is still done by overwriting <code>execSearch(String)</code>. In addition <code>execResetSearch()</code> may be overwritten to perform an action when the search is reset.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Implementation of an <code>ISearchOutline</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class SearchOutline extends AbstractSearchOutline {
+
+  private MySearchPageWithTable m_mySearchPageWithTable;
+
+  @Override
+  protected void execCreateChildPages(List&lt;IPage&lt;?&gt;&gt; pageList) {
+    m_mySearchPageWithTable = new MySearchPageWithTable();
+    pageList.add(m_mySearchPageWithTable);
+  }
+
+  @Override
+  public void execSearch(String query) {
+    execResetSearch();
+    super.execSearch(query);
+    m_mySearchPageWithTable.search(query);
+  }
+
+  @Override
+  protected void execResetSearch() {
+    super.execResetSearch();
+    m_mySearchPageWithTable.resetSearch();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order to update the search status of the outline automatically, the page needs to implement the interface <code>ISearchPage</code> and update its <code>ISearchState</code> whenever the result changes.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Implementation of <code>ISearchPage</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MySearchPageWithTable extends MyPageWithTable implements ISearchPage&lt;Table&gt; {
+
+  private final LazyValue&lt;ISearchState&gt; m_searchState = new LazyValue&lt;&gt;(this::createSearchState);
+
+  @Override
+  public ISearchState getSearchState() {
+    return m_searchState.get();
+  }
+
+  public void search(String query) {
+    // execute search and update rows
+    // ...
+
+    getSearchState().setResultCount(getTable().getRowCount());
+    getSearchState().setLimited(isLimitedResult());
+    getSearchState().setPending(false);
+  }
+
+  public void resetSearch() {
+    getTable().deleteAllRows();
+
+    getSearchState().setResultCount(0);
+    getSearchState().setLimited(false);
+    getSearchState().setPending(false);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Scout JS pages and <a href="../howtos/scout-classic/js-page-how-to.html#how-to-js-page" class="xref page">hybrid pages</a> simply create a <code>SearchState</code> and listen on the events <code>search</code> and <code>resetSearch</code> of the <code>SearchOutline</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export class MySearchPageWithTable extends MyPageWithTable implements SearchPage {
+
+  searchState: SearchState;
+
+  protected _outlineSearchHandler = this._onOutlineSearch.bind(this);
+  protected _outlineResetSearchHandler = this._onOutlineResetSearch.bind(this);
+
+  protected override _init(model: InitModelOf&lt;this&gt;) {
+    super._init(model);
+
+    this.searchState = scout.create(SearchState, {parent: this.outline});
+
+    this.outline.on('search', this._outlineSearchHandler);
+    this.outline.on('resetSearch', this._outlineResetSearchHandler);
+  }
+
+  protected override _destroy() {
+    this.outline.off('search', this._outlineSearchHandler);
+    this.outline.off('resetSearch', this._outlineResetSearchHandler);
+
+    this.searchState.destroy();
+    this.searchState = null;
+
+    super._destroy();
+  }
+
+  protected _onOutlineSearch(event: Event&lt;SearchOutline&gt;) {
+    // execute search and update rows
+    // ...
+
+    this.searchState.setResultCount(this.detailTable.rows.length);
+    this.searchState.setPending(false);
+  }
+
+  protected _onOutlineResetSearch(event: Event&lt;SearchOutline&gt;) {
+    this.detailTable?.deleteAllRows();
+
+    this.searchState.setResultCount(this.detailTable.rows.length);
+    this.searchState.setPending(false);
+  }
+
+  protected _updateResultCount() {
+    const resultCount = this.detailTable.rows.length;
+    this.searchState.setResultCount(this.detailTable.rows.length);
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hardened-content-security-policy"><a class="anchor" href="#hardened-content-security-policy"></a>Hardened Content Security Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP">Content Security Policy</a> used by Scout applications has been hardened.
+It now makes use of nonces for JavaScript which may prevent cross-site scripting attacks.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, lots of CSP related features are more flexible now and provide new possibilities to harden your CSPs.
+Please see the <a href="../migration/migration-guide.html#csp-hardening" class="xref page">Hardening the Content Security Policy</a> migration guide for migration instructions and a list of new features.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="improved-keyboard-navigation-and-accessibility"><a class="anchor" href="#improved-keyboard-navigation-and-accessibility"></a>Improved Keyboard Navigation and Accessibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To further improve accessibility, various optimizations have been made to keyboard navigation and screen reader functionality.</p>
+</div>
+<div class="sect2">
+<h3 id="desktop"><a class="anchor" href="#desktop"></a>Desktop</h3>
+<div class="paragraph">
+<p>The following elements on the desktop can now be accessed using the TAB key:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Views</p>
+</li>
+<li>
+<p>Tree</p>
+</li>
+<li>
+<p>Desktop tabs</p>
+</li>
+<li>
+<p>Toolbar</p>
+</li>
+<li>
+<p>Table header</p>
+</li>
+<li>
+<p>Table footer</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Within these elements, navigation can be done using the arrow keys, similar to what is already possible in the menu bar.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/views_focus.png" alt="views focus">
+</div>
+<div class="title">Figure 1. Views</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="table"><a class="anchor" href="#table"></a>Table</h3>
+<div class="paragraph">
+<p>The table header and footer can now be accessed using TAB.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/table_header_focus.png" alt="table header focus">
+</div>
+<div class="title">Figure 2. Table Header</div>
+</div>
+<div class="paragraph">
+<p>In addition, the TAB order is now more logical: first comes the top menu bar, then the header, then the data, then the bottom menu bar, and finally the footer.
+To ensure this order also makes sense visually, the focus outline is now drawn only around the data element instead of the entire table when navigating into it using TAB.
+When clicking into the table with the mouse, it looks the same as before.</p>
+</div>
+<div class="paragraph">
+<p>On the main table, focus visualization behaves differently than on a form: there is no focus outline around the entire table and the selected row remains blue.
+This existing behavior has been improved so that the focus is now visible when the table is accessed via the keyboard.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/table_without_selection_focus.png" alt="table without selection focus">
+</div>
+<div class="title">Figure 3. Table without Selection</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/table_with_selection_focus.png" alt="table with selection focus">
+</div>
+<div class="title">Figure 4. Table with Selection</div>
+</div>
+<div class="paragraph">
+<p>If a table contains no data, it is no longer focusable.
+If a text filter is active, it can now be reached via TAB.</p>
+</div>
+<div class="paragraph">
+<p>In the column menu, all elements can now be accessed using the keyboard.
+In addition, not every individual button is reachable via TAB anymore, only the first button of a group.
+Navigation within a group is done using the arrow keys.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/column_menu_focus.png" alt="column menu focus">
+</div>
+<div class="title">Figure 5. Column Menu</div>
+</div>
+<div class="paragraph">
+<p>Through an index and count attribute, the screen reader knows which row is currently selected and how many rows exist in total, even if not all of them are rendered.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="table-chart"><a class="anchor" href="#table-chart"></a>Table Chart</h3>
+<div class="paragraph">
+<p>The control elements (chart type, axes) can now be accessed using the keyboard.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/table_chart_focus.png" alt="table chart focus">
+</div>
+<div class="title">Figure 6. Table Chart</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tree"><a class="anchor" href="#tree"></a>Tree</h3>
+<div class="paragraph">
+<p>As with the table, the TAB order has been improved so that the data now receives focus.
+This results in a correct TAB order when other elements are present in the tree, such as the search field in the global search.</p>
+</div>
+<div class="paragraph">
+<p>The tree has a new mode in which individual nodes are focusable without being selected.
+In this mode, keyboard navigation moves the focus rather than the selection.
+This mode is active for the tree on the desktop.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tree_focus.png" alt="tree focus">
+</div>
+<div class="title">Figure 7. Tree</div>
+</div>
+<div class="paragraph">
+<p>If a tree contains no data, it is no longer focusable.
+The HOME key no longer collapses all nodes; instead, it simply jumps to the first node.
+To collapse all nodes, CTRL+HOME can now be used.</p>
+</div>
+<div class="paragraph">
+<p>Through an index and count attribute, the screen reader knows which node is currently selected and how many nodes exist in total, even if not all of them are rendered.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tiles"><a class="anchor" href="#tiles"></a>Tiles</h3>
+<div class="paragraph">
+<p>Similar to the table, the focused tile is now visually highlighted when using TAB.
+Previously, the focus was not visible.</p>
+</div>
+<div class="paragraph">
+<p>In addition, the TAB order in a tile table has been corrected.
+The footer row now comes after the tiles.
+If a tile grid contains no tiles, it is no longer focusable.</p>
+</div>
+<div class="paragraph">
+<p>If the tiles are selectable, they now receive ARIA attributes and are therefore read correctly by the screen reader.
+Through an index and count attribute, the screen reader knows which tile is currently selected and how many tiles exist in total, even if not all of them are rendered.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fields"><a class="anchor" href="#fields"></a>Fields</h3>
+<div class="paragraph">
+<p>Fields now receive the necessary ARIA attribute when they are invalid.
+In addition, the error status is now linked to the field.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="field-menus"><a class="anchor" href="#field-menus"></a>Field Menus</h3>
+<div class="paragraph">
+<p>Field menus can now be accessed using TAB.
+If the status icon only contains a tooltip or an error, it is still not included in the TAB list to avoid generating too many TAB stops.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/field_menu_focus.png" alt="field menu focus">
+</div>
+<div class="title">Figure 8. Field Menus</div>
+</div>
+<div class="paragraph">
+<p>Also, the status now gets the required ARIA attributes for the screen reader.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tooltip-with-menus"><a class="anchor" href="#tooltip-with-menus"></a>Tooltip with Menus</h3>
+<div class="paragraph">
+<p>If a tooltip contains menus, they can now be operated via the keyboard.
+In addition, the state colors of the menus in the various status tooltips have been slightly optimized.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/menu_tooltip_focus.png" alt="menu tooltip focus">
+</div>
+<div class="title">Figure 9. Tooltip with Menus</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="toggle-menu"><a class="anchor" href="#toggle-menu"></a>Toggle Menu</h3>
+<div class="paragraph">
+<p>A toggle menu in a context menu now has its own style which is different from a focused menu item.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/toggle_menu.png" alt="toggle menu">
+</div>
+<div class="title">Figure 10. Toggle Menu Inside a Context Menu</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-box"><a class="anchor" href="#tab-box"></a>Tab Box</h3>
+<div class="paragraph">
+<p>The visualization of the focus has been optimized to make it more visible.
+It is still displayed only when the keyboard is used to focus a tab.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tabbox_focus.png" alt="tabbox focus">
+</div>
+<div class="title">Figure 11. Tab Box</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="action"><a class="anchor" href="#action"></a>Action</h3>
+<div class="paragraph">
+<p>Actions are clickable elements similar to buttons or menus and are often used for custom widgets.
+They are now keyboard-operable by default and behave similarly to buttons in this regard:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>They are reachable via TAB</p>
+</li>
+<li>
+<p>They can be triggered using Space/Enter</p>
+</li>
+<li>
+<p>They do not receive focus when clicked</p>
+</li>
+<li>
+<p>They do not receive initial focus, for example when a form is opened</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simple-tab-box"><a class="anchor" href="#simple-tab-box"></a>Simple Tab Box</h3>
+<div class="paragraph">
+<p>This alternative tab box is used for form tabs.
+They are now operable via the keyboard and receive ARIA attributes for the screen reader.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/desktop_tab_focus.png" alt="desktop tab focus">
+</div>
+<div class="title">Figure 12. Form Tabs</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="breadcrumb-bar"><a class="anchor" href="#breadcrumb-bar"></a>Breadcrumb Bar</h3>
+<div class="paragraph">
+<p>The breadcrumb bar is now operable via the keyboard and receives ARIA attributes for the screen reader.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/breadcrumb_bar_focus.png" alt="breadcrumb bar focus">
+</div>
+<div class="title">Figure 13. Breadcrumb Bar</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch"><a class="anchor" href="#switch"></a>Switch</h3>
+<div class="paragraph">
+<p>The switch is now reachable via TAB by default.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/switch_focus.png" alt="switch focus">
+</div>
+<div class="title">Figure 14. Switch</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="menus-and-buttons"><a class="anchor" href="#menus-and-buttons"></a>Menus and Buttons</h3>
+<div class="paragraph">
+<p>Various buttons or menus with only a single icon now have a tooltip or aria-label set so that the screen reader knows what type of element it is.
+If a tooltip has no text set, the tooltip is used as aria-label.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
+  <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>

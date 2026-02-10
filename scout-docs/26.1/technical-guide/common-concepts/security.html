@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Security :: Eclipse Scout</title>
+    <link rel="prev" href="run-monitor.html">
+    <link rel="next" href="smtp-helper.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Eclipse Scout Docs</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search Docs">
+      		  <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:scout-docs"> In this project
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="logo" href="https://eclipse.dev/scout/"><img src="../../../25.2/index.html/../../../_/img/eclipse-scout-logo.svg" alt="Eclipse Scout"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="scout-docs" data-version="26.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Eclipse Scout</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getstarted/getstarted.html">Get Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout.html">Hello Scout Classic</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-service.html">Build Scout App and Run as Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/run-as-docker-container.html">Run as Docker Container</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/one-day-tutorial.html">One Day Tutorial</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js.html">Hello Scout JS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-js-fullstack.html">Hello Scout JS Full Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getstarted/helloscout-cdn.html">Hello Scout JS with a CDN</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical-guide.html">Technical Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Common Concepts</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="platform.html">Platform</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="application.html">Application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="exception-handling.html">Working with exceptions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="job-manager.html">JobManager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-context.html">RunContext</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="run-monitor.html">RunMonitor</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="smtp-helper.html">SmtpHelper</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="observability.html">Observability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Interface</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget.html">Widget</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-factory.html">Object Factory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form.html">Form</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/form-field.html">Form Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/composite-field.html">Composite Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/group-box.html">Group Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/logical-grid.html">Logical Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/value-field.html">Value Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/desktop.html">Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/outline.html">Outline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/page.html">Page</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/bookmarks.html">Bookmarks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/styling.html">Styling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/mobile.html">Mobile Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/extensibility.html">Extensibility</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/texts.html">Texts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/icons.html">Icons</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/object-identifiers.html">Object Identifiers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/url-hints.html">URL Hints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/widget-reference.html">Widget Reference</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/ui-callback.html">UI Callbacks</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/ui-preferences.html">UI Preferences</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/html-document-parser.html">HTML Document Parser</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/typescript.html">TypeScript Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/build-stack.html">Build Stack</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../user-interface/browser-support.html">Browser Support</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Data</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/lookup-call.html">Lookup Call</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/code-type.html">Code Type</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/client-notification.html">Client Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/ui-notifications.html">UI Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/data-object.html">Data Objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/rest.html">REST</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../working-with-data/jax-ws.html">Webservices with JAX-WS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../sdk/sdk.html">Scout SDK</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-intellij.html">Scout SDK for IntelliJ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../sdk/sdk-eclipse.html">Scout SDK for Eclipse</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../howtos/how-tos.html">How-Tos</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout Classic</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/smart-field-how-to.html">SmartField: How to Apply Colors and Styles From a Lookup Row</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-form-how-to.html">How to open a Scout JS form in a Scout Classic application</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-classic/js-page-how-to.html">How to Add a Scout JS Page in a Scout Classic Outline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Scout JS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/chart-how-to.html">How to Create a Chart</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/flip-card-how-to.html">How to Create a Custom Field</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../releasenotes/release-notes.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../migration/migration-guide.html">Migration Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Eclipse Scout</span>
+    <span class="version">26.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../../25.2/index.html">Eclipse Scout</a>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="../../index.html">26.1</a>
+        </li>
+        <li class="version is-latest">
+          <a href="../../../25.2/index.html">25.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../25.1/index.html">25.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.2/index.html">24.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../24.1/index.html">24.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.2/index.html">23.2</a>
+        </li>
+        <li class="version">
+          <a href="../../../23.1/index.html">23.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../22/index.html">22</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../25.2/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Eclipse Scout</a></li>
+    <li><a href="../technical-guide.html">Technical Guide</a></li>
+    <li>Common Concepts</li>
+    <li><a href="security.html">Security</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">26.1</button>
+  <div class="version-menu">
+    <a class="version is-current" href="security.html">26.1</a>
+    <a class="version" href="../../../25.2/technical-guide/common-concepts/security.html">25.2</a>
+    <a class="version" href="../../../25.1/technical-guide/common-concepts/security.html">25.1</a>
+    <a class="version" href="../../../24.2/technical-guide/common-concepts/security.html">24.2</a>
+    <a class="version" href="../../../24.1/technical-guide/common-concepts/security.html">24.1</a>
+    <a class="version" href="../../../23.2/technical-guide/common-concepts/security.html">23.2</a>
+    <a class="version" href="../../../23.1/technical-guide/common-concepts/security.html">23.1</a>
+    <a class="version" href="../../../22/technical-guide/common-concepts/security.html">22</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/eclipse-scout/scout.docs/edit/releases/26.1/docs/modules/technical-guide/pages/common-concepts/security.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Security</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This document is referring to an upcoming Scout release. Please click <a href="../../../25.2/technical-guide/common-concepts/security.html" class="xref page">here</a> for the current version.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="default-http-response-headers"><a class="anchor" href="#default-http-response-headers"></a>Default HTTP Response Headers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All Scout HTTP servlets delegate to a central authority to append HTTP response headers. This is the bean <code>HttpServletControl</code>.
+It enables developers to control which headers that should be added to the HTTP response for each servlet and request.</p>
+</div>
+<div class="paragraph">
+<p>The next sections describe the headers that are added to any response by default. Beside these also the following headers may be of interest for an end user application (consider adding them to your application if possible):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning">Public Key Pinning</a></p>
+</li>
+<li>
+<p><a href="https://tools.ietf.org/html/rfc6797">Strict Transport Security (HSTS)</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/gg622941%28v=vs.85%29.aspx?f=255&amp;MSPPError=-2147217396">X-Content-Type-Options</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please note that not all headers are supported in all user agents!
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="x-frame-options"><a class="anchor" href="#x-frame-options"></a>X-Frame-Options</h3>
+<div class="paragraph">
+<p>The X-Frame-Options HTTP response header <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> can be used to indicate whether a user agent should be allowed to render a page in a <code>&lt;frame&gt;</code>, <code>&lt;iframe&gt;</code> or <code>&lt;object&gt;</code>.
+Sites can use this to avoid clickjacking <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> attacks, by ensuring that their content is not embedded into other sites.
+The X-Frame-Options header is described in RFC 7034 <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>In Scout this header is set to <code>SAMEORIGIN</code> which allows the page to be displayed in a frame on the same origin (scheme, host and port) as the page itself only.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="x-xss-protection"><a class="anchor" href="#x-xss-protection"></a>X-XSS-Protection</h3>
+<div class="paragraph">
+<p>This header is no longer interpreted by modern browser engines and is considered insecure.
+Scout does no longer set this header in <code>HttpServletControl</code>.</p>
+</div>
+<div class="paragraph">
+<p>See MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="csp"><a class="anchor" href="#csp"></a>Content Security Policy</h3>
+<div class="paragraph">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP">Content Security Policy (CSP)</a> is a feature that helps to prevent or minimize the risk of certain types of security threats.
+It consists of a series of instructions from a website to a browser, which instruct the browser to place restrictions on the things that the code comprising the site is allowed to do.</p>
+</div>
+<div class="paragraph">
+<p>Scout uses the following CSP settings:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For the root HTML page (entry point). Uses default settings from the <code>ConfigurableContentSecurityPolicy</code> class and nonces for script tags. The following default directives are set:</p>
+<div class="openblock">
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>default-src</code>: <code>'none'</code>. Disables fallback handling, directives should be set explicitly.</p>
+</li>
+<li>
+<p><code>script-src</code>: Uses <code>nonce</code>. Only scripts having a nonce are executed.</p>
+</li>
+<li>
+<p><code>style-src</code>: <code>'self' 'unsafe-inline'</code></p>
+</li>
+<li>
+<p><code>font-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>img-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>connect-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>child-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>child-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>frame-src</code>: <code>*</code>. Allows all external URLs in <code>BrowserFields</code>.</p>
+</li>
+<li>
+<p><code>manifest-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>manifest-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>media-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>object-src</code>: <code>'self'</code></p>
+</li>
+<li>
+<p><code>worker-src</code>: <code>'self'</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>These defaults can be modified using config property <code>scout.cspDirective</code> and <code>scout.cspDirectiveAppend</code>.
+See the <a href="platform.html#sec-app.configProperties" class="xref page">Scout Config Properties</a> for more details.</p>
+</div>
+</li>
+<li>
+<p>The <code>AbstractBrowserField</code> allows configuring the CSP for each instance and <code>BinaryResource</code> (this is not possible if loading external URLs because they define their CSPs themselves). It is recommended to use specific CSP rules for such fields which should be as restrictive as possible.</p>
+<div class="paragraph">
+<p>As a starting policy the <code>BlockAllContentSecurityPolicy</code> could be used and then opening directives as necessary. The created policies can be applied to a field in e.g. the <code>execInitField</code> method by using the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setContentSecurityPolicy</code>: One CSP for the whole field (all resources of the field).</p>
+</li>
+<li>
+<p><code>putContentSecurityPolicy</code>: A CSP for a specific resource of the field.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>REST responses include a default <code>BlockAllContentSecurityPolicy</code>. If other CSP directives are necessary, the corresponding HTTP header can be set in the response.</p>
+</li>
+<li>
+<p>If you need to change the response of a resource (e.g. to finetune its CSP response header), the interface <code>IWebResourceResponseInterceptorContributor</code> can be implemented.
+Such contributors are called for each web resource loaded and return a list of <code>IHttpResponseInterceptor</code> for a request.
+These interceptors are then called before sending the response to the client. You can e.g. identify a request with <code>responseObject.getCacheKey().getResourcePath()</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If a resource is blocked because it violates the CSP, a report is created and logged on server side using level <code>info</code>. This is done in the class <code>ContentSecurityPolicyReportHandler</code>.
+This enables admins to monitor the application and to react if a CSP violation is detected.</p>
+</div>
+<div class="paragraph">
+<p>CSP rules can be customized with config properties (<code>scout.cspDirective</code>, <code>scout.cspDirectiveAppend</code>, <code>scout.cspExclusions</code>, <code>scout.cspEnabled</code>).
+See the <a href="platform.html#sec-app.configProperties" class="xref page">Scout Config Properties</a> for more details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="session-cookie-jsessionid-cookie-configuration-validation"><a class="anchor" href="#session-cookie-jsessionid-cookie-configuration-validation"></a>Session Cookie (JSESSIONID Cookie) Configuration Validation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The UiServlet checks if the session cookie is configured safely. The validation is only performed on first access to the <code>UiServlet</code>. There is no automatic validation on the backend server side or on any custom servlets!</p>
+</div>
+<div class="paragraph">
+<p>If the validation fails, a corresponding error message is logged to the server and an exception is thrown making the <code>UiServlet</code> inaccessible. Because of security reasons the exception shown to the user includes no details about the error. These can only be seen on the server side log.</p>
+</div>
+<div class="sect2">
+<h3 id="httponly"><a class="anchor" href="#httponly"></a>HttpOnly</h3>
+<div class="paragraph">
+<p>First the existence of the <code>HttpOnly</code> flag is checked. The servlet container will then add this flag to the <code>Set-Cookie</code> HTTP response header. If the user agent supports this flag, the cookie cannot be accessed through a client side script. As a result even if a cross-site scripting (XSS) flaw exists and a user accidentally accesses a link that exploits this flaw, the user agent will not reveal the cookie to a third party.
+For a list of user agents supporting this feature please refer to <a href="https://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HttpOnly">OWASP</a>.</p>
+</div>
+<div class="paragraph">
+<p>This flag is enabled by default via <code>scout.app.sessionCookieConfigHttpOnly</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="secure"><a class="anchor" href="#secure"></a>Secure</h3>
+<div class="paragraph">
+<p>Second the existence of the <code>Secure</code> flag is checked. The servlet container will then add this flag to the <code>Set-Cookie</code> HTTP response header. The purpose of the secure flag is to prevent cookies from being observed by unauthorized parties due to the transmission of a cookie in clear text. Therefore, setting this flag will prevent the user agent from transmitting the session id over an unencrypted channel.</p>
+</div>
+<div class="paragraph">
+<p>This flag is enabled by default for non-development builds via <code>scout.app.sessionCookieConfigSecure</code>.</p>
+</div>
+<div class="paragraph">
+<p>This of course only makes sense if the application is exposed to the end user using an encrypted channel like <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a> (which is strongly recommended).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="secure-output"><a class="anchor" href="#secure-output"></a>Secure Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter describes how HTML Output can be handled in a secure way.</p>
+</div>
+<div class="paragraph">
+<p>Scout applications often display potentially dangerous data, e.g. user input or data from other systems.
+Encoding this input in such a way, that it can not be executed, prevents security vulnerabilities like cross-site scripting.</p>
+</div>
+<div class="sect2">
+<h3 id="encoding-by-default"><a class="anchor" href="#encoding-by-default"></a>Encoding by Default</h3>
+<div class="paragraph">
+<p>By default, all input in the Scout model is encoded. Examples are values/labels in value fields, cells in tables, message in message box.
+The reason behind this default choice is that developers do not have to think about output encoding in the standard case
+and are therefore less likely to forget output encoding and introduce a security vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Example: In the following label field, the HTML &lt;b&gt; tag is encoded as <code>&amp;lt;b&amp;gt;bold text&amp;lt;/b&amp;gt;</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../common/_images/encodedField.png" alt="encodedField">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public class LabelField extends AbstractLabelField {
+  @Override
+  protected void execInitField() {
+    setValue("...&lt;b&gt;Bold text&lt;/b&gt;...");
+  }</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="html-enabled"><a class="anchor" href="#html-enabled"></a>Html Enabled</h3>
+<div class="paragraph">
+<p>Sometimes developers may want to use HTML in the Scout model.</p>
+</div>
+<div class="paragraph">
+<p>Examples are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple styling of dynamic content, such as addresses or texts in message boxes</p>
+</li>
+<li>
+<p>Text containing application-internal or external links</p>
+</li>
+<li>
+<p>Html or XML content received from other systems, such as e-mails or html pages</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Html input should only partially be encoded or not at all.</p>
+</div>
+<div class="paragraph">
+<p>To disable the encoding of the whole value, the property <code>HtmlEnabled</code> can be used:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public class NoEncodingLabelField extends AbstractLabelField {
+  @Override
+  protected boolean getConfiguredHtmlEnabled() {
+    return true;
+  }</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@Override
+protected void execInitField() {
+  setValue("...&lt;b&gt;Bold text&lt;/b&gt;...");
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are several ways to implement the use cases above. Some typical implementations are described in the following sections.</p>
+</div>
+<div class="sect3">
+<h4 id="css-class-and-other-model-properties"><a class="anchor" href="#css-class-and-other-model-properties"></a>CSS Class and Other Model Properties</h4>
+<div class="paragraph">
+<p>Often using HTML in value fields or table cells is not necessary for styling. Very basic styling can be done for example by setting the CSS class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="html-builder"><a class="anchor" href="#html-builder"></a>HTML Builder</h4>
+<div class="paragraph">
+<p>For creating simple HTML files or fragments with encoded user input, the class <code>org.eclipse.scout.rt.platform.html.HTML</code> can be used. It is also easily possible to create application internal and external link with this approach.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="styling-in-the-ui-layer"><a class="anchor" href="#styling-in-the-ui-layer"></a>Styling in the UI-Layer</h4>
+<div class="paragraph">
+<p>For more complex HTML, using <code>IBeanField</code> in the scout model and implementing the styling in the UI-Layer is often the preferred way.
+Links are possible as well.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="manual-encoding"><a class="anchor" href="#manual-encoding"></a>Manual Encoding</h4>
+<div class="paragraph">
+<p>It is also possible to encode any String manually using <code>StringUtility.htmlEncode(String)</code>. <code>org.eclipse.scout.rt.platform.html.HTML</code> uses this method internally for encoding.
+However, using <code>HTML</code> is recommended, where possible, because it is more concise and leads to less errors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-a-white-list-filter"><a class="anchor" href="#using-a-white-list-filter"></a>Using a White-List Filter</h4>
+<div class="paragraph">
+<p>If HTML or XML from external sources or more complex HTML are used in the Scout model, using a white-list filter might be the best way to avoid security bugs.
+Libraries, such as <a href="http://jsoup.org/">JSoup</a> provide such a white-list filter. Scout currently does not include any services or utilities for using white-list filters,
+because the configuration and usage is very use-case-specific and would therefore not add much benefit.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authorization-granting"><a class="anchor" href="#authorization-granting"></a>Authorization (Granting)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout uses the <code>java.security</code> API principles to grant access to a specific resource.</p>
+</div>
+<div class="paragraph">
+<p>Each user has a set of granted <code>java.security.Permission</code> instances.
+This set is a <code>java.security.PermissionCollection</code>.
+A call to <code>PermissionCollection.implies(Permission p)</code> does the access check.
+The argument <code>p</code> in this call is a new permission instance for which we want to do the access check and which is compared against the granted permissions.
+Usually, the permission collection implementation iterates through all granted permissions and calls on each <code>Permission.implies(Permission p)</code> until one call returns <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Scout adds some concepts and helpers to this API:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>IPermission</code></dt>
+<dd>
+<p>Unlike other permissions, a permission implementing this interface can only be implied by another <code>IPermission</code> <strong>with the same name</strong>.
+A permission used together with scouts security API does not have to implement the <code>IPermission</code> interface, but it is recommended.</p>
+</dd>
+<dt class="hdlist1"><code>PermissionLevel</code></dt>
+<dd>
+<p>An <code>IPermission</code>, which is part of an <code>IPermissionCollection</code> has always a granted access level assigned (<code>IPermission.getLevel()</code>).
+If the granted level is <code>PermissionLevel.NONE</code>, any access checks will fail.</p>
+</dd>
+<dt class="hdlist1"><code>IAccessControlService</code></dt>
+<dd>
+<p>This service is responsible to provide and manage a users set of granted permissions.
+A scout application usually extends <code>AbstractAccessControlService</code> and implements <code>#execLoadPermissions</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ACCESS</code></dt>
+<dd>
+<p>Provides a set of convenience methods to check access.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Let us assume you require a permission to allow a user to access companies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static class ReadCompanyPermission extends AbstractPermission {
+  private static final long serialVersionUID = 1L;
+  public static final PermissionId ID = PermissionId.of("scoutdoc.ReadCompany");
+
+  public ReadCompanyPermission() {
+    super(ID);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To check access one can use <code>ACCESS</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">if (ACCESS.check(new ReadCompanyPermission())) { <i class="conum" data-value="1"></i><b>(1)</b>
+  throw new AccessForbiddenException(TEXTS.get("YouAreNotAllowedToReadThisData"));
+}
+
+ACCESS.checkAndThrow(new ReadCompanyPermission()); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Checks permission against granted permissions of current user.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Checks permission and if this check fails, throw an <code>AccessForbiddenException</code> with a default message.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We can define a default access check failed message for a permission.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static class CreateCompanyPermission extends AbstractPermission {
+  private static final long serialVersionUID = 1L;
+  public static final PermissionId ID = PermissionId.of("scoutdoc.CreateCompany");
+
+  public CreateCompanyPermission() {
+    super(ID);
+  }
+
+  @Override
+  public String getAccessCheckFailedMessage() {
+    return TEXTS.get("YouAreNotAllowedToRegisterThisData");
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>ACCESS</code> allows to check multiple permissions at once.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ACCESS.checkAllAndThrow(new ReadCompanyPermission(), new CreateCompanyPermission());
+
+ACCESS.checkAnyAndThrow(new ReadCompanyPermission(), new CreateCompanyPermission());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have seen some simple permission checks.
+Now let us assume, that some users may modify a company only if they have registered the company by themselves.
+For this use case we introduce a new permission level <code>ScoutdocPermissionLevels.OWN</code>.
+This is the permission level which is granted for those users.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public final class ScoutdocPermissionLevels {
+
+  private ScoutdocPermissionLevels() {
+  }
+
+  public static final int LEVEL_NONE = PermissionLevel.LEVEL_NONE;
+  public static final int LEVEL_OWN = 10;
+  public static final int LEVEL_ALL = PermissionLevel.LEVEL_ALL;
+
+  public static final PermissionLevel NONE = PermissionLevel.NONE;
+  public static final PermissionLevel OWN =
+      PermissionLevel.register(LEVEL_OWN, "OWN", true, () -&gt; TEXTS.get("Own"));
+  public static final PermissionLevel ALL = PermissionLevel.ALL;
+
+  public static void init() {
+    // ensures all static initializers have been called
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order to check access for this new level we have to override <code>AbstractPermission#evalPermission</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static class UpdateCompanyPermission extends AbstractPermission {
+  private static final long serialVersionUID = 1L;
+  public static final PermissionId ID = PermissionId.of("scoutdoc.UpdateCompany");
+
+  private final UUID m_companyId;
+
+  public UpdateCompanyPermission() {
+    this(null);
+  }
+
+  public UpdateCompanyPermission(UUID companyId) {
+    super(ID);
+    m_companyId = companyId;
+  }
+
+  public UUID getCompanyId() {
+    return m_companyId;
+  }
+
+  @Override
+  protected boolean evalPermission(IPermission p) {
+    // Precondition: p.getClass() == getClass() &amp;&amp; getName().equals(p.getName()) &amp;&amp;
+    //               getLevel() != PermissionLevel.NONE
+    if (ScoutdocPermissionLevels.OWN == getLevel()) {
+      UUID companyId = ((UpdateCompanyPermission) p).getCompanyId();
+      return BEANS.get(ICompanyService.class).isOwnCompany(companyId);
+    }
+    return true; // ScoutdocPermissionLevels.ALL == getLevel()
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = super.hashCode();
+    result = prime * result + ((m_companyId == null) ? 0 : m_companyId.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!super.equals(obj)) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    UpdateCompanyPermission other = (UpdateCompanyPermission) obj;
+    if (m_companyId == null) {
+      if (other.m_companyId != null) {
+        return false;
+      }
+    }
+    else if (!m_companyId.equals(other.m_companyId)) {
+      return false;
+    }
+    return true;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ACCESS.checkAndThrow(new UpdateCompanyPermission(companyId));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If such a service call would be expensive, one may cache the result of such a permission check.
+You have to implement this by yourself.
+A recommended solution is to create a wrapper around <code>IPermissionCollection</code> and this wrapper caches calls to <code>IPermissionCollection#implies</code> if required.</p>
+</div>
+<div class="sect2">
+<h3 id="scoutjs"><a class="anchor" href="#scoutjs"></a>Scout JS</h3>
+<div class="paragraph">
+<p>The <code>access</code> utility provides the possibility and convenience of checking permissions in Scout JS code.</p>
+</div>
+<div class="paragraph">
+<p>All necessary information the Scout JS code needs is made available by the <code>PermissionResource</code> in the <code>org.eclipse.scout.rt.api</code>-module.
+To enable the feature this REST resource needs to be added to the server and the <code>access</code> utility needs to be bootstrapped in the entry file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Add maven dependency to server providing REST resources (see <a href="../working-with-data/rest.html" class="xref page">REST</a>)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+  &lt;artifactId&gt;org.eclipse.scout.rt.api&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. bootstrap the <code>access</code> utility in the entry file <code>myapp.js</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">new App().init({
+  bootstrap: {
+    permissionsUrl: 'api/permissions'
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the visibility of a field depends on a permission the <code>access</code> utility can be used to evaluate this permission.
+The method <code>quickCheck</code> returns a <code>boolean</code> while <code>check</code> returns a <code>JQuery.Promise&lt;boolean&gt;</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">field.setVisible(access.quickCheck('SomePermission'));
+
+access.check('SomePermission').then(granted =&gt; field.setVisible(granted);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If one has created <code>IOwnPermission</code>s with a special <code>implies</code>-logic and wants to make them available in Scout JS a couple of things need to be added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OwnPermissionDo</code>, data object used to transfer additional properties from the server to the Scout JS code</p>
+</li>
+<li>
+<p><code>ToOwnPermissionDoFunction</code>, <code>IToDoFunction</code> transforming <code>IOwnPermission</code> into the data object</p>
+</li>
+<li>
+<p><code>OwnPermission</code>, Scout JS pendant for <code>IOwnPermission</code> used by the <code>access</code> utility</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. <code>OwnPermissionDo</code> containing the <code>ToOwnPermissionDoFunction</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TypeName("myapp.OwnPermission")
+public class OwnPermissionDo extends PermissionDo {
+
+  protected static final String OWN_PERMISSION_OBJECT_TYPE = "myapp.OwnPermission";
+
+  public DoValue&lt;String&gt; foo() {
+    return doValue("foo");
+  }
+
+  public DoValue&lt;String&gt; bar() {
+    return doValue("bar");
+  }
+
+  /* **************************************************************************
+   * CUSTOM CONVENIENCE TO DO FUNCTION
+   * *************************************************************************/
+
+  @Order(4000)
+  public static class ToOwnPermissionDoFunction extends AbstractToPermissionDoFunction&lt;IOwnPermission, OwnPermissionDo&gt; {
+
+    @Override
+    public void apply(IOwnPermission ownPermission, OwnPermissionDo ownPermissionDo) {
+      BEANS.get(ToPermissionDoFunction.class).apply(ownPermission, ownPermissionDo);
+      ownPermissionDo
+          .withObjectType(OWN_PERMISSION_OBJECT_TYPE) // important to create the correct Scout JS pendant
+          .withFoo(ownPermission.getFoo())
+          .withBar(ownPermission.getBar());
+    }
+  }
+
+  /* **************************************************************************
+   * GENERATED CONVENIENCE METHODS
+   * *************************************************************************/
+
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 4. important overridden methods in the Scout JS <code>OwnPermission</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ts hljs" data-lang="ts">override matches(permission: Permission): boolean {
+  if (!super.matches(permission)) {
+    return false;
+  }
+  // check if permission is OwnPermission and foo matches
+  if (!(permission instanceof OwnPermission)) {
+    return false;
+  }
+  return this.foo === permission.foo;
+}
+
+protected override _evalPermissionQuick(permission: Permission): boolean {
+  // check if bar matches
+  return super._evalPermissionQuick(permission) &amp;&amp; this.bar === permission.bar;
+}
+
+protected override _evalPermission(permission: Permission): JQuery.Promise&lt;boolean&gt; {
+  // call server to evaluate foo and bar
+  return ajax.getJson(`api/permissions/checkFooBar/${permission.foo}/${permission.bar}`)
+    .catch((error: AjaxError) =&gt; {
+      // handle error and return false
+      return false;
+    });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>PermissionResource</code> will automatically collect the granted <code>IOwnPermission</code>s of a user (see <a href="#authorization-granting">Authorization (Granting)</a>).
+These <code>IOwnPermission</code>s will be transformed by the <code>ToOwnPermissionDoFunction</code> and send to the browser where <code>OwnPermission</code> instances are created.
+Each access check will now automatically consider the <code>matches</code>-, <code>implies</code>- and <code>evaluate</code>-logic of <code>OwnPermission</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="login-form"><a class="anchor" href="#login-form"></a>Login Form</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout provides support for form based login.
+To activate the form based login, a <code>login.html</code> needs to be provided and the <code>FormBasedAccessController</code> along with a <code>ICredentialVerifier</code> needs to be added to the <code>AuthFilter</code>.
+An example setup can be found in the archetype.</p>
+</div>
+<div class="sect2">
+<h3 id="two-factor-auth"><a class="anchor" href="#two-factor-auth"></a>Two-factor Authentication (2FA)</h3>
+<div class="paragraph">
+<p>The form based login also supports two-factor-authentication.</p>
+</div>
+<div class="paragraph">
+<p>If the registered <code>ICredentialVerifier</code> requests a second factor by returning <code>AUTH_2FA_REQUIRED</code>, the <code>FormBasedAccessController</code> instructs the UI to show an input field so the user can enter the token.
+To verify this token a second-factor verifier <code>ICredentialVerifier</code> needs to be registered.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="iid-signature"><a class="anchor" href="#iid-signature"></a>IId signature</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scout provides a mechanism to add signatures to instances of <code>IId</code> when they are serialized into a string value.
+This feature was added to prevent key probing of sequential generated ids to sensitive transactional data.
+To use this feature simply pass the <code>IdCodecFlag.SIGNATURE</code> to the <code>IdCodec</code> while serializing or deserializing the id.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 5. serialize an <code>IId</code> using signatures</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">BEANS.get(IdCodec.class).toQualified(id, IdCodecFlag.SIGNATURE)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default implementation will use the unqualified part of the serialized id and create a signature which is added as a suffix.
+The validity of this signature is checked again when the id is deserialized.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. deserialize a <code>String</code> using signatures</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">BEANS.get(IdCodec.class).fromQualified(idString, IdCodecFlag.SIGNATURE)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To use this feature one needs to set the config property <code>scout.idSignaturePassword</code> which is used to create the signature.</p>
+</div>
+<div class="paragraph">
+<p>The signature can easily be extended by replacing the <code>IdCodec</code> and overriding the <code>createSignature</code> method. One can e.g. additionally use the current user id for the signature.
+Also, the whole mechanism can be changed by overriding <code>addSignature</code> and <code>removeSignature</code>.</p>
+</div>
+<div class="paragraph">
+<p>If an <code>IId</code> needs to be signed or not, depends on why it is serialized and the type of the id itself.
+Does the <code>IId</code> need to be persisted into a database it is usually unsigned as it can&#8217;t be read again if the creation of the signature changes.
+But if the <code>IId</code> is sent to the browser or another application it typically needs to be signed. All data sent to the browser is serialized in the JSON layer and this serialization will always use signatures.
+If an application provides e.g. REST endpoints two things need to be done to ensure signature creation.</p>
+</div>
+<div id="add-dependency-server" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A dependency to the <code>org.eclipse.scout.rt.rest.jersey.server</code> module needs to be added to the app module of the application.</p>
+</li>
+<li>
+<p>The header <code>X-ScoutIdSignature</code> need to be added to all requests.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The dependency added in <a href="#add-dependency-server">1.</a> will add the <code>IdSignatureRestContainerFilter</code> which turns on the signature creation for all requests containing the header <code>X-ScoutIdSignature</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. dependency to the <code>org.eclipse.scout.rt.rest.jersey.server</code> module</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+  &lt;artifactId&gt;org.eclipse.scout.rt.rest.jersey.server&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The header in <a href="#add-header-server">2.</a> can be added in multiple ways. It can be added e.g. by a client like the browser directly or added by the server to all requests.
+Let&#8217;s say the application provides REST endpoints under <code>/api</code> the <code>IdSignatureFilter</code> can be used to add the header to all requests to this path.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Registration example for <code>IdSignatureFilter</code>.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public static class ApiIdSignatureFilterContributor implements IServletFilterContributor {
+
+  @Override
+  public void contribute(ServletContextHandler handler) {
+    handler.addFilter(IdSignatureFilter.class, ServletConstants.API_PATH_WITH_WILDCARD, null);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+A signed <code>IId</code> may contain special characters such as <code>#</code> or <code>;</code>.
+When such an <code>IId</code> is used as an URL parameter it needs to be encoded (see <a href="https://www.ietf.org/rfc/rfc3986.html#section-2">RFC 3986</a>).
+This encoding needs to be done in the application, you can use e.g. <code>encodeURIComponent()</code> in JS or <code>IOUtility.urlEncode()</code> in Java.
+In addition, make sure that no part of your infrastructure setup (e.g. a proxy) decodes these URL encoded parameters before the request reaches your Scout server as this will lead to unexpected behaviour.
+If you are using e.g. an Apache reverse proxy (see <a href="https://httpd.apache.org/docs/current/mod/mod_proxy.html">Apache documentation</a>) consider enabling the <code>nocanon</code> flag as this particular proxy will decode all URLs by default.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Also requests sent by a REST client can be signed automatically. To achieve this, two things need to be done.</p>
+</div>
+<div id="add-dependency-client" class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A dependency to the <code>org.eclipse.scout.rt.rest.jersey.client</code> module needs to be added to the app module of the application.</p>
+</li>
+<li>
+<p>The header <code>X-ScoutIdSignature</code> need to be added to all request.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The dependency added in <a href="#add-dependency-client">1.</a> will add the <code>IdSignatureRestClientFilter</code> which turns on the signature creation for all requests containing the header <code>X-ScoutIdSignature</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 9. dependency to the <code>org.eclipse.scout.rt.rest.jersey.client</code> module</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.scout.rt&lt;/groupId&gt;
+  &lt;artifactId&gt;org.eclipse.scout.rt.rest.jersey.client&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div id="id-signature-service-tunnel" class="paragraph">
+<p>The service tunnel supports id signatures as well, but they are not enabled by default.
+To enable id signatures in the service tunnel for a specific interface use the <code>idSignature</code> flag of the <code>TunnelToServer</code> annotation (see <a href="platform.html#tunnel-to-server" class="xref page">@TunnelToServer</a>).
+This is necessary if e.g. an <code>IDataObject</code> which is known to the backend but not to the ui server is passed on to the browser where it is used for REST calls to endpoints hosted on the backend server.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 10. Enable id signatures for all calls to <code>ISignedService</code> using the <code>idSignature</code> flag of the <code>TunnelToServer</code> annotation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@TunnelToServer(idSignature = true)
+public interface ISignedService extends IService {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a method of an interface needs to be called with signatures or without signatures depending on the context, one can create its own proxy and pass the id signature flag in the <code>ServiceTunnelOptions</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 11. Enable id signatures for a call to <code>IUnsignedService#someMethod()</code> using the <code>idSignature</code> flag of the <code>ServiceTunnelOptions</code> annotation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ServiceTunnelUtility.createProxy(IUnsignedService.class, ServiceTunnelOptions.create().withIdSignature(true)).someMethod();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>IId</code> that are not affected by key probing like e.g. <code>AbstractUuId</code> or <code>AbstractStringId</code> will not be signed by default, while e.g. all <code>Long</code> based <code>IId</code> will be signed.
+If there is a special <code>IId</code> that does not support signatures it can be excluded from the signature mechanism using the <code>IdSignature</code> annotation.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 12. Exclude the <code>UnsignedId</code> using the <code>IdSignature</code> annotation.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@IdSignature(false)
+public final class UnsignedId extends AbstractStringId {
+  private static final long serialVersionUID = 1L;
+
+  private UnsignedId(String id) {
+    super(id);
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options" class="bare">https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Clickjacking" class="bare">https://en.wikipedia.org/wiki/Clickjacking</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://tools.ietf.org/html/rfc7034" class="bare">https://tools.ietf.org/html/rfc7034</a>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="run-monitor.html">RunMonitor</a></span>
+  <span class="next"><a href="smtp-helper.html">SmtpHelper</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using Antora.</p>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+  </body>
+</html>
