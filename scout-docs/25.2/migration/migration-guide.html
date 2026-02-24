@@ -1046,6 +1046,24 @@ As part of these adjustments, the associated <code>SimpleTabAreaLayout</code> ha
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="rest-resources-explicit-path-annotation-required-on-subclasses-of-abstractcancellationresource"><a class="anchor" href="#rest-resources-explicit-path-annotation-required-on-subclasses-of-abstractcancellationresource"></a>REST resources: Explicit <code>@Path</code> annotation required on subclasses of <code>AbstractCancellationResource</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All REST resource classes should explicitly declare their own <code>@Path</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>According to the Jakarta RESTful Web Services specification, JAX-RS annotations — including <code>@Path</code> — are not inherited from superclasses or interfaces.
+While Jersey, the implementation we use, does attempt to locate a <code>@Path</code> annotation on parent classes, this behavior is not defined by the specification and should not be relied upon.</p>
+</div>
+<div class="paragraph">
+<p>To align with the specification and avoid relying on non-standard behavior, the <code>@Path</code> annotation has been removed from <code>AbstractCancellationResource</code>.</p>
+</div>
+<div class="paragraph">
+<p>If your resource class extends <code>AbstractCancellationResource</code>, ensure that you declare an explicit <code>@Path</code> annotation on the subclass.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
