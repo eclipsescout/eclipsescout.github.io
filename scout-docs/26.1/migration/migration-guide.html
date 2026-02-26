@@ -1217,6 +1217,36 @@ These interceptors are then called before sending the response to the client. Yo
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="calendar-widget-improvements"><a class="anchor" href="#calendar-widget-improvements"></a>Calendar Widget Improvements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you have implemented the <code>org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractCalendarItemProvider#execItemMoved</code>, this change affects you.</p>
+</div>
+<div class="paragraph">
+<p>The drag and drop of calendar components has been improved in this release.
+With that, it is possible to drag components from one resource to another when on day.</p>
+</div>
+<div class="paragraph">
+<p>This leads to the change of the method signature of <code>AbstractCalendarItemProvider#execItemMoved</code>.
+The parameter <code>String resourceId</code> indicates to which resource the component has been moved.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. AbstractCalendarItemProvider.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Old signature
+protected void execItemMoved(ICalendarItem item, Date fromDate, Date toDate) {
+  // ...
+}
+
+// New signature
+protected void execItemMoved(ICalendarItem item, Date fromDate, Date toDate, String resourceId) {
+  // ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
