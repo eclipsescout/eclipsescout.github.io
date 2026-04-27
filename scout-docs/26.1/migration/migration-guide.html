@@ -857,6 +857,18 @@ Usually this is appropriate if your implementation just adds serializer or deser
 </div>
 </div>
 <div class="sect1">
+<h2 id="rest-cancellation"><a class="anchor" href="#rest-cancellation"></a>REST Cancellation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The former <code>RestRequestCancellationServletFilter</code> was migrated into a REST container filter (see <code>org.eclipse.scout.rt.rest.jersey.server.RequestCancellationRestContainerRequestResponseFilter</code>).
+REST container filter are Scout Beans and are automatically registered.</p>
+</div>
+<div class="paragraph">
+<p>Migration: Remove all servlet filter contributors registering <code>RestRequestCancellationServletFilter</code> as filter.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="simple-tab-box-scout-js"><a class="anchor" href="#simple-tab-box-scout-js"></a>Simple tab box (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">

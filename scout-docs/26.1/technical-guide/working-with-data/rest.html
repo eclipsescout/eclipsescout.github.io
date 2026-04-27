@@ -896,9 +896,9 @@ transactions in the event of a cancellation. The following steps must be taken f
 </div>
 </div>
 <div class="sect2">
-<h3 id="install-cancellation-request-filter"><a class="anchor" href="#install-cancellation-request-filter"></a>Install Cancellation Request Filter</h3>
+<h3 id="install-cancellation-client-request-filter"><a class="anchor" href="#install-cancellation-client-request-filter"></a>Install Cancellation Client Request Filter</h3>
 <div class="paragraph">
-<p>To assign an ID to each request, an appropriate client request filter must be registered.</p>
+<p>To assign an ID to each request, an appropriate client request filter must be registered within the corresponding REST client.</p>
 </div>
 <div class="paragraph">
 <p>A default filter is provided by <code>org.eclipse.scout.rt.rest.cancellation.RestRequestCancellationClientRequestFilter</code>.
@@ -906,48 +906,11 @@ The <code>org.eclipse.scout.rt.client.rest.ScoutBackendRestClientHelper</code> d
 </div>
 </div>
 <div class="sect2">
-<h3 id="implement-cancellation-servlet-filter"><a class="anchor" href="#implement-cancellation-servlet-filter"></a>Implement Cancellation Servlet Filter</h3>
+<h3 id="cancellation-servlet-filter"><a class="anchor" href="#cancellation-servlet-filter"></a>Cancellation Servlet Filter</h3>
 <div class="paragraph">
-<p>Requests arriving at the backend need to be registered in the cancellation registry. This is done by a servlet filter (Note: REST
-container filters would have two issues: 1. there is no real interceptor around the resource call, but only a <code>ContainerRequestFilter</code> that is
-invoked before and a <code>ContainerResponseFilter</code> which is invoked after the the request is passed to the resource. 2. Cancellation in
-Scout is tied to an <code>ITransaction</code> that are managed by a <code>RunContext</code> and observed and controlled by a <code>RunMonitor</code>. Depending on
-sub-RunContexts and their transaction isolation it might happen, that the transaction visible in a container filter is not controlled by the
-currently active <code>RunMonitor</code>. Therefore, a cancel request would not cancel the transaction.)</p>
-</div>
-<div class="paragraph">
-<p>A default implementation for such a filter is provided in <code>org.eclipse.scout.rt.rest.cancellation.RestRequestCancellationServletFilter</code>.</p>
-</div>
-<div class="paragraph">
-<p>Finally, register servlet filter via <code>IServletFilterContributor</code> (set <code>@Order</code> appropriately):</p>
-</div>
-<div class="listingblock">
-<div class="title">Listing 10. Registration example for RestRequestCancellationFilter.</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Order(45)
-public static class CancellationFilterContributor implements IServletFilterContributor {
-
-  @Override
-  public void contribute(ServletContextHandler handler) {
-    handler.addFilter(RestRequestCancellationServletFilter.class, ServletConstants.API_PATH_WITH_WILDCARD, null);
-  }
-}</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Make sure the cancellation filter is registered after the HttpServerRunContextFilter.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For service tunnel calls this filter is already registered, see <code>org.eclipse.scout.rt.server.app.ServerServletContributors.ApiCancellationFilterContributor</code>.</p>
+<p>Requests arriving at the backend need to be registered in the cancellation registry.
+This is done by a REST container filter, see <code>org.eclipse.scout.rt.rest.jersey.server.RequestCancellationRestContainerRequestResponseFilter</code>.
+Incoming requests are registered in the cancellation registry and removed after complete writing the response to the corresponding output stream.</p>
 </div>
 <div class="paragraph">
 <p>To ensure a user cancels only his own requests, the <code>CancellationResource</code> and the <code>RestRequestCancellationServletFilter</code> determine the current user identifier using <code>org.eclipse.scout.rt.security.IAccessControlService.getUserId(Subject)</code>.
@@ -963,7 +926,7 @@ If a project does not this service to determine the user identifiers, the corres
 <p>Due to missing support for multipart handling in official Jakarta RESTful Web Services API, Scout provides an own implementation allowing to use multipart requests without requiring other third party libraries.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 11. Example: Client</div>
+<div class="title">Listing 10. Example: Client</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public void pushContent(BinaryResource resource, String displayText) {
     MultipartMessage multipartMessage = BEANS.get(MultipartMessage.class)
@@ -982,7 +945,7 @@ If a project does not this service to determine the user identifiers, the corres
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 12. Example: Server</div>
+<div class="title">Listing 11. Example: Server</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @POST
   @Path("content")
@@ -1028,7 +991,7 @@ If a project does not this service to determine the user identifiers, the corres
 <p>Due to missing support for responses using chunks of data (e.g. data objects) in official Jakarta RESTful Web Services API, Scout provides an own implementation allowing to use chunked responses without requiring other third party libraries.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 13. Example: Client</div>
+<div class="title">Listing 12. Example: Client</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  public void loadData() {
     Response response = helper()
@@ -1049,7 +1012,7 @@ If a project does not this service to determine the user identifiers, the corres
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 14. Example: Server</div>
+<div class="title">Listing 13. Example: Server</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  @GET
   @Path("data")
