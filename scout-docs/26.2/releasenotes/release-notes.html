@@ -677,6 +677,15 @@ protected async _loadTableDataAsync(searchFilter: any): Promise&lt;any&gt; {
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="local-lookup-calls-search-the-whole-text"><a class="anchor" href="#local-lookup-calls-search-the-whole-text"></a>Local lookup calls: Search the whole text</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For local lookup calls (<code>LocalLookupCall.java</code> and <code>StaticLookupCall.ts</code>), wildcards ar inserted at the beginning and end of the lookup text so that the whole text is searched instead of only the beginning.
+This way, they are unified with the implementation in <code>LookupHelper.createTextSearchPattern</code>.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
