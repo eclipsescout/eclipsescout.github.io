@@ -1186,7 +1186,7 @@ However, it is rarely needed because you can typically just listen for the <code
 <ul>
 <li>
 <p>To avoid an unnecessary memory overhead for tables that don&#8217;t use drag and drop, the row properties <code>draggable</code> and <code>dropTypes</code> are not directly available on <code>ITableRow</code>.
-Instead, use <code>setCustomValue()</code> with these constants:</p>
+Instead, they are represented as "custom values". Use <code>getCustomValue()</code> and <code>setCustomValue()</code> with these constants:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1201,9 +1201,6 @@ Instead, use <code>setCustomValue()</code> with these constants:</p>
 <li>
 <p>The events <code>acceptRowDrop</code> and <code>afterRowDrop</code> are not available in Java.
 If the static drop types are not sufficient, the suggested workaround is to validate the target in the drop operation and throw a VetoException if invalid.</p>
-</li>
-<li>
-<p><code>execRowDrop()</code> has no default implementation, you must provide your own logic.</p>
 </li>
 </ul>
 </div>

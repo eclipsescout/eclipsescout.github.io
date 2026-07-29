@@ -416,10 +416,10 @@ This document is referring to an upcoming Scout release. Please click <a href=".
 <h2 id="about-this-release"><a class="anchor" href="#about-this-release"></a>About This Release</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The latest version of this release is: 26.2.0-beta.1.</p>
+<p>The latest version of this release is: 26.2.0-beta.3.</p>
 </div>
 <div class="paragraph">
-<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/25.2%2E%2E%2Ereleases/26.2">detailed change log</a> on GitHub.</p>
+<p>You can see the <a href="https://github.com/eclipse-scout/scout.rt/compare/releases/26.1%2E%2E%2Ereleases/26.2">detailed change log</a> on GitHub.</p>
 </div>
 <div class="paragraph">
 <p>Coming from an older Scout version? Check out the <a href="../migration/migration-guide.html" class="xref page">Migration Guide</a> for instructions on how to obtain the new version and upgrade existing applications.</p>
@@ -683,6 +683,27 @@ protected async _loadTableDataAsync(searchFilter: any): Promise&lt;any&gt; {
 <div class="paragraph">
 <p>For local lookup calls (<code>LocalLookupCall.java</code> and <code>StaticLookupCall.ts</code>), wildcards ar inserted at the beginning and end of the lookup text so that the whole text is searched instead of only the beginning.
 This way, they are unified with the implementation in <code>LookupHelper.createTextSearchPattern</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-http-client-increased-connection-limits"><a class="anchor" href="#rest-http-client-increased-connection-limits"></a>REST HTTP Client: Increased Connection Limits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default connection pool limits of the REST HTTP client were increased to support applications with higher number of concurrent outbound requests.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximum total connections (<code>scout.rest.client.http.maxConnectionsTotal</code>): <code>128</code> &#8594; <code>512</code></p>
+</li>
+<li>
+<p>Maximum connections per route (<code>scout.rest.client.http.maxConnectionsPerRoute</code>): <code>32</code> &#8594; <code>128</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This change improves throughput and reduces the likelihood of requests being queued or delayed when many REST calls are executed concurrently.</p>
 </div>
 </div>
 </div>
