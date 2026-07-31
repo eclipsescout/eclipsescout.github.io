@@ -518,7 +518,7 @@ Please refer to the <a href="https://www.jetbrains.com/help/idea/managing-plugin
 </div>
 </div>
 <div class="sect1">
-<h2 id="rest-operations-add-consumes-annotation"><a class="anchor" href="#rest-operations-add-consumes-annotation"></a>REST operations: Add Consumes annotation</h2>
+<h2 id="rest-operations-add-consumes-annotation"><a class="anchor" href="#rest-operations-add-consumes-annotation"></a>REST operations: Add Consumes Annotation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>It is recommended that all REST operations which consume a request entity body message have a <code>Consumes</code> annotation set to restrict invalid input.
@@ -528,7 +528,7 @@ The <code>AbstractRestResourceAnnotationTest</code> has to be extended in your m
 </div>
 </div>
 <div class="sect1">
-<h2 id="rest-resources-explicit-path-annotation-required"><a class="anchor" href="#rest-resources-explicit-path-annotation-required"></a>REST resources: Explicit <code>@Path</code> annotation required</h2>
+<h2 id="rest-resources-explicit-path-annotation-required"><a class="anchor" href="#rest-resources-explicit-path-annotation-required"></a>REST resources: Explicit <code>@Path</code> Annotation Required</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>It is recommended that all REST resource classes explicitly declare a <code>@Path</code> annotation.</p>
@@ -556,7 +556,7 @@ They have not been used since years and were never supported in Scout JS.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="removal-of-old-maven-master-properties"><a class="anchor" href="#removal-of-old-maven-master-properties"></a>Removal of old Maven-Master properties</h2>
+<h2 id="removal-of-old-maven-master-properties"><a class="anchor" href="#removal-of-old-maven-master-properties"></a>Removal of Old Maven-Master Properties</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Maven Build no longer uses npm to run scripts. Npm is now only used to install pnpm and @eclipse-scout/releng. Then, pnpm is used to run build and test scripts.
@@ -762,7 +762,7 @@ Then you have to go through your JavaScript code manually to find all usages.
 </div>
 </div>
 <div class="sect1">
-<h2 id="abstractrestlookupcall-moved-to-shared-module"><a class="anchor" href="#abstractrestlookupcall-moved-to-shared-module"></a>AbstractRestLookupCall moved to shared module</h2>
+<h2 id="abstractrestlookupcall-moved-to-shared-module"><a class="anchor" href="#abstractrestlookupcall-moved-to-shared-module"></a>AbstractRestLookupCall Moved to Shared Module</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>AbstractRestLookupCall</code> was moved from the client to the shared module:
@@ -771,7 +771,7 @@ Then you have to go through your JavaScript code manually to find all usages.
 </div>
 </div>
 <div class="sect1">
-<h2 id="smtpconnectionpool-connection-erroridle-handling"><a class="anchor" href="#smtpconnectionpool-connection-erroridle-handling"></a>SmtpConnectionPool: Connection error/idle handling</h2>
+<h2 id="smtpconnectionpool-connection-error-idle-handling"><a class="anchor" href="#smtpconnectionpool-connection-error-idle-handling"></a>SmtpConnectionPool: Connection Error / Idle Handling</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For the <code>org.eclipse.scout.rt.mail.smtp.SmtpConnectionPool</code> in the past idle timeouts could be defined in seconds.
@@ -812,7 +812,7 @@ Also the default idle timeout has been decreased from one minute to 20 seconds (
 </div>
 </div>
 <div class="sect1">
-<h2 id="trust-manager-and-remote-files"><a class="anchor" href="#trust-manager-and-remote-files"></a>Trust manager and remote files</h2>
+<h2 id="trust-manager-and-remote-files"><a class="anchor" href="#trust-manager-and-remote-files"></a>Trust Manager and Remote Files</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>org.eclipse.scout.rt.server.commons.GlobalTrustManager.getTrustedCertificatesInRemoteFiles()</code> has been removed. As a result, all trusted certificates now have to be provided locally.</p>
@@ -836,7 +836,7 @@ Also the default idle timeout has been decreased from one minute to 20 seconds (
 </div>
 </div>
 <div class="sect1">
-<h2 id="icachebuilder-withmaxconcurrentresolve-allow-multiple-resolve-operations-for-one-thread"><a class="anchor" href="#icachebuilder-withmaxconcurrentresolve-allow-multiple-resolve-operations-for-one-thread"></a>ICacheBuilder.withMaxConcurrentResolve: Allow multiple resolve operations for one thread</h2>
+<h2 id="icachebuilder-withmaxconcurrentresolve-allow-multiple-resolve-operations-for-one-thread"><a class="anchor" href="#icachebuilder-withmaxconcurrentresolve-allow-multiple-resolve-operations-for-one-thread"></a>ICacheBuilder.withMaxConcurrentResolve: Allow Multiple Resolve Operations for One Thread</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>BoundedResolveCacheWrapper</code> (used implicitly by <code>ICacheBuilder.withMaxConcurrentResolve</code>) has been changed to allow multiple resolve operations for one thread (default is now reentrant) to avoid a potential deadlock cause.
@@ -907,7 +907,7 @@ That is, one thread will only be counted once towards the limit.</p>
 Remove the annotation and make sure your test is annotated with <code>@RunWithSubject</code>.</p>
 </div>
 <div class="sect2">
-<h3 id="api-for-current-user"><a class="anchor" href="#api-for-current-user"></a>API for current user</h3>
+<h3 id="api-for-current-user"><a class="anchor" href="#api-for-current-user"></a>API for Current User</h3>
 <div class="paragraph">
 <p>A new thread local <code>org.eclipse.scout.rt.platform.security.User.CURRENT</code> provides access to the user which is associated with the current thread.
 This object replaces the <code>org.eclipse.scout.rt.shared.user.UserId.CURRENT</code> thread local that has been introduced in Scout 26.1.</p>
@@ -983,7 +983,7 @@ Make sure when assigning a different <code>Subject</code> to a run context to al
 </div>
 </div>
 <div class="sect2">
-<h3 id="api-replacing-backend-server-session"><a class="anchor" href="#api-replacing-backend-server-session"></a>API replacing backend server session</h3>
+<h3 id="api-replacing-backend-server-session"><a class="anchor" href="#api-replacing-backend-server-session"></a>API Replacing Backend Server Session</h3>
 <div class="paragraph">
 <p>The following APIs were introduced as replacement for the former backend server session:</p>
 </div>
@@ -1031,7 +1031,7 @@ Make sure to invoke method <code>loadInitialSharedVariables</code> when loading 
 </div>
 </div>
 <div class="sect2">
-<h3 id="legacy-server-session-support"><a class="anchor" href="#legacy-server-session-support"></a>Legacy server session support</h3>
+<h3 id="legacy-server-session-support"><a class="anchor" href="#legacy-server-session-support"></a>Legacy Server Session Support</h3>
 <div class="paragraph">
 <p>If your application requires session support in Scout backend, add a dependency to <code>org.eclipse.scout.rt.server.session</code> in your server module and a dependency to <code>org.eclipse.scout.rt.shared.session</code> in your shared module.</p>
 </div>
@@ -1098,7 +1098,7 @@ The Scout backend server session support is considered <em>deprecated</em> and w
 </table>
 </div>
 <div class="sect2">
-<h3 id="api-changes-for-jax-ws-modules"><a class="anchor" href="#api-changes-for-jax-ws-modules"></a>API changes for JAX-WS modules</h3>
+<h3 id="api-changes-for-jax-ws-modules"><a class="anchor" href="#api-changes-for-jax-ws-modules"></a>API Changes for JAX-WS Modules</h3>
 <div class="paragraph">
 <p>As part of extracting the session code into separate modules several classes for providing a RunContext were moved to <code>org.eclipse.scout.rt.server.jaxws</code> because they were used solely in a JAX-WS context.</p>
 </div>
@@ -1155,7 +1155,7 @@ public class JaxWsServerSessionRunContextProducer extends ServerRunContextProduc
 </div>
 </div>
 <div class="sect1">
-<h2 id="clientnotificationregistry-api-changes"><a class="anchor" href="#clientnotificationregistry-api-changes"></a>ClientNotificationRegistry API changes</h2>
+<h2 id="clientnotificationregistry-api-changes"><a class="anchor" href="#clientnotificationregistry-api-changes"></a>ClientNotificationRegistry API Changes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The client notification dispatching was refactored as preparation step for a stateless Scout backend.
@@ -1166,7 +1166,7 @@ The API of <code>org.eclipse.scout.rt.server.clientnotification.ClientNotificati
 The only exception is the new (but deprecated, legacy) <code>putTransactionalForAllNodesWithoutClusterNotification(Serializable)</code> method which allows to publish a notification only for UI nodes attached to the current backend node.</p>
 </div>
 <div class="sect2">
-<h3 id="non-transactional-put-publish-methods"><a class="anchor" href="#non-transactional-put-publish-methods"></a>Non-transactional put / publish methods</h3>
+<h3 id="non-transactional-put-publish-methods"><a class="anchor" href="#non-transactional-put-publish-methods"></a>Non-transactional Put / Publish methods</h3>
 <div class="paragraph">
 <p>The <code>boolean distributeOverCluster</code> overloads have been removed. Use the single-argument variant; cluster distribution is now always performed.</p>
 </div>
@@ -1218,7 +1218,7 @@ The only exception is the new (but deprecated, legacy) <code>putTransactionalFor
 </table>
 </div>
 <div class="sect2">
-<h3 id="transactional-put-methods"><a class="anchor" href="#transactional-put-methods"></a>Transactional put methods</h3>
+<h3 id="transactional-put-methods"><a class="anchor" href="#transactional-put-methods"></a>Transactional Put Methods</h3>
 <div class="paragraph">
 <p>The <code>boolean distributeOverCluster</code> overloads have been removed. Use the single-argument variant; cluster distribution is now always performed.</p>
 </div>
@@ -1273,7 +1273,7 @@ The only exception is the new (but deprecated, legacy) <code>putTransactionalFor
 </div>
 </div>
 <div class="sect1">
-<h2 id="hybridmanager-api-improvements-scout-js"><a class="anchor" href="#hybridmanager-api-improvements-scout-js"></a>HybridManager API improvements (Scout JS)</h2>
+<h2 id="hybridmanager-api-improvements-scout-js"><a class="anchor" href="#hybridmanager-api-improvements-scout-js"></a>HybridManager API Improvements (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>HybridManager</code> provides API to dispose formerly created widgets. Former implementations calling the hybrid Action <em>scout.DisposeWidgets</em> manually using the remote ids can be migrated.</p>
@@ -1305,7 +1305,7 @@ myFancyWidget.destroy();</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="eventsupport-api-changes-for-subtypes-scout-js"><a class="anchor" href="#eventsupport-api-changes-for-subtypes-scout-js"></a>EventSupport API changes for subtypes (Scout JS)</h2>
+<h2 id="eventsupport-api-changes-for-subtypes-scout-js"><a class="anchor" href="#eventsupport-api-changes-for-subtypes-scout-js"></a>EventSupport API Changes for Subtypes (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>EventSupport</code> provides API to register callback functions in order to handle events with subtypes.
@@ -1330,7 +1330,7 @@ All places using these subtype callbacks need to be migrated.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="default-timeout-for-jax-ws-requests"><a class="anchor" href="#default-timeout-for-jax-ws-requests"></a>Default timeout for JAX-WS requests</h2>
+<h2 id="default-timeout-for-jax-ws-requests"><a class="anchor" href="#default-timeout-for-jax-ws-requests"></a>Default Timeout for JAX-WS Requests</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1390,7 +1390,7 @@ But, expanding is actually not desired for table pages, so now only node pages a
 </div>
 </div>
 <div class="sect1">
-<h2 id="tab-box-mark-strategy-renamed"><a class="anchor" href="#tab-box-mark-strategy-renamed"></a>Tab Box: Mark Strategy renamed</h2>
+<h2 id="tab-box-mark-strategy-renamed"><a class="anchor" href="#tab-box-mark-strategy-renamed"></a>Tab Box: Mark Strategy Renamed</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>ITabBox.MARK_STRATEGY_EMPTY</code> has been renamed to <code>ITabBox.MARK_STRATEGY_NOT_EMPTY</code> because the tab is marked if it is <em>not</em> empty.</p>
@@ -1452,7 +1452,7 @@ You should find most of them by searching for <code>objectType: TabBox</code> an
 </div>
 </div>
 <div class="sect1">
-<h2 id="permission-checks"><a class="anchor" href="#permission-checks"></a>Permission checks</h2>
+<h2 id="permission-checks"><a class="anchor" href="#permission-checks"></a>Permission Checks</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>

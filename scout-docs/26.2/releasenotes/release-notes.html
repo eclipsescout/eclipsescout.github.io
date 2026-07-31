@@ -440,31 +440,62 @@ reliability and adds flexibility for updates and deployments in a high availabil
 </div>
 </div>
 <div class="sect1">
-<h2 id="tree-scout-js-findnode-added-and-visitnodes-improved"><a class="anchor" href="#tree-scout-js-findnode-added-and-visitnodes-improved"></a>Tree: FindNode Added and VisitNodes Improved (Scout JS)</h2>
+<h2 id="drag-drop-for-table-rows"><a class="anchor" href="#drag-drop-for-table-rows"></a>Drag &amp; Drop for Table Rows</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Finding tree nodes may be helpful especially for outlines to find a specific page.
-This can now be done using the new function <code>Tree.findNode()</code> that either takes a predicate or a subclass of <code>TreeNode</code> as argument.</p>
+<p>The <code>Table</code> widget can now let users move a row to a different position by simply dragging it with the mouse.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../common/_images/table_row_dnd_animation.gif" alt="table row dnd animation">
+</div>
 </div>
 <div class="paragraph">
-<p>The function uses the existing <code>visitNodes</code> function to search for the tree node.
-Unfortunately, that function does not have the possibility to abort the traversal at any point.
-To support this, it now uses the <code>TreeVisitResult</code>, so you can now either skip visiting a subtree or stop visiting completely.
-To make it consistent with other visitor functions like <code>Widget.visitChildren</code>, returning <code>true</code> now stops visiting completely instead of just skipping the subtree.</p>
-</div>
-<div class="paragraph">
-<p>This means you need to check your visitors according to the <a href="#migration-guide.adoc#tree-scout-js-api-of-visitnodes-changed" class="xref unresolved">Migration Guide</a>.</p>
+<p>Detailed information on how to use this in your own application can be found in the <a href="../technical-guide/user-interface/widget-reference.html#table-dnd" class="xref page">Technical Guide</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="table-column-formatter-added-scout-js"><a class="anchor" href="#table-column-formatter-added-scout-js"></a>Table: Column Formatter Added (Scout JS)</h2>
+<h2 id="enhanced-grouping-of-date-columns"><a class="anchor" href="#enhanced-grouping-of-date-columns"></a>Enhanced Grouping of Date Columns</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>Column</code> now has a formatter property similar to the one of the <code>ValueField</code>.</p>
+<p>So far, date columns in tables have always been grouped by year.
+Now the user can adjust the grouping type, similar to what is already possible with table charts.
+The chosen grouping type is saved in the column settings and bookmarks.
+The same configuration option is now also available in the associated column filter.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../common/_images/date_column.png" alt="date column">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reload-key-stroke-for-outline"><a class="anchor" href="#reload-key-stroke-for-outline"></a>Reload Key Stroke for Outline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If a user wishes to recreate a page (e.g. because its content has changed but the page has not been refreshed), they can usually just reload the detail table of the parent page, e.g. by pressing F5.</p>
 </div>
 <div class="paragraph">
-<p>This makes it possible to change the format function without having to subclass the column.</p>
+<p>However, an outline typically does not have a root page, so this is not possible for top-level pages.
+To support this case, F5 can now be pressed even if no page is selected.
+When it is pressed, the top-level nodes are reloaded which in-fact reloads the whole outline.
+To deselect a page, just click on the outline title.</p>
+</div>
+<div class="paragraph">
+<p>The keystroke is active only for remote outlines (Scout Classic).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="locking-of-transitive-node-dependencies"><a class="anchor" href="#locking-of-transitive-node-dependencies"></a>Locking of Transitive Node Dependencies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To mitigate supply chain attacks and ensure reproducible builds, Scout now provides support to lock the Node.js dependencies.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="../technical-guide/user-interface/build-stack.html#node-dependency-resolution" class="xref page">Technical Guide</a> for details and the <a href="../migration/migration-guide.html#locking-of-transitive-node-dependencies" class="xref page">Migration Guide</a> for instructions how to enable the feature.</p>
 </div>
 </div>
 </div>
@@ -481,15 +512,48 @@ This can for example be used to call a rest resource that validates the user inp
 </div>
 </div>
 <div class="sect1">
-<h2 id="hybridmanager-api-improvements-scout-js"><a class="anchor" href="#hybridmanager-api-improvements-scout-js"></a>HybridManager API improvements (Scout JS)</h2>
+<h2 id="table-column-formatter-added-scout-js"><a class="anchor" href="#table-column-formatter-added-scout-js"></a>Table: Column Formatter Added (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>HybridManager</code> provides API to dispose formerly created widgets. The widgets passed to <code>HybridManager.disposeWidgets</code> are collected and disposed in a single hybrid action.</p>
+<p>The <code>Column</code> now has a formatter property similar to the one of the <code>ValueField</code>.</p>
+</div>
+<div class="paragraph">
+<p>This makes it possible to change the format function without having to subclass the column.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tree-scout-js-findnode-added-and-visitnodes-improved"><a class="anchor" href="#tree-scout-js-findnode-added-and-visitnodes-improved"></a>Tree: FindNode Added and VisitNodes Improved (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Finding tree nodes may be helpful especially for outlines to find a specific page.
+This can now be done using the new function <code>Tree.findNode()</code> that either takes a predicate or a subclass of <code>TreeNode</code> as argument.</p>
+</div>
+<div class="paragraph">
+<p>The function uses the existing <code>visitNodes</code> function to search for the tree node.
+Unfortunately, that function does not have the possibility to abort the traversal at any point.
+To support this, it now uses the <code>TreeVisitResult</code>, so you can now either skip visiting a subtree or stop visiting completely.
+To make it consistent with other visitor functions like <code>Widget.visitChildren</code>, returning <code>true</code> now stops visiting completely instead of just skipping the subtree.</p>
+</div>
+<div class="paragraph">
+<p>This means you need to check your visitors according to the <a href="../migration/migration-guide.html#tree-scout-js-api-of-visitnodes-changed" class="xref page">Migration Guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hybridmanager-api-improvements-scout-js"><a class="anchor" href="#hybridmanager-api-improvements-scout-js"></a>HybridManager API Improvements (Scout JS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Widgets that have been created by the <code>HybridManager</code> are now disposed automatically on the UI server when the widget is destroyed using <code>widget.destroy()</code>.
+Internally, it uses the new API method <code>HybridManager.disposeWidgets</code> which collects and disposes multiple widgets in a single hybrid action.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">HybridManager.get().disposeWidgets(widgets);</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Please see the <a href="../migration/migration-guide.html#hybridmanager-api-improvements-scout-js" class="xref page">Migration Guide</a> for update instructions.</p>
 </div>
 </div>
 </div>
@@ -536,25 +600,20 @@ Please see the JsDoc of the <code>FormFieldModel.checkEmpty</code> for details.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="locking-of-transitive-node-dependencies"><a class="anchor" href="#locking-of-transitive-node-dependencies"></a>Locking of Transitive Node Dependencies</h2>
+<h2 id="abortablecontext-scout-js"><a class="anchor" href="#abortablecontext-scout-js"></a>AbortableContext (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To mitigate supply chain attacks and ensure reproducible builds, Scout now provides support to lock the Node.js dependencies.</p>
+<p>When working with rest requests, it is often necessary to abort previously created requests again.
+Since requests made with Scout JS are typically created using <code>ajax</code>, the developer does not have access to the abortable call.
+As a result, standard mechanisms such as an <code>AbortController</code> cannot be used to abort these calls.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="../technical-guide/user-interface/build-stack.html#node-dependency-resolution" class="xref page">Technical Guide</a> for details and the <a href="#migration-guide.adoc#locking-of-transitive-node-dependencies" class="xref unresolved">Migration Guide</a> for instructions how to enable the feature.</p>
+<p>To address this issue, the <code>abortableContext</code> was introduced.
+It allows code to be executed within the scope of an <code>AbortController</code>.
+All abortable elements that are registered while this context is present may then be aborted using the <code>AbortController</code>.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="abortablecontext-scout-js"><a class="anchor" href="#abortablecontext-scout-js"></a>abortableContext (Scout JS)</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>When working with rest requests often there is the need to abort previously created requests again.
-As typically all requests made using Scout JS are created using <code>ajax</code> the developer does not have access to the abortable call and therefore, is unable to use e.g. an <code>AbortController</code> to abort these calls.
-To address this issue the abortableContext was introduced. It allows code to be executed within the scope of an <code>AbortController</code>.
-All abortable elements that are registered while this context is present may than be aborted using the <code>AbortController</code>.
-In addition, all calls created using the <code>ajax</code> utility auto register themselves in the current context if there is one.</p>
+<p>In addition, all calls created using the <code>ajax</code> utility automatically register themselves in the current context, if there is one.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -605,7 +664,7 @@ outerController.abort();</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="pagewithtable-abortable-loading-scout-js"><a class="anchor" href="#pagewithtable-abortable-loading-scout-js"></a>PageWithTable: abortable loading (Scout JS)</h2>
+<h2 id="pagewithtable-abortable-loading-scout-js"><a class="anchor" href="#pagewithtable-abortable-loading-scout-js"></a>PageWithTable: Abortable Loading (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>PageWithTable</code> now supports abortable loading. To support this, <code>PageWithTable</code> runs <code>_loadTableData(searchFilter)</code> within an abortable context.
@@ -644,7 +703,7 @@ protected async _loadTableDataAsync(searchFilter: any): Promise&lt;any&gt; {
 </div>
 </div>
 <div class="sect1">
-<h2 id="dataobjectvisitors-scout-js"><a class="anchor" href="#dataobjectvisitors-scout-js"></a>dataObjectVisitors (Scout JS)</h2>
+<h2 id="dataobjectvisitors-scout-js"><a class="anchor" href="#dataobjectvisitors-scout-js"></a>DataObjectVisitors (Scout JS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A utility to visit data objects in Scout JS was added. <code>dataObjectVisitors</code> can be used to recursively visit any object and e.g. execute a callback for all occurrences of an explicit <code>BaseDoEntity</code>.</p>
@@ -662,23 +721,7 @@ protected async _loadTableDataAsync(searchFilter: any): Promise&lt;any&gt; {
 </div>
 </div>
 <div class="sect1">
-<h2 id="drag-drop-for-table-rows"><a class="anchor" href="#drag-drop-for-table-rows"></a>Drag &amp; Drop for Table Rows</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <code>Table</code> widget can now let users move a row to a different position by simply dragging it with the mouse.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../common/_images/table_row_dnd_animation.gif" alt="table row dnd animation">
-</div>
-</div>
-<div class="paragraph">
-<p>Detailed information on how to use this in your own application can be found in the <a href="../technical-guide/user-interface/widget-reference.html#table-dnd" class="xref page">Technical Guide</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="local-lookup-calls-search-the-whole-text"><a class="anchor" href="#local-lookup-calls-search-the-whole-text"></a>Local lookup calls: Search the whole text</h2>
+<h2 id="local-lookup-calls-search-the-whole-text"><a class="anchor" href="#local-lookup-calls-search-the-whole-text"></a>Local Lookup Calls: Search the Whole Text</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For local lookup calls (<code>LocalLookupCall.java</code> and <code>StaticLookupCall.ts</code>), wildcards ar inserted at the beginning and end of the lookup text so that the whole text is searched instead of only the beginning.
