@@ -750,6 +750,25 @@ This way, they are unified with the implementation in <code>LookupHelper.createT
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="filechooserfactory"><a class="anchor" href="#filechooserfactory"></a>FileChooserFactory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creation of <code>FileChooser</code> instances is now centralized through the new <code>FileChooserFactory</code>.</p>
+</div>
+<div class="paragraph">
+<p>Instead of instantiating a <code>FileChooser</code> directly using <code>new FileChooser(&#8230;&#8203;)</code>, applications can obtain a file chooser via:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">BEANS.get(FileChooserFactory.class).createFileChooser();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This provides a single extension point for customizing and replacing file chooser creation.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../howtos/scout-js/rest-service-how-to.html">How to Use a REST Service in Scout JS</a></span>
   <span class="next"><a href="../migration/migration-guide.html">Migration Guide</a></span>
