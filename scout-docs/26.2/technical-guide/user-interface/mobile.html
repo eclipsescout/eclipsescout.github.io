@@ -672,7 +672,7 @@ If this is not sufficient you can always set a custom <code>CompactBeanBuilder</
   @Override
   protected ITableCompactHandler createCompactHandler() {
     return super.createCompactHandler()
-        .withBeanBuilder((columns, row) -&gt; {
+        .withBeanBuilder((_, _) -&gt; {
           CompactBean bean = new CompactBean();
           bean.setTitle("custom title");
           bean.addContentLine(new CompactLine("label", "text"));
