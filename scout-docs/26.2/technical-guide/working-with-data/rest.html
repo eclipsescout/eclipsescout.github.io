@@ -1038,8 +1038,7 @@ If a project does not use an HTTP servlet filter determining the current user, t
   @Produces(MediaType.APPLICATION_JSON)
   public Response loadData() {
     IChunkedDataWriter&lt;ExampleEntityDo&gt; writer = IChunkedDataWriter.create(ExampleEntityDo.class, "\r\n", 100);
-    Iterator&lt;ExampleEntityDo&gt; iterator = fetchData();
-    return writer.toResponse(iterator);
+    return writer.toResponse(this::fetchData);
   }
 
   /**
