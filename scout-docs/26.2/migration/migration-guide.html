@@ -1586,6 +1586,25 @@ propertyName === 'value'[\s\S]*?\{[\s\S]*?\bthrow\b[\s\S]*?\}</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="default-minimum-password-length-increased"><a class="anchor" href="#default-minimum-password-length-increased"></a>Default Minimum Password Length Increased</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default value of <code>scout.passwordPolicy.minLength</code> has changed from <code>12</code> to <code>14</code>.</p>
+</div>
+<div class="paragraph">
+<p>If your application relies on the previous default value, configure it explicitly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">scout.passwordPolicy.minLength=12</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Review your password policy configuration and adjust the value if a different minimum password length is required.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>
