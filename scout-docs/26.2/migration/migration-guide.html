@@ -1589,6 +1589,20 @@ propertyName === 'value'[\s\S]*?\{[\s\S]*?\bthrow\b[\s\S]*?\}</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="content-security-policy"><a class="anchor" href="#content-security-policy"></a>Content Security Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/object-src">MDN recommendation</a>, the content security policy directive <code>object-src</code> has been changed from <code>self</code> to <code>none</code> by default.</p>
+</div>
+<div class="paragraph">
+<p>If still using <code>object-src</code>, consider moving to more modern alternatives like <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, <code>&lt;img&gt;</code> for e.g. SVG or <code>&lt;iframe&gt;</code> using a sandbox.</p>
+</div>
+<div class="paragraph">
+<p>If you really need <code>object-src</code>, add the corresponding directive to the <code>scout.cspDirectiveAppend</code> config property (in your <code>config.properties</code> file or the environment variable).</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../releasenotes/release-notes.html">Release Notes</a></span>
 </nav>

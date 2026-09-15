@@ -621,7 +621,7 @@ public class ExposedCodeType extends AbstractCodeType&lt;String, String&gt; { <i
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Specifies the TypeScript <code>objectType</code> for the CodeType. Only necessary if there is a dedicated TypeScript class for this CodeType.</td>
+<td>Specifies the TypeScript <code>objectType</code> for the CodeType. Only necessary if there is a dedicated TypeScript class for this CodeType. In most cases the <code>objectType</code> should be specified using the <code>@ObjectType</code> annotation directly on the CodeType. As an alternative, applications may provide the object type using an <code>IObjectTypeProvider</code>, which is useful for existing CodeTypes that cannot be annotated without replacing them.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -672,12 +672,10 @@ export class ExposedCodeType extends CodeType&lt;string&gt; {
 </td>
 <td class="content">
 All attributes from the Java CodeType are automatically applied to the TypeScript CodeType. So there is no need to repeat any ID values, texts or other configuration of the Java code!
+It is then possible to access the CodeType in TypeScript. Some examples:
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>It is then possible to access the CodeType in TypeScript. Some examples:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -688,6 +686,49 @@ let idOfFirstCode = codes.get(ExposedCodeType).first.id; // Access CodeType by c
 let isSecondCodeActive = codes.get('10000').get('2').active; // Access CodeType and Code by id. Returns true.
 let allCodesRecursively = codes.get(ExposedCodeType).codes(); // Access all codes of a CodeType. Returns two Codes.</code></pre>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="expose-an-existing-codetype-without-replacing-it"><a class="anchor" href="#expose-an-existing-codetype-without-replacing-it"></a>Expose an existing CodeType without replacing it</h4>
+<div class="paragraph">
+<p>Sometimes an application wants to expose a CodeType that is provided by the framework or another module. In such cases it may be undesirable to replace the existing CodeType solely to add <code>@ApiExposed</code> and <code>@ObjectType</code> annotations.</p>
+</div>
+<div class="paragraph">
+<p>Instead, the CodeType can be exposed using an <code>IApiExposedCodeTypeContributor</code> and an <code>IObjectTypeProvider</code>.</p>
+</div>
+<div class="paragraph">
+<p>Expose the existing CodeType:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class SampleApiExposedCodeTypeContributor implements IApiExposedCodeTypeContributor {
+
+  @Override
+  public void contribute(Set&lt;ICodeType&gt; codeTypes) {
+    codeTypes.add(BEANS.get(ExposedCodeType.class));
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Provide the TypeScript object type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class SampleObjectTypeProvider implements IObjectTypeProvider {
+
+  @Override
+  public String objectTypeOf(Class&lt;?&gt; type) {
+    if (ExposedCodeType.class.equals(type)) {
+      return "sample.ExposedCodeType";
+    }
+    return null;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This makes <code>ExposedCodeType</code> available through the Scout API without requiring the original CodeType class to be replaced.</p>
 </div>
 </div>
 </div>
