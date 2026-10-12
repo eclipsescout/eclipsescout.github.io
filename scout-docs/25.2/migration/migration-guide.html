@@ -765,20 +765,13 @@ const shallowCopy = scout.create(MyEntityDo, {
 });</code></pre>
 </div>
 </div>
-</li>
-</ol>
-</div></td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Important: If the spread operator is not the first statement, you need to convert the DO to a Pojo first (<code>.toPojo()</code>), otherwise undefined values from the DO may override actual values.
-Therefore, it is recommended to always use the original Data Object as the first spread statement.
-. To create a deep copy of a Data Object use the <code>clone</code> function:</p>
+Therefore, it is recommended to always use the original Data Object as the first spread statement.</p>
 </div>
-<div class="paragraph">
-<p>+</p>
-</div>
+</li>
+<li>
+<p>To create a deep copy of a Data Object use the <code>clone</code> function:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">const deepCopy = originalEntityDo.clone({
@@ -788,10 +781,18 @@ Therefore, it is recommended to always use the original Data Object as the first
 </div>
 <div class="paragraph">
 <p>Important: In the (optional) extra model passed to the <code>clone</code> function only primitives and pojos are copied deeply.
-Complex objects like <code>Date</code> or <code>Map</code> in this extra model are copied by value!
-. When using the <code>HybridManager</code> or the <code>JsForm</code>: It uses the Data Object class and deserializes to these classes (instead of a Pojo as before) as soon as a class having a matching <code>@typeName</code> decorator is found in TypeScript.
+Complex objects like <code>Date</code> or <code>Map</code> in this extra model are copied by value!</p>
+</div>
+</li>
+<li>
+<p>When using the <code>HybridManager</code> or the <code>JsForm</code>: It uses the Data Object class and deserializes to these classes (instead of a Pojo as before) as soon as a class having a matching <code>@typeName</code> decorator is found in TypeScript.
 So to use the new API for <code>HybridManager</code> or <code>JsForm</code>, just create the necessary Data Object classes. But keep in mind that as soon it is converted, these instances will be returned instead of a Pojo.
 So this might require some more code migrations on your side (see above).</p>
+</li>
+</ol>
+</div></td>
+</tr>
+</table>
 </div>
 </div>
 </div>
